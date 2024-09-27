@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!--    <link rel="stylesheet" href="/static/css/index.css" />-->
+<!--    <link rel="stylesheet" href="/static/css/detail.css" />-->
+<!--    <script type="text/javascript" src="/static/js/table.js"></script>-->
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/detail.css" />
+    <script type="text/javascript" src="/js/table.js"></script>
+    <meta charset="UTF-8">
+    <title>Albion Helper - weapon</title>
+</head>
+<body>
+<!--    <div class="container" >-->
+<!--        <p th:text="${text}">text</p>-->
+<!--    </div>-->
+            <div class="header">
+                <a class="header-logo" href="/">Albion Helper</a>
+            </div>
+
+            <div class="main">
+                <div class="menu-detail">
+                    <h2 style="text-align: center;">메 뉴</h2>
+                    <ul class="menu-ul">
+                        <!--TODO: DB에서 뽑아서 보여줄지에 대한 결정. -->
+                        <li><a href="/market/price?type=warrior">워리어 무기</a></li>
+                        <li><a href="/market/price?type=mage">메이지 무기</a></li>
+                        <li><a href="/market/price?type=hunter">헌터 무기</a></li>
+                        <li><a href="/market/price?type=plate">워리어계열 갑옷</a></li>
+                        <li><a href="/market/price?type=jacket">헌터계열 재킷</a></li>
+                        <li><a href="/market/price?type=robe">메이지계열 로브</a></li>
+                        <li><a href="/market/price?type=cape">망토</a></li>
+                        <li><a href="/market/price?type=bag">가방</a></li>
+<!--                        <li>팩션 명품</li>-->
+<!--                        <li>도시 명품</li>-->
+<!--                        <li>아티펙트</li>-->
+<!--                        <li>소모품</li>-->
+<!--                        <li>동물, 씨앗</li>-->
+<!--                        <li>가구</li>-->
+<!--                        <li>채집 장비</li>-->
+<!--                        <li>채집 도구</li>-->
+                    </ul>
+                </div>
+
+                <div class="centered">
+                    <div class="content-header">
+                        <h2 id="contentTitle">시장 가격 비교</h2>
+                    </div>
+                    <hr/>
+                    <div class="content-header-cities">
+                        <span class="martlock">마트록</span>
+                        <span class="thetford">뎃포드</span>
+                        <span class="fortsterling">포트스털링</span>
+                        <span class="lymhurst">림허스트</span>
+                        <span class="bridgewatch">브릿지워치</span>
+                        <span class="caerleon">칼레온</span>
+                        <span class="brecilian">브리실리안</span>
+                    </div>
+                    <div class="content-body">
+                        <div class="content-body-item">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>도시</th>
+                                    <th>가격</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>마트록</td>
+                                    <td>9,000</td>
+                                </tr>
+                                <tr>
+                                    <td>뎃포드</td>
+                                    <td>1,000</td>
+                                </tr>
+                                <tr>
+                                    <td>포트스털링</td>
+                                    <td>10,000</td>
+                                </tr>
+                                <tr>
+                                    <td>림허스트</td>
+                                    <td>10,000</td>
+                                </tr>
+                                <tr>
+                                    <td>브릿지워치</td>
+                                    <td>10,000</td>
+                                </tr>
+                                <tr>
+                                    <td>칼레온</td>
+                                    <td>10,000</td>
+                                </tr>
+                                <tr>
+                                    <td>브리실리안</td>
+                                    <td>10,000</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- main -->
+
+            <div class="footer">
+                <p>footer 입니다.</p>
+            </div>
+</body>
+</html>
