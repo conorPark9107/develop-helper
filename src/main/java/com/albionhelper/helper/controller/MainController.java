@@ -12,7 +12,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 // 데이터 관련
 // https://www.albion-online-data.com/#i-want-all-the-data-from-the-api
 
-// 드디어 찾았으.
+// api document
 // https://openalbion.com/categories.html
 
 // 참고
@@ -26,9 +26,6 @@ public class MainController {
 
     @GetMapping("/")
     public String index(Model model){
-//        WebClient webClient = WebClient.builder().build();
-//        String responseData = webClient.get().uri(TEST_URL).header("x-test", "header").retrieve().bodyToMono(String.class).block();
-//        model.addAttribute("text", responseData);
         return "home";
     }
 }
