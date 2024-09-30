@@ -60,36 +60,8 @@ footer{
     border: 1px solid #eee;
     border-radius: 10%;
 }
-span{
-    font-weight: 900;
-}
-.martlock{
-    background-color: #45EFFF;
-    color:#685243;
-}
-.thetford{
-    background-color: #F514FF;
-    color:#542968;
-}
-.fortsterling{
-    background-color: #eee;
-    color: #41406B;
-}
-.lymhurst{
-    background-color: #13FF02;
-    color: #3C3D26;
-}
-.bridgewatch{
-    background-color: #FFFFA5;
-    color: #5A3D3F;
-}
-.caerleon{
-    background-color: #0E0B12;
-    color: #eee;
-}
-.brecilian{
-    background-color: #745ACB;
-    color: #41406B;
+.content-body-item{
+    margin: 3% auto;
 }
 table{
     width: 100%;
@@ -98,34 +70,44 @@ table{
     border: 3px solid #eee;
     border-radius: 5%;
     background-color: #3B3333;
+    white-space: nowrap;
 } 
 td{
-    padding: 2% 0%;
+    padding: 1.5% 10px;
     text-align: center;
-    font-size: 1em;
+    font-size: 0.8em;
     font-weight: bold;
 }
 th{
-    padding-bottom: 3%;
+    width: 5vw;
+    padding: 1%;
 }
-table tbody tr:nth-child(1) {
-    color:#45EFFF;
+.rainbow{
+    width: 100%;
+    padding: 10px 10px;
+    color : #eee;
+    background-color: #3B3333;
+    font-size: 1em;
+    --angle: 0deg;
+    font-color : #eee;
+    border: 3px solid;
+    border-radius: 5%;
+    border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+    animation: 3s rotate linear infinite;
+    outline: none;
+    opacity : 0.7;
 }
-table tbody tr:nth-child(2) {
-    color:#F514FF;
+input[type="text"]:focus{
+    opacity : 1;
 }
-table tbody tr:nth-child(3) {
-    color: #eee;
+
+@keyframes rotate {
+	to {
+		--angle: 360deg;
+	}
 }
-table tbody tr:nth-child(4) {
-    color: #13FF02;
-}
-table tbody tr:nth-child(5) {
-    color:#FFFFA5;
-}
-table tbody tr:nth-child(6) {
-    color: #0E0B12;
-}
-table tbody tr:nth-child(7) {
-    color: #745ACB;
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
