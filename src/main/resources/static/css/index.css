@@ -7,6 +7,9 @@ body {
     color: #eee;
     font-family: 'Galmuri14';
 }
+a, u {
+  text-decoration: none;
+}
 .container {
     min-height: 100vh;
     display: flex;
@@ -55,5 +58,8 @@ body {
 .container-contents-button:hover{
     color: #242020;
     background: #eee;
+}
+.userList{
+    display: none;
 }
 
