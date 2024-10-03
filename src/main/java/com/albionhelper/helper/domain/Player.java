@@ -2,10 +2,12 @@ package com.albionhelper.helper.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Player {
 
     @JsonProperty("Id")
@@ -34,4 +36,9 @@ public class Player {
     private String totalKills;
     private String gvgKills;
     private String gvgWon;
+
+    @Override
+    public String toString() {
+        return this.getName() + " : " + this.getId();
+    }
 }

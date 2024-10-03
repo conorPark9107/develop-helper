@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/killboard.js"></script>
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/detail.css" />
+    <link rel="stylesheet" href="/css/killboard.css" />
+    <meta charset="UTF-8">
+    <title>⚔ 알비온 헬퍼 - 킬보드 ⚔</title>
+</head>
+<body>
+<!--    <div class="container" >-->
+<!--        <p th:text="${text}">text</p>-->
+<!--    </div>-->
+            <div class="header">
+                <a class="header-logo" href="/">Albion Helper</a>
+            </div>
+
+            <div class="main">
+<!--                <div class="menu-detail">-->
+<!--                    <h2 style="text-align: center;">메 뉴</h2>-->
+<!--                    <ul class="menu-ul">-->
+<!--                        -->
+<!--                    </ul>-->
+<!--                </div>-->
+
+                <div class="centered">
+                    <div class="content-header">
+                        <h2 id="contentTitle">⚔ 킬보드 ⚔</h2>
+                    </div>
+                    <hr/>
+
+                    <div class="content-body">
+                        <div class="content-body-item">
+                            <p style="margin-top: 10px;">🔻서버를 선택해주세용🔻</p>
+                            <input type="radio" id="location03" name="location" value="east" checked/>
+                            <label for="location03">동부</label>
+                            <input type="radio" id="location02" name="location" value="west" />
+                            <label for="location02">서부</label>
+                            <input type="radio" id="lcation01" name="location" value="europe" />
+                            <label for="lcation01">유럽</label>
+                        </div>
+
+                        <div class="content-body-item">
+                            <p>🔻아래에 인게임 ID를 정확하게 입력하고 Enter키를 눌러주세용...🔻</p>
+                            <input class="rainbow" type="text" name="userId" id="userId" placeholder="id를 입력하세요." maxlength="16">
+                            <p class="warningMsg" id="invalidId_msg"></p>
+
+
+                            <div id="userList">
+                                <p>🔻본인의 아이디를 클릭해주세용..🔻</p>
+                                <div id="userNames" class="content-body-item-userGroup">
+<!--                                    <a href="" class="content-body-item-userGroup-userId">qwerasdfzxcvrfvb</a>-->
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="divTables" class="content-body-item">
+                            <table class="rainbow">
+                                <caption>⚔ Kill ⚔</caption>
+                                <thead>
+                                <tr>
+                                    <th>날짜</th>
+                                    <th>죽인사람</th>
+                                    <th>죽인사람 IP</th>
+                                    <th>죽은사람</th>
+                                    <th>죽은사람 IP</th>
+                                    <th>어시스트</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!-- kill -->
+                                <th:block th:if="${#lists.size(kills) == 0}">
+                                    <tr class="kill">
+                                        <td colspan="6">최근 킬이 없습니다.</td>
+                                    </tr>
+                                </th:block>
+                                <th:block th:if="${#lists.size(kills) != 0}">
+                                    <tr class="kill" th:each="killLog : ${kills}">
+                                        <td th:text="${killLog.timeStamp}"></td>
+                                        <td th:text="${killLog.killer.name}"></td>
+                                        <td th:text="${killLog.killer.averageItemPower}"></td>
+                                        <td th:text="${killLog.victim.name}"></td>
+                                        <td th:text="${killLog.victim.averageItemPower}"></td>
+                                        <td>
+                                            [[${#lists.size(killLog.participants)}]] 명
+                                        </td>
+                                    </tr>
+                                </th:block>
+                                </tbody>
+                            </table>
+                            <table class="rainbow">
+                                <caption>☠ Death ☠</caption>
+                                <thead>
+                                <tr>
+                                    <th>날짜</th>
+                                    <th>죽인사람</th>
+                                    <th>죽인사람 IP</th>
+                                    <th>죽은사람</th>
+                                    <th>죽은사람 IP</th>
+                                    <th>어시스트</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!-- death -->
+                                <th:block th:if="${#lists.size(deaths) == 0}">
+                                    <tr class="kill">
+                                        <td colspan="6">최근 킬이 없습니다.</td>
+                                    </tr>
+                                </th:block>
+                                <th:block th:if="${#lists.size(deaths) != 0}">
+                                    <tr class="death" th:each="deathLog : ${deaths}">
+                                        <td th:text="${deathLog.timeStamp}"></td>
+                                        <td th:text="${deathLog.killer.name}"></td>
+                                        <td th:text="${deathLog.killer.averageItemPower}"></td>
+                                        <td th:text="${deathLog.victim.name}"></td>
+                                        <td th:text="${deathLog.victim.averageItemPower}"></td>
+                                        <td>
+                                            [[${#lists.size(deathLog.participants)}]] 명
+                                        </td>
+                                    </tr>
+                                </th:block>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- main -->
+</body>
+</html>

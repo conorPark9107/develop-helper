@@ -25,3 +25,16 @@
     color: #eee;
     font-weight: bold;
 }
+#userList{
+    display: none;
+}
+#divTables{
+    display: flex;
+}
+#divTables > table{
+    margin: 1em;
+}
+caption {
+    font-weight: bold;
+    margin-bottom: 1vw;
+}

@@ -107,7 +107,12 @@ input[type="text"]:focus{
 	}
 }
 @property --angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+.warningMsg{
+    color : red;
+    font-size:0.3em;
+    font-weight: bold;
 }
