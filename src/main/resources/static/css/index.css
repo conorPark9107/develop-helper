@@ -7,7 +7,11 @@ body {
     color: #eee;
     font-family: 'Galmuri14';
 }
-a, u {
+a{
+    text-decoration: none;
+    color: #eee;
+}
+u {
   text-decoration: none;
 }
 .container {
@@ -59,5 +63,6 @@ a, u {
     color: #242020;
     background: #eee;
 }
-
-
+.link:hover{
+    opacity: 0.5;
+}

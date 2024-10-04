@@ -9,7 +9,7 @@ $(document).ready(function() {
             // idLength : 3 ~ 16
             if(text.length >= 3){
 
-                $('#invalidId_msg').remove();
+                $('#invalidId_msg').empty();
                 $('#userNames a').remove();
 
                 $.ajax({
@@ -21,29 +21,15 @@ $(document).ready(function() {
                         "inputId" : text,
                         "serverLocation" : radio
                     },
-                    success : function(result) { // 결과 성공 콜백함수
-                        /*
-                            {
-                                "totalKills":null,
-                                "gvgKills":null,
-                                "gvgWon":null,
-                                "Id":"CzVrkgSrQlSd8Cdr-SYf8Q",
-                                "Name":"met",
-                                "GuildId":"",
-                                "GuildName":"",
-                                "AllianceId":"",
-                                "AllianceName":"",
-                                "Avatar":"",
-                                "AvatarRing":"",
-                                "KillFame":123317100,
-                                "DeathFame":188522070,
-                                "FameRatio":"0.65"
-                            }...
-                           */
+                    success : function(result) {
+                       if(result != null && result.length > 0){
                            for(var i = 0; i < result.length; i++){
                                 $('#userNames').append('<a href="/killboard/getKillBoard?id='+ result[i].Id +'&location='+ radio +'" class="content-body-item-userGroup-userId">'+ result[i].Name +'</a>');
                            }
-                           $('#userList').css('display', 'block');
+                           $('#userList').show();
+                       }else{
+                           showWarningMsg('검색결과가 없습니다. 인게임 ID를 다시 확인해주세요.');
+                       }
                     },
                     error : function(request, status, error) {
                         console.log(error);
@@ -57,17 +43,29 @@ $(document).ready(function() {
 
     });
 
+    $("input[name='radio_kill']").change(function(){
+    	var value = $("input[name='radio_kill']:checked").val();
+    	if(value == 'kill'){
+            $("#deathTable").hide();
+            $("#killTable").fadeIn(500);
+    	}else{
+            $("#killTable").hide();
+            $("#deathTable").fadeIn(500);
+    	}
+    });
+
+
     function showWarningMsg(msg){
         $('#invalidId_msg').text(msg);
-        $('#invalidId_msg').fadeIn(500);
-        $('#invalidId_msg').fadeOut(3000);
+        $('#invalidId_msg').show();
+        $('#invalidId_msg').fadeOut(2000);
     }
 
     function checkId(){
         var regExpId = /^[a-zA-Z0-9]*$/;
         if(!regExpId.test($('#userId').val())){
             showWarningMsg('알비온 인게임 ID는 영어와 숫자로만 구성되요.. 다시 입력해주세요!');
-            $('#userId').val('');
+            $('#userId').empty();
         }
     }
 

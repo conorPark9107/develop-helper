@@ -52,6 +52,7 @@ public class KillBoardController {
         List<DeathBoard> deathList = killboardService.getDeathBoard(id, location);
         model.addAttribute("kills", killList);
         model.addAttribute("deaths", deathList);
+        model.addAttribute("location", location);
         log.info("killList, deathList : {} {}", killList.size(), deathList.size());
         return "killboard/killboardDetail";
     }

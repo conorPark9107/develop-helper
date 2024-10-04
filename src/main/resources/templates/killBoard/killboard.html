@@ -18,12 +18,6 @@
             </div>
 
             <div class="main">
-<!--                <div class="menu-detail">-->
-<!--                    <h2 style="text-align: center;">메 뉴</h2>-->
-<!--                    <ul class="menu-ul">-->
-<!--                        -->
-<!--                    </ul>-->
-<!--                </div>-->
 
                 <div class="centered">
                     <div class="content-header">
@@ -32,8 +26,8 @@
                     <hr/>
 
                     <div class="content-body">
-                        <div class="content-body-item item-location">
-                            <p style="margin-top: 10px;">🔻서버를 선택해주세용🔻</p>
+                        <div class="content-body-items">
+                            <p>🔻서버를 선택해주세용🔻</p>
                             <input type="radio" id="location03" name="location" value="east" checked/>
                             <label for="location03">동부</label>
                             <input type="radio" id="location02" name="location" value="west" />
@@ -42,56 +36,16 @@
                             <label for="lcation01">유럽</label>
                         </div>
 
-                        <div class="content-body-item item-id">
+                        <div class="content-body-items">
                             <p>🔻아래에 인게임 ID를 정확하게 입력하고 Enter키를 눌러주세용...🔻</p>
-                            <input class="rainbow" type="text" name="userId" id="userId" placeholder="id를 입력하세요." maxlength="16">
+                            <input class="rainbow" type="text" name="userId" id="userId" placeholder="id를 입력하세요." maxlength="16" aria-haspopup="true" aria-expanded="false">
                             <p class="warningMsg" id="invalidId_msg"></p>
                             <div id="userList">
-                                <p>🔻본인의 아이디를 클릭해주세용..🔻</p>
-                                <div id="userNames" class="content-body-item-userGroup">
-<!--                                    <a href="" class="content-body-item-userGroup-userId">ID</a>-->
-
+                                <div class="rainbow popUp">
+                                    <p>🔻본인의 아이디를 클릭해주세용..🔻</p>
+                                    <div id="userNames" class="content-body-item-userGroup"></div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div id="divTables" class="content-body-item">
-                            <table class="rainbow">
-                                <thead>
-                                <tr>
-                                    <th>날짜</th>
-                                    <th>죽인사람</th>
-                                    <th>죽인사람 IP</th>
-                                    <th>죽은사람</th>
-                                    <th>죽은사람 IP</th>
-                                    <th>어시스트</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- kill -->
-                                    <tr class="kill">
-                                        <td colspan="6">-</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="rainbow">
-                                <thead>
-                                <tr>
-                                    <th>날짜</th>
-                                    <th>죽인사람</th>
-                                    <th>죽인사람 IP</th>
-                                    <th>죽은사람</th>
-                                    <th>죽은사람 IP</th>
-                                    <th>어시스트</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- death -->
-                                    <tr class="death">
-                                        <td colspan="6">-</td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>

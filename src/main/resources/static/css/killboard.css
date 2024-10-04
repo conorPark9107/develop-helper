@@ -5,36 +5,95 @@
     background-color : #676767;
 }
 .content-body-item-userGroup{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 15px;
-    gap: 15px;
-    grid-row-gap: 15px;
-    row-gap: 15px;
-    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 3em;
+}
+#userId{
+    width: 60%;
+}
+.content-body-items{
+    margin-bottom : 1vw;
 }
 .content-body-item-userGroup-userId{
     opacity: 0.5;
-    margin: auto;
+    padding: 0.5vw 0.5vw;
+    margin-bottom: 10%;
     color: #eee;
     font-weight: bold;
 }
 .content-body-item-userGroup-userId:hover{
-    opacity: 1.0;
-    margin: auto;
+    opacity: 1;
+    padding: 0.5vw 0.5vw;
+    margin-bottom: 10%;
     color: #eee;
     font-weight: bold;
 }
 #userList{
     display: none;
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: rgba(0,0,0,0.7);
+}
+.popUp{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: #3B3333;
 }
 #divTables{
-    display: flex;
-}
-#divTables > table{
-    margin: 1em;
+    margin-top: 1em;
 }
 caption {
     font-weight: bold;
     margin-bottom: 1vw;
+}
+.warningMsg{
+    color : red;
+    font-size:0.3em;
+    font-weight: bold;
+}
+.infoMsg{
+    color : #2A6FDE;
+    font-size:0.3em;
+    font-weight: bold;
+}
+.participants {
+  position: relative;
+  display: inline-block;
+}
+.participants .participant {
+    visibility: hidden;
+    width: 150px;
+    background-color: #3B3333;
+    color: #eee;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -30px;
+    left: 125%;
+}
+.participants .participant a{
+    display: block;
+}
+.participants .participant::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #3B3333 transparent transparent;
+}
+.participants:hover .participant {
+  visibility: visible;
 }

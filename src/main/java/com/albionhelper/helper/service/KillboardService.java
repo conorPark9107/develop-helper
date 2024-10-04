@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.ArrayList;
@@ -36,7 +37,12 @@ public class KillboardService {
     private final String GET_PLAYERINFO = "/players/<ID>";
 
     private String getResponse(String url) {
-        WebClient webClient = WebClient.builder().build();
+
+        ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder()
+                .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(-1)) // 버퍼사이즈 -1 : unlimited
+                .build();
+
+        WebClient webClient = WebClient.builder().exchangeStrategies(exchangeStrategies).build();
         return  webClient.get()
                 .uri(url)
                 .header("x-test", "header")
@@ -66,6 +72,7 @@ public class KillboardService {
             Player p = objectMapper.treeToValue(node, Player.class);
             list.add(p);
         }
+
 
         return list;
     }
