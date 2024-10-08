@@ -12,48 +12,56 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = "/market")
 public class MarketController {
 
+    // api 정보.
+    // https://albionfreemarket.com/articles/view/the-albion-online-data-project-client-tutorial
+
+    /*
+        API 호스트 URL
+        https://west.albion-online-data.com
+        https://east.albion-online-data.com
+        https://europe.albion-online-data.com
+    */
+
     @Autowired
     MarketService marketService;
 
     @GetMapping("")
     public String market(){
-        return "market";
+        return "market/market";
     }
 
     @GetMapping("/price")
     public String showPrice(@RequestParam("type")String type){
 
-        switch (type) {
-            case "warrior" -> {
-
-            }
-            case "mage" -> {
-
-            }
-            case "hunter" -> {
-
-            }
-            case "plate" -> {
-
-            }
-            case "jacket" -> {
-
-            }
-            case "robe" -> {
-
-            }
-            case "cape" -> {
-
-            }
-            case "bag" -> {
-
-            }
-        }
+//        marketService.
+//        switch (type) {
+//            case "warrior" -> {
+//
+//            }
+//            case "mage" -> {
+//
+//            }
+//            case "hunter" -> {
+//
+//            }
+//            case "plate" -> {
+//
+//            }
+//            case "jacket" -> {
+//
+//            }
+//            case "robe" -> {
+//
+//            }
+//            case "cape" -> {
+//
+//            }
+//            case "bag" -> {
+//
+//            }
+//        }
 
         return "market";
     }
-
-
-
 
 }

@@ -4,6 +4,8 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    border-bottom: solid;
+    margin-bottom: 1vw;
 }
 .header-logo{
     color: #eee;
@@ -24,6 +26,7 @@ footer{
     position: relative;
     justify-content: space-between;
     padding: 0 15px 10px;
+    flex-wrap: wrap;
 }
 .menu-detail {
     display: flex;

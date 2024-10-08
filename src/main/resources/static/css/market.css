@@ -1,33 +1,57 @@
-span{
-    font-weight: 900;
+.btnSearch{
+    font-size: 1em;
+    width: 10%;
+    border: solid 2px;
+    border-radius: 10%;
+    font-weight: bold;
+    padding: 0.3vw;
+    background-color: #242020;
+    color: #eee;
+}
+.tier{
+    font-size: 1em;
+    width: 10%;
+    border: solid 1px;
+    border-radius: 10%;
+    font-weight: bold;
+    padding: 0.3vw;
+    background-color: #242020;
+    color: #eee;
 }
 .martlock{
     background-color: #45EFFF;
     color:#685243;
+    font-weight: 900;
 }
 .thetford{
     background-color: #F514FF;
     color:#542968;
+    font-weight: 900;
 }
 .fortsterling{
     background-color: #eee;
     color: #41406B;
+    font-weight: 900;
 }
 .lymhurst{
     background-color: #13FF02;
     color: #3C3D26;
+    font-weight: 900;
 }
 .bridgewatch{
     background-color: #FFFFA5;
     color: #5A3D3F;
+    font-weight: 900;
 }
 .caerleon{
     background-color: #0E0B12;
-    color: #eee;
+    color: #64000F;
+    font-weight: 900;
 }
 .brecilian{
     background-color: #745ACB;
     color: #41406B;
+    font-weight: 900;
 }
 table tbody tr:nth-child(1) {
     color:#45EFFF;
