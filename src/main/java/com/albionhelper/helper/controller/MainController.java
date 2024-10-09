@@ -8,6 +8,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 // 이미지 관련
 // https://wiki.albiononline.com/wiki/API:Render_service
+// https://render.albiononline.com/v1/item/T4_HEAD_LEATHER_FEY@1.png?quality=4
+
 
 // 데이터 관련
 // https://www.albion-online-data.com/#i-want-all-the-data-from-the-api

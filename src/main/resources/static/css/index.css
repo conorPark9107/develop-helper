@@ -15,7 +15,10 @@ a{
     color: #eee;
 }
 u {
-  text-decoration: none;
+    text-decoration: none;
+}
+h3{
+    text-align: center;
 }
 .container {
     min-height: 100vh;

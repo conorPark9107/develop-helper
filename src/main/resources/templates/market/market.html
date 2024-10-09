@@ -4,6 +4,8 @@
 <!--    <link rel="stylesheet" href="/static/css/index.css" />-->
 <!--    <link rel="stylesheet" href="/static/css/detail.css" />-->
 <!--    <script type="text/javascript" src="/static/js/table.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/market.js"></script>
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
     <link rel="stylesheet" href="/css/market.css" />
@@ -22,16 +24,27 @@
 
                 <div class="menu-detail">
                     <div>
-                        <h2>🔻 종 류 🔻</h2>
-                        <ul class="menu-ul">
-                            <li><a href="/market/price?type=warrior">워리어 무기</a></li>
-                            <li><a href="/market/price?type=mage">메이지 무기</a></li>
-                            <li><a href="/market/price?type=hunter">헌터 무기</a></li>
-                            <li><a href="/market/price?type=plate">워리어계열 갑옷</a></li>
-                            <li><a href="/market/price?type=jacket">헌터계열 재킷</a></li>
-                            <li><a href="/market/price?type=robe">메이지계열 로브</a></li>
-                            <li><a href="/market/price?type=cape">망토</a></li>
-                            <li><a href="/market/price?type=bag">가방</a></li>
+                        <h3>🟥 종 류 🟥</h3>
+                        <ul class="menu-ul" id="categoryList">
+                            <li value="warrior">워리어 무기 & 보조 무기</li>
+                            <li value="helmet">헬멧</li>
+                            <li value="armor">갑옷</li>
+                            <li value="boots">부츠</li>
+                            <hr/>
+                            <li value="hunter">헌터 무기 & 보조 무기</li>
+                            <li value="hood">후드</li>
+                            <li value="jacket">재킷</li>
+                            <li value="shoes">신발</li>
+                            <hr/>
+                            <li value="mage">메이지 무기 & 보조 무기</li>
+                            <li value="cowl">두건</li>
+                            <li value="robe">로브</li>
+                            <li value="sandals">샌들</li>
+                            <hr/>
+                            <li value="cape">망토</li>
+                            <li value="bag">가방</li>
+                            <li value="potion">포션</li>
+                            <li value="food">음식</li>
                             <!--                        <li>팩션 명품</li>-->
                             <!--                        <li>도시 명품</li>-->
                             <!--                        <li>아티펙트</li>-->
@@ -42,132 +55,91 @@
                             <!--                        <li>채집 도구</li>-->
                         </ul>
                     </div>
-                    <div>
-                        <h2>🔻 도시 선택 🔻</h2>
-                        <input type="checkbox" id="cities" name="cities">
-                        <label class="martlock" for="cities">마트록</label>
-                        <input type="checkbox" id="cities02" name="cities">
-                        <label class="thetford" for="cities02">뎃포트</label>
-                        <input type="checkbox" id="cities03" name="cities">
-                        <label class="bridgewatch" for="cities03">브릿지워치</label>
-                        <input type="checkbox" id="cities04" name="cities">
-                        <label class="fortsterling" for="cities04">포트스털링</label>
-                        <input type="checkbox" id="cities05" name="cities">
-                        <label class="lymhurst" for="cities05">림허스트</label>
-                        <input type="checkbox" id="cities06" name="cities">
-                        <label class="caerleon" for="cities06">칼레온</label>
-                        <input type="checkbox" id="cities07" name="cities">
-                        <label class="brecilian" for="cities07">브리실리안</label>
-                    </div>
-
-                    <div>
-                        <h2>🔻 품질 🔻</h2>
-                        <input type="radio" id="quality" name="quality" value="1" checked/>
-                        <label for="quality">일반</label>
-                        <input type="radio" id="quality02" name="quality" value="2" />
-                        <label for="quality02">좋음</label>
-                        <input type="radio" id="quality03" name="quality" value="3" />
-                        <label for="quality03">뛰어남</label>
-                        <input type="radio" id="quality04" name="quality" value="4" />
-                        <label for="quality04">우수함</label>
-                        <input type="radio" id="quality05" name="quality" value="5" />
-                        <label for="quality05">걸작</label>
-                    </div>
-
-                    <div>
-                        <h2>🔻 티어 🔻</h2>
-                        <select id="tier" class="tier">
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                        </select>
-                        <select id="dotTier" class="tier">
-                            <option value="0">.0</option>
-                            <option value="1">.1</option>
-                            <option value="2">.2</option>
-                            <option value="3">.3</option>
-                            <option value="4">.4</option>
-                        </select>
-                    </div>
-
-                    <div class="menu">
-                        <button class="btnSearch">검색!</button>
-                        <button class="btnSearch">초기화</button>
-                    </div>
-
                 </div> <!-- class="main" -->
+
 
                 <div class="centered">
                     <div class="content-header">
-                        <h2 id="contentTitle">🔍 시장 검색 🔍</h2>
+                        <h2 id="contentTitle">🔍시장 검색🔍</h2>
                     </div>
+
+                    <div class="content-searchDetail">
+                        <div class="search-detail">
+                            <h3>🔻 도시 선택 🔻</h3>
+                            <input type="checkbox" id="cities" name="cities" value="martlock">
+                            <label class="martlock" for="cities">마트록</label>
+                            <input type="checkbox" id="cities02" name="cities" value="thetford">
+                            <label class="thetford" for="cities02">뎃포트</label>
+                            <input type="checkbox" id="cities03" name="cities" value="bridgewatch">
+                            <label class="bridgewatch" for="cities03">브릿지워치</label>
+                            <input type="checkbox" id="cities04" name="cities" value="fortsterling">
+                            <label class="fortsterling" for="cities04">포트스털링</label>
+                            <input type="checkbox" id="cities05" name="cities" value="lymhurst">
+                            <label class="lymhurst" for="cities05">림허스트</label>
+                            <input type="checkbox" id="cities06" name="cities" value="caerleon">
+                            <label class="caerleon" for="cities06">칼레온</label>
+                            <input type="checkbox" id="cities07" name="cities" value="brecilian">
+                            <label class="brecilian" for="cities07">브리실리안</label>
+                        </div>
+
+                        <div class="search-detail">
+                            <h3>🔻 품질 🔻</h3>
+                            <input type="radio" id="quality" name="quality" value="1" checked/>
+                            <label for="quality">일반</label>
+                            <input type="radio" id="quality02" name="quality" value="2" />
+                            <label for="quality02">좋음</label>
+                            <input type="radio" id="quality03" name="quality" value="3" />
+                            <label for="quality03">뛰어남</label>
+                            <input type="radio" id="quality04" name="quality" value="4" />
+                            <label for="quality04">우수함</label>
+                            <input type="radio" id="quality05" name="quality" value="5" />
+                            <label for="quality05">걸작</label>
+                        </div>
+
+                        <div class="search-detail">
+                            <h3>🔻 티어 🔻</h3>
+                            <select id="tier" class="tier">
+                                <option value="3">3</option>
+                                <option value="4" selected>4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                            <select id="dotTier" class="tier">
+                                <option value="0" selected>.0</option>
+                                <option value="1">.1</option>
+                                <option value="2">.2</option>
+                                <option value="3">.3</option>
+                                <option value="4">.4</option>
+                            </select>
+                        </div>
+
+                        <div class="btnDiv search-detail">
+                            <h3>🔻요기 클릭!!🔻</h3>
+                            <button id="searchBtn" class="btnSearch">🔍검색</button>
+                        </div>
+                    </div>
+
                     <hr/>
-                    <div class="content-header-cities">
-                        <span class="martlock">마트록</span>
-                        <span class="thetford">뎃포드</span>
-                        <span class="fortsterling">포트스털링</span>
-                        <span class="lymhurst">림허스트</span>
-                        <span class="bridgewatch">브릿지워치</span>
-                        <span class="caerleon">칼레온</span>
-                        <span class="brecilian">브리실리안</span>
-                    </div>
                     <div class="content-body">
-                        <div class="content-body-item">
+                        <div id="contentsArea" class="content-body-item">
 
                         </div>
                     </div>
                 </div>
+
             </div> <!-- main -->
 </body>
 </html>
 
-<!--<div class="tier">-->
-<!--    <input type="radio" id="tier02" name="tier" value="2" />-->
-<!--    <label for="tier02" style="color : #605147;">2</label>-->
-<!--</div>-->
-<!--<div class="tier">-->
-<!--    <input type="radio" id="tier03" name="tier" value="3" />-->
-<!--    <label for="tier03" style="color : #37462B;">3</label>-->
-<!--</div>-->
 
-<!--<div class="tier">-->
-<!--    <input type="radio" id="tier04" name="tier" value="4" />-->
-<!--    <label for="tier04" style="color: #345B75;">4</label>-->
-<!--</div>-->
-
-<!--<div class="tier">-->
-<!--    <input type="radio" id="tier05" name="tier" value="5" />-->
-<!--    <label for="tier05" style="color : #6F2019;">5</label>-->
-<!--</div>-->
-
-<!--<div class="tier">-->
-<!--    <input type="radio" id="tier06" name="tier" value="6" />-->
-<!--    <label for="tier06" style="color : #B06227;">6</label>-->
-<!--</div>-->
-
-<!--<div class="tier">-->
-<!--    <input type="radio" id="tier07" name="tier" value="7" />-->
-<!--    <label for="tier07" style="color : #CDAB3A;">7</label>-->
-<!--</div>-->
-
-<!--<div class="tier">-->
-<!--    <input type="radio" id="tier08" name="tier" value="8" />-->
-<!--    <label for="tier08" style="color : #F8F8F8;">8</label>-->
-<!--</div>-->
-
-<!--<div class="dot">-->
-<!--    <input type="radio" id="tierDot" name="tierDot" value="0"/>-->
-<!--    <label for="tierDot">.0</label>-->
-<!--    <input type="radio" id="tierDot01" name="tierDot" value="1"/>-->
-<!--    <label for="tierDot01">.1</label>-->
-<!--    <input type="radio" id="tierDot02" name="tierDot" value="2" />-->
-<!--    <label for="tierDot02">.2</label>-->
-<!--    <input type="radio" id="tierDot03" name="tierDot" value="3" />-->
-<!--    <label for="tierDot03">.3</label>-->
-<!--    <input type="radio" id="tierDot04" name="tierDot" value="4" />-->
-<!--    <label for="tierDot04">.4</label>-->
-<!--</div>-->
+<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_SET1@4.png?quality=5"  alt=""/>-->
+<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_SET2@4.png?quality=5"  alt=""/>-->
+<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_SET3@4.png?quality=5"  alt=""/>-->
+<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_ROYAL@4.png?quality=5"  alt=""/>-->
+<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_MORGANA@4.png?quality=5"  alt=""/>-->
+<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_HELL@4.png?quality=5"  alt=""/>-->
+<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_UNDEAD@4.png?quality=5"  alt=""/>-->
+<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_AVALON@4.png?quality=5"  alt=""/>-->
+<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_FEY@4.png?quality=5"  alt=""/>-->
