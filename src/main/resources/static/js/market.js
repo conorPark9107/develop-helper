@@ -11,16 +11,18 @@ $(document).ready(function() {
         console.log("티어 : " + tier + "." + dotTier);
     });
 
-    $('#categoryList li').click(function(){
+    $('#categoryList > li').on('click', function(){
         var c = $(this).attr("value");
         $('#contentsArea img').remove();
+        $('#secondContentsArea img').remove();
+        $('.content-searchDetail').hide();
 
-        var category;
-        var uri;
+        var uri = "";
         var arr_show;
         // T4_SHOES_LEATHER_SET1.png?quality=5
         switch(c){
             case 'warrior' :
+                arr_show = weaponWarriorCate;
             break;
             case 'helmet' :
                  uri = 'HEAD_PLATE_';
@@ -36,6 +38,7 @@ $(document).ready(function() {
             break;
 
             case 'hunter' :
+                arr_show = weaponHunterCate;
             break;
             case 'hood' :
                 uri = 'HEAD_LEATHER_';
@@ -51,6 +54,7 @@ $(document).ready(function() {
             break;
 
             case 'mage' :
+                arr_show = weaponMageCate;
             break;
             case 'cowl' :
             uri = 'HEAD_CLOTH_';
@@ -75,17 +79,38 @@ $(document).ready(function() {
             break;
         }
 
-        ;
+
         for(var i = 0; i < arr_show.length; i++){
             var url = "/image/T8_" + uri + arr_show[i] + ".png";
-            $('#contentsArea').append('<img class="itemImage" src="' + url + '"  alt=""/>');
+            $('#contentsArea').append('<img class="itemImage" src="' + url + '" value="_' + arr_show[i] + '" />');
         }
     });
 
-    const plateCate = ["SET1", "SET2", "SET3", "ROYAL", "UNDEAD", "HELL", "KEEPER", "AVALON", "FEY"];
-    const leatherCate = ["SET1", "SET2", "SET3", "ROYAL", "MORGANA", "HELL", "UNDEAD", "AVALON", "FEY"];
-    const clothCate = ["SET1", "SET2", "SET3", "ROYAL", "KEEPER", "HELL", "MORGANA", "AVALON", "FEY"];
+    $('#contentsArea').on('click', '.itemImage' ,function(){
+        var val = $(this).attr("value");
+        $('#secondContentsArea img').remove();
+
+        if(val in itemTree) {
+            var arr = itemTree[val];
+            for(var i = 0; i < arr.length; i++){
+//                var url = "T8_" + arr[i] + ".png?quality=5";
+//                $('#secondContentsArea').append('<a class="itemImage" href="https://render.albiononline.com/v1/item/' + url + '" />');
+                var url = "/image/T8_" + arr[i] + ".png";
+                $('#secondContentsArea').append('<img class="itemImage" src="' + url + '"  value="' + arr[i] + '" />');
+            }
+        } else {
+             $('.itemImage').removeClass('selctedItem');
+             $(this).addClass('selctedItem');
+             $('.content-searchDetail').fadeIn(500);
+        }
+    });
+
+    $('#secondContentsArea').on('click', '.itemImage' ,function(){
+        $('.itemImage').removeClass('selctedItem');
+        $(this).addClass('selctedItem');
+        $('.content-searchDetail').fadeIn(500);
+    });
+
+
+
 });
-
-
-// <img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_SET1@4.png?quality=5"  alt=""/>

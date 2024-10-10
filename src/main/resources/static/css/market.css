@@ -79,3 +79,23 @@
     color: #41406B;
     font-weight: 900;
 }
+.selctedItem{
+    border: 2px solid;
+    border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+    animation: 3s rotate linear infinite;
+    outline: none;
+}
+input[type="text"]:focus{
+    opacity : 1;
+}
+
+@keyframes rotate {
+	to {
+		--angle: 360deg;
+	}
+}
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}

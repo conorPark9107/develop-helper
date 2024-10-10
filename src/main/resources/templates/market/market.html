@@ -5,6 +5,7 @@
 <!--    <link rel="stylesheet" href="/static/css/detail.css" />-->
 <!--    <script type="text/javascript" src="/static/js/table.js"></script>-->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/variable.js"></script>
     <script type="text/javascript" src="/js/market.js"></script>
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
@@ -63,8 +64,20 @@
                         <h2 id="contentTitle">🔍시장 검색🔍</h2>
                     </div>
 
+                    <hr/>
+                    <div class="content-body">
+                        <div id="contentsArea" class="content-body-item">
+
+                        </div>
+                        <div id="secondContentsArea" class="content-body-item">
+
+                        </div>
+                    </div>
+
                     <div class="content-searchDetail">
-                        <div class="search-detail">
+                        <hr/>
+
+                        <div class="search-detail content-body-item">
                             <h3>🔻 도시 선택 🔻</h3>
                             <input type="checkbox" id="cities" name="cities" value="martlock">
                             <label class="martlock" for="cities">마트록</label>
@@ -121,13 +134,11 @@
                         </div>
                     </div>
 
-                    <hr/>
-                    <div class="content-body">
-                        <div id="contentsArea" class="content-body-item">
 
-                        </div>
-                    </div>
                 </div>
+
+
+
 
             </div> <!-- main -->
 </body>
