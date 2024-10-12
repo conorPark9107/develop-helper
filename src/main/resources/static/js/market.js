@@ -1,6 +1,10 @@
 $(document).ready(function() {
     $('#searchBtn').on('click', function(){
         var city = $('input[name="cities"]:checked').val();
+        if(city == undefined || city == null){
+            alert('도시를 선택해주세요.');
+            return;
+        }
         console.log("도시 : " + city);
 
         var quality = $('input[name="quality"]:checked').val();
@@ -9,6 +13,10 @@ $(document).ready(function() {
         var tier = $('#tier option:checked').val();
         var dotTier = $('#dotTier option:checked').val();
         console.log("티어 : " + tier + "." + dotTier);
+
+        var itemName = $('.selctedItem').attr('value');
+        console.log("아이템명 : " + itemName);
+
     });
 
     $('#categoryList > li').on('click', function(){
@@ -89,6 +97,7 @@ $(document).ready(function() {
     $('#contentsArea').on('click', '.itemImage' ,function(){
         var val = $(this).attr("value");
         $('#secondContentsArea img').remove();
+        $('.content-searchDetail').hide();
 
         if(val in itemTree) {
             var arr = itemTree[val];
@@ -101,6 +110,7 @@ $(document).ready(function() {
         } else {
              $('.itemImage').removeClass('selctedItem');
              $(this).addClass('selctedItem');
+             $('.content-searchDetail').css('display', 'flex');
              $('.content-searchDetail').fadeIn(500);
         }
     });
@@ -108,6 +118,7 @@ $(document).ready(function() {
     $('#secondContentsArea').on('click', '.itemImage' ,function(){
         $('.itemImage').removeClass('selctedItem');
         $(this).addClass('selctedItem');
+        $('.content-searchDetail').css('display', 'flex');
         $('.content-searchDetail').fadeIn(500);
     });
 

@@ -28,6 +28,14 @@ public class MarketService{
     // 용병 신발 : T4_SHOES_LEATHER_SET1.png
     // 메이지
 
+
+    /*
+        API 호스트 URL
+        https://west.albion-online-data.com
+        https://east.albion-online-data.com
+        https://europe.albion-online-data.com
+    */
+
     public Object getData(String type){
 
         return "";
