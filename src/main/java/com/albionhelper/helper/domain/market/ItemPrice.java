@@ -1,49 +1,55 @@
 package com.albionhelper.helper.domain.market;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.Locale;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ItemPrice {
 
-    @JsonProperty("itemTypeId")
+    @JsonProperty("item_id")
     private String itemName;
 
     @JsonProperty("city")
     private String city;
 
-    @JsonProperty("qualityLevel")
-    private int qualityLevel;
+    @JsonProperty("quality")
+    private int quality;
 
-    @JsonProperty("sellPriceMin")
+    @JsonProperty("sell_price_min")
     private long sellPriceMin;
 
-    @JsonProperty("sellPriceMinDate")
-    private LocalDateTime sellPriceMinDate;
+//    @JsonProperty("sellPriceMinDate")
+//    private LocalDateTime sellPriceMinDate;
 
-    @JsonProperty("sellPriceMax")
+    @JsonProperty("sell_price_max")
     private long sellPriceMax;
 
-    @JsonProperty("sellPriceMaxDate")
-    private LocalDateTime sellPriceMaxDate;
+//    @JsonProperty("sellPriceMaxDate")
+//    private LocalDateTime sellPriceMaxDate;
 
-    @JsonProperty("buyPriceMin")
+    @JsonProperty("buy_price_min")
     private long buyPriceMin;
 
-    @JsonProperty("buyPriceMinDate")
-    private LocalDateTime buyPriceMinDate;
+//    @JsonProperty("buyPriceMinDate")
+//    private LocalDateTime buyPriceMinDate;
 
-    @JsonProperty("buyPriceMax")
+    @JsonProperty("buy_price_max")
     private long buyPriceMax;
 
-    @JsonProperty("buyPriceMaxDate")
-    private LocalDateTime buyPriceMaxDate;
+//    @JsonProperty("buyPriceMaxDate")
+//    private LocalDateTime buyPriceMaxDate;
 
 
+    public void setCity(String city) {
+        this.city = city.replaceAll(" ", "").toLowerCase(Locale.ROOT);
+    }
 }

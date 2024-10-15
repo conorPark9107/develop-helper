@@ -1,5 +1,8 @@
 package com.albionhelper.helper.controller;
 
+import com.albionhelper.helper.service.GoldService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +29,19 @@ public class MainController {
     private final String TEST_URL = "https://api.openalbion.com/api/v3/weapons?tier=4";
     private final String TEST_URL_MARKET_PREFIX = "https://east.albion-online-data.com";
 
+    @Autowired
+    GoldService goldService;
+
     @GetMapping("/")
     public String index(Model model){
         return "home";
+    }
+
+    @GetMapping("/gold")
+    public String getGoldPricies(Model model) throws JsonProcessingException {
+        model.addAttribute("east", goldService.getGoldPriciesOnEast());
+        model.addAttribute("west", goldService.getGoldPriciesOnWest());
+        model.addAttribute("europe", goldService.getGoldPriciesOnEurope());
+        return "/gold/gold";
     }
 }

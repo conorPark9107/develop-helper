@@ -21,26 +21,40 @@ $(document).ready(function() {
                         "inputId" : text,
                         "serverLocation" : radio
                     },
+                    beforeSend: function() {
+                        turnLoading();
+                    },
                     success : function(result) {
+                       turnLoading();
                        if(result != null && result.length > 0){
                            for(var i = 0; i < result.length; i++){
                                 $('#userNames').append('<a href="/killboard/getKillBoard?id='+ result[i].Id +'&location='+ radio +'" class="content-body-item-userGroup-userId">'+ result[i].Name +'</a>');
                            }
                            $('#userList').show();
                        }else{
-                           showWarningMsg('검색결과가 없습니다. 인게임 ID를 다시 확인해주세요.');
+                           showWarningMsg('검색결과가 없습니다. 인게임 ID를 다시 확인해주세요.', 700);
                        }
                     },
                     error : function(request, status, error) {
                         console.log(error);
-                        showWarningMsg('인게임 ID를 다시 확인해주세요.');
+                        turnLoading();
+                        showWarningMsg('잠시후에 다시 시도해 주세요.', 2000);
                     }
                 });
             }else{
-                showWarningMsg('인게임 ID를 다시 확인해주세요. Albion Online의 계정생성 규칙은 3 ~ 16자입니다.');
+                showWarningMsg('인게임 ID를 다시 확인해주세요. Albion Online의 계정생성 규칙은 3 ~ 16자입니다.', 1000);
             }
         }
 
+    });
+
+    $('#userNames').on('click', function(){
+        $('#blackArea').show();
+        $('#loading').css('display', 'block');
+    });
+
+    $('.link').on('click', function(){
+        turnLoading();
     });
 
     $("input[name='radio_kill']").change(function(){
@@ -55,20 +69,19 @@ $(document).ready(function() {
     });
 
 
-    function showWarningMsg(msg){
+    function showWarningMsg(msg, time){
         $('#invalidId_msg').text(msg);
         $('#invalidId_msg').show();
-        $('#invalidId_msg').fadeOut(2000);
+        $('#invalidId_msg').fadeOut(time);
     }
 
     function checkId(){
         var regExpId = /^[a-zA-Z0-9]*$/;
         if(!regExpId.test($('#userId').val())){
-            showWarningMsg('알비온 인게임 ID는 영어와 숫자로만 구성되요.. 다시 입력해주세요!');
+            showWarningMsg('알비온 인게임 ID는 영어와 숫자로만 구성되요.. 다시 입력해주세요!', 700);
             $('#userId').empty();
         }
     }
-
 });
 
 

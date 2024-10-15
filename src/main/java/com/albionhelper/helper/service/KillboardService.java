@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +50,7 @@ public class KillboardService {
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
+//                .block(Duration.ofMillis(10_000));
 
     }
 

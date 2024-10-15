@@ -2,6 +2,16 @@
 body::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
 }
+fieldset{
+    margin: 5% auto;
+    border: 2px solid;
+    border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+    animation: 3s rotate linear infinite;
+    outline: none;
+}
+legend{
+    text-align:center;
+}
 body {
     background-color: #242020;
     color: #eee;
@@ -71,4 +81,20 @@ h3{
 }
 .link:hover{
     opacity: 0.5;
+}
+@keyframes rotate {
+	to {
+		--angle: 360deg;
+	}
+}
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+.chart{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+    gap: 15px;
 }

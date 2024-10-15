@@ -2,10 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/util.js"></script>
     <script type="text/javascript" src="/js/killboard.js"></script>
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
     <link rel="stylesheet" href="/css/killboard.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 - 킬보드 ⚔</title>
 </head>
@@ -50,5 +52,18 @@
                     </div>
                 </div>
             </div> <!-- main -->
+
+            <div id="blackArea">
+                <div id="loading">
+                    <div class="stick"></div>
+                    <div class="stick"></div>
+                    <div class="stick"></div>
+                    <div class="stick"></div>
+                    <div class="stick"></div>
+                    <div class="stick"></div>
+
+                    <h1>정보 요청중..</h1>
+                </div>
+            </div>
 </body>
 </html>

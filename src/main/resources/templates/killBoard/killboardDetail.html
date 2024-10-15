@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
     <link rel="stylesheet" href="/css/killboard.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 - 킬보드 ⚔</title>
 </head>
@@ -55,7 +56,7 @@
                 <label for="deathRadio">데스</label>
 
                 <div id="divTables" class="content-body-items">
-                    <p class="infoMsg">죽은사람의 정보, 죽인사람의 정보, 어시스트 정보를 보고싶으면 클릭해보세요.</p>
+                    <p class="infoMsg">죽은사람, 죽은사람 정보를 얻고싶다면 클릭, 어시스트한 사람을 보고싶다면 더보기란 마우스 올리기! </p>
                     <table id="killTable" class="rainbow">
                         <thead>
                         <tr>
@@ -84,13 +85,13 @@
                                 <td th:text="${killLog.killer.name}"></td>
                                 <td th:text="${killLog.killer.guildName}"></td>
                                 <td th:text="${killLog.killer.averageItemPower}"></td>
-                                <td class="link">
-                                    <a th:href="@{/killboard/getKillBoard(id=${killLog.victim.id}, location=${location})}" th:text="${killLog.victim.name}"></a>
+                                <td>
+                                    <a class="link" th:href="@{/killboard/getKillBoard(id=${killLog.victim.id}, location=${location})}" th:text="${killLog.victim.name}"></a>
                                 </td>
                                 <td th:text="${killLog.victim.guildName}"></td>
                                 <td th:text="${killLog.victim.averageItemPower}"></td>
                                 <td>
-                                    <div class="participants"><span class="link">더보기</span>
+                                    <div class="participants"><span>더보기</span>
                                         <div class="participant">
                                             <a class="link" th:each="participant : ${killLog.participants}" th:href="@{/killboard/getKillBoard(id=${participant.id}, location=${location})}" th:text="${participant.name}"></a>
                                         </div>
@@ -125,8 +126,8 @@
                             <tr class="death" th:each="deathLog, i : ${deaths}">
                                 <td th:text="${i.count}"></td>
                                 <td th:text="${deathLog.timeStamp}"></td>
-                                <td class="link">
-                                    <a th:href="@{/killboard/getKillBoard(id=${deathLog.killer.id}, location=${location})}" th:text="${deathLog.killer.name}"></a>
+                                <td>
+                                    <a  class="link" th:href="@{/killboard/getKillBoard(id=${deathLog.killer.id}, location=${location})}" th:text="${deathLog.killer.name}"></a>
                                 </td>
                                 <td th:text="${deathLog.killer.guildName}"></td>
                                 <td th:text="${deathLog.killer.averageItemPower}"></td>
@@ -134,7 +135,7 @@
                                 <td th:text="${deathLog.victim.guildName}"></td>
                                 <td th:text="${deathLog.victim.averageItemPower}"></td>
                                 <td>
-                                    <div class="participants"><span class="link">더보기</span>
+                                    <div class="participants"><span>더보기</span>
                                         <div class="participant">
                                             <a class="link" th:each="participant : ${deathLog.participants}" th:href="@{/killboard/getKillBoard(id=${participant.id}, location=${location})}" th:text="${participant.name}"></a>
                                         </div>
@@ -148,5 +149,19 @@
             </div>
         </div>
     </div> <!-- main -->
+
+    <div id="blackArea">
+        <div id="loading">
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+
+            <h1>정보 요청중..</h1>
+        </div>
+    </div>
+
 </body>
 </html>

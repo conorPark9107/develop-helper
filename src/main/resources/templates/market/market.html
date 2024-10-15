@@ -5,11 +5,13 @@
 <!--    <link rel="stylesheet" href="/static/css/detail.css" />-->
 <!--    <script type="text/javascript" src="/static/js/table.js"></script>-->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/js/util.js"></script>
     <script type="text/javascript" src="/js/variable.js"></script>
     <script type="text/javascript" src="/js/market.js"></script>
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
     <link rel="stylesheet" href="/css/market.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 - 시장 검색 ⚔</title>
 </head>
@@ -25,36 +27,78 @@
 
                 <div class="menu-detail">
                     <div>
-                        <h3>🟥 종 류 🟥</h3>
-                        <ul class="menu-ul" id="categoryList">
-                            <li value="warrior">워리어 무기 & 보조 무기</li>
-                            <li value="helmet">헬멧</li>
-                            <li value="armor">갑옷</li>
-                            <li value="boots">부츠</li>
-                            <hr/>
-                            <li value="hunter">헌터 무기 & 보조 무기</li>
-                            <li value="hood">후드</li>
-                            <li value="jacket">재킷</li>
-                            <li value="shoes">신발</li>
-                            <hr/>
-                            <li value="mage">메이지 무기 & 보조 무기</li>
-                            <li value="cowl">두건</li>
-                            <li value="robe">로브</li>
-                            <li value="sandals">샌들</li>
-                            <hr/>
-<!--                            <li value="cape">망토</li>-->
-<!--                            <li value="bag">가방</li>-->
-<!--                            <li value="potion">포션</li>-->
-<!--                            <li value="food">음식</li>-->
-                            <!--                        <li>팩션 명품</li>-->
-                            <!--                        <li>도시 명품</li>-->
-                            <!--                        <li>아티펙트</li>-->
-                            <!--                        <li>소모품</li>-->
-                            <!--                        <li>동물, 씨앗</li>-->
-                            <!--                        <li>가구</li>-->
-                            <!--                        <li>채집 장비</li>-->
-                            <!--                        <li>채집 도구</li>-->
-                        </ul>
+                        <fieldset class="server-fieldset">
+                            <legend class="server-legend">🔻 서버 선택 🔻</legend>
+                            <input type="radio" id="server01" name="server" value="east" checked/>
+                            <label for="server01">아시아</label>
+                            <input type="radio" id="server02" name="server" value="west" />
+                            <label for="server02">아메리카</label>
+                            <input type="radio" id="server03" name="server" value="europe" />
+                            <label for="server03">유럽</label>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="server-legend">🔻 품질 🔻</legend>
+                            <input type="radio" id="quality" name="quality" value="1" checked/>
+                            <label for="quality">일반</label>
+                            <input type="radio" id="quality02" name="quality" value="2" />
+                            <label for="quality02">좋음</label>
+                            <input type="radio" id="quality03" name="quality" value="3" />
+                            <label for="quality03">뛰어남</label>
+                            <input type="radio" id="quality04" name="quality" value="4" />
+                            <label for="quality04">우수함</label>
+                            <input type="radio" id="quality05" name="quality" value="5" />
+                            <label for="quality05">걸작</label>
+                        </fieldset>
+                        <fieldset class="tierFieldset">
+                            <legend class="server-legend">🔻 티어 🔻</legend>
+                            <select id="tier" class="tier">
+                                <option value="T3">3</option>
+                                <option value="T4" selected>4</option>
+                                <option value="T5">5</option>
+                                <option value="T6">6</option>
+                                <option value="T7">7</option>
+                                <option value="T8">8</option>
+                            </select>
+                            <select id="dotTier" class="tier">
+                                <option value="" selected>.0</option>
+                                <option value="@1">.1</option>
+                                <option value="@2">.2</option>
+                                <option value="@3">.3</option>
+                                <option value="@4">.4</option>
+                            </select>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="server-legend">🔻 카테고리 🔻</legend>
+                            <ul class="menu-ul" id="categoryList">
+                                <li value="warrior">워리어 무기 & 보조 무기(방패)</li>
+                                <li value="helmet">헬멧</li>
+                                <li value="armor">갑옷</li>
+                                <li value="boots">부츠</li>
+                                <hr/>
+                                <li value="hunter">헌터 무기 & 보조 무기(횃불)</li>
+                                <li value="hood">후드</li>
+                                <li value="jacket">재킷</li>
+                                <li value="shoes">신발</li>
+                                <hr/>
+                                <li value="mage">메이지 무기 & 보조 무기(서적)</li>
+                                <li value="cowl">두건</li>
+                                <li value="robe">로브</li>
+                                <li value="sandals">샌들</li>
+                                <!--                                <hr/>-->
+                                <!--                            <li value="cape">망토</li>-->
+                                <!--                            <li value="bag">가방</li>-->
+                                <!--                            <li value="potion">포션</li>-->
+                                <!--                            <li value="food">음식</li>-->
+                                <!--                        <li>팩션 명품</li>-->
+                                <!--                        <li>도시 명품</li>-->
+                                <!--                        <li>아티펙트</li>-->
+                                <!--                        <li>소모품</li>-->
+                                <!--                        <li>동물, 씨앗</li>-->
+                                <!--                        <li>가구</li>-->
+                                <!--                        <li>채집 장비</li>-->
+                                <!--                        <li>채집 도구</li>-->
+                            </ul>
+                        </fieldset>
                     </div>
                 </div> <!-- class="main" -->
 
@@ -76,54 +120,17 @@
                     <div class="content-searchDetail">
 
                         <div class="search-detail content-body-item">
-                            <h3>🔻 도시 선택 🔻</h3>
-                            <input type="checkbox" id="cities" name="cities" value="martlock">
-                            <label class="martlock" for="cities">마트록</label>
-                            <input type="checkbox" id="cities02" name="cities" value="thetford">
-                            <label class="thetford" for="cities02">뎃포트</label>
-                            <input type="checkbox" id="cities03" name="cities" value="bridgewatch">
-                            <label class="bridgewatch" for="cities03">브릿지워치</label>
-                            <input type="checkbox" id="cities04" name="cities" value="fortsterling">
-                            <label class="fortsterling" for="cities04">포트스털링</label>
-                            <input type="checkbox" id="cities05" name="cities" value="lymhurst">
-                            <label class="lymhurst" for="cities05">림허스트</label>
-                            <input type="checkbox" id="cities06" name="cities" value="caerleon">
-                            <label class="caerleon" for="cities06">칼레온</label>
-                            <input type="checkbox" id="cities07" name="cities" value="brecilian">
-                            <label class="brecilian" for="cities07">브리실리안</label>
-                        </div>
-
-                        <div class="search-detail">
-                            <h3>🔻 품질 🔻</h3>
-                            <input type="radio" id="quality" name="quality" value="1" checked/>
-                            <label for="quality">일반</label>
-                            <input type="radio" id="quality02" name="quality" value="2" />
-                            <label for="quality02">좋음</label>
-                            <input type="radio" id="quality03" name="quality" value="3" />
-                            <label for="quality03">뛰어남</label>
-                            <input type="radio" id="quality04" name="quality" value="4" />
-                            <label for="quality04">우수함</label>
-                            <input type="radio" id="quality05" name="quality" value="5" />
-                            <label for="quality05">걸작</label>
-                        </div>
-
-                        <div class="search-detail">
-                            <h3>🔻 티어 🔻</h3>
-                            <select id="tier" class="tier">
-                                <option value="3">3</option>
-                                <option value="4" selected>4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                            </select>
-<!--                            <select id="dotTier" class="tier">-->
-<!--                                <option value="0" selected>.0</option>-->
-<!--                                <option value="1">.1</option>-->
-<!--                                <option value="2">.2</option>-->
-<!--                                <option value="3">.3</option>-->
-<!--                                <option value="4">.4</option>-->
-<!--                            </select>-->
+                            <fieldset>
+                                <legend>🔻 도시 🔻</legend>
+                                <label class="blackmarket">암시장</label>
+                                <label class="brecilien">브리실리안</label>
+                                <label class="bridgewatch">브릿지워치</label>
+                                <label class="caerleon">칼레온</label>
+                                <label class="fortsterling">포트스털링</label>
+                                <label class="lymhurst">림허스트</label>
+                                <label class="martlock">마트록</label>
+                                <label class="thetford">뎃포트</label>
+                            </fieldset>
                         </div>
 
 <!--                        <div class="btnDiv search-detail">-->
@@ -133,44 +140,44 @@
                     </div>
 
                     <div class="priceArea">
-                        <div>
-
-                        </div>
 
                         <div class="itemArea">
-                            <img src="https://render.albiononline.com/v1/item/T4_MAIN_MACE@4" alt="의 메이스" />
-                        </div>
+                                <table>
+                                    <caption><img src="" alt=""/></caption>
+                                    <thead>
+                                        <tr>
+                                            <th>최저가 판매</th>
+                                            <th>최고가 판매</th>
+                                            <th>최저가 구매</th>
+                                            <th>최고가 구매</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                        <div class="itemArea">
-                            <img src="https://render.albiononline.com/v1/item/T8_2H_CROSSBOWLARGE_MORGANA@1" alt="의 메이스" />
+                                    </tbody>
+                                </table>
                         </div>
-
-                        <div class="itemArea">
-                            <img src="https://render.albiononline.com/v1/item/T7_2H_NATURESTAFF_KEEPER@3" alt="의 메이스" />
-                        </div>
-
                     </div>
+                </div>
 
+                <div id="blackArea">
+                    <div id="loading">
+                        <div class="stick"></div>
+                        <div class="stick"></div>
+                        <div class="stick"></div>
+                        <div class="stick"></div>
+                        <div class="stick"></div>
+                        <div class="stick"></div>
 
+                        <h1>정보 요청중..</h1>
+                    </div>
                 </div>
 
 
             </div> <!-- main -->
-
             <div class="footer">
                 <span>All <a href="https://albiononline.com/news">Albion Online</a> related materials are property of <a href="https://albiononline.com/imprint" target="_blank">Sandbox Interactive GmbH</a></span>
                 <span>Prices are provided by the <a href="https://www.albion-online-data.com/" target="_blank">Albion Online Data Project</a></span>
             </div>
 </body>
 </html>
-
-
-<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_SET1@4.png?quality=5"  alt=""/>-->
-<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_SET2@4.png?quality=5"  alt=""/>-->
-<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_SET3@4.png?quality=5"  alt=""/>-->
-<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_ROYAL@4.png?quality=5"  alt=""/>-->
-<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_MORGANA@4.png?quality=5"  alt=""/>-->
-<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_HELL@4.png?quality=5"  alt=""/>-->
-<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_UNDEAD@4.png?quality=5"  alt=""/>-->
-<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_AVALON@4.png?quality=5"  alt=""/>-->
-<!--<img class="itemImage" src="https://render.albiononline.com/v1/item/T4_SHOES_LEATHER_FEY@4.png?quality=5"  alt=""/>-->

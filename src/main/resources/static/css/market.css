@@ -1,15 +1,31 @@
+.itemArea table{
+    border-collapse: collapse;
+}
+.space{
+    height : 10px;
+}
+.menu-ul{
+    padding-inline-start: 0;
+}
+.server-legend{
+    font-size: 1.17em;
+}
 .priceArea{
     display: flex;
     flex-wrap: wrap;
+}
+.server-fieldset{
+    text-align : center;
 }
 img{
     width: 4em;
     height: 4em;
 }
 .search-detail{
-    margin: 0 1vw;
-    padding: 1vw 1vw;
     text-align: center;
+}
+.tierFieldset{
+    text-align : center;
 }
 .itemImage{
     cursor : pointer;
@@ -47,45 +63,60 @@ img{
 }
 .tier{
     font-size: 1em;
-    border-radius: 4px;
-    border: 1px solid #eee;
     font-weight: bold;
-    padding: 0.5vw 1.5vw;
+    margin: 0% 3%;
+    padding: 0.675em 6em 0.675em 1em;
     background-color: #242020;
+    border: 1px solid #eee;
+    border-radius: 4px;
     color: #eee;
+    cursor: pointer;
 }
 .martlock{
-    background-color: #434C61;
-    color:#906D4C;
+    border: 3px solid #627583;
+    background-color : #627583;
+    color:#D5A768;
     font-weight: 900;
 }
 .thetford{
-    background-color: #3A1F44;
+    border: 3px solid #3A1F44;
+    background-color : #3A1F44;
     color:#A15AAA;
     font-weight: 900;
 }
 .fortsterling{
-    background-color: #E6C1FF;
-    color: #403E6C;
+    border: 3px solid #FFFFFF;
+    background-color : #FFFFFF;
+    color: #727798;
     font-weight: 900;
 }
 .lymhurst{
-    background-color: #1E230F;
-    color: #424530;
+    border: 3px solid #555F1D;
+    background-color : #555F1D;
+    color: #AEAE57;
     font-weight: 900;
 }
 .bridgewatch{
-    background-color: #482516;
-    color: #736154;
+    border: 3px solid #D9601F;
+    background-color : #D9601F;
+    color: #FFF378;
     font-weight: 900;
 }
 .caerleon{
-    background-color: #0C0C16;
-    color: #350F0B;
+    border: 3px solid #0C0C16;
+    background-color : #0C0C16;
+    color: #5E1710;
     font-weight: 900;
 }
-.brecilian{
-    background-color: #895AE2;
+.brecilien{
+    border: 3px solid #895AE2;
+    background-color : #895AE2;
+    color: #3F479C;
+    font-weight: 900;
+}
+.blackmarket{
+    border: 3px solid #0C0C16;
+    background-color : #0C0C16;
     color: #3F479C;
     font-weight: 900;
 }
@@ -98,14 +129,7 @@ img{
 input[type="text"]:focus{
     opacity : 1;
 }
-
-@keyframes rotate {
-	to {
-		--angle: 360deg;
-	}
-}
-@property --angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
+.itemArea{
+    display: none;
+    width: 100%;
 }

@@ -101,14 +101,3 @@ th{
 input[type="text"]:focus{
     opacity : 1;
 }
-
-@keyframes rotate {
-	to {
-		--angle: 360deg;
-	}
-}
-@property --angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-}
