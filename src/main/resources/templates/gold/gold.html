@@ -1,50 +1,270 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<!--    <link rel="stylesheet" href="/static/css/index.css" />-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/loading.css" />
     <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/detail.css" />
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 ⚔</title>
 </head>
 <body>
-<!--    <div class="container" >-->
-<!--        <p th:text="${text}">text</p>-->
-<!--    </div>-->
-    <div class="container">
+
+    <div class="header">
+        <a class="header-logo" href="/">Albion Helper</a>
+    </div>
+
+    <div style="display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;">
         <div class="container-title">
             <h3>💰골드 시세💰</h3>
         </div>
-        <div class="container-contents">
-            <!-- https://chartscss.org/charts/line/ -->
+        <div style="margin-bottom: 1vw;">
             <div>
-                <table class="charts-css line show-heading show-labels show-primary-axis show-data-axes show-1-secondary-axes">
-                    <caption> 골드 시세 - EAST </caption>
-
-
-                </table>
-            </div>
-
-            <div>
-                <table class="charts-css line show-heading show-labels show-primary-axis show-data-axes show-1-secondary-axes">
-                    <caption> 골드 시세 - WEST </caption>
-
-
-                </table>
-            </div>
-
-            <div>
-                <table class="charts-css line show-heading show-labels show-primary-axis show-data-axes show-1-secondary-axes">
-                    <caption> 골드 시세 - EUROPE </caption>
-
-
-                </table>
+                <canvas id="myChart-all" width="1000" height="300" style="margin: 1vw;"></canvas>
             </div>
         </div>
 
 
+        <div style="display: flex;
+                    justify-content: center;
+                    row-gap: 15px;
+                    padding: 0 12px;
+                    margin: 1vw;">
+            <div>
+                <canvas id="myChart-east" width="500" height="300" style="margin: 1vw;"></canvas>
+            </div>
 
+            <div>
+                <canvas id="myChart-west" width="500" height="300" style="margin: 1vw;"></canvas>
+            </div>
+
+            <div>
+                <canvas id="myChart-europe" width="500" height="300" style="margin: 1vw;"></canvas>
+            </div>
+        </div>
     </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script th:inline="javascript">
+    const DISPLAY = true;
+    const BORDER = true;
+    const CHART_AREA = true;
+    const TICKS = true;
+
+    let myCt01 = document.getElementById('myChart-east');
+    let myCt02 = document.getElementById('myChart-west');
+    let myCt03 = document.getElementById('myChart-europe');
+    let myCt04 = document.getElementById('myChart-all');
+
+
+    var east = [[${east}]];
+    var west = [[${west}]];
+    var europe = [[${europe}]];
+
+
+    new Chart(myCt01, {
+      type: 'line',
+      data: {
+        labels: [east[0].s_timestamp, east[1].s_timestamp, east[2].s_timestamp, east[3].s_timestamp, east[4].s_timestamp, east[5].s_timestamp, east[6].s_timestamp, east[7].s_timestamp],
+        datasets: [{
+            data: [east[0].price, east[1].price, east[2].price, east[3].price, east[4].price, east[5].price, east[6].price, east[7].price],
+            label: "EAST 서버",
+            borderColor: "#4DC370",
+            backgroundColor : "#4DC370",
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: '동부 서버'
+          }
+        },
+        scales: {
+          x: {
+            border: {
+              display: false
+            },
+            grid: {
+              color: function(context) {
+                return '#3B3333';
+              },
+            }
+          },
+          y: {
+            border: {
+              display: false
+            },
+            grid: {
+              color: function(context) {
+                return '#3B3333';
+              },
+            },
+          }
+        }
+      },
+    });
+
+
+    new Chart(myCt02, {
+    type: 'line',
+      data: {
+        labels: [west[0].s_timestamp, west[1].s_timestamp, west[2].s_timestamp, west[3].s_timestamp, west[4].s_timestamp, west[5].s_timestamp, west[6].s_timestamp, west[7].s_timestamp],
+        datasets: [{
+            data: [west[0].price, west[1].price, west[2].price, west[3].price, west[4].price, west[5].price, west[6].price, west[7].price],
+            label: "WEST 서버",
+            borderColor: "#519EC0",
+            backgroundColor : "#519EC0",
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: '서부 서버'
+          }
+        },
+        scales: {
+          x: {
+            border: {
+              display: false
+            },
+            grid: {
+              color: function(context) {
+                return '#3B3333';
+              },
+            }
+          },
+          y: {
+            border: {
+              display: false
+            },
+            grid: {
+              color: function(context) {
+                return '#3B3333';
+              },
+            },
+          }
+        }
+      },
+    });
+
+    new Chart(myCt03, {
+    type: 'line',
+      data: {
+        labels: [europe[0].s_timestamp, europe[1].s_timestamp, europe[2].s_timestamp, europe[3].s_timestamp, europe[4].s_timestamp, europe[5].s_timestamp, europe[6].s_timestamp, europe[7].s_timestamp],
+        datasets: [{
+            data: [europe[0].price, europe[1].price, europe[2].price, europe[3].price, europe[4].price, europe[5].price, europe[6].price, europe[7].price],
+            label: "EUROPE 서버",
+            borderColor: "#BE5E5E",
+            backgroundColor : "#BE5E5E",
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: '유럽 서버'
+          }
+        },
+        scales: {
+          x: {
+            border: {
+              display: false
+            },
+            grid: {
+              color: function(context) {
+                return '#3B3333';
+              },
+            }
+          },
+          y: {
+            border: {
+              display: false
+            },
+            grid: {
+              color: function(context) {
+                return '#3B3333';
+              },
+            },
+          }
+        }
+      },
+    });
+
+
+    new Chart(myCt04, {
+        type: 'line',
+        data: {
+        labels: [europe[0].s_timestamp, europe[1].s_timestamp, europe[2].s_timestamp, europe[3].s_timestamp, europe[4].s_timestamp, europe[5].s_timestamp, europe[6].s_timestamp, europe[7].s_timestamp],
+        datasets: [{
+            data: [europe[0].price, europe[1].price, europe[2].price, europe[3].price, europe[4].price, europe[5].price, europe[6].price, europe[7].price],
+            label: "EUROPE 서버",
+            borderColor: "#BE5E5E",
+            backgroundColor : "#BE5E5E",
+            fill: false
+          },{
+            data: [west[0].price, west[1].price, west[2].price, west[3].price, west[4].price, west[5].price, west[6].price, west[7].price],
+            label: "WEST 서버",
+            borderColor: "#519EC0",
+            backgroundColor : "#519EC0",
+            fill: false
+          },{
+            data: [east[0].price, east[1].price, east[2].price, east[3].price, east[4].price, east[5].price, east[6].price, east[7].price],
+            label: "EAST 서버",
+            borderColor: "#4DC370",
+            backgroundColor : "#4DC370",
+            fill: false
+          }]
+        },
+        options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: '각 서버별 골드 시세'
+          }
+        },
+        scales: {
+          x: {
+            border: {
+              display: false
+            },
+            grid: {
+              color: function(context) {
+                return '#3B3333';
+              },
+            },
+          },
+          y: {
+            border: {
+              display: false
+            },
+            grid: {
+              color: function(context) {
+                return '#3B3333';
+              },
+            },
+          }
+        }
+      },
+    });
+</script>
 
 </body>
 </html>

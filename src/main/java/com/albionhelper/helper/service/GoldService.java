@@ -16,8 +16,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class GoldService {
@@ -54,7 +53,7 @@ public class GoldService {
         String url = EAST + "date=" + formatters.format(startDate) + "&end_date=" + formatters.format(endDate);
         log.info("request EAST : {}", url);
         String response = getResponse(url);
-        return getPriceList(response, startDate);
+        return getPriceList(response);
     }
 
     public List<Gold> getGoldPriciesOnWest() throws JsonProcessingException {
@@ -65,7 +64,7 @@ public class GoldService {
         String url = WEST + "date=" + formatters.format(startDate) + "&end_date=" + formatters.format(endDate);
         log.info("request WEST : {}", url);
         String response = getResponse(url);
-        return getPriceList(response, startDate);
+        return getPriceList(response);
     }
 
     public List<Gold> getGoldPriciesOnEurope() throws JsonProcessingException {
@@ -76,30 +75,31 @@ public class GoldService {
         String url = EUROPE + "date=" + formatters.format(startDate) + "&end_date=" + formatters.format(endDate);
         log.info("request EU : {}", url);
         String response = getResponse(url);
-        return getPriceList(response, startDate);
+        return getPriceList(response);
     }
 
-    private List<Gold> getPriceList(String response, LocalDateTime startDate) throws JsonProcessingException {
+    private List<Gold> getPriceList(String response) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        JsonNode rootNode = objectMapper.readTree(response);
+        JsonNode rootNodes = objectMapper.readTree(response);
         List<Gold> list = new ArrayList<>();
-        int sum = 0;
-        int count = 0;
-        int day = startDate.getDayOfMonth();
-        for (JsonNode node : rootNode) {
-            Gold p = objectMapper.treeToValue(node, Gold.class);
-            if(p.getTimeStemp().getDayOfMonth() == day){
-                sum += p.getPrice();
-                count++;
-            }else{
-                list.add(new Gold(sum/count, p.getTimeStemp().minusDays(1)));
-                sum = p.getPrice();
-                count = 0;
 
-                startDate = startDate.plusDays(1);
-                day = startDate.getDayOfMonth();
-            }
+        Map<String, Integer> map = new LinkedHashMap<>();
+        Map<String, Integer> countMap = new HashMap<>();
+        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("YYYY-MM-dd");
+
+        for (int i = 0; i < rootNodes.size(); i++) {
+            JsonNode node = rootNodes.get(i);
+            Gold p = objectMapper.treeToValue(node, Gold.class);
+            String key = formatters.format(p.getTimeStamp());
+            map.put(key, map.getOrDefault(key, 0) + p.getPrice());
+            countMap.put(key, countMap.getOrDefault(key, 0) + 1);
         }
+
+        for (String key : map.keySet()) {
+            log.info("{}, {}", key, countMap.get(key));
+            list.add(new Gold(map.get(key) / countMap.get(key), key));
+        }
+
         return list;
     }
 

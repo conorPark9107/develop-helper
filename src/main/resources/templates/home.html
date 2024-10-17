@@ -2,7 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <!--    <link rel="stylesheet" href="/static/css/index.css" />-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('.container-contents-button').on('click', function(){
+                turnLoading();
+            });
+        });
+    </script>
+    <script type="text/javascript" src="/js/util.js"></script>
+    <link rel="stylesheet" href="/css/loading.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 ⚔</title>
@@ -26,6 +35,19 @@
 <!--            <a class="container-contents-button" href="/tools">🛠 도구 정보</a>-->
 <!--            <a class="container-contents-button" href="/market">🔍 친선 검색</a>-->
 <!--            <a class="container-contents-button" href="/market">🔍 친선 검색</a>-->
+        </div>
+    </div>
+
+    <div id="blackArea">
+        <div id="loading">
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+
+            <h1>정보 요청중..</h1>
         </div>
     </div>
 

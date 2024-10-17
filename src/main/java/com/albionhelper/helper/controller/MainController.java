@@ -2,6 +2,8 @@ package com.albionhelper.helper.controller;
 
 import com.albionhelper.helper.service.GoldService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,8 @@ public class MainController {
 
     private final String TEST_URL = "https://api.openalbion.com/api/v3/weapons?tier=4";
     private final String TEST_URL_MARKET_PREFIX = "https://east.albion-online-data.com";
+
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     GoldService goldService;

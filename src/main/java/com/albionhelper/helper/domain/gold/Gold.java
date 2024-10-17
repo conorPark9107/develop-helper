@@ -11,12 +11,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.management.ConstructorParameters;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Gold {
 
@@ -24,7 +25,16 @@ public class Gold {
     private int price;
 
     @JsonProperty("timestamp")
-    @JsonSerialize (using = LocalDateSerializer.class)
+    @JsonSerialize (using = LocalDateTimeSerializer.class)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime timeStemp;
+    private LocalDateTime timeStamp;
+
+    @JsonProperty("s_timestamp")
+    private String s_timeStamp;
+
+
+    public Gold(Integer v, String k) {
+        this.price = v;
+        this.s_timeStamp = k;
+    }
 }

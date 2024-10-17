@@ -48,6 +48,10 @@ $(document).ready(function() {
 
     });
 
+    $('#userList').on('click', function(){
+        $('#userList').hide();
+    });
+
     $('#userNames').on('click', function(){
         $('#blackArea').show();
         $('#loading').css('display', 'block');
