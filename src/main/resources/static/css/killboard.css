@@ -2,10 +2,10 @@ span:hover {
     opacity: 0.7;
 }
 .kill{
-    background-color : #6C1A1A;
+    background-color: rgba(108, 26, 26, 0.4);
 }
 .death{
-    background-color : #676767;
+    background-color: rgba(103, 103, 103, 0.4);
 }
 .content-body-item-userGroup{
     display: flex;
@@ -67,6 +67,7 @@ caption {
     font-size:0.3em;
     font-weight: bold;
 }
+
 .participants {
   position: relative;
   display: inline-block;
@@ -99,4 +100,8 @@ caption {
 }
 .participants:hover .participant {
   visibility: visible;
+}
+.participants-div:hover .participant{
+    opacity: 0.9;
+    visibility: visible;
 }

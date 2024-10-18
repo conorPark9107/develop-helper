@@ -91,7 +91,7 @@
                                 </td>
                                 <td th:text="${killLog.victim.guildName}"></td>
                                 <td th:text="${killLog.victim.averageItemPower}"></td>
-                                <td>
+                                <td class="participants-div">
                                     <div class="participants"><span>더보기</span>
                                         <div class="participant">
                                             <a class="link" th:each="participant : ${killLog.participants}" th:href="@{/killboard/getKillBoard(id=${participant.id}, location=${location})}" th:text="${participant.name}"></a>
@@ -135,7 +135,7 @@
                                 <td th:text="${deathLog.victim.name}"></td>
                                 <td th:text="${deathLog.victim.guildName}"></td>
                                 <td th:text="${deathLog.victim.averageItemPower}"></td>
-                                <td>
+                                <td class="participants-div">
                                     <div class="participants"><span>더보기</span>
                                         <div class="participant">
                                             <a class="link" th:each="participant : ${deathLog.participants}" th:href="@{/killboard/getKillBoard(id=${participant.id}, location=${location})}" th:text="${participant.name}"></a>

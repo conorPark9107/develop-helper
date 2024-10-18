@@ -64,16 +64,36 @@
 
 
     var east = [[${east}]];
-    var west = [[${west}]];
-    var europe = [[${europe}]];
+    var east_time_Arr = [];
+    var east_price_Arr = [];
+    for(var i = 0; i < east.length; i++){
+        east_time_Arr[i] = east[i].s_timestamp;
+        east_price_Arr[i] = east[i].price;
+    }
 
+
+    var west = [[${west}]];
+    var west_time_Arr = [];
+    var west_price_Arr = [];
+    for(var i = 0; i < west.length; i++){
+        west_time_Arr[i] = west[i].s_timestamp;
+        west_price_Arr[i] = west[i].price;
+    }
+
+    var europe = [[${europe}]];
+    var europe_time_Arr = [];
+    var europe_price_Arr = [];
+    for(var i = 0; i < europe.length; i++){
+        europe_time_Arr[i] = europe[i].s_timestamp;
+        europe_price_Arr[i] = europe[i].price;
+    }
 
     new Chart(myCt01, {
       type: 'line',
       data: {
-        labels: [east[0].s_timestamp, east[1].s_timestamp, east[2].s_timestamp, east[3].s_timestamp, east[4].s_timestamp, east[5].s_timestamp, east[6].s_timestamp, east[7].s_timestamp],
+        labels: east_time_Arr,
         datasets: [{
-            data: [east[0].price, east[1].price, east[2].price, east[3].price, east[4].price, east[5].price, east[6].price, east[7].price],
+            data: east_price_Arr,
             label: "EAST 서버",
             borderColor: "#4DC370",
             backgroundColor : "#4DC370",
@@ -118,9 +138,9 @@
     new Chart(myCt02, {
     type: 'line',
       data: {
-        labels: [west[0].s_timestamp, west[1].s_timestamp, west[2].s_timestamp, west[3].s_timestamp, west[4].s_timestamp, west[5].s_timestamp, west[6].s_timestamp, west[7].s_timestamp],
+        labels: west_time_Arr,
         datasets: [{
-            data: [west[0].price, west[1].price, west[2].price, west[3].price, west[4].price, west[5].price, west[6].price, west[7].price],
+            data: west_price_Arr,
             label: "WEST 서버",
             borderColor: "#519EC0",
             backgroundColor : "#519EC0",
@@ -164,9 +184,9 @@
     new Chart(myCt03, {
     type: 'line',
       data: {
-        labels: [europe[0].s_timestamp, europe[1].s_timestamp, europe[2].s_timestamp, europe[3].s_timestamp, europe[4].s_timestamp, europe[5].s_timestamp, europe[6].s_timestamp, europe[7].s_timestamp],
+        labels: europe_time_Arr,
         datasets: [{
-            data: [europe[0].price, europe[1].price, europe[2].price, europe[3].price, europe[4].price, europe[5].price, europe[6].price, europe[7].price],
+            data: europe_price_Arr,
             label: "EUROPE 서버",
             borderColor: "#BE5E5E",
             backgroundColor : "#BE5E5E",
@@ -211,21 +231,21 @@
     new Chart(myCt04, {
         type: 'line',
         data: {
-        labels: [europe[0].s_timestamp, europe[1].s_timestamp, europe[2].s_timestamp, europe[3].s_timestamp, europe[4].s_timestamp, europe[5].s_timestamp, europe[6].s_timestamp, europe[7].s_timestamp],
+        labels: europe_time_Arr,
         datasets: [{
-            data: [europe[0].price, europe[1].price, europe[2].price, europe[3].price, europe[4].price, europe[5].price, europe[6].price, europe[7].price],
+            data: europe_price_Arr,
             label: "EUROPE 서버",
             borderColor: "#BE5E5E",
             backgroundColor : "#BE5E5E",
             fill: false
           },{
-            data: [west[0].price, west[1].price, west[2].price, west[3].price, west[4].price, west[5].price, west[6].price, west[7].price],
+            data: west_price_Arr,
             label: "WEST 서버",
             borderColor: "#519EC0",
             backgroundColor : "#519EC0",
             fill: false
           },{
-            data: [east[0].price, east[1].price, east[2].price, east[3].price, east[4].price, east[5].price, east[6].price, east[7].price],
+            data: east_price_Arr,
             label: "EAST 서버",
             borderColor: "#4DC370",
             backgroundColor : "#4DC370",

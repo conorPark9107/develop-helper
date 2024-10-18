@@ -85,7 +85,7 @@ public class GoldService {
 
         Map<String, Integer> map = new LinkedHashMap<>();
         Map<String, Integer> countMap = new HashMap<>();
-        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("YYYY-MM-dd");
+        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("MM-dd");
 
         for (int i = 0; i < rootNodes.size(); i++) {
             JsonNode node = rootNodes.get(i);
@@ -96,10 +96,10 @@ public class GoldService {
         }
 
         for (String key : map.keySet()) {
-            log.info("{}, {}", key, countMap.get(key));
             list.add(new Gold(map.get(key) / countMap.get(key), key));
         }
 
+        log.info("list.size : {}", list.size());
         return list;
     }
 
