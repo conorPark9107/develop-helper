@@ -1,11 +1,8 @@
 $(document).ready(function() {
-    $('#searchBtn').on('click', function(){
-    });
-
-
 
     $('#categoryList > li').on('click', function(){
         var c = $(this).attr("value");
+        $('.selectedCate').attr("value", c);
         $('#contentsArea img').remove();
         $('#secondContentsArea img').remove();
         $('.content-searchDetail').hide(500);
@@ -13,71 +10,96 @@ $(document).ready(function() {
         $('.itemArea').hide();
 
         var uri = "";
+        var tier = "";
         var arr_show;
         // T4_SHOES_LEATHER_SET1.png?quality=5
         switch(c){
             case 'warrior' :
+                tier = 'T8_';
                 arr_show = weaponWarriorCate;
             break;
             case 'helmet' :
+                 tier = 'T8_';
                  uri = 'HEAD_PLATE_';
                  arr_show = plateCate;
             break;
             case 'armor' :
+                tier = 'T8_';
                 uri = 'ARMOR_PLATE_';
                 arr_show = plateCate;
             break;
             case 'boots' :
-                uri = 'SHOES_PLATE_';
+                tier = 'T8_';
+                uri = 'T8_SHOES_PLATE_';
                 arr_show = plateCate;
             break;
 
             case 'hunter' :
+                tier = 'T8_';
                 arr_show = weaponHunterCate;
             break;
             case 'hood' :
+                tier = 'T8_';
                 uri = 'HEAD_LEATHER_';
                 arr_show = leatherCate;
             break;
             case 'jacket' :
+                tier = 'T8_';
                 uri = 'ARMOR_LEATHER_';
                 arr_show = leatherCate;
             break;
             case 'shoes' :
+                tier = 'T8_';
                 uri = 'SHOES_LEATHER_';
                 arr_show = leatherCate;
             break;
 
             case 'mage' :
+                tier = 'T8_';
                 arr_show = weaponMageCate;
             break;
             case 'cowl' :
-            uri = 'HEAD_CLOTH_';
-            arr_show = clothCate;
+                tier = 'T8_';
+                uri = 'HEAD_CLOTH_';
+                arr_show = clothCate;
             break;
             case 'robe' :
-            uri = 'ARMOR_CLOTH_';
-            arr_show = clothCate;
+                tier = 'T8_';
+                uri = 'ARMOR_CLOTH_';
+                arr_show = clothCate;
             break;
             case 'sandals' :
-            uri = 'SHOES_CLOTH_';
-            arr_show = clothCate;
+                tier = 'T8_';
+                uri = 'SHOES_CLOTH_';
+                arr_show = clothCate;
             break;
 
             case 'cape' :
+                tier = 'T8_';
+                arr_show = capeCate;
             break;
             case 'bag' :
+                tier = 'T8_';
+                arr_show = bagCate;
             break;
             case 'potion' :
+                tier = 'T8_';
+                arr_show = potionCate;
             break;
             case 'food' :
+                tier = 'T8_';
+                arr_show = foodCate;
             break;
         }
 
 
+
         for(var i = 0; i < arr_show.length; i++){
-            var url = "/image/T8_" + uri + arr_show[i] + ".png";
-            $('#contentsArea').append('<img class="itemImage" src="' + url + '" value="' + uri +arr_show[i] + '" />');
+//            var url = uri + arr_show[i] + ".png?quality=5";
+//            $('#contentsArea').append('<a class="itemImage" href="https://render.albiononline.com/v1/item/' + url + '" />');
+
+            var url = "/image/" + tier + uri + arr_show[i] + ".png";
+            $('#contentsArea').append('<img class="itemImage" src="' + url + '" value="' + uri + arr_show[i] + '" />');
         }
     });
 
@@ -88,14 +110,23 @@ $(document).ready(function() {
         $('.itemArea table tbody tr').remove();
         $('.itemArea').hide();
 
+        var selectedCategory = $('.selectedCate').attr("value");
+
+
         if("_" + val in itemTree) {
             var arr = itemTree["_" + val];
-            for(var i = 0; i < arr.length; i++){
-//                var url = "T8_" + arr[i] + ".png?quality=5";
-//                $('#secondContentsArea').append('<a class="itemImage" href="https://render.albiononline.com/v1/item/' + url + '" />');
-                var url = "/image/T8_" + arr[i] + ".png";
-                $('#secondContentsArea').append('<img class="itemImage" src="' + url + '"  value="' + arr[i] + '" />');
+
+            if(selectedCategory == 'potion' || selectedCategory == 'food'){
+
+            }else{
+                for(var i = 0; i < arr.length; i++){
+    //              var url = "T8_" + arr[i] + ".png?quality=5";
+    //              $('#secondContentsArea').append('<a class="itemImage" href="https://render.albiononline.com/v1/item/' + url + '" />');
+                    var url = "/image/T8_" + arr[i] + ".png";
+                    $('#secondContentsArea').append('<img class="itemImage" src="' + url + '"  value="' + arr[i] + '" />');
+                }
             }
+
         } else {
             $('.itemArea table tbody tr').remove();
             $('.itemArea').hide();
