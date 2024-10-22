@@ -83,11 +83,9 @@ $(document).ready(function() {
                 arr_show = bagCate;
             break;
             case 'potion' :
-                tier = 'T8_';
                 arr_show = potionCate;
             break;
             case 'food' :
-                tier = 'T8_';
                 arr_show = foodCate;
             break;
         }
@@ -109,22 +107,27 @@ $(document).ready(function() {
         $('.content-searchDetail').hide();
         $('.itemArea table tbody tr').remove();
         $('.itemArea').hide();
+        $('.itemImage').removeClass('selctedItem');
 
         var selectedCategory = $('.selectedCate').attr("value");
-
 
         if("_" + val in itemTree) {
             var arr = itemTree["_" + val];
 
-            if(selectedCategory == 'potion' || selectedCategory == 'food'){
-
-            }else{
-                for(var i = 0; i < arr.length; i++){
-    //              var url = "T8_" + arr[i] + ".png?quality=5";
-    //              $('#secondContentsArea').append('<a class="itemImage" href="https://render.albiononline.com/v1/item/' + url + '" />');
-                    var url = "/image/T8_" + arr[i] + ".png";
-                    $('#secondContentsArea').append('<img class="itemImage" src="' + url + '"  value="' + arr[i] + '" />');
-                }
+            var url = '';
+            for(var i = 0; i < arr.length; i++){
+//                 if(selectedCategory == 'potion' || selectedCategory == 'food'){
+//                    url = arr[i] + ".png?quality=5";
+//                 }else{
+//                    url = "T8_" + arr[i] + ".png?quality=5";
+//                 }
+//                 $('#secondContentsArea').append('<a class="itemImage" href="https://render.albiononline.com/v1/item/' + url + '" />');
+                 if(selectedCategory == 'potion' || selectedCategory == 'food'){
+                    url = "/image/" + arr[i] + ".png";
+                 }else{
+                    url = "/image/T8_" + arr[i] + ".png";
+                 }
+                 $('#secondContentsArea').append('<img class="itemImage" src="' + url + '"  value="' + arr[i] + '" />');
             }
 
         } else {
@@ -160,6 +163,13 @@ $(document).ready(function() {
          var dotTier = $('#dotTier option:checked').val();
          var itemName = $('.selctedItem').attr('value');
 
+        var selectedCategory = $('.selectedCate').attr("value");
+        if(selectedCategory == 'potion' || selectedCategory == 'food'){
+            quality = 1;
+            tier = itemName.substr(0, 2);
+            itemName = itemName.substr(3);
+        }
+
          $.ajax({
              type : 'get',
              url : '/market/getPrice',
@@ -176,7 +186,7 @@ $(document).ready(function() {
                 turnLoading();
              },
              success : function(result) {
-                 console.log(result.length);
+
                  for(var i = 0; i < result.length; i++){
                     var city = result[i].city;
                     var sellMin = result[i].sell_price_min;

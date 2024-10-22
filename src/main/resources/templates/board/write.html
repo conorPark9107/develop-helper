@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- https://froala.com/wysiwyg-editor/docs/overview/ - froala 에디터 CDN-->
+    <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
+
+    <script type="text/javascript" src="/static/js/board.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/loading.css" />
+    <link rel="stylesheet" href="/static/css/board.css" />
+<!--    <script type="text/javascript" src="/js/board.js"></script>-->
+<!--    <link rel="stylesheet" href="/css/loading.css" />-->
+<!--    <link rel="stylesheet" href="/css/index.css" />-->
+<!--    <link rel="stylesheet" href="/css/board.css" />-->
+    <meta charset="UTF-8">
+    <title>⚔ 알비온 헬퍼 ⚔</title>
+</head>
+<body>
+
+    <div class="header">
+        <a class="header-logo" href="/">Albion Helper</a>
+    </div>
+
+
+    <div class="board-header">
+        <h3 class="board-header-title">🌈 게시판 - 글쓰기</h3>
+    </div>
+
+
+    <div class="main">
+        <div class="centered">
+            <div id="example"></div>
+        </div>
+    </div>
+
+    <script>
+        var editor = new FroalaEditor( '#example' );
+
+    </script>
+
+    <!-- https://blog.naver.com/psj9102/221560331178 -->
+
+
+    <div id="blackArea">
+        <div id="loading">
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+
+            <h1>정보 요청중..</h1>
+        </div>
+    </div>
+
+</body>
+</html>
