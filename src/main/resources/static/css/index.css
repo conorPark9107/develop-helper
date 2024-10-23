@@ -17,6 +17,7 @@ body {
     color: #eee;
     font-family: 'Galmuri14';
 }
+ul,li {margin:0; padding:0;}
 label{
     font-weight: 900;
 }
@@ -25,7 +26,7 @@ a{
     color: #eee;
 }
 u {
-    text-decoration: none;
+    text-decoration-color: #eee;
 }
 h3{
     text-align: center;

@@ -26,11 +26,14 @@ h3{
     max-width: 50%;
 }
 .board-header{
-        font-size: 1.5em;
-        padding: 0px;
-        text-align: center;
-        max-width: 50%;
-        margin: 0 auto;
+    font-size: 1.5em;
+    padding: 0px;
+    text-align: center;
+    max-width: 50%;
+    margin: 0 auto;
+}
+.board-header-title{
+    margin-bottom: 1.5vw;
 }
 .board-header-sub{
     display: inline;
@@ -58,7 +61,74 @@ div.board-header-left-subDiv > span{
     text-align: right;
     margin-bottom: 0.3%;
 }
+.board-title-div{
+    text-align: left;
+    max-width: 50%;
+    margin: 1vw auto;
+}
+.board-submit-div{
+    text-align: right;
+    max-width: 50%;
+    margin: 0 auto;
+}
+.board-submit-div .submit-button{
+    box-sizing: border-box;
+    padding: 8px;
+    margin-bottom: 0.5vw;
+}
+.board-submit-div .submit-button:hover{
+    opacity: 0.5;
+}
+.cancel{
+    border: 2px solid #5b1114;
+    border-radius: 5px;
+}
+.submit{
+    border: 2px solid RGB(28, 120, 153);
+    border-radius: 5px;
+}
 
+.board-title-div p{
+    font-size : 0.8em;
+    font-weight : bold;
+}
+.board-title-input{
+    min-width: 50vw;
+    color: #eee;
+    background-color: rgb(36, 32, 32);
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-bottom: 0.5vw;
+}
+.board-title-category-input{
+    color: #eee;
+    background-color: rgb(36, 32, 32);
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-bottom: 0.5vw;
+}
+.board-password{
+    color: #eee;
+    background-color: rgb(36, 32, 32);
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-bottom: 0.5vw;
+}
+input:hover, input:focus{
+    outline:none;
+    border:2px solid RGB(28, 120, 153);
+}
+.board-category-ul{
+    display : inline;
+    list-style-type: none;
+}
+.board-category-ul li{
+    display : inline;
+    list-style-type: none;
+}
 table{
     width: 100%;
     white-space: nowrap;
@@ -127,6 +197,7 @@ table .col7 { width: 5%; }
     opacity : 0.4;
 }
 .category{
+    cursor: pointer;
     color: RGBA(238, 238, 238, 0.8);
     font-weight: bold;
     font-size: 0.5em;
