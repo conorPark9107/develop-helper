@@ -71,21 +71,18 @@ div.board-header-left-subDiv > span{
     max-width: 50%;
     margin: 0 auto;
 }
-.board-submit-div .submit-button{
-    box-sizing: border-box;
-    padding: 8px;
-    margin-bottom: 0.5vw;
-}
-.board-submit-div .submit-button:hover{
+.btn:hover{
     opacity: 0.5;
 }
-.cancel{
-    border: 2px solid #5b1114;
-    border-radius: 5px;
-}
-.submit{
-    border: 2px solid RGB(28, 120, 153);
-    border-radius: 5px;
+.btn{
+    font-size: 16px;
+    border-radius: 2px;
+    background: #303f53;
+    text-shadow: none;
+    border: 0;
+    color: white;
+    padding: 10px 30px;
+    min-width: 100px;
 }
 
 .board-title-div p{
@@ -204,4 +201,29 @@ table .col7 { width: 5%; }
 }
 .category:hover{
     text-decoration:underline;
+}
+.password-warning-message{
+    display: none;
+    color: RGB(28, 120, 153);
+    font-size: 0.8em;
+    font-weight: bold;
+    animation: blink 1.5s infinite;
+}
+.title-warning-message{
+    display: none;
+    color: RGB(28, 120, 153);
+    font-size: 0.8em;
+    font-weight: bold;
+    animation: blink 1.5s infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

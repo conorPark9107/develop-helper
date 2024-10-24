@@ -3,18 +3,25 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-    <!-- https://froala.com/wysiwyg-editor/docs/overview/ - froala 에디터 CDN-->
-    <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet' type='text/css' />
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
+    <!-- https://quilljs.com/docs/quickstart - quilljs 에디터 CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
 
-    <script type="text/javascript" src="/static/js/board.js"></script>
-    <link rel="stylesheet" href="/static/css/index.css" />
-    <link rel="stylesheet" href="/static/css/loading.css" />
-    <link rel="stylesheet" href="/static/css/board.css" />
-<!--    <script type="text/javascript" src="/js/board.js"></script>-->
-<!--    <link rel="stylesheet" href="/css/loading.css" />-->
-<!--    <link rel="stylesheet" href="/css/index.css" />-->
-<!--    <link rel="stylesheet" href="/css/board.css" />-->
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+<!--    <script type="text/javascript" src="/static/js/board.js"></script>-->
+<!--    <link rel="stylesheet" href="/static/css/index.css" />-->
+<!--    <link rel="stylesheet" href="/static/css/loading.css" />-->
+<!--    <link rel="stylesheet" href="/static/css/board.css" />-->
+<!--    <link rel="stylesheet" href="/static/css/editor.css" />-->
+    <script type="text/javascript" src="/js/board.js"></script>
+    <link rel="stylesheet" href="/css/loading.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/board.css" />
+    <link rel="stylesheet" href="/css//editor.css" />
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 ⚔</title>
 </head>
@@ -27,22 +34,48 @@
 
     <div class="board-header">
         <h3 class="board-header-title">🌈 게시판 - 글쓰기</h3>
+        <hr/>
+    </div>
+    <div class="board-title-div">
+        <p>📢 쉬운 비밀번호로 설정하면 글이 수정되거나 삭제될 수 있음</p>
+        <p>📢 저작권, 초상권 침해되는 게시물은 책임져야할수도 있음</p>
+        <p>📢 선넘는 비하, 혐오, 음란물 금지</p>
+        <hr/>
     </div>
 
 
-    <div class="main">
-        <div class="centered">
-            <div id="example"></div>
+    <div class="centered">
+        <!-- 카테고리는 DB에서 꺼내올 생각. -->
+
+
+        <p style="display:inline-block;">카테고리📌</p>
+        <ul class="board-category-ul">
+            <li class="category" onclick="clicked_Category(this)">전체</li>
+            <li class="category" onclick="clicked_Category(this)">일반</li>
+            <li class="category" onclick="clicked_Category(this)">공략</li>
+            <li class="category" onclick="clicked_Category(this)">친선</li>
+            <li class="category" onclick="clicked_Category(this)">홈페이지피드백</li>
+        </ul>
+
+        <input class="board-title-input" id="title" type="text" name="title" placeholder="제목..." />
+        <p class="title-warning-message">제목을 입력해주세요...</p>
+
+        <div class="editor-div">
+            <!-- Editor -->
+            <div id="editor">
+
+
+            </div>
+            <input type="hidden" id="hidden_input" name="content">
         </div>
     </div>
 
-    <script>
-        var editor = new FroalaEditor( '#example' );
-
-    </script>
-
-    <!-- https://blog.naver.com/psj9102/221560331178 -->
-
+    <div class="board-submit-div">
+        <span class="password-warning-message">비밀번호를 입력해주세요...</span>
+        <input class="board-password" id="password" type="password" name="password" autocomplete="new-password" placeholder="비밀번호...">
+        <a href="#" class="btn cancel">취소</a>
+        <a href="#" class="btn submit">작성</a>
+    </div>
 
     <div id="blackArea">
         <div id="loading">
@@ -56,6 +89,10 @@
             <h1>정보 요청중..</h1>
         </div>
     </div>
-
 </body>
 </html>
+
+<!-- 에디터 추천글 https://blog.naver.com/psj9102/221560331178 -->
+
+<!-- quill 에디터 정리글.-->
+<!-- https://velog.io/@onezerokang/Quill%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EC%97%90%EB%94%94%ED%84%B0-%EB%A7%8C%EB%93%A4%EA%B8%B0-API5 -->

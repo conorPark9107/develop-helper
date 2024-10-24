@@ -82,3 +82,13 @@
 .ql-editor::-webkit-scrollbar-track {
     background: RGBA(238, 238, 238, 0.4);  /*스크롤바 뒷 배경 색상*/
 }
+.jconfirm.jconfirm-supervan .jconfirm-box {
+    border: 1px solid #eee;
+    background-color: #242020;
+}
+div.jconfirm.jconfirm-supervan.jconfirm-open > div.jconfirm-bg{
+    background-color: RGBA(36,32,32, 0.4);
+}
+.jconfirm.jconfirm-supervan .jconfirm-bg {
+    background-color: RGBA(36,32,32, 0.4);
+}
