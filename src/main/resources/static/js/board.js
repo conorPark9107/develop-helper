@@ -1,3 +1,6 @@
+
+
+
 $(document).ready(function(){
     const quill = new Quill('#editor', {
        modules: {
@@ -12,8 +15,32 @@ $(document).ready(function(){
     });
 
     quill.on('text-change', function() {
-        document.getElementById("hidden_input").value = quill.root.innerHTML;
+        $("#hidden_input").val(quill.root.innerHTML);
+        var img = $('img');
+        if(img.length > 0){
+            var sumFileSize = 0;
+
+            for(var i = 0; i < img.length; i++){
+                var file = base64toFile(img[i].src, i);
+                sumFileSize += file.size;
+
+                if(sumFileSize > 52428800){
+                    $.confirm({
+                        theme: 'supervan',
+                        title: '',
+                        content: '게시글에는 50MB까지 이미지등록을 허용합니다.',
+                        buttons: {
+                            '돌아가기': function () {
+                                $("img :last-child").remove();
+                                return;
+                            }
+                        }
+                    });
+                }
+            }
+        }
     });
+
 
     $('.submit').on('click', function(){
         const delta = quill.getContents();
@@ -42,11 +69,19 @@ $(document).ready(function(){
         }
 
         const formData = new FormData();
-        formData.append('title', title);
         for(var i = 0; i < img.length; i++){
-            formData.append('images', base64toFile(img[i].src, i));
+            var file = base64toFile(img[i].src, uuidv4() + ".png");
+            var url = uploadFile(file, file.name);
+            console.log(url)
+
+
+
+
+
+
+//            formData.append('images', file);
+
         }
-        formData.append('password', password);
 
         $.ajax({
             type: "POST",
@@ -57,7 +92,10 @@ $(document).ready(function(){
             contentType: false,
             cache: false,
             success: (data) => {
-                alert("yes : " + data);
+
+                formData.append('title', title);
+                formData.append('password', password);
+
             },
             error: function(xhr, status, error) {
                 alert(xhr.responseText);
@@ -109,4 +147,28 @@ function clicked_Category(li){
     $('.category').css('color', '');
     $(li).css('color', 'RGB(28, 120, 153)');
     $(li).css('font-size', '1em');
+}
+
+/* supabase */
+
+const SUPABASE_URL = 'https://umzwbuofpryvyimxrxem.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVtendidW9mcHJ5dnlpbXhyeGVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk4Mjg3MzQsImV4cCI6MjA0NTQwNDczNH0.-023sQ4iwStD9lIQggNwwtYyolpQiF8tNdZo8gAfkwk';
+const PUBLIC_STORAGE_BUCKET = 'AH_Board_Images';
+const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+
+async function uploadFile(file, fileName){
+    const { data, error } = await client
+    .storage.from(PUBLIC_STORAGE_BUCKET)
+    .upload(fileName, file, {
+        cacheControl: '3600',
+        upsert: false
+    });
+    return downloadFile(data.path);
+}
+
+async function downloadFile(fileName){
+
+    const { data, error } = client.storage.from(PUBLIC_STORAGE_BUCKET).getPublicUrl(fileName, {})
+    return data.publicUrl;
 }
