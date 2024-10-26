@@ -1,6 +1,3 @@
-
-
-
 $(document).ready(function(){
     const quill = new Quill('#editor', {
        modules: {
@@ -18,25 +15,26 @@ $(document).ready(function(){
         $("#hidden_input").val(quill.root.innerHTML);
         var img = $('img');
         if(img.length > 0){
-            var sumFileSize = 0;
 
-            for(var i = 0; i < img.length; i++){
-                var file = base64toFile(img[i].src, i);
-                sumFileSize += file.size;
-
-                if(sumFileSize > 52428800){
+            try {
+                var src = img[img.length-1].src;
+                window.atob(src);
+                var file = base64toFile(src, "image");
+                if(file.size > (1024 ** 2) * 10){ // 10 MB
                     $.confirm({
                         theme: 'supervan',
                         title: '',
-                        content: '게시글에는 50MB까지 이미지등록을 허용합니다.',
+                        content: '한 게시글에 10MB까지 이미지등록을 허용합니다.',
                         buttons: {
                             '돌아가기': function () {
-                                $("img :last-child").remove();
+                                $("img:last-child").remove();
                                 return;
                             }
                         }
                     });
                 }
+            } catch(e) {
+
             }
         }
     });
@@ -68,42 +66,31 @@ $(document).ready(function(){
              return;
         }
 
-        const formData = new FormData();
         for(var i = 0; i < img.length; i++){
-            var file = base64toFile(img[i].src, uuidv4() + ".png");
-            var url = uploadFile(file, file.name);
-            console.log(url)
-
-
-
-
-
-
-//            formData.append('images', file);
-
+            var fileName = uuidv4() + ".png";
+            var src = img[i].src;
+            var file = base64toFile(src, fileName);
+            uploadFile(file, fileName, img[i]);
         }
 
-        $.ajax({
-            type: "POST",
-            enctype: 'multipart/form-data',
-            url: "/board/register",
-            data: formData,
-            processData: false,
-            contentType: false,
-            cache: false,
-            success: (data) => {
-
-                formData.append('title', title);
-                formData.append('password', password);
-
-            },
-            error: function(xhr, status, error) {
-                alert(xhr.responseText);
-            }
-        });
-
-
-
+//        $.ajax({
+//            type: "POST",
+//            enctype: 'multipart/form-data',
+//            url: "/board/register",
+//            data: formData,
+//            processData: false,
+//            contentType: false,
+//            cache: false,
+//            success: (data) => {
+//
+//                formData.append('title', title);
+//                formData.append('password', password);
+//
+//            },
+//            error: function(xhr, status, error) {
+//                alert(xhr.responseText);
+//            }
+//        });
 
     });
 
@@ -150,25 +137,20 @@ function clicked_Category(li){
 }
 
 /* supabase */
-
 const SUPABASE_URL = 'https://umzwbuofpryvyimxrxem.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVtendidW9mcHJ5dnlpbXhyeGVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mjk4Mjg3MzQsImV4cCI6MjA0NTQwNDczNH0.-023sQ4iwStD9lIQggNwwtYyolpQiF8tNdZo8gAfkwk';
 const PUBLIC_STORAGE_BUCKET = 'AH_Board_Images';
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 
-async function uploadFile(file, fileName){
+async function uploadFile(file, fileName, img){
     const { data, error } = await client
     .storage.from(PUBLIC_STORAGE_BUCKET)
-    .upload(fileName, file, {
-        cacheControl: '3600',
-        upsert: false
-    });
-    return downloadFile(data.path);
+    .upload(fileName, file);
+    await downloadFile(data.path, img);
 }
 
-async function downloadFile(fileName){
-
-    const { data, error } = client.storage.from(PUBLIC_STORAGE_BUCKET).getPublicUrl(fileName, {})
-    return data.publicUrl;
+async function downloadFile(fileName, img){
+    const { data, error } = await client.storage.from(PUBLIC_STORAGE_BUCKET).getPublicUrl(fileName, {})
+    img.src = data.publicUrl;
 }
