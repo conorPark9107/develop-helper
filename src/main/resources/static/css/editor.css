@@ -1,7 +1,8 @@
-.editor-div{
+.editor-div {
     min-width: 50vw;
     margin-bottom: 1vw;
 }
+
 .ql-snow .ql-stroke {
     fill: none;
     stroke: #eee;
@@ -9,18 +10,19 @@
     stroke-linejoin: round;
     stroke-width: 2;
 }
+
 .ql-snow .ql-picker {
     color: #eee;
     display: inline-block;
-    float: left;
     font-size: 14px;
     font-weight: 500;
     height: 24px;
     position: relative;
     vertical-align: middle;
 }
+
 .ql-editor.ql-blank::before {
-	color: rgba(238, 238, 238, 0.6);
+    color: rgba(238, 238, 238, 0.6);
     content: attr(data-placeholder);
     font-style: italic;
     left: 15px;
@@ -28,6 +30,7 @@
     position: absolute;
     right: 15px;
 }
+
 .ql-snow .ql-stroke:hover {
     fill: none;
     stroke: RGB(28, 120, 153);
@@ -35,19 +38,21 @@
     stroke-linejoin: round;
     stroke-width: 2;
 }
-#editor:hover, {
-    border: 1.5px solid RGB(28, 120, 153);
+
+#editor:hover{
+border: 1.5px solid RGB(28, 120, 153);
 }
+
 .ql-snow .ql-picker:hover {
     color: RGB(28, 120, 153);
     display: inline-block;
-    float: left;
     font-size: 14px;
     font-weight: 500;
     height: 24px;
     position: relative;
     vertical-align: middle;
 }
+
 .ql-snow .ql-picker-options {
     background-color: #242020;
     display: none;
@@ -56,39 +61,101 @@
     position: absolute;
     white-space: nowrap;
 }
-.ql-editor{
+
+.ql-editor {
     min-height: 20vw;
     max-height: 20vw;
 }
-.editor-div:hover > div.ql-toolbar.ql-snow {
+
+.editor-div:hover>div.ql-toolbar.ql-snow {
     border: none;
     border-top: 2px solid RGB(28, 120, 153);
     border-left: 2px solid RGB(28, 120, 153);
     border-right: 2px solid RGB(28, 120, 153);
 }
-.editor-div:hover > #editor {
+
+.editor-div:hover>#editor {
     border: none;
     border: 2px solid RGB(28, 120, 153);
 }
+
 .ql-editor::-webkit-scrollbar {
-    width: 10px;  /* 스크롤바의 너비 */
+    width: 10px;
+    /* 스크롤바의 너비 */
 }
 
 .ql-editor::-webkit-scrollbar-thumb {
-    height: 10%;         /* 스크롤바의 길이 */
-    background: RGB(238, 238, 238); /* 스크롤바의 색상 */
+    height: 10%;
+    /* 스크롤바의 길이 */
+    background: RGB(238, 238, 238);
+    /* 스크롤바의 색상 */
     border-radius: 10px;
 }
+
 .ql-editor::-webkit-scrollbar-track {
-    background: RGBA(238, 238, 238, 0.4);  /*스크롤바 뒷 배경 색상*/
+    background: RGBA(238, 238, 238, 0.4);
+    /*스크롤바 뒷 배경 색상*/
 }
+
 .jconfirm.jconfirm-supervan .jconfirm-box {
     border: 1px solid #eee;
     background-color: #242020;
 }
-div.jconfirm.jconfirm-supervan.jconfirm-open > div.jconfirm-bg{
-    background-color: RGBA(36,32,32, 0.4);
+
+div.jconfirm.jconfirm-supervan.jconfirm-open>div.jconfirm-bg {
+    background-color: RGBA(36, 32, 32, 0.4);
 }
+
 .jconfirm.jconfirm-supervan .jconfirm-bg {
-    background-color: RGBA(36,32,32, 0.4);
+    background-color: RGBA(36, 32, 32, 0.4);
+}
+.ql-snow .ql-tooltip {
+    background-color: #242020;
+    border: 1px solid #eee;
+    box-shadow: 0 0 5px #eee;
+    color: #eee;
+    padding: 0.5vw 2vw;
+    white-space: nowrap;
+}
+.ql-snow .ql-tooltip input[type=text] {
+    background-color: #242020;
+    display: none;
+    border: 1px solid #eee;
+    font-size: 13px;
+    height: 26px;
+    margin: 0;
+    padding: 3px 5px;
+    width: 170px;
+}
+.ql-snow .ql-tooltip.ql-editing a.ql-action::after {
+    content: '확인';
+}
+.ql-snow .ql-tooltip.ql-editing a.ql-action::after:hover {
+    background-color: #bdc3c7;
+    color: #000;
+}
+.ql-snow .ql-tooltip[data-mode=video]::before {
+    font-size: 1em;
+    content: "비디오 링크를 복붙 해주세요 🎬 ";
+}
+.ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
+    fill: RGBA(238,238,238, 0.6);
+}
+#editor > div.ql-tooltip.ql-editing > a.ql-action{
+    border-radius: 2px;
+    background: #303f53;
+    text-shadow: none;
+    border: 0;
+    color: #eee;
+    padding: 5px 15px 6px 0px;
+    min-width: 100px;
+    margin-left: 10px;
+}
+#editor > div.ql-tooltip.ql-editing > a.ql-action:hover{
+    background-color: #bdc3c7;
+    color: #000;
+}
+#editor > div.ql-tooltip.ql-editing > input[type=text]{
+    color: #eee;
+    width: 40%;    
 }

@@ -32,16 +32,18 @@ public class BoardController {
         return "board/write";
     }
 
-    @PostMapping(value = "/register", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    @ResponseBody
-    public String register(@RequestPart(value = "images", required = false)List<MultipartFile> images) throws IOException {
+    @PostMapping(value = "/register")
+    public String register(@RequestParam("title")String title,
+                           @RequestParam("password")String password,
+                           @RequestParam("category")String category,
+                           @RequestParam("contents")String contents){
 
+        log.info("title : {}", title);
+        log.info("PW : {}", password);
+        log.info("category : {}", category);
+        log.info("contents : {}", contents);
 
-
-
-        // 이 파일들을 스토리지로 보낸 후 유니크한 파일명을 통해서 다시 바디에 써준다.
-        // https://supabase.com/docs/reference/javascript/storage-from-upload
-        return "nice";
+        return "redirect:/board";
     }
 
 

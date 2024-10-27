@@ -1,13 +1,14 @@
 $(document).ready(function () {
+
     const quill = new Quill('#editor', {
         modules: {
             toolbar: [
-                ['bold', 'italic', 'underline'],
-                ['image'],
-                ['blockquote'],
+                ['bold', 'italic', 'underline', 'blockquote'],
+                [{ 'color': [] }, { 'background': [] }], 
+                [{ 'align': [] }, { 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }, { 'indent': '-1'}, { 'indent': '+1' }],
+                ['image', 'video'],
             ],
         },
-        placeholder: '여기부터 글 작성..',
         theme: 'snow',
     });
 
@@ -31,7 +32,11 @@ $(document).ready(function () {
         let images = $('img'); // 이미지들.
         let title = $('#title').val();
         let password = $('#password').val();
+        let category = $('.clicked').val();
+        let nickName = $('#nickName').val();
 
+
+        
 
         if (title == '') {
             showMsgForTitle();
@@ -41,48 +46,38 @@ $(document).ready(function () {
             showMsgForPw();
             return;
         }
-        
+
         let promiseList = [];
         for (let i = 0; i < images.length; i++) {
             let fileName = uuidv4() + ".png";
             let src = images[i].src;
             let file = base64toFile(src, fileName);
             let uploadPromise = uploadFile(file, fileName);
-            promiseList[i] = uploadPromise.then(uploadData =>{
+            promiseList[i] = uploadPromise.then(uploadData => {
                 return downloadFile(uploadData.data.path);
             }).then(downloadData => {
                 return downloadData;
-            }).catch(error =>{
+            }).catch(error => {
                 console.log(error);
             });
         }
 
         Promise.all(promiseList).then(dataArr => {
             let images = document.getElementsByTagName('img');
-            for(let i = 0; i < dataArr.length; i++){
+            for (let i = 0; i < dataArr.length; i++) {
                 images[i].src = dataArr[i].data.publicUrl;
             }
             let requestHTML = quill.root.innerHTML;
-            
-            $.ajax({
-                type: 'POST',
-                url: '/board/register',
-                data: {
-                    title : title,
-                    password : password,
-                    contents : requestHTML
-                },
-                dataType: 'json',
-                success: (data) => {
-     
-                },
-                error: function(xhr, status, error) {
-                    alert(xhr.responseText);
-                }
-            });
+
+            $('#h_category').val(category);
+            $('#h_nickName').val(nickName);
+            $('#h_title').val(title);
+            $('#h_contents').val(requestHTML);
+            $('#h_password').val(password);
+            $('#submitForm').submit();
         });
 
-        
+
     });
 
     function showMsgForTitle() {
@@ -165,13 +160,10 @@ function base64toFile(base_data, filename) {
 }
 
 function clicked_Category(li) {
-    $('.category').css('font-size', '0.5em');
-    $('.category').css('color', '');
-    $(li).css('color', 'RGB(28, 120, 153)');
-    $(li).css('font-size', '1em');
+    $('.category').removeClass('clicked');
+    $(li).addClass('clicked');
 }
 
 
 
 
-       

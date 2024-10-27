@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <!-- https://quilljs.com/docs/quickstart - quilljs 에디터 CDN-->
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
@@ -18,22 +20,23 @@
     <!-- supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
-        <script type="text/javascript" src="/static/js/board.js"></script>
+    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
+    <script type="text/javascript" src="/static/js/board.js"></script>
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
     <link rel="stylesheet" href="/static/css/board.css" />
-    <link rel="stylesheet" href="/static/css/editor.css" />
-<!--    <script type="text/javascript" src="/js/board.js"></script>-->
-<!--    <link rel="stylesheet" href="/css/loading.css" />-->
-<!--    <link rel="stylesheet" href="/css/index.css" />-->
-<!--    <link rel="stylesheet" href="/css/board.css" />-->
-<!--    <link rel="stylesheet" href="/css//editor.css" />-->
+    <link rel="stylesheet" href="/static/css/editor.css" /> -->
+    <script type="text/javascript" src="/js/util.js"></script>
+    <script type="text/javascript" src="/js/board.js"></script>
+    <link rel="stylesheet" href="/css/loading.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/board.css" />
+    <link rel="stylesheet" href="/css//editor.css" />
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 ⚔</title>
 </head>
-<body>
 
+<body>
     <div class="header">
         <a class="header-logo" href="/">Albion Helper</a>
     </div>
@@ -41,31 +44,29 @@
 
     <div class="board-header">
         <h3 class="board-header-title">🌈 게시판 - 글쓰기</h3>
-        <hr/>
+        <hr />
     </div>
     <div class="board-title-div">
         <p>📢 쉬운 비밀번호로 설정하면 글이 수정되거나 삭제될 수 있음</p>
         <p>📢 저작권, 초상권 침해되는 게시물은 책임져야할수도 있음</p>
         <p>📢 선넘는 비하, 혐오, 음란물 금지</p>
-        <hr/>
+        <hr />
     </div>
 
-
     <div class="centered">
-        <!-- 카테고리는 DB에서 꺼내올 생각. -->
-
-
-        <p style="display:inline-block;">카테고리📌</p>
+        <p style="display:inline-block;">카테고리 선택 👉🏻</p>
         <ul class="board-category-ul">
-            <li class="category" onclick="clicked_Category(this)">전체</li>
-            <li class="category" onclick="clicked_Category(this)">일반</li>
-            <li class="category" onclick="clicked_Category(this)">공략</li>
-            <li class="category" onclick="clicked_Category(this)">친선</li>
-            <li class="category" onclick="clicked_Category(this)">홈페이지피드백</li>
+            <li class="category clicked" onclick="clicked_Category(this)" value="1">일반</li>
+            <li class="category" onclick="clicked_Category(this)" value="2">공략</li>
+            <li class="category" onclick="clicked_Category(this)" value="3">친선</li>
+            <li class="category" onclick="clicked_Category(this)" value="4">홈페이지피드백</li>
+            
         </ul>
-
-        <input class="board-title-input" id="title" type="text" name="title" placeholder="제목..." />
-        <p class="title-warning-message">제목을 입력해주세요...</p>
+        <div>
+            <input class="board-nickname-input" id="nickName" type="text" name="nickName" placeholder="인게임 닉네임 | 생략 가능"/>
+            <input class="board-title-input" id="title" type="text" name="title" placeholder="제목" />
+        </div>
+        <p class="title-warning-message">제목을 입력해주세요.</p>
 
         <div class="editor-div">
             <!-- Editor -->
@@ -79,7 +80,8 @@
 
     <div class="board-submit-div">
         <span class="password-warning-message">비밀번호를 입력해주세요...</span>
-        <input class="board-password" id="password" type="password" name="password" autocomplete="new-password" placeholder="비밀번호...">
+        <input class="board-password" id="password" type="password" name="password" autocomplete="new-password"
+            placeholder="게시글 비밀번호">
         <a href="#" class="btn cancel">취소</a>
         <a href="#" class="btn submit">작성</a>
     </div>
@@ -93,10 +95,21 @@
             <div class="stick"></div>
             <div class="stick"></div>
 
-            <h1>정보 요청중..</h1>
+            <h1>작성중..</h1>
         </div>
     </div>
+
+    <form action="/board/register" method="POST" id="submitForm">
+        <input type="hidden" id="h_category" name="category" />
+        <input type="hidden" id="h_nickName" name="nickName" />
+        <input type="hidden" id="h_title" name="title" />
+        <input type="hidden" id="h_contents" name="contents" />
+        <input type="hidden" id="h_password" name="password" />
+    </form>
 </body>
+
+<script>
+    
+</script>
+
 </html>
-
-

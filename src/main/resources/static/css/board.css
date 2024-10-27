@@ -1,7 +1,8 @@
-h3{
+h3 {
     margin-bottom: 1px;
 }
-.header{
+
+.header {
     padding: 15px;
     font-size: 20px;
     width: 100%;
@@ -11,8 +12,9 @@ h3{
     border-bottom: 1px solid;
 
 }
-.main{
-    display : flex;
+
+.main {
+    display: flex;
     position: relative;
     justify-content: space-between;
     padding: 0 15px 10px;
@@ -21,60 +23,73 @@ h3{
     min-height: 100%;
     padding-bottom: 100px;
 }
-.centered{
+
+.centered {
     margin: 0 auto;
     max-width: 50%;
 }
-.board-header{
+
+.board-header {
     font-size: 1.5em;
     padding: 0px;
     text-align: center;
     max-width: 50%;
     margin: 0 auto;
 }
-.board-header-title{
+
+.board-header-title {
     margin-bottom: 1.5vw;
 }
-.board-header-sub{
+
+.board-header-sub {
     display: inline;
     font-size: 0.6em;
     font-weight: bold;
-    color : RGB(28,120,153);
+    color: RGB(28, 120, 153);
 }
-.board-header-flex-subDiv{
+
+.board-header-flex-subDiv {
     display: flex;
     margin-bottom: 0.5%;
     margin-top: 3.5%;
 }
-.board-header-left-subDiv{
+
+.board-header-left-subDiv {
     padding-left: 1%;
     width: 50%;
     text-align: left;
     margin-bottom: 0.3%;
 }
-div.board-header-left-subDiv > span{
+
+div.board-header-left-subDiv>span {
     font-size: 0.9em;
 }
-.board-header-right-subDiv{
+
+.board-header-right-subDiv {
     padding-right: 1%;
     width: 50%;
     text-align: right;
     margin-bottom: 0.3%;
 }
-.board-title-div{
+
+.board-title-div {
     text-align: left;
     max-width: 50%;
     margin: 1vw auto;
 }
-.board-submit-div{
+
+.board-submit-div {
     text-align: right;
     max-width: 50%;
     margin: 0 auto;
 }
-.btn:hover{
-    opacity: 0.5;
+
+.btn:hover {
+    background-color: #bdc3c7;
+    color: #000;
 }
-.btn{
+
+.btn {
     font-size: 16px;
     border-radius: 2px;
     background: #303f53;
@@ -85,12 +100,21 @@ div.board-header-left-subDiv > span{
     min-width: 100px;
 }
 
-.board-title-div p{
-    font-size : 0.8em;
-    font-weight : bold;
+.board-title-div p {
+    font-size: 0.8em;
+    font-weight: bold;
 }
-.board-title-input{
-    min-width: 50vw;
+.board-nickname-input{
+    min-width: 10vw;
+    color: #eee;
+    background-color: rgb(36, 32, 32);
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-bottom: 0.5vw;
+}   
+.board-title-input {
+    min-width: 39.25vw;
     color: #eee;
     background-color: rgb(36, 32, 32);
     border: 1px solid #ccc;
@@ -98,7 +122,8 @@ div.board-header-left-subDiv > span{
     padding: 8px;
     margin-bottom: 0.5vw;
 }
-.board-title-category-input{
+
+.board-title-category-input {
     color: #eee;
     background-color: rgb(36, 32, 32);
     border: 1px solid #ccc;
@@ -106,7 +131,8 @@ div.board-header-left-subDiv > span{
     padding: 8px;
     margin-bottom: 0.5vw;
 }
-.board-password{
+
+.board-password {
     color: #eee;
     background-color: rgb(36, 32, 32);
     border: 1px solid #ccc;
@@ -114,63 +140,97 @@ div.board-header-left-subDiv > span{
     padding: 8px;
     margin-bottom: 0.5vw;
 }
-input:hover, input:focus{
-    outline:none;
-    border:2px solid RGB(28, 120, 153);
+
+input:hover,
+input:focus {
+    outline: none;
+    border: 2px solid RGB(28, 120, 153);
 }
-.board-category-ul{
-    display : inline;
+
+.board-category-ul {
+    display: inline;
     list-style-type: none;
 }
-.board-category-ul li{
-    display : inline;
+
+.board-category-ul li {
+    display: inline;
     list-style-type: none;
 }
-table{
+
+table {
     width: 100%;
     white-space: nowrap;
     border-collapse: collapse;
     table-layout: fixed;
 }
-th{
+
+th {
     width: 5vw;
     padding: 1%;
     border-bottom: 1.5px solid RGB(28, 120, 153);
     border-top: 2.5px double RGB(28, 120, 153);
 }
-tr{
+
+tr {
     border-bottom: 0.5px solid RGBA(28, 120, 153, 0.2);
 }
-tbody tr:hover{
+
+tbody tr:hover {
     background-color: #352f2f;
 }
-td{
+
+td {
     color: RGBA(238, 238, 238, 0.8);
     padding: 0.6% 10px;
     text-align: center;
     font-size: 0.7em;
 }
-td:nth-child(3){
-    text-align : left;
+
+td:nth-child(3) {
+    text-align: left;
 }
-table .col1 { width: 5%; }
-table .col2 { width: 5%; }
-table .col3 { width: 30%; }
-table .col4 { width: 10%; }
-table .col5 { width: 8%; }
-table .col6 { width: 5%; }
-table .col7 { width: 5%; }
-.write-button{
+
+table .col1 {
+    width: 5%;
+}
+
+table .col2 {
+    width: 5%;
+}
+
+table .col3 {
+    width: 30%;
+}
+
+table .col4 {
+    width: 10%;
+}
+
+table .col5 {
+    width: 8%;
+}
+
+table .col6 {
+    width: 5%;
+}
+
+table .col7 {
+    width: 5%;
+}
+
+.write-button {
     font-size: 0.6em;
     font-weight: bold;
     border: 2px solid RGB(28, 120, 153);
     border-radius: 5px;
     padding: 0.1vw 0.6vw;
 }
-.write-button:hover{
+
+.write-button:hover {
     border: 2px solid #eee;
 }
-.showRows-button{
+
+.showRows-button {
     font-size: 0.6em;
     font-weight: bold;
     color: #eee;
@@ -179,51 +239,70 @@ table .col7 { width: 5%; }
     border-radius: 5px;
     padding: 0.1vw 0.6vw;
 }
-.showRows-button:hover{
+
+.showRows-button:hover {
     border: 2px solid #eee;
 }
-.board-title{
+
+.board-title {
     color: RGBA(238, 238, 238, 0.8);
     cursor: pointer;
 }
-.board-title:hover{
-    text-decoration:underline;
+
+.board-title:hover {
+    text-decoration: underline;
 }
-.comments-number{
+
+.comments-number {
     padding-left: 0.2vw;
-    opacity : 0.4;
+    opacity: 0.4;
 }
-.category{
+
+.category {
     cursor: pointer;
     color: RGBA(238, 238, 238, 0.8);
     font-weight: bold;
     font-size: 0.5em;
 }
-.category:hover{
-    text-decoration:underline;
+
+.category:hover {
+    text-decoration: underline;
 }
-.password-warning-message{
+
+.password-warning-message {
     display: none;
     color: RGB(28, 120, 153);
     font-size: 0.8em;
     font-weight: bold;
     animation: blink 1.5s infinite;
 }
-.title-warning-message{
+
+.title-warning-message {
     display: none;
     color: RGB(28, 120, 153);
     font-size: 0.8em;
     font-weight: bold;
     animation: blink 1.5s infinite;
 }
+
 @keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.clicked {
+    color: RGB(28, 120, 153);
+    font-size: 1em;
+}
+.ql-snow .ql-hidden {
+    visibility: hidden;
 }
