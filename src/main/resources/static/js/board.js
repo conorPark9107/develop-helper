@@ -38,11 +38,13 @@ $(document).ready(function () {
 
         
 
-        if (title == '') {
+        if (title.trim() == '') {
+            $("#title").val('');
             showMsgForTitle();
             return;
         }
-        if (password == '') {
+        if (password.trim() == '') {
+            $("#password").val('');
             showMsgForPw();
             return;
         }
@@ -67,8 +69,12 @@ $(document).ready(function () {
             for (let i = 0; i < dataArr.length; i++) {
                 images[i].src = dataArr[i].data.publicUrl;
             }
+            let category = $('.clicked').val();
+            let nickName = $('#nickName').val();
+            let title = $('#title').val();
+            let password = $('#password').val();
             let requestHTML = quill.root.innerHTML;
-
+            
             $('#h_category').val(category);
             $('#h_nickName').val(nickName);
             $('#h_title').val(title);

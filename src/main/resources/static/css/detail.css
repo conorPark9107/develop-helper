@@ -92,18 +92,21 @@ table {
     width: 100%;
     white-space: nowrap;
     border-collapse: collapse;
+    border: 1px solid RGBA(238, 238, 238, 0.2);
 }
-
 td {
     padding: 0.6% 10px;
     text-align: center;
     font-size: 0.8em;
     font-weight: bold;
+    border-bottom : 1px dashed RGBA(238, 238, 238, 0.1);
 }
 
 th {
     width: 5vw;
     padding: 1%;
+    background-color: RGBA(36, 32, 32, 0.6);
+    border-bottom : 1px solid RGBA(238, 238, 238, 0.2);
 }
 
 .rainbow {
@@ -118,6 +121,15 @@ th {
     animation: 3s rotate linear infinite;
     outline: none;
 }
+
+.rainbow thead tr{
+    border-bottom: 1px dashed rgba(238, 238, 238, 0.2);
+}
+
+.rainbow tr{
+    border-bottom: 1px dashed rgba(238, 238, 238, 0.2);
+}
+
 
 input[type="text"]:focus {
     opacity: 1;

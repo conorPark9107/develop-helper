@@ -104,7 +104,8 @@ div.board-header-left-subDiv>span {
     font-size: 0.8em;
     font-weight: bold;
 }
-.board-nickname-input{
+
+.board-nickname-input {
     min-width: 10vw;
     color: #eee;
     background-color: rgb(36, 32, 32);
@@ -112,7 +113,8 @@ div.board-header-left-subDiv>span {
     box-sizing: border-box;
     padding: 8px;
     margin-bottom: 0.5vw;
-}   
+}
+
 .board-title-input {
     min-width: 39.25vw;
     color: #eee;
@@ -230,19 +232,7 @@ table .col7 {
     border: 2px solid #eee;
 }
 
-.showRows-button {
-    font-size: 0.6em;
-    font-weight: bold;
-    color: #eee;
-    background-color: #242020;
-    border: 2px solid RGB(28, 120, 153);
-    border-radius: 5px;
-    padding: 0.1vw 0.6vw;
-}
 
-.showRows-button:hover {
-    border: 2px solid #eee;
-}
 
 .board-title {
     color: RGBA(238, 238, 238, 0.8);
@@ -299,10 +289,153 @@ table .col7 {
     }
 }
 
-.clicked {
-    color: RGB(28, 120, 153);
-    font-size: 1em;
+/* Pagination */
+.centered-pagination {
+    margin: 0 auto;
+    max-width: 70%;
+    text-align: center;
 }
-.ql-snow .ql-hidden {
-    visibility: hidden;
+
+.pagination {
+    display: inline-block;
+    margin-top: 10%;
+    font-weight: bold;
+}
+
+.pagination a {
+    font-size: 0.7em;
+    color: #eee;
+    float: left;
+    padding: 6px 12px;
+    text-decoration: none;
+    margin: 0 4px;
+}
+
+.pagination a.nowPage {
+    background-color: RGB(28, 120, 153);
+    color: #eee;
+    border-radius: 5px;
+}
+
+.pagination a:hover:not(.nowPage) {
+    background-color: RGBA(28, 120, 153);
+    border-radius: 5px;
+}
+
+/* dropdown */
+.showRows-button {
+    font-size: 0.6em;
+    font-weight: bold;
+    color: #eee;
+    background-color: #242020;
+    border: 2px solid RGB(28, 120, 153);
+    border-radius: 5px;
+    padding: 0.1vw 0.6vw;
+}
+
+.showRows-button:hover {
+    border: 2px solid #eee;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    font-size: 0.6em;
+    display: none;
+    position: absolute;
+    width: 95%;
+    text-align: center;
+    background-color: #242020;
+    min-width: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border: 2px solid RGB(28, 120, 153);
+    border-radius: 5px;
+}
+.dropdown-content a {
+    margin: 10% 0;
+    font-weight: bold;
+    color: #eee;
+    text-decoration: none;
+    display: block;
+    padding: 2%;
+}
+.dropdown-content a:hover {
+    opacity: 0.5;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.title{
+    border-bottom: 0.1px solid RGBA(238, 238, 238, 0.5);
+    padding-bottom: 1%;
+}
+.title-left{
+    display: inline-block;
+    text-align: left;
+    width: 50%;
+}
+.title-right{
+    display: inline-block;
+    text-align: right;
+    width: 48%;
+}
+h4{
+    margin-bottom : 1%;
+}
+.title span{
+    font-size: 0.8em;
+    font-weight: bold;
+    opacity: 0.6;
+}
+.contents{
+    min-height: 30vw;
+    font-size: 0.8em;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.comment{
+    padding: 2% 0;
+    border-top: 0.1px solid RGBA(238, 238, 238, 0.5);
+    border-bottom: 2px solid RGBA(238, 238, 238);
+}
+.block{
+    display: block;
+}
+.comment-writer{
+    vertical-align: top;
+    display: inline-block;
+}
+.comment-area{
+    width: 79%;
+}
+.comment-text{
+    width:85%;
+    color: #eee;
+    background-color: rgb(36, 32, 32);
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    padding: 8px;
+    resize: none;
+}
+.comment-text:hover,
+.comment-text:focus {
+    outline: none;
+    border: 2px solid RGB(28, 120, 153);
+}
+.comment-submit{
+    font-size: 16px;
+    border-radius: 2px;
+    background: #303f53;
+    text-shadow: none;
+    border: 0;
+    color: white;
+    padding: 10px 30px;
+    min-width: 100px;
+}
+.comment-submit:hover{
+    background-color: #bdc3c7;
+    color: #000;
 }

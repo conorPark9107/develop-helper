@@ -1,159 +1,137 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-   <!-- <script type="text/javascript" src="/static/js/board.js"></script>
-   <link rel="stylesheet" href="/static/css/index.css" />
-   <link rel="stylesheet" href="/static/css/loading.css" />
-    <link rel="stylesheet" href="/static/css/board.css" /> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<!--    <script type="text/javascript" src="/static/js/board.js"></script>-->
+<!--    <link rel="stylesheet" href="/static/css/index.css" />-->
+<!--    <link rel="stylesheet" href="/static/css/loading.css" />-->
+<!--     <link rel="stylesheet" href="/static/css/board.css" />-->
     <script type="text/javascript" src="/js/board.js"></script>
-    <link rel="stylesheet" href="/css/loading.css" />
-    <link rel="stylesheet" href="/css/index.css" />
-    <link rel="stylesheet" href="/css/board.css" />
+    <link rel="stylesheet" href="/css/loading.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/board.css"/>
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 ⚔</title>
 </head>
 <body>
-    <div class="header">
-        <a class="header-logo" href="/">Albion Helper</a>
-    </div>
+<div class="header">
+    <a class="header-logo" href="/">Albion Helper</a>
+</div>
 
 
-    <div class="board-header">
-        <h3 class="board-header-title">🌈 게시판</h3>
-        <p class="board-header-sub">🎈홈페이지 피드백을 해주시든 빌드 이야기를 하시든 자유롭게 아무글을 작성해도 좋습니다🎈</p>
+<div class="board-header">
+    <h3 class="board-header-title">🌈 게시판</h3>
+    <p class="board-header-sub">🎈홈페이지 피드백을 해주시든 빌드 이야기를 하시든 자유롭게 아무글을 작성해도 좋습니다🎈</p>
 
-        <div class="board-header-flex-subDiv">
-            <div class="board-header-left-subDiv">
-                <span>카테고리</span>
-                <a href="#" class="category">전체</a>
-                <a href="#" class="category">일반</a>
-                <a href="#" class="category">공략</a>
-                <a href="#" class="category">친선</a>
-                <a href="#" class="category">홈페이지피드백</a>
+    <div class="board-header-flex-subDiv">
+        <div class="board-header-left-subDiv">
+            <span>카테고리</span>
+            <a href="#" class="category">전체</a>
+            <a href="#" class="category">일반</a>
+            <a href="#" class="category">공략</a>
+            <a href="#" class="category">친선</a>
+            <a href="#" class="category">홈페이지피드백</a>
+        </div>
+        <div class="board-header-right-subDiv">
+            <div class="dropdown">
+                <button class="showRows-button">게시글 수 🔻</button>
+                <div class="dropdown-content">
+                    <a href="/board?page=0&size=10">10개</a>
+                    <a href="/board?page=0&size=20">20개</a>
+                    <a href="/board?page=0&size=30">30개</a>
+                    <a href="/board?page=0&size=40">40개</a>
+                </div>
             </div>
-            <div class="board-header-right-subDiv">
-                <!-- 카테고리는 DB에서 꺼내올 생각. -->
-                <a class="showRows-button">
-                    <span>10개</span>
-                    <span>🔻</span>
-                </a>
-                <a href="/board/write" class="write-button">📝글쓰기</a>
-            </div>
+            <a href="/board/write" class="write-button">📝글쓰기</a>
+        </div>
 
+    </div>
+</div>
+
+
+<div class="main">
+    <div class="centered">
+        <table>
+            <colgroup>
+                <col class="col1">
+                <col class="col2">
+                <col class="col3">
+                <col class="col4">
+                <col class="col5">
+                <col class="col6">
+                <col class="col7">
+            </colgroup>
+            <thead>
+            <tr>
+                <th scope="row">번호</th>
+                <th scope="row">분류</th>
+                <th scope="row">제목</th>
+                <th scope="row">글쓴이</th>
+                <th scope="row">작성일</th>
+                <th scope="row">조회수</th>
+                <th scope="row">추천</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="board: ${list}">
+                <td th:text="${board.id}"></td>
+                <td th:text="${board.category}"></td>
+                <td>
+                    <a th:href="@{/board/detail(id=${board.id})}">
+                        <span class="board-title" th:text="${board.title}"></span>
+                        <span class="comments-number">[10]</span>
+                    </a>
+                </td>
+                <td th:text="${board.nickname}"></td>
+
+                <td th:if="${#temporals.format(board.write_date, 'yyyy/MM/dd')} == ${#temporals.format(#temporals.createNow(), 'yyyy/MM/dd')}">
+                    [[${#temporals.format(board.write_date, 'HH:mm')}]]
+                </td>
+                <td th:unless="${#temporals.format(board.write_date, 'yyyy/MM/dd')} == ${#temporals.format(#temporals.createNow(), 'yyyy/MM/dd')}">
+                    [[${#temporals.format(board.write_date, 'yyyy/MM/dd')}]]
+                </td>
+                <td th:text="${board.view_count}"></td>
+                <td th:text="${board.updown}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="centered-pagination">
+            <div class="pagination">
+                <a th:href="@{/board?(page=${firstPage},size=${size})}">&laquo;&laquo;</a>
+                <a th:href="@{/board?(page=${startPageNum-1},size=${size})}">&lt;</a>
+
+<!--                    <a href="#" th:text="${startPageNum}"></a>-->
+<!--                    <a href="#" th:text="${endPageNum}"></a>-->
+                <th:block th:each="i : ${#numbers.sequence(startPageNum, endPageNum - 1)}">
+                    <th:block th:if="${i == pickPage}">
+                        <a class="nowPage" th:href="@{/board?(page=${i},size=${size})}" th:text="${i+1}"></a>
+                    </th:block>
+                    <th:block th:unless="${i == pickPage}">
+                        <a th:href="@{/board?(page=${i},size=${size})}" th:text="${i+1}"></a>
+                    </th:block>
+                </th:block>
+
+                <a th:href="@{/board?(page=${endPageNum},size=${size})}">&gt;</a>
+                <a th:href="@{/board?(page=${lastPage - 1},size=${size})}">&raquo;&raquo;</a>
+
+              </div>
         </div>
     </div>
+</div>
 
+<div id="blackArea">
+    <div id="loading">
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
 
-    <div class="main">
-        <div class="centered">
-            <table>
-                <colgroup>
-                    <col class="col1">
-                    <col class="col2">
-                    <col class="col3">
-                    <col class="col4">
-                    <col class="col5">
-                    <col class="col6">
-                    <col class="col7">
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th scope="row">번호</th>
-                        <th scope="row">분류</th>
-                        <th scope="row">제목</th>
-                        <th scope="row">글쓴이</th>
-                        <th scope="row">작성일</th>
-                        <th scope="row">조회수</th>
-                        <th scope="row">추천</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>일반</td>
-                        <td>
-                            <a href="#">
-                                <span class="board-title">여기는 제목을 입력하고..</span>
-                                <span class="comments-number">[10]</span>
-                            </a>
-                        </td>
-                        <td>글쓴이3</td>
-                        <td>2024/10/22</td>
-                        <td>조회</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>일반</td>
-                        <td>여기는 제목입니다..</td>
-                        <td>글쓴이2</td>
-                        <td>2024/10/22</td>
-                        <td>조회</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td>일반</td>
-                        <td>여기는 제목입니다..</td>
-                        <td>글쓴이3</td>
-                        <td>2024/10/22</td>
-                        <td>조회</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>일반</td>
-                        <td>여기는 제목입니다..</td>
-                        <td>글쓴이4</td>
-                        <td>2024/10/22</td>
-                        <td>조회</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>일반</td>
-                        <td>여기는 제목입니다..</td>
-                        <td>글쓴이5</td>
-                        <td>2024/10/22</td>
-                        <td>조회</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>일반</td>
-                        <td>여기는 제목입니다..</td>
-                        <td>글쓴이6</td>
-                        <td>2024/10/22</td>
-                        <td>조회</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>일반</td>
-                        <td>여기는 제목입니다..</td>
-                        <td>글쓴이7</td>
-                        <td>2024/10/22</td>
-                        <td>조회</td>
-                        <td>0</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <h1>정보 요청중..</h1>
     </div>
-
-    <div id="blackArea">
-        <div id="loading">
-            <div class="stick"></div>
-            <div class="stick"></div>
-            <div class="stick"></div>
-            <div class="stick"></div>
-            <div class="stick"></div>
-            <div class="stick"></div>
-
-            <h1>정보 요청중..</h1>
-        </div>
-    </div>
+</div>
 
 </body>
 </html>

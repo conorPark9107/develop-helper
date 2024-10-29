@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- https://quilljs.com/docs/quickstart - quilljs 에디터 CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+    <!-- UUID -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+
+    <!-- supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script type="text/javascript" src="/static/js/util.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/loading.css" />
+    <link rel="stylesheet" href="/static/css/board.css" />
+    <!-- <script type="text/javascript" src="/js/util.js"></script>
+    <script type="text/javascript" src="/js/board.js"></script>
+    <link rel="stylesheet" href="/css/loading.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/board.css"/>
+    <link rel="stylesheet" href="/css//editor.css"/> -->
+    <meta charset="UTF-8">
+    <title>⚔ 알비온 헬퍼 ⚔</title>
+</head>
+
+<body>
+<div class="header">
+    <a class="header-logo" href="/">Albion Helper</a>
+</div>
+
+
+<div class="board-header">
+    <h3 class="board-header-title">🌈 게시판</h3>
+    <hr/>
+</div>
+<div class="board-title-div">
+    <p>📢 홍보, 도배, 현거래 금지</p>
+    <p>📢 명예훼손, 혐오, 음란물 금지</p>    
+    <hr/>
+</div>
+
+<div class="centered">
+    <h4>[일반] 제목입니다잇~</h3>
+    <div class="title">
+        <div class="title-left">
+            <span>닉네임 |</span>
+            <span>작성날짜</span>
+            
+        </div>
+        <div class="title-right">
+            <span>조회 0</span>
+            <span>추천 0</span>
+            <span>댓글 0</span>
+        </div>
+    </div>
+
+
+    <div class="contents">
+        
+        내용입니다잇
+    </div>
+    <div class="comment">
+        <div class="comment-writer">
+            <input class="board-password block" type="text" name="nickname" placeholder="닉네임" maxlength="16"/>
+            <input class="board-password block" type="password" name="password" placeholder="비밀번호" maxlength="20" />
+        </div>
+        <div class="comment-writer comment-area">
+            <textarea class="comment-text" name="comment" id="comment" cols="30" rows="6" placeholder="댓글..">
+
+            </textarea>
+            <a href="#" class="comment-submit">등록</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+<script>
+
+</script>
+
+</html>
