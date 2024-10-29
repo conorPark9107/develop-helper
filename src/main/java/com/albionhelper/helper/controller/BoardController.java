@@ -38,6 +38,8 @@ public class BoardController {
                            @RequestParam("category")String category,
                            @RequestParam("contents")String contents){
 
+
+
         log.info("title : {}", title);
         log.info("PW : {}", password);
         log.info("category : {}", category);
