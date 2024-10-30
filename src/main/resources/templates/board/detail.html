@@ -14,22 +14,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
-    <!-- UUID -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
-
     <!-- supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+    <!--<script type="text/javascript" src="/static/js/boardDetail.js"></script>
     <script type="text/javascript" src="/static/js/util.js"></script>
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
-    <link rel="stylesheet" href="/static/css/board.css" />
-    <!-- <script type="text/javascript" src="/js/util.js"></script>
-    <script type="text/javascript" src="/js/board.js"></script>
+    <link rel="stylesheet" href="/static/css/board.css" />-->
+    <script type="text/javascript" src="/js/util.js"></script>
+    <script type="text/javascript" src="/js/boardDetail.js"></script>
     <link rel="stylesheet" href="/css/loading.css"/>
     <link rel="stylesheet" href="/css/index.css"/>
     <link rel="stylesheet" href="/css/board.css"/>
-    <link rel="stylesheet" href="/css//editor.css"/> -->
+    <link rel="stylesheet" href="/css//editor.css"/>
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 ⚔</title>
 </head>
@@ -46,49 +44,115 @@
 </div>
 <div class="board-title-div">
     <p>📢 홍보, 도배, 현거래 금지</p>
-    <p>📢 명예훼손, 혐오, 음란물 금지</p>    
+    <p>📢 명예훼손, 혐오, 음란물 금지</p>
     <hr/>
 </div>
 
 <div class="centered">
-    <h4>[일반] 제목입니다잇~</h3>
+    <h4 th:text="|${board.category} ${board.title}|"></h4>
     <div class="title">
         <div class="title-left">
-            <span>닉네임 |</span>
-            <span>작성날짜</span>
-            
+            <span th:text="${board.nickname}"></span> |
+            <span th:text="${#temporals.format(board.write_date, 'MM.dd HH:mm:ss')}"></span>
+
         </div>
         <div class="title-right">
-            <span>조회 0</span>
-            <span>추천 0</span>
-            <span>댓글 0</span>
+            <span>조회 [[${board.view_count}]]</span>
+            <span>추천 [[${board.updown}]]</span>
+            <span>댓글 [[${#lists.size(comments)}]]</span>
         </div>
     </div>
 
+    <!-- 게시글 내용  -->
+    <div class="contents" th:utext="${board.contents}">
 
-    <div class="contents">
-        
-        내용입니다잇
     </div>
-    <div class="comment">
+    <!-- 댓글 읽기 -->
+    <div class="comment-read-area">
+        <p style="color: RGB(28, 120, 153); font-weight: bold;">💬댓글 </p>
+        <ul class="comment-list" >
+            <!-- 댓글 -->
+            <li th:each="c : ${comments}" th:attrappend="id=${c.id}">
+                <div th:if="${c.comment_group == null}" class="comment">
+                    <div class="left">
+                        <span th:text="${c.nickname}">닉네임</span>
+                    </div>
+                    <div class="comment-contents">
+                        <a class="showWriter" th:text="${c.comment}">댓글내용입니다.</a>
+                    </div>
+                    <div class="comment-time">
+                            <span th:text="${#temporals.format(c.write_date, 'MM.dd HH:mm:ss')}">MM.dd HH:mm:ss</span>
+                    </div>
+                    <div class="comment-delete">
+                        <a href="#">❌</a>
+                        <input type="hidden" name="comment_group_c" th:value="${c.id}"/>
+                    </div>
+                </div>
+
+                <th:block th:each="cc : ${comments}">
+                    <th:block th:if="${c.id == cc.comment_group}">
+                        <!-- 대댓글 -->
+                        <div class="comment-comment">
+                            <div class="left">
+                                <span th:text="${cc.nickname}">닉네임</span>
+                            </div>
+                            <div class="comment-contents">
+                                <p th:text="${cc.comment}">대댓글 내용입니다잇1</p>
+                            </div>
+                            <div class="comment-time">
+                                <span th:text="${#temporals.format(cc.write_date, 'MM.dd HH:mm:ss')}">MM.dd HH:mm:ss</span>
+                            </div>
+                            <div class="comment-delete">
+                                <a href="#">❌</a>
+                                <input type="hidden" name="comment_group_c" />
+                            </div>
+                        </div>
+                    </th:block>
+                </th:block>
+
+
+            </li>
+        </ul>
+
+    </div>
+    <!-- 댓글 쓰기. -->
+    <div class="comment-write-area">
         <div class="comment-writer">
-            <input class="board-password block" type="text" name="nickname" placeholder="닉네임" maxlength="16"/>
-            <input class="board-password block" type="password" name="password" placeholder="비밀번호" maxlength="20" />
+            <input class="board-password block" type="text" name="nickname" placeholder="닉네임 | 생략시 IP"
+                   maxlength="16"/>
+            <input class="board-password block" type="password" name="password" placeholder="비밀번호" maxlength="20"/>
         </div>
         <div class="comment-writer comment-area">
-            <textarea class="comment-text" name="comment" id="comment" cols="30" rows="6" placeholder="댓글..">
-
-            </textarea>
-            <a href="#" class="comment-submit">등록</a>
+            <textarea class="comment-text" name="comment" cols="30" rows="5" placeholder="댓글.."></textarea>
+            <a class="comment-submit">등록</a>
         </div>
     </div>
 
+    <!-- 대댓글 입력-->
+    <div style="display:none;">
+        <div class="comment-comment-write-area" id="write-comment">
+            <input type="hidden" name="board_id_c" th:value="${board.id}"/>
+            <div class="comment-writer">
+                <input class="board-password block" type="text" name="nickname_c" placeholder="닉네임 | 생략시 IP"
+                       maxlength="16"/>
+                <input class="board-password block" type="password" name="password_c" placeholder="비밀번호"
+                       maxlength="20"/>
+            </div>
+            <div class="comment-writer comment-area">
+                <textarea class="comment-text" name="comment_c" cols="30" rows="5" placeholder="댓글.."></textarea>
+                <a class="comment-submit_c">등록</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 전송폼. -->
+    <form action="/board/registerComment" method="POST" class="form">
+        <input type="hidden" id="h_board_id" name="board_id" th:value="${board.id}"/>
+        <input type="hidden" id="h_nickname" name="nickname" value=""/>
+        <input type="hidden" id="h_password" name="password" value=""/>
+        <input type="hidden" id="h_comment" name="comment" value=""/>
+        <input type="hidden" id="h_comment_group" name="comment_group" value=""/>
+    </form>
 </div>
-
 </body>
-
-<script>
-
-</script>
-
 </html>

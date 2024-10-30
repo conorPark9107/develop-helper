@@ -1,0 +1,27 @@
+package com.albionhelper.helper.domain.board;
+
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
+
+import java.time.LocalDateTime;
+
+@Setter
+@Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
+@Builder
+public class BoardResponseDTO {
+
+    private Long id;
+    private String nickname;
+    private String title;
+    private int category;
+    private String contents;
+    private LocalDateTime write_date;
+    private int view_count;
+    private int updown;
+
+
+
+
+}

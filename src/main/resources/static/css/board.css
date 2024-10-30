@@ -396,10 +396,15 @@ h4{
     margin-top: 1%;
     margin-bottom: 1%;
 }
-.comment{
+/* 댓글 작성 css */
+.comment-write-area{
+    display: flex;
+    flex-direction: row;
+    gap:1%;
     padding: 2% 0;
-    border-top: 0.1px solid RGBA(238, 238, 238, 0.5);
-    border-bottom: 2px solid RGBA(238, 238, 238);
+    border-top: 2px solid RGB(238, 238, 238);
+    border-bottom: 2px solid RGB(238, 238, 238);
+    margin-top: 5%;
 }
 .block{
     display: block;
@@ -409,6 +414,10 @@ h4{
     display: inline-block;
 }
 .comment-area{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1%;
     width: 79%;
 }
 .comment-text{
@@ -426,6 +435,8 @@ h4{
     border: 2px solid RGB(28, 120, 153);
 }
 .comment-submit{
+    cursor:pointer;
+    text-align: center;
     font-size: 16px;
     border-radius: 2px;
     background: #303f53;
@@ -438,4 +449,102 @@ h4{
 .comment-submit:hover{
     background-color: #bdc3c7;
     color: #000;
+}
+
+
+.comment-submit_c{
+    cursor:pointer;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 2px;
+    background: #303f53;
+    text-shadow: none;
+    border: 0;
+    color: white;
+    padding: 10px 30px;
+    min-width: 100px;
+}
+.comment-submit_c:hover{
+    background-color: #bdc3c7;
+    color: #000;
+}
+/* 댓글 보기 css */
+.comment-read-area{
+    font-size: 0.7em;
+    border-top: 2px solid RGBA(238, 238, 238);
+}
+.comment-list{
+    margin:1% 0;
+    list-style: none;
+}
+.comment-list li{
+    border-top: 1px solid RGBA(238, 238, 238, 0.1);
+    color: RGBA(238, 238, 238, 0.8);
+    
+}
+.comment{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: RGBA(238, 238, 238, 0.8);
+    padding: 1% 0;
+    background-color: RGB(36,32,32);
+}
+.left{
+    width:10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding : 0 1.5%;
+}
+.comment-contents{
+    width: 70%;
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    padding: 0 2%;
+}
+.comment-contents a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.comment-delete{
+    width: 5%;
+    text-align: right;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.comment-time{
+    text-align: right;
+    width: 8%;
+}
+.comment-delete:hover{
+    background-color: RGB(28, 120, 153);
+}
+.comment-time > span{
+    display: inline-block;
+    font-size : 0.8em;
+}
+/* 대댓글 */
+.comment-comment{
+    display:none;
+    margin-left: 3%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: RGBA(238, 238, 238, 0.8);
+    border-top: 1px solid RGBA(238, 238, 238, 0.1);
+    border-bottom: 1px solid RGBA(238, 238, 238, 0.1);
+    background-color: RGBA(36,32,63, 0.3);
+}
+.comment-comment-write-area{
+    display: flex;
+    flex-direction: row;
+    gap:1%;
+    padding: 2% 0;
+}
+.left span{
+    font-size : 0.8em;
 }

@@ -39,6 +39,7 @@ public class KillBoardController {
     @GetMapping("getUserInfo")
     @ResponseBody
     public List<Player> getUserInfo(@RequestParam(value="inputId")String id, @RequestParam(value="serverLocation")String location) throws JsonProcessingException {
+        log.info("Request Users info : {}", id);
         return killboardService.getPlayersInfo(id, location);
     }
 
@@ -47,13 +48,13 @@ public class KillBoardController {
                                @RequestParam(value="id")String id,
                                @RequestParam(value="location")String location) throws JsonProcessingException {
 
-        log.info("id, location : {} {}", id, location);
+        log.info("Request detail => id, location : {} {}", id, location);
         List<KillBoard> killList = killboardService.getKillBoard(id, location);
         List<DeathBoard> deathList = killboardService.getDeathBoard(id, location);
         model.addAttribute("kills", killList);
         model.addAttribute("deaths", deathList);
         model.addAttribute("location", location);
-        log.info("killList, deathList : {} {}", killList.size(), deathList.size());
+        log.info("Response list size => killList, deathList : {} {}", killList.size(), deathList.size());
         return "killboard/killboardDetail";
     }
 
