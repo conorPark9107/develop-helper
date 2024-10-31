@@ -30,6 +30,8 @@ public class BoardService {
     @Autowired
     CommentRepository commentRepository;
 
+
+
     public void registerBoard(BoardRequestDTO dto) throws UnknownHostException {
         log.info("registerBoard : {}", dto);
 
@@ -55,6 +57,7 @@ public class BoardService {
                   .write_date(board.getWrite_date())
                   .view_count(board.getView_count())
                   .updown(board.getUpdown())
+                  .commentCount(board.getCommentCount())
                   .build()
         );
         return dtoList;
@@ -84,4 +87,24 @@ public class BoardService {
         return dtoList;
     }
 
+    public long showCount(Long id) {
+        return commentRepository.countById(id);
+    }
+
+    public void modifyViewCount(Long id) {
+        Board b = boardRepository.findById(id).get();
+        b.setView_count(b.getView_count() + 1);
+        boardRepository.save(b);
+    }
+
+    public int modifyUpdownCount(Long id, String status){
+        Board b = boardRepository.findById(id).get();
+        if(status.equals("p")){
+            b.setUpdown(b.getUpdown() + 1);
+        }else {
+            b.setUpdown(b.getUpdown() - 1);
+        }
+        boardRepository.save(b);
+        return b.getUpdown();
+    }
 }
