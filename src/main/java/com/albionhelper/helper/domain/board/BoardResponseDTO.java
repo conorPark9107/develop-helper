@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Setter
 @Getter
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class BoardResponseDTO {
@@ -20,6 +20,7 @@ public class BoardResponseDTO {
     private LocalDateTime write_date;
     private int view_count;
     private int updown;
+    private int commentCount;
 
 
 

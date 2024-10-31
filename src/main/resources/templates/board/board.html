@@ -19,9 +19,20 @@
     <a class="header-logo" href="/">Albion Helper</a>
 </div>
 
+<div class="board-header-detail">
+    <div class="header-left">
+        <a href="/" class="btn-header">뒤로</a>
+    </div>
+    <div class="header-center">
+        <h3 class="board-header-title">🌈 게시판</h3>
+    </div>
+    <div class="header_right">
+        <a href="/" class="btn-header visibility">뒤로</a>
+    </div>
+</div>
+
 
 <div class="board-header">
-    <h3 class="board-header-title">🌈 게시판</h3>
     <p class="board-header-sub">🎈홈페이지 피드백을 해주시든 빌드 이야기를 하시든 자유롭게 아무글을 작성해도 좋습니다🎈</p>
 
     <div class="board-header-flex-subDiv">
@@ -80,7 +91,7 @@
                 <td>
                     <a th:href="@{/board/detail(id=${board.id})}">
                         <span class="board-title" th:text="${board.title}"></span>
-                        <span class="comments-number">[10]</span>
+                        <span class="comments-number" th:if="${board.commentCount > 0}" th:text="|[${board.commentCount}]|"></span>
                     </a>
                 </td>
                 <td th:text="${board.nickname}"></td>

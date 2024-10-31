@@ -3,14 +3,11 @@ h3 {
 }
 
 .header {
-    padding: 15px;
+    padding: 10px;
     font-size: 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    border-bottom: solid;
-    border-bottom: 1px solid;
-
 }
 
 .main {
@@ -36,16 +33,32 @@ h3 {
     max-width: 50%;
     margin: 0 auto;
 }
-
+.board-header-detail {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+    padding: 0px;
+    text-align: center;
+    max-width: 50%;
+    margin: 0 auto;
+}
 .board-header-title {
     margin-bottom: 1.5vw;
 }
-
+.header-center{
+    margin-right : 1%;
+}
+.visibility{
+    visibility: hidden;
+}
 .board-header-sub {
     display: inline;
     font-size: 0.6em;
     font-weight: bold;
     color: RGB(28, 120, 153);
+    border-top : 1px solid RGB(28, 120, 153, 0.5);
+    border-bottom : 1px solid RGB(28, 120, 153, 0.5);
 }
 
 .board-header-flex-subDiv {
@@ -83,12 +96,20 @@ div.board-header-left-subDiv>span {
     max-width: 50%;
     margin: 0 auto;
 }
-
-.btn:hover {
+.btn-header {
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 2px;
+    text-shadow: none;
+    border: 2px solid #eee;
+    color: white;
+    padding: 10px 30px;
+    min-width: 100px;
+}
+.btn-header:hover {
     background-color: #bdc3c7;
     color: #000;
 }
-
 .btn {
     font-size: 16px;
     border-radius: 2px;
@@ -99,7 +120,10 @@ div.board-header-left-subDiv>span {
     padding: 10px 30px;
     min-width: 100px;
 }
-
+.btn:hover {
+    background-color: #bdc3c7;
+    color: #000;
+}
 .board-title-div p {
     font-size: 0.8em;
     font-weight: bold;
@@ -511,7 +535,7 @@ h4{
 }
 .comment-delete{
     width: 5%;
-    text-align: right;
+    text-align: center;
     display: inline-block;
     font-weight: bold;
     font-size: 1.2em;
@@ -520,8 +544,8 @@ h4{
     text-align: right;
     width: 8%;
 }
-.comment-delete:hover{
-    background-color: RGB(28, 120, 153);
+.comment-delete a:hover{
+    border: 1px solid #eee;
 }
 .comment-time > span{
     display: inline-block;
@@ -548,3 +572,34 @@ h4{
 .left span{
     font-size : 0.8em;
 }
+.updown-area-01{
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: -1%;
+}
+.updown-area{
+    text-align: center;
+    margin-bottom: 5%;
+}
+.updown-area .updown{
+    font-weight: bold;
+    padding: 10px 15px;
+    background-color: #303f53;
+    border: 1px solid #303f53;
+    box-shadow : 5px;
+    border-radius: 50%;
+    margin: 0 1%;
+}
+.up{
+    font-size: 1.5em;
+}
+.down{
+    font-size: 1.5em;
+}
+.up:hover{
+    opacity: 0.5;
+}
+.down:hover{
+    opacity: 0.5;
+}
+

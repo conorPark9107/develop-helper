@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Formula;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -47,6 +48,10 @@ public class Board {
     @Column(name = "updown")
     private int updown;
 
+    @Formula("(select count(1) from comment c where c.board_id = id)")
+    private int commentCount;
+
+
     public BoardResponseDTO toResponseDTO(){
         return new BoardResponseDTO().builder()
                 .id(id)
@@ -60,15 +65,12 @@ public class Board {
                 .build();
     }
 
-
-
     @Override
     public String toString() {
         return "Board{" +
                 "id=" + id +
                 ", nickname='" + nickname + '\'' +
                 ", title='" + title + '\'' +
-                ", password='" + password + '\'' +
                 ", category=" + category +
                 ", contents='" + contents + '\'' +
                 ", write_date=" + write_date +

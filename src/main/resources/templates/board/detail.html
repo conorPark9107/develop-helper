@@ -17,11 +17,11 @@
     <!-- supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!--<script type="text/javascript" src="/static/js/boardDetail.js"></script>
-    <script type="text/javascript" src="/static/js/util.js"></script>
-    <link rel="stylesheet" href="/static/css/index.css" />
-    <link rel="stylesheet" href="/static/css/loading.css" />
-    <link rel="stylesheet" href="/static/css/board.css" />-->
+   <!--<script type="text/javascript" src="/static/js/boardDetail.js"></script>
+   <script type="text/javascript" src="/static/js/util.js"></script>
+   <link rel="stylesheet" href="/static/css/index.css" />
+   <link rel="stylesheet" href="/static/css/loading.css" />
+   <link rel="stylesheet" href="/static/css/board.css" />-->
     <script type="text/javascript" src="/js/util.js"></script>
     <script type="text/javascript" src="/js/boardDetail.js"></script>
     <link rel="stylesheet" href="/css/loading.css"/>
@@ -38,11 +38,20 @@
 </div>
 
 
-<div class="board-header">
-    <h3 class="board-header-title">🌈 게시판</h3>
-    <hr/>
+<div class="board-header-detail">
+    <div class="header-left">
+        <a href="/board" class="btn-header">뒤로</a>
+    </div>
+    <div class="header-center">
+        <h3 class="board-header-title">🌈 게시판</h3>
+    </div>
+    <div class="header_right">
+        <a href="/" class="btn-header visibility">뒤로</a>
+    </div>
 </div>
+
 <div class="board-title-div">
+    <hr/>
     <p>📢 홍보, 도배, 현거래 금지</p>
     <p>📢 명예훼손, 혐오, 음란물 금지</p>
     <hr/>
@@ -52,7 +61,8 @@
     <h4 th:text="|${board.category} ${board.title}|"></h4>
     <div class="title">
         <div class="title-left">
-            <span th:text="${board.nickname}"></span> |
+            <span th:text="|${board.nickname}"></span>
+            <span> | </span>
             <span th:text="${#temporals.format(board.write_date, 'MM.dd HH:mm:ss')}"></span>
 
         </div>
@@ -67,6 +77,16 @@
     <div class="contents" th:utext="${board.contents}">
 
     </div>
+    
+    <div class="updown-area-01">
+        <p>추천</p>
+    </div>
+    <div class="updown-area">
+        <a class="up">🔺</a>
+        <span class="updown">[[${board.updown}]]</span>
+        <a class="down">🔻</a>
+    </div>
+
     <!-- 댓글 읽기 -->
     <div class="comment-read-area">
         <p style="color: RGB(28, 120, 153); font-weight: bold;">💬댓글 </p>
@@ -84,8 +104,9 @@
                             <span th:text="${#temporals.format(c.write_date, 'MM.dd HH:mm:ss')}">MM.dd HH:mm:ss</span>
                     </div>
                     <div class="comment-delete">
-                        <a href="#">❌</a>
-                        <input type="hidden" name="comment_group_c" th:value="${c.id}"/>
+                        <a class="deleteCommentBtn">❌</a>
+                        <input type="hidden" name="comment_id" th:value="${c.id}"/>
+                        <input type="hidden" name="comment_pw" th:value="${c.password}" />
                     </div>
                 </div>
 
@@ -103,8 +124,9 @@
                                 <span th:text="${#temporals.format(cc.write_date, 'MM.dd HH:mm:ss')}">MM.dd HH:mm:ss</span>
                             </div>
                             <div class="comment-delete">
-                                <a href="#">❌</a>
-                                <input type="hidden" name="comment_group_c" />
+                                <a class="deleteCommentBtn" >❌</a>
+                                <input type="hidden" name="comment_id" th:value="${cc.id}"/>
+                                <input type="hidden" name="comment_pw" th:value="${cc.password}" />
                             </div>
                         </div>
                     </th:block>
@@ -115,7 +137,7 @@
         </ul>
 
     </div>
-    <!-- 댓글 쓰기. -->
+    <!-- 댓글 쓰기 div-->
     <div class="comment-write-area">
         <div class="comment-writer">
             <input class="board-password block" type="text" name="nickname" placeholder="닉네임 | 생략시 IP"
@@ -127,8 +149,7 @@
             <a class="comment-submit">등록</a>
         </div>
     </div>
-
-    <!-- 대댓글 입력-->
+    <!-- 대댓글 입력 div-->
     <div style="display:none;">
         <div class="comment-comment-write-area" id="write-comment">
             <input type="hidden" name="board_id_c" th:value="${board.id}"/>
