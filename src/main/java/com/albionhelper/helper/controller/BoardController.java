@@ -61,6 +61,25 @@ public class BoardController {
         return "board/write";
     }
 
+   /* @GetMapping("/modify")
+    public String boardModify(@RequestParam("id") Long id, Model model) {
+        BoardResponseDTO board = boardService.findBoardById(id);
+        model.addAttribute("board", board);
+        return "board/write";
+    }*/
+
+    @PostMapping("/delete")
+    public String boardDelete(@RequestParam("id")Long id) {
+        boardService.deleteBoard(id);
+        return "redirect:/board";
+    }
+
+    @PostMapping(value = "/checkPassword")
+    @ResponseBody
+    public String checkPassword(@RequestParam("id")Long id, @RequestParam("password")String password){
+        return boardService.checkPassword(id, password);
+    }
+
     @PostMapping(value = "/register")
     public String register(final BoardRequestDTO dto) throws UnknownHostException {
         log.info("register board => {}", dto.toString());
@@ -103,6 +122,12 @@ public class BoardController {
     @ResponseBody
     public int getupdown(@RequestParam("id")Long id, @RequestParam("status")String status){
         return boardService.modifyUpdownCount(id, status);
+    }
+
+    @PostMapping(value="/deleteComment")
+    @ResponseBody
+    public String deleteComment(@RequestParam("id")Long id){
+        return boardService.deleteComment(id);
     }
 
 }

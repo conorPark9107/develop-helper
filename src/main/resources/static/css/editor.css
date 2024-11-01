@@ -162,13 +162,13 @@ div.jconfirm.jconfirm-supervan.jconfirm-open>div.jconfirm-bg {
 .jconfirm.jconfirm-supervan .jconfirm-box div.jconfirm-title-c {
     font-size:1.5em;
 }
-div > input[type=password]{
+div > input[name=inputPassword]{
     padding: 7px 14px;
     background-color: #242020;
     border: 1px solid #eee;
     color: #eee;
     font-size:1em;
 }
-div > input[type=password]:hover, div > input[type=password]:focus{
+div > input[name=inputPassword]:hover, div > input[name=inputPassword]:focus{
     border: 1px solid RGB(28, 120, 153);
 }

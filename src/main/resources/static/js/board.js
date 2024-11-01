@@ -36,8 +36,6 @@ $(document).ready(function () {
         let nickName = $('#nickName').val();
 
 
-        
-
         if (title.trim() == '') {
             $("#title").val('');
             showMsgForTitle();
@@ -148,7 +146,12 @@ async function downloadFile(fileName) {
     return await client.storage.from(PUBLIC_STORAGE_BUCKET).getPublicUrl(fileName, {})
 }
 
-
+/* 카테고리 클릭 */
+/* TODO: 요기 클릭했을때 서버로부터 해당 카테고리의  행을 출력해줘야함.*/
+function clickedCategory(li){
+    $('.category').removeClass('clicked');
+    $(li).addClass('clicked');
+}
 
 function base64toFile(base_data, filename) {
 

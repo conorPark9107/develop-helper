@@ -63,28 +63,23 @@
 <div class="centered">
     <p style="display:inline-block;">카테고리 선택 👉🏻</p>
     <ul class="board-category-ul">
-        <li class="category clicked" onclick="clicked_Category(this)" value="1">일반</li>
-        <li class="category" onclick="clicked_Category(this)" value="2">공략</li>
-        <li class="category" onclick="clicked_Category(this)" value="3">친선</li>
-        <li class="category" onclick="clicked_Category(this)" value="4">홈페이지피드백</li>
-
+        <li class="category clicked" onclick="clicked_Category(this)" value="일반">일반</li>
+        <li class="category" onclick="clicked_Category(this)" value="공략">공략</li>
+        <li class="category" onclick="clicked_Category(this)" value="친선">친선</li>
     </ul>
     <div>
         <input class="board-nickname-input" id="nickName" type="text" name="nickName" placeholder="닉네임 | 생략시 IP" maxlength="16" />
-        <input class="board-title-input" id="title" type="text" name="title" placeholder="제목"/>
+        <input class="board-title-input" id="title" type="text" name="title" placeholder="제목" />
     </div>
     <p class="title-warning-message">제목을 입력해주세요.</p>
 
     <div class="editor-div">
         <!-- Editor -->
-        <div id="editor">
-
-
+        <div id="editor" >
         </div>
         <input type="hidden" id="hidden_input" name="content">
     </div>
 </div>
-
 <div class="board-submit-div">
     <span class="password-warning-message">비밀번호를 입력해주세요...</span>
     <input class="board-password" id="password" type="password" name="password"

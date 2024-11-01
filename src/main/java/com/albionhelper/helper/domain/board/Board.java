@@ -33,7 +33,7 @@ public class Board {
     private String password;
 
     @Column(name = "category")
-    private int category;
+    private String category;
 
     @Column(name = "contents")
     private String contents;

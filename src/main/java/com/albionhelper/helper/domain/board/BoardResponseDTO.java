@@ -15,7 +15,7 @@ public class BoardResponseDTO {
     private Long id;
     private String nickname;
     private String title;
-    private int category;
+    private String category;
     private String contents;
     private LocalDateTime write_date;
     private int view_count;

@@ -2,6 +2,10 @@ h3 {
     margin-bottom: 1px;
 }
 
+li.category.clicked{
+    color: RGB(28, 120, 153);
+    font-size: 1em;
+}
 .header {
     padding: 10px;
     font-size: 20px;
@@ -27,7 +31,7 @@ h3 {
 }
 
 .board-header {
-    font-size: 1.5em;
+    font-size: 1em;
     padding: 0px;
     text-align: center;
     max-width: 50%;
@@ -36,7 +40,7 @@ h3 {
 .board-header-detail {
     display:flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     font-size: 1.5em;
     padding: 0px;
     text-align: center;
@@ -68,6 +72,7 @@ h3 {
 }
 
 .board-header-left-subDiv {
+    list-style: none;
     padding-left: 1%;
     width: 50%;
     text-align: left;
@@ -88,13 +93,28 @@ div.board-header-left-subDiv>span {
 .board-title-div {
     text-align: left;
     max-width: 50%;
-    margin: 1vw auto;
+    margin: 1% auto;
 }
 
 .board-submit-div {
     text-align: right;
     max-width: 50%;
     margin: 0 auto;
+}
+.btn-header-right{
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 2px;
+    text-shadow: none;
+    border: 2px solid #eee;
+    color: white;
+    padding: 8px 16px;
+    min-width: 60px;
+}
+.btn-header-right:hover {
+    background-color: #bdc3c7;
+    color: #000;
 }
 .btn-header {
     font-weight: bold;
@@ -273,6 +293,7 @@ table .col7 {
 }
 
 .category {
+    display: inline;
     cursor: pointer;
     color: RGBA(238, 238, 238, 0.8);
     font-weight: bold;
@@ -415,7 +436,7 @@ h4{
     opacity: 0.6;
 }
 .contents{
-    min-height: 30vw;
+    min-height: 20vw;
     font-size: 0.8em;
     margin-top: 1%;
     margin-bottom: 1%;
@@ -560,7 +581,6 @@ h4{
     align-items: center;
     color: RGBA(238, 238, 238, 0.8);
     border-top: 1px solid RGBA(238, 238, 238, 0.1);
-    border-bottom: 1px solid RGBA(238, 238, 238, 0.1);
     background-color: RGBA(36,32,63, 0.3);
 }
 .comment-comment-write-area{

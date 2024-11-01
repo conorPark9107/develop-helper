@@ -107,4 +107,22 @@ public class BoardService {
         boardRepository.save(b);
         return b.getUpdown();
     }
+
+    public String deleteComment(Long id) {
+        Comment c = commentRepository.findById(id).get();
+        c.setComment("삭제된 댓글입니다.");
+        return commentRepository.save(c).getComment();
+    }
+
+    public void deleteBoard(Long id) {
+        boardRepository.deleteById(id);
+    }
+
+    public String checkPassword(Long id, String password) {
+        Optional<Board> b = boardRepository.findByIdAndPassword(id, password);
+        if(b.isEmpty()){
+            return "F";
+        }
+        return "T";
+    }
 }

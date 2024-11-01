@@ -36,14 +36,14 @@
     <p class="board-header-sub">🎈홈페이지 피드백을 해주시든 빌드 이야기를 하시든 자유롭게 아무글을 작성해도 좋습니다🎈</p>
 
     <div class="board-header-flex-subDiv">
-        <div class="board-header-left-subDiv">
+        <ul class="board-header-left-subDiv">
             <span>카테고리</span>
-            <a href="#" class="category">전체</a>
-            <a href="#" class="category">일반</a>
-            <a href="#" class="category">공략</a>
-            <a href="#" class="category">친선</a>
-            <a href="#" class="category">홈페이지피드백</a>
-        </div>
+            <!-- 카테고리를 클릭했을때 해당하는 것을 보여줘야해 -->
+            <li class="category clicked" onclick="clickedCategory(this)" value="전체">전체</li>
+            <li class="category" onclick="clickedCategory(this)" value="일반">일반</li>
+            <li class="category" onclick="clickedCategory(this)" value="공략">공략</li>
+            <li class="category" onclick="clickedCategory(this)" value="친선">친선</li>
+        </ul>
         <div class="board-header-right-subDiv">
             <div class="dropdown">
                 <button class="showRows-button">게시글 수 🔻</button>

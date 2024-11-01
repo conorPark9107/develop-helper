@@ -18,7 +18,7 @@ public class BoardRequestDTO {
     private String title;
     private String nickname;
     @NotNull
-    private int category;
+    private String category;
     private String contents;
     @NotNull
     private String password;

@@ -30,7 +30,7 @@ class BoardRepositoryTest {
             BoardRequestDTO dto = new BoardRequestDTO();
             dto.setNickname("toy" + i);
             dto.setTitle("어디가 가장 잘할까?" + i);
-            dto.setCategory(1);
+            dto.setCategory("일반");
             dto.setPassword("1234" + i);
             dto.setContents("<p>그르게 말이다~~</p>" + i);
             boardRepository.save(dto.toEntity());

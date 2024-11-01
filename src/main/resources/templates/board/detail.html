@@ -46,7 +46,8 @@
         <h3 class="board-header-title">🌈 게시판</h3>
     </div>
     <div class="header_right">
-        <a href="/" class="btn-header visibility">뒤로</a>
+<!--        <a id="modifyBtn" class="btn-header-right">수정</a>-->
+        <a id="deleteBtn" class="btn-header-right">삭제</a>
     </div>
 </div>
 
@@ -58,7 +59,7 @@
 </div>
 
 <div class="centered">
-    <h4 th:text="|${board.category} ${board.title}|"></h4>
+    <h4 th:text="|[${board.category}] ${board.title}|"></h4>
     <div class="title">
         <div class="title-left">
             <span th:text="|${board.nickname}"></span>
@@ -92,8 +93,8 @@
         <p style="color: RGB(28, 120, 153); font-weight: bold;">💬댓글 </p>
         <ul class="comment-list" >
             <!-- 댓글 -->
-            <li th:each="c : ${comments}" th:attrappend="id=${c.id}">
-                <div th:if="${c.comment_group == null}" class="comment">
+            <li th:if="${c.comment_group == null}" th:each="c : ${comments}" th:attrappend="id=${c.id}">
+                <div class="comment">
                     <div class="left">
                         <span th:text="${c.nickname}">닉네임</span>
                     </div>
@@ -166,7 +167,16 @@
         </div>
     </div>
 
-    <!-- 전송폼. -->
+    <!-- 삭제 -->
+    <form action="/board/delete" method="POST" id="deleteForm">
+        <input type="hidden" name="id" th:value="${board.id}"/>
+    </form>
+    <!-- 수정 -->
+    <form action="/board/modify" method="GET" id="modifyForm">
+        <input type="hidden" name="id" th:value="${board.id}"/>
+    </form>
+
+    <!-- 댓글 등록 전송폼. -->
     <form action="/board/registerComment" method="POST" class="form">
         <input type="hidden" id="h_board_id" name="board_id" th:value="${board.id}"/>
         <input type="hidden" id="h_nickname" name="nickname" value=""/>
