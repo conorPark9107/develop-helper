@@ -5,6 +5,10 @@ import com.albionhelper.helper.domain.board.BoardRequestDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -36,4 +40,19 @@ class BoardRepositoryTest {
             boardRepository.save(dto.toEntity());
         }
     }
+
+    @Test
+    public void 게시물조회_카테고리(){
+        String category = "0";
+        Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "id");
+
+        Page<Board> list = boardRepository.findAllByCategory(pageable, category);
+        for(Board b : list){
+            System.out.println(b.toString());
+        }
+
+    }
+
+
+
 }

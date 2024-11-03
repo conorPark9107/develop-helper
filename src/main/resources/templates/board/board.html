@@ -39,10 +39,10 @@
         <ul class="board-header-left-subDiv">
             <span>카테고리</span>
             <!-- 카테고리를 클릭했을때 해당하는 것을 보여줘야해 -->
-            <li class="category clicked" onclick="clickedCategory(this)" value="전체">전체</li>
-            <li class="category" onclick="clickedCategory(this)" value="일반">일반</li>
-            <li class="category" onclick="clickedCategory(this)" value="공략">공략</li>
-            <li class="category" onclick="clickedCategory(this)" value="친선">친선</li>
+            <li th:classappend="${#strings.equals(category, '전체')}? clicked" class="category" onclick="clickedCategory(this)" value="전체">전체</li>
+            <li th:classappend="${#strings.equals(category, '일반')}? clicked" class="category" onclick="clickedCategory(this)" value="일반">일반</li>
+            <li th:classappend="${#strings.equals(category, '공략')}? clicked" class="category" onclick="clickedCategory(this)" value="공략">공략</li>
+            <li th:classappend="${#strings.equals(category, '친선')}? clicked" class="category" onclick="clickedCategory(this)" value="친선">친선</li>
         </ul>
         <div class="board-header-right-subDiv">
             <div class="dropdown">

@@ -31,9 +31,10 @@ public class BoardController {
 
     @GetMapping("")
     public String getBoard(@PageableDefault(page = 0, size = 10, sort="id", direction = Sort.Direction.DESC) Pageable pageable,
+                           @RequestParam(value = "category", defaultValue = "전체", required = false) String category,
                            Model model){
 
-        Page<BoardResponseDTO> boardList = boardService.findAllByIdAsc(pageable);
+        Page<BoardResponseDTO> boardList = boardService.findAllById(pageable, category);
 
         log.info("pageNumber() : {}", pageable.getPageNumber() + 1);
         log.info("getTotalPages() : {}", boardList.getTotalPages());
@@ -45,6 +46,7 @@ public class BoardController {
         int startPage = (pickPage / range) * range; // 시작점.
         int endPage = Math.min((startPage + range), lastPage); // 종료점.
 
+        model.addAttribute("category", category);
         model.addAttribute("firstPage", firstPage);
         model.addAttribute("lastPage", lastPage);
         model.addAttribute("pickPage", pickPage);

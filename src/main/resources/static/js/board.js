@@ -32,9 +32,8 @@ $(document).ready(function () {
         let images = $('img'); // 이미지들.
         let title = $('#title').val();
         let password = $('#password').val();
-        let category = $('.clicked').val();
+        let category = $('.clicked').attr('value');
         let nickName = $('#nickName').val();
-
 
         if (title.trim() == '') {
             $("#title").val('');
@@ -67,7 +66,7 @@ $(document).ready(function () {
             for (let i = 0; i < dataArr.length; i++) {
                 images[i].src = dataArr[i].data.publicUrl;
             }
-            let category = $('.clicked').val();
+            let category = $('.clicked').attr('value');
             let nickName = $('#nickName').val();
             let title = $('#title').val();
             let password = $('#password').val();
@@ -147,10 +146,11 @@ async function downloadFile(fileName) {
 }
 
 /* 카테고리 클릭 */
-/* TODO: 요기 클릭했을때 서버로부터 해당 카테고리의  행을 출력해줘야함.*/
 function clickedCategory(li){
     $('.category').removeClass('clicked');
     $(li).addClass('clicked');
+    let clickedNow = $('.clicked').attr('value')
+    location.href = `/board?category=${clickedNow}`;
 }
 
 function base64toFile(base_data, filename) {

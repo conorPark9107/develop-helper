@@ -44,9 +44,16 @@ public class BoardService {
         boardRepository.save(board);
     }
 
-    public Page<BoardResponseDTO> findAllByIdAsc(Pageable pageable) {
-        PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
-        Page<Board> list = boardRepository.findAll(pageable);
+    public Page<BoardResponseDTO> findAllById(Pageable pageable, String category) {
+        pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
+
+        Page<Board> list;
+        if(category.equals("전체")){
+            list = boardRepository.findAll(pageable);
+        }else{
+            list = boardRepository.findAllByCategory(pageable, category);
+        }
+
         Page<BoardResponseDTO> dtoList = list.map(
           board -> BoardResponseDTO.builder()
                   .id(board.getId())
