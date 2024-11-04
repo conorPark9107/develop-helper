@@ -55,6 +55,7 @@ h3 {
     text-align: center;
     margin: 0 auto;
     width: 100%;
+    gap: 15px;
 }
 
 .container-title {
@@ -87,6 +88,11 @@ h3 {
     row-gap: 15px;
     padding: 0 12px;
 }
+.container-contents-last{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+}
 
 .container-contents-button {
     display: inline-block;
@@ -95,6 +101,7 @@ h3 {
     color: #eee;
     text-decoration: none;
     padding: 15px 50px;
+    align-content: center;
 }
 
 .container-contents-button:hover {

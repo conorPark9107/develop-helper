@@ -460,8 +460,7 @@ h4{
 }
 .comment-area{
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    justify-content: space-between;
     gap: 1%;
     width: 79%;
 }
@@ -490,6 +489,7 @@ h4{
     color: white;
     padding: 10px 30px;
     min-width: 100px;
+    align-content: center;
 }
 .comment-submit:hover{
     background-color: #bdc3c7;
@@ -508,6 +508,7 @@ h4{
     color: white;
     padding: 10px 30px;
     min-width: 100px;
+    align-content: center;
 }
 .comment-submit_c:hover{
     background-color: #bdc3c7;

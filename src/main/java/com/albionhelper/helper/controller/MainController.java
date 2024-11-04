@@ -1,5 +1,6 @@
 package com.albionhelper.helper.controller;
 
+import com.albionhelper.helper.service.BoardService;
 import com.albionhelper.helper.service.GoldService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
@@ -8,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.reactive.function.client.WebClient;
 
 
@@ -36,6 +40,9 @@ public class MainController {
     @Autowired
     GoldService goldService;
 
+    @Autowired
+    BoardService boardService;
+
     @GetMapping("/")
     public String index(Model model){
         return "home";
@@ -48,4 +55,17 @@ public class MainController {
         model.addAttribute("europe", goldService.getGoldPriciesOnEurope());
         return "/gold/gold";
     }
+
+    @GetMapping("/toinquire")
+    public String showToInquirePage(Model model){
+        model.addAttribute("list", boardService.findAllInquire());
+        return "toinquire";
+    }
+
+    @PostMapping("/inquire/register")
+    @ResponseBody
+    public String registerInquire(@RequestParam("text")String text){
+        return boardService.registerInquire(text);
+    }
+
 }

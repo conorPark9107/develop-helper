@@ -1,3 +1,9 @@
+$(document).ready(function() {
+    $('.container-contents-button').on('click', function(){
+        turnLoading();
+    });
+});
+
 $(window).bind("pagehide", function (event) {
 	if (event.originalEvent.persisted) {
 	    var load = $('#loading').css('display');

@@ -102,21 +102,22 @@ $(document).ready(function() {
     /* 추천 버튼 클릭 이벤트 */
     $('.updown-area a').on('click', function(){
         let text = $(this).text();
+        let boardId = $('#h_board_id').attr('value');
         let status = '';
         if(text == '🔺'){
             status = 'p';
-            if(getCookie("up") == "done"){
+            if(getCookie(`${boardId}-up`) == "done"){
                 showAlert("추천은 24시간에 한번씩 누를 수 있습니다.");
                 return;
             }
-            setCookie( "up", "done" , 1 ); // 저장될 쿠키명 , 쿠키 value값 , 기간
+            setCookie(`${boardId}-up`, "done" , 1 ); // 저장될 쿠키명 , 쿠키 value값 , 기간
         }else if(text == '🔻'){
             status = 'm';
-            if(getCookie("down") == "done"){
+            if(getCookie(`${boardId}-down`) == "done"){
                 showAlert("추천은 24시간에 한번씩 누를 수 있습니다.");
                 return;
             }
-            setCookie( "down", "done" , 1 );
+            setCookie( `${boardId}-down`, "done" , 1 );
         }
         let id = $('#h_board_id').val();
 
@@ -174,7 +175,7 @@ $(document).ready(function() {
               },
               '돌아가기': function () {}
           }
-      });
+        });
     });
 
     /* 게시판 수정 버튼 클릭 이벤트 */

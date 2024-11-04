@@ -1,0 +1,78 @@
+.container-inquire {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    gap: 15px;
+    font-weight: bold;
+}
+.flex-contatiner{
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+.input-text{
+    width: 85%;
+    color: #eee;
+    background-color: rgb(36, 32, 32);
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+    padding: 8px;
+    resize: none;
+}
+.input-text:hover, .input-text:focus {
+    outline: none;
+    border: 2px solid RGB(28, 120, 153);
+}
+.btn {
+    font-size: 16px;
+    border-radius: 2px;
+    background: #303f53;
+    text-shadow: none;
+    border: 0;
+    color: white;
+    padding: 10px 30px;
+    min-width: 10%;
+    text-align: center;
+    align-content: center;
+}
+.btn:hover {
+    background-color: #bdc3c7;
+    color: #000;
+}
+.inquireList{
+    margin-top: 15px;
+    width:100%;
+    
+    list-style: none;
+}
+.inquireList li{
+    font-size: 0.8em;
+    margin: 7.5px 0;
+    padding: 10px 20px;
+    border: 1px solid RGBA(238, 238, 238, 0.4);
+    border-radius: 3px;
+}
+.admin-answer{
+    display: none;
+    color: dodgerblue;
+    font-size: 0.8em;
+    margin: 7.5px 0;
+    padding: 10px 20px;
+    background-color: RGBA(36,32,63, 0.7);
+    border: 1px solid RGBA(238, 238, 238, 0.4);
+    border-radius: 3px;
+}
+.right{
+    cursor: pointer;
+    float: right;
+}
+.right:hover{
+    text-decoration: underline;
+}
+.full-width{
+    width:40%;
+}

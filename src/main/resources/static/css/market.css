@@ -132,4 +132,5 @@ input[type="text"]:focus{
 .itemArea{
     display: none;
     width: 100%;
+    border: 1px solid rgba(238, 238, 238, 0.1);
 }

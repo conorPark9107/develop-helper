@@ -1,15 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <!--    <link rel="stylesheet" href="/static/css/index.css" />-->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function() {
-            $('.container-contents-button').on('click', function(){
-                turnLoading();
-            });
-        });
-    </script>
+
     <script type="text/javascript" src="/js/util.js"></script>
     <link rel="stylesheet" href="/css/loading.css" />
     <link rel="stylesheet" href="/css/index.css" />
@@ -28,14 +22,25 @@
         </div>
         <div class="container-contents">
             <a class="container-contents-button" href="/market">🔍 시장 검색</a>
-            <a class="container-contents-button" href="/killboard">🔍 킬로그 & 데스로그</a>
             <a class="container-contents-button" href="/gold">💰 서버별 골드 시세</a>
-            <a class="container-contents-button" href="/board">🌈 게시판</a>
+            <a class="container-contents-button" href="/killboard">🔍 킬로그 & 데스로그</a>
+            <a class="container-contents-button" href="/calculator/refining">🔨 제련 이익 계산기</a>
+            <a class="container-contents-button" href="/calculator/cooking">🍖 요리 이익 계산기</a>
+            <a class="container-contents-button" href="/calculator/potion">💉 포션 이익 계산기</a>
 <!--            <a class="container-contents-button" href="/weapon">🏹 무기 정보</a>-->
 <!--            <a class="container-contents-button" href="/armors">🥋 방어구 정보</a>-->
 <!--            <a class="container-contents-button" href="/tools">🛠 도구 정보</a>-->
 <!--            <a class="container-contents-button" href="/market">🔍 친선 검색</a>-->
 <!--            <a class="container-contents-button" href="/market">🔍 친선 검색</a>-->
+        </div>
+        <div class="container-contents-last">
+            <a class="container-contents-button" href="/board">🌈 유저 게시판</a>
+            <a class="container-contents-button" href="/toinquire">💀 관리자 문의 & 죽음의 피드백</a>
+        </div>
+        <div class="main">
+            <div class="centered">
+
+            </div>
         </div>
     </div>
 
