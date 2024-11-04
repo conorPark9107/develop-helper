@@ -4,6 +4,7 @@ package com.albionhelper.helper.service;
 import com.albionhelper.helper.domain.board.*;
 import com.albionhelper.helper.repository.BoardRepository;
 import com.albionhelper.helper.repository.CommentRepository;
+import com.albionhelper.helper.repository.InquireRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class BoardService {
 
     @Autowired
     CommentRepository commentRepository;
+
+    @Autowired
+    InquireRepository inquireRepository;
 
 
 
@@ -131,5 +135,15 @@ public class BoardService {
             return "F";
         }
         return "T";
+    }
+
+    public String registerInquire(String text) {
+        Inquire inquire = new Inquire();
+        inquire.setContent(text);
+        return inquireRepository.save(inquire).toString();
+    }
+
+    public List<Inquire> findAllInquire() {
+        return inquireRepository.findAll();
     }
 }
