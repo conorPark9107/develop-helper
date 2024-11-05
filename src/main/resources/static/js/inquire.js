@@ -19,6 +19,11 @@ $(document).ready(function () {
             return;    
         }
 
+        if($.cookie('register-inquire') == "done"){
+            showAlert('5분 후에 다시 작성하실 수 있습니다.');
+            return;
+        }
+
         $.ajax({
             type : 'post',
             url : '/inquire/register',
@@ -31,6 +36,10 @@ $(document).ready(function () {
                 turnLoading();
             },
             success : function(result) {
+
+                var date = new Date();
+                date.setTime(date.getTime() + 5*60*1000); // 1분
+                $.cookie('register-inquire', 'done', { expires: date, path : '/' });
 
                 let li = $('#exam').clone(true);
                 li.children('.text').text(result.content);

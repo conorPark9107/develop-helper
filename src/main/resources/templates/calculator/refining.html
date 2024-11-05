@@ -4,13 +4,22 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+    <script type="text/javascript" src="/static/js/calculator.js"></script>
+    <link rel="stylesheet" href="/static/css/calculator.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/detail.css" />
+    <link rel="stylesheet" href="/static/css/loading.css" />
+    
 
+    <!-- 
+    <script type="text/javascript" src="/js/calculator.js"></script>
+    <link rel="stylesheet" href="/css/calculator.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
-
     <link rel="stylesheet" href="/css/loading.css" />
+     -->
     <meta charset="UTF-8">
-    <title>⚔ 알비온 헬퍼 - 시장 검색 ⚔</title>
+    <title>⚔ 알비온 헬퍼 - 제련 ⚔</title>
 </head>
 <body>
     <div class="header">
@@ -18,8 +27,126 @@
     </div>
 
     <div class="main">
+        <div class="menu">
+            <div class="menu-item">
+                <p>🔻서버 선택🔻</p>
+                <input type="radio" id="server01" name="server" value="east" checked/>
+                <label for="server01">아시아</label>
+                <input type="radio" id="server02" name="server" value="west" />
+                <label for="server02">아메리카</label>
+                <input type="radio" id="server03" name="server" value="europe" />
+                <label for="server03">유럽</label>
+            </div>
 
+            <div class="menu-item">
+                <p>🔻제련 자원 선택🔻</p>
+                <ul>
+                    <li class="li clicked" onclick="clicked(this)">광석 / 주괴 <img src="/static/image/T8_METALBAR.png"/></li>
+                    <li class="li" onclick="clicked(this)">목재 / 판자 <img src="/static/image/T8_PLANKS.png"/></li>
+                    <li class="li" onclick="clicked(this)">암석 / 석괴<img src="/static/image/T8_STONEBLOCK.png"/></li>
+                    <li class="li" onclick="clicked(this)">가죽 / 피혁<img src="/static/image/T8_LEATHER.png"/></li>
+                    <li class="li" onclick="clicked(this)">섬유 / 직물<img src="/static/image/T8_CLOTH.png"/></li>
+                </ul>
+            </div>
+            <div class="menu-item menu-item-tier">
+                <p>🔻운명보드 레벨 설정🔻</p>
+                <input type="number" id="tier04" name="tier" placeholder="4티어 레벨 0 ~ 100" min="0" max="100" />
+                <input type="number" id="tier05" name="tier" placeholder="5티어 레벨 0 ~ 100" min="0" max="100" />
+                <input type="number" id="tier06" name="tier" placeholder="6티어 레벨 0 ~ 100" min="0" max="100" />
+                <input type="number" id="tier07" name="tier" placeholder="7티어 레벨 0 ~ 100" min="0" max="100" />
+                <input type="number" id="tier08" name="tier" placeholder="8티어 레벨 0 ~ 100" min="0" max="100" />
+            </div>
+        </div>
 
+        <div class="menu">
+            <div class="menu-item">
+                <div>
+                    <p>🔻프리미엄 보유 여부🔻</p>
+                    <input type="checkbox" id="premium" name="premium"/>
+                    <label for="premium"></label>
+                    <label for="premium">프리미엄</label>
+                    <!-- <select>
+                        <option disabled selected value="">시장세금</option>
+                        <option>4%</option>
+                        <option>6.5%</option>
+                        <option>8%</option>
+                        <option>10.5%</option>
+                    </select> -->
+                </div>
+            </div>
+            <div class="menu-item menu-item-tier">
+                <p>🔻건물 소비 영양 100당 사용료🔻</p>
+                <input type="number" id="tax" name="tax" placeholder="소비 영양 100당 사용료" min="0" max="9999" />
+            </div>
+
+            <div class="menu-item ">
+                <p>🔻구매 도시 ➡ 판매 도시🔻</p>
+                <select id="start">
+                    <option disabled selected value="">출발지</option>
+                    <option value="martlock">마트록</option>
+                    <option value="thetford">뎃포드</option>
+                    <option value="fortsterling">포트스털링</option>
+                    <option value="lymhurst">림허스트</option>
+                    <option value="bridgewatch">브릿지워치</option>
+                    <option value="caerleon">칼레온</option>
+                    <option value="brecilien">브리실리안</option>
+                </select>
+
+                <select id="end">
+                    <option disabled selected value="">도착지</option>
+                    <option value="martlock">마트록</option>
+                    <option value="thetford">뎃포드</option>
+                    <option value="fortsterling">포트스털링</option>
+                    <option value="lymhurst">림허스트</option>
+                    <option value="bridgewatch">브릿지워치</option>
+                    <option value="caerleon">칼레온</option>
+                    <option value="brecilien">브리실리안</option>
+                </select>
+            </div>
+
+            <div class="menu-item">
+                <a class="btn">가격 받아오기</a>
+            </div>
+
+        </div>
+        
+        
+        
+        
+        <div class="table-div">
+            <table>
+                <thead>
+                    <tr>
+                        <th>직물</th>
+                        <th>판매중인가격</th>
+                        <th>섬유</th>
+                        <th>판매중인가격</th>
+                        <th>만들기위한재료</th>
+                        <th>집중 비용</th>
+                        <th>이익 / 집중</th>
+                        <th>비용</th>
+                        <th>이익</th>
+                    </th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="/static/image/T8_METALBAR.png"/></td>
+                        <td>2</td>
+                        <td><img src="/static/image/T8_METALBAR.png"/></td>
+                        <td>4</td>
+                        <td>
+                            <img src="/static/image/T8_METALBAR.png"/> * 2
+                            <img src="/static/image/T8_METALBAR.png"/> * 1
+                        
+                        </td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
 
     </div> <!-- main -->
@@ -38,9 +165,5 @@
     </div>
 
 
-    <div class="footer">
-        <span>All <a href="https://albiononline.com/news" target="_blank" style="text-decoration: underline;">Albion Online</a> related materials are property of <a href="https://albiononline.com/imprint" target="_blank" style="text-decoration: underline;">Sandbox Interactive GmbH</a></span>
-        <span>Prices are provided by the <a href="https://www.albion-online-data.com/" target="_blank" style="text-decoration: underline;">Albion Online Data Project</a></span>
-    </div>
 </body>
 </html>
