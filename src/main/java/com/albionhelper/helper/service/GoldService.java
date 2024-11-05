@@ -47,7 +47,7 @@ public class GoldService {
     // https://west.albion-online-data.com/api/v2/stats/gold?date=2-5-2020&end_date=2-12-2020
     public List<Gold> getGoldPriciesOnEast() throws JsonProcessingException {
         LocalDateTime endDate = LocalDateTime.now();
-        LocalDateTime startDate = endDate.minusDays(7);
+        LocalDateTime startDate = endDate.minusDays(30);
         DateTimeFormatter formatters = DateTimeFormatter.ofPattern("MM-dd-YYYY");
 
         String url = EAST + "date=" + formatters.format(startDate) + "&end_date=" + formatters.format(endDate);
@@ -58,7 +58,7 @@ public class GoldService {
 
     public List<Gold> getGoldPriciesOnWest() throws JsonProcessingException {
         LocalDateTime endDate = LocalDateTime.now();
-        LocalDateTime startDate = endDate.minusDays(7);
+        LocalDateTime startDate = endDate.minusDays(30);
         DateTimeFormatter formatters = DateTimeFormatter.ofPattern("MM-dd-YYYY");
 
         String url = WEST + "date=" + formatters.format(startDate) + "&end_date=" + formatters.format(endDate);
@@ -69,7 +69,7 @@ public class GoldService {
 
     public List<Gold> getGoldPriciesOnEurope() throws JsonProcessingException {
         LocalDateTime endDate = LocalDateTime.now();
-        LocalDateTime startDate = endDate.minusDays(7);
+        LocalDateTime startDate = endDate.minusDays(30);
         DateTimeFormatter formatters = DateTimeFormatter.ofPattern("MM-dd-YYYY");
 
         String url = EUROPE + "date=" + formatters.format(startDate) + "&end_date=" + formatters.format(endDate);
