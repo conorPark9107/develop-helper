@@ -21,6 +21,8 @@ body {
     background-color: #242020;
     color: #eee;
     font-family: 'Galmuri14';
+    overflow-x: hidden;
+    scrollbar-width: thin;
 }
 
 ul,

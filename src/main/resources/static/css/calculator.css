@@ -1,8 +1,23 @@
 fieldset{
     text-align: center;
 }
+.main{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    padding: 0 15px 10px;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+}
+.all-menu{
+    width: 35%;
+}
 .menu{
-    min-width: 15%;
+    vertical-align: top;
+    position:sticky;
+    top: 10%;
+    display:inline-block;
+    min-width: 49%;
 }
 .menu-item{
     margin-bottom: 5%;
@@ -109,7 +124,7 @@ input[id=premium] + label + label {
 select{
     font-size: 1em;
     font-weight: bold;
-    padding: 10px 30px;
+    padding: 10px 9px;
     background-color: #242020;
     border: 1px solid rgba(238, 238, 238, 0.2);
     border-radius: 3px;
@@ -138,12 +153,97 @@ table{
     table-layout: auto;
 }
 th{
+    position: sticky;
+    top: 0;
     border: 1px solid RGBA(238, 238, 238, 0.2);
 }
+td{
+    padding: 0 10px;
+    border-left: 1px dashed RGBA(238, 238, 238, 0.1);
+    border-right: 1px dashed RGBA(238, 238, 238, 0.1);
+}
+td:nth-child(5){
+    text-align: left;
+}
+td:nth-child(5) .material{
+    text-align: center;
+}
 td img{
-    width: 2vw;
-    height: 2vw;
+    width: 2.5vw;
+    height: 2.5vw;
 }
 .table-div{
+    display:none;
     width:65%;
+}
+.material{
+    display:inline-block;
+}
+.material img{
+    display: block;
+    margin-bottom: -5px;
+}
+.material span{
+    font-size: 0.6em;
+    font-weight: bold;
+}
+
+table .col1 {
+    width: 5%;
+}
+
+table .col2 {
+    width: 15%;
+}
+
+table .col3 {
+    width: 5%;
+}
+
+table .col4 {
+    width: 15%;
+}
+
+table .col5 {
+    width: 15%;
+}
+
+table .col6 {
+    width: 10%;
+}
+
+table .col7 {
+    width: 10%;
+}
+
+table .col8 {
+    width: 10%;
+}
+
+table .col9 {
+    width: 10%;
+}
+body::-webkit-scrollbar {
+    display:block;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #242020;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:  #555;
+}
+@media screen and (max-width: 1525px){ 
+    .menu{
+        display: flex;
+        flex-direction: column;
+        margin: 10% 0;
+    }
 }
