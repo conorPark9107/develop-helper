@@ -187,7 +187,7 @@ $(document).ready(function() {
              },
              success : function(result) {
 
-                 for(var i = 0; i < result.length; i++){
+                 for(var i = result.length - 1; i >= 0 ; i--){
                     var city = result[i].city;
                     var sellMin = result[i].sell_price_min;
                     var sellMax = result[i].sell_price_max;
@@ -211,10 +211,5 @@ $(document).ready(function() {
                  console.log(error);
              }
          });
-
-
     }
-
-
-
 });

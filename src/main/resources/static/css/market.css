@@ -74,49 +74,49 @@ img{
 }
 .martlock{
     border: 3px solid #627583;
-    background-color : #627583;
+    background-color : RGBA(98,117,131, 0.5);
     color:#D5A768;
     font-weight: 900;
 }
 .thetford{
     border: 3px solid #3A1F44;
-    background-color : #3A1F44;
+    background-color : RGBA(58,31,68, 0.5);
     color:#A15AAA;
     font-weight: 900;
 }
 .fortsterling{
     border: 3px solid #FFFFFF;
-    background-color : #FFFFFF;
-    color: #727798;
+    background-color : RGBA(255,255,255, 0.5);
+    color: #626888;
     font-weight: 900;
 }
 .lymhurst{
     border: 3px solid #555F1D;
-    background-color : #555F1D;
+    background-color : RGBA(85,95,29, 0.5);
     color: #AEAE57;
     font-weight: 900;
 }
 .bridgewatch{
     border: 3px solid #D9601F;
-    background-color : #D9601F;
+    background-color : RGBA(217,96,31, 0.5);
     color: #FFF378;
     font-weight: 900;
 }
 .caerleon{
     border: 3px solid #0C0C16;
-    background-color : #0C0C16;
+    background-color : RGBA(12,12,22, 0.5);
     color: #5E1710;
     font-weight: 900;
 }
 .brecilien{
     border: 3px solid #895AE2;
-    background-color : #895AE2;
-    color: #3F479C;
+    background-color : RGBA(137,90,226, 0.5);
+    color: #383F8A;
     font-weight: 900;
 }
 .blackmarket{
     border: 3px solid #0C0C16;
-    background-color : #0C0C16;
+    background-color : RGBA(12,12,22, 0.5);
     color: #3F479C;
     font-weight: 900;
 }
