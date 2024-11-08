@@ -100,4 +100,45 @@ public class MarketService{
         }
         return list;
     }
+
+    public List<List<ItemPrice>> getResourcePrice(String server, String city, String[] beforeArr, String[] afterArr) throws JsonProcessingException {
+        StringBuilder requestUrl = new StringBuilder(getServerUrl(server));
+
+        StringBuilder beforeURL = getResourceURL(requestUrl, beforeArr, city);
+        StringBuilder afterURL = getResourceURL(requestUrl, afterArr, city);
+
+        log.info("request Resource Price URL(before) : {}", beforeURL);
+        log.info("request Resource Price URL(afterfore) : {}", afterURL);
+
+        String beforeResponse = getResponse(beforeURL.toString());
+        String afterResponse = getResponse(afterURL.toString());
+
+        List<List<ItemPrice>> list = new ArrayList<>();
+        list.add(getResourceList(beforeResponse));
+        list.add(getResourceList(afterResponse));
+
+        return list;
+    }
+
+    private List<ItemPrice> getResourceList(String response) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode rootNode = objectMapper.readTree(response);
+        List<ItemPrice> list = new ArrayList<>();
+        for (JsonNode node : rootNode) {
+            ItemPrice itemPrice = objectMapper.treeToValue(node, ItemPrice.class);
+            list.add(itemPrice);
+        }
+        return list;
+    }
+
+    private StringBuilder getResourceURL(StringBuilder requestUrl, String[] array, String city) {
+        StringBuilder builder = new StringBuilder(requestUrl);
+        builder.append(array[0]);
+        for(int i = 1; i < array.length; i++){
+            builder.append(",").append(array[i]);
+        }
+        builder.append("?locations=").append(city);
+        builder.append("&qualities=1");
+        return builder;
+    }
 }
