@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script type="text/javascript" src="/static/js/calculator.js"></script>
-    <link rel="stylesheet" href="/static/css/calculator.css" />
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/detail.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
-    
+    <link rel="stylesheet" href="/static/css/calculator.css" />
+
 
     <!-- 
     <script type="text/javascript" src="/js/calculator.js"></script>
@@ -21,100 +23,1989 @@
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 - 제련 ⚔</title>
 </head>
+
 <body>
     <div class="header">
         <a class="header-logo" href="/">⚔ 알비온 헬퍼</a>
     </div>
 
     <div class="main">
-        <div class="menu">
-            <div class="menu-item">
-                <p>🔻서버 선택🔻</p>
-                <input type="radio" id="server01" name="server" value="east" checked/>
-                <label for="server01">아시아</label>
-                <input type="radio" id="server02" name="server" value="west" />
-                <label for="server02">아메리카</label>
-                <input type="radio" id="server03" name="server" value="europe" />
-                <label for="server03">유럽</label>
+        <div class="all-menu">
+            <div class="menu">
+                <div class="menu-item">
+                    <p>🔻서버 선택</p>
+                    <input type="radio" id="server01" name="server" value="east" checked />
+                    <label for="server01">아시아</label>
+                    <input type="radio" id="server02" name="server" value="west" />
+                    <label for="server02">아메리카</label>
+                    <input type="radio" id="server03" name="server" value="europe" />
+                    <label for="server03">유럽</label>
+                </div>
+
+                <div class="menu-item">
+                    <p>🔻제련 자원 선택</p>
+                    <ul>
+                        <li class="li" onclick="clicked(this)" value="metalbar_table">
+                            광석 / 주괴
+                            <img src="/static/image/T8_METALBAR.png" />
+                        </li>
+                        <li class="li" onclick="clicked(this)" value="planks_table">목재 / 판자 <img
+                                src="/static/image/T8_PLANKS.png" /></li>
+                        <!-- <li class="li" onclick="clicked(this)" value="stoneblock_table">암석 / 석괴<img
+                                src="/static/image/T8_STONEBLOCK.png" /></li> -->
+                        <li class="li" onclick="clicked(this)" value="leather_table">가죽 / 피혁<img
+                                src="/static/image/T8_LEATHER.png" /></li>
+                        <li class="li" onclick="clicked(this)" value="cloth_table">섬유 / 직물<img
+                                src="/static/image/T8_CLOTH.png" /></li>
+                    </ul>
+                </div>
+                <div class="menu-item menu-item-tier">
+                    <p>🔻운명보드 레벨 설정</p>
+                    <input type="number" id="tier04" name="tier" placeholder="4티어 레벨 0 ~ 100" min="0" max="100" />
+                    <input type="number" id="tier05" name="tier" placeholder="5티어 레벨 0 ~ 100" min="0" max="100" />
+                    <input type="number" id="tier06" name="tier" placeholder="6티어 레벨 0 ~ 100" min="0" max="100" />
+                    <input type="number" id="tier07" name="tier" placeholder="7티어 레벨 0 ~ 100" min="0" max="100" />
+                    <input type="number" id="tier08" name="tier" placeholder="8티어 레벨 0 ~ 100" min="0" max="100" />
+                </div>
             </div>
 
-            <div class="menu-item">
-                <p>🔻제련 자원 선택🔻</p>
-                <ul>
-                    <li class="li clicked" onclick="clicked(this)">광석 / 주괴 <img src="/static/image/T8_METALBAR.png"/></li>
-                    <li class="li" onclick="clicked(this)">목재 / 판자 <img src="/static/image/T8_PLANKS.png"/></li>
-                    <li class="li" onclick="clicked(this)">암석 / 석괴<img src="/static/image/T8_STONEBLOCK.png"/></li>
-                    <li class="li" onclick="clicked(this)">가죽 / 피혁<img src="/static/image/T8_LEATHER.png"/></li>
-                    <li class="li" onclick="clicked(this)">섬유 / 직물<img src="/static/image/T8_CLOTH.png"/></li>
-                </ul>
-            </div>
-            <div class="menu-item menu-item-tier">
-                <p>🔻운명보드 레벨 설정🔻</p>
-                <input type="number" id="tier04" name="tier" placeholder="4티어 레벨 0 ~ 100" min="0" max="100" />
-                <input type="number" id="tier05" name="tier" placeholder="5티어 레벨 0 ~ 100" min="0" max="100" />
-                <input type="number" id="tier06" name="tier" placeholder="6티어 레벨 0 ~ 100" min="0" max="100" />
-                <input type="number" id="tier07" name="tier" placeholder="7티어 레벨 0 ~ 100" min="0" max="100" />
-                <input type="number" id="tier08" name="tier" placeholder="8티어 레벨 0 ~ 100" min="0" max="100" />
-            </div>
-        </div>
+            <div class="menu">
+                <div class="menu-item menu-item-tier">
+                    <p>🔻건물 소비 영양 100당 사용료</p>
+                    <input type="number" id="taxPrice" name="taxPrice" placeholder="소비 영양 100당 사용료" min="0"
+                        max="9999" />
+                </div>
 
-        <div class="menu">
-            <div class="menu-item">
-                <div>
-                    <p>🔻프리미엄 보유 여부🔻</p>
-                    <input type="checkbox" id="premium" name="premium"/>
-                    <label for="premium"></label>
-                    <label for="premium">프리미엄</label>
-                    <!-- <select>
+                <div class="menu-item menu-item-tier">
+                    <p>🔻자원 반환 비율</p>
+                    <input type="number" id="returnRate" name="returnRate" placeholder=" '%' 제외하고 입력" min="0"
+                        max="100" />
+                </div>
+
+                <div class="menu-item ">
+                    <p>🔻구매 도시 ➡ 제련 도시</p>
+                    <select id="start">
+                        <option value="martlock">마트록</option>
+                        <option value="thetford">뎃포드</option>
+                        <option value="fortsterling">포트스털링</option>
+                        <option value="lymhurst">림허스트</option>
+                        <option value="bridgewatch">브릿지워치</option>
+                        <option value="caerleon">칼레온</option>
+                        <option value="brecilien">브리실리안</option>
+                    </select>
+
+                    <select id="end">
+                        <option value="martlock">마트록</option>
+                        <option value="thetford">뎃포드</option>
+                        <option value="fortsterling">포트스털링</option>
+                        <option value="lymhurst">림허스트</option>
+                        <option value="bridgewatch">브릿지워치</option>
+                        <option value="caerleon">칼레온</option>
+                        <option value="brecilien">브리실리안</option>
+                    </select>
+                </div>
+
+                <div class="menu-item">
+                    <div>
+                        <p>🔻구매 & 판매 요청서 세금</p>
+                        <!-- <input type="checkbox" id="premium" name="premium" />
+                        <label for="premium"></label>
+                        <label for="premium">프리미엄</label> -->
+                        <select>
                         <option disabled selected value="">시장세금</option>
                         <option>4%</option>
                         <option>6.5%</option>
                         <option>8%</option>
                         <option>10.5%</option>
-                    </select> -->
+                    </select>
+                    </div>
                 </div>
-            </div>
-            <div class="menu-item menu-item-tier">
-                <p>🔻건물 소비 영양 100당 사용료🔻</p>
-                <input type="number" id="tax" name="tax" placeholder="소비 영양 100당 사용료" min="0" max="9999" />
-            </div>
 
-            <div class="menu-item ">
-                <p>🔻구매 도시 ➡ 판매 도시🔻</p>
-                <select id="start">
-                    <option disabled selected value="">출발지</option>
-                    <option value="martlock">마트록</option>
-                    <option value="thetford">뎃포드</option>
-                    <option value="fortsterling">포트스털링</option>
-                    <option value="lymhurst">림허스트</option>
-                    <option value="bridgewatch">브릿지워치</option>
-                    <option value="caerleon">칼레온</option>
-                    <option value="brecilien">브리실리안</option>
-                </select>
+                <div class="menu-item">
+                    <a class="btn">가격 받아오기</a>
+                </div>
 
-                <select id="end">
-                    <option disabled selected value="">도착지</option>
-                    <option value="martlock">마트록</option>
-                    <option value="thetford">뎃포드</option>
-                    <option value="fortsterling">포트스털링</option>
-                    <option value="lymhurst">림허스트</option>
-                    <option value="bridgewatch">브릿지워치</option>
-                    <option value="caerleon">칼레온</option>
-                    <option value="brecilien">브리실리안</option>
-                </select>
             </div>
-
-            <div class="menu-item">
-                <a class="btn">가격 받아오기</a>
-            </div>
-
         </div>
-        
-        
-        
-        
-        <div class="table-div">
+
+
+        <!-- 요기부터 각 meterial 별로 테이블 폼 -->
+        <div class="table-div" id="metalbar_table">
             <table>
+                <colgroup>
+                    <col class="col1">
+                    <col class="col2">
+                    <col class="col3">
+                    <col class="col4">
+                    <col class="col5">
+                    <col class="col6">
+                    <col class="col7">
+                    <col class="col8">
+                    <col class="col9">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>주괴</th>
+                        <th>판매중인가격</th>
+                        <th>광석</th>
+                        <th>판매중인가격</th>
+                        <th>만들기위한재료</th>
+                        <th>필요한 집중</th>
+                        <th>이익/집중</th>
+                        <th>비용</th>
+                        <th>이익</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="t2">
+                        <td><img src="/static/image/T2_METALBAR.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T2_ORE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T2_ORE.png" />
+                                <span>1개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t3">
+                        <td><img src="/static/image/T3_METALBAR.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T3_ORE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T2_METALBAR.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T3_ORE.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4">
+                        <td><img src="/static/image/T4_METALBAR.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_ORE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_METALBAR.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_ORE.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_1">
+                        <td><img src="/static/image/T4_METALBAR_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_ORE_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_METALBAR.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_ORE_LEVEL1@1.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_2">
+                        <td><img src="/static/image/T4_METALBAR_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_ORE_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_METALBAR.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_ORE_LEVEL2@2.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_3">
+                        <td><img src="/static/image/T4_METALBAR_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_ORE_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_METALBAR.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_ORE_LEVEL3@3.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_4">
+                        <td><img src="/static/image/T4_METALBAR_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_ORE_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_METALBAR.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_ORE_LEVEL4@4.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5">
+                        <td><img src="/static/image/T5_METALBAR.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_ORE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_METALBAR.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_ORE.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_1">
+                        <td><img src="/static/image/T5_METALBAR_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_ORE_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_METALBAR_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_ORE_LEVEL1@1.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_2">
+                        <td><img src="/static/image/T5_METALBAR_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_ORE_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_METALBAR_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_ORE_LEVEL2@2.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_3">
+                        <td><img src="/static/image/T5_METALBAR_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_ORE_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_METALBAR_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_ORE_LEVEL3@3.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_4">
+                        <td><img src="/static/image/T5_METALBAR_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_ORE_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_METALBAR_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_ORE_LEVEL4@4.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6">
+                        <td><img src="/static/image/T6_METALBAR.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_ORE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_METALBAR.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_ORE.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_1">
+                        <td><img src="/static/image/T6_METALBAR_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_ORE_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_METALBAR_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_ORE_LEVEL1@1.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_2">
+                        <td><img src="/static/image/T6_METALBAR_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_ORE_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_METALBAR_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_ORE_LEVEL2@2.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_3">
+                        <td><img src="/static/image/T6_METALBAR_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_ORE_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_METALBAR_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_ORE_LEVEL3@3.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_4">
+                        <td><img src="/static/image/T6_METALBAR_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_ORE_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_METALBAR_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_ORE_LEVEL4@4.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7">
+                        <td><img src="/static/image/T7_METALBAR.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_ORE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_METALBAR.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_ORE.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_1">
+                        <td><img src="/static/image/T7_METALBAR_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_ORE_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_METALBAR_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_ORE_LEVEL1@1.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_2">
+                        <td><img src="/static/image/T7_METALBAR_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_ORE_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_METALBAR_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_ORE_LEVEL2@2.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_3">
+                        <td><img src="/static/image/T7_METALBAR_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_ORE_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_METALBAR_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_ORE_LEVEL3@3.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_4">
+                        <td><img src="/static/image/T7_METALBAR_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_ORE_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_METALBAR_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_ORE_LEVEL4@4.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8">
+                        <td><img src="/static/image/T8_METALBAR.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_ORE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_METALBAR.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_ORE.png" />
+                                <span>6개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_1">
+                        <td><img src="/static/image/T8_METALBAR_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_ORE_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_METALBAR_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_ORE_LEVEL1@1.png" />
+                                <span>6개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_2">
+                        <td><img src="/static/image/T8_METALBAR_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_ORE_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_METALBAR_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_ORE_LEVEL2@2.png" />
+                                <span>6개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_3">
+                        <td><img src="/static/image/T8_METALBAR_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_ORE_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_METALBAR_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_ORE_LEVEL3@3.png" />
+                                <span>6개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_4">
+                        <td><img src="/static/image/T8_METALBAR_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_ORE_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_METALBAR_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_ORE_LEVEL4@4.png" />
+                                <span>6개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-div" id="planks_table">
+            <table>
+                <colgroup>
+                    <col class="col1">
+                    <col class="col2">
+                    <col class="col3">
+                    <col class="col4">
+                    <col class="col5">
+                    <col class="col6">
+                    <col class="col7">
+                    <col class="col8">
+                    <col class="col9">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>주괴</th>
+                        <th>판매중인가격</th>
+                        <th>광석</th>
+                        <th>판매중인가격</th>
+                        <th>만들기위한재료</th>
+                        <th>필요한 집중</th>
+                        <th>이익/집중</th>
+                        <th>비용</th>
+                        <th>이익</th>
+                        </th>
+                </thead>
+                <tbody>
+                    <tr id="t2">
+                        <td><img src="/static/image/T2_PLANKS.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T2_WOOD.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T2_WOOD.png" />
+                                <span>1개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t3">
+                        <td><img src="/static/image/T3_PLANKS.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T3_WOOD.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T2_PLANKS.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T3_WOOD.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4">
+                        <td><img src="/static/image/T4_PLANKS.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_WOOD.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_PLANKS.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_WOOD.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_1">
+                        <td><img src="/static/image/T4_PLANKS_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_WOOD_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_PLANKS.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_WOOD_LEVEL1@1.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_2">
+                        <td><img src="/static/image/T4_PLANKS_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_WOOD_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_PLANKS.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_WOOD_LEVEL2@2.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_3">
+                        <td><img src="/static/image/T4_PLANKS_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_WOOD_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_PLANKS.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_WOOD_LEVEL3@3.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_4">
+                        <td><img src="/static/image/T4_PLANKS_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_WOOD_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_PLANKS.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_WOOD_LEVEL4@4.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5">
+                        <td><img src="/static/image/T5_PLANKS.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_WOOD.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_PLANKS.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_WOOD.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_1">
+                        <td><img src="/static/image/T5_PLANKS_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_WOOD_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_PLANKS_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_WOOD_LEVEL1@1.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_2">
+                        <td><img src="/static/image/T5_PLANKS_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_WOOD_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_PLANKS_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_WOOD_LEVEL2@2.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_3">
+                        <td><img src="/static/image/T5_PLANKS_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_WOOD_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_PLANKS_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_WOOD_LEVEL3@3.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_4">
+                        <td><img src="/static/image/T5_PLANKS_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_WOOD_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_PLANKS_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_WOOD_LEVEL4@4.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6">
+                        <td><img src="/static/image/T6_PLANKS.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_WOOD.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_PLANKS.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_WOOD.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_1">
+                        <td><img src="/static/image/T6_PLANKS_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_WOOD_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_PLANKS_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_WOOD_LEVEL1@1.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_2">
+                        <td><img src="/static/image/T6_PLANKS_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_WOOD_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_PLANKS_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_WOOD_LEVEL2@2.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_3">
+                        <td><img src="/static/image/T6_PLANKS_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_WOOD_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_PLANKS_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_WOOD_LEVEL3@3.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_4">
+                        <td><img src="/static/image/T6_PLANKS_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_WOOD_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_PLANKS_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_WOOD_LEVEL4@4.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7">
+                        <td><img src="/static/image/T7_PLANKS.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_WOOD.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_PLANKS.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_WOOD.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_1">
+                        <td><img src="/static/image/T7_PLANKS_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_WOOD_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_PLANKS_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_WOOD_LEVEL1@1.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_2">
+                        <td><img src="/static/image/T7_PLANKS_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_WOOD_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_PLANKS_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_WOOD_LEVEL2@2.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_3">
+                        <td><img src="/static/image/T7_PLANKS_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_WOOD_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_PLANKS_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_WOOD_LEVEL3@3.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_4">
+                        <td><img src="/static/image/T7_PLANKS_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_WOOD_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_PLANKS_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_WOOD_LEVEL4@4.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8">
+                        <td><img src="/static/image/T8_PLANKS.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_WOOD.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_PLANKS.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_WOOD.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_1">
+                        <td><img src="/static/image/T8_PLANKS_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_WOOD_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_PLANKS_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_WOOD_LEVEL1@1.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_2">
+                        <td><img src="/static/image/T8_PLANKS_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_WOOD_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_PLANKS_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_WOOD_LEVEL2@2.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_3">
+                        <td><img src="/static/image/T8_PLANKS_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_WOOD_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_PLANKS_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_WOOD_LEVEL3@3.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_4">
+                        <td><img src="/static/image/T8_PLANKS_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_WOOD_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_PLANKS_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_WOOD_LEVEL4@4.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-div" id="leather_table">
+            <table>
+                <colgroup>
+                    <col class="col1">
+                    <col class="col2">
+                    <col class="col3">
+                    <col class="col4">
+                    <col class="col5">
+                    <col class="col6">
+                    <col class="col7">
+                    <col class="col8">
+                    <col class="col9">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>주괴</th>
+                        <th>판매중인가격</th>
+                        <th>광석</th>
+                        <th>판매중인가격</th>
+                        <th>만들기위한재료</th>
+                        <th>필요한 집중</th>
+                        <th>이익/집중</th>
+                        <th>비용</th>
+                        <th>이익</th>
+                        </th>
+                </thead>
+                <tbody>
+                    <tr id="t2">
+                        <td><img src="/static/image/T2_LEATHER.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T2_HIDE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T2_HIDE.png" />
+                                <span>1개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t3">
+                        <td><img src="/static/image/T3_LEATHER.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T3_HIDE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T2_LEATHER.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T3_HIDE.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4">
+                        <td><img src="/static/image/T4_LEATHER.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_HIDE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_LEATHER.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_HIDE.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_1">
+                        <td><img src="/static/image/T4_LEATHER_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_HIDE_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_LEATHER.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_HIDE_LEVEL1@1.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_2">
+                        <td><img src="/static/image/T4_LEATHER_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_HIDE_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_LEATHER.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_HIDE_LEVEL2@2.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_3">
+                        <td><img src="/static/image/T4_LEATHER_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_HIDE_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_LEATHER.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_HIDE_LEVEL3@3.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_4">
+                        <td><img src="/static/image/T4_LEATHER_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_HIDE_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_LEATHER.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_HIDE_LEVEL4@4.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5">
+                        <td><img src="/static/image/T5_LEATHER.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_HIDE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_LEATHER.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_HIDE.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_1">
+                        <td><img src="/static/image/T5_LEATHER_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_HIDE_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_LEATHER_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_HIDE_LEVEL1@1.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_2">
+                        <td><img src="/static/image/T5_LEATHER_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_HIDE_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_LEATHER_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_HIDE_LEVEL2@2.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_3">
+                        <td><img src="/static/image/T5_LEATHER_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_HIDE_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_LEATHER_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_HIDE_LEVEL3@3.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_4">
+                        <td><img src="/static/image/T5_LEATHER_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_HIDE_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_LEATHER_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_HIDE_LEVEL4@4.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6">
+                        <td><img src="/static/image/T6_LEATHER.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_HIDE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_LEATHER.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_HIDE.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_1">
+                        <td><img src="/static/image/T6_LEATHER_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_HIDE_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_LEATHER_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_HIDE_LEVEL1@1.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_2">
+                        <td><img src="/static/image/T6_LEATHER_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_HIDE_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_LEATHER_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_HIDE_LEVEL2@2.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_3">
+                        <td><img src="/static/image/T6_LEATHER_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_HIDE_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_LEATHER_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_HIDE_LEVEL3@3.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_4">
+                        <td><img src="/static/image/T6_LEATHER_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_HIDE_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_LEATHER_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_HIDE_LEVEL4@4.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7">
+                        <td><img src="/static/image/T7_LEATHER.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_HIDE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_LEATHER.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_HIDE.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_1">
+                        <td><img src="/static/image/T7_LEATHER_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_HIDE_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_LEATHER_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_HIDE_LEVEL1@1.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_2">
+                        <td><img src="/static/image/T7_LEATHER_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_HIDE_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_LEATHER_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_HIDE_LEVEL2@2.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_3">
+                        <td><img src="/static/image/T7_LEATHER_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_HIDE_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_LEATHER_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_HIDE_LEVEL3@3.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_4">
+                        <td><img src="/static/image/T7_LEATHER_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_HIDE_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_LEATHER_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_HIDE_LEVEL4@4.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8">
+                        <td><img src="/static/image/T8_LEATHER.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_HIDE.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_LEATHER.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_HIDE.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_1">
+                        <td><img src="/static/image/T8_LEATHER_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_HIDE_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_LEATHER_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_HIDE_LEVEL1@1.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_2">
+                        <td><img src="/static/image/T8_LEATHER_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_HIDE_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_LEATHER_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_HIDE_LEVEL2@2.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_3">
+                        <td><img src="/static/image/T8_LEATHER_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_HIDE_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_LEATHER_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_HIDE_LEVEL3@3.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_4">
+                        <td><img src="/static/image/T8_LEATHER_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_HIDE_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_LEATHER_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_HIDE_LEVEL4@4.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-div" id="cloth_table">
+            <table>
+                <colgroup>
+                    <col class="col1">
+                    <col class="col2">
+                    <col class="col3">
+                    <col class="col4">
+                    <col class="col5">
+                    <col class="col6">
+                    <col class="col7">
+                    <col class="col8">
+                    <col class="col9">
+                </colgroup>
                 <thead>
                     <tr>
                         <th>직물</th>
@@ -122,31 +2013,608 @@
                         <th>섬유</th>
                         <th>판매중인가격</th>
                         <th>만들기위한재료</th>
-                        <th>집중 비용</th>
-                        <th>이익 / 집중</th>
+                        <th>필요한 집중</th>
+                        <th>이익/집중</th>
                         <th>비용</th>
                         <th>이익</th>
-                    </th>
+                        </th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><img src="/static/image/T8_METALBAR.png"/></td>
-                        <td>2</td>
-                        <td><img src="/static/image/T8_METALBAR.png"/></td>
-                        <td>4</td>
+                    <tr id="t2">
+                        <td><img src="/static/image/T2_CLOTH.png" /></td>
                         <td>
-                            <img src="/static/image/T8_METALBAR.png"/> * 2
-                            <img src="/static/image/T8_METALBAR.png"/> * 1
-                        
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
                         </td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
+                        <td><img src="/static/image/T2_FIBER.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T2_FIBER.png" />
+                                <span>1개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t3">
+                        <td><img src="/static/image/T3_CLOTH.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T3_FIBER.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T2_CLOTH.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T3_FIBER.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4">
+                        <td><img src="/static/image/T4_CLOTH.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_FIBER.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_CLOTH.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_FIBER.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_1">
+                        <td><img src="/static/image/T4_CLOTH_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_FIBER_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_CLOTH.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_FIBER_LEVEL1@1.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_2">
+                        <td><img src="/static/image/T4_CLOTH_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_FIBER_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_CLOTH.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_FIBER_LEVEL2@2.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_3">
+                        <td><img src="/static/image/T4_CLOTH_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_FIBER_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_CLOTH.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_FIBER_LEVEL3@3.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t4_4">
+                        <td><img src="/static/image/T4_CLOTH_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T4_FIBER_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T3_CLOTH.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T4_FIBER_LEVEL4@4.png" />
+                                <span>2개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5">
+                        <td><img src="/static/image/T5_CLOTH.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_FIBER.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_CLOTH.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_FIBER.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_1">
+                        <td><img src="/static/image/T5_CLOTH_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_FIBER_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_CLOTH_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_FIBER_LEVEL1@1.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_2">
+                        <td><img src="/static/image/T5_CLOTH_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_FIBER_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_CLOTH_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_FIBER_LEVEL2@2.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_3">
+                        <td><img src="/static/image/T5_CLOTH_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_FIBER_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_CLOTH_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_FIBER_LEVEL3@3.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t5_4">
+                        <td><img src="/static/image/T5_CLOTH_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T5_FIBER_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T4_CLOTH_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T5_FIBER_LEVEL4@4.png" />
+                                <span>3개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6">
+                        <td><img src="/static/image/T6_CLOTH.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_FIBER.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_CLOTH.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_FIBER.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_1">
+                        <td><img src="/static/image/T6_CLOTH_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_FIBER_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_CLOTH_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_FIBER_LEVEL1@1.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_2">
+                        <td><img src="/static/image/T6_CLOTH_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_FIBER_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_CLOTH_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_FIBER_LEVEL2@2.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_3">
+                        <td><img src="/static/image/T6_CLOTH_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_FIBER_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_CLOTH_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_FIBER_LEVEL3@3.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t6_4">
+                        <td><img src="/static/image/T6_CLOTH_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T6_FIBER_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T5_CLOTH_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T6_FIBER_LEVEL4@4.png" />
+                                <span>4개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7">
+                        <td><img src="/static/image/T7_CLOTH.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_FIBER.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_CLOTH.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_FIBER.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_1">
+                        <td><img src="/static/image/T7_CLOTH_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_FIBER_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_CLOTH_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_FIBER_LEVEL1@1.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_2">
+                        <td><img src="/static/image/T7_CLOTH_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_FIBER_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_CLOTH_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_FIBER_LEVEL2@2.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_3">
+                        <td><img src="/static/image/T7_CLOTH_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_FIBER_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_CLOTH_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_FIBER_LEVEL3@3.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="t7_4">
+                        <td><img src="/static/image/T7_CLOTH_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T7_FIBER_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T6_CLOTH_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T7_FIBER_LEVEL4@4.png" />
+                                <span>5개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8">
+                        <td><img src="/static/image/T8_CLOTH.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_FIBER.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_CLOTH.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_FIBER.png" />
+                                <span>6개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_1">
+                        <td><img src="/static/image/T8_CLOTH_LEVEL1@1.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_FIBER_LEVEL1@1.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_CLOTH_LEVEL1@1.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_FIBER_LEVEL1@1.png" />
+                                <span>6개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_2">
+                        <td><img src="/static/image/T8_CLOTH_LEVEL2@2.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_FIBER_LEVEL2@2.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_CLOTH_LEVEL2@2.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_FIBER_LEVEL2@2.png" />
+                                <span>6개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_3">
+                        <td><img src="/static/image/T8_CLOTH_LEVEL3@3.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_FIBER_LEVEL3@3.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_CLOTH_LEVEL3@3.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_FIBER_LEVEL3@3.png" />
+                                <span>6개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr id="T8_4">
+                        <td><img src="/static/image/T8_CLOTH_LEVEL4@4.png" /></td>
+                        <td>
+                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                        </td>
+                        <td><img src="/static/image/T8_FIBER_LEVEL4@4.png" /></td>
+                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td>
+                            <div class="material">
+                                <img src="/static/image/T8_CLOTH_LEVEL4@4.png" />
+                                <span>1개</span>
+                            </div>
+                            <div class="material">
+                                <img src="/static/image/T8_FIBER_LEVEL4@4.png" />
+                                <span>6개</span>
+                            </div>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
         </div>
+        
+
 
 
     </div> <!-- main -->
@@ -166,4 +2634,5 @@
 
 
 </body>
+
 </html>
