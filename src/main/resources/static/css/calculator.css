@@ -44,6 +44,9 @@ fieldset{
     font-weight: bold;
     margin-left: 5%;
 }
+.menu-message p{
+    margin: 1px auto;
+}
 
 input {
     font-size: 1em;
@@ -52,7 +55,17 @@ input {
     background-color: rgb(36, 32, 32);
     border: 1px solid rgba(238, 238, 238, 0.2);
     box-sizing: border-box;
-    padding: 10px 20px;
+    padding: 15px 5px;
+}
+
+.input-number{
+    font-size: 1em;
+    font-weight: bold;
+    color: #eee;
+    background-color: rgb(36, 32, 32);
+    border: 1px solid rgba(238, 238, 238, 0.2);
+    box-sizing: border-box;
+    padding: 8px 10px;
 }
 
 input::-webkit-outer-spin-button,
@@ -172,6 +185,7 @@ table{
 th{
     position: sticky;
     top: 0;
+    font-size: 0.8em;
     border: 1px solid RGBA(238, 238, 238, 0.2);
 }
 td{
@@ -210,7 +224,7 @@ table .col1 {
 }
 
 table .col2 {
-    width: 15%;
+    width: 10%;
 }
 
 table .col3 {
@@ -218,15 +232,15 @@ table .col3 {
 }
 
 table .col4 {
-    width: 15%;
+    width: 10%;
 }
 
 table .col5 {
-    width: 10%;
+    width: 8%;
 }
 
 table .col6 {
-    width: 10%;
+    width: 7%;
 }
 
 table .col7 {
@@ -240,6 +254,11 @@ table .col8 {
 table .col9 {
     width: 10%;
 }
+table tbody td input{
+    width: 8vw;
+}
+
+
 body::-webkit-scrollbar {
     display:block;
 }
@@ -263,4 +282,13 @@ body::-webkit-scrollbar {
         flex-direction: column;
         margin: 10% 0;
     }
+}
+.qunatityArea{
+    float: right;
+    text-align:right;
+    margin-bottom: 1%;
+}
+.qunatityArea input{
+    width: 20%;
+    padding: 5px 10px;
 }

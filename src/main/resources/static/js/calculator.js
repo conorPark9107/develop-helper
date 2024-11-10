@@ -1,45 +1,45 @@
 $(document).ready(function () {
-    
+
     fillFocusOnTable();
 
     $('#request-price-btn').on('click', function(){
         let isClicked = $('.li').hasClass('clicked');
-        
+
         if(!isClicked){
             showAlert('제련 자원을 선택해주세요.');
             return;
         }
 
-        let server = $('input[name=server]:checked').val(); // server       
+        let server = $('input[name=server]:checked').val(); // server
         let tableClass = $('li.clicked').attr('value'); // tableClass for veriable array
         let city = $('#start option:selected').val();
-        
+
         let beforeRefine;
         let afterRefine;
         switch (tableClass) {
-            case 'metalbar_table':
+            case 'metalbar':
                 beforeRefine = '_BAR';
                 afterRefine = '_METALBAR';
                 break;
-            case 'planks_table':
+            case 'planks':
                 beforeRefine = '_WOOD';
                 afterRefine = '_PLANKS';
                 break;
-            case 'stoneblock_table':
+            case 'stoneblock':
                 break;
-            case 'leather_table':
+            case 'leather':
                 beforeRefine = '_HIDE';
                 afterRefine = '_LEATHER';
                 break;
-            case 'cloth_table':
+            case 'cloth':
                 beforeRefine = '_FIBER';
                 afterRefine = '_CLOTH';
                 break;
         }
 
-        let trs = $(`#${tableClass} tbody tr`);
-        let trLength = $(`#${tableClass} tbody tr`).length;
-        
+        let trs = $(`#meterial_table tbody tr`);
+        let trLength = trs.length;
+
         $.ajax({
             type: "GET",
             url: "/market/getResourcePrice",
@@ -70,6 +70,8 @@ $(document).ready(function () {
                     $(input).attr('value', v);
                 }
 
+                $('input').trigger('keyup');
+
             },
             error : function(request, status, error) {
                 console.log(error);
@@ -80,6 +82,45 @@ $(document).ready(function () {
 
 
     });
+
+
+    $('input').on('keyup', function(){
+        let usageFee = $('#usageFee').val();     // 소비영양 100당 사용료
+        let returnRate = $('#returnRate').val(); // 반환률
+        let t4 = $('#tier04').val();             // 티어별 재련 숙련도
+        let t5 = $('#tier05').val();
+        let t6 = $('#tier06').val();
+        let t7 = $('#tier07').val();
+        let t8 = $('#tier08').val();
+        let quantity = $('#quantity').val();
+
+        let trs = $('#meterial_table tbody tr');
+        let buyPrice = $(trs[0]).find('td:eq(3)').find('input').val() * quantity;
+        let sellPrice = $(trs[0]).find('td:eq(1)').find('input').val() * quantity;
+        $(trs[0]).find('td:eq(6)').text(buyPrice);
+        $(trs[0]).find('td:eq(7)').text(sellPrice);
+        $(trs[0]).find('td:eq(8)').text(sellPrice - buyPrice);
+
+        for(let i = 1; i < trs.length; i++){
+            let tds = $(trs[i]).find('td');
+
+            let spans = $(tds[4]).find('span');
+            let afterQuantity = $(spans[0]).text();
+            let beforeQuantity = $(spans[1]).text();
+
+            let afterPrice = $($(trs[i-1]).find('td')[1]).find('input').val();
+            let beforePrice = $(tds[3]).find('input').val();
+            buyPrice = ((afterPrice * afterQuantity) + (beforePrice * beforeQuantity)) * quantity;
+            $(tds[6]).text(buyPrice);
+
+            sellPrice = $(tds[1]).find('input').val() * quantity;
+            $(tds[7]).text(sellPrice);
+
+            $(tds[8]).text(sellPrice - buyPrice);
+        }
+
+    });
+
 
 });
 
@@ -96,8 +137,8 @@ function showAlert(msg){
 }
 
 // 기본 포커스 비용 티어별(2T ~ 8T)
-const focusTable = [18, 
-                    31, 
+const focusTable = [18,
+                    31,
                     54, 94, 164, 287, 503,
                     94,	164, 287, 503, 880,
                     164, 287, 503, 880, 1539,
@@ -105,17 +146,30 @@ const focusTable = [18,
                     503, 880, 1539, 2694, 4714
                 ];
 
+const beforeItemValue = [4,
+                         2,
+                         4, 12, 28, 60, 124,
+                         5, 10, 21, 42, 85,
+                         8, 16, 32, 64, 128,
+                         12, 25, 51, 102, 204,
+                         25, 51, 102, 204, 409
+                        ];
+const afterItemValue = [4,
+                        8,
+                        16, 32, 64, 128, 256,
+                        32, 64, 128, 256, 512,
+                        64, 128, 256, 512, 1024,
+                        128, 256, 512, 1024, 2048,
+                        256, 512, 1024, 2048, 4096
+                        ];
+
 // 초기에 집중 비용 테이블에 작성.
 function fillFocusOnTable(){
-    let tables = $('table tbody');
-    for(let i = 0; i < tables.length; i++){
-        let trs = $(tables[i]).find('tr');
+    let trs = $('table tbody').find('tr');
 
-        for(let j = 0; j <trs.length; j++){
-            let tds = $(trs[j]).find('td');
-            $(tds[5]).text(focusTable[j]);
-        }
-        
+    for(let j = 0; j <trs.length; j++){
+        let tds = $(trs[j]).find('td');
+        $(tds[5]).text(focusTable[j]);
     }
 }
 
@@ -125,7 +179,123 @@ function clicked(li){
     $(li).addClass('clicked');
     $('.table-div').hide();
     let x = $(li).attr('value');
-    $(`#${x}`).fadeIn(500);
+
+    const datas = getMeterialNameAndImageName(x);
+    setTitleName(datas[0], datas[1]);
+    setContetns(datas[2], datas[3]);
+
+    let table = $(`#meterial_table`);
+    let tr = table.find('tbody tr');
+    for(let i = 0 ; i < tr.length; i++){
+        let tds = $(tr[i]).find('td');
+        let x = $(tds[1]).find('input').attr('value');
+        let y = $(tds[3]).find('input').attr('value');
+
+        if(x != '' || y != ''){
+            $(tds[1]).find('input').attr('value', '');
+            $(tds[3]).find('input').attr('value', '');
+            $(tds[6]).text('');
+            $(tds[7]).text('');
+            $(tds[8]).text('');
+        }
+    }
+
+    table.fadeIn(500);
+}
+
+// 테이블에 재료value, 이미지 경로 설정.
+function setContetns(beforeArr, afterArr){
+
+    setContetnsFirst(beforeArr, afterArr);
+
+    let trs = $('table tbody').find('tr');
+    for(let i = 0; i < trs.length; i++){
+        let tds = $(trs[i]).find('td');
+        $(tds[0]).find('img').attr('src', `/image/${afterArr[i]}.png`);
+        $(tds[2]).find('img').attr('src', `/image/${beforeArr[i]}.png`);
+        if(i > 6){
+            let imges = $(tds[4]).find('img');
+            let span = $(tds[4]).find('span');
+            $(imges[0]).attr('src', `/image/${afterArr[i-5]}.png`);
+            $(imges[1]).attr('src', `/image/${beforeArr[i]}.png`);
+
+            let afterAvg = $(span[0]).text();
+            let beforeAvg = $(span[1]).text();
+            $(tds[4]).attr('value', (afterAvg * afterItemValue[i-5]) + (beforeAvg * beforeItemValue[i]));
+        }
+    }
+
+}
+
+// 4T 까지 재료 직접 등록.
+function setContetnsFirst(beforeArr, afterArr){
+    let td2_img = $('#t2').find('td:eq(4)').find('div').find('img');
+    let td2_span = $('#t2').find('td:eq(4)').find('div').find('span');
+    td2_span.attr('value', td2_span.text() * beforeItemValue[0]);
+    td2_img.attr('src', `/image/${beforeArr[0]}.png`)
+
+    let td3 = $('#t3').find('td:eq(4)')
+    let td3_img = td3.find('div').find('img');
+    let td3_avg = td3.find('div').find('span');
+
+    td3.attr('value', ($(td3_avg[0]).text() * afterItemValue[0]) * ($(td3_avg[1]).text() * beforeItemValue[1]));
+    $(td3_img[0]).attr('src', `/image/${afterArr[0]}.png`)
+    $(td3_img[1]).attr('src', `/image/${beforeArr[1]}.png`)
+
+    let trs = $('table tbody').find('tr');
+    for(let i = 2; i < 7; i++){
+        let td = $(trs[i]).find('td:eq(4)');
+        let imgs = td.find('img');
+        let span = td.find('span');
+        $(imgs[0]).attr('src', `/image/${afterArr[1]}.png`)
+        $(imgs[1]).attr('src', `/image/${beforeArr[i]}.png`)
+        let afterAvg = $(span[0]).text();
+        let beforeAvg = $(span[1]).text();
+        $(td).attr('value', (afterItemValue[1] * afterAvg) + (beforeItemValue[i] * beforeAvg));
+
+    }
+
+}
+
+// 테이블 th 이름 변경
+function setTitleName(before, after){
+    $('#afterName').text(after);
+    $('#beforeName').text(before);
+}
+
+// li 클릭시 클릭한 자원으로 이미지 보여주기 위한 함수.
+function getMeterialNameAndImageName(x){
+    let beforeName, beforeArray;
+    let afterName, afterArray;
+
+    switch (x) {
+        case 'metalbar':
+            beforeName = '광석';
+            afterName = '주괴';
+            beforeArray = itemTree['_BAR'];
+            afterArray = itemTree['_METALBAR'];
+        break;
+        case 'planks':
+            beforeName = '나무';
+            afterName = '판자';
+            beforeArray = itemTree['_WOOD'];
+            afterArray = itemTree['_PLANKS'];
+        break;
+        // case 'stoneblock':break;
+        case 'leather':
+            beforeName = '가죽';
+            afterName = '피혁';
+            beforeArray = itemTree['_HIDE'];
+            afterArray = itemTree['_LEATHER'];
+        break;
+        case 'cloth':
+            beforeName = '섬유';
+            afterName = '천';
+            beforeArray = itemTree['_FIBER'];
+            afterArray = itemTree['_CLOTH'];
+        break;
+    }
+    return [beforeName, afterName, beforeArray, afterArray];
 }
 
 

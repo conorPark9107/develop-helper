@@ -29,6 +29,7 @@ $(document).ready(function () {
 
 
     $('.submit').on('click', function () {
+        turnLoading();
         let images = $('img'); // 이미지들.
         let title = $('#title').val();
         let password = $('#password').val();
@@ -38,11 +39,13 @@ $(document).ready(function () {
         if (title.trim() == '') {
             $("#title").val('');
             showMsgForTitle();
+            turnLoading();
             return;
         }
         if (password.trim() == '') {
             $("#password").val('');
             showMsgForPw();
+            turnLoading();
             return;
         }
 
