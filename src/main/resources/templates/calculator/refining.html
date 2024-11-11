@@ -41,10 +41,10 @@
     <div class="main">
         <div class="all-menu">
             <div class="menu-message">
-                <p>※ 계산은 제련 보너스 도시에서 제련하는 기준으로 계산됩니다.</p>
+                <p>※ 계산은 제련 <u>보너스 도시에서 제련</u>하는 기준으로 계산됩니다.</p>
+                <p>※ 실시간 시장가격, 자원반환(%) 소수점.. 등 여러 변수로 약간의 <u>오차</u>는 발생할 수 있습니다.</p>
+                <p>※ 개발자는 파이트 컨텐츠만 합니다. 혹시나 계산식에 문제 있을 수 있습니다. 원인을<a href="/toinquire" target="_blank">피드백(새 창)</a>에 글을 남겨주세요.</p>
             </div>
-
-
 
             <div class="menu">
                 <div class="menu-item">
@@ -95,7 +95,7 @@
                 <div class="menu-item menu-item-tier">
                     <p>🔻자원 반환 비율</p>
                     <input class="input-number" type="number" id="returnRate" name="returnRate" placeholder=" '%' 제외하고 입력" min="0"
-                        max="100" />
+                        max="100" value="0" />
                 </div>
 
                 <div class="menu-item ">
@@ -117,13 +117,27 @@
                         <!-- <input type="checkbox" id="premium" name="premium" />
                         <label for="premium"></label>
                         <label for="premium">프리미엄</label> -->
-                        <select>
-                            <option disabled selected value="">시장세금</option>
-                            <option>4%</option>
-                            <option>6.5%</option>
-                            <option>8%</option>
-                            <option>10.5%</option>
-                        </select>
+                        <div class="taxArea">
+                            <label class="taxLabel" for="marketTaxBuy">구매 수수료</label>
+                            <select id="marketTaxBuy">
+                                <option value="0">즉시 구매</option>
+                                <option value="0.025">2.5%</option>
+                                <option value="0.04">4%</option>
+                                <option value="0.065">6.5%</option>
+                                <option value="0.08">8%</option>
+                                <option value="0.105">10.5%</option>
+                            </select>
+                        </div>
+                        <div class="taxArea">
+                            <label class="taxLabel" for="marketTaxSell">판매 수수료</label>
+                            <select id="marketTaxSell">
+                                <option value="0.025">2.5%</option>
+                                <option value="0.04">4%</option>
+                                <option value="0.065">6.5%</option>
+                                <option value="0.08">8%</option>
+                                <option value="0.105">10.5%</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -139,7 +153,7 @@
         <div class="table-div" id="meterial_table">
 
             <span class="qunatityArea">
-                <input type="number" id="quantity" name="quantity" placeholder="n개 단위로 보기" min="1" value="1" />
+                <input type="number" id="quantity" name="quantity" placeholder="n" min="1" value="1" />
                 개 단위로 보기
             </span>
 

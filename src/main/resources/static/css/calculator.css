@@ -24,7 +24,7 @@ fieldset{
 .menu{
     vertical-align: top;
     position:sticky;
-    top: 10%;
+    top: 15%;
     display:inline-block;
     min-width: 49%;
 }
@@ -38,14 +38,17 @@ fieldset{
 }
 .menu-message{
     position: sticky;
-    top: 65px;
-    color : RGB(152, 65, 65);
+    top: 60px;
+    color : RGB(87,95,211);
     font-size : 0.8em;
     font-weight: bold;
     margin-left: 5%;
 }
 .menu-message p{
     margin: 1px auto;
+}
+.menu-message p u{
+    text-decoration-color: RGB(152, 65, 65);
 }
 
 input {
@@ -154,7 +157,7 @@ input[id=premium] + label + label {
 select{
     font-size: 1em;
     font-weight: bold;
-    padding: 10px 9px;
+    padding: 10px 5px;
     background-color: #242020;
     border: 1px solid rgba(238, 238, 238, 0.2);
     border-radius: 3px;
@@ -291,4 +294,20 @@ body::-webkit-scrollbar {
 .qunatityArea input{
     width: 20%;
     padding: 5px 10px;
+}
+.taxLabel{
+    font-size : 0.7em;
+    margin-bottom: 3px;
+    display: block;
+}
+.taxArea{
+    display:inline-block;
+}
+.priceDetail{
+    color : red;
+    font-size: 0.5em;
+    margin: 0 auto;
+}
+a:hover{
+    opacity: 0.5;
 }

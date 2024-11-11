@@ -83,17 +83,35 @@ $(document).ready(function () {
 
     });
 
+    $('#marketTaxBuy').change(function(){
+        $('input').trigger('keyup');
+    });
+
+    $('#marketTaxSell').change(function(){
+        $('input').trigger('keyup');
+    });
 
     $('input').on('keyup', function(){
-        let usageFee = $('#usageFee').val();     // 소비영양 100당 사용료
-        let returnRate = $('#returnRate').val(); // 반환률
-        let t4 = $('#tier04').val();             // 티어별 재련 숙련도
+        let usageFee = $('#usageFee').val();                            // 소비영양 100당 사용료
+        let returnRate = ($('#returnRate').val() / 100).toFixed(3);     // 반환률
+        let t4 = $('#tier04').val();                                    // 티어별 제련 숙련도
         let t5 = $('#tier05').val();
         let t6 = $('#tier06').val();
         let t7 = $('#tier07').val();
         let t8 = $('#tier08').val();
-        let quantity = $('#quantity').val();
+        let quantity = $('#quantity').val();                            // 단위 개수
+        let marketTaxBuy = $('#marketTaxBuy option:selected').val();    // 마켓 구매 세금
+        let marketTaxSell = $('#marketTaxSell option:selected').val();  // 마켓 판매 세금
 
+        let realQuantity = Number(quantity);
+        let now = Number(quantity);
+        while(Math.round(now) > 0){
+            realQuantity += Math.round(now * (returnRate * 100)) / 100;
+            now = Math.round(now * (returnRate * 100)) / 100;
+            console.log(realQuantity);
+        }
+
+        // 2티 그리기
         let trs = $('#meterial_table tbody tr');
         let buyPrice = $(trs[0]).find('td:eq(3)').find('input').val() * quantity;
         let sellPrice = $(trs[0]).find('td:eq(1)').find('input').val() * quantity;
@@ -107,16 +125,42 @@ $(document).ready(function () {
             let spans = $(tds[4]).find('span');
             let afterQuantity = $(spans[0]).text();
             let beforeQuantity = $(spans[1]).text();
+            let refinefee = ((($(tds[4]).attr('value') * 0.1125) * quantity) * usageFee) / 100;
 
-            let afterPrice = $($(trs[i-1]).find('td')[1]).find('input').val();
-            let beforePrice = $(tds[3]).find('input').val();
-            buyPrice = ((afterPrice * afterQuantity) + (beforePrice * beforeQuantity)) * quantity;
-            $(tds[6]).text(buyPrice);
+            let afterIndex;
+            if(i <= 1){ // 3T
+                afterIndex = 0;
+            }else if(i > 1 && i <= 6){ // 4T
+                afterIndex = 1;
+            }else{ // else all
+                afterIndex = i - 5;
+            }
 
-            sellPrice = $(tds[1]).find('input').val() * quantity;
-            $(tds[7]).text(sellPrice);
+            // 구매가
+            let afterPrice = $($(trs[afterIndex]).find('td')[1]).find('input').val() * afterQuantity ;
+            let beforePrice = $(tds[3]).find('input').val() * beforeQuantity;
+            let afterTax = afterPrice * marketTaxBuy;
+            let beforeTax = beforePrice * marketTaxBuy;
 
-            $(tds[8]).text(sellPrice - buyPrice);
+            buyPrice = (((afterPrice + afterTax) + (beforePrice + beforeTax)) * quantity) + refinefee;
+            $(tds[6]).text(Math.floor(buyPrice).toLocaleString());
+            $(tds[6]).append(`<br/><span class='priceDetail'>재료 원가 : ${(afterPrice + beforePrice).toLocaleString()}</span>`);
+            $(tds[6]).append(`<br/><span class='priceDetail'>구매 수수료 : ${((afterTax + beforeTax) * quantity).toLocaleString()}</span>`);
+            $(tds[6]).append(`<br/><span class='priceDetail'>제련 수수료 : ${refinefee.toLocaleString()}</span>`);
+
+            // 판매가
+            sellPrice = ($(tds[1]).find('input').val() * quantity); // 판매가 * 개수
+            let sellTax = sellPrice * marketTaxSell; // 판매가 * 판매 세금
+            $(tds[7]).text(Math.floor(sellPrice + sellTax).toLocaleString());
+            $(tds[7]).append(`<br/><span class='priceDetail'>판매 원가 : ${Math.floor(($(tds[1]).find('input').val() * quantity)).toLocaleString()}</span>`);
+            $(tds[7]).append(`<br/><span class='priceDetail'>판매 수수료 : ${Math.floor(sellTax).toLocaleString()}</span>`);
+            $(tds[7]).append(`<br/><span class='priceDetail'>반환률에 따른 예상 제작 수량 : ${Math.round(realQuantity)}개</span>`);
+
+            // 이익
+            let buy = Math.floor(buyPrice);
+            let sell = Math.floor(sellPrice);
+            let totalPrice = Math.floor(sell - buy);
+            $(tds[8]).text(totalPrice.toLocaleString());
         }
 
     });
