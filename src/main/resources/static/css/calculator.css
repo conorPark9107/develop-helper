@@ -7,6 +7,9 @@
     display: flex;
     justify-content: space-between;
 }
+p{
+    margin: 2% 0;
+}
 fieldset{
     text-align: center;
 }
@@ -43,6 +46,7 @@ fieldset{
     font-size : 0.8em;
     font-weight: bold;
     margin-left: 5%;
+    margin-bottom: 3%;
 }
 .menu-message p{
     margin: 1px auto;
@@ -58,7 +62,7 @@ input {
     background-color: rgb(36, 32, 32);
     border: 1px solid rgba(238, 238, 238, 0.2);
     box-sizing: border-box;
-    padding: 15px 5px;
+    padding: 8px 5px;
 }
 
 .input-number{
@@ -258,7 +262,14 @@ table .col9 {
     width: 10%;
 }
 table tbody td input{
-    width: 8vw;
+    width: 5vw;
+    display: block;
+}
+.timeAgo{
+    font-size:0.7em;
+    color: RGBA(90, 231, 132, 0.6);
+    float: left;
+    margin-top: -50px;
 }
 
 
@@ -304,10 +315,16 @@ body::-webkit-scrollbar {
     display:inline-block;
 }
 .priceDetail{
-    color : red;
+    color : RGBA(218, 0, 34, 0.5);
     font-size: 0.5em;
     margin: 0 auto;
 }
 a:hover{
     opacity: 0.5;
+}
+.red{
+    color: RGB(218, 0, 34);
+}
+.green{
+    color: RGB(90, 231, 132);
 }

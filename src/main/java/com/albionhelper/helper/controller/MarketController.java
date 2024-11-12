@@ -44,15 +44,6 @@ public class MarketController {
     }
 
 
-    // https://west.albion-online-data.com/api/v2/stats/prices/T2_METALBAR,T2_ORE?locations=Martlock&qualities=1
-    @GetMapping("/getResourcePrice")
-    @ResponseBody
-    public List<List<ItemPrice>> showPrice(@RequestParam("server")String server,
-                                     @RequestParam("city")String city,
-                                     @RequestParam("before")String[] beforeArr,
-                                     @RequestParam("after")String[] afterArr) throws JsonProcessingException {
 
-        return marketService.getResourcePrice(server, city, beforeArr, afterArr);
-    }
 
 }

@@ -43,9 +43,9 @@
             <div class="menu-message">
                 <p>※ 계산은 제련 <u>보너스 도시에서 제련</u>하는 기준으로 계산됩니다.</p>
                 <p>※ 실시간 시장가격, 자원반환(%) 소수점.. 등 여러 변수로 약간의 <u>오차</u>는 발생할 수 있습니다.</p>
-                <p>※ 개발자는 파이트 컨텐츠만 합니다. 혹시나 계산식에 문제 있을 수 있습니다. 원인을<a href="/toinquire" target="_blank">피드백(새 창)</a>에 글을 남겨주세요.</p>
+                <p>※ 본 사이트 개발자는 제련을 하지 않습니다. 혹시나 계산식에 문제 있을 수 있습니다. 원인을<a href="/toinquire" target="_blank">피드백(새 창)</a>에 글을 남겨주세요.</p>
             </div>
-
+            <!-- TODO : 각 메뉴별 툴팁 필요함.-->
             <div class="menu">
                 <div class="menu-item">
                     <p>🔻서버 선택</p>
@@ -77,11 +77,16 @@
                 </div>
                 <div class="menu-item menu-item-tier">
                     <p>🔻운명보드 레벨 설정</p>
-                    <input class="input-number" type="number" id="tier04" name="tier" placeholder="4티어 레벨 0 ~ 100" min="0" max="100" />
-                    <input class="input-number" type="number" id="tier05" name="tier" placeholder="5티어 레벨 0 ~ 100" min="0" max="100" />
-                    <input class="input-number" type="number" id="tier06" name="tier" placeholder="6티어 레벨 0 ~ 100" min="0" max="100" />
-                    <input class="input-number" type="number" id="tier07" name="tier" placeholder="7티어 레벨 0 ~ 100" min="0" max="100" />
-                    <input class="input-number" type="number" id="tier08" name="tier" placeholder="8티어 레벨 0 ~ 100" min="0" max="100" />
+                    <label class="taxLabel" for="tier04">4 티어</label>
+                    <input class="input-number" type="number" id="tier04" name="tier" placeholder="4티어 레벨 0 ~ 100" min="0" max="100" value="0" />
+                    <label class="taxLabel" for="tier05">5 티어</label>
+                    <input class="input-number" type="number" id="tier05" name="tier" placeholder="5티어 레벨 0 ~ 100" min="0" max="100" value="0" />
+                    <label class="taxLabel" for="tier06">6 티어</label>
+                    <input class="input-number" type="number" id="tier06" name="tier" placeholder="6티어 레벨 0 ~ 100" min="0" max="100" value="0" />
+                    <label class="taxLabel" for="tier07">7 티어</label>
+                    <input class="input-number" type="number" id="tier07" name="tier" placeholder="7티어 레벨 0 ~ 100" min="0" max="100" value="0" />
+                    <label class="taxLabel" for="tier08">8 티어</label>
+                    <input class="input-number" type="number" id="tier08" name="tier" placeholder="8티어 레벨 0 ~ 100" min="0" max="100" value="0" />
                 </div>
             </div>
 
@@ -89,7 +94,7 @@
                 <div class="menu-item menu-item-tier">
                     <p>🔻건물 소비 영양 100당 사용료</p>
                     <input class="input-number" type="number" id="usageFee" name="usageFee" placeholder="소비 영양 100당 사용료" min="0"
-                        max="9999" />
+                        max="9999" value="0"/>
                 </div>
 
                 <div class="menu-item menu-item-tier">
@@ -113,7 +118,7 @@
 
                 <div class="menu-item">
                     <div>
-                        <p>🔻구매 & 판매 요청서 세금</p>
+                        <p>🔻마켓 세금(수수료)</p>
                         <!-- <input type="checkbox" id="premium" name="premium" />
                         <label for="premium"></label>
                         <label for="premium">프리미엄</label> -->
@@ -172,11 +177,11 @@
                 <thead>
                     <tr>
                         <th id="afterName"></th>
-                        <th>판매가격<br/>(최저가)</th>
+                        <th>판매가격<br/><span class="priceDetail">(최저가)</span></th>
                         <th id="beforeName"></th>
-                        <th>판매가격<br/>(최저가)</th>
+                        <th>판매가격<br/><span class="priceDetail">(최저가)</span></th>
                         <th>만들기위한재료</th>
-                        <th>필요한 집중<br/>(1개당)</th>
+                        <th>필요한 집중<br/><span class="priceDetail">(반환 비율 포함)</span></th>
                         <th>재료비용</th>
                         <th>판매가</th>
                         <th>이익</th>
@@ -186,10 +191,10 @@
                     <tr id="t2">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -204,10 +209,10 @@
                     <tr id="t3">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -226,10 +231,10 @@
                     <tr id="t4">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -248,10 +253,10 @@
                     <tr id="t4_1">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -270,10 +275,10 @@
                     <tr id="t4_2">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -292,10 +297,10 @@
                     <tr id="t4_3">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -314,10 +319,10 @@
                     <tr id="t4_4">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -336,10 +341,10 @@
                     <tr id="t5">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -358,10 +363,10 @@
                     <tr id="t5_1">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -380,10 +385,10 @@
                     <tr id="t5_2">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -402,10 +407,10 @@
                     <tr id="t5_3">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -424,10 +429,10 @@
                     <tr id="t5_4">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -446,10 +451,10 @@
                     <tr id="t6">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -468,10 +473,10 @@
                     <tr id="t6_1">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -490,10 +495,10 @@
                     <tr id="t6_2">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -512,10 +517,10 @@
                     <tr id="t6_3">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -534,10 +539,10 @@
                     <tr id="t6_4">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -556,10 +561,10 @@
                     <tr id="t7">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -578,10 +583,10 @@
                     <tr id="t7_1">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -600,10 +605,10 @@
                     <tr id="t7_2">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -622,10 +627,10 @@
                     <tr id="t7_3">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -644,10 +649,10 @@
                     <tr id="t7_4">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -666,10 +671,10 @@
                     <tr id="T8">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -688,10 +693,10 @@
                     <tr id="T8_1">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -710,10 +715,10 @@
                     <tr id="T8_2">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -732,10 +737,10 @@
                     <tr id="T8_3">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
@@ -754,10 +759,10 @@
                     <tr id="T8_4">
                         <td><img src="" /></td>
                         <td>
-                            <input type="number" name="price" placeholder="직접입력 / 가격 받아오기" />
+                            <input type="number" name="price" placeholder="가격입력" />
                         </td>
                         <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="직접입력 / 가격 받아오기" /></td>
+                        <td><input type="number" name="price" placeholder="가격입력" /></td>
                         <td>
                             <div class="material">
                                 <img src="" />
