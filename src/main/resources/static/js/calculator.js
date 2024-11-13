@@ -202,6 +202,17 @@ $(document).ready(function () {
 
     });
 
+    $('.tooltip').hover(
+        function (e) {
+            // over
+            
+            $(`#${$(this).data('info')}`).fadeIn(300);
+        }, function (e) {
+            // out
+            $(`#${$(this).data('info')}`).fadeOut(300);
+        }
+    );
+
 
 });
 
@@ -232,18 +243,6 @@ function getReduxPoint(tier){
     }
     returnVal += (t4 * 30) + (t5 * 30) + (t6 * 30) + (t7 * 30) + (t8 * 30);
     return returnVal;
-}
-
-// alert 메세지
-function showAlert(msg){
-    $.confirm({
-        theme: 'supervan',
-        title: '',
-        content: msg,
-        buttons: {
-            '네': function () {}
-        }
-    });
 }
 
 // 기본 포커스 비용 티어별(2T ~ 8T)

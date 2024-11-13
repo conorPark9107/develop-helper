@@ -38,7 +38,17 @@ const getPerTime = (date) => {
 	return `${start.toLocaleDateString()}`;
 };
 
-
+// alert 메세지
+function showAlert(msg){
+    $.confirm({
+        theme: 'supervan',
+        title: '',
+        content: msg,
+        buttons: {
+            '네': function () {}
+        }
+    });
+}
 
 function turnLoading(){
     var load = $('#loading').css('display');

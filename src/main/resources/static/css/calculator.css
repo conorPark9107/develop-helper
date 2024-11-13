@@ -267,7 +267,7 @@ table tbody td input{
 }
 .timeAgo{
     font-size:0.7em;
-    color: RGBA(90, 231, 132, 0.6);
+    color: RGB(87, 95, 211);
     float: left;
     margin-top: -50px;
 }
@@ -315,7 +315,7 @@ body::-webkit-scrollbar {
     display:inline-block;
 }
 .priceDetail{
-    color : RGBA(218, 0, 34, 0.5);
+    color : RGB(87, 95, 211);
     font-size: 0.5em;
     margin: 0 auto;
 }
@@ -326,5 +326,66 @@ a:hover{
     color: RGB(218, 0, 34);
 }
 .green{
-    color: RGB(90, 231, 132);
+    color: RGBA(90, 231, 132, 0.6);
+}
+.tooltip{
+    font-size: 0.5em;
+    font-weight: bold;
+    padding: 1px 5px;    
+    margin-left: 3px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+}
+.tooltip:hover{
+    color: #242020;
+    background-color: #eee;
+    border: 1px solid #242020;
+    
+}
+#tooltipArea_01{
+    display: none;
+    position: fixed;
+    top: 15%;
+    left: 35%;
+    width: 40%;
+    height: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #eee;
+    padding: 1% 1%;
+}
+
+#tooltipArea_02{
+    display: none;
+    display: none;
+    position: fixed;
+    top: 15%;
+    left: 35%;
+    width: 15%;
+    height: 60%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #eee;
+    padding: 1% 1%;
+}
+
+#tooltipArea_03{
+    display: none;
+    position: fixed;
+    top: 15%;
+    left: 35%;
+    width: 20%;
+    height: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #eee;
+    padding: 1% 1%;
+}
+#tooltipArea_04{
+    display: none;
+    position: fixed;
+    top: 15%;
+    left: 35%;
+    width: 44%;
+    height: 50%;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #eee;
+    padding: 1% 1%;
 }
