@@ -30,7 +30,7 @@ $(document).ready(function() {
             break;
             case 'boots' :
                 tier = 'T8_';
-                uri = 'T8_SHOES_PLATE_';
+                uri = 'SHOES_PLATE_';
                 arr_show = plateCate;
             break;
 
@@ -96,7 +96,7 @@ $(document).ready(function() {
 //            var url = uri + arr_show[i] + ".png?quality=5";
 //            $('#contentsArea').append('<a class="itemImage" href="https://render.albiononline.com/v1/item/' + url + '" />');
 
-            var url = "/image/" + tier + uri + arr_show[i] + ".png";
+            var url = "/image/" + tier + uri + arr_show[i] + "_4.png";
             $('#contentsArea').append('<img class="itemImage" src="' + url + '" value="' + uri + arr_show[i] + '" />');
         }
     });
@@ -123,9 +123,9 @@ $(document).ready(function() {
 //                 }
 //                 $('#secondContentsArea').append('<a class="itemImage" href="https://render.albiononline.com/v1/item/' + url + '" />');
                  if(selectedCategory == 'potion' || selectedCategory == 'food'){
-                    url = "/image/" + arr[i] + ".png";
+                    url = "/image/" + arr[i] + "_4.png";
                  }else{
-                    url = "/image/T8_" + arr[i] + ".png";
+                    url = "/image/T8_" + arr[i] + "_4.png";
                  }
                  $('#secondContentsArea').append('<img class="itemImage" src="' + url + '"  value="' + arr[i] + '" />');
             }

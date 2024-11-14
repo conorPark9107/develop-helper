@@ -108,6 +108,7 @@ $(document).ready(function () {
         let t7 = $('#tier07').val();
         let t8 = $('#tier08').val();
 
+        // 자원 반환율 0이 될때까지 총 반환개수 += (만들 개수 * (반환율 * 100)) / 100
         let realQuantity = Number(quantity);
         let now = Number(quantity);
         while(Math.round(now) > 0){
@@ -122,7 +123,7 @@ $(document).ready(function () {
         $(trs[0]).find('td:eq(6)').text(buyPrice);
         $(trs[0]).find('td:eq(7)').text(sellPrice);
         let focus = (t4 * 30) + (t5 * 30) + (t6 * 30) + (t7 * 30) + (t8 * 30);
-        $(trs[0]).find('td:eq(5)').text(Math.floor(Math.round(focusTable[0] / 2 ** (focus / 10000)) * realQuantity));
+        $(trs[0]).find('td:eq(5)').text(Math.floor(Math.round(focusTableRefining[0] / 2 ** (focus / 10000)) * realQuantity));
         let x = sellPrice - buyPrice;
         if(x >= 0){
             $(trs[0]).find('td:eq(8)').addClass('green');
@@ -162,8 +163,8 @@ $(document).ready(function () {
                 reduxPoint = getReduxPoint(8);
             }
 
-            // 필요 포커스
-            $(tds[5]).text(Math.round(focusTable[i] / 2 ** (reduxPoint / 10000) * realQuantity));
+            // 필요 포커스(basefocus / 2 ^ (reduxPoint / 10000)) 
+            $(tds[5]).text(Math.round(focusTableRefining[i] / 2 ** (reduxPoint / 10000) * realQuantity));
 
             // 구매가
             let afterPrice = $($(trs[afterIndex]).find('td')[1]).find('input').val() * afterQuantity ;
@@ -245,32 +246,6 @@ function getReduxPoint(tier){
     return returnVal;
 }
 
-// 기본 포커스 비용 티어별(2T ~ 8T)
-const focusTable = [18,
-                    31,
-                    54, 94, 164, 287, 503,
-                    94,	164, 287, 503, 880,
-                    164, 287, 503, 880, 1539,
-                    287, 503, 880, 1539 , 2694,
-                    503, 880, 1539, 2694, 4714
-                ];
-
-const beforeItemValue = [4,
-                         2,
-                         4, 12, 28, 60, 124,
-                         5, 10, 21, 42, 85,
-                         8, 16, 32, 64, 128,
-                         12, 25, 51, 102, 204,
-                         25, 51, 102, 204, 409
-                        ];
-const afterItemValue = [4,
-                        8,
-                        16, 32, 64, 128, 256,
-                        32, 64, 128, 256, 512,
-                        64, 128, 256, 512, 1024,
-                        128, 256, 512, 1024, 2048,
-                        256, 512, 1024, 2048, 4096
-                        ];
 
 // 초기에 집중 비용 테이블에 작성.
 function fillFocusOnTable(){
@@ -278,7 +253,7 @@ function fillFocusOnTable(){
 
     for(let j = 0; j <trs.length; j++){
         let tds = $(trs[j]).find('td');
-        $(tds[5]).text(focusTable[j]);
+        $(tds[5]).text(focusTableRefining[j]);
     }
 }
 
@@ -335,7 +310,7 @@ function setContetns(beforeArr, afterArr){
 
             let afterAvg = $(span[0]).text();
             let beforeAvg = $(span[1]).text();
-            $(tds[4]).attr('value', (afterAvg * afterItemValue[i-5]) + (beforeAvg * beforeItemValue[i]));
+            $(tds[4]).attr('value', (afterAvg * afterRefiningValue[i-5]) + (beforeAvg * beforeRefiningValue[i]));
         }
     }
 
@@ -345,14 +320,14 @@ function setContetns(beforeArr, afterArr){
 function setContetnsFirst(beforeArr, afterArr){
     let td2_img = $('#t2').find('td:eq(4)').find('div').find('img');
     let td2_span = $('#t2').find('td:eq(4)').find('div').find('span');
-    td2_span.attr('value', td2_span.text() * beforeItemValue[0]);
+    td2_span.attr('value', td2_span.text() * beforeRefiningValue[0]);
     td2_img.attr('src', `/image/${beforeArr[0]}.png`)
 
     let td3 = $('#t3').find('td:eq(4)')
     let td3_img = td3.find('div').find('img');
     let td3_avg = td3.find('div').find('span');
 
-    td3.attr('value', ($(td3_avg[0]).text() * afterItemValue[0]) * ($(td3_avg[1]).text() * beforeItemValue[1]));
+    td3.attr('value', ($(td3_avg[0]).text() * afterRefiningValue[0]) * ($(td3_avg[1]).text() * beforeRefiningValue[1]));
     $(td3_img[0]).attr('src', `/image/${afterArr[0]}.png`)
     $(td3_img[1]).attr('src', `/image/${beforeArr[1]}.png`)
 
@@ -365,7 +340,7 @@ function setContetnsFirst(beforeArr, afterArr){
         $(imgs[1]).attr('src', `/image/${beforeArr[i]}.png`)
         let afterAvg = $(span[0]).text();
         let beforeAvg = $(span[1]).text();
-        $(td).attr('value', (afterItemValue[1] * afterAvg) + (beforeItemValue[i] * beforeAvg));
+        $(td).attr('value', (afterRefiningValue[1] * afterAvg) + (beforeRefiningValue[i] * beforeAvg));
 
     }
 

@@ -8,6 +8,7 @@ import net.minidev.json.parser.JSONParser;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.HashMap;
@@ -15,6 +16,24 @@ import java.util.stream.Stream;
 
 @SpringBootTest
 class HelperApplicationTests {
+
+
+	@Test
+	void 파일_이름_변경(){
+		String path = "D:\\springboot\\Albionhelper\\src\\main\\resources\\static";
+		File dir = new File(path);
+
+		File[] files = dir.listFiles();
+		System.out.println(files.length);
+		for(File file : files){
+			if(file.getName().contains("image")){
+				File newFile = new File(path + "\\image\\" + file.getName().replace("image", ""));
+				file.renameTo(newFile);
+			}
+		}
+
+
+	}
 
 	@Test
 	void contextLoads() {

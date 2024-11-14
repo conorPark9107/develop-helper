@@ -7,28 +7,28 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
     
-    <!--<script type="text/javascript" src="/static/js/variable.js"></script>
+    <script type="text/javascript" src="/static/js/variable.js"></script>
     <script type="text/javascript" src="/static/js/util.js"></script>
-    <script type="text/javascript" src="/static/js/calculator.js"></script>
+    <script type="text/javascript" src="/static/js/calculator/refining.js"></script>
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/detail.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
     <link rel="stylesheet" href="/static/css/calculator.css" />
-    <link rel="stylesheet" href="/static/css/editor.css"/>-->
+    <link rel="stylesheet" href="/static/css/editor.css"/>
 
-
-    
-    <script type="text/javascript" src="/js/variable.js"></script>
+    <!-- <script type="text/javascript" src="/js/variable.js"></script>
     <script type="text/javascript" src="/js/util.js"></script>
-    <script type="text/javascript" src="/js/calculator.js"></script>
+    <script type="text/javascript" src="/js/calculator/refining.js"></script>
     <link rel="stylesheet" href="/css/editor.css"/>
     <link rel="stylesheet" href="/css/calculator.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
-    <link rel="stylesheet" href="/css/loading.css" />
+    <link rel="stylesheet" href="/css/loading.css" /> -->
     
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 - 제련 ⚔</title>
@@ -154,635 +154,637 @@
         </div>
 
 
-        <!-- 요기부터 각 meterial 별로 테이블 폼 -->
-        <div class="table-div" id="meterial_table">
+    <!-- 요기부터 각 meterial 별로 테이블 폼 -->
+    <div class="table-div" id="meterial_table">
 
-            <span class="qunatityArea">
-                <input type="number" id="quantity" name="quantity" placeholder="n" min="1" value="1" />
-                개 단위로 보기
-            </span>
+        <span class="qunatityArea">
+            <input type="number" id="quantity" name="quantity" placeholder="n" min="1" value="1" />
+            개 단위로 보기
+        </span>
 
-            <table>
-                <colgroup>
-                    <col class="col1">
-                    <col class="col2">
-                    <col class="col3">
-                    <col class="col4">
-                    <col class="col5">
-                    <col class="col6">
-                    <col class="col7">
-                    <col class="col8">
-                    <col class="col9">
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th id="afterName"></th>
-                        <th>판매가격<br/><span class="priceDetail">(최저가)</span></th>
-                        <th id="beforeName"></th>
-                        <th>판매가격<br/><span class="priceDetail">(최저가)</span></th>
-                        <th>만들기위한재료</th>
-                        <th>필요한 집중<br/><span class="priceDetail">(반환 비율 포함)</span></th>
-                        <th>재료비용</th>
-                        <th>판매가</th>
-                        <th>이익</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="t2">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t3">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>2</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t4">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>2</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t4_1">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>2</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t4_2">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>2</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t4_3">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>2</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t4_4">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>2</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t5">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>3</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t5_1">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>3</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t5_2">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>3</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t5_3">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>3</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t5_4">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>3</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t6">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>4</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t6_1">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>4</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t6_2">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>4</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t6_3">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>4</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t6_4">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>4</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t7">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>5</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t7_1">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>5</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t7_2">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>5</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t7_3">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>5</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="t7_4">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>5</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="T8">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>5</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="T8_1">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>5</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="T8_2">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>5</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="T8_3">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>5</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr id="T8_4">
-                        <td><img src="" /></td>
-                        <td>
-                            <input type="number" name="price" placeholder="가격입력" />
-                        </td>
-                        <td><img src="" /></td>
-                        <td><input type="number" name="price" placeholder="가격입력" /></td>
-                        <td>
-                            <div class="material">
-                                <img src="" />
-                                <span>1</span>
-                            </div>
-                            <div class="material">
-                                <img src="" />
-                                <span>5</span>
-                            </div>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div> <!-- main -->
+        <table>
+            <colgroup>
+                <col class="col1">
+                <col class="col2">
+                <col class="col3">
+                <col class="col4">
+                <col class="col5">
+                <col class="col6">
+                <col class="col7">
+                <col class="col8">
+                <col class="col9">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th id="afterName"></th>
+                    <th>판매가격<br/><span class="priceDetail">(최저가)</span></th>
+                    <th id="beforeName"></th>
+                    <th>판매가격<br/><span class="priceDetail">(최저가)</span></th>
+                    <th>만들기위한재료</th>
+                    <th>필요한 집중<br/><span class="priceDetail">(반환 비율 포함)</span></th>
+                    <th>재료비용</th>
+                    <th>판매가</th>
+                    <th>이익</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="t2">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t3">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>2</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t4">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>2</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t4_1">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>2</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t4_2">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>2</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t4_3">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>2</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t4_4">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>2</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t5">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>3</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t5_1">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>3</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t5_2">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>3</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t5_3">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>3</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t5_4">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>3</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t6">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>4</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t6_1">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>4</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t6_2">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>4</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t6_3">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>4</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t6_4">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>4</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t7">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>5</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t7_1">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>5</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t7_2">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>5</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t7_3">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>5</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="t7_4">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>5</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="T8">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>5</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="T8_1">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>5</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="T8_2">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>5</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="T8_3">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>5</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="T8_4">
+                    <td><img src="" /></td>
+                    <td>
+                        <input type="number" name="price" placeholder="가격입력" />
+                    </td>
+                    <td><img src="" /></td>
+                    <td><input type="number" name="price" placeholder="가격입력" /></td>
+                    <td>
+                        <div class="material">
+                            <img src="" />
+                            <span>1</span>
+                        </div>
+                        <div class="material">
+                            <img src="" />
+                            <span>5</span>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
 
+
+    <!-- 운명 보드 설정 -->
     <div id="tooltipArea_01">
         <div id="info01">
             <h3>운명보드 레벨 설정</h3>
@@ -864,6 +866,10 @@
         </div>
     </div>
 
+    <div class="footer">
+        <span>All <a href="https://albiononline.com/news" target="_blank" style="text-decoration: underline;">Albion Online</a> related materials are property of <a href="https://albiononline.com/imprint" target="_blank" style="text-decoration: underline;">Sandbox Interactive GmbH</a></span>
+        <span>Prices are provided by the <a href="https://www.albion-online-data.com/" target="_blank" style="text-decoration: underline;">Albion Online Data Project</a></span>
+    </div>
 
 </body>
 

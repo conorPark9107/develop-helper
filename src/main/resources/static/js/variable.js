@@ -13,6 +13,7 @@ const potionCate = ["T6_POTION_HEAL", "T6_POTION_ENERGY", "T7_POTION_REVIVE", "T
 "T7_POTION_MOB_RESET", "T7_POTION_CLEANSE2", "T7_POTION_ACID", "T8_POTION_BERSERK", "T8_POTION_LAVA", "T8_POTION_GATHER", "T8_POTION_TORNADO"];
 
 
+
 const itemTree = {
     _MAIN_SWORD : ["MAIN_SWORD", "2H_CLAYMORE", "2H_DUALSWORD", "MAIN_SCIMITAR_MORGANA", "2H_CLEAVER_HELL", "2H_DUALSCIMITAR_UNDEAD", "2H_CLAYMORE_AVALON", "MAIN_SWORD_CRYSTAL"],
     _MAIN_AXE :   ["MAIN_AXE", "2H_AXE", "2H_HALBERD", "2H_HALBERD_MORGANA", "2H_SCYTHE_HELL", "2H_DUALAXE_KEEPER", "2H_AXE_AVALON", "2H_SCYTHE_CRYSTAL"],
@@ -64,6 +65,8 @@ const itemTree = {
     _T8_POTION_LAVA : ["T4_POTION_LAVA", "T6_POTION_LAVA", "T8_POTION_LAVA"],
     _T8_POTION_GATHER : ["T4_POTION_GATHER", "T6_POTION_GATHER", "T8_POTION_GATHER"],
     _T8_POTION_TORNADO : ["T4_POTION_TORNADO", "T6_POTION_TORNADO", "T8_POTION_TORNADO"],
+
+    // 제련
     _BAR : ["T2_ORE", "T3_ORE",
             "T4_ORE", "T4_ORE_LEVEL1@1", "T4_ORE_LEVEL2@2", "T4_ORE_LEVEL3@3", "T4_ORE_LEVEL4@4",
             "T5_ORE", "T5_ORE_LEVEL1@1", "T5_ORE_LEVEL2@2", "T5_ORE_LEVEL3@3", "T5_ORE_LEVEL4@4",
@@ -112,6 +115,278 @@ const itemTree = {
               "T6_CLOTH", "T6_CLOTH_LEVEL1@1", "T6_CLOTH_LEVEL2@2", "T6_CLOTH_LEVEL3@3", "T6_CLOTH_LEVEL4@4",
               "T7_CLOTH", "T7_CLOTH_LEVEL1@1", "T7_CLOTH_LEVEL2@2", "T7_CLOTH_LEVEL3@3", "T7_CLOTH_LEVEL4@4",
               "T8_CLOTH", "T8_CLOTH_LEVEL1@1", "T8_CLOTH_LEVEL2@2", "T8_CLOTH_LEVEL3@3", "T8_CLOTH_LEVEL4@4"],
+
+        // 요리
+    _FISH : ["T3_FISH_FRESHWATER_SWAMP_RARE", "T5_FISH_FRESHWATER_SWAMP_RARE", "T7_FISH_FRESHWATER_SWAMP_RARE", 
+                "T3_FISH_SALTWATER_ALL_RARE", "T5_FISH_SALTWATER_ALL_RARE", "T7_FISH_SALTWATER_ALL_RARE",
+                "T3_FISH_FRESHWATER_MOUNTAIN_RARE", "T5_FISH_FRESHWATER_MOUNTAIN_RARE", "T7_FISH_FRESHWATER_MOUNTAIN_RARE",
+                "T3_FISH_FRESHWATER_STEPPE_RARE", "T5_FISH_FRESHWATER_STEPPE_RARE", "T7_FISH_FRESHWATER_STEPPE_RARE",
+                "T3_FISH_FRESHWATER_AVALON_RARE", "T5_FISH_FRESHWATER_AVALON_RARE", "T7_FISH_FRESHWATER_AVALON_RARE",
+                "T3_FISH_FRESHWATER_FOREST_RARE", "T5_FISH_FRESHWATER_FOREST_RARE", "T7_FISH_FRESHWATER_FOREST_RARE",
+                "T3_FISH_FRESHWATER_HIGHLANDS_RARE", "T5_FISH_FRESHWATER_HIGHLANDS_RARE", "T7_FISH_FRESHWATER_HIGHLANDS_RARE"],
+    _FISHSAUCE : ["T1_FISHSAUCE_LEVEL1", "T1_FISHSAUCE_LEVEL2", "T1_FISHSAUCE_LEVEL3"],
+    _CROP : ["T1_CARROT", "T2_BEAN", "T3_WHEAT", "T4_TURNIP", "T5_CABBAGE", "T6_POTATO", "T7_CORN", "T8_PUMPKIN"],
+    _HERB : ["T2_AGARIC", "T3_COMFREY", "T4_BURDOCK", "T5_TEASEL", "T6_FOXGLOVE", "T7_MULLEIN", "T8_YARROW"],
+
+};
+
+// 제련 페이지
+// 기본 포커스 비용 티어별(2T ~ 8T)
+const focusTableRefining = [18,
+        31,
+        54, 94, 164, 287, 503,
+        94,	164, 287, 503, 880,
+        164, 287, 503, 880, 1539,
+        287, 503, 880, 1539 , 2694,
+        503, 880, 1539, 2694, 4714
+    ];
+    // 제련 전 품목들의 티어별 아이템 가치
+    const beforeRefiningValue = [4,
+             2,
+             4, 12, 28, 60, 124,
+             5, 10, 21, 42, 85,
+             8, 16, 32, 64, 128,
+             12, 25, 51, 102, 204,
+             25, 51, 102, 204, 409
+            ];
+    // 제련 후 품목들의 티어별 아이템 가치
+    const afterRefiningValue = [4,
+            8,
+            16, 32, 64, 128, 256,
+            32, 64, 128, 256, 512,
+            64, 128, 256, 512, 1024,
+            128, 256, 512, 1024, 2048,
+            256, 512, 1024, 2048, 4096
+            ];
+
+
+// 요리 계산 페이지 (해당 음식의 재료들)
+// 일반, 아발로니안 음식들 티어별 필요한 피쉬소스 : 10, 30, 90
+// 아발로니안 음식들 티어별 필요한 아발로니안 에너지는 피쉬소스양과 동일.
+// 피쉬가 들어가는 음식들 티어별 필요한 피쉬소스 : 3, 9, 27
+const cookTree = {
+// 수프
+T1_MEAL_SOUP : {
+        names : ["T1_CARROT"],
+        nums : [16, 10]
+},
+T3_MEAL_SOUP : {
+        names : ["T3_WHEAT"],
+        nums : [48, 30]
+},
+T5_MEAL_SOUP : {
+        names : ["T5_CABBAGE"],
+        nums : [144, 90]
+},
+// 조개 수프
+T1_MEAL_SOUP_FISH : {
+        names : ["T3_FISH_FRESHWATER_SWAMP_RARE", "T1_CARROT"],
+        nums : [1, 2, 3]
+},
+T3_MEAL_SOUP_FISH : {
+        names : ["T5_FISH_FRESHWATER_SWAMP_RARE", "T3_WHEAT", "T3_COMFREY", "T3_MEAT"],
+        nums : [1, 2, 2, 2, 9]
+},
+T5_MEAL_SOUP_FISH : {
+        names : ["T7_FISH_FRESHWATER_SWAMP_RARE", "T5_CABBAGE", "T5_TEASEL", "T5_MEAT"],
+        nums : [1, 6, 6, 6, 27]
+},
+// 샐러드
+T2_MEAL_SALAD : {
+        names : ["T2_BEAN", "T1_CARROT"],
+        nums : [8, 8, 10]
+},
+T4_MEAL_SALAD : {
+        names : ["T4_TURNIP", "T3_WHEAT"],
+        nums : [24, 24, 30]
+},
+T6_MEAL_SALAD : {
+        names : ["T6_POTATO", "T5_CABBAGE"],
+        nums : [72, 72, 90]
+},
+// 크라켄 샐러드
+T2_MEAL_SALAD_FISH : {
+        names : ["T3_FISH_SALTWATER_ALL_RARE", "T2_BEAN", "T2_AGARIC"],
+        nums : [1, 1, 1, 3]
+},
+T4_MEAL_SALAD_FISH : {
+        names : ["T5_FISH_SALTWATER_ALL_RARE", "T4_TURNIP", "T4_BURDOCK", "T4_MEAT"],
+        nums : [1, 2, 2, 2, 9]
+},
+T6_MEAL_SALAD_FISH : {
+        names : ["T7_FISH_SALTWATER_ALL_RARE", "T6_POTATO", "T6_FOXGLOVE", "T6_MEAT"],
+        nums : [1, 6, 6, 6, 27]
+},
+// 파이
+T3_MEAL_PIE : {
+        names : ["T3_WHEAT", "T3_FLOUR", "T3_MEAT"],
+        nums : [2, 4, 8, 10]
+},
+T5_MEAL_PIE : {
+        names : ["T5_CABBAGE", "T3_FLOUR", "T5_MEAT", "T4_MILK"],
+        nums : [6, 12, 24, 6, 30]
+},
+T7_MEAL_PIE : {
+        names : ["T7_CORN", "T3_FLOUR", "T7_MEAT", "T6_MILK"],
+        nums : [18, 36, 72, 18, 90]
+},
+// 명사수 파이
+T3_MEAL_PIE_FISH : {
+        names : ["T3_FISH_FRESHWATER_MOUNTAIN_RARE", "T3_FLOUR", "T3_EGG"],
+        nums : [1, 1, 1, 3]
+},
+T5_MEAL_PIE_FISH : {
+        names : ["T5_FISH_FRESHWATER_MOUNTAIN_RARE", "T5_CABBAGE", "T5_TEASEL", "T5_EGG"],
+        nums : [1, 2, 2, 2, 9]
+},
+T7_MEAL_PIE_FISH : {
+        names : ["T7_FISH_FRESHWATER_MOUNTAIN_RARE", "T7_CORN", "T7_MULLEIN", "T7_MEAT"],
+        nums : [1, 6, 6, 6, 27]
+},
+// 오믈렛
+T3_MEAL_OMELETTE : {
+        names : ["T3_WHEAT", "T3_MEAT", "T3_EGG"],
+        nums : [4, 8, 2, 10]
+},
+T5_MEAL_OMELETTE : {
+        names : ["T5_CABBAGE", "T5_MEAT", "T5_EGG"],
+        nums : [12, 24, 6, 30]
+},
+T7_MEAL_OMELETTE : {
+        names : ["T7_CORN", "T7_MEAT", "T5_EGG"],
+        nums : [36, 72, 18, 90]
+},
+// 게 오믈렛
+T3_MEAL_OMELETTE_FISH : {
+        names : ["T3_FISH_FRESHWATER_STEPPE_RARE", "T3_COMFREY", "T3_EGG"],
+        nums : [1, 1, 1, 3]
+},
+T5_MEAL_OMELETTE_FISH : {
+        names : ["T5_FISH_FRESHWATER_STEPPE_RARE", "T5_CABBAGE", "T5_TEASEL", "T5_EGG"],
+        nums : [1, 2, 2, 2, 9]
+},
+T7_MEAL_OMELETTE_FISH : {
+        names : ["T7_FISH_FRESHWATER_STEPPE_RARE", "T7_CORN", "T7_MULLEIN", "T7_MEAT"],
+        nums : [1, 6, 6, 6, 27]
+},
+// 아발로니안 오믈렛
+T3_MEAL_OMELETTE_AVALON : {
+        names : ["T4_MILK", "T3_MEAT", "T3_EGG", "QUESTITEM_TOKEN_AVALON"],
+        nums : [4, 8, 2, 10, 10]
+},
+T5_MEAL_OMELETTE_AVALON : {
+        names : ["T6_MILK", "T5_MEAT", "T5_EGG", "QUESTITEM_TOKEN_AVALON"],
+        nums : [12, 24, 6, 30, 30]
+},
+T7_MEAL_OMELETTE_AVALON : {
+        names : ["T8_MILK", "T5_MEAT", "T5_EGG", "QUESTITEM_TOKEN_AVALON"],
+        nums : [36, 72, 18, 90, 90]
+},
+// 구운 고기
+T3_MEAL_ROAST : {
+        names : ["T3_MEAT", "T2_BEAN", "T4_MILK"],
+        nums : [8, 4, 4, 10]
+},
+T5_MEAL_ROAST : {
+        names : ["T5_MEAT", "T5_CABBAGE", "T6_MILK"],
+        nums : [24, 12, 12, 30]
+},
+T7_MEAL_ROAST : {
+        names : ["T7_MEAT", "T7_CORN", "T8_MILK"],
+        nums : [72, 36, 36, 90]
+},
+// 스내퍼 구운고기
+T3_MEAL_ROAST_FISH : {
+        names : ["T3_FISH_FRESHWATER_AVALON_RARE", "T3_COMFREY", "T4_MILK"],
+        nums : [1, 1, 1, 3]
+},
+T5_MEAL_ROAST_FISH : {
+        names : ["T5_FISH_FRESHWATER_AVALON_RARE", "T5_CABBAGE", "T5_TEASEL", "T6_MILK"],
+        nums : [1, 2, 2, 2, 9]
+},
+T7_MEAL_ROAST_FISH : {
+        names : ["T7_FISH_FRESHWATER_AVALON_RARE", "T7_CORN", "T7_MULLEIN", "T8_MILK"],
+        nums : [1, 6, 6, 6, 27]
+},
+// 스튜
+T4_MEAL_STEW : {
+        names : ["T4_TURNIP", "T4_BREAD", "T4_MEAT"],
+        nums : [4, 4, 8, 10]
+},
+T6_MEAL_STEW : {
+        names : ["T5_CABBAGE", "T4_BREAD", "T6_MEAT"],
+        nums : [12, 12, 24, 30]
+},
+T8_MEAL_STEW : {
+        names : ["T7_CORN", "T4_BREAD", "T8_MEAT"],
+        nums : [36, 36, 72, 90]
+},
+// 장어 스튜
+T4_MEAL_STEW_FISH : {
+        names : ["T3_FISH_FRESHWATER_FOREST_RARE", "T4_TURNIP", "T4_BURDOCK"],
+        nums : [1, 1, 1, 3]
+},
+T6_MEAL_STEW_FISH : {
+        names : ["T5_FISH_FRESHWATER_FOREST_RARE", "T6_POTATO", "T6_FOXGLOVE", "T6_MILK"],
+        nums : [1, 2, 2, 2, 9]
+},
+T8_MEAL_STEW_FISH : {
+        names : ["T7_FISH_FRESHWATER_FOREST_RARE", "T8_PUMPKIN", "T8_YARROW", "T8_MILK"],
+        nums : [1, 6, 6, 6, 27]
+},
+// 아발로니안 스튜
+T4_MEAL_STEW_AVALON : {
+        names : ["T1_CARROT", "T4_TURNIP", "T4_MEAT", "QUESTITEM_TOKEN_AVALON"],
+        nums : [4, 4, 8, 10, 10]
+},
+T6_MEAL_STEW_AVALON : {
+        names : ["T5_CABBAGE", "T6_POTATO", "T6_MEAT", "QUESTITEM_TOKEN_AVALON"],
+        nums : [12, 12, 24, 30, 30]
+},
+T8_MEAL_STEW_AVALON : {
+        names : ["T7_CORN", "T8_PUMPKIN", "T8_MEAT", "QUESTITEM_TOKEN_AVALON"],
+        nums : [36, 36, 72, 90, 90]
+},
+// 샌드위치
+T4_MEAL_SANDWICH : {
+        names : ["T4_BREAD", "T4_MEAT", "T4_BUTTER"],
+        nums : [4, 8, 2, 10]
+},
+T6_MEAL_SANDWICH : {
+        names : ["T4_BREAD", "T6_MEAT", "T6_BUTTER"],
+        nums : [12, 24, 6, 30]
+},
+T8_MEAL_SANDWICH : {
+        names : ["T4_BREAD", "T8_MEAT", "T8_BUTTER"],
+        nums : [36, 72, 18, 90]
+},
+// 떠돌이 샌드위치
+T4_MEAL_SANDWICH_FISH : {
+        names : ["T3_FISH_FRESHWATER_HIGHLANDS_RARE", "T4_TURNIP", "T4_BUTTER"],
+        nums : [1, 1, 1, 3]
+},
+T6_MEAL_SANDWICH_FISH : {
+        names : ["T5_FISH_FRESHWATER_HIGHLANDS_RARE", "T6_POTATO", "T6_FOXGLOVE", "T6_BUTTER"],
+        nums : [1, 2, 2, 2, 9]
+},
+T8_MEAL_SANDWICH_FISH : {
+        names : ["T7_FISH_FRESHWATER_HIGHLANDS_RARE", "T8_PUMPKIN", "T8_YARROW", "T8_BUTTER"],
+        nums : [1, 6, 6, 6, 27]
+},
+// 아발로니안 샌드위치
+T4_MEAL_SANDWICH_AVALON : {
+        names : ["T4_BREAD", "T4_MEAT", "T4_BUTTER", "QUESTITEM_TOKEN_AVALON"],
+        nums : [4, 8, 2, 10, 10]
+},
+T6_MEAL_SANDWICH_AVALON : {
+        names : ["T4_BREAD", "T6_MEAT", "T6_BUTTER", "QUESTITEM_TOKEN_AVALON"],
+        nums : [12, 24, 6, 30]
+},
+T8_MEAL_SANDWICH_AVALON : {
+        names : ["T4_BREAD", "T8_MEAT", "T8_BUTTER", "QUESTITEM_TOKEN_AVALON"],
+        nums : [36, 72, 18, 90, 90]
+},
+FISHSAUCE : ["T1_FISHSAUCE_LEVEL1", "T1_FISHSAUCE_LEVEL2", "T1_FISHSAUCE_LEVEL3"],        
 };
 
 
