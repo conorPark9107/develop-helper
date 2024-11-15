@@ -62,7 +62,7 @@ input {
     background-color: rgb(36, 32, 32);
     border: 1px solid rgba(238, 238, 238, 0.2);
     box-sizing: border-box;
-    padding: 8px 5px;
+    padding: 5px 5px;
 }
 
 .input-number{
@@ -201,7 +201,7 @@ td{
     border-left: 1px dashed RGBA(238, 238, 238, 0.1);
     border-right: 1px dashed RGBA(238, 238, 238, 0.1);
 }
-td:nth-child(5){
+.refining-table td:nth-child(5){
     text-align: left;
 }
 td:nth-child(5) .material{
@@ -276,6 +276,12 @@ table tbody td input{
     color: RGB(87, 95, 211);
     float: left;
     margin-top: -50px;
+}
+.timeAgo-cooking{
+    font-size: 0.7em;
+    color: RGB(87, 95, 211);
+    float: left;
+    margin-top: -40px;
 }
 
 
@@ -421,12 +427,28 @@ a:hover{
     gap: 15px;
 }
 .main-table{
+    height: 100%;
     width:50%;
     flex-grow: 2;
 }
 .sub-table{
-    width:15%;
+    height: 100%;
+    width: 5%;
     flex-grow: 1;
+}
+.main-table-after{
+    text-align: center;
+    display:inline-block;
+}
+.main-table-after img{
+    width: 3vw;
+    height: 3vw;
+    display: block;
+    margin-bottom: -15px;
+}
+.main-table-after span{
+    font-size: 0.6em;
+    font-weight: bold;
 }
 .material-cooking{
     text-align: center;
@@ -443,8 +465,17 @@ a:hover{
     font-weight: bold;
 }
 .main-table tbody tr td{
-    font-size: 0.6em;
+    font-size: 0.8em;
 }
 .main-table tbody td:nth-child(3){
+    
     text-align: left;
+}
+.selected-img {
+    color: #eee;
+    --angle: 0deg;
+    border: 1px solid;
+    border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+    animation: 3s rotate linear infinite;
+    outline: none;
 }

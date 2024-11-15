@@ -163,228 +163,440 @@ const focusTableRefining = [18,
 // 요리 계산 페이지 (해당 음식의 재료들)
 // 일반, 아발로니안 음식들 티어별 필요한 피쉬소스 : 10, 30, 90
 // 아발로니안 음식들 티어별 필요한 아발로니안 에너지는 피쉬소스양과 동일.
-// 피쉬가 들어가는 음식들 티어별 필요한 피쉬소스 : 3, 9, 27
+// 피쉬가 들어가는 음식들 티어별 필요한 피쉬소스 : 3, 9, 27\
+/*
+names   // 재료 이름들
+nums    // 재료 이름들이 각각 필요한 재료 개수들
+fishNum // 피쉬소스 필요 개수(인첸트를 위한)
+baseFocus // 기본 포커스(0레벨일때의 포커스를 말함)
+returnNum // 한번 요리했을때 반환되는 개수
+*/
+
 const cookTree = {
 // 수프
 T1_MEAL_SOUP : {
         names : ["T1_CARROT"],
-        nums : [16, 10]
+        nums : [16],
+        fishNum : 10,
+        baseFocus : [770, 1440, 2780, 6780],
+        returnNum : 10,
+        itemValue : 64
 },
 T3_MEAL_SOUP : {
         names : ["T3_WHEAT"],
-        nums : [48, 30]
+        nums : [48],
+        fishNum : 30,
+        baseFocus : [1680, 2350, 3690, 7690],
+        returnNum : 10,
+        itemValue : 192
 },
 T5_MEAL_SOUP : {
         names : ["T5_CABBAGE"],
-        nums : [144, 90]
+        nums : [144],
+        fishNum : 90,
+        baseFocus : [5040, 7040, 11050, 23060],
+        returnNum : 10,
+        itemValue : 576
 },
 // 조개 수프
 T1_MEAL_SOUP_FISH : {
         names : ["T3_FISH_FRESHWATER_SWAMP_RARE", "T1_CARROT"],
-        nums : [1, 2, 3]
+        nums : [1, 2],
+        fishNum : 3,
+        baseFocus : [77, 144, 278, 678],
+        returnNum : 1,
+        itemValue : 90
 },
 T3_MEAL_SOUP_FISH : {
         names : ["T5_FISH_FRESHWATER_SWAMP_RARE", "T3_WHEAT", "T3_COMFREY", "T3_MEAT"],
-        nums : [1, 2, 2, 2, 9]
+        nums : [1, 2, 2, 2],
+        fishNum : 9,
+        baseFocus : [672, 1272, 2473, 6076],
+        returnNum : 1,
+        itemValue : 260
 },
 T5_MEAL_SOUP_FISH : {
         names : ["T7_FISH_FRESHWATER_SWAMP_RARE", "T5_CABBAGE", "T5_TEASEL", "T5_MEAT"],
-        nums : [1, 6, 6, 6, 27]
+        nums : [1, 6, 6, 6],
+        fishNum : 27,
+        baseFocus : [672, 1272, 2473, 6076],
+        returnNum : 1,
+        itemValue : 750
 },
 // 샐러드
 T2_MEAL_SALAD : {
         names : ["T2_BEAN", "T1_CARROT"],
-        nums : [8, 8, 10]
+        nums : [8, 8],
+        fishNum : 10,
+        baseFocus : [560, 780, 1230, 2560],
+        returnNum : 10,
+        itemValue : 64
 },
 T4_MEAL_SALAD : {
         names : ["T4_TURNIP", "T3_WHEAT"],
-        nums : [24, 24, 30]
+        nums : [24, 24],
+        fishNum : 30,
+        baseFocus : [1680, 2350, 3680, 7690],
+        returnNum : 10,
+        itemValue : 192
 },
 T6_MEAL_SALAD : {
         names : ["T6_POTATO", "T5_CABBAGE"],
-        nums : [72, 72, 90]
+        nums : [72, 72],
+        fishNum : 90,
+        baseFocus : [5040, 7040, 11050, 23060],
+        returnNum : 10,
+        itemValue : 576
 },
 // 크라켄 샐러드
 T2_MEAL_SALAD_FISH : {
         names : ["T3_FISH_SALTWATER_ALL_RARE", "T2_BEAN", "T2_AGARIC"],
-        nums : [1, 1, 1, 3]
+        nums : [1, 1, 1],
+        fishNum : 3,
+        baseFocus : [77, 144, 278, 678],
+        returnNum : 1, 
+        itemValue : 90
 },
 T4_MEAL_SALAD_FISH : {
         names : ["T5_FISH_SALTWATER_ALL_RARE", "T4_TURNIP", "T4_BURDOCK", "T4_MEAT"],
-        nums : [1, 2, 2, 2, 9]
+        nums : [1, 2, 2, 2],
+        fishNum : 9,
+        baseFocus : [231, 432, 832, 2033],
+        returnNum : 1,
+        itemValue : 260
 },
 T6_MEAL_SALAD_FISH : {
         names : ["T7_FISH_SALTWATER_ALL_RARE", "T6_POTATO", "T6_FOXGLOVE", "T6_MEAT"],
-        nums : [1, 6, 6, 6, 27]
+        nums : [1, 6, 6, 6],
+        fishNum : 27,
+        baseFocus : [672, 1272, 2473, 6076],
+        returnNum : 1,
+        itemValue : 750
 },
 // 파이
 T3_MEAL_PIE : {
         names : ["T3_WHEAT", "T3_FLOUR", "T3_MEAT"],
-        nums : [2, 4, 8, 10]
+        nums : [2, 4, 8],
+        fishNum : 10,
+        baseFocus : [530, 750, 1200, 2530],
+        returnNum : 10,
+        itemValue : 56
 },
 T5_MEAL_PIE : {
         names : ["T5_CABBAGE", "T3_FLOUR", "T5_MEAT", "T4_MILK"],
-        nums : [6, 12, 24, 6, 30]
+        nums : [6, 12, 24, 6],
+        fishNum : 30,
+        baseFocus : [1800, 2460, 3800, 7800],
+        returnNum : 10,
+        itemValue : 192
 },
 T7_MEAL_PIE : {
         names : ["T7_CORN", "T3_FLOUR", "T7_MEAT", "T6_MILK"],
-        nums : [18, 36, 72, 18, 90]
+        nums : [18, 36, 72, 18],
+        fishNum : 90,
+        baseFocus : [5400, 7390, 11400, 23410],
+        returnNum : 10,
+        itemValue : 576
 },
 // 명사수 파이
 T3_MEAL_PIE_FISH : {
         names : ["T3_FISH_FRESHWATER_MOUNTAIN_RARE", "T3_FLOUR", "T3_EGG"],
-        nums : [1, 1, 1, 3]
+        nums : [1, 1, 1],
+        fishNum : 3,
+        baseFocus : [81, 147, 281, 681],
+        returnNum : 1,
+        itemValue : 90
 },
 T5_MEAL_PIE_FISH : {
         names : ["T5_FISH_FRESHWATER_MOUNTAIN_RARE", "T5_CABBAGE", "T5_TEASEL", "T5_EGG"],
-        nums : [1, 2, 2, 2, 9]
+        nums : [1, 2, 2, 2],
+        fishNum : 9,
+        baseFocus : [225, 425, 825, 2026],
+        returnNum : 1,
+        itemValue : 260
 },
 T7_MEAL_PIE_FISH : {
         names : ["T7_FISH_FRESHWATER_MOUNTAIN_RARE", "T7_CORN", "T7_MULLEIN", "T7_MEAT"],
-        nums : [1, 6, 6, 6, 27]
+        nums : [1, 6, 6, 6],
+        fishNum : 27,
+        baseFocus : [672, 1272, 2473, 6076],
+        returnNum : 1,
+        itemValue : 750
 },
 // 오믈렛
 T3_MEAL_OMELETTE : {
         names : ["T3_WHEAT", "T3_MEAT", "T3_EGG"],
-        nums : [4, 8, 2, 10]
+        nums : [4, 8, 2],
+        fishNum : 10,
+        baseFocus : [520, 740, 1180, 2520],
+        returnNum : 10,
+        itemValue : 56
 },
 T5_MEAL_OMELETTE : {
         names : ["T5_CABBAGE", "T5_MEAT", "T5_EGG"],
-        nums : [12, 24, 6, 30]
+        nums : [12, 24, 6],
+        fishNum : 30,
+        baseFocus : [1550, 2220, 3550, 7550],
+        returnNum : 10,
+        itemValue : 168
 },
 T7_MEAL_OMELETTE : {
         names : ["T7_CORN", "T7_MEAT", "T5_EGG"],
-        nums : [36, 72, 18, 90]
+        nums : [36, 72, 18],
+        fishNum : 90,
+        baseFocus : [4640, 6650, 10650, 22660],
+        returnNum : 10,
+        itemValue : 504
 },
 // 게 오믈렛
 T3_MEAL_OMELETTE_FISH : {
         names : ["T3_FISH_FRESHWATER_STEPPE_RARE", "T3_COMFREY", "T3_EGG"],
-        nums : [1, 1, 1, 3]
+        nums : [1, 1, 1],
+        fishNum : 3,
+        baseFocus : [77, 144, 278, 678],
+        returnNum : 1,
+        itemValue : 90
 },
 T5_MEAL_OMELETTE_FISH : {
         names : ["T5_FISH_FRESHWATER_STEPPE_RARE", "T5_CABBAGE", "T5_TEASEL", "T5_EGG"],
-        nums : [1, 2, 2, 2, 9]
+        nums : [1, 2, 2, 2],
+        fishNum : 9,
+        baseFocus : [225, 425, 825, 2026],
+        returnNum : 1,
+        itemValue : 260
 },
 T7_MEAL_OMELETTE_FISH : {
         names : ["T7_FISH_FRESHWATER_STEPPE_RARE", "T7_CORN", "T7_MULLEIN", "T7_MEAT"],
-        nums : [1, 6, 6, 6, 27]
+        nums : [1, 6, 6, 6],
+        fishNum : 27,
+        baseFocus : [672, 1272, 2473, 6076],
+        returnNum : 1,
+        itemValue : 750
 },
 // 아발로니안 오믈렛
 T3_MEAL_OMELETTE_AVALON : {
         names : ["T4_MILK", "T3_MEAT", "T3_EGG", "QUESTITEM_TOKEN_AVALON"],
-        nums : [4, 8, 2, 10, 10]
+        nums : [4, 8, 2, 10],
+        fishNum : 10,
+        baseFocus : [520, 740, 1180, 2520],
+        returnNum : 10,
+        itemValue : 120
 },
 T5_MEAL_OMELETTE_AVALON : {
         names : ["T6_MILK", "T5_MEAT", "T5_EGG", "QUESTITEM_TOKEN_AVALON"],
-        nums : [12, 24, 6, 30, 30]
+        nums : [12, 24, 6, 30],
+        fishNum : 30,
+        baseFocus : [1550, 2220, 3550, 7550],
+        returnNum : 10,
+        itemValue : 360
 },
 T7_MEAL_OMELETTE_AVALON : {
         names : ["T8_MILK", "T5_MEAT", "T5_EGG", "QUESTITEM_TOKEN_AVALON"],
-        nums : [36, 72, 18, 90, 90]
+        nums : [36, 72, 18, 90],
+        fishNum : 90,
+        baseFocus : [4640, 6650, 10650, 22660],
+        returnNum : 10,
+        itemValue : 1080
 },
 // 구운 고기
 T3_MEAL_ROAST : {
         names : ["T3_MEAT", "T2_BEAN", "T4_MILK"],
-        nums : [8, 4, 4, 10]
+        nums : [8, 4, 4],
+        fishNum : 10,
+        baseFocus : [580, 810, 1250, 2590],
+        returnNum : 10,
+        itemValue : 64
 },
 T5_MEAL_ROAST : {
         names : ["T5_MEAT", "T5_CABBAGE", "T6_MILK"],
-        nums : [24, 12, 12, 30]
+        nums : [24, 12, 12],
+        fishNum : 30,
+        baseFocus : [1760, 2430, 3760, 7770],
+        returnNum : 10,
+        itemValue : 192
 },
 T7_MEAL_ROAST : {
         names : ["T7_MEAT", "T7_CORN", "T8_MILK"],
-        nums : [72, 36, 36, 90]
+        nums : [72, 36, 36],
+        fishNum : 90,
+        baseFocus : [5280, 7280, 11280, 23290],
+        returnNum : 10,
+        itemValue : 576
 },
 // 스내퍼 구운고기
 T3_MEAL_ROAST_FISH : {
         names : ["T3_FISH_FRESHWATER_AVALON_RARE", "T3_COMFREY", "T4_MILK"],
-        nums : [1, 1, 1, 3]
+        nums : [1, 1, 1],
+        fishNum : 3,
+        baseFocus : [77, 144, 278, 678],
+        returnNum : 1,
+        itemValue : 90
 },
 T5_MEAL_ROAST_FISH : {
         names : ["T5_FISH_FRESHWATER_AVALON_RARE", "T5_CABBAGE", "T5_TEASEL", "T6_MILK"],
-        nums : [1, 2, 2, 2, 9]
+        nums : [1, 2, 2, 2],
+        fishNum : 9,
+        baseFocus : [225, 425, 825, 2026],
+        returnNum : 1,
+        itemValue : 260
 },
 T7_MEAL_ROAST_FISH : {
         names : ["T7_FISH_FRESHWATER_AVALON_RARE", "T7_CORN", "T7_MULLEIN", "T8_MILK"],
-        nums : [1, 6, 6, 6, 27]
+        nums : [1, 6, 6, 6],
+        fishNum : 27,
+        baseFocus : [652, 1253, 2454, 6056],
+        returnNum : 1,
+        itemValue : 750
 },
 // 스튜
 T4_MEAL_STEW : {
         names : ["T4_TURNIP", "T4_BREAD", "T4_MEAT"],
-        nums : [4, 4, 8, 10]
+        nums : [4, 4, 8],
+        fishNum : 10,
+        baseFocus : [610, 840, 1280, 2620],
+        returnNum : 10,
+        itemValue : 64
 },
 T6_MEAL_STEW : {
         names : ["T5_CABBAGE", "T4_BREAD", "T6_MEAT"],
-        nums : [12, 12, 24, 30]
+        nums : [12, 12, 24],
+        fishNum : 30,
+        baseFocus : [1840, 2510, 3840, 7850],
+        returnNum : 10,
+        itemValue : 192
 },
 T8_MEAL_STEW : {
         names : ["T7_CORN", "T4_BREAD", "T8_MEAT"],
-        nums : [36, 36, 72, 90]
+        nums : [36, 36, 72],
+        fishNum : 90,
+        baseFocus : [5510, 7520, 11520, 23530],
+        returnNum : 10,
+        itemValue : 576
 },
 // 장어 스튜
 T4_MEAL_STEW_FISH : {
         names : ["T3_FISH_FRESHWATER_FOREST_RARE", "T4_TURNIP", "T4_BURDOCK"],
-        nums : [1, 1, 1, 3]
+        nums : [1, 1, 1],
+        fishNum : 3,
+        baseFocus : [77, 144, 278, 678],
+        returnNum : 1,
+        itemValue : 90
 },
 T6_MEAL_STEW_FISH : {
         names : ["T5_FISH_FRESHWATER_FOREST_RARE", "T6_POTATO", "T6_FOXGLOVE", "T6_MILK"],
-        nums : [1, 2, 2, 2, 9]
+        nums : [1, 2, 2, 2],
+        fishNum : 9,
+        baseFocus : [225, 425, 825, 2026],
+        returnNum : 1,
+        itemValue : 260
 },
 T8_MEAL_STEW_FISH : {
         names : ["T7_FISH_FRESHWATER_FOREST_RARE", "T8_PUMPKIN", "T8_YARROW", "T8_MILK"],
-        nums : [1, 6, 6, 6, 27]
+        nums : [1, 6, 6, 6],
+        fishNum : 27,
+        baseFocus : [652, 1253, 2454, 6056],
+        returnNum : 1,
+        itemValue : 750
 },
 // 아발로니안 스튜
 T4_MEAL_STEW_AVALON : {
         names : ["T1_CARROT", "T4_TURNIP", "T4_MEAT", "QUESTITEM_TOKEN_AVALON"],
-        nums : [4, 4, 8, 10, 10]
+        nums : [4, 4, 8, 10],
+        fishNum : 10,
+        baseFocus : [580, 810, 1250, 2590],
+        returnNum : 10,
+        itemValue : 128
 },
 T6_MEAL_STEW_AVALON : {
         names : ["T5_CABBAGE", "T6_POTATO", "T6_MEAT", "QUESTITEM_TOKEN_AVALON"],
-        nums : [12, 12, 24, 30, 30]
+        nums : [12, 12, 24, 30],
+        fishNum : 30,
+        baseFocus : [1760, 2430, 3760, 7770],
+        returnNum : 10,
+        itemValue : 384
 },
 T8_MEAL_STEW_AVALON : {
         names : ["T7_CORN", "T8_PUMPKIN", "T8_MEAT", "QUESTITEM_TOKEN_AVALON"],
-        nums : [36, 36, 72, 90, 90]
+        nums : [36, 36, 72, 90],
+        fishNum : 90,
+        baseFocus : [5280, 7280, 11280, 23290],
+        returnNum : 10,
+        itemValue : 1152
 },
 // 샌드위치
 T4_MEAL_SANDWICH : {
         names : ["T4_BREAD", "T4_MEAT", "T4_BUTTER"],
-        nums : [4, 8, 2, 10]
+        nums : [4, 8, 2],
+        fishNum : 10,
+        baseFocus : [550, 770, 1220, 2550],
+        returnNum : 10,
+        itemValue : 56
 },
 T6_MEAL_SANDWICH : {
         names : ["T4_BREAD", "T6_MEAT", "T6_BUTTER"],
-        nums : [12, 24, 6, 30]
+        nums : [12, 24, 6],
+        fishNum : 30,
+        baseFocus : [1650, 2310, 3650, 7650],
+        returnNum : 10,
+        itemValue : 168
 },
 T8_MEAL_SANDWICH : {
         names : ["T4_BREAD", "T8_MEAT", "T8_BUTTER"],
-        nums : [36, 72, 18, 90]
+        nums : [36, 72, 18],
+        fishNum : 90,
+        baseFocus : [4940, 6940, 10940, 22950],
+        returnNum : 10,
+        itemValue : 504
 },
 // 떠돌이 샌드위치
 T4_MEAL_SANDWICH_FISH : {
         names : ["T3_FISH_FRESHWATER_HIGHLANDS_RARE", "T4_TURNIP", "T4_BUTTER"],
-        nums : [1, 1, 1, 3]
+        nums : [1, 1, 1],
+        fishNum : 3,
+        baseFocus : [81, 147, 281, 681],
+        returnNum : 1,
+        itemValue : 90
 },
 T6_MEAL_SANDWICH_FISH : {
         names : ["T5_FISH_FRESHWATER_HIGHLANDS_RARE", "T6_POTATO", "T6_FOXGLOVE", "T6_BUTTER"],
-        nums : [1, 2, 2, 2, 9]
+        nums : [1, 2, 2, 2],
+        fishNum : 9,
+        baseFocus : [231, 432, 832, 2033],
+        returnNum : 1,
+        itemValue : 260
 },
 T8_MEAL_SANDWICH_FISH : {
         names : ["T7_FISH_FRESHWATER_HIGHLANDS_RARE", "T8_PUMPKIN", "T8_YARROW", "T8_BUTTER"],
-        nums : [1, 6, 6, 6, 27]
+        nums : [1, 6, 6, 6],
+        fishNum : 27,
+        baseFocus : [672, 1272, 2473, 6076],
+        returnNum : 1,
+        itemValue : 750
 },
 // 아발로니안 샌드위치
 T4_MEAL_SANDWICH_AVALON : {
         names : ["T4_BREAD", "T4_MEAT", "T4_BUTTER", "QUESTITEM_TOKEN_AVALON"],
-        nums : [4, 8, 2, 10, 10]
+        nums : [4, 8, 2, 10],
+        fishNum : 10,
+        baseFocus : [550, 770, 1220, 2550],
+        returnNum : 10,
+        itemValue : 120
 },
 T6_MEAL_SANDWICH_AVALON : {
         names : ["T4_BREAD", "T6_MEAT", "T6_BUTTER", "QUESTITEM_TOKEN_AVALON"],
-        nums : [12, 24, 6, 30]
+        nums : [12, 24, 6, 30],
+        fishNum : 30,
+        baseFocus : [1650, 2310, 2650, 7650],
+        returnNum : 10,
+        itemValue : 360
 },
 T8_MEAL_SANDWICH_AVALON : {
         names : ["T4_BREAD", "T8_MEAT", "T8_BUTTER", "QUESTITEM_TOKEN_AVALON"],
-        nums : [36, 72, 18, 90, 90]
+        nums : [36, 72, 18, 90],
+        fishNum : 90,
+        baseFocus : [760, 1068, 1682, 3532],
+        returnNum : 10,
+        itemValue : 1080
 },
 FISHSAUCE : ["T1_FISHSAUCE_LEVEL1", "T1_FISHSAUCE_LEVEL2", "T1_FISHSAUCE_LEVEL3"],        
 };

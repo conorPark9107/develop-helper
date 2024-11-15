@@ -131,6 +131,7 @@ $(document).ready(function () {
             $(trs[0]).find('td:eq(8)').addClass('red');
         }
         $(trs[0]).find('td:eq(8)').text(x);
+        // end of 2티
 
         // T3 ~ T8
         for(let i = 1; i < trs.length; i++){
@@ -206,7 +207,6 @@ $(document).ready(function () {
     $('.tooltip').hover(
         function (e) {
             // over
-            
             $(`#${$(this).data('info')}`).fadeIn(300);
         }, function (e) {
             // out

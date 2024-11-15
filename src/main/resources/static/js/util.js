@@ -18,9 +18,6 @@ const getPerTime = (date) => {
 	const start = new Date(date);
 	const now = new Date();
 	const end = new Date(now.getTime() + (now.getTimezoneOffset() * 60 * 1000));
-	console.log(start);
-    console.log(end);
-    console.log('-----------------')
 	const seconds = Math.floor((end.getTime() - start.getTime()) / 1000);
 	if (seconds < 60) return '방금 전';
 
@@ -33,7 +30,7 @@ const getPerTime = (date) => {
 	const days = hours / 24;
 	if (days <= 90) return `${Math.floor(days)}일 전`;
 
-	if(days > 90) return '직접 입력 바랍니다.';
+	if(days > 90) return '오래 전 데이터.';
 
 	return `${start.toLocaleDateString()}`;
 };

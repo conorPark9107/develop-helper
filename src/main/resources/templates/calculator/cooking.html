@@ -2,7 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
+    <script type="text/javascript" src="/js/variable.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -11,26 +12,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
-    <script type="text/javascript" src="/static/js/variable.js"></script>
+    <!-- <script type="text/javascript" src="/static/js/variable.js"></script>
     <script type="text/javascript" src="/static/js/util.js"></script>
     <script type="text/javascript" src="/static/js/calculator/cooking.js"></script>
-
-
     <link rel="stylesheet" href="/static/css/editor.css" />
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/detail.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
-    <link rel="stylesheet" href="/static/css/calculator.css" />
+    <link rel="stylesheet" href="/static/css/calculator.css" /> -->
 
 
-    <!--<script type="text/javascript" src="/js/calculator/cooking.js"></script>
-    <script type="text/javascript" src="/js/variable.js"></script>
+    <script type="text/javascript" src="/js/calculator/cooking.js"></script>
     <script type="text/javascript" src="/js/util.js"></script>
     <link rel="stylesheet" href="/css/editor.css" />
     <link rel="stylesheet" href="/css/calculator.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
-    <link rel="stylesheet" href="/css/loading.css" />-->
+    <link rel="stylesheet" href="/css/loading.css" />
 
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 - 요리 ⚔</title>
@@ -175,9 +173,9 @@
                         
                         <colgroup>
                             <col class="col1">
-                            <col class="col2">
+                            <col class="col9">
                             <col class="col5">
-                            <col class="col4">
+                            <col class="col9">
                             <col class="col2">
                             <col class="col7">
                             <col class="col8">
@@ -187,18 +185,16 @@
                             <tr>
                                 <th>아이템</th>
                                 <th>판매가격<br /><p class="priceDetail">(최저가)</p></th>
-                                <th>만들기위한재료</th>
+                                <th>만들기위한재료<p class="priceDetail">(필요 재료)</p></th>
                                 <th>재료 값<br /><p class="priceDetail">(모두 합한 가격)</p></th>
                                 <th>필요한 집중<br /><p class="priceDetail">(반환 비율 포함)</p></th>
-                                <th>재료비용</th>
+                                <th>총 재료 비용<p class="priceDetail">(구매가)</p></th>
                                 <th>판매가</th>
                                 <th>이익</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr></tr>
-                            <tr></tr>
-                            <tr></tr>
+                            
                         </tbody>
                     </table>
 
@@ -207,24 +203,22 @@
                             <col class="col1">
                             <col class="col2">
                             <col class="col6">
-                            <col class="col9">
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>아이템</th>
                                 <th>판매가격<br /><p class="priceDetail">(최저가)</p></th>
-                                <th>필요한 집중<br /><p class="priceDetail">(반환 비율 포함)</p></th>
-                                <th>개수</th>
+                                <th>개수<p class="priceDetail">(1회 기준)</p></th>
                             </tr>
                         </thead>
                         <tbody>
-                           
+                            
                         </tbody>
                     </table>
                 </div>
 
             </div>
-        </div> <!--  priceArea -->
+        </div>
     </div> <!-- main -->
 
 

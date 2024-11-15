@@ -110,7 +110,6 @@ th {
     background-color: #3B3333;
     font-size: 1em;
     --angle: 0deg;
-    font-color: #eee;
     border: 3px solid;
     border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
     animation: 3s rotate linear infinite;
