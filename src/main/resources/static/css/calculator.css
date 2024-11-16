@@ -335,9 +335,11 @@ a:hover{
     opacity: 0.5;
 }
 .red{
+    font-weight: bold;
     color: RGB(218, 0, 34);
 }
 .green{
+    font-weight: bold;
     color: RGBA(90, 231, 132, 0.6);
 }
 .tooltip{

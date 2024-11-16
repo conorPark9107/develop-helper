@@ -95,7 +95,7 @@ $(document).ready(function () {
 
         // 중복제거 후, 재료 테이블에 넣기.        
         setSubTableDefaultData(foods, cookTree.FISHSAUCE);
-
+        
     });
 
     
@@ -110,7 +110,7 @@ $(document).ready(function () {
 
     $('body').on('keyup', 'input', function(){
         let usageFee = $('#usageFee').val();                            // 소비영양 100당 사용료
-        let returnRate = ($('#returnRate').val() / 100).toFixed(3);     // 반환률
+        let returnRate = ($('#returnRate').val() / 100).toFixed(3);     // 반환율
         let quantity = $('#quantity').val();                            // 단위 개수
         let marketTaxBuy = $('#marketTaxBuy option:selected').val();    // 마켓 구매 세금
         let marketTaxSell = $('#marketTaxSell option:selected').val();  // 마켓 판매 세금
@@ -141,12 +141,10 @@ $(document).ready(function () {
         setTotalAfterPrice(marketTaxSell, realQuantity);
 
         // 재료 개수에 따른 재료 비용 설정.
-        setTotalMaterialPrice(quantity, marketTaxBuy, usageFee);
+        setTotalMaterialPrice(marketTaxBuy, usageFee, realQuantity);
 
         // 이익
         setProfit();
-        
-
     });
 
     $('.tooltip').hover(
@@ -164,14 +162,26 @@ $(document).ready(function () {
 
 }); // jquery ready()
 
+
+function getReturnNum(){
+    let main_trs = $(`.main-table tbody tr`);
+    let td = $(main_trs[0]).find('td')[0];
+    const afterItemName = $(td).find('div').find('img').attr('value');
+    return cookTree[afterItemName].returnNum;
+}
+
 // 이익 설정
 function setProfit(){
     let main_trs = $(`.main-table tbody tr`);
     for(let i = 0; i < main_trs.length; i++){
         const tds = $(main_trs[i]).find('td');
-        let buyPrice = $(tds[5]).text();
-        let sellPrice = $(tds[6]).text();
+        const buys = $(tds[5]).text();
+        const sells = $(tds[6]).text();
+        console.log(buys + " | " + sells);
+        let buyPrice = $(buys).text().replaceAll(',', '');
+        let sellPrice = $(sells).text().replaceAll(',', '');
         let totalPrice = sellPrice - buyPrice;
+        console.log(buyPrice + " : " + sellPrice + " : " + totalPrice);
         let addColor;
         if(totalPrice >= 0){
             addColor = 'green';
@@ -183,14 +193,6 @@ function setProfit(){
     }
 
 }
-
-function getReturnNum(){
-    let main_trs = $(`.main-table tbody tr`);
-    let td = $(main_trs[0]).find('td')[0];
-    const afterItemName = $(td).find('div').find('img').attr('value');
-    return cookTree[afterItemName].returnNum;
-}
-
 
 // 개수 단위가 변경됨에따라 테이블 수정
 function updateQuantity(quantity){
@@ -224,17 +226,17 @@ function setTotalAfterPrice(tax, realQuantity){
         $(tds[6]).text(Math.round(price + fee).toLocaleString());
         $(tds[6]).append(`<br/><span class="priceDetail">판매원가 : ${Math.round(price).toLocaleString()}</span>`);
         $(tds[6]).append(`<br/><span class="priceDetail">판매수수료 : ${Math.round(fee).toLocaleString()}</span>`);
-        $(tds[6]).append(`<br/><span class="priceDetail">반환률에 따른 예상 제작 수량 : ${Math.floor(afterReturnNum * realQuantity)}(± ${afterReturnNum})</span>`);
+        $(tds[6]).append(`<br/><span class="priceDetail">반환율에 따른 예상 제작 수량 : ${Math.floor(afterReturnNum * realQuantity)}(± ${afterReturnNum})</span>`);
     }
 }
 
 // 구매가 설정. (총 재료 비용)
-function setTotalMaterialPrice(quantity, tax, usageFee){
+function setTotalMaterialPrice(tax, usageFee, realQuantity){
     let main_trs = $(`.main-table tbody tr`);
     const afterReturnNum = getReturnNum();
 
     const itemValue = $(main_trs[0]).attr('data-value');
-    const usage = (((itemValue * 0.1125) * (afterReturnNum * quantity)) * usageFee) / 100;
+    const usage = (((itemValue * 0.1125) * (afterReturnNum * realQuantity)) * usageFee) / 100;
 
     for(let i = 0; i < main_trs.length; i++){
         const tds = $(main_trs[i]).find('td');
@@ -255,9 +257,7 @@ function setTotalMaterialPrice(quantity, tax, usageFee){
         $(tds[5]).text(Math.round(totalPrice + fee + usage).toLocaleString());
         $(tds[5]).append(`<br/><span class="priceDetail">구매원가 : ${totalPrice.toLocaleString()}</span>`);
         $(tds[5]).append(`<br/><span class="priceDetail">구매수수료 : ${Math.round(fee).toLocaleString()}</span>`);
-
-        // TODO: 여기 수수료는 딱 한번 수행했을때임 즉, 자환반환률에 따른 수수료들도 모두 합해줘야함, 제련계산기도 똑같이!!!
-        $(tds[5]).append(`<br/><span class="priceDetail">요리수수료 : ${Math.round(usage).toLocaleString()}</span>`);
+        $(tds[5]).append(`<br/><span class="priceDetail">예상 요리수수료 : ${Math.round(usage).toLocaleString()}</span>`);
     }
 }
 
@@ -286,10 +286,6 @@ function setTableServerData(response){
 
     $('input').trigger('keyup');
 }
-
-
-
-
 
 // 요리 이미지 클릭했을때 메인 테이블에 내용 넣기.
 function setMainTableDefaultData(foods, cateDetail){
