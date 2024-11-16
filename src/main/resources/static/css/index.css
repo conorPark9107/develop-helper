@@ -1,10 +1,5 @@
 @import url('https://fastly.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
 
-body::-webkit-scrollbar {
-    display: none;
-    /* Chrome, Safari, Opera*/
-}
-
 fieldset {
     margin: 5% auto;
     border: 2px solid;
@@ -22,7 +17,11 @@ body {
     color: #eee;
     font-family: 'Galmuri14';
     overflow-x: hidden;
-    scrollbar-width: thin;
+}
+
+.indexBody::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari, Opera*/
 }
 
 ul,

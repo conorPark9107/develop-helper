@@ -1,7 +1,11 @@
 $(document).ready(function () {
 
     $('#request-price-btn').on('click', function(){
-        
+        $(`.main-table tbody tr td:nth-child(1) span`).remove();
+        $(`.sub-table tbody tr td:nth-child(1) span`).remove();
+
+        $("td:nth-child(2) > span").remove();
+
         let server = $('input[name=server]:checked').val(); // server
         let category = $('li.clicked').attr('value'); // tableClass for veriable array
         let city = $('#start option:selected').val();
@@ -159,7 +163,7 @@ $(document).ready(function () {
     
 
 }); // jquery ready()
-// TODO: 인게임에서 가격 비교 해줘야함.
+
 // 이익 설정
 function setProfit(){
     let main_trs = $(`.main-table tbody tr`);
@@ -180,13 +184,18 @@ function setProfit(){
 
 }
 
+function getReturnNum(){
+    let main_trs = $(`.main-table tbody tr`);
+    let td = $(main_trs[0]).find('td')[0];
+    const afterItemName = $(td).find('div').find('img').attr('value');
+    return cookTree[afterItemName].returnNum;
+}
+
 
 // 개수 단위가 변경됨에따라 테이블 수정
 function updateQuantity(quantity){
     let main_trs = $(`.main-table tbody tr`);
-    let td = $(main_trs[0]).find('td')[0];
-    const afterItemName = $(td).find('div').find('img').attr('value');
-    const afterReturnNum = cookTree[afterItemName].returnNum;
+    const afterReturnNum = getReturnNum();
     
     for(let i = 0; i < main_trs.length; i++){
         const tds = $(main_trs[i]).find('td');
@@ -204,25 +213,28 @@ function updateQuantity(quantity){
 // 판매가 설정
 function setTotalAfterPrice(tax, realQuantity){
     let main_trs = $(`.main-table tbody tr`);
+    const afterReturnNum = getReturnNum();
+
     for(let i = 0; i < main_trs.length; i++){
         const tds = $(main_trs[i]).find('td');
         const afterPrice = $(tds[1]).find('input').val();
-        const returnNum = $(tds[0]).find('div').find('span').text();
 
-        const price = Math.round((afterPrice * returnNum) * realQuantity);
+        const price = Math.round(afterPrice * (afterReturnNum * realQuantity));
         const fee = Math.round(price * tax);
         $(tds[6]).text(Math.round(price + fee).toLocaleString());
         $(tds[6]).append(`<br/><span class="priceDetail">판매원가 : ${Math.round(price).toLocaleString()}</span>`);
         $(tds[6]).append(`<br/><span class="priceDetail">판매수수료 : ${Math.round(fee).toLocaleString()}</span>`);
-        $(tds[6]).append(`<br/><span class="priceDetail">반환률에 따른 예상 제작 수량 : ${Math.floor(returnNum * realQuantity)}</span>`);
+        $(tds[6]).append(`<br/><span class="priceDetail">반환률에 따른 예상 제작 수량 : ${Math.floor(afterReturnNum * realQuantity)}(± ${afterReturnNum})</span>`);
     }
 }
 
-// 테이블에 재료 값(구매가) 설정.
+// 구매가 설정. (총 재료 비용)
 function setTotalMaterialPrice(quantity, tax, usageFee){
     let main_trs = $(`.main-table tbody tr`);
+    const afterReturnNum = getReturnNum();
+
     const itemValue = $(main_trs[0]).attr('data-value');
-    const usage = (((itemValue * 0.1125) * quantity) * usageFee) / 100;
+    const usage = (((itemValue * 0.1125) * (afterReturnNum * quantity)) * usageFee) / 100;
 
     for(let i = 0; i < main_trs.length; i++){
         const tds = $(main_trs[i]).find('td');
@@ -243,11 +255,13 @@ function setTotalMaterialPrice(quantity, tax, usageFee){
         $(tds[5]).text(Math.round(totalPrice + fee + usage).toLocaleString());
         $(tds[5]).append(`<br/><span class="priceDetail">구매원가 : ${totalPrice.toLocaleString()}</span>`);
         $(tds[5]).append(`<br/><span class="priceDetail">구매수수료 : ${Math.round(fee).toLocaleString()}</span>`);
+
+        // TODO: 여기 수수료는 딱 한번 수행했을때임 즉, 자환반환률에 따른 수수료들도 모두 합해줘야함, 제련계산기도 똑같이!!!
         $(tds[5]).append(`<br/><span class="priceDetail">요리수수료 : ${Math.round(usage).toLocaleString()}</span>`);
     }
 }
 
-
+// 서버로부터 가격 받아와서 Set
 function setTableServerData(response){
     let main_trs = $(`.main-table tbody tr`);
     let sub_trs = $(`.sub-table tbody tr`);
