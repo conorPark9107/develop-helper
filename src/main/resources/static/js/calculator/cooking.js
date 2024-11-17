@@ -1,10 +1,7 @@
 $(document).ready(function () {
 
     $('#request-price-btn').on('click', function(){
-        $(`.main-table tbody tr td:nth-child(1) span`).remove();
-        $(`.sub-table tbody tr td:nth-child(1) span`).remove();
-
-        $("td:nth-child(2) > span").remove();
+         $(`td:nth-child(2) > span`).remove();
 
         let server = $('input[name=server]:checked').val(); // server
         let category = $('li.clicked').attr('value'); // tableClass for veriable array
@@ -36,8 +33,6 @@ $(document).ready(function () {
             case 'mill':
                 break;
         }
-    
-
 
        $.ajax({
            type: "GET",
@@ -55,7 +50,7 @@ $(document).ready(function () {
            success: function (response) {
                turnLoading();
                setTableServerData(response);
-                
+               $('input').trigger('keyup');
            },
            error : function(request, status, error) {
                console.log(error);
@@ -114,17 +109,6 @@ $(document).ready(function () {
         let quantity = $('#quantity').val();                            // 단위 개수
         let marketTaxBuy = $('#marketTaxBuy option:selected').val();    // 마켓 구매 세금
         let marketTaxSell = $('#marketTaxSell option:selected').val();  // 마켓 판매 세금
-        let chef = $('#chef').val();                                    // 요리 운명보드별 레벨
-        let butcher = $('#butcher').val();
-        let material = $('#material').val();
-        let sandwich = $('#sandwich').val();
-        let stew = $('#stew').val();
-        let omelette = $('#omelette').val();
-        let roast = $('#roast').val();
-        let pie = $('#pie').val();
-        let salad = $('#salad').val();
-        let soup = $('#soup').val();
-        const selectedItamName = $('.selected-img').attr('value');
 
         // 자원 반환율 0이 될때까지 총 반환개수 += (만들 개수 * (반환율 * 100)) / 100
         let realQuantity = Number(quantity);
@@ -134,11 +118,14 @@ $(document).ready(function () {
             now = Math.round(now * (returnRate * 100)) / 100;
         }
 
+        // 포커스(집중)
+        setFocus();
+
         // 개수 설정에 따른 테이블 데이터 수정
         updateQuantity(quantity);
 
         // 판매가 설정.
-        setTotalAfterPrice(marketTaxSell, realQuantity);
+        setTotalAfterPrice(marketTaxSell, quantity, realQuantity);
 
         // 재료 개수에 따른 재료 비용 설정.
         setTotalMaterialPrice(marketTaxBuy, usageFee, realQuantity);
@@ -162,6 +149,11 @@ $(document).ready(function () {
 
 }); // jquery ready()
 
+function getReturnName(){
+    let main_trs = $(`.main-table tbody tr`);
+    let td = $(main_trs[0]).find('td')[0];
+    return $(td).find('div').find('img').attr('value');
+}
 
 function getReturnNum(){
     let main_trs = $(`.main-table tbody tr`);
@@ -170,25 +162,39 @@ function getReturnNum(){
     return cookTree[afterItemName].returnNum;
 }
 
+function setFocus(){
+    let chef = $('#chef').val();                                    // 요리 운명보드별 레벨
+    let butcher = $('#butcher').val();
+    let material = $('#material').val();
+    let sandwich = $('#sandwich').val();
+    let stew = $('#stew').val();
+    let omelette = $('#omelette').val();
+    let roast = $('#roast').val();
+    let pie = $('#pie').val();
+    let salad = $('#salad').val();
+    let soup = $('#soup').val();
+    const selectedItamName = $('.selected-img').attr('value');
+
+}
+
+
 // 이익 설정
 function setProfit(){
     let main_trs = $(`.main-table tbody tr`);
+    $(`.main-table tbody td:nth-child(8)`).removeClass();
     for(let i = 0; i < main_trs.length; i++){
         const tds = $(main_trs[i]).find('td');
-        const buys = $(tds[5]).text();
-        const sells = $(tds[6]).text();
-        console.log(buys + " | " + sells);
-        let buyPrice = $(buys).text().replaceAll(',', '');
-        let sellPrice = $(sells).text().replaceAll(',', '');
+        let buyPrice = $(tds[5]).find('.buyPrice').text().replaceAll(',', '');
+        let sellPrice = $(tds[6]).find('.sellPrice').text().replaceAll(',', '');
+        
         let totalPrice = sellPrice - buyPrice;
-        console.log(buyPrice + " : " + sellPrice + " : " + totalPrice);
         let addColor;
         if(totalPrice >= 0){
             addColor = 'green';
         }else{
             addColor = 'red';
         }
-        $(tds[7]).text(totalPrice);
+        $(tds[7]).text(totalPrice.toLocaleString());
         $(tds[7]).addClass(addColor);
     }
 
@@ -213,7 +219,7 @@ function updateQuantity(quantity){
 }
 
 // 판매가 설정
-function setTotalAfterPrice(tax, realQuantity){
+function setTotalAfterPrice(tax, quantity, realQuantity){
     let main_trs = $(`.main-table tbody tr`);
     const afterReturnNum = getReturnNum();
 
@@ -221,12 +227,31 @@ function setTotalAfterPrice(tax, realQuantity){
         const tds = $(main_trs[i]).find('td');
         const afterPrice = $(tds[1]).find('input').val();
 
-        const price = Math.round(afterPrice * (afterReturnNum * realQuantity));
+        // AVA 음식일 경우 아발로니안 에너지가 반환되지않기 때문에 맞게 표시해주기.
+        let price = 0;
+        if(getReturnName().includes('AVALON')){
+            price = Math.round(afterPrice * (afterReturnNum * quantity));
+        }else{
+            price = Math.round(afterPrice * (afterReturnNum * realQuantity));
+        }
         const fee = Math.round(price * tax);
-        $(tds[6]).text(Math.round(price + fee).toLocaleString());
+
+        let span = document.createElement('span');
+        $(span).addClass('sellPrice');
+        $(span).text(Math.round(price + fee).toLocaleString());
+        $(tds[6]).text('');
+        $(tds[6]).append(span);
         $(tds[6]).append(`<br/><span class="priceDetail">판매원가 : ${Math.round(price).toLocaleString()}</span>`);
         $(tds[6]).append(`<br/><span class="priceDetail">판매수수료 : ${Math.round(fee).toLocaleString()}</span>`);
-        $(tds[6]).append(`<br/><span class="priceDetail">반환율에 따른 예상 제작 수량 : ${Math.floor(afterReturnNum * realQuantity)}(± ${afterReturnNum})</span>`);
+
+        // AVA 음식일 경우 아발로니안 에너지가 반환되지않기 때문에 맞게 표시해주기.
+        let first
+        if(getReturnName().includes('AVALON')){
+            first = `<br/><span class="priceDetail">반환율에 따른 예상 제작 수량 : ${Math.floor(afterReturnNum * quantity)}</span>`
+        }else{
+            first = `<br/><span class="priceDetail">반환율에 따른 예상 제작 수량 : ${Math.floor(afterReturnNum * realQuantity)}(± ${afterReturnNum})</span>`;
+        }
+        $(tds[6]).append(first);
     }
 }
 
@@ -253,8 +278,12 @@ function setTotalMaterialPrice(tax, usageFee, realQuantity){
         $(tds[3]).find('input').val(totalPrice);
         
         const fee = totalPrice * tax;
-        
-        $(tds[5]).text(Math.round(totalPrice + fee + usage).toLocaleString());
+
+        let span = document.createElement('span');
+        $(span).addClass('buyPrice');
+        $(span).text(Math.round(totalPrice + fee + usage).toLocaleString());
+        $(tds[5]).text('');
+        $(tds[5]).append(span);
         $(tds[5]).append(`<br/><span class="priceDetail">구매원가 : ${totalPrice.toLocaleString()}</span>`);
         $(tds[5]).append(`<br/><span class="priceDetail">구매수수료 : ${Math.round(fee).toLocaleString()}</span>`);
         $(tds[5]).append(`<br/><span class="priceDetail">예상 요리수수료 : ${Math.round(usage).toLocaleString()}</span>`);
@@ -317,8 +346,8 @@ function setMainTableDefaultData(foods, cateDetail){
         $(tr).append(`<td>${appendData}</td>`);
         $(tr).append('<td><input type="text"></td>');
         $(tr).append(`<td>${foods.baseFocus[i]}</td>`);
-        $(tr).append('<td>0</td>');
-        $(tr).append('<td>0</td>');
+        $(tr).append(`<td>0</td>`);
+        $(tr).append(`<td>0</td>`);        
         $(tr).append('<td>0</td>');
 
         tbody.append(tr);
