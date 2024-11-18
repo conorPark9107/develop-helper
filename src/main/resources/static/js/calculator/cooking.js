@@ -24,7 +24,8 @@ $(document).ready(function () {
         let afterArr = [];
         switch (category) {
             case 'cooking':
-                materialArr = cookTree[itemName].names.concat(cookTree.FISHSAUCE); // 재료
+                materialArr = cookTree.FISHSAUCE.concat(cookTree[itemName].names); // 재료
+                // materialArr = cookTree[itemName].names.concat(cookTree.FISHSAUCE); // 재료
                 afterArr[0] = itemName; // 요리(.0 ~ .3 음식들)
                 for(let i = 1; i < 4; i++) afterArr[i] = `${itemName}@${i}`;
                 break;
@@ -65,6 +66,9 @@ $(document).ready(function () {
         $('.cooking-img').removeClass('selected-img');
         $('.main-table tbody').empty();
         $('.sub-table tbody').empty();
+        let table = $(`#cooking_table`);
+        table.fadeOut(300);
+
         const cateDetail = $(this).attr("value");
         
         let foodArray = itemTree[cateDetail];
@@ -90,7 +94,8 @@ $(document).ready(function () {
 
         // 중복제거 후, 재료 테이블에 넣기.        
         setSubTableDefaultData(foods, cookTree.FISHSAUCE);
-        
+
+        table.fadeIn(300);
     });
 
     
@@ -119,7 +124,7 @@ $(document).ready(function () {
         }
 
         // 포커스(집중)
-        setFocus();
+        setFocus(quantity, realQuantity);
 
         // 개수 설정에 따른 테이블 데이터 수정
         updateQuantity(quantity);
@@ -149,6 +154,13 @@ $(document).ready(function () {
 
 }); // jquery ready()
 
+function getBaseFocus(){
+    let main_trs = $(`.main-table tbody tr`);
+    let td = $(main_trs[0]).find('td')[0];
+    const afterItemName = $(td).find('div').find('img').attr('value');
+    return cookTree[afterItemName].baseFocus;
+}
+
 function getReturnName(){
     let main_trs = $(`.main-table tbody tr`);
     let td = $(main_trs[0]).find('td')[0];
@@ -162,7 +174,7 @@ function getReturnNum(){
     return cookTree[afterItemName].returnNum;
 }
 
-function setFocus(){
+function setFocus(quantity, realQuantity){
     let chef = $('#chef').val();                                    // 요리 운명보드별 레벨
     let butcher = $('#butcher').val();
     let material = $('#material').val();
@@ -174,7 +186,55 @@ function setFocus(){
     let salad = $('#salad').val();
     let soup = $('#soup').val();
     const selectedItamName = $('.selected-img').attr('value');
+    const kindof = selectedItamName.split('_')[2];
 
+    let reduxPoint = 0;
+    switch (kindof) {
+        case 'SOUP':
+            reduxPoint += soup * 250;
+        break;
+        case 'SALAD':
+            reduxPoint += salad * 250;
+        break;
+        case 'PIE':
+            reduxPoint += pie * 250;
+        break;
+        case 'OMELETTE':
+            reduxPoint += omelette * 250;
+        break;
+        case 'ROAST':
+            reduxPoint += roast * 250;
+        break;
+        case 'STEW':
+            reduxPoint += stew * 250;
+        break;
+        case 'STEW':
+            reduxPoint += sandwich * 250;
+        break;
+    }
+
+    reduxPoint += (chef * 30) + (butcher * 30) +  
+            (material * 30) + (sandwich * 30) + 
+            (stew * 30) + (omelette * 30) + 
+            (roast * 30) + (pie * 30) + 
+            (salad * 30) + (soup * 30)
+
+    // (basefocus / 2 ^ (reduxPoint / 10000)) 
+    let main_trs = $(`.main-table tbody tr`);
+    let baseFocuses = getBaseFocus();
+    for(let i = 0; i < main_trs.length; i++){
+        const tds = $(main_trs[i]).find('td');
+        let focus = 0;
+        if(selectedItamName.includes('AVALON')){
+            focus = baseFocuses[i] / 2 ** (reduxPoint / 10000) * quantity;
+        }else{
+            focus = baseFocuses[i] / 2 ** (reduxPoint / 10000) * realQuantity;
+        }
+
+
+        $(tds[4]).text(Math.round(focus));
+    }
+    
 }
 
 
@@ -307,9 +367,9 @@ function setTableServerData(response){
     // 재료 테이블
     for(let i = 0; i < sub_trs.length; i++){
         let v = response[0][i].sell_price_min;
-        let tds = $(sub_trs[i]).find('td');
-        let input = $(tds[1]).find('input');
-        $(input).attr('value', v);
+        let tds = $(sub_trs[i]).find('td');        
+        let beforeName = response[0][i].item_id;        
+        $(`#${beforeName}`).attr('value', v);
         $(tds[1]).append(`<span class='timeAgo-cooking'>${getPerTime(response[0][i].sell_price_min_date)}</span>`);
     }
 
@@ -374,34 +434,6 @@ function setSubTableDefaultData(foods, fishArray){
     }
 }
 
-// function getReduxPoint(tier){
-//     const t4 = $('#tier04').val();  // 티어별 제련 숙련도
-//     const t5 = $('#tier05').val();
-//     const t6 = $('#tier06').val();
-//     const t7 = $('#tier07').val();
-//     const t8 = $('#tier08').val();
-
-//     let returnVal = 0;
-//     switch (tier) {
-//         case 4:
-//             returnVal += t4 * 250;
-//         break;
-//         case 5:
-//             returnVal += t5 * 250;
-//         break;
-//         case 6:
-//             returnVal += t6 * 250;
-//         break;
-//         case 7:
-//             returnVal += t7 * 250;
-//         break;
-//         case 8:
-//             returnVal += t8 * 250;
-//         break;
-//     }
-//     returnVal += (t4 * 30) + (t5 * 30) + (t6 * 30) + (t7 * 30) + (t8 * 30);
-//     return returnVal;
-// }
 
 // 요리 메뉴 선택 클릭시 호출.
 function clicked(li){
@@ -421,10 +453,6 @@ function clicked(li){
             image_div.append(`<img class='cooking-img' src='/image/${category[i]}.png' value="_${category[i]}" />`);
         }
     }
-
-    let x = $(li).attr('value');
-    let table = $(`.table-div-cooking`);
-    table.fadeIn(500);
 }
 
 function getCategory(val){
