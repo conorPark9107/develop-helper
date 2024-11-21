@@ -3,7 +3,7 @@
 
 <head>
     <script type="text/javascript" src="/js/variable.js"></script>
-    
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -12,23 +12,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
-    <!-- <script type="text/javascript" src="/static/js/variable.js"></script>
+    <script type="text/javascript" src="/static/js/variable.js"></script>
     <script type="text/javascript" src="/static/js/util.js"></script>
     <script type="text/javascript" src="/static/js/calculator/cooking.js"></script>
     <link rel="stylesheet" href="/static/css/editor.css" />
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/detail.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
-    <link rel="stylesheet" href="/static/css/calculator.css" /> -->
+    <link rel="stylesheet" href="/static/css/calculator.css" />
 
 
-    <script type="text/javascript" src="/js/calculator/cooking.js"></script>
+    <!-- <script type="text/javascript" src="/js/calculator/cooking.js"></script>
     <script type="text/javascript" src="/js/util.js"></script>
     <link rel="stylesheet" href="/css/editor.css" />
     <link rel="stylesheet" href="/css/calculator.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
-    <link rel="stylesheet" href="/css/loading.css" />
+    <link rel="stylesheet" href="/css/loading.css" /> -->
 
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 - 요리 ⚔</title>
@@ -57,16 +57,6 @@
                     <input type="radio" id="server03" name="server" value="europe" />
                     <label for="server03">유럽</label>
                 </div>
-
-                <div class="menu-item">
-                    <p>🔻요리 선택</p>
-                    <ul>
-                        <li class="li" onclick="clicked(this)" value="cooking">요리 - (음식)</li>
-                        <li class="li" onclick="clicked(this)" value="butcher">도살 - (고기)</li>
-                        <li class="li" onclick="clicked(this)" value="mill">방앗간 - (밀가루, 버터) </li>
-                    </ul>
-                </div>
-
                 <div class="menu-item menu-item-tier">
                     <p>🔻건물 소비 영양 100당 사용료 <span class="tooltip" data-info="tooltipArea_02">?</span></p>
                     <input class="input-number" type="number" id="usageFee" name="usageFee" placeholder="소비 영양 100당 사용료"
@@ -124,28 +114,48 @@
             </div>
 
             <div class="menu">
-                <div class="menu-item menu-item-tier">
+                <div class="grid-2fr menu-item menu-item-tier">
                     <p>🔻운명보드 레벨 설정 <span class="tooltip" data-info="tooltipArea_01">?</span></p>
-                    <label class="taxLabel" for="chef">셰프</label>
-                    <input class="input-number" type="number" id="chef" min="0" max="100" value="0" />
-                    <label class="taxLabel" for="butcher">도살 업자</label>
-                    <input class="input-number" type="number" id="butcher" min="0" max="100" value="0" />
-                    <label class="taxLabel" for="material">재료 셰프</label>
-                    <input class="input-number" type="number" id="material" min="0" max="100" value="0" />
-                    <label class="taxLabel" for="sandwich">샌드위치 셰프</label>
-                    <input class="input-number" type="number" id="sandwich" min="0" max="100" value="0" />
-                    <label class="taxLabel" for="stew">스튜 셰프</label>
-                    <input class="input-number" type="number" id="stew" min="0" max="100" value="0" />
-                    <label class="taxLabel" for="omelette">오믈렛 셰프</label>
-                    <input class="input-number" type="number" id="omelette" min="0" max="100" value="0" />
-                    <label class="taxLabel" for="roast">로스트 셰프</label>
-                    <input class="input-number" type="number" id="roast" min="0" max="100" value="0" />
-                    <label class="taxLabel" for="pie">파이 셰프</label>
-                    <input class="input-number" type="number" id="pie" min="0" max="100" value="0" />
-                    <label class="taxLabel" for="salad">샐러드 셰프</label>
-                    <input class="input-number" type="number" id="salad" min="0" max="100" value="0" />
-                    <label class="taxLabel" for="soup">수프 셰프</label>
-                    <input class="input-number" type="number" id="soup" min="0" max="100" value="0" />
+                    <div>
+                        <label class="taxLabel" for="chef">셰프</label>
+                        <input class="input-number" type="number" id="chef" min="0" max="100" value="0" />
+                    </div>
+                    <div>
+                        <label class="taxLabel" for="butcher">도살 업자</label>
+                        <input class="input-number" type="number" id="butcher" min="0" max="100" value="0" />
+                    </div>
+                    <div>
+                        <label class="taxLabel" for="material">재료 셰프</label>
+                        <input class="input-number" type="number" id="material" min="0" max="100" value="0" />
+                    </div>
+                    <div>
+                        <label class="taxLabel" for="sandwich">샌드위치 셰프</label>
+                        <input class="input-number" type="number" id="sandwich" min="0" max="100" value="0" />
+                    </div>
+                    <div>
+                        <label class="taxLabel" for="stew">스튜 셰프</label>
+                        <input class="input-number" type="number" id="stew" min="0" max="100" value="0" />
+                    </div>
+                    <div>
+                        <label class="taxLabel" for="omelette">오믈렛 셰프</label>
+                        <input class="input-number" type="number" id="omelette" min="0" max="100" value="0" />
+                    </div>
+                    <div>
+                        <label class="taxLabel" for="roast">로스트 셰프</label>
+                        <input class="input-number" type="number" id="roast" min="0" max="100" value="0" />
+                    </div>
+                    <div>
+                        <label class="taxLabel" for="pie">파이 셰프</label>
+                        <input class="input-number" type="number" id="pie" min="0" max="100" value="0" />
+                    </div>
+                    <div>
+                        <label class="taxLabel" for="salad">샐러드 셰프</label>
+                        <input class="input-number" type="number" id="salad" min="0" max="100" value="0" />
+                    </div>
+                    <div>
+                        <label class="taxLabel" for="soup">수프 셰프</label>
+                        <input class="input-number" type="number" id="soup" min="0" max="100" value="0" />
+                    </div>
                 </div>
 
                 <div class="menu-item">
@@ -156,15 +166,22 @@
 
         <div class="priceArea">
             <div class="image-div">
-
+                
 
             </div>
-            
+
             <!-- 테이블 폼 -->
+
             <div class="table-div-cooking" id="cooking_table">
+                <span class="red">
+                    아발로니안 에너지는 반환되지 않기 때문에 반환율에 포함되어 계산되지 않습니다.
+                </span>
+                <span class="qunatityArea">
+                    <input type="number" id="quantity" name="quantity" placeholder="n" min="1" value="1" />
+                    개 단위로 보기
+                </span>
                 <div class="flex-row-div">
                     <table class="main-table">
-                        <caption class="red">아발로니안 에너지는 반환되지 않기 때문에 반환율에 포함되어 계산되지 않습니다.</caption>
                         <colgroup>
                             <col class="col1">
                             <col class="col9">
@@ -178,27 +195,30 @@
                         <thead>
                             <tr>
                                 <th>아이템</th>
-                                <th>판매가격<br /><p class="priceDetail">(최저가)</p></th>
-                                <th>만들기위한재료<p class="priceDetail">(필요 재료)</p></th>
-                                <th>재료 값<br /><p class="priceDetail">(모두 합한 가격)</p></th>
-                                <th>필요한 집중<br /><p class="priceDetail">(반환 비율 포함)</p></th>
-                                <th>총 재료 비용<p class="priceDetail">(구매가)</p></th>
+                                <th>판매가격<br />
+                                    <p class="priceDetail">(최저가)</p>
+                                </th>
+                                <th>만들기위한재료<p class="priceDetail">(필요 재료)</p>
+                                </th>
+                                <th>재료 값<br />
+                                    <p class="priceDetail">(모두 합한 가격)</p>
+                                </th>
+                                <th>필요한 집중<br />
+                                    <p class="priceDetail">(반환 비율 포함)</p>
+                                </th>
+                                <th>총 재료 비용<p class="priceDetail">(구매가)</p>
+                                </th>
                                 <th>판매가</th>
                                 <th>이익</th>
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
 
                     <table class="sub-table">
-                        <caption>
-                            <span class="qunatityArea">
-                                <input type="number" id="quantity" name="quantity" placeholder="n" min="1" value="1" />
-                                개 단위로 보기
-                            </span>
-                        </caption>
+                        <caption>재료 가격표</caption>
                         <colgroup>
                             <col class="col1">
                             <col class="col2">
@@ -207,12 +227,15 @@
                         <thead>
                             <tr>
                                 <th>아이템</th>
-                                <th>판매가격<br /><p class="priceDetail">(최저가)</p></th>
-                                <th>개수<p class="priceDetail">(1회 기준)</p></th>
+                                <th>판매가격<br />
+                                    <p class="priceDetail">(최저가)</p>
+                                </th>
+                                <th>개수<p class="priceDetail">(1회 기준)</p>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
                 </div>

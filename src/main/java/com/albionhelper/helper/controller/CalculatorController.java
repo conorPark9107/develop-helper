@@ -40,7 +40,10 @@ public class CalculatorController {
         return "calculator/cooking";
     }
 
-
+    @GetMapping("/butcher")
+    public String showbutcherPage(){
+        return "calculator/butcher";
+    }
 
     @GetMapping("/potion")
     public String showPotionPage(){

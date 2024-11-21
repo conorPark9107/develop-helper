@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    showImages();
+
     $('#request-price-btn').on('click', function(){
          $(`td:nth-child(2) > span`).remove();
 
@@ -436,32 +438,15 @@ function setSubTableDefaultData(foods, fishArray){
 
 
 // 요리 메뉴 선택 클릭시 호출.
-function clicked(li){
-    $('.main-table tbody').empty();
-    $('.sub-table tbody').empty();
-
-    $('.table-div-cooking').hide();
-    $('.li').removeClass('clicked');
-    $('.image-div').empty();
-    $(li).addClass('clicked');
-
-    const category = getCategory($(li).attr('value'));    
+function showImages(){
+    const category = foodCate;    
     if(category != undefined){
         const image_div = $('.image-div');
-        image_div.append('<h5>🔻음식을 선택하세요🔻</h5>');
+        image_div.append('<h5>🔻이미지를 선택하세요🔻</h5>');
         for(let i = 0; i < category.length; i++){
-            image_div.append(`<img class='cooking-img' src='/image/${category[i]}.png' value="_${category[i]}" />`);
+            image_div.append(`<img class='cooking-img' src='/static/image/${category[i]}.png' value="_${category[i]}" />`);
         }
-    }
+    }    
 }
 
-function getCategory(val){
-
-    switch (val) {
-        case 'cooking': return foodCate;
-        case 'butcher': break;
-        case 'mill': break;
-    }
-
-}
 

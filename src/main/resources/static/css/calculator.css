@@ -15,14 +15,17 @@ fieldset{
 }
 .main{
     display: flex;
+    height : auto;
+    min-height: 40vw;
     position: relative;
     justify-content: space-between;
-    padding: 0 15px 10px;
+    padding: 0px  10px;
     flex-wrap: wrap;
     padding-bottom: 50px;
 }
 .all-menu{
-    width: 30%;
+    border-right: 1px dashed rgba(238, 238, 238, 0.2);
+    width: 35%;
 }
 .menu{
     vertical-align: top;
@@ -38,6 +41,13 @@ fieldset{
 .menu-item-tier{
     display: flex;
     flex-direction: column;
+}
+.grid-2fr{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50%, auto));
+}
+.grid-2fr p{
+    grid-column: 1 / span 2;
 }
 .menu-message{
     position: sticky;
@@ -73,6 +83,7 @@ input {
     border: 1px solid rgba(238, 238, 238, 0.2);
     box-sizing: border-box;
     padding: 8px 10px;
+    width: 70%;
 }
 
 input::-webkit-outer-spin-button,
@@ -90,6 +101,7 @@ ul {
 }
 
 .li {
+    width: 80%;
     display: flex;
     align-items: center;
     max-width: 100%;
@@ -213,7 +225,7 @@ td img{
 }
 .table-div{
     display:none;
-    width: 68%;
+    width: 60%;
 }
 .table-div-cooking{
     display:none;
@@ -268,7 +280,7 @@ table .col9 {
     width: 10%;
 }
 table tbody td input{
-    width: 5vw;
+    width: 100%;
     display: block;
 }
 .timeAgo{
@@ -302,11 +314,18 @@ body::-webkit-scrollbar {
 ::-webkit-scrollbar-thumb {
   background:  #555;
 }
-@media screen and (max-width: 1525px){ 
+@media screen and (max-width: 1525px){
     .menu{
+        position: static;
         display: flex;
         flex-direction: column;
         margin: 10% 0;
+    }
+    .menu-message {
+        position: static;
+    }
+    .header{
+        position: static;
     }
 }
 .qunatityArea{
@@ -319,6 +338,7 @@ body::-webkit-scrollbar {
     padding: 5px 10px;
 }
 .taxLabel{
+    opacity: 0.6;
     font-size : 0.7em;
     margin-bottom: 3px;
     display: block;
@@ -335,8 +355,9 @@ a:hover{
     opacity: 0.5;
 }
 .red{
+    font-size: 0.9em;
     font-weight: bold;
-    color: RGB(218, 0, 34);
+    color: RGBA(218, 0, 34, 0.6);
 }
 .green{
     font-weight: bold;
@@ -405,7 +426,7 @@ a:hover{
 }
 .priceArea{
     display:flex;
-    width: 70%;
+    width: 60%;
     flex-direction: column;
     text-align: center;
 }
@@ -422,21 +443,19 @@ a:hover{
 }
 .flex-row-div{
     width: 100%;
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 15px;
 }
 .main-table{
     height: 100%;
-    width:50%;
-    flex-grow: 2;
+    width:100%;
+}
+.sub-table caption{
+    font-weight: bold;
 }
 .sub-table{
+    margin-top : 1%;
+    float: right;
     height: 100%;
-    width: 5%;
-    flex-grow: 1;
+    width: 40%;
 }
 .main-table-after{
     text-align: center;

@@ -12,11 +12,13 @@
 }
 
 .footer {
-    position: static;
-    z-index: 0;
+    height: 15px;
+    position : relative;
+    transform : translateY(-100%);
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+    
 }
 
 .footer span {
@@ -33,8 +35,7 @@
     justify-content: space-between;
     padding: 0 15px 10px;
     flex-wrap: wrap;
-    height: auto;
-    min-height: 100%;
+    height: 100%;
     padding-bottom: 50px;
 }
 
