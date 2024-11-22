@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <script type="text/javascript" src="/js/variable.js"></script>
+    
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -12,26 +12,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
-    <!-- <script type="text/javascript" src="/static/js/variable.js"></script>
+    <script type="text/javascript" src="/static/js/variable.js"></script>
     <script type="text/javascript" src="/static/js/util.js"></script>
-    <script type="text/javascript" src="/static/js/calculator/cooking.js"></script>
+    <script type="text/javascript" src="/static/js/calculator/butcher.js"></script>
     <link rel="stylesheet" href="/static/css/editor.css" />
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/detail.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
-    <link rel="stylesheet" href="/static/css/calculator.css" /> -->
+    <link rel="stylesheet" href="/static/css/calculator.css" />
 
 
-    <script type="text/javascript" src="/js/calculator/cooking.js"></script>
+    <!-- 
+    <script type="text/javascript" src="/js/variable.js"></script>
+    <script type="text/javascript" src="/js/calculator/butcher.js"></script>
     <script type="text/javascript" src="/js/util.js"></script>
     <link rel="stylesheet" href="/css/editor.css" />
     <link rel="stylesheet" href="/css/calculator.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
-    <link rel="stylesheet" href="/css/loading.css" />
+    <link rel="stylesheet" href="/css/loading.css" /> -->
 
     <meta charset="UTF-8">
-    <title>⚔ 알비온 헬퍼 - 요리 ⚔</title>
+    <title>⚔ 알비온 헬퍼 - 방앗간 & 도살장 ⚔</title>
 </head>
 
 <body>
@@ -57,6 +59,7 @@
                     <input type="radio" id="server03" name="server" value="europe" />
                     <label for="server03">유럽</label>
                 </div>
+
                 <div class="menu-item menu-item-tier">
                     <p>🔻건물 소비 영양 100당 사용료 <span class="tooltip" data-info="tooltipArea_02">?</span></p>
                     <input class="input-number" type="number" id="usageFee" name="usageFee" placeholder="소비 영양 100당 사용료"
@@ -171,17 +174,14 @@
             </div>
 
             <!-- 테이블 폼 -->
-
             <div class="table-div-cooking" id="cooking_table">
-                <span class="red">
-                    아발로니안 에너지는 반환되지 않기 때문에 반환율에 포함되어 계산되지 않습니다.
-                </span>
                 <span class="qunatityArea">
                     <input type="number" id="quantity" name="quantity" placeholder="n" min="1" value="1" />
                     개 단위로 보기
                 </span>
                 <div class="flex-row-div">
-                    <table class="main-table">
+
+                    <table class="main-table" id="meat_table">
                         <colgroup>
                             <col class="col1">
                             <col class="col9">
@@ -217,12 +217,16 @@
                         </tbody>
                     </table>
 
-                    <table class="sub-table">
-                        <caption>재료 가격표</caption>
+                    <table class="main-table" id="fish_table">
                         <colgroup>
                             <col class="col1">
+                            <col class="col9">
+                            <col class="col5">
+                            <col class="col9">
                             <col class="col2">
-                            <col class="col6">
+                            <col class="col7">
+                            <col class="col8">
+                            <col class="col9">
                         </colgroup>
                         <thead>
                             <tr>
@@ -230,8 +234,18 @@
                                 <th>판매가격<br />
                                     <p class="priceDetail">(최저가)</p>
                                 </th>
-                                <th>개수<p class="priceDetail">(1회 기준)</p>
+                                <th>만들기위한재료<p class="priceDetail">(필요 재료)</p>
                                 </th>
+                                <th>재료 값<br />
+                                    <p class="priceDetail">(모두 합한 가격)</p>
+                                </th>
+                                <th>필요한 집중<br />
+                                    <p class="priceDetail">(반환 비율 포함)</p>
+                                </th>
+                                <th>총 재료 비용<p class="priceDetail">(구매가)</p>
+                                </th>
+                                <th>판매가</th>
+                                <th>이익</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -243,11 +257,6 @@
             </div>
         </div>
     </div> <!-- main -->
-
-
-
-
-
 
     <!-- 운명 보드 설정 -->
     <div id="tooltipArea_01">

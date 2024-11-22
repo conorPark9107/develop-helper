@@ -6,36 +6,21 @@ $(document).ready(function () {
          $(`td:nth-child(2) > span`).remove();
 
         let server = $('input[name=server]:checked').val(); // server
-        let category = $('li.clicked').attr('value'); // tableClass for veriable array
         let city = $('#start option:selected').val();
 
-
-        let isClicked = $('.li').hasClass('clicked');
-        if(!isClicked){
-            showAlert('요리 선택을 선택해주세요.');
-            return;
-        }
-
         let itemName = $('.selected-img').attr('value');
-        if(category == 'cooking' && itemName == undefined){
+        if(itemName == undefined){
             showAlert('음식을 선택을 선택해주세요.');
             return;
         }
 
         let materialArr = [];
         let afterArr = [];
-        switch (category) {
-            case 'cooking':
-                materialArr = cookTree.FISHSAUCE.concat(cookTree[itemName].names); // 재료
-                // materialArr = cookTree[itemName].names.concat(cookTree.FISHSAUCE); // 재료
-                afterArr[0] = itemName; // 요리(.0 ~ .3 음식들)
-                for(let i = 1; i < 4; i++) afterArr[i] = `${itemName}@${i}`;
-                break;
-            case 'butcher':
-                break;
-            case 'mill':
-                break;
-        }
+        materialArr = cookTree.FISHSAUCE.concat(cookTree[itemName].names); // 재료
+        // materialArr = cookTree[itemName].names.concat(cookTree.FISHSAUCE); // 재료
+        afterArr[0] = itemName; // 요리(.0 ~ .3 음식들)
+        for(let i = 1; i < 4; i++) afterArr[i] = `${itemName}@${i}`;
+
 
        $.ajax({
            type: "GET",
@@ -444,7 +429,7 @@ function showImages(){
         const image_div = $('.image-div');
         image_div.append('<h5>🔻이미지를 선택하세요🔻</h5>');
         for(let i = 0; i < category.length; i++){
-            image_div.append(`<img class='cooking-img' src='/static/image/${category[i]}.png' value="_${category[i]}" />`);
+            image_div.append(`<img class='cooking-img' src='/image/${category[i]}.png' value="_${category[i]}" />`);
         }
     }    
 }
