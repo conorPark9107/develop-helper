@@ -348,7 +348,7 @@ function setTableServerData(response){
         let tds = $(main_trs[i]).find('td');
         let input = $(tds[1]).find('input');
         $(input).attr('value', v);
-        $(tds[1]).append(`<span class='timeAgo-cooking'>${getPerTime(response[0][i].sell_price_min_date)}</span>`);
+        $(tds[1]).append(`<span class='timeAgo-cooking'>${getPerTime(response[1][i].sell_price_min_date)}</span>`);
     }   
     
     // 재료 테이블
@@ -359,8 +359,6 @@ function setTableServerData(response){
         $(`#${beforeName}`).attr('value', v);
         $(tds[1]).append(`<span class='timeAgo-cooking'>${getPerTime(response[0][i].sell_price_min_date)}</span>`);
     }
-
-    $('input').trigger('keyup');
 }
 
 // 요리 이미지 클릭했을때 메인 테이블에 내용 넣기.
@@ -377,7 +375,7 @@ function setMainTableDefaultData(foods, cateDetail){
         }
         $(tr).attr('data-value', foods.itemValue);
         $(tr).append(`<td><div class="main-table-after"><img src="/image/${fileName}.png" value="${fileName}" /><span>${foods.returnNum}</span></div></td>`);
-        $(tr).append('<td><input type="text"></td>');
+        $(tr).append('<td><input type="number"></td>');
         
         let appendData = '';
         for(let j = 0; j < foods.names.length; j++){
@@ -391,7 +389,7 @@ function setMainTableDefaultData(foods, cateDetail){
         
 
         $(tr).append(`<td>${appendData}</td>`);
-        $(tr).append('<td><input type="text"></td>');
+        $(tr).append('<td><input type="number"></td>');
         $(tr).append(`<td>${foods.baseFocus[i]}</td>`);
         $(tr).append(`<td>0</td>`);
         $(tr).append(`<td>0</td>`);        
@@ -407,7 +405,7 @@ function setSubTableDefaultData(foods, fishArray){
     for(let i = 0; i < fishArray.length; i++){
         const tr = document.createElement('tr');
         $(tr).append(`<td><img src="/image/${fishArray[i]}.png" /></td>`);
-        $(tr).append(`<td><input id="${fishArray[i]}" type="text"></td>`);
+        $(tr).append(`<td><input id="${fishArray[i]}" type="number"></td>`);
         $(tr).append(`<td>${foods.fishNum}</td>`);
         tbody.append(tr);
     }
@@ -415,7 +413,7 @@ function setSubTableDefaultData(foods, fishArray){
     for(let i = 0; i < foods.names.length; i++){
         const tr = document.createElement('tr');
         $(tr).append(`<td><img src="/image/${foods.names[i]}.png" /></td>`);
-        $(tr).append(`<td ><input id="${foods.names[i]}" type="text"></td>`);
+        $(tr).append(`<td ><input id="${foods.names[i]}" type="number"></td>`);
         $(tr).append(`<td>${foods.nums[i]}</td>`);
         tbody.append(tr);
     }

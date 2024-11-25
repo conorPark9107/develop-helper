@@ -11,7 +11,7 @@ const foodCate = ["T5_MEAL_SOUP", "T5_MEAL_SOUP_FISH", "T6_MEAL_SALAD", "T6_MEAL
 "T8_MEAL_SANDWICH_AVALON"];
 const potionCate = ["T6_POTION_HEAL", "T6_POTION_ENERGY", "T7_POTION_REVIVE", "T7_POTION_SLOWFIELD", "T7_POTION_STONESKIN", "T8_POTION_COOLDOWN", "T8_POTION_CLEANSE",
 "T7_POTION_MOB_RESET", "T7_POTION_CLEANSE2", "T7_POTION_ACID", "T8_POTION_BERSERK", "T8_POTION_LAVA", "T8_POTION_GATHER", "T8_POTION_TORNADO"];
-const butcherCate = ["T1_FISHCHOPS", "T8_MEAT"];
+const butcherCate = ["T8_MEAT", "T1_FISHCHOPS"];
 
 
 const itemTree = {
@@ -127,6 +127,10 @@ const itemTree = {
     _FISHSAUCE : ["T1_FISHSAUCE_LEVEL1", "T1_FISHSAUCE_LEVEL2", "T1_FISHSAUCE_LEVEL3"],
     _CROP : ["T1_CARROT", "T2_BEAN", "T3_WHEAT", "T4_TURNIP", "T5_CABBAGE", "T6_POTATO", "T7_CORN", "T8_PUMPKIN"],
     _HERB : ["T2_AGARIC", "T3_COMFREY", "T4_BURDOCK", "T5_TEASEL", "T6_FOXGLOVE", "T7_MULLEIN", "T8_YARROW"],
+
+    _T1_FISHCHOPS : [],
+    _T8_MEAT : ["T3_MEAT", "T4_MEAT", "T5_MEAT", "T6_MEAT", "T7_MEAT", "T8_MEAT"],
+
 };
 
 // 제련 페이지
@@ -169,6 +173,7 @@ nums    // 재료 이름들이 각각 필요한 재료 개수들
 fishNum // 피쉬소스 필요 개수(인첸트를 위한)
 baseFocus // 기본 포커스(0레벨일때의 포커스를 말함)
 returnNum // 한번 요리했을때 반환되는 개수
+itemValue // 아이템 value 값.
 */
 
 const cookTree = {
@@ -597,8 +602,54 @@ T8_MEAL_SANDWICH_AVALON : {
         returnNum : 10,
         itemValue : 1080
 },
-FISHSAUCE : ["T1_FISHSAUCE_LEVEL1", "T1_FISHSAUCE_LEVEL2", "T1_FISHSAUCE_LEVEL3"],        
+FISHSAUCE : ["T1_FISHSAUCE_LEVEL1", "T1_FISHSAUCE_LEVEL2", "T1_FISHSAUCE_LEVEL3"],
 };
 
 
+/*
+names : 재료 이름
+returnNum : 재료를 통해 만들면, 반환되는 개수.
+baseFocus : 기본 포커스
+itemValue : 아이템 value 값
+*/
+const butcherTree = {
+        BUTCHER_MATERIAL : ["T3_FARM_CHICKEN_GROWN", "T4_FARM_GOAT_GROWN", "T5_FARM_GOOSE_GROWN", "T6_FARM_SHEEP_GROWN", "T7_FARM_PIG_GROWN", "T8_FARM_COW_GROWN"],
+        T3_MEAT : {
+                name : "T3_FARM_CHICKEN_GROWN",
+                returnNum : 18,
+                itemValue : 40,
+                baseFocus : 684
+        },
+        T4_MEAT : {
+                name : "T4_FARM_GOAT_GROWN",
+                returnNum : 18,
+                itemValue : 40,
+                baseFocus : 684
+        },
+        T5_MEAT : {
+                name : "T5_FARM_GOOSE_GROWN",
+                returnNum : 18,
+                itemValue : 40,
+                baseFocus : 684
+        },
+        T6_MEAT : {
+                name : "T6_FARM_SHEEP_GROWN",
+                returnNum : 18,
+                itemValue : 40,
+                baseFocus : 684
+        },
+        T7_MEAT : {
+                name : "T7_FARM_PIG_GROWN",
+                returnNum : 18,
+                itemValue : 40,
+                baseFocus : 684
+        },
+        T8_MEAT : {
+                name : "T8_FARM_COW_GROWN",
+                returnNum : 18,
+                itemValue : 40,
+                baseFocus : 684
+        },
+};
+const fishTree = {};
 

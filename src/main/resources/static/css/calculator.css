@@ -471,6 +471,21 @@ a:hover{
     font-size: 0.6em;
     font-weight: bold;
 }
+.material-cooking-meat{
+    text-align: center;
+    display:inline-block;
+}
+.material-cooking-meat img{
+    width: 2.5vw;
+    height: 2.5vw;
+    display: block;
+    margin-bottom: -5px;
+}
+.material-cooking-meat span{
+    font-size: 0.6em;
+    font-weight: bold;
+}
+
 .material-cooking{
     text-align: center;
     display:inline-block;
