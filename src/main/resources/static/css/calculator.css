@@ -445,7 +445,6 @@ a:hover{
     width: 100%;
 }
 .main-table{
-    height: 100%;
     width:100%;
 }
 .sub-table caption{
@@ -504,8 +503,13 @@ a:hover{
     font-size: 0.8em;
 }
 .main-table tbody td:nth-child(3){
-    
     text-align: left;
+}
+#meat_table tbody td:nth-child(3){
+    text-align: center;
+}
+#fish_table tbody td:nth-child(3){
+    text-align: center;
 }
 .selected-img {
     color: #eee;

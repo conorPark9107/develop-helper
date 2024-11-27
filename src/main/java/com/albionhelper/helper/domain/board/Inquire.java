@@ -17,13 +17,15 @@ import org.hibernate.annotations.DynamicInsert;
 public class Inquire {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Lob
     @Column(name = "content")
     private String content;
 
+    @Lob
     @Column(name = "answer")
     @ColumnDefault("'아직 답변 전입니다.'")
     private String answer;

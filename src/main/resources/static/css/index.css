@@ -135,3 +135,9 @@ h3 {
 :hover{
     transition: all 0.3s;
 }
+.blur{
+    opacity: 0.8;
+    filter: blur(1px);
+    cursor: not-allowed;
+    pointer-events: none;
+}

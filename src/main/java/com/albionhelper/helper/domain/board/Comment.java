@@ -29,6 +29,7 @@ public class Comment {
     @Column(name = "password")
     private String password;
 
+    @Lob
     @Column(name = "comment")
     private String comment;
 
