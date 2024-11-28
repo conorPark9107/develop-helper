@@ -276,7 +276,7 @@ function setTotalMaterialPrice(tax, usageFee,  quantity){
         $(tds[5]).append(span);
         $(tds[5]).append(`<br/><span class="priceDetail">구매원가 : ${totalPrice.toLocaleString()}</span>`);
         $(tds[5]).append(`<br/><span class="priceDetail">구매수수료 : ${Math.round(fee).toLocaleString()}</span>`);
-        $(tds[5]).append(`<br/><span class="priceDetail">예상 요리수수료 : ${Math.round(usage).toLocaleString()}</span>`);
+        $(tds[5]).append(`<br/><span class="priceDetail">예상 도살 수수료 : ${Math.round(usage).toLocaleString()}</span>`);
     }
 }
 

@@ -141,6 +141,8 @@ const itemTree = {
                 "T3_FISH_FRESHWATER_FOREST_RARE", "T5_FISH_FRESHWATER_FOREST_RARE", "T7_FISH_FRESHWATER_FOREST_RARE",
                 "T3_FISH_FRESHWATER_HIGHLANDS_RARE", "T5_FISH_FRESHWATER_HIGHLANDS_RARE", "T7_FISH_FRESHWATER_HIGHLANDS_RARE", "T8_FISH_SALTWATER_ALL_BOSS_SHARK"],
     _T8_MEAT : ["T3_MEAT", "T4_MEAT", "T5_MEAT", "T6_MEAT", "T7_MEAT", "T8_MEAT"],
+    _MILK : ["T3_WHEAT", "T4_MILK", "T6_MILK", "T8_MILK"],
+    _BUTTER : ["T3_FLOUR", "T4_BUTTER", "T6_BUTTER", "T8_BUTTER"],
 
 };
 
@@ -663,6 +665,7 @@ const butcherTree = {
         },
 };
 
+// choppedFish : 토막낼경우 리턴되는 토막난생선 양
 const fishTree = {
         T1_FISH_FRESHWATER_ALL_COMMON : {choppedFish : 1},
         T2_FISH_FRESHWATER_ALL_COMMON : {choppedFish : 2},
@@ -704,3 +707,30 @@ const fishTree = {
         T8_FISH_SALTWATER_ALL_BOSS_SHARK : {choppedFish : 200}
 };
 
+/*
+name : 재료이름
+itemValue : 아이템 value 값.
+baseFocus : 기본 포커스
+*/
+const millTree = {
+        T3_FLOUR : {
+                name : "T3_WHEAT",
+                itemValue : 40,
+                baseFocus : 38,
+        }, 
+        T4_BUTTER : {
+                name :"T4_MILK",
+                itemValue : 40,
+                baseFocus : 38,
+        }, 
+        T6_BUTTER : {
+                name : "T6_MILK",
+                itemValue : 40,
+                baseFocus : 38,
+        }, 
+        T8_BUTTER : {
+                name : "T8_MILK",
+                itemValue : 40,
+                baseFocus : 38,
+        },
+};

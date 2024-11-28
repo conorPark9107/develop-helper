@@ -41,8 +41,13 @@ public class CalculatorController {
     }
 
     @GetMapping("/butcher")
-    public String showbutcherPage(){
+    public String showButcherPage(){
         return "calculator/butcher";
+    }
+
+    @GetMapping("/mill")
+    public String showMillPage(){
+        return "calculator/mill";
     }
 
     @GetMapping("/potion")

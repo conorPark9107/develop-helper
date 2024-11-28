@@ -14,18 +14,17 @@
 
     <!--<script type="text/javascript" src="/static/js/variable.js"></script>
     <script type="text/javascript" src="/static/js/util.js"></script>
-    <script type="text/javascript" src="/static/js/calculator/butcher.js"></script>
+    <script type="text/javascript" src="/static/js/calculator/mill.js"></script>
     <link rel="stylesheet" href="/static/css/editor.css" />
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/detail.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
     <link rel="stylesheet" href="/static/css/calculator.css" />-->
 
-
     
      <script type="text/javascript" src="/js/variable.js"></script>
     <script type="text/javascript" src="/js/util.js"></script>
-    <script type="text/javascript" src="/js/calculator/butcher.js"></script>
+    <script type="text/javascript" src="/js/calculator/mill.js"></script>
     <link rel="stylesheet" href="/css/editor.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
@@ -33,7 +32,7 @@
     <link rel="stylesheet" href="/css/calculator.css" />
 
     <meta charset="UTF-8">
-    <title>⚔ 알비온 헬퍼 - 도살장 ⚔</title>
+    <title>⚔ 알비온 헬퍼 - 방앗간 ⚔</title>
 </head>
 
 <body>
@@ -44,9 +43,9 @@
     <div class="main">
         <div class="all-menu">
             <div class="menu-message">
-                <p>※ 실시간 시장가격, 자원반환(%) 소수점.. 등 여러 변수로 약간의 오차는 발생할 수 있습니다.</p>
-                <p>※ 계산식에 문제가 있을시 <a href="/toinquire" target="_blank">피드백(새
-                        창)</a>에 글을 남겨주세요.</p>
+                <p>※ <u>예상 요리 수수료</u>, <u>필요한 집중</u>은 제작 버튼을 <b class="red">한번 클릭 했을 때</b> 의 기준입니다.</p>
+                <p>※ 실시간 시장 가격, 자원 반환(%) 소수점.. 등 여러 변수로 약간의 오차는 발생 할 수 있습니다.</p>
+                <p>※ 계산식에 문제가 있을시 <a href="/toinquire" target="_blank">피드백(새창)</a>에 글을 남겨주세요.</p>
             </div>
 
             <div class="menu">
@@ -174,14 +173,13 @@
             </div>
 
             <!-- 테이블 폼 -->
-            <div class="table-div-cooking" id="cooking_table">
-                
+            <div>
                 <div class="flex-row-div">
                     <span class="qunatityArea">
                         <input type="number" id="quantity" name="quantity" placeholder="n" min="1" value="1" />
-                        마리 단위로 보기
+                        개 단위로 보기
                     </span>
-                    <table class="main-table" id="meat_table">
+                    <table class="main-table" id="mill_table">
                         <colgroup>
                             <col class="col1">
                             <col class="col9">
@@ -201,36 +199,20 @@
                                 <th>재료<p class="priceDetail">(필요 재료)</p>
                                 </th>
                                 <th>재료 값<br />
-                                    <p class="priceDetail">(1마리 가격)</p>
+                                    <p class="priceDetail">(1개 가격)</p>
                                 </th>
                                 <th>필요한 집중<br />
-                                    <p class="priceDetail">(반환 비율 포함)</p>
+                                    <p class="priceDetail">(제작 버튼 한번 클릭 기준)</p>
                                 </th>
-                                <th>총 재료 비용<p class="priceDetail">(구매가)</p>
+                                <th>총 재료 비용<p class="priceDetail">(만들기 위한 비용)</p>
                                 </th>
                                 <th>판매가</th>
+                                
                                 <th>이익</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                        </tbody>
-                    </table>
-
-                    <table class="main-table" id="fish_table">
-                        <thead>
-                            <tr>
-                                <th>물고기</th>
-                                <th>가격<br />
-                                    <p class="priceDetail">(1마리 최저가)</p>
-                                </th>
-                                <th>토막낸 생선 반환 개수<p class="priceDetail">(1마리당 반환 개수)</p>
-                                </th>
-                                <th>토막낸 생선 판매가<p class="priceDetail">(1개당 가격)</p></th>
-                                <th>이익</th>
-                            </tr>
-                        </thead>
-                        <tbody>
                         </tbody>
                     </table>
                 </div>
@@ -308,15 +290,15 @@
     <div id="tooltipArea_02">
         <div id="info02">
             <img style="text-align: center;" src="/image/refining_usageFee_info.PNG" width="200" height="480">
-            <p>1. 도살장 건물에 갑니다.</p>
-            <p>2. 이미지와 같이 요리 사용료 금액을 넣으면 됩니다.</p>
+            <p>1. 방앗간에 갑니다.</p>
+            <p>2. 이미지의 빨간 박스 안에 있는 소비영양 100당 사용료를 입력하면 됩니다.</p>
         </div>
     </div>
 
     <!-- 자원반환 비율 -->
     <div id="tooltipArea_03">
         <img src="/image/refining_returnRate_info.PNG" />
-        <p>1. 도살장에 가서 만들고자 하는 고기를 클릭.</p>
+        <p>1. 방앗간에 가서 만들고자하는 품목을 클릭.</p>
         <p>2. 빨간색 박스 부분의 값('%' 제외)을 입력.</p>
     </div>
 

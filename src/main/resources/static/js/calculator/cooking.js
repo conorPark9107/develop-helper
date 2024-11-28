@@ -141,24 +141,18 @@ $(document).ready(function () {
 
 }); // jquery ready()
 
+function getReturnNum(){
+    return cookTree[getReturnName()].returnNum;
+}
+
 function getBaseFocus(){
-    let main_trs = $(`.main-table tbody tr`);
-    let td = $(main_trs[0]).find('td')[0];
-    const afterItemName = $(td).find('div').find('img').attr('value');
-    return cookTree[afterItemName].baseFocus;
+    return cookTree[getReturnName()].baseFocus;
 }
 
 function getReturnName(){
     let main_trs = $(`.main-table tbody tr`);
     let td = $(main_trs[0]).find('td')[0];
     return $(td).find('div').find('img').attr('value');
-}
-
-function getReturnNum(){
-    let main_trs = $(`.main-table tbody tr`);
-    let td = $(main_trs[0]).find('td')[0];
-    const afterItemName = $(td).find('div').find('img').attr('value');
-    return cookTree[afterItemName].returnNum;
 }
 
 function setFocus(quantity, realQuantity){
@@ -285,7 +279,7 @@ function setTotalAfterPrice(tax, quantity, realQuantity){
 
         let span = document.createElement('span');
         $(span).addClass('sellPrice');
-        $(span).text(Math.round(price + fee).toLocaleString());
+        $(span).text(Math.round(price - fee).toLocaleString());
         $(tds[6]).text('');
         $(tds[6]).append(span);
         $(tds[6]).append(`<br/><span class="priceDetail">판매원가 : ${Math.round(price).toLocaleString()}</span>`);
