@@ -68,4 +68,10 @@ public class MainController {
         return boardService.registerInquire(text);
     }
 
+    @ResponseBody
+    @GetMapping("/test")
+    public String testHttpApi(){
+        return "Hi! This page made by conorpark, it's a request from docker. right? ";
+    }
+
 }
