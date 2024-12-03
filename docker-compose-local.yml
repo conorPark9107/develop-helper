@@ -6,8 +6,6 @@ services:
     restart: always
     environment:
       TZ: Asia/Seoul
-      env_file:
-        - .env
     volumes:
       - ./master_db/data:/var/lib/mysql # log & index ...
       - ./master_db/config/:/etc/mysql/conf.d
@@ -16,7 +14,8 @@ services:
       - 3306:3306
     networks:
       - backend-net
-
+    env_file:
+      - .env
   application:
     depends_on:
       - helperdb
