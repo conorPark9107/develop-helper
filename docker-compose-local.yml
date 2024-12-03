@@ -1,0 +1,37 @@
+# docker-compose -f docker-compose-local.yml up
+services:
+  helperdb:
+    image: mariadb
+    container_name: helperdb
+    restart: always
+    environment:
+      TZ: Asia/Seoul
+      env_file:
+        - .env
+    volumes:
+      - ./master_db/data:/var/lib/mysql # log & index ...
+      - ./master_db/config/:/etc/mysql/conf.d
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    ports:
+      - 3306:3306
+    networks:
+      - backend-net
+
+  application:
+    depends_on:
+      - helperdb
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: helperspringboot
+    ports:
+      - 8080:8080
+    links:
+      - helperdb
+    networks:
+      - backend-net
+    restart: always
+networks:
+  backend-net: {}
+
+
