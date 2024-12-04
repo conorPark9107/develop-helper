@@ -16,13 +16,15 @@ services:
       - backend-net
     env_file:
       - .env
-  application:
+  springboot:
+    image: springboot
+    container_name: helperspringboot
     depends_on:
       - helperdb
     build:
       context: ./
       dockerfile: Dockerfile
-    container_name: helperspringboot
+
     ports:
       - 8080:8080
     links:

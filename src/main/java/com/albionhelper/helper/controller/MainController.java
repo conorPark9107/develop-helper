@@ -53,7 +53,7 @@ public class MainController {
         model.addAttribute("east", goldService.getGoldPriciesOnEast());
         model.addAttribute("west", goldService.getGoldPriciesOnWest());
         model.addAttribute("europe", goldService.getGoldPriciesOnEurope());
-        return "/gold/gold";
+        return "gold/gold";
     }
 
     @GetMapping("/toinquire")
