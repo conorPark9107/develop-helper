@@ -30,7 +30,6 @@ public class KillBoardController {
     // https://albionboard.com/
     @GetMapping("")
     public String showPage(){
-
         return "killboard/killboard";
     }
 
