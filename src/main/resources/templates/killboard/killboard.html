@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+
+    <script type="text/javascript" src="/js/util.js"></script>
+    <script type="text/javascript" src="/js/killboard.js"></script>
+    <link rel="stylesheet" href="/css/editor.css"/>
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/detail.css" />
+    <link rel="stylesheet" href="/css/killboard.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
+    <meta charset="UTF-8">
+    <title>⚔ 알비온 헬퍼 - 킬보드 ⚔</title>
+</head>
+<body>
+<!--    <div class="container" >-->
+<!--        <p th:text="${text}">text</p>-->
+<!--    </div>-->
+<div class="header">
+    <a class="header-logo" href="/">⚔ 알비온 헬퍼</a>
+</div>
+
+<div class="main">
+    <div class="centered">
+        <div class="content-header">
+            <h2 id="contentTitle">⚔ 킬보드 ⚔</h2>
+        </div>
+        <hr/>
+
+        <div class="content-body">
+            <div class="content-body-items">
+                <p>🔻서버를 선택해주세용🔻</p>
+                <input type="radio" id="location03" name="location" value="east" checked/>
+                <label for="location03">동부</label>
+                <input type="radio" id="location02" name="location" value="west" />
+                <label for="location02">서부</label>
+                <input type="radio" id="lcation01" name="location" value="europe" />
+                <label for="lcation01">유럽</label>
+            </div>
+
+            <div class="content-body-items">
+                <p>🔻아래에 인게임 ID를 정확하게 입력하고 Enter키를 눌러주세용...🔻</p>
+                <input class="rainbow" type="text" name="userId" id="userId" placeholder="id를 입력하세요." maxlength="16" aria-haspopup="true" aria-expanded="false">
+                <p class="warningMsg" id="invalidId_msg"></p>
+                <div id="userList">
+                    <div class="rainbow popUp">
+                        <p>🔻본인의 아이디를 클릭해주세용..🔻</p>
+                        <div id="userNames" class="content-body-item-userGroup"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- main -->
+
+<div id="blackArea">
+    <div id="loading">
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+
+        <h1>정보 요청중..</h1>
+    </div>
+</div>
+</body>
+</html>
