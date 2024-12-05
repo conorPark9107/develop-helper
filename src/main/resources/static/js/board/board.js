@@ -16,14 +16,10 @@ $(document).ready(function () {
         $("#hidden_input").val(quill.root.innerHTML);
         let img = $('img');
         if (img.length > 0) {
-            try {
-                let src = img[img.length - 1].src;
-                window.atob(src);
-                let file = base64toFile(src, "image");
-                checkTheFileSize(file);
-            } catch (e) {
-
-            }
+            let src = img[img.length - 1].src;
+            let file = base64toFile(src, "image");
+            console.log((file.size / 1024 / 2 / 5) +"MB");
+            checkTheFileSize(file);
         }
     });
 
@@ -33,8 +29,6 @@ $(document).ready(function () {
         let images = $('img'); // 이미지들.
         let title = $('#title').val();
         let password = $('#password').val();
-        let category = $('.clicked').attr('value');
-        let nickName = $('#nickName').val();
 
         if (title.trim() == '') {
             $("#title").val('');
@@ -54,7 +48,7 @@ $(document).ready(function () {
             let fileName = uuidv4() + ".png";
             let src = images[i].src;
             let file = base64toFile(src, fileName);
-            let uploadPromise = uploadFile(file, fileName);
+            const uploadPromise = uploadFile(file, fileName);
             promiseList[i] = uploadPromise.then(uploadData => {
                 return downloadFile(uploadData.data.path);
             }).then(downloadData => {
@@ -69,11 +63,11 @@ $(document).ready(function () {
             for (let i = 0; i < dataArr.length; i++) {
                 images[i].src = dataArr[i].data.publicUrl;
             }
-            let category = $('.clicked').attr('value');
-            let nickName = $('#nickName').val();
-            let title = $('#title').val();
-            let password = $('#password').val();
-            let requestHTML = quill.root.innerHTML;
+            const category = $('.clicked').attr('value');
+            const nickName = $('#nickName').val();
+            const title = $('#title').val();
+            const password = $('#password').val();
+            const requestHTML = quill.root.innerHTML;
             
             $('#h_category').val(category);
             $('#h_nickName').val(nickName);
@@ -116,12 +110,12 @@ $(document).ready(function () {
         });
     });
 
-    function checkTheFileSize(file) {
-        if (file.size > (1024 ** 2) * 10) { // 10 MB
+    function checkTheFileSize(file) {        
+        if (file.size > (1024 ** 2) *5) { // 5 MB
             $.confirm({
                 theme: 'supervan',
                 title: '',
-                content: '한 게시글에 10MB까지 이미지등록을 허용합니다.',
+                content: '한 게시글에 5MB까지 이미지등록을 허용합니다.',
                 buttons: {
                     '돌아가기': function () {
                         $("img:last-child").remove();
@@ -141,11 +135,17 @@ const PUBLIC_STORAGE_BUCKET = 'AH_Board_Images';
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 async function uploadFile(file, fileName) {
-    return await client.storage.from(PUBLIC_STORAGE_BUCKET).upload(fileName, file);
+    return await client
+                .storage
+                .from(PUBLIC_STORAGE_BUCKET)
+                .upload(fileName, file);
 }
 
 async function downloadFile(fileName) {
-    return await client.storage.from(PUBLIC_STORAGE_BUCKET).getPublicUrl(fileName, {})
+    return await client
+                .storage
+                .from(PUBLIC_STORAGE_BUCKET)
+                .getPublicUrl(fileName, {});
 }
 
 /* 카테고리 클릭 */

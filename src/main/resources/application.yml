@@ -5,7 +5,10 @@ server:
     excluded-user-agents: MSIE 6.0,UCBrowser
     min-response-size: '1024'
   address: 0.0.0.0
+#  로컬에서
   port: '8080'
+#  서버에서 
+#  port: '80'
 
 spring:
   profiles:

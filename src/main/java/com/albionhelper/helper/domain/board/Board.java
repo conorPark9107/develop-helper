@@ -36,7 +36,7 @@ public class Board {
     private String category;
 
     @Lob
-    @Column(name = "contents")
+    @Column(name = "contents", columnDefinition = "longtext")
     private String contents;
 
     @CreationTimestamp

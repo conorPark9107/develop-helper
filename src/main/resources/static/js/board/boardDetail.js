@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+
     $('.showWriter').on('click', function(){
         let x = $(this).closest('li').children('#write-comment');
         if(x.html() != undefined){
