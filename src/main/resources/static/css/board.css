@@ -442,8 +442,8 @@ h4{
     margin-bottom: 1%;
 }
 .contents img{
-    max-width: 950px;
-    max-height: 550px;
+    max-width: 930px;
+    max-height: 650px;
 }
 /* 댓글 작성 css */
 .comment-write-area{

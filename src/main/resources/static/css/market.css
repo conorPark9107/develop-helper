@@ -66,10 +66,10 @@ img{
     font-weight: bold;
     margin: 0% 3%;
     padding: 0.675em 6em 0.675em 1em;
-    background-color: #242020;
-    border: 1px solid #eee;
+    background-color: var(--main-color);
+    border: 1px solid var(--sub-color);
     border-radius: 4px;
-    color: #eee;
+    color: var(--sub-color);
     cursor: pointer;
 }
 .martlock{
