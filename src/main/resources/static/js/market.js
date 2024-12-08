@@ -188,19 +188,21 @@ $(document).ready(function() {
              success : function(result) {
 
                  for(var i = result.length - 1; i >= 0 ; i--){
-                    var city = result[i].city;
+                    var city = result[i].city.replaceAll(' ', '');
                     var sellMin = result[i].sell_price_min;
                     var sellMax = result[i].sell_price_max;
                     var buyMin = result[i].buy_price_min;
                     var buyMax = result[i].buy_price_max;
 
+                    // TODO: document.createElement로 해주기, city 활용하여 처리해주기.
                     $('.itemArea table caption img').attr("src", "https://render.albiononline.com/v1/item/" + tier + "_" + itemName + dotTier + "?quality=" + quality);
-                    $('.itemArea table tbody').append("<tr class='"+city+"'><tr>");
+                    $('.itemArea table tbody').append("<tr class='"+city+"'>");
+                    $('.itemArea table tbody .' + city).append("<td>" + cities[city] +  "</td>");
                     $('.itemArea table tbody .' + city).append("<td>" + sellMin.toLocaleString() +  "</td>");
                     $('.itemArea table tbody .' + city).append("<td>" + sellMax.toLocaleString() +  "</td>");
                     $('.itemArea table tbody .' + city).append("<td>" + buyMin.toLocaleString() +  "</td>");
                     $('.itemArea table tbody .' + city).append("<td>" + buyMax.toLocaleString() +  "</td>");
-                    $('.itemArea table tbody').append("<tr class='space'><tr>");
+                    $('.itemArea table tbody').append("</tr>");
                  }
                  $('.itemArea').fadeIn(500);
                  turnLoading();

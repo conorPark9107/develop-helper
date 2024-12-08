@@ -28,7 +28,9 @@ li {
     margin: 0;
     padding: 0;
 }
-
+table{
+    border-collapse: collapse;
+}
 label {
     font-weight: 900;
 }
@@ -99,7 +101,7 @@ u {
 }
 
 .container-contents-button:hover {
-    color: #242020;
+    color: var(--white);
     background: var(--sub-color);
 }
 .link:hover {
@@ -132,4 +134,13 @@ u {
     filter: blur(1px);
     cursor: not-allowed;
     pointer-events: none;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #555;
+}
+::-webkit-scrollbar-track {
+    background: #242020;
 }

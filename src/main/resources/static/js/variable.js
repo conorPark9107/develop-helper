@@ -14,6 +14,17 @@ const potionCate = ["T6_POTION_HEAL", "T6_POTION_ENERGY", "T7_POTION_REVIVE", "T
 const butcherCate = ["T8_MEAT", "T1_FISHCHOPS"];
 
 
+const cities = {
+    blackmarket : "암시장",
+    brecilien : "브리실리안",
+    bridgewatch : "브릿지워치",
+    caerleon : "칼레온",
+    fortsterling : "포트스털링",
+    lymhurst : "림허스트",
+    martlock : "마트록",
+    thetford : "뎃포드"
+};
+
 const itemTree = {
     _MAIN_SWORD : ["MAIN_SWORD", "2H_CLAYMORE", "2H_DUALSWORD", "MAIN_SCIMITAR_MORGANA", "2H_CLEAVER_HELL", "2H_DUALSCIMITAR_UNDEAD", "2H_CLAYMORE_AVALON", "MAIN_SWORD_CRYSTAL"],
     _MAIN_AXE :   ["MAIN_AXE", "2H_AXE", "2H_HALBERD", "2H_HALBERD_MORGANA", "2H_SCYTHE_HELL", "2H_DUALAXE_KEEPER", "2H_AXE_AVALON", "2H_SCYTHE_CRYSTAL"],

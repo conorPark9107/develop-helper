@@ -1,9 +1,3 @@
-.itemArea table{
-    border-collapse: collapse;
-}
-.space{
-    height : 10px;
-}
 .menu-ul{
     padding-inline-start: 0;
 }
@@ -11,6 +5,7 @@
     font-size: 1.17em;
 }
 .priceArea{
+    min-width: 65vw;
     display: flex;
     flex-wrap: wrap;
 }
@@ -73,52 +68,28 @@ img{
     cursor: pointer;
 }
 .martlock{
-    border: 3px solid #627583;
-    background-color : RGBA(98,117,131, 0.5);
     color:#D5A768;
-    font-weight: 900;
 }
 .thetford{
-    border: 3px solid #3A1F44;
-    background-color : RGBA(58,31,68, 0.5);
     color:#A15AAA;
-    font-weight: 900;
 }
 .fortsterling{
-    border: 3px solid #FFFFFF;
-    background-color : RGBA(255,255,255, 0.5);
     color: #626888;
-    font-weight: 900;
 }
 .lymhurst{
-    border: 3px solid #555F1D;
-    background-color : RGBA(85,95,29, 0.5);
     color: #AEAE57;
-    font-weight: 900;
 }
 .bridgewatch{
-    border: 3px solid #D9601F;
-    background-color : RGBA(217,96,31, 0.5);
     color: #FFF378;
-    font-weight: 900;
 }
 .caerleon{
-    border: 3px solid #0C0C16;
-    background-color : RGBA(12,12,22, 0.5);
     color: #5E1710;
-    font-weight: 900;
 }
 .brecilien{
-    border: 3px solid #895AE2;
-    background-color : RGBA(137,90,226, 0.5);
     color: #383F8A;
-    font-weight: 900;
 }
 .blackmarket{
-    border: 3px solid #0C0C16;
-    background-color : RGBA(12,12,22, 0.5);
     color: #3F479C;
-    font-weight: 900;
 }
 .selctedItem{
     border: 2px solid;
@@ -133,4 +104,17 @@ input[type="text"]:focus{
     display: none;
     width: 100%;
     border: 1px solid rgba(238, 238, 238, 0.1);
+}
+#marketTable{
+    width:100%;
+}
+#marketTable th{
+    border-top : 2px solid var(--sub-color);
+    border-bottom : 2px solid var(--sub-color);
+    padding: 10px 10px;
+}
+#marketTable td{
+    border: 1px dashed var(--sub-color-a);
+    padding: 10px 10px;
+    text-align: right;
 }

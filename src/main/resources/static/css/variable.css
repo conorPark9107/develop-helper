@@ -1,9 +1,9 @@
 :root {
     /*  */
-    --main-color: rgb(212, 212, 212); 
-    --main-color-a: rgba(212, 212, 212, 0.4); 
-    --sub-color: rgb(0, 117, 39);
-    --sub-color-a: rgba(0, 117, 39, 0.4);
+    --main-color: rgb(255, 255, 255);
+    --main-color-a: rgba(255, 255, 255, 0.4);
+    --sub-color: rgb(56, 56, 56);
+    --sub-color-a: rgba(56, 56, 56, 0.4);
     --textarea-color : rgba(51, 51, 51, 0.973);
     --black : rgb(36, 32, 32);
     --white : rgb(255, 255, 255);
