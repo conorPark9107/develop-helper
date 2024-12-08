@@ -59,10 +59,7 @@
 }
 
 .menu-ul li:hover {
-    color: var(--black);
-    text-decoration: none;
-    font-size: 1em;
-    cursor: pointer;
+    opacity: 0.5;
 }
 
 .centered {

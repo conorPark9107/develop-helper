@@ -194,15 +194,16 @@ $(document).ready(function() {
                     var buyMin = result[i].buy_price_min;
                     var buyMax = result[i].buy_price_max;
 
-                    // TODO: document.createElement로 해주기, city 활용하여 처리해주기.
                     $('.itemArea table caption img').attr("src", "https://render.albiononline.com/v1/item/" + tier + "_" + itemName + dotTier + "?quality=" + quality);
-                    $('.itemArea table tbody').append("<tr class='"+city+"'>");
-                    $('.itemArea table tbody .' + city).append("<td>" + cities[city] +  "</td>");
-                    $('.itemArea table tbody .' + city).append("<td>" + sellMin.toLocaleString() +  "</td>");
-                    $('.itemArea table tbody .' + city).append("<td>" + sellMax.toLocaleString() +  "</td>");
-                    $('.itemArea table tbody .' + city).append("<td>" + buyMin.toLocaleString() +  "</td>");
-                    $('.itemArea table tbody .' + city).append("<td>" + buyMax.toLocaleString() +  "</td>");
-                    $('.itemArea table tbody').append("</tr>");
+
+                    const tbody = $('.itemArea table tbody');
+                    let tr = document.createElement('tr');
+                    $(tr).append(`<td class="${city}">${cities[city]}</td>`);
+                    $(tr).append(`<td>${sellMin.toLocaleString()}</td>`);
+                    $(tr).append(`<td>${sellMax.toLocaleString()}</td>`);
+                    $(tr).append(`<td>${buyMin.toLocaleString()}</td>`);
+                    $(tr).append(`<td>${buyMax.toLocaleString()}</td>`);
+                    $(tbody).append(tr);
                  }
                  $('.itemArea').fadeIn(500);
                  turnLoading();

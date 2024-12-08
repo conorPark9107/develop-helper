@@ -6,6 +6,8 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    border-bottom : 1px solid var(--sub-color);
+    margin-bottom : 1%;
 }
 p{
     margin: 2% 0;
@@ -24,7 +26,7 @@ fieldset{
     padding-bottom: 50px;
 }
 .all-menu{
-    border-right: 1px dashed rgba(238, 238, 238, 0.2);
+    border-right: 1px dashed var(--sub-color);
     width: 35%;
 }
 .menu{
@@ -55,8 +57,7 @@ fieldset{
     color : RGB(87,95,211);
     font-size : 0.8em;
     font-weight: bold;
-    margin-left: 5%;
-    margin-bottom: 3%;
+    margin: 5% 0%;
 }
 .menu-message p{
     margin: 1px auto;
@@ -66,21 +67,22 @@ fieldset{
 }
 
 input {
-    font-size: 1em;
+    font-size: 0.8em;
     font-weight: bold;
-    color: #eee;
-    background-color: rgb(36, 32, 32);
-    border: 1px solid rgba(238, 238, 238, 0.2);
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--sub-color);
     box-sizing: border-box;
     padding: 5px 5px;
 }
 
 .input-number{
-    font-size: 1em;
+    font-size: 0.8em;
     font-weight: bold;
-    color: #eee;
-    background-color: rgb(36, 32, 32);
-    border: 1px solid rgba(238, 238, 238, 0.2);
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--sub-color);
+    border-radius: 3px;
     box-sizing: border-box;
     padding: 8px 10px;
     width: 70%;
@@ -108,11 +110,11 @@ ul {
     cursor: pointer;
     font-size: 0.9em;
     font-weight: bold;
-    color: #eee;
-    background-color: rgb(36, 32, 32);
-    border: 1px solid rgba(238, 238, 238, 0.2);
+    color: var(--sub-color);
+    background-color: var(--main-color-a);
+    border: 1px solid var(--sub-color);
     box-sizing: border-box;
-    padding: 7.5px 15px;
+    padding: 8px 10px;
 }
 .li img{
     width: 2vw;
@@ -120,13 +122,13 @@ ul {
 }
 
 .li:hover {
-    color: #242020;
-    background: #eee;
+    color: var(--white);
+    background: var(--sub-color);
 }
 
 .clicked {
-    color: #242020;
-    background: #eee;
+    color: var(--white);
+    background: var(--sub-color);
 }
 
 .setting-fieldset {
@@ -174,31 +176,34 @@ select{
     font-size: 1em;
     font-weight: bold;
     padding: 10px 5px;
-    background-color: #242020;
-    border: 1px solid rgba(238, 238, 238, 0.2);
+    background-color: var(--main-color);
+    border: 1px solid var(--sub-color);
     border-radius: 3px;
-    color: #eee;
+    color: var(--sub-color);
     cursor: pointer;
 }
 .btn {
     font-size: 16px;
     font-weight: bold;
-    border-radius: 2px;
-    background: #303f53;
+    border-radius: 3px;
+    background: var(--main-color-a);
     text-shadow: none;
-    border: 0;
-    color: white;
+    border: 1px solid var(--sub-color);
+    color: var(--sub-color);
     padding: 10px 30px;
     min-width: 10%;
     text-align: center;
     align-content: center;
 }
 .btn:hover {
-    background-color: #bdc3c7;
-    color: #000;
+    background-color: var(--sub-color);
+    color: var(--white);
 }
 
 table{
+    text-align: center;
+    font-size: 0.8em;
+    width: 100%;
     table-layout: auto;
 }
 th{
@@ -206,15 +211,28 @@ th{
     top: 0;
     font-size: 0.8em;
     padding: 10px 0px;
-    border: 1px solid RGBA(238, 238, 238, 0.2);
+    background-color: var(--sub-color-a);
+    border-left: 1px solid var(--sub-color);
+    border-right: 1px solid var(--sub-color);
+    border-bottom: 2px solid var(--sub-color);
+    border-top: 2px solid var(--sub-color);
 }
+
+table tbody tr:nth-child(odd){
+    background-color: var(--table-tr-color);
+}
+
 td{
     padding: 0 10px;
-    border-left: 1px dashed RGBA(238, 238, 238, 0.1);
-    border-right: 1px dashed RGBA(238, 238, 238, 0.1);
+    border: 1px dashed var(--sub-color-a);
 }
 .refining-table td:nth-child(5){
     text-align: left;
+}
+.refining-table td:nth-child(5) img{
+    text-align: left;
+    width: 2.5vw;
+    height: 2.5vw;
 }
 td:nth-child(5) .material{
     text-align: center;
@@ -261,7 +279,7 @@ table .col4 {
 }
 
 table .col5 {
-    width: 8%;
+    width: 10%;
 }
 
 table .col6 {
@@ -284,13 +302,13 @@ table tbody td input{
     display: block;
 }
 .timeAgo{
-    font-size:0.7em;
+    font-size:0.9em;
     color: RGB(87, 95, 211);
     float: left;
-    margin-top: -50px;
+    margin-top: -38px;
 }
 .timeAgo-cooking{
-    font-size: 0.7em;
+    font-size: 0.9em;
     color: RGB(87, 95, 211);
     float: left;
     margin-top: -40px;
@@ -338,7 +356,7 @@ body::-webkit-scrollbar {
     padding: 5px 10px;
 }
 .taxLabel{
-    opacity: 0.6;
+    color: var(--sub-color);
     font-size : 0.7em;
     margin-bottom: 3px;
     display: block;
@@ -350,9 +368,6 @@ body::-webkit-scrollbar {
     color : RGB(87, 95, 211);
     font-size: 0.5em;
     margin: 0 auto;
-}
-a:hover{
-    opacity: 0.5;
 }
 .red{
     font-size: 0.9em;
@@ -368,13 +383,13 @@ a:hover{
     font-weight: bold;
     padding: 1px 5px;    
     margin-left: 3px;
-    border: 1px solid #eee;
+    border: 1px solid var(--sub-color);
     border-radius: 10px;
 }
 .tooltip:hover{
-    color: #242020;
-    background-color: #eee;
-    border: 1px solid #242020;
+    color: var(--white);
+    background-color: var(--sub-color);
+    border: 1px solid var(--white);
     
 }
 #tooltipArea_01{
@@ -384,21 +399,20 @@ a:hover{
     left: 35%;
     width: 40%;
     height: 50%;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid #eee;
+    background: var(--main-color-a);
+    border: 1px solid var(--sub-color);
     padding: 1% 1%;
 }
 
 #tooltipArea_02{
-    display: none;
     display: none;
     position: fixed;
     top: 15%;
     left: 35%;
     width: 15%;
     height: 60%;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid #eee;
+    background: var(--main-color-a);
+    border: 1px solid var(--sub-color);
     padding: 1% 1%;
 }
 
@@ -409,8 +423,8 @@ a:hover{
     left: 35%;
     width: 20%;
     height: 50%;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid #eee;
+    background: var(--main-color-a);
+    border: 1px solid var(--sub-color);
     padding: 1% 1%;
 }
 #tooltipArea_04{
@@ -420,8 +434,8 @@ a:hover{
     left: 35%;
     width: 44%;
     height: 50%;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid #eee;
+    background: var(--main-color-a);
+    border: 1px solid var(--sub-color);
     padding: 1% 1%;
 }
 .priceArea{
@@ -464,7 +478,7 @@ a:hover{
     width: 3vw;
     height: 3vw;
     display: block;
-    margin-bottom: -15px;
+    margin-bottom: -8px;
 }
 .main-table-after span{
     font-size: 0.6em;
@@ -514,8 +528,8 @@ a:hover{
 .selected-img {
     color: #eee;
     --angle: 0deg;
-    border: 1px solid;
-    border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
-    animation: 3s rotate linear infinite;
+    border: 2px solid;
+    border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua) 2;
+    animation: 5s rotate linear infinite;
     outline: none;
 }
