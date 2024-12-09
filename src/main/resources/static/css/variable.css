@@ -1,16 +1,27 @@
 :root {
-    /*  */
+    --black : rgb(36, 32, 32);
+    --white : rgb(255, 255, 255);
+    --red : rgb(189, 0, 0);
+    --blue: rgb(0, 100, 180);
+    --lightblue: rgb(0, 141, 253);
+    --green: rgb(45, 180, 0);
+    --alert-opacity: rgb(0 0 0);
+}
+
+body[data-theme='light-mode'] {
     --main-color: rgb(255, 255, 255);
     --main-color-a: rgba(255, 255, 255, 0.4);
     --sub-color: rgb(56, 56, 56);
     --sub-color-a: rgba(56, 56, 56, 0.4);
     --textarea-color : rgba(51, 51, 51, 0.973);
-    --black : rgb(36, 32, 32);
-    --white : rgb(255, 255, 255);
-    --red : rgb(189, 0, 0);
-    --blue: rgb(0, 100, 180);
-    --alert-opacity: rgb(0 0 0);
-    --table-tr-color: rgb(220, 220, 220, 0.5);
-    /* --main-color: rgb(22, 22, 22);  */
-    /* --sub-color: rgb(161, 161, 161); */
+    --table-tr-color: rgba(220, 220, 220, 0.5);
+}
+body[data-theme='dark-mode'] {
+    --main-color: rgb(30, 30, 30);
+    --main-color-a: rgba(30, 30, 30, 0.4);
+    --sub-color: rgb(208, 208, 208);
+    --sub-color-a: rgba(208, 208, 208, 0.8);
+    --textarea-color : rgba(51, 51, 51, 0.973);
+    --table-tr-color: rgba(0, 0, 0, 0.2);
+
 }

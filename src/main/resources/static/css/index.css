@@ -1,17 +1,9 @@
 @import url('https://fastly.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
-
-fieldset {
-    margin: 5% auto;
-    border: 1px solid;
-    animation: 3s rotate linear infinite;
-    outline: none;
+html{
+    height: 100%;
 }
-
-legend {
-    text-align: center;
-}
-
 body {
+    height: 100%;
     background-color: var(--main-color);
     color: var(--sub-color);
     font-family: 'Galmuri14';
@@ -38,12 +30,14 @@ label {
 a {
     color: var(--sub-color);
 }
-
 u {
     text-decoration-color: var(--sub-color);
 }
+footer{
+    min-height: 5%;
+}
 .container {
-    min-height: 100vh;
+    min-height: 95%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -99,7 +93,6 @@ u {
     padding: 15px 50px;
     align-content: center;
 }
-
 .container-contents-button:hover {
     color: var(--white);
     background: var(--sub-color);
@@ -108,6 +101,34 @@ u {
     opacity: 0.5;
 }
 
+input[type='radio'] {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+width: 18px;
+height: 18px;
+border: 2px solid var(--sub-color);
+border-radius: 50%;
+outline: none;
+cursor: pointer;
+}
+
+input[type='radio']:checked {
+background-color: var(--sub-color);
+border: 3px solid var(--main-color);
+box-shadow: 0 0 0 1.6px var(--sub-color);
+}
+
+fieldset {
+    margin: 5% auto;
+    border: 1px solid;
+    animation: 3s rotate linear infinite;
+    outline: none;
+}
+
+legend {
+    text-align: center;
+}
 @keyframes rotate {
     to {
         --angle: 360deg;
@@ -143,4 +164,41 @@ u {
 }
 ::-webkit-scrollbar-track {
     background: #242020;
+}
+.switch{
+    font-size : 15px;
+    float : right;
+    margin-right: 2%;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+.switchBtn{
+    appearance: none;
+    position: relative;
+    border: max(1px, 0.2em) solid var(--sub-color);
+    border-radius: 1em;
+    width: 4em;
+    height: 2em;
+    padding: 0;
+}
+.switchBtn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 50%;
+    transform: scale(0.7);
+    background-color: gray;
+    transition: left 250ms linear;
+}
+.switchBtn:checked::before {
+    background-color: var(--sub-color);
+    left: 2em;
+}
+.switchBtn:checked{
+    background-color: var(--main-color);
+    border-color: var(--sub-color);
 }

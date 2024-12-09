@@ -2,6 +2,20 @@ $(document).ready(function() {
     $('.container-contents-button').on('click', function(){
         turnLoading();
     });
+
+    $('.switchBtn').on('click', function(){
+        localStorage.removeItem("mode");
+
+        if(document.body.dataset.theme === 'light-mode'){
+            document.body.dataset.theme = 'dark-mode';
+            localStorage.setItem("mode", "dark-mode");
+
+        } else{
+            document.body.dataset.theme = 'light-mode';
+            localStorage.setItem("mode", "light-mode");
+        }
+    });
+
 });
 
 $(window).bind("pagehide", function (event) {

@@ -98,21 +98,21 @@ caption {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    top: -30px;
-    left: 125%;
+    top: -5px;
+    left: 115%;
 }
 .participants .participant a{
     display: block;
 }
 .participants .participant::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 100%;
-  margin-top: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: transparent var(--sub-color) transparent transparent;
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent var(--sub-color) transparent transparent;
 }
 .participants:hover .participant {
   visibility: visible;

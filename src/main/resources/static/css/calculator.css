@@ -1,13 +1,17 @@
+body{
+    height: auto;
+}
 .header {
     position: sticky;
-    top: 0;
     padding: 15px 2%;
     font-size: 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    border-bottom : 1px solid var(--sub-color);
-    margin-bottom : 1%;
+    background-color: var(--main-color);
+    z-index: 1;
+    top: 0;
+    border-bottom: 2px solid var(--sub-color);
 }
 p{
     margin: 2% 0;
@@ -53,7 +57,7 @@ fieldset{
 }
 .menu-message{
     position: sticky;
-    top: 60px;
+    top: 70px;
     color : RGB(87,95,211);
     font-size : 0.8em;
     font-weight: bold;
@@ -67,7 +71,6 @@ fieldset{
 }
 
 input {
-    font-size: 0.8em;
     font-weight: bold;
     color: var(--sub-color);
     background-color: var(--main-color);
@@ -183,21 +186,22 @@ select{
     cursor: pointer;
 }
 .btn {
+    cursor: pointer;
     font-size: 16px;
     font-weight: bold;
     border-radius: 3px;
-    background: var(--main-color-a);
+    background: var(--sub-color);
     text-shadow: none;
-    border: 1px solid var(--sub-color);
-    color: var(--sub-color);
+    border: 1px solid var(--sub-color-a);
+    color: var(--main-color);
     padding: 10px 30px;
     min-width: 10%;
     text-align: center;
     align-content: center;
 }
 .btn:hover {
-    background-color: var(--sub-color);
-    color: var(--white);
+    background-color: var(--main-color);
+    color: var(--sub-color);
 }
 
 table{
@@ -208,10 +212,11 @@ table{
 }
 th{
     position: sticky;
-    top: 0;
-    font-size: 0.8em;
+    top: 60px;
+    font-weight: bold;
     padding: 10px 0px;
     background-color: var(--sub-color-a);
+    color: var(--white);
     border-left: 1px solid var(--sub-color);
     border-right: 1px solid var(--sub-color);
     border-bottom: 2px solid var(--sub-color);
@@ -224,7 +229,7 @@ table tbody tr:nth-child(odd){
 
 td{
     padding: 0 10px;
-    border: 1px dashed var(--sub-color-a);
+    border-bottom: 1px dashed var(--main-color);
 }
 .refining-table td:nth-child(5){
     text-align: left;
@@ -302,13 +307,13 @@ table tbody td input{
     display: block;
 }
 .timeAgo{
-    font-size:0.9em;
+    font-size: 10px;
     color: RGB(87, 95, 211);
     float: left;
-    margin-top: -38px;
+    margin-top: -40px;
 }
 .timeAgo-cooking{
-    font-size: 0.9em;
+    font-size: 10px;
     color: RGB(87, 95, 211);
     float: left;
     margin-top: -40px;
@@ -365,18 +370,18 @@ body::-webkit-scrollbar {
     display:inline-block;
 }
 .priceDetail{
-    color : RGB(87, 95, 211);
     font-size: 0.5em;
     margin: 0 auto;
+    color : var(--lightblue);
 }
 .red{
     font-size: 0.9em;
     font-weight: bold;
-    color: RGBA(218, 0, 34, 0.6);
+    color: var(--red);
 }
 .green{
     font-weight: bold;
-    color: RGBA(90, 231, 132, 0.6);
+    color: var(--green);
 }
 .tooltip{
     font-size: 0.5em;
@@ -399,7 +404,8 @@ body::-webkit-scrollbar {
     left: 35%;
     width: 40%;
     height: 50%;
-    background: var(--main-color-a);
+    opacity: 0.97;
+    background: var(--main-color);
     border: 1px solid var(--sub-color);
     padding: 1% 1%;
 }
@@ -411,7 +417,8 @@ body::-webkit-scrollbar {
     left: 35%;
     width: 15%;
     height: 60%;
-    background: var(--main-color-a);
+    opacity: 0.97;
+    background: var(--main-color);
     border: 1px solid var(--sub-color);
     padding: 1% 1%;
 }
@@ -423,7 +430,8 @@ body::-webkit-scrollbar {
     left: 35%;
     width: 20%;
     height: 50%;
-    background: var(--main-color-a);
+    opacity: 0.97;
+    background: var(--main-color);
     border: 1px solid var(--sub-color);
     padding: 1% 1%;
 }
@@ -434,7 +442,8 @@ body::-webkit-scrollbar {
     left: 35%;
     width: 44%;
     height: 50%;
-    background: var(--main-color-a);
+    opacity: 0.97;
+    background: var(--main-color);
     border: 1px solid var(--sub-color);
     padding: 1% 1%;
 }
@@ -532,4 +541,13 @@ body::-webkit-scrollbar {
     border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua) 2;
     animation: 5s rotate linear infinite;
     outline: none;
+}
+.footer{
+    font-size: 10px;
+    height: 15px;
+    position: relative;
+    transform: translateY(-100%);
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
 }
