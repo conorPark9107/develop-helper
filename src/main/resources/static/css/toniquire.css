@@ -27,42 +27,48 @@
     border: 2px solid var(--sub-color);
 }
 .btn {
+    cursor:pointer;
     font-size: 16px;
     border-radius: 2px;
-    color: var(--sub-color);
-    background: var(--main-color);
+    color: var(--main-color);
+    background: var(--sub-color);
     border: 1px solid var(--sub-color);
     text-shadow: none;
     padding: 10px 30px;
     min-width: 10%;
     text-align: center;
     align-content: center;
+    box-shadow: 0 0 10px 0 var(--shadow);
 }
 .btn:hover {
-    background-color: var(--sub-color);
-    color: var(--black);
+    background-color: var(--main-color);
+    color: var(--sub-color);
 }
 .inquireList{
     margin-top: 15px;
     width:100%;
-    
     list-style: none;
 }
 .inquireList li{
     font-size: 0.8em;
     margin: 7.5px 0;
     padding: 10px 20px;
+    color: var(--main-color);
+    background: var(--sub-color);
     border: 1px solid var(--sub-color);
     border-radius: 3px;
+    box-shadow: 0 0 10px 0 var(--shadow);
 }
 .admin-answer{
     display: none;
     font-size: 0.8em;
     margin: 7.5px 0;
     padding: 10px 20px;
-    background-color: var(--main-color);
+    color: var(--sub-color);
+    background: var(--main-color);
     border: 1px solid var(--sub-color);
     border-radius: 3px;
+    box-shadow: 0 0 10px 0 var(--shadow);
 }
 .right{
     cursor: pointer;

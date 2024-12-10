@@ -94,7 +94,7 @@ footer{
     align-content: center;
 }
 .container-contents-button:hover {
-    color: var(--white);
+    color: var(--main-color);
     background: var(--sub-color);
 }
 .link:hover {

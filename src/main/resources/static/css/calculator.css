@@ -4,6 +4,7 @@ body{
 .header {
     position: sticky;
     padding: 15px 2%;
+    margin-bottom: 1%;
     font-size: 20px;
     width: 100%;
     display: flex;
@@ -209,18 +210,19 @@ table{
     font-size: 0.8em;
     width: 100%;
     table-layout: auto;
+    box-shadow: 0 0 10px 0 var(--shadow);
 }
 th{
     position: sticky;
     top: 60px;
     font-weight: bold;
     padding: 10px 0px;
-    background-color: var(--sub-color-a);
+    background-color: var(--table-th-color);
     color: var(--white);
-    border-left: 1px solid var(--sub-color);
+    /*border-left: 1px solid var(--sub-color);
     border-right: 1px solid var(--sub-color);
     border-bottom: 2px solid var(--sub-color);
-    border-top: 2px solid var(--sub-color);
+    border-top: 2px solid var(--sub-color);*/
 }
 
 table tbody tr:nth-child(odd){
@@ -319,24 +321,6 @@ table tbody td input{
     margin-top: -40px;
 }
 
-
-body::-webkit-scrollbar {
-    display:block;
-}
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #242020;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background:  #555;
-}
 @media screen and (max-width: 1525px){
     .menu{
         position: static;

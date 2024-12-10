@@ -9,6 +9,7 @@
 <!--     <link rel="stylesheet" href="/static/css/board.css" />-->
     <script type="text/javascript" src="/js/util.js"></script>
     <script type="text/javascript" src="/js/board/board.js"></script>
+    <link rel="stylesheet" href="/css/variable.css"/>
     <link rel="stylesheet" href="/css/loading.css"/>
     <link rel="stylesheet" href="/css/index.css"/>
     <link rel="stylesheet" href="/css/detail.css"/>
@@ -53,14 +54,22 @@
             <li th:classappend="${#strings.equals(category, '친선')}? clicked" class="category" onclick="clickedCategory(this)" value="친선">친선</li>
         </ul>
         <div class="board-header-right-subDiv">
-            <div class="dropdown">
-                <button class="showRows-button">게시글 수 🔻</button>
-                <div class="dropdown-content">
-                    <a href="/board?page=0&size=10">10개</a>
-                    <a href="/board?page=0&size=20">20개</a>
-                    <a href="/board?page=0&size=30">30개</a>
-                    <a href="/board?page=0&size=40">40개</a>
-                </div>
+            <div class="select-div">
+                <span class="select-button">게시글 수 🔻</span>
+                <ul class="dropdown">
+                    <li class="dropdown-content">
+                        <a href="/board?page=0&size=10">10개</a>
+                    </li>
+                    <li class="dropdown-content">
+                        <a href="/board?page=0&size=20">20개</a>
+                    </li>
+                    <li class="dropdown-content">
+                        <a href="/board?page=0&size=30">30개</a>
+                    </li>
+                    <li class="dropdown-content">
+                        <a href="/board?page=0&size=40">40개</a>
+                    </li>
+                </ul>
             </div>
             <a href="/board/write" class="write-button">📝글쓰기</a>
         </div>

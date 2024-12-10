@@ -115,18 +115,20 @@ input[type="text"]:focus{
 }
 #marketTable{
     width:100%;
+    box-shadow: 0 0 10px 0 var(--shadow);
+}
+#marketTable th:not(:first-child){
+    text-align: right;
 }
 #marketTable th{
-    background-color: var(--sub-color);
+    background-color: var(--table-th-color);
     color: var(--white);
-    border-left: 1px solid var(--sub-color-a);
-    border-right: 1px solid var(--sub-color-a);
     border-bottom: 2px solid var(--sub-color-a);
     border-top: 2px solid var(--sub-color-a);
     padding: 10px 10px;
 }
 #marketTable td{
-    border: 1px dashed var(--sub-color-a);
+    border-bottom: 1px dashed var(--sub-color-a);
     padding: 10px 10px;
     text-align: right;
 }
