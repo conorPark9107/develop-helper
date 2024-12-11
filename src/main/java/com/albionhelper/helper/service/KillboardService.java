@@ -21,9 +21,9 @@ public class KillboardService {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    private final String EAST = "https://gameinfo-sgp.albiononline.com/api/gameinfo/";
-    private final String WEST = "https://gameinfo.albiononline.com/api/gameinfo/";
-    private final String EUROPE = "https://gameinfo-ams.albiononline.com/api/gameinfo/";
+    private final String EAST = "https://gameinfo-sgp.albiononline.com/api/gameinfo";
+    private final String WEST = "https://gameinfo.albiononline.com/api/gameinfo";
+    private final String EUROPE = "https://gameinfo-ams.albiononline.com/api/gameinfo";
 
     // search?q={id}
     private final String GET_ID_URL = "/search?q=";
@@ -64,6 +64,8 @@ public class KillboardService {
 
         stringBuilder.append(location).append(GET_ID_URL).append(id);
 
+        log.info("request url is {}", stringBuilder.toString());
+
         String response = getResponse(stringBuilder.toString());
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -95,6 +97,7 @@ public class KillboardService {
         location = getLocation(location);
         StringBuilder killBuilder = new StringBuilder(location);
         String killUrl = killBuilder.append(GET_KILLBOARD).toString().replace("<ID>", id);
+        log.info("request url is {}", killUrl);
         String responseKillData = getResponse(killUrl);
         return getKillLog(responseKillData);
     }
@@ -103,6 +106,7 @@ public class KillboardService {
         location = getLocation(location);
         StringBuilder deathBuilder = new StringBuilder(location);
         String deathUrl = deathBuilder.append(GET_DEATHBOARD).toString().replace("<ID>", id);
+        log.info("request url is {}", deathUrl);
         String responseDeathData = getResponse(deathUrl);
         return getDeathLog(responseDeathData);
     }
@@ -110,7 +114,6 @@ public class KillboardService {
 
     private List<DeathBoard> getDeathLog(String responseDeathData) throws JsonProcessingException{
         List<DeathBoard> list = new ArrayList<>();
-
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(responseDeathData);
 

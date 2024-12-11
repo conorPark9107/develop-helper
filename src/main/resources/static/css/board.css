@@ -623,8 +623,9 @@ h4{
 .updown-area .updown{
     font-weight: bold;
     padding: 10px 15px;
-    background-color: #303f53;
-    border: 1px solid #303f53;
+    color: var(--main-color);
+    background-color: var(--sub-color);
+    border: 1px solid var(--sub-color);
     box-shadow : 5px;
     border-radius: 50%;
     margin: 0 1%;

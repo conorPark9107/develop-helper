@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
+    <script type="text/javascript" src="/static/js/battle/battleboard.js"></script>
+    <link rel="stylesheet" href="/static/css/variable.css" />
+    <link rel="stylesheet" href="/static/css/loading.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/detail.css" />
+    <link rel="stylesheet" href="/static/css/battle/battleboard.css" /> -->
+
+    <script type="text/javascript" src="/js/util.js"></script>
+    <script type="text/javascript" src="js/battle/battleboard.js"></script>
+    <link rel="stylesheet" href="/css/variable.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/detail.css" />
+    <link rel="stylesheet" href="/css/battle/battleboard.css" />
+    <meta charset="UTF-8">
+    <title>⚔ 알비온 헬퍼 ⚔</title>
+</head>
+<body data-theme="light-mode">
+<script type="text/javascript" src="/js/toggle.js"></script>
+
+<div class="header">
+    <a class="header-logo link" href="/">⚔ 알비온 헬퍼</a>
+    <label class="switch">
+        <input class="switchBtn" role="switch" type="checkbox" />
+        <span>다크 모드</span>
+    </label>
+</div>
+
+<div>
+    <div class="container-title">
+        <h6>전투 보고서</h6>
+    </div>
+    <div class="container">
+        <div class="flex-row shadow">
+            <input class="input" type="text" id="inputText" placeholder="길드명 또는 캐릭명">
+            <a class="search" id="searchBtn">🔍</a>
+        </div>
+        <div class="flex-row flex-vertical-center">
+            <div class="flex-item">
+                <a class="btn shadow" id="multiBtn">선택한 전투 모아 보기</a>
+            </div>
+            <div class="flex-item">
+                <span class="select-button shadow">참여 플레이어 수 🔻</span>
+                <ul class="dropdown">
+                    <li class="dropdown-content">
+                        <a href="">5명 이상</a>
+                    </li>
+                    <li class="dropdown-content">
+                        <a href="">10명 이상</a>
+                    </li>
+                    <li class="dropdown-content">
+                        <a href="">20명 이상</a>
+                    </li>
+                    <li class="dropdown-content">
+                        <a href="">30명 이상</a>
+                    </li>
+                    <li class="dropdown-content">
+                        <a href="">40명 이상</a>
+                    </li>
+                    <li class="dropdown-content">
+                        <a href="">100명 이상</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex-item">
+                <input type="radio" id="server01" name="server" value="east" checked />
+                <label for="server01">아시아</label>
+                <input type="radio" id="server02" name="server" value="west" />
+                <label for="server02">아메리카</label>
+                <input type="radio" id="server03" name="server" value="europe" />
+                <label for="server03">유럽</label>
+            </div>
+        </div>
+        
+        <table class="table maintable">
+            <caption><span class="info-msg">행을 클릭하면 전투 상세보기로 이동합니다.</span></caption>
+            <thead>
+                <tr>
+                    <th>선택</th>
+                    <th>발생일(Date)</th>
+                    <th>동맹(Alliances)</th>
+                    <th>총페임(Fame)</th>
+                    <th>플레이어 수(Players)</th>
+                    <th>킬 수(Kills)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="hover-background">
+                    <td><input type="checkbox" name="multi" value="아이디값 넣어야함" /></td>
+                    <td>
+                        2024-12-11
+                    </td>
+                    <td>LPM, MAYBB, FIERO</td>
+                    <td>606.3k</td>
+                    <td>50</td>
+                    <td>70</td>
+                </tr>
+                <tr class="hover-background">
+                    <td><input type="checkbox" name="multi" value="아이디값 넣어야함" /></td>
+                    <td>
+                        2024-12-11
+                    </td>
+                    <td>LPM, MAYBB, FIERO</td>
+                    <td>606.3k</td>
+                    <td>50</td>
+                    <td>70</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div id="blackArea">
+    <div id="loading">
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <h1>정보 요청중..</h1>
+    </div>
+</div>
+
+
+</body>
+</html>
