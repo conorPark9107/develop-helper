@@ -25,5 +25,16 @@ public class Guild {
     @JsonProperty("id")
     private String id;
 
-
+    @Override
+    public String toString() {
+        return "Guild{" +
+                "name='" + name + '\'' +
+                ", kills=" + kills +
+                ", deaths=" + deaths +
+                ", killFame=" + killFame +
+                ", alliance='" + alliance + '\'' +
+                ", allianceId='" + allianceId + '\'' +
+                ", id='" + id + '\'' +
+                '}';
+    }
 }

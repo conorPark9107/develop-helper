@@ -24,6 +24,8 @@ body[data-theme='light-mode'] {
     --board-under-color: rgba(238, 238, 238, 0.9);
 
     --input-text-color: rgba(220, 220, 220, 0.5);
+
+    --table-hover : rgb(217, 217, 217);
 }
 body[data-theme='dark-mode'] {
     --main-color: rgb(30, 30, 30);
@@ -42,4 +44,6 @@ body[data-theme='dark-mode'] {
     --board-under-color: rgba(51, 51, 51, 0.9);
 
     --input-text-color: rgba(0, 0, 0, 0.2);
+
+    --table-hover : rgb(47, 46, 46);
 }

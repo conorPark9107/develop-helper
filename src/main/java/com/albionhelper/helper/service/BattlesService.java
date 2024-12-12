@@ -1,5 +1,6 @@
 package com.albionhelper.helper.service;
 
+import com.albionhelper.helper.domain.GuildDTO;
 import com.albionhelper.helper.domain.battle.Alliance;
 import com.albionhelper.helper.domain.battle.Battle;
 import com.albionhelper.helper.domain.battle.Guild;
@@ -26,7 +27,7 @@ public class BattlesService {
     private final String EUROPE = "https://gameinfo-ams.albiononline.com/api/gameinfo";
 
     private final String GET_ID_URL = "/search?q=";
-    private final String DEFAULT_BATTLES_URL = "/battles?&offset=0&limit=51&sort=recent";
+    private final String DEFAULT_BATTLES_URL = "/battles?&sort=recent";
 
 
     private String getLocation(String location) {
@@ -55,9 +56,14 @@ public class BattlesService {
                 .block();
     }
 
-    public List<Battle> getBattleList(String url) throws JsonProcessingException {
+    public List<Battle> getBattleList(String url, int offset, int limit, String id) throws JsonProcessingException {
 
-        String requestUrl = getLocation(url) + DEFAULT_BATTLES_URL;
+        String requestUrl = getLocation(url) + DEFAULT_BATTLES_URL + "&offset=" + offset + "&limit=" + limit;
+        if(!id.equals("")){
+            requestUrl += "&guildId=" + id;
+        }
+
+
         String response = getResponse(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(response);
@@ -69,6 +75,26 @@ public class BattlesService {
         }
 
         log.info("url is {}", requestUrl);
+        return list;
+    }
+
+    // Guild ID값(Primary Key)을 API로부터 가져옴.
+    public List<GuildDTO> getGuildId(String id, String server) throws JsonProcessingException {
+        String requestUrl = getLocation(server) + GET_ID_URL + id;
+        log.info("getGuildId() request url is : {} ", requestUrl);
+        String response = getResponse(requestUrl);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode guildsNode = objectMapper.readTree(response).get("guilds");
+
+        // 완전히 같은 이름의 길드가 존재한다면 그 길드의 ID값을 리턴
+        List<GuildDTO> list = new ArrayList<>();
+        for (JsonNode node : guildsNode) {
+            if(!node.isEmpty()){
+                GuildDTO dto = objectMapper.treeToValue(node, GuildDTO.class);
+                list.add(dto);
+            }
+        }
+
         return list;
     }
 
@@ -101,6 +127,7 @@ public class BattlesService {
         b.setAlliances(allianceList);
         return b;
     }
+
 
 
 }

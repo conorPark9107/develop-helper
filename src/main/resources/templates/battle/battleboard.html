@@ -3,9 +3,16 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+
     <!-- <script type="text/javascript" src="/static/js/util.js"></script>
     <script type="text/javascript" src="/static/js/battle/battleboard.js"></script>
     <link rel="stylesheet" href="/static/css/variable.css" />
+    <link rel="stylesheet" href="/static/css/editor.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/detail.css" />
@@ -14,6 +21,7 @@
     <script type="text/javascript" src="/js/util.js"></script>
     <script type="text/javascript" src="js/battle/battleboard.js"></script>
     <link rel="stylesheet" href="/css/variable.css" />
+    <link rel="stylesheet" href="/css/editor.css" />
     <link rel="stylesheet" href="/css/loading.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
@@ -33,12 +41,13 @@
 </div>
 
 <div>
+
     <div class="container-title">
-        <h6>전투 보고서</h6>
+        <h6>길드 단위 전투 로그</h6>
     </div>
     <div class="container">
         <div class="flex-row shadow">
-            <input class="input" type="text" id="inputText" placeholder="길드명 또는 캐릭명">
+            <input class="input" type="text" id="inputText" placeholder="길드명">
             <a class="search" id="searchBtn">🔍</a>
         </div>
         <div class="flex-row flex-vertical-center">
@@ -48,6 +57,9 @@
             <div class="flex-item">
                 <span class="select-button shadow">참여 플레이어 수 🔻</span>
                 <ul class="dropdown">
+                    <li class="dropdown-content">
+                        <a href="">최근 전투</a>
+                    </li>
                     <li class="dropdown-content">
                         <a href="">5명 이상</a>
                     </li>
@@ -77,43 +89,66 @@
                 <label for="server03">유럽</label>
             </div>
         </div>
-        
+
         <table class="table maintable">
             <caption><span class="info-msg">행을 클릭하면 전투 상세보기로 이동합니다.</span></caption>
+            <colgroup>
+                <col class="col1">
+                <col class="col2">
+                <col class="col5">
+                <col class="col3">
+                <col class="col4">
+                <col class="col2">
+                <col class="col6">
+            </colgroup>
             <thead>
                 <tr>
                     <th>선택</th>
-                    <th>발생일(Date)</th>
-                    <th>동맹(Alliances)</th>
-                    <th>총페임(Fame)</th>
-                    <th>플레이어 수(Players)</th>
-                    <th>킬 수(Kills)</th>
+                    <th>발생일<br/>(한국시간)</th>
+                    <th>발생일<br/>(UTC)</th>
+                    <th>전투에 참여한 길드 (guilds)</th>
+                    <th>총페임<br/>(Fame)</th>
+                    <th>플레이어 수<br/>(Players)</th>
+                    <th>킬 수<br/>(Kills)</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="hover-background">
-                    <td><input type="checkbox" name="multi" value="아이디값 넣어야함" /></td>
-                    <td>
-                        2024-12-11
+
+                <tr th:each="battle : ${list}" class="hover-background">
+                    <td><input type="checkbox" name="multi" th:value="${battle.id}" /></td>
+                    <td th:text="${battle.endTime}">
+
                     </td>
-                    <td>LPM, MAYBB, FIERO</td>
-                    <td>606.3k</td>
-                    <td>50</td>
-                    <td>70</td>
-                </tr>
-                <tr class="hover-background">
-                    <td><input type="checkbox" name="multi" value="아이디값 넣어야함" /></td>
-                    <td>
-                        2024-12-11
+                    <td th:text="|${battle.utcTime} UTC|">
+
                     </td>
-                    <td>LPM, MAYBB, FIERO</td>
-                    <td>606.3k</td>
-                    <td>50</td>
-                    <td>70</td>
+                    <td>
+                        <span class="guild-name" th:each="guild: ${battle.guilds}" value="${guild.id}">
+                            <th:block th:text="${guildStat.last} ? ${guild.name} : ${guild.name} + ','"></th:block>
+                        </span>
+                    </td>
+                    <td th:text="${battle.totalFame}"></td>
+                    <td th:text="${#lists.size(battle.players)}"></td>
+                    <td th:text="${battle.totalKills}"></td>
                 </tr>
             </tbody>
         </table>
-    </div>
+        <div class="moreviewDiv">
+            <input type="hidden" id="offset" th:value="${offset}" />
+            <input type="hidden" id="limit" th:value="${limit}" />
+            <a class="shadow btn" id="moreviewBtn">더 보기 👆🏻</a>
+        </div>
+        
+        <div class="blackArea"></div>
+            <div class="popup">
+                <div class="popup-head">
+                    <span class="closeBtn">×</span>
+                    <span>길드를 선택해주세요.</span>
+                </div>
+                <ul id="guildList" class="list">
+                </ul>
+            </div>
+    </div>    
 
 </div>
 

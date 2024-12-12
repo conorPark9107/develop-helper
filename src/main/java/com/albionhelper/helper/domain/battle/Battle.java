@@ -22,6 +22,8 @@ public class Battle {
     @JsonProperty("endTime")
     private String endTime;
 
+    private String utcTime;
+
     @JsonProperty("totalFame")
     private String totalFame;
 
@@ -39,7 +41,8 @@ public class Battle {
 
     public void setEndTime(String endTime) {
         LocalDateTime ldt = LocalDateTime.parse(endTime.replaceAll("Z", "").substring(1, 20));
-        this.endTime = ldt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        this.endTime = ldt.plusHours(9).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        this.utcTime = ldt.format(DateTimeFormatter.ofPattern("HH:mm"));
     }
 
     @Override
