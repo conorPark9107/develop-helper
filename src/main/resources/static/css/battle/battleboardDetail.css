@@ -1,0 +1,155 @@
+.container{
+    width: 100%;
+    margin: auto auto 5vh;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.flex-row{
+    min-height : 40px;
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 6px;
+    overflow:hidden;
+    padding: 1% 0;
+}
+.flex-vertical-center{
+    align-items: center;
+}
+.flex-vertical-bottom{
+    align-items: end;
+}
+.flex-left{
+    justify-content: flex-end;
+}
+.flex-center{
+    justify-content: center;
+}
+.gap{
+    gap:15px;
+}
+
+.shadow{
+    box-shadow: 0 0 8px var(--sub-color);
+}
+.btn{
+    cursor: pointer;
+    font-size: 12px;
+    width: 130px;
+    padding: 9px;
+    color: var(--main-color);
+    background-color: var(--sub-color);
+    border-radius: 5px;
+    
+}
+.btn:hover{
+    opacity: 0.4;
+}
+.input{
+    width: 100%;
+    padding: 9px 11px;
+    font-size: 16px;
+    color: var(--main-color);
+    background-color: var(--sub-color);
+    border-width: 0;
+    outline:none;
+}
+.input:hover, .input:focus{
+    border: 2px solid var(--lightblue);
+}
+
+.search{
+    cursor: pointer;
+    padding: 9px;
+    background-color: var(--sub-color);
+    border-left : 1px solid var(--main-color);
+}
+.search:hover{
+    opacity: 0.5;
+}
+.table{
+    text-align: center;
+    font-size: 0.6em;
+    width: 100%;
+    table-layout: auto;
+    box-shadow: 0 0 15px var(--sub-color);
+    border-radius: 8px;
+}
+.table thead tr th:first-child{
+    border-top-left-radius : 8px;
+}
+.table thead tr th:last-child{
+    border-top-right-radius : 8px;
+}
+th {
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color: var(--sub-color);
+    color: var(--main-color);
+}
+table tbody tr:nth-child(odd) {
+    background-color: var(--table-tr-color);
+}
+td {
+    padding: 10px 10px;
+}
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+.table thead tr th:nth-child(1){
+    text-align:left;
+}
+.table tbody tr td:nth-child(1){
+    text-align:left;
+}
+
+.hover-background:hover{
+    cursor:pointer;
+    background-color: var(--table-hover);
+}
+
+
+table .col1 {
+    width: 5%;
+}
+
+table .col2 {
+    width: 10%;
+}
+
+table .col3 {
+    width: 50%;
+}
+
+table .col4 {
+    width: 10%;
+}
+
+table .col5 {
+    width: 8%;
+}
+
+table .col6 {
+    width: 8%;
+}
+.guild-name{
+    color: var(--lightblue);
+}
+.guild-name:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+.top-table-div{
+    width:40%;
+    padding: 10px 10px;
+}
+.table-title{
+    float:left;
+    font-size: 16px;
+    margin-bottom: 2%;
+    color: var(--sub-color);
+}

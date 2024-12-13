@@ -1,5 +1,17 @@
 $(document).ready(function () {
 
+    // 전투 기록 행(table row)를 클릭하였을때
+    $(".maintable tbody").on('click', 'tr' ,function(e){
+        const id = $(this).find('td:eq(0)').find('input').val();
+        var form = $('<form></form>');
+        form.attr("method","get");
+        form.attr("action","/battle/detail");
+        form.append($('<input/>', {type: 'hidden', name: 'id', value:id }));
+        form.appendTo('body');
+        form.submit();
+    });
+
+    // 길드리스트의 길드를 클릭했을때
     $('#guildList').on('click', "li" ,function () {
         const id = $(this).attr('value');
         submitToServer(id);
@@ -20,9 +32,12 @@ $(document).ready(function () {
             },
             dataType: "json",
             success: function (response) {
-                console.log(response);
-                appendResponse(response);
-                // TODO :: response의 길이가 0일때 처리해줘야함.
+                if(response.length == 0){
+                    $('.maintable tbody').append('<tr><td colspan="7">검색 결과가 없습니다.</td></tr>');
+                }else{
+                    appendResponse(response);
+                }
+                $('#guildId').val(id);
             },
             error : function(request,status,error){
                 showAlert('알수없는 오류가 발생하였습니다. 잠시후에 다시 시도해주세요.');
@@ -62,8 +77,6 @@ $(document).ready(function () {
             }
         });
     }
-
-
     
     $("#inputText").on("keyup", function (e) {
         if(e.keyCode == 13){
@@ -81,7 +94,7 @@ $(document).ready(function () {
     });
 
     $('#moreviewBtn').on('click', function(){
-        const inputValue = $('#inputText').val();
+        const inputValue = $('#guildId').val();
         const server = $('input[name="server"]:checked').val();
         const l = $('#limit').val();
         const offset = Number($('#offset').val()) + Number(l) + 1;
@@ -98,7 +111,9 @@ $(document).ready(function () {
             success: function (response) {
                 appendResponse(response);
                 $('#offset').val(offset);
-                //TODO: 더이상 보여줄게 없을 경우(response의 길이가 0일 때) 처리해줘야함.
+                if(response.length == 0){
+                    showAlert('더 이상 보여줄 데이터가 없습니다.');
+                }
             },
             error: function(e){
                 showAlert('알수없는 오류가 발생하였습니다. 잠시후에 다시 시도해주세요.');
@@ -112,7 +127,7 @@ $(document).ready(function () {
         for(var i = 0; i < response.length; i++){
             const r = response[i];
             const tr = document.createElement('tr');
-            $(tr).addClass('hover-background');
+            $(tr).addClass('hover-background tr');
             $(tr).append(`<td><input type="checkbox" name="multi" value="${r.id}"/></td>`);
             $(tr).append(`<td>${r.endTime}</td>`);
             $(tr).append(`<td>${r.utcTime} UTC</td>`);

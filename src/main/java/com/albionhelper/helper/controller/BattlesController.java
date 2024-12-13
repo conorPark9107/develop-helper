@@ -50,8 +50,9 @@ public class BattlesController {
         return battlesService.getBattleList(url, offset, limit, inputValue);
     }
 
-    @GetMapping("/getBattles")
-    public String getBattles(){
+    @GetMapping("/detail")
+    public String getBattles(@RequestParam(name = "id")String id){
+
         return "battle/battleboardDetail";
     }
 

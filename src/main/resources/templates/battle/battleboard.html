@@ -47,7 +47,7 @@
     </div>
     <div class="container">
         <div class="flex-row shadow">
-            <input class="input" type="text" id="inputText" placeholder="길드명">
+            <input class="input" type="text" id="inputText" placeholder="길드명을 정확히 입력해주세요. (공백 포함)">
             <a class="search" id="searchBtn">🔍</a>
         </div>
         <div class="flex-row flex-vertical-center">
@@ -136,6 +136,7 @@
         <div class="moreviewDiv">
             <input type="hidden" id="offset" th:value="${offset}" />
             <input type="hidden" id="limit" th:value="${limit}" />
+            <input type="hidden" id="guildId" value="" />
             <a class="shadow btn" id="moreviewBtn">더 보기 👆🏻</a>
         </div>
         
