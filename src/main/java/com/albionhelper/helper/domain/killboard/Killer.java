@@ -29,4 +29,8 @@ public class Killer {
     @JsonProperty("GuildName")
     private String guildName;
 
+    // 동맹
+    @JsonProperty("AllianceName")
+    private String allianceName;
+
 }

@@ -3,10 +3,12 @@ $(document).ready(function () {
     // 전투 기록 행(table row)를 클릭하였을때
     $(".maintable tbody").on('click', 'tr' ,function(e){
         const id = $(this).find('td:eq(0)').find('input').val();
+        const server = $(this).data('server');
         var form = $('<form></form>');
         form.attr("method","get");
         form.attr("action","/battle/detail");
         form.append($('<input/>', {type: 'hidden', name: 'id', value:id }));
+        form.append($('<input/>', {type: 'hidden', name: 'server', value:server }));
         form.appendTo('body');
         form.submit();
     });
@@ -124,12 +126,15 @@ $(document).ready(function () {
 
     function appendResponse(response){
         const tbody = $('.maintable tbody');
+        const server = $('input[name="server"]:checked').val();
+
         for(var i = 0; i < response.length; i++){
             const r = response[i];
             const tr = document.createElement('tr');
+            $(tr).attr('data-server', server);
             $(tr).addClass('hover-background tr');
             $(tr).append(`<td><input type="checkbox" name="multi" value="${r.id}"/></td>`);
-            $(tr).append(`<td>${r.endTime}</td>`);
+            $(tr).append(`<td>${r.startTime}</td>`);
             $(tr).append(`<td>${r.utcTime} UTC</td>`);
             let guilds = r.guilds;
             let str = guilds[0].name;

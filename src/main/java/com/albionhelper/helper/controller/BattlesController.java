@@ -1,7 +1,10 @@
 package com.albionhelper.helper.controller;
 
 import com.albionhelper.helper.domain.GuildDTO;
+import com.albionhelper.helper.domain.battle.Alliance;
 import com.albionhelper.helper.domain.battle.Battle;
+import com.albionhelper.helper.domain.battle.Event;
+import com.albionhelper.helper.domain.battle.Guild;
 import com.albionhelper.helper.service.BattlesService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
@@ -14,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/battle")
@@ -51,7 +57,17 @@ public class BattlesController {
     }
 
     @GetMapping("/detail")
-    public String getBattles(@RequestParam(name = "id")String id){
+    public String getBattles(Model model,
+                             @RequestParam(name = "id")String id,
+                             @RequestParam(name = "server")String server) throws JsonProcessingException {
+        Battle battle = battlesService.getBattleListById(id, server);
+        battle = battlesService.getPlayers(battle);
+        List<Event> eventList = battlesService.getPlayerList(id, server);
+
+
+        model.addAttribute("battle", battle);
+        model.addAttribute("guilds", battle.getGuilds());
+        model.addAttribute("alliances", battle.getAlliances());
 
         return "battle/battleboardDetail";
     }

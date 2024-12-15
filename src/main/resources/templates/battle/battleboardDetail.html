@@ -9,23 +9,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
 
-    <script type="text/javascript" src="/static/js/util.js"></script>
+    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
     <script type="text/javascript" src="/static/js/battle/battleboard.js"></script>
     <link rel="stylesheet" href="/static/css/variable.css" />
     <link rel="stylesheet" href="/static/css/editor.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/detail.css" />
-    <link rel="stylesheet" href="/static/css/battle/battleboardDetail.css" />
+    <link rel="stylesheet" href="/static/css/battle/battleboardDetail.css" /> -->
 
-    <!--<script type="text/javascript" src="/js/util.js"></script>
+    <script type="text/javascript" src="/js/util.js"></script>
     <script type="text/javascript" src="js/battle/battleboard.js"></script>
     <link rel="stylesheet" href="/css/variable.css" />
     <link rel="stylesheet" href="/css/editor.css" />
     <link rel="stylesheet" href="/css/loading.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
-    <link rel="stylesheet" href="/css/battle/battleboardDetail.css" />-->
+    <link rel="stylesheet" href="/css/battle/battleboardDetail.css" />
     <meta charset="UTF-8">
     <title>⚔ 알비온 헬퍼 ⚔</title>
 </head>
@@ -50,6 +50,14 @@
             <div class="top-table-div">
                 <span class="table-title">동맹</span>
                 <table class="table">
+                    <colgroup>
+                        <col class="col1">
+                        <col class="col2">
+                        <col class="col3">
+                        <col class="col4">
+                        <col class="col5">
+                        <col class="col6">
+                    </colgroup>
                     <thead>
                     <tr>
                         <th>동맹 태그명</th>
@@ -61,20 +69,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>EZ1v1</td>
-                        <td>5</td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>1234</td>
-                        <td>1500</td>
-                    </tr>
-                    <tr>
-                        <td>EZ1v1</td>
-                        <td>5</td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>1234</td>
+                    <tr th:each="alliance : ${alliances}">
+                        <td th:text="${alliance.name}"></td>
+                        <td th:text="${alliance.playerCount}"></td>
+                        <td th:text="${alliance.kills}"></td>
+                        <td th:text="${alliance.deaths}"></td>
+                        <td th:text="${alliance.killFame}">1234</td>
                         <td>1500</td>
                     </tr>
                     </tbody>
@@ -84,6 +84,14 @@
             <div class="top-table-div">
                 <span class="table-title">길드</span>
                 <table class="table">
+                    <colgroup>
+                        <col class="col1">
+                        <col class="col2">
+                        <col class="col3">
+                        <col class="col4">
+                        <col class="col5">
+                        <col class="col6">
+                    </colgroup>
                     <thead>
                     <tr>
                         <th>길드명</th>
@@ -95,20 +103,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>EZ1v1</td>
-                        <td>5</td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>1234</td>
-                        <td>1500</td>
-                    </tr>
-                    <tr>
-                        <td>EZ1v1</td>
-                        <td>5</td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>1234</td>
+                    <tr th:each="guild : ${guilds}">
+                        <td th:text="${guild.name}"></td>
+                        <td th:text="${guild.playerCount}"></td>
+                        <td th:text="${guild.kills}"></td>
+                        <td th:text="${guild.deaths}"></td>
+                        <td th:text="${guild.killFame}"></td>
                         <td>1500</td>
                     </tr>
                     </tbody>
@@ -116,13 +116,21 @@
             </div>
         </div>   <!-- flex-row -->
         <div class="flex-row flex-wrap flex-center gap">
-            <div class="top-table-div">
+            <div class="middle-table-div">
                 <span class="table-title">플레이어</span>
                 <table class="table">
+                    <colgroup>
+                        <col class="col1">
+                        <col class="col2">
+                        <col class="col3">
+                        <col class="col4">
+                        <col class="col5">
+                        <col class="col6">
+                    </colgroup>
                     <thead>
                     <tr>
-                        <th>동맹 태그명</th>
-                        <th>참여 인원</th>
+                        <th>닉네임</th>
+                        <th>무기</th>
                         <th>킬</th>
                         <th>데스</th>
                         <th>페임</th>
@@ -132,7 +140,7 @@
                     <tbody>
                     <tr>
                         <td>EZ1v1</td>
-                        <td>5</td>
+                        <td></td>
                         <td>3</td>
                         <td>0</td>
                         <td>1234</td>
@@ -140,7 +148,7 @@
                     </tr>
                     <tr>
                         <td>EZ1v1</td>
-                        <td>5</td>
+                        <td></td>
                         <td>3</td>
                         <td>0</td>
                         <td>1234</td>
@@ -150,24 +158,33 @@
                 </table>
             </div>
             <!-- TODO : API에서 제공하는 데이터를 분석해서 보여줄 데이터를 테이블에 결정하자. -->
-
-            <div class="top-table-div">
+        </div>
+        <div class="flex-row flex-wrap flex-center gap">
+            <div class="middle-table-div">
                 <span class="table-title">킬로그</span>
                 <table class="table">
+                    <colgroup>
+                        <col class="col1">
+                        <col class="col2">
+                        <col class="col3">
+                        <col class="col4">
+                        <col class="col5">
+                        <col class="col6">
+                    </colgroup>
                     <thead>
                     <tr>
-                        <th>길드명</th>
-                        <th>참여 인원</th>
-                        <th>킬</th>
-                        <th>데스</th>
-                        <th>페임</th>
-                        <th>아이템 파워(IP)</th>
+                        <th>누가</th>
+                        <th>이 무기로</th>
+                        <th>누구를</th>
+                        <th>이 무기를 들고있는</th>
+                        <th>데스페임</th>
+                        <th>킬 페임</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td>EZ1v1</td>
-                        <td>5</td>
+                        <td></td>
                         <td>3</td>
                         <td>0</td>
                         <td>1234</td>
@@ -175,7 +192,7 @@
                     </tr>
                     <tr>
                         <td>EZ1v1</td>
-                        <td>5</td>
+                        <td></td>
                         <td>3</td>
                         <td>0</td>
                         <td>1234</td>
@@ -185,6 +202,8 @@
                 </table>
             </div>
         </div>
+
+
     </div>    
 
 </div>

@@ -37,6 +37,10 @@ public class KillboardService {
     // 플레이어 정보
     private final String GET_PLAYERINFO = "/players/<ID>";
 
+    // 전투 정보를 얻기위한  /evnets/<battleId>
+    private final String GET_EVENT = "/events/";
+
+
     private String getResponse(String url) {
 
         ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder()
@@ -54,6 +58,7 @@ public class KillboardService {
 
     }
 
+    // 플레이어 ID값을 알아내기위한.
     // https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Metzzi
     public List<Player> getPlayersInfo(String id, String location) throws JsonProcessingException {
         ArrayList<Player> list = new ArrayList<>();

@@ -14,10 +14,13 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Battle {
+public class Battle{
 
     @JsonProperty("id")
     private String id;
+
+    @JsonProperty("startTime")
+    private String startTime;
 
     @JsonProperty("endTime")
     private String endTime;
@@ -57,4 +60,6 @@ public class Battle {
                 ", alliances=" + alliances +
                 '}';
     }
+
+
 }

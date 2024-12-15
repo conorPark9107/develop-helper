@@ -114,7 +114,7 @@ table tr:last-child td:last-child {
 
 
 table .col1 {
-    width: 5%;
+    width: 10%; 
 }
 
 table .col2 {
@@ -122,7 +122,7 @@ table .col2 {
 }
 
 table .col3 {
-    width: 50%;
+    width: 10%;
 }
 
 table .col4 {
@@ -130,11 +130,11 @@ table .col4 {
 }
 
 table .col5 {
-    width: 8%;
+    width: 10%;
 }
 
 table .col6 {
-    width: 8%;
+    width: 10%;
 }
 .guild-name{
     color: var(--lightblue);
@@ -144,12 +144,16 @@ table .col6 {
     text-decoration: underline;
 }
 .top-table-div{
-    width:40%;
+    width: 600px;
+    padding: 10px 10px;
+}
+.middle-table-div{
+    width: 1200px;
     padding: 10px 10px;
 }
 .table-title{
     float:left;
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 2%;
     color: var(--sub-color);
 }

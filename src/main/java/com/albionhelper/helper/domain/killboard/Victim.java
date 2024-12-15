@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -16,6 +18,10 @@ public class Victim {
 
     @JsonProperty("Equipment")
     private Equipment equipment;
+
+    // 피해자는 나중에 인벤토리도 추가해주어야 함.
+    @JsonProperty("Inventory")
+    private List<Inventory> inventory;
 
 
     // 인게임 id
@@ -30,6 +36,11 @@ public class Victim {
     @JsonProperty("GuildName")
     private String guildName;
 
-    // 피해자는 나중에 인벤토리도 추가해주어야 함.
+    // 동맹
+    @JsonProperty("AllianceName")
+    private String allianceName;
+
+    @JsonProperty("DeathFame")
+    private int deathFame;
 
 }
