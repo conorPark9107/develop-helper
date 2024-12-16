@@ -63,8 +63,7 @@ public class BattlesController {
         Battle battle = battlesService.getBattleListById(id, server);
         battle = battlesService.getPlayers(battle);
         List<Event> eventList = battlesService.getPlayerList(id, server);
-
-
+        model.addAttribute("eventList", eventList);
         model.addAttribute("battle", battle);
         model.addAttribute("guilds", battle.getGuilds());
         model.addAttribute("alliances", battle.getAlliances());

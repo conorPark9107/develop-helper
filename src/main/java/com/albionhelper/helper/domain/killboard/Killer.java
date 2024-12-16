@@ -33,4 +33,16 @@ public class Killer {
     @JsonProperty("AllianceName")
     private String allianceName;
 
+    @Override
+    public String toString() {
+        return "Killer{" +
+                "averageItemPower=" + averageItemPower +
+                ", equipment=" + equipment +
+                ", id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", guildId='" + guildId + '\'' +
+                ", guildName='" + guildName + '\'' +
+                ", allianceName='" + allianceName + '\'' +
+                '}';
+    }
 }

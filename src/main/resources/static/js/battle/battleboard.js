@@ -37,7 +37,7 @@ $(document).ready(function () {
                 if(response.length == 0){
                     $('.maintable tbody').append('<tr><td colspan="7">검색 결과가 없습니다.</td></tr>');
                 }else{
-                    appendResponse(response);
+                    appendResponse(response, id);
                 }
                 $('#guildId').val(id);
             },
@@ -124,7 +124,7 @@ $(document).ready(function () {
     });
 
 
-    function appendResponse(response){
+    function appendResponse(response, id){
         const tbody = $('.maintable tbody');
         const server = $('input[name="server"]:checked').val();
 
@@ -134,14 +134,18 @@ $(document).ready(function () {
             $(tr).attr('data-server', server);
             $(tr).addClass('hover-background tr');
             $(tr).append(`<td><input type="checkbox" name="multi" value="${r.id}"/></td>`);
-            $(tr).append(`<td>${r.startTime}</td>`);
+            $(tr).append(`<td>${r.endTime}</td>`);
             $(tr).append(`<td>${r.utcTime} UTC</td>`);
             let guilds = r.guilds;
-            let str = guilds[0].name;
+            let str = `<span class="guild-name">${guilds[0].name}</span>`;
             for(var j = 1; j < guilds.length; j++){
-                str += ', ' + guilds[j].name;
+                if(id == guilds[j].id){
+                    str += ', ' + `<span class="searched">${guilds[j].name}</span>`;
+                }else{
+                    str += ', ' + `<span class="guild-name">${guilds[j].name}</span>`;
+                }
             }
-            $(tr).append(`<td class="guild-name"s>${str}</td>`);
+            $(tr).append(`<td>${str}</td>`);
             $(tr).append(`<td>${r.totalFame}</td>`);
             $(tr).append(`<td>${r.players.length}</td>`);
             $(tr).append(`<td>${r.totalKills}</td>`);

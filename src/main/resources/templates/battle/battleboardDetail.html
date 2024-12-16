@@ -33,7 +33,7 @@
 <script type="text/javascript" src="/js/toggle.js"></script>
 
 <div class="header">
-    <a class="header-logo link" href="/">⚔ 알비온 헬퍼</a>
+    <a class="header-logo link">⚔ 알비온 헬퍼</a>
     <label class="switch">
         <input class="switchBtn" role="switch" type="checkbox" />
         <span>다크 모드</span>
@@ -41,7 +41,9 @@
 </div>
 
 <div>
-
+    <div class="back-div">
+        <a class="btn text-center" href="javascript:history.back();">목록으로</a>
+    </div>
     <div class="container-title">
         <h6>전투 기록</h6>
     </div>
@@ -74,7 +76,7 @@
                         <td th:text="${alliance.playerCount}"></td>
                         <td th:text="${alliance.kills}"></td>
                         <td th:text="${alliance.deaths}"></td>
-                        <td th:text="${alliance.killFame}">1234</td>
+                        <td th:text="${alliance.killFame}"></td>
                         <td>1500</td>
                     </tr>
                     </tbody>
@@ -115,6 +117,8 @@
                 </table>
             </div>
         </div>   <!-- flex-row -->
+
+<!--         TODO : 요기 어떻게 처리해줄지 생각해보자. -->
         <div class="flex-row flex-wrap flex-center gap">
             <div class="middle-table-div">
                 <span class="table-title">플레이어</span>
@@ -157,46 +161,69 @@
                     </tbody>
                 </table>
             </div>
-            <!-- TODO : API에서 제공하는 데이터를 분석해서 보여줄 데이터를 테이블에 결정하자. -->
         </div>
         <div class="flex-row flex-wrap flex-center gap">
             <div class="middle-table-div">
                 <span class="table-title">킬로그</span>
-                <table class="table">
+                <table class="table kill-table">
                     <colgroup>
-                        <col class="col1">
-                        <col class="col2">
-                        <col class="col3">
-                        <col class="col4">
-                        <col class="col5">
-                        <col class="col6">
+                        <col class="kill-col1">
+                        <col class="kill-col2">
+                        <col class="kill-col3">
+                        <col class="kill-col4">
+                        <col class="kill-col5">
+                        <col class="kill-col6">
                     </colgroup>
                     <thead>
                     <tr>
-                        <th>누가</th>
-                        <th>이 무기로</th>
-                        <th>누구를</th>
-                        <th>이 무기를 들고있는</th>
-                        <th>데스페임</th>
-                        <th>킬 페임</th>
+                        <th>죽인 사람</th>
+                        <th>죽인 사람 아이템</th>
+                        <th>ip</th>
+                        <th>죽은 사람</th>
+                        <th>죽은 사람 아이템</th>
+                        <th>ip</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>EZ1v1</td>
-                        <td></td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>1234</td>
-                        <td>1500</td>
-                    </tr>
-                    <tr>
-                        <td>EZ1v1</td>
-                        <td></td>
-                        <td>3</td>
-                        <td>0</td>
-                        <td>1234</td>
-                        <td>1500</td>
+                    <tr th:each="eventList : ${eventList}">
+                        <td>
+                            <span th:text="|[${eventList.killer.allianceName}] ${eventList.killer.guildName}|"></span>
+                            <br>
+                            <b th:text="${eventList.killer.name}"></b>
+                        </td>
+                        <td th:with="k=${eventList.killer.equipment}">
+                            <img th:if="${not #strings.isEmpty(k.mainHand)}"
+                                 th:src="|https://render.albiononline.com/v1/item/${k.mainHand.type}?quality=${k.mainHand.quality}|" alt="미착용" />
+                            <img th:if="${not #strings.isEmpty(k.offHand)}"
+                                 th:src="|https://render.albiononline.com/v1/item/${k.offHand.type}?quality=${k.offHand.quality}|" alt="미착용" />
+                            <img th:if="${not #strings.isEmpty(k.head)}"
+                                 th:src="|https://render.albiononline.com/v1/item/${k.head.type}?quality=${k.head.quality}|" alt="미착용" />
+                            <img th:if="${not #strings.isEmpty(k.armor)}"
+                                 th:src="|https://render.albiononline.com/v1/item/${k.armor.type}?quality=${k.armor.quality}|" alt="미착용" />
+                            <img th:if="${not #strings.isEmpty(k.shoes)}"
+                                 th:src="|https://render.albiononline.com/v1/item/${k.shoes.type}?quality=${k.shoes.quality}|" alt="미착용" />
+                            <img th:if="${not #strings.isEmpty(k.cape)}"
+                                 th:src="|https://render.albiononline.com/v1/item/${k.cape.type}?quality=${k.cape.quality}|" alt="미착용" />
+                        </td>
+                        <td th:text="${eventList.killer.averageItemPower}"></td>
+                        <td>
+                            <span th:text="|[${eventList.victim.allianceName}] ${eventList.victim.guildName}|"></span>
+                            <br>
+                            <b th:text="${eventList.victim.name}"></b>
+                        </td>
+                        <td th:with="v=${eventList.victim.equipment}">
+                            <img th:if="${not #strings.isEmpty(v.mainHand)}"
+                                 th:src="|https://render.albiononline.com/v1/item/${v.mainHand.type}?quality=${v.mainHand.quality}|" alt="미착용"/>
+                            <img th:if="${not #strings.isEmpty(v.head)}"
+                                 th:src="|https://render.albiononline.com/v1/item/${v.head.type}?quality=${v.head.quality}|" alt="미착용"/>
+                            <img th:if="${not #strings.isEmpty(v.armor)}"
+                                 th:src="|https://render.albiononline.com/v1/item/${v.armor.type}?quality=${v.armor.quality}|" alt="미착용"/>
+                            <img th:if="${not #strings.isEmpty(v.shoes)}"
+                                 th:src="|https://render.albiononline.com/v1/item/${v.shoes.type}?quality=${v.shoes.quality}|" alt="미착용"/>
+                            <img th:if="${not #strings.isEmpty(v.cape)}"
+                                 th:src="|https://render.albiononline.com/v1/item/${v.cape.type}?quality=${v.cape.quality}|" alt="미착용"/>
+                        </td>
+                        <td th:text="${eventList.victim.averageItemPower}"></td>
                     </tr>
                     </tbody>
                 </table>

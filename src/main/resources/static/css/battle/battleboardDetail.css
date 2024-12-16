@@ -2,6 +2,10 @@
     width: 100%;
     margin: auto auto 5vh;
 }
+img{
+    width: 2.5vw;
+    height: 2.5vw;
+}
 .flex-wrap{
     flex-wrap: wrap;
 }
@@ -136,6 +140,45 @@ table .col5 {
 table .col6 {
     width: 10%;
 }
+
+
+table .kill-col1 {
+    width: 17%;
+}
+
+table .kill-col2 {
+    width: 30%;
+}
+
+table .kill-col3 {
+    width: 3%;
+}
+
+table .kill-col4 {
+    width: 17%;
+}
+
+table .kill-col5 {
+    width: 30%;
+}
+
+table .kill-col6 {
+    width: 3%;
+}
+
+.kill-table td:nth-child(3){
+    border-right: 1px dashed var(--sub-color);
+}
+.kill-table td:nth-child(1){
+    color: var(--green);
+}
+.kill-table td:nth-child(4){
+    color: var(--red);
+}
+.kill-table{
+    text-align : left;
+}
+
 .guild-name{
     color: var(--lightblue);
 }
@@ -156,4 +199,16 @@ table .col6 {
     font-size: 18px;
     margin-bottom: 2%;
     color: var(--sub-color);
+}
+a{
+    text-decoration: none;
+}
+.text-center{
+    text-align: center;
+}
+.back-div{
+    display: flex;
+    padding-top: 20px;
+    width: 100%;
+    margin: auto 17vw;
 }

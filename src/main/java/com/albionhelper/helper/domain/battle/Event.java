@@ -17,9 +17,14 @@ public class Event {
     @JsonProperty("Killer")
     private Killer killer;
 
-    @JsonProperty("victim")
+    @JsonProperty("Victim")
     private Victim victim;
 
-
-
+    @Override
+    public String toString() {
+        return "Event{" +
+                "killer=" + killer +
+                ", victim=" + victim +
+                '}';
+    }
 }

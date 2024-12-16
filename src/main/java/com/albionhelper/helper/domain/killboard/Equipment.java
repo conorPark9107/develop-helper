@@ -16,7 +16,7 @@ public class Equipment {
     private Item mainHand;
 
     @JsonProperty("OffHand")
-    private Item offhand;
+    private Item offHand;
 
     @JsonProperty("Head")
     private Item head;
@@ -42,4 +42,19 @@ public class Equipment {
     @JsonProperty("Food")
     private Item food;
 
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "mainHand=" + mainHand +
+                ", offHand=" + offHand +
+                ", head=" + head +
+                ", armor=" + armor +
+                ", shoes=" + shoes +
+                ", bag=" + bag +
+                ", cape=" + cape +
+                ", mount=" + mount +
+                ", potion=" + potion +
+                ", food=" + food +
+                '}';
+    }
 }

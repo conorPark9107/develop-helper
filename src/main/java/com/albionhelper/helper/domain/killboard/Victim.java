@@ -23,7 +23,6 @@ public class Victim {
     @JsonProperty("Inventory")
     private List<Inventory> inventory;
 
-
     // 인게임 id
     @JsonProperty("Id")
     private String id;
@@ -43,4 +42,18 @@ public class Victim {
     @JsonProperty("DeathFame")
     private int deathFame;
 
+    @Override
+    public String toString() {
+        return "Victim{" +
+                "averageItemPower=" + averageItemPower +
+                ", equipment=" + equipment +
+                ", inventory=" + inventory +
+                ", id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", guildId='" + guildId + '\'' +
+                ", guildName='" + guildName + '\'' +
+                ", allianceName='" + allianceName + '\'' +
+                ", deathFame=" + deathFame +
+                '}';
+    }
 }

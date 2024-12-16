@@ -7,11 +7,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class BattlesService {
@@ -35,6 +38,9 @@ public class BattlesService {
     // offset을 0부터 더이상 정보가 안나올때까지 데이터를 모아서 취합해야한다.
     private final String GET_ALL_INFO = "/events/battle/";
 
+    @Autowired
+    private WebClient webClient;
+
     private String getLocation(String location) {
         switch (location) {
             case "east" : return EAST;
@@ -45,36 +51,19 @@ public class BattlesService {
     }
 
     private String getResponse(String requestUrl) {
-        ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder()
-                .codecs(config -> config.defaultCodecs().maxInMemorySize(-1))
-                .build();
-
-        WebClient webClient = WebClient.builder()
-                .exchangeStrategies(exchangeStrategies)
-                .build();
 
         return webClient.get()
                 .uri(requestUrl)
-                .header("x-test", "header")
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
     }
 
-    private List<Event> getResponseForEvent(String requestUrl) {
-        ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder()
-                .codecs(config -> config.defaultCodecs().maxInMemorySize(-1))
-                .build();
-
-        WebClient webClient = WebClient.builder()
-                .exchangeStrategies(exchangeStrategies)
-                .build();
-        // TODO : 내일 여기부터 해야함.
+    private Object[] getResponseForEvent(String requestUrl) {
         return webClient.get()
                 .uri(requestUrl)
-                .header("x-test", "header")
                 .retrieve()
-                .bodyToMono(List.class)
+                .bodyToMono(Object[].class)
                 .block();
     }
 
@@ -194,12 +183,20 @@ public class BattlesService {
     public List<Event> getPlayerList(String id, String server) {
 
         int offset = 0;
-        String response = "";
+
         List<Event> list = new ArrayList<>();
+        List<Event> responseList;
         do{
-            String requestUrl = getLocation(server) + GET_ALL_INFO + id + "/?offset=" + offset++ + "&limit=51";
-            list = getResponseForEvent(requestUrl);
-        }while(!response.equals(""));
+            String requestUrl = getLocation(server) + GET_ALL_INFO + id + "/?offset=" + offset + "&limit=51";
+            offset += 51;
+            Object[] response  = getResponseForEvent(requestUrl);
+            log.info("event request url : {}", requestUrl);
+            ObjectMapper mapper = new ObjectMapper();
+            responseList = Arrays.stream(response)
+                                 .map(o -> mapper.convertValue(o, Event.class))
+                                 .toList();
+            list.addAll(responseList);
+        }while(!responseList.isEmpty());
 
         return list;
     }
