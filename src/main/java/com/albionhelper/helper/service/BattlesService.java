@@ -2,6 +2,8 @@ package com.albionhelper.helper.service;
 
 import com.albionhelper.helper.domain.GuildDTO;
 import com.albionhelper.helper.domain.battle.*;
+import com.albionhelper.helper.domain.killboard.Killer;
+import com.albionhelper.helper.domain.killboard.Victim;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,12 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class BattlesService {
@@ -141,7 +140,7 @@ public class BattlesService {
 
     public Battle getBattleListById(String id, String server) throws JsonProcessingException {
         String requestUrl = getLocation(server) + GET_BATTLE + id;
-        log.info("url is {}", requestUrl);
+        log.info("getBattleListById() url is {}", requestUrl);
         String response = getResponse(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(response);
@@ -180,15 +179,15 @@ public class BattlesService {
 
 
     // event로 평균 IP를 구하고,
-    public List<Event> getPlayerList(String id, String server) {
-
+    public List<Event> getEventList(String id, String server, int kill) {
         int offset = 0;
+        int limit = Math.min(kill, 51);
 
         List<Event> list = new ArrayList<>();
         List<Event> responseList;
         do{
-            String requestUrl = getLocation(server) + GET_ALL_INFO + id + "/?offset=" + offset + "&limit=51";
-            offset += 51;
+            String requestUrl = getLocation(server) + GET_ALL_INFO + id + "/?offset=" + offset + "&limit=" + limit;
+            offset += limit;
             Object[] response  = getResponseForEvent(requestUrl);
             log.info("event request url : {}", requestUrl);
             ObjectMapper mapper = new ObjectMapper();
@@ -196,8 +195,79 @@ public class BattlesService {
                                  .map(o -> mapper.convertValue(o, Event.class))
                                  .toList();
             list.addAll(responseList);
-        }while(!responseList.isEmpty());
+        }while(!responseList.isEmpty() && limit == 51);
 
         return list;
     }
+
+    // 데미지와 힐량을 누적하며 특정 이벤트에 참가한 플레이어들의 리스트를 생성.
+    public Map<String, EventPlayer> getPlayerList(List<Event> eventList, Battle battle) {
+        Map<String, EventPlayer> map = new HashMap<>();
+
+        eventList.forEach(e -> {
+            Killer killer = e.getKiller();
+            Victim victim = e.getVictim();
+            List<EventPlayer> groupMembers = e.getGroupMembers();
+            groupMembers.add(killer.convert());
+            groupMembers.add(victim.convert());
+            List<EventPlayer> participants = e.getParticipants();
+            participants.addAll(groupMembers);
+
+            // TODO : 한 파이트에 여러번 죽은 경우 biggest인 인벤토리만 가져올 수 있도록 해줘야할듯.
+            participants.forEach(p -> {
+                if(map.containsKey(p.getName())){
+                    EventPlayer eventPlayer = map.get(p.getName());
+                    eventPlayer.setDeathFame(Math.max(eventPlayer.getDeathFame(), p.getDeathFame()));
+                    eventPlayer.setDamageDone(eventPlayer.getDamageDone() + p.getDamageDone());
+                    eventPlayer.setSupportHealingDone(eventPlayer.getSupportHealingDone() + p.getSupportHealingDone());
+                    if(eventPlayer.getInventory() == null &&  p.getInventory() != null){
+                        eventPlayer.setInventory(p.getInventory());
+                    }
+                    map.put(p.getName(), eventPlayer);
+                }else{
+                    map.put(p.getName(), p);
+                }
+            });
+
+        });
+
+        battle.getPlayers()
+            .forEach(p -> {
+                if(map.containsKey(p.getName())){
+                    EventPlayer eventPlayer = map.get(p.getName());
+                    eventPlayer.setKills(p.getKills());
+                    eventPlayer.setDeaths(p.getDeaths());
+                    map.put(p.getName(), eventPlayer);
+                }
+            });
+        
+        return map;
+    }
+
+    // 가장 킬을 많이한 플레이어.
+    public Player getMostKillingPlayer(Battle battle) {
+        List<Player> players = battle.getPlayers();
+        return players.stream()
+                .max(Comparator.comparing(Player::getKills)).get();
+    }
+
+
+    // 모스트 딜, 힐 플레이어를 찾아서 리턴.
+    public EventPlayer[] getMostDpsAndHeal(Map<String, EventPlayer> eventPMap) {
+        EventPlayer[] arr = new EventPlayer[3];
+        arr[0] = eventPMap.values()
+                .stream()
+                .max(Comparator.comparing(EventPlayer::getDamageDone))
+                .get();
+        arr[1] = eventPMap.values()
+                .stream()
+                .max(Comparator.comparing(EventPlayer::getSupportHealingDone))
+                .get();
+        arr[2] = eventPMap.values()
+                .stream()
+                .max(Comparator.comparing(EventPlayer::getDeathFame))
+                .get();
+        return arr;
+    }
 }
+

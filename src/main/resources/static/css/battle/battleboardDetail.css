@@ -1,3 +1,16 @@
+.red{
+    color: var(--red);
+}
+.green{
+    color: var(--green);
+}
+.purple{
+    color: var(--purple);
+}
+.yellow{
+    color: var(--yellow);
+}
+
 .container{
     width: 100%;
     margin: auto auto 5vh;
@@ -5,6 +18,47 @@
 img{
     width: 2.5vw;
     height: 2.5vw;
+}
+.inline{
+    display: inline-block;
+}
+.text-small{
+    font-size: 10px;
+}
+.flex-item{
+    margin-top: 10px;
+    min-width: 250px;
+    border-radius: 8px;
+}
+.kill{
+    border: 1px solid var(--red);
+    box-shadow: 0 0 8px var(--red);
+    max-height: 125px;
+}
+.heal{
+    border: 1px solid var(--green);
+    box-shadow: 0 0 8px var(--green);
+    max-height: 125px;
+}
+.dps{
+    border: 1px solid var(--purple);
+    box-shadow: 0 0 8px var(--purple);
+    max-height: 125px;
+}
+.bigdonation{
+    border: 1px solid var(--yellow);
+    box-shadow: 0 0 8px var(--yellow);
+    min-width: 550px;
+    min-height: 120px;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.flex-title{
+    text-align: left;
+    padding: 10px;
+    font-size: 12px;
 }
 .flex-wrap{
     flex-wrap: wrap;
@@ -16,7 +70,7 @@ img{
     flex-direction: row;
     border-radius: 6px;
     overflow:hidden;
-    padding: 1% 0;
+    padding: 4px 0;
 }
 .flex-vertical-center{
     align-items: center;
@@ -74,6 +128,7 @@ img{
 }
 .table{
     text-align: center;
+    margin-top: 30px;
     font-size: 0.6em;
     width: 100%;
     table-layout: auto;
@@ -115,14 +170,18 @@ table tr:last-child td:last-child {
     cursor:pointer;
     background-color: var(--table-hover);
 }
-
-
+.table td:nth-child(2){
+    text-align:left;
+}
+.table th:nth-child(2){
+    text-align:left;
+}
 table .col1 {
     width: 10%; 
 }
 
 table .col2 {
-    width: 10%;
+    width: 20%;
 }
 
 table .col3 {
@@ -195,9 +254,10 @@ table .kill-col6 {
     padding: 10px 10px;
 }
 .table-title{
+    text-align: left;
     float:left;
-    font-size: 18px;
-    margin-bottom: 2%;
+    font-size: 16px;
+    font-weight: bold;
     color: var(--sub-color);
 }
 a{
@@ -211,4 +271,37 @@ a{
     padding-top: 20px;
     width: 100%;
     margin: auto 17vw;
+}
+.detailDiv{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    align-items: baseline;
+}
+.flex-grow-1{
+    flex-grow: 1;
+}
+.detailFirst{
+    text-align: left;
+}
+.detailEnd{
+    text-align: right;
+}
+.detailGuildName{
+    display: block;
+    margin-bottom: -5px;
+}
+.detailAlly{
+    opacity: 0.5;
+    font-size: 10px;
+}
+.imageArea{
+    display:grid;
+    width: 440px;
+    grid-template-columns: repeat(auto-fit, 2.1vw);
+    justify-content: end;
+}
+.imageArea img{
+    width: 2.5vw;
+    height: 2.5vw;
 }

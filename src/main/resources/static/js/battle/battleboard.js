@@ -4,11 +4,13 @@ $(document).ready(function () {
     $(".maintable tbody").on('click', 'tr' ,function(e){
         const id = $(this).find('td:eq(0)').find('input').val();
         const server = $(this).data('server');
+        const kill = $(this).find('td:eq(6)').text();
         var form = $('<form></form>');
         form.attr("method","get");
         form.attr("action","/battle/detail");
         form.append($('<input/>', {type: 'hidden', name: 'id', value:id }));
         form.append($('<input/>', {type: 'hidden', name: 'server', value:server }));
+        form.append($('<input/>', {type: 'hidden', name: 'kill', value:kill }));
         form.appendTo('body');
         form.submit();
     });

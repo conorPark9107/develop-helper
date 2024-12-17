@@ -1,6 +1,7 @@
 package com.albionhelper.helper.domain.killboard;
 
 
+import com.albionhelper.helper.domain.battle.EventPlayer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -19,7 +20,7 @@ public class Victim {
     @JsonProperty("Equipment")
     private Equipment equipment;
 
-    // 피해자는 나중에 인벤토리도 추가해주어야 함.
+    // 인벤토리
     @JsonProperty("Inventory")
     private List<Inventory> inventory;
 
@@ -55,5 +56,20 @@ public class Victim {
                 ", allianceName='" + allianceName + '\'' +
                 ", deathFame=" + deathFame +
                 '}';
+    }
+
+    public EventPlayer convert(){
+        EventPlayer e = new EventPlayer();
+        e.setAverageItemPower(this.averageItemPower);
+        e.setEquipment(this.equipment);
+        e.setName(this.name);
+        e.setGuildName(this.guildName);
+        e.setAllianceName(this.allianceName);
+        e.setKillFame(0);
+        e.setDeathFame(this.deathFame);
+        e.setDamageDone(0);
+        e.setSupportHealingDone(0);
+        e.setInventory(this.inventory);
+        return e;
     }
 }

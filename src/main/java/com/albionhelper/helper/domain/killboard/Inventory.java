@@ -18,4 +18,13 @@ public class Inventory {
 
     @JsonProperty("Quality")
     private String quality;
+
+    @Override
+    public String toString() {
+        return "Inventory{" +
+                "type='" + type + '\'' +
+                ", count='" + count + '\'' +
+                ", quality='" + quality + '\'' +
+                '}';
+    }
 }

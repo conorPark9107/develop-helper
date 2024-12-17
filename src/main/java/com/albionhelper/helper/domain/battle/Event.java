@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -19,6 +21,12 @@ public class Event {
 
     @JsonProperty("Victim")
     private Victim victim;
+
+    @JsonProperty("Participants")
+    private List<EventPlayer> participants;
+
+    @JsonProperty("GroupMembers")
+    private List<EventPlayer> groupMembers;
 
     @Override
     public String toString() {

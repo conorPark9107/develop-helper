@@ -1,5 +1,6 @@
 package com.albionhelper.helper.domain.killboard;
 
+import com.albionhelper.helper.domain.battle.EventPlayer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -44,5 +45,19 @@ public class Killer {
                 ", guildName='" + guildName + '\'' +
                 ", allianceName='" + allianceName + '\'' +
                 '}';
+    }
+
+    public EventPlayer convert(){
+        EventPlayer e = new EventPlayer();
+        e.setAverageItemPower(this.averageItemPower);
+        e.setEquipment(this.equipment);
+        e.setName(this.name);
+        e.setGuildName(this.guildName);
+        e.setAllianceName(this.allianceName);
+        e.setKillFame(0);
+        e.setDeathFame(0);
+        e.setDamageDone(0);
+        e.setSupportHealingDone(0);
+        return e;
     }
 }

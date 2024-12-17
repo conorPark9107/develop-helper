@@ -38,4 +38,18 @@ public class Player {
     @JsonProperty("id")
     private String id;
 
+    public EventPlayer convert(){
+        EventPlayer e = new EventPlayer();
+        e.setAverageItemPower(0);
+        e.setEquipment(null);
+        e.setName(this.name);
+        e.setGuildName(this.guildName);
+        e.setAllianceName(this.allianceName);
+        e.setKillFame(0);
+        e.setDeathFame(0);
+        e.setDamageDone(0);
+        e.setSupportHealingDone(0);
+        return e;
+    }
+
 }

@@ -1,10 +1,7 @@
 package com.albionhelper.helper.controller;
 
 import com.albionhelper.helper.domain.GuildDTO;
-import com.albionhelper.helper.domain.battle.Alliance;
-import com.albionhelper.helper.domain.battle.Battle;
-import com.albionhelper.helper.domain.battle.Event;
-import com.albionhelper.helper.domain.battle.Guild;
+import com.albionhelper.helper.domain.battle.*;
 import com.albionhelper.helper.service.BattlesService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
@@ -59,15 +56,31 @@ public class BattlesController {
     @GetMapping("/detail")
     public String getBattles(Model model,
                              @RequestParam(name = "id")String id,
-                             @RequestParam(name = "server")String server) throws JsonProcessingException {
+                             @RequestParam(name = "server")String server,
+                             @RequestParam(name = "kill")int kill) throws JsonProcessingException {
         Battle battle = battlesService.getBattleListById(id, server);
         battle = battlesService.getPlayers(battle);
-        List<Event> eventList = battlesService.getPlayerList(id, server);
+        List<Event> eventList = battlesService.getEventList(id, server, kill);
+
+        // 모스트 킬
+        Player p = battlesService.getMostKillingPlayer(battle);
+
+        // 플레이어 리스트
+        Map<String, EventPlayer> playerList = battlesService.getPlayerList(eventList, battle);
+
+
+        // [모스트 데미지, 모스트 힐, 빅도네이션]
+        EventPlayer[] players = battlesService.getMostDpsAndHeal(playerList);
+
+        model.addAttribute("playerList", playerList.values());
+        model.addAttribute("mostKiller", p);
+        model.addAttribute("mostDps", players[0]);
+        model.addAttribute("mostHeal", players[1]);
+        model.addAttribute("mostDonation", players[2]);
         model.addAttribute("eventList", eventList);
         model.addAttribute("battle", battle);
         model.addAttribute("guilds", battle.getGuilds());
         model.addAttribute("alliances", battle.getAlliances());
-
         return "battle/battleboardDetail";
     }
 

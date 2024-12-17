@@ -292,10 +292,6 @@ table .col6 {
     cursor: pointer;
     background-color: var(--table-hover);
 }
-.not-open{
-    cursor: not-arrowed;
-    filter: blur(1px);
-}
 .searched{
     color: var(--green);
 }
