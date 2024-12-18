@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class BattlesService {
@@ -213,14 +214,13 @@ public class BattlesService {
             List<EventPlayer> participants = e.getParticipants();
             participants.addAll(groupMembers);
 
-            // TODO : 한 파이트에 여러번 죽은 경우 biggest인 인벤토리만 가져올 수 있도록 해줘야할듯.
             participants.forEach(p -> {
                 if(map.containsKey(p.getName())){
                     EventPlayer eventPlayer = map.get(p.getName());
-                    eventPlayer.setDeathFame(Math.max(eventPlayer.getDeathFame(), p.getDeathFame()));
                     eventPlayer.setDamageDone(eventPlayer.getDamageDone() + p.getDamageDone());
                     eventPlayer.setSupportHealingDone(eventPlayer.getSupportHealingDone() + p.getSupportHealingDone());
-                    if(eventPlayer.getInventory() == null &&  p.getInventory() != null){
+                    if(p.getDeathFame() > eventPlayer.getDeathFame()){
+                        eventPlayer.setDeathFame(eventPlayer.getDeathFame() + p.getDeathFame());
                         eventPlayer.setInventory(p.getInventory());
                     }
                     map.put(p.getName(), eventPlayer);
@@ -268,6 +268,45 @@ public class BattlesService {
                 .max(Comparator.comparing(EventPlayer::getDeathFame))
                 .get();
         return arr;
+    }
+
+    public Battle getAverageIp(Battle battle, Map<String, EventPlayer> playerList) {
+        Map<String, Integer> guildMap = new HashMap<>();
+        Map<String, Integer> allianceMap = new HashMap<>();
+        Map<String, Integer> guildCount = new HashMap<>();
+        Map<String, Integer> allianceCount = new HashMap<>();
+
+        playerList.forEach((k, v) -> {
+            String guildName = v.getGuildName();
+            String allianceName = v.getAllianceName();
+
+            int ip = v.getAverageItemPower();
+            if(ip > 0){
+                guildMap.put(guildName, guildMap.getOrDefault(guildName, 0) + ip);
+                allianceMap.put(allianceName, allianceMap.getOrDefault(allianceName, 0) + ip);
+                guildCount.put(guildName, guildCount.getOrDefault(guildName, 0) + 1);
+                allianceCount.put(allianceName, allianceCount.getOrDefault(allianceName, 0) + 1);
+            }
+        });
+
+        List<Guild> g = battle.getGuilds().stream().map(guild -> {
+            if(guildMap.containsKey(guild.getName())){
+                guild.setAverageIp(guildMap.get(guild.getName()) / guildCount.get(guild.getName()));
+            }
+            return guild;
+        }).toList();
+
+        List<Alliance> a = battle.getAlliances().stream().map(alliance -> {
+            if(allianceMap.containsKey(alliance.getName())){
+                alliance.setAverageIp(allianceMap.get(alliance.getName()) / allianceCount.get(alliance.getName()));
+            }
+            return alliance;
+        }).toList();
+
+        battle.setGuilds(g);
+        battle.setAlliances(a);
+
+        return battle;
     }
 }
 

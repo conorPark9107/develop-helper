@@ -28,6 +28,7 @@ public class Guild implements Comparable<Guild> {
     private String id;
 
     private int playerCount;
+    private int averageIp;
 
     @Override
     public String toString() {

@@ -24,6 +24,7 @@ public class Alliance implements Comparable<Alliance> {
     private String id;
 
     private int playerCount;
+    private int averageIp;
 
     @Override
     public int compareTo(Alliance o) {

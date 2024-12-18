@@ -33,7 +33,7 @@
 <script type="text/javascript" src="/js/toggle.js"></script>
 
 <div class="header">
-    <a class="header-logo link">⚔ 알비온 헬퍼</a>
+    <a class="header-logo link" href="/">⚔ 알비온 헬퍼</a>
     <label class="switch">
         <input class="switchBtn" role="switch" type="checkbox" />
         <span>다크 모드</span>
@@ -90,22 +90,23 @@
                         <span th:text="|${mostDonation.deathFame}|"></span>
                         <div class="detailEnd imageArea" th:with="p=${mostDonation.equipment}">
                             <img th:if="${not #strings.isEmpty(p.mainHand)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}&size=64|" alt="미착용" />
                             <img th:if="${not #strings.isEmpty(p.offHand)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.offHand.type}?quality=${p.offHand.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.offHand.type}?quality=${p.offHand.quality}&size=64|" alt="미착용" />
                             <img th:if="${not #strings.isEmpty(p.head)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.head.type}?quality=${p.head.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.head.type}?quality=${p.head.quality}&size=64|" alt="미착용" />
                             <img th:if="${not #strings.isEmpty(p.armor)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.armor.type}?quality=${p.armor.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.armor.type}?quality=${p.armor.quality}&size=64|" alt="미착용" />
                             <img th:if="${not #strings.isEmpty(p.shoes)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.shoes.type}?quality=${p.shoes.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.shoes.type}?quality=${p.shoes.quality}&size=64|" alt="미착용" />
                             <img th:if="${not #strings.isEmpty(p.cape)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.cape.type}?quality=${p.cape.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.cape.type}?quality=${p.cape.quality}&size=64|" alt="미착용" />
                             <img th:if="${not #strings.isEmpty(p.mount)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.mount.type}?quality=${p.mount.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.mount.type}?quality=${p.mount.quality}&size=64|" alt="미착용" />
                             <th:block th:if="${not #strings.isEmpty(mostDonation.inventory)}" th:each="inventory : ${mostDonation.inventory}">
-                                <img th:if="${not #strings.isEmpty(inventory)}" th:src="|https://render.albiononline.com/v1/item/${inventory.type}?quality=${inventory.quality}|" alt="미착용" />
+                                <img th:if="${not #strings.isEmpty(inventory)}" th:src="|https://render.albiononline.com/v1/item/${inventory.type}?quality=${inventory.quality}&size=64|" alt="미착용" />
                             </th:block>
+
                         </div>
                     </div>
                 </div>
@@ -129,7 +130,7 @@
                         <th>참여 인원</th>
                         <th>킬</th>
                         <th>데스</th>
-                        <th>페임</th>
+                        <th>전투 킬페임</th>
                         <th>아이템 파워(IP)</th>
                     </tr>
                     </thead>
@@ -144,7 +145,7 @@
                         <td th:text="${alliance.kills}"></td>
                         <td th:text="${alliance.deaths}"></td>
                         <td th:text="${alliance.killFame}"></td>
-                        <td>1500</td>
+                        <td th:text="${alliance.averageIp}"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -167,7 +168,7 @@
                         <th>참여 인원</th>
                         <th>킬</th>
                         <th>데스</th>
-                        <th>페임</th>
+                        <th>전투 킬페임</th>
                         <th>아이템 파워(IP)</th>
                     </tr>
                     </thead>
@@ -178,7 +179,7 @@
                         <td th:text="${guild.kills}"></td>
                         <td th:text="${guild.deaths}"></td>
                         <td th:text="${guild.killFame}"></td>
-                        <td>1500</td>
+                        <td th:text="${guild.averageIp}"></td>
                     </tr>
                     </tbody>
                 </table>
