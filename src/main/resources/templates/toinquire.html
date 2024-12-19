@@ -55,15 +55,15 @@
             <div>
                 <ul class="inquireList">
                     <li style="border: 1px solid var(--sub-color);">
-                        <span class="text">ex) 게시글에 카테고리좀 추가해주세요</span>
+                        <span class="text">ex) 게시글에 카테고리좀 추가해주쇼!</span>
                         <span class="right">답변보기🔻</span>
                         <div class="admin-answer">
-                            <span class="answer">답변 : 지금 현재는 조금 어려울것같고 최대한 빠르게 만들어드릴게요!</span>
+                        <span class="answer">답변 : 넵!</span>
                         </div>
                     </li>
                     <li th:each="inquire : ${list}" th:id="${inquire.id}">
-                        <span class="text" th:text="${inquire.content}">ex) 게시글에 카테고리좀 추가해주세요</span>
-                        <span class="right">답변보기🔻</span>
+                        <span class="text" th:text="${inquire.content}"></span>
+                        <span class="right"></span>
                         <div class="admin-answer">
                             <span class="answer">아직 답변 전입니다.</span>
                         </div>

@@ -66,7 +66,7 @@
                         <span class="detailGuildName" th:text="${mostDps.name}"></span>
                         <span class="detailAlly" th:text="|[${mostDps.allianceName}] ${mostDps.guildName}|"></span>
                     </p>
-                    <p class="flex-grow-1 detailEnd purple" th:text="|${mostDps.damageDone}|"></p>
+                    <p class="flex-grow-1 detailEnd purple" th:text="|${#numbers.formatInteger(mostDps.damageDone, 1, 'COMMA')}딜|"></p>
                 </div>
             </div>
             <div class="flex-column flex-item heal">
@@ -76,7 +76,7 @@
                         <span class="detailGuildName" th:text="${mostHeal.name}"></span>
                         <span class="detailAlly" th:text="|[${mostHeal.allianceName}] ${mostHeal.guildName}|"></span>
                     </p>
-                    <p class="flex-grow-1 detailEnd green" th:text="|${mostHeal.supportHealingDone}|"></p>
+                    <p class="flex-grow-1 detailEnd green" th:text="|${#numbers.formatInteger(mostHeal.supportHealingDone, 1, 'COMMA')}힐|"></p>
                 </div>
             </div>
             <div class="flex-column flex-item bigdonation">
@@ -84,10 +84,10 @@
                 <div class="detailDiv">
                     <p class="flex-grow-1 detailFirst">
                         <span class="detailGuildName" th:text="${mostDonation.name}"></span>
-                        <span class="detailAlly" th:text="|[${mostDonation.allianceName}] ${mostDonation.guildName}|">[YUH]Take Care</span>
+                        <span class="detailAlly" th:text="|[${mostDonation.allianceName}] ${mostDonation.guildName}|"></span>
                     </p>
                     <div class="flex-grow-1 detailEnd yellow">
-                        <span th:text="|${mostDonation.deathFame}|"></span>
+                        <span th:text="|${#numbers.formatInteger(mostDonation.deathFame, 1, 'COMMA')}데스페임|"></span>
                         <div class="detailEnd imageArea" th:with="p=${mostDonation.equipment}">
                             <img th:if="${not #strings.isEmpty(p.mainHand)}"
                                  th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}&size=64|" alt="미착용" />
@@ -106,7 +106,6 @@
                             <th:block th:if="${not #strings.isEmpty(mostDonation.inventory)}" th:each="inventory : ${mostDonation.inventory}">
                                 <img th:if="${not #strings.isEmpty(inventory)}" th:src="|https://render.albiononline.com/v1/item/${inventory.type}?quality=${inventory.quality}&size=64|" alt="미착용" />
                             </th:block>
-
                         </div>
                     </div>
                 </div>
@@ -144,7 +143,7 @@
                         <td th:text="${alliance.playerCount}"></td>
                         <td th:text="${alliance.kills}"></td>
                         <td th:text="${alliance.deaths}"></td>
-                        <td th:text="${alliance.killFame}"></td>
+                        <td th:text="${#numbers.formatInteger(alliance.killFame, 1, 'COMMA')}"></td>
                         <td th:text="${alliance.averageIp}"></td>
                     </tr>
                     </tbody>
@@ -178,7 +177,7 @@
                         <td th:text="${guild.playerCount}"></td>
                         <td th:text="${guild.kills}"></td>
                         <td th:text="${guild.deaths}"></td>
-                        <td th:text="${guild.killFame}"></td>
+                        <td th:text="${#numbers.formatInteger(guild.killFame, 1, 'COMMA')}"></td>
                         <td th:text="${guild.averageIp}"></td>
                     </tr>
                     </tbody>

@@ -84,6 +84,7 @@
     font-size: 1em;
     --angle: 0deg;
     border: 1px solid var(--sub-color);
+    border-radius: 8px;
     animation: 3s rotate linear infinite;
     outline: none;
 }

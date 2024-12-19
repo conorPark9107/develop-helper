@@ -148,6 +148,9 @@ legend {
     grid-gap: 15px;
     gap: 15px;
 }
+.hover:hover{
+    opacity:0.5;
+}
 :hover{
     transition: all 0.3s;
 }
@@ -202,4 +205,16 @@ legend {
 .switchBtn:checked{
     background-color: var(--main-color);
     border-color: var(--sub-color);
+}
+.red{
+    color: var(--red);
+}
+.green{
+    color: var(--green);
+}
+.purple{
+    color: var(--purple);
+}
+.yellow{
+    color: var(--yellow);
 }

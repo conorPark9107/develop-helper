@@ -12,14 +12,13 @@ span:hover {
     text-align: center;
     font-size: 0.8em;
     font-weight: bold;
-    border-bottom : 1px dashed var(--sub-color-a);
+    border-bottom : 1px dashed var(--table-hover);
 }
 #killTable th, #deathTable th {
     width: 5vw;
     padding: 10px 10px;
-    background-color: var(--main-color);
-    border-top: 2px solid var(--sub-color);;
-    border-bottom : 2px solid var(--sub-color);
+    background-color: var(--sub-color);
+    color: var(--main-color);
 }
 .kill{
     color: var(--red);

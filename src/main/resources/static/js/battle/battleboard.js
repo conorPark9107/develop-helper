@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     // 전투 기록 행(table row)를 클릭하였을때
     $(".maintable tbody").on('click', 'tr' ,function(e){
+        turnLoading();
         const id = $(this).find('td:eq(0)').find('input').val();
         const server = $(this).data('server');
         const kill = $(this).find('td:eq(6)').text();
@@ -37,6 +38,9 @@ $(document).ready(function () {
                 server : server
             },
             dataType: "json",
+            beforeSend: function(){
+                turnLoading();
+            },
             success: function (response) {
                 if(response.length == 0){
                     $('.maintable tbody').append('<tr><td colspan="7">검색 결과가 없습니다.</td></tr>');
@@ -47,6 +51,9 @@ $(document).ready(function () {
             },
             error : function(request,status,error){
                 showAlert('알수없는 오류가 발생하였습니다. 잠시후에 다시 시도해주세요.');
+            },
+            complete : function(){
+                turnLoading();
             }
         });
     }
@@ -63,6 +70,9 @@ $(document).ready(function () {
                 server : server
             },
             dataType: "json",
+            beforeSend: function(){
+                turnLoading();
+            },
             success: function (response) {
                 const ul = $('#guildList');
                 $(ul).empty();
@@ -80,6 +90,9 @@ $(document).ready(function () {
             },
             error : function(request,status,error){
                 showAlert('알수없는 오류가 발생하였습니다. 잠시후에 다시 시도해주세요.');
+            },
+            complete : function(){
+                turnLoading();
             }
         });
     }
@@ -114,6 +127,9 @@ $(document).ready(function () {
                 offset : offset,
             },
             dataType: "json",
+            beforeSend: function(){
+                turnLoading();
+            },
             success: function (response) {
                 appendResponse(response);
                 $('#offset').val(offset);
@@ -123,7 +139,11 @@ $(document).ready(function () {
             },
             error: function(e){
                 showAlert('알수없는 오류가 발생하였습니다. 잠시후에 다시 시도해주세요.');
+            },
+            complete : function(){
+                turnLoading();
             }
+
         });
     });
 

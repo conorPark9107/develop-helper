@@ -217,8 +217,8 @@ th{
     top: 60px;
     font-weight: bold;
     padding: 10px 0px;
-    background-color: var(--table-th-color);
-    color: var(--white);
+    background-color: var(--sub-color);
+    color: var(--main-color);
     /*border-left: 1px solid var(--sub-color);
     border-right: 1px solid var(--sub-color);
     border-bottom: 2px solid var(--sub-color);

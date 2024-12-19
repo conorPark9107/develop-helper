@@ -52,10 +52,10 @@
         </div>
         <div class="flex-row flex-vertical-center">
             <div class="flex-item">
-                <a class="btn shadow blur" id="multiBtn">선택한 전투 모아 보기</a>
+                <a class="btn shadow blur" id="multiBtn"><!--선택한 전투 모아 보기-->준비중</a>
             </div>
             <div class="flex-item">
-                <span class="select-button shadow">참여 플레이어 수 🔻</span>
+                <span class="select-button shadow blur"><!--참여 플레이어 수 🔻-->준비중</span>
                 <ul class="dropdown">
                     <li class="dropdown-content">
                         <a href="">최근 전투</a>
@@ -79,6 +79,9 @@
                         <a href="">100명 이상</a>
                     </li>
                 </ul>
+            </div>
+            <div class="flex-item">
+                <a class="btn shadow" href="/battle">검색 결과 초기화</a>
             </div>
             <div class="flex-item">
                 <input type="radio" id="server01" name="server" value="east" checked />
@@ -127,7 +130,7 @@
                             <th:block th:text="${guildStat.last} ? ${guild.name} : ${guild.name} + ','"></th:block>
                         </span>
                     </td>
-                    <td th:text="${battle.totalFame}"></td>
+                    <td th:text="${#numbers.formatInteger(battle.totalFame, 1, 'COMMA')}"></td>
                     <td th:text="${#lists.size(battle.players)}"></td>
                     <td th:text="${battle.totalKills}"></td>
                 </tr>
