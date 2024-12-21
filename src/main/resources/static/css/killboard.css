@@ -2,7 +2,7 @@ span:hover {
     opacity: 0.7;
 }
 #killTable, #deathTable{
-    width: 100%;
+    width: 1200px;
     white-space: nowrap;
     border-collapse: collapse;
     box-shadow: 0 0 10px 0px var(--shadow);
@@ -20,6 +20,10 @@ span:hover {
     background-color: var(--sub-color);
     color: var(--main-color);
 }
+tr:hover{
+    cursor:pointer;
+    background-color: var(--table-hover);
+}
 .kill{
     color: var(--red);
 }
@@ -32,7 +36,7 @@ span:hover {
     padding: 0 3em;
 }
 #userId{
-    width: 60%;
+    width: 500px;
 }
 .content-body-items{
     margin-bottom : 1vw;
@@ -75,15 +79,14 @@ caption {
 }
 .warningMsg{
     color : red;
-    font-size:0.3em;
+    font-size:8px;
     font-weight: bold;
 }
 .infoMsg{
     color : #2A6FDE;
-    font-size:0.3em;
+    font-size:8px;
     font-weight: bold;
 }
-
 .participants {
   position: relative;
   display: inline-block;

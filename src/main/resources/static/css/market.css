@@ -1,16 +1,13 @@
+.flex-div{
+    display: flex;
+    flex-direction: column;
+}
 .menu-ul{
     padding-inline-start: 0;
 }
-.server-legend{
-    font-size: 1.17em;
-}
 .priceArea{
-    min-width: 65vw;
     display: flex;
     flex-wrap: wrap;
-}
-.server-fieldset{
-    text-align : center;
 }
 img{
     width: 4em;
@@ -106,7 +103,7 @@ input[type="text"]:focus{
     border: 1px solid rgba(238, 238, 238, 0.1);
 }
 #marketTable{
-    width:100%;
+    width: 1000px;
     box-shadow: 0 0 10px 0 var(--shadow);
 }
 #marketTable th:not(:first-child){
@@ -136,4 +133,22 @@ input[type="text"]:focus{
 }
 #marketTable td:nth-child(1){
     text-align: center;
+}
+.flex-item{
+    padding : 10px;
+    border-bottom: 1px solid var(--table-hover);
+}
+@media screen and (max-width: 1024px) {
+    .menu-detail {
+        width : 100%;
+    }
+    .flex-item {
+        text-align : center;
+    }
+    .flex-item:last-child {
+        text-align : left;
+    }
+    #marketTable{
+        width:950px;
+    }
 }

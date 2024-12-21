@@ -2,11 +2,13 @@
 html{
     height: 100%;
 }
+*{
+    font-family: 'Galmuri14';
+}
 body {
     height: 100%;
     background-color: var(--main-color);
     color: var(--sub-color);
-    font-family: 'Galmuri14';
     overflow-x: hidden;
     font-weight: 600;
 }
@@ -217,4 +219,7 @@ legend {
 }
 .yellow{
     color: var(--yellow);
+}
+input:focus::placeholder{
+    color:transparent;
 }

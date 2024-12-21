@@ -40,36 +40,38 @@
             <div class="main">
 
                 <div class="menu-detail">
-                    <div>
-                        <fieldset class="server-fieldset">
-                            <legend class="server-legend">🔻 서버 선택 🔻</legend>
+                    <div class="flex-div">
+                        <div class="flex-item">
+                            <p>🔻 서버 선택 🔻</p>
                             <input type="radio" id="server01" name="server" value="east" checked/>
                             <label for="server01">아시아</label>
                             <input type="radio" id="server02" name="server" value="west" />
                             <label for="server02">아메리카</label>
                             <input type="radio" id="server03" name="server" value="europe" />
                             <label for="server03">유럽</label>
-                        </fieldset>
-                        <fieldset>
-                            <legend class="server-legend">🔻 품질 🔻</legend>
-                            <input type="radio" id="quality" name="quality" value="1" checked/>
+                        </div>
+
+                        <div class="flex-item">
+                            <p>🔻 품질 🔻</p>
+                            <input type="radio" id="quality" name="quality" value="1"/>
                             <label for="quality">일반</label>
                             <input type="radio" id="quality02" name="quality" value="2" />
                             <label for="quality02">좋음</label>
                             <input type="radio" id="quality03" name="quality" value="3" />
                             <label for="quality03">뛰어남</label>
-                            <input type="radio" id="quality04" name="quality" value="4" />
+                            <input type="radio" id="quality04" name="quality" value="4" checked/>
                             <label for="quality04">우수함</label>
                             <input type="radio" id="quality05" name="quality" value="5" />
                             <label for="quality05">걸작</label>
-                        </fieldset>
-                        <fieldset class="tierFieldset">
-                            <legend class="server-legend">🔻 티어 🔻</legend>
+                        </div>
+
+                        <div class="flex-item">
+                            <p>🔻 티어 🔻</p>
                             <select id="tier" class="tier">
                                 <option value="T3">3</option>
-                                <option value="T4" selected>4</option>
+                                <option value="T4">4</option>
                                 <option value="T5">5</option>
-                                <option value="T6">6</option>
+                                <option value="T6" selected>6</option>
                                 <option value="T7">7</option>
                                 <option value="T8">8</option>
                             </select>
@@ -80,9 +82,10 @@
                                 <option value="@3">.3</option>
                                 <option value="@4">.4</option>
                             </select>
-                        </fieldset>
-                        <fieldset>
-                            <legend class="server-legend">🔻 카테고리 🔻</legend>
+                        </div>
+
+                        <div class="flex-item">
+                            <p>🔻 카테고리 🔻</p>
                             <ul class="menu-ul" id="categoryList">
                                 <li value="warrior">워리어 무기 & 보조 무기(방패)</li>
                                 <li value="helmet">헬멧</li>
@@ -104,7 +107,7 @@
                                 <hr/>
                                 <li value="potion">포션</li>
                                 <li value="food">음식</li>
-                                <hr/>
+
                                 <!--                        <li>팩션 명품</li>-->
                                 <!--                        <li>도시 명품</li>-->
                                 <!--                        <li>아티펙트</li>-->
@@ -114,7 +117,7 @@
                                 <!--                        <li>채집 장비</li>-->
                                 <!--                        <li>채집 도구</li>-->
                             </ul>
-                        </fieldset>
+                        </div>
                     </div>
                 </div> <!-- class="main" -->
 
