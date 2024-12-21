@@ -36,13 +36,15 @@ public class BoardController {
 
         Page<BoardResponseDTO> boardList = boardService.findAllById(pageable, category);
 
-        log.info("pageNumber() : {}", pageable.getPageNumber() + 1);
-        log.info("getTotalPages() : {}", boardList.getTotalPages());
+        log.info("요청한 페이지 번호 pageNumber() : {}", pageable.getPageNumber() + 1);
+        log.info("총 페이지 getTotalPages() : {}", boardList.getTotalPages());
 
-        int range = 10; // 기본적으로 보여줄 페이지 index 개수.
+        int range = 5; // 기본적으로 보여줄 페이지 index 개수.
         int firstPage = 0; // 첫 페이지.
-        int pickPage = pageable.getPageNumber(); // 현재 선택된 페이지.
+
+        int nowPage = pageable.getPageNumber();
         int lastPage = boardList.getTotalPages(); // 마지막페이지.
+        int pickPage = (nowPage == lastPage)? lastPage - 1 : nowPage; // 현재 선택된 페이지.
         int startPage = (pickPage / range) * range; // 시작점.
         int endPage = Math.min((startPage + range), lastPage); // 종료점.
 
@@ -52,6 +54,7 @@ public class BoardController {
         model.addAttribute("pickPage", pickPage);
         model.addAttribute("startPageNum", startPage);
         model.addAttribute("endPageNum", endPage);
+        System.out.println(startPage + " : " + endPage + " : " + lastPage);
         model.addAttribute("size", pageable.getPageSize());
         model.addAttribute("list", boardList);
         return "board/board";

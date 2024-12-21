@@ -367,6 +367,7 @@ table .col7 {
 
 .pagination a:hover:not(.nowPage) {
     background-color: var(--sub-color);
+    color: var(--main-color);
     border-radius: 5px;
 }
 
