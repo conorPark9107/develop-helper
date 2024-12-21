@@ -10,6 +10,7 @@
 <!--    <link rel="stylesheet" href="/static/css/detail.css" />-->
 
     <script type="text/javascript" src="/js/util.js"></script>
+    <link rel="stylesheet" href="/css/gold/gold.css" />
     <link rel="stylesheet" href="/css/variable.css" />
     <link rel="stylesheet" href="/css/loading.css" />
     <link rel="stylesheet" href="/css/index.css" />
@@ -40,26 +41,22 @@
         </div>
         <div style="margin-bottom: 1vw;">
             <div>
-                <canvas id="myChart-all" width="1000" height="300" style="margin: 1vw;"></canvas>
+                <canvas id="myChart-all" width="1000" height="300"></canvas>
             </div>
         </div>
 
 
-        <div style="display: flex;
-                    justify-content: center;
-                    row-gap: 15px;
-                    padding: 0 12px;
-                    margin: 1vw;">
+        <div class="sub-chart-div">
             <div>
-                <canvas id="myChart-east" width="500" height="300" style="margin: 1vw;"></canvas>
+                <canvas class="chart" id="myChart-east" width="500" height="300"></canvas>
             </div>
 
             <div>
-                <canvas id="myChart-west" width="500" height="300" style="margin: 1vw;"></canvas>
+                <canvas class="chart" id="myChart-west" width="500" height="300"></canvas>
             </div>
 
             <div>
-                <canvas id="myChart-europe" width="500" height="300" style="margin: 1vw;"></canvas>
+                <canvas class="chart" id="myChart-europe" width="500" height="300"></canvas>
             </div>
         </div>
     </div>

@@ -68,36 +68,28 @@ img{
     cursor: pointer;
 }
 .martlock{
-    color: var(--white);
-    background-color: #26414C;
+    color: #26414C;
 }
 .thetford{
-    color: var(--black);
-    background-color: #A15AAA;
+    color: #A15AAA;
 }
 .fortsterling{
-    color: var(--black);
-    background-color: #D9D9D9;
+    color: #939393;
 }
 .lymhurst{
-    color: var(--white);
-    background-color: #085820;
+    color: #085820;
 }
 .bridgewatch{
-    color: var(--black);
-    background-color: #D2C700;
+    color: #D2C700;
 }
 .caerleon{
-    color: var(--white);
-    background-color: #44000A;
+    color: #44000A;
 }
 .brecilien{
-    color: var(--white);
-    background-color: #7A297B;
+    color: #7A297B;
 }
 .blackmarket{
-    color: var(--white);
-    background-color: #000000;
+    color: #000000;
 }
 .selctedItem{
     border: 2px solid;
@@ -120,14 +112,24 @@ input[type="text"]:focus{
 #marketTable th:not(:first-child){
     text-align: right;
 }
+#marketTable thead tr{
+    background-color: var(--sub-color);
+    color: var(--main-color);
+    border-bottom: 2px solid var(--sub-color);
+    border-top: 2px solid var(--sub-color);
+    border-top-left-radius : 8px;
+    border-top-right-radius: 8px;
+}
+#marketTable tbody tr:last-child{
+    border-bottom: 0px;
+    border-bottom-left-radius : 8px;
+    border-bottom-right-radius: 8px;
+}
 #marketTable th{
-    background-color: var(--table-th-color);
-    color: var(--white);
-    border-bottom: 2px solid var(--sub-color-a);
-    border-top: 2px solid var(--sub-color-a);
     padding: 10px 10px;
 }
 #marketTable td{
+    border-right: 1px solid var(--sub-color-a);
     border-bottom: 1px dashed var(--sub-color-a);
     padding: 10px 10px;
     text-align: right;

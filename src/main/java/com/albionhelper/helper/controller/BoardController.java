@@ -52,7 +52,6 @@ public class BoardController {
         model.addAttribute("pickPage", pickPage);
         model.addAttribute("startPageNum", startPage);
         model.addAttribute("endPageNum", endPage);
-
         model.addAttribute("size", pageable.getPageSize());
         model.addAttribute("list", boardList);
         return "board/board";

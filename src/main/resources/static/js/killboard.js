@@ -1,11 +1,12 @@
 $(document).ready(function() {
-
+    /*
     var tempPageName = window.location.href;
     var strpageName = tempPageName.split("/");
     var nowPage = strpageName[strpageName.length-1].split("?")[0];
     if(nowPage === 'killboard'){
         showAlert('알비온온라인 서버에서 공식적으로 데이터를 오픈한게 아닙니다. <br/> 그렇기 때문에 정보를 요청하면 응답이 매우 느린 경우가 있습니다.');
     }
+    */
 
     $('#userId').on('keyup',function(e){
         var text = $('#userId').val();

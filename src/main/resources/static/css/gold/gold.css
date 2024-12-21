@@ -1,0 +1,11 @@
+.sub-chart-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 15px;
+    padding: 0 12px;
+    margin: 1vw;
+}
+.chart{
+    margin: 1vw;
+}

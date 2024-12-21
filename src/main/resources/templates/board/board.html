@@ -47,7 +47,6 @@
     <div class="board-header-flex-subDiv">
         <ul class="board-header-left-subDiv">
             <span>카테고리</span>
-            <!-- 카테고리를 클릭했을때 해당하는 것을 보여줘야해 -->
             <li th:classappend="${#strings.equals(category, '전체')}? clicked" class="category" onclick="clickedCategory(this)" value="전체">전체</li>
             <li th:classappend="${#strings.equals(category, '일반')}? clicked" class="category" onclick="clickedCategory(this)" value="일반">일반</li>
             <li th:classappend="${#strings.equals(category, '공략')}? clicked" class="category" onclick="clickedCategory(this)" value="공략">공략</li>
@@ -102,6 +101,9 @@
             </tr>
             </thead>
             <tbody>
+            <th:block th:if="${#strings.isEmpty(list)}">
+                <tr><td colspan="7">현재 등록된 게시글이 없습니다.</td></tr>
+            </th:block>
             <tr th:each="board: ${list}">
                 <td th:text="${board.id}"></td>
                 <td th:text="${board.category}"></td>
@@ -128,21 +130,16 @@
             <div class="pagination">
                 <a th:href="@{/board?(page=${firstPage},size=${size})}">&laquo;&laquo;</a>
                 <a th:href="@{/board?(page=${startPageNum-1},size=${size})}">&lt;</a>
-
-<!--                    <a href="#" th:text="${startPageNum}"></a>-->
-<!--                    <a href="#" th:text="${endPageNum}"></a>-->
-                <th:block th:each="i : ${#numbers.sequence(startPageNum, endPageNum - 1)}">
+                <th:block th:each="i : ${#numbers.sequence(startPageNum, endPageNum)}">
                     <th:block th:if="${i == pickPage}">
                         <a class="nowPage" th:href="@{/board?(page=${i},size=${size})}" th:text="${i+1}"></a>
                     </th:block>
                     <th:block th:unless="${i == pickPage}">
-                        <a th:href="@{/board?(page=${i},size=${size})}" th:text="${i+1}"></a>
+                        <a th:href="@{/board?(page=${i-1},size=${size})}" th:text="${i+1}"></a>
                     </th:block>
                 </th:block>
-
                 <a th:href="@{/board?(page=${endPageNum},size=${size})}">&gt;</a>
                 <a th:href="@{/board?(page=${lastPage - 1},size=${size})}">&raquo;&raquo;</a>
-
               </div>
         </div>
     </div>
