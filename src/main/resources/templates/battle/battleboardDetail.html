@@ -90,21 +90,21 @@
                         <span th:text="|${#numbers.formatInteger(mostDonation.deathFame, 1, 'COMMA')}데스페임|"></span>
                         <div class="detailEnd imageArea" th:with="p=${mostDonation.equipment}">
                             <img th:if="${not #strings.isEmpty(p.mainHand)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}&size=64|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}&size=64|"/>
                             <img th:if="${not #strings.isEmpty(p.offHand)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.offHand.type}?quality=${p.offHand.quality}&size=64|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.offHand.type}?quality=${p.offHand.quality}&size=64|"/>
                             <img th:if="${not #strings.isEmpty(p.head)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.head.type}?quality=${p.head.quality}&size=64|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.head.type}?quality=${p.head.quality}&size=64|"/>
                             <img th:if="${not #strings.isEmpty(p.armor)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.armor.type}?quality=${p.armor.quality}&size=64|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.armor.type}?quality=${p.armor.quality}&size=64|"/>
                             <img th:if="${not #strings.isEmpty(p.shoes)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.shoes.type}?quality=${p.shoes.quality}&size=64|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.shoes.type}?quality=${p.shoes.quality}&size=64|"/>
                             <img th:if="${not #strings.isEmpty(p.cape)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.cape.type}?quality=${p.cape.quality}&size=64|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.cape.type}?quality=${p.cape.quality}&size=64|"/>
                             <img th:if="${not #strings.isEmpty(p.mount)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.mount.type}?quality=${p.mount.quality}&size=64|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.mount.type}?quality=${p.mount.quality}&size=64|"/>
                             <th:block th:if="${not #strings.isEmpty(mostDonation.inventory)}" th:each="inventory : ${mostDonation.inventory}">
-                                <img th:if="${not #strings.isEmpty(inventory)}" th:src="|https://render.albiononline.com/v1/item/${inventory.type}?quality=${inventory.quality}&size=64|" alt="미착용" />
+                                <img th:if="${not #strings.isEmpty(inventory)}" th:src="|https://render.albiononline.com/v1/item/${inventory.type}?quality=${inventory.quality}&size=64|"/>
                             </th:block>
                         </div>
                     </div>
@@ -214,17 +214,17 @@
                         </td>
                         <td th:with="p=${players.equipment}">
                             <img th:if="${not #strings.isEmpty(p.mainHand)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}|"/>
                             <img th:if="${not #strings.isEmpty(p.offHand)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.offHand.type}?quality=${p.offHand.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.offHand.type}?quality=${p.offHand.quality}|"/>
                             <img th:if="${not #strings.isEmpty(p.head)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.head.type}?quality=${p.head.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.head.type}?quality=${p.head.quality}|"/>
                             <img th:if="${not #strings.isEmpty(p.armor)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.armor.type}?quality=${p.armor.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.armor.type}?quality=${p.armor.quality}|"/>
                             <img th:if="${not #strings.isEmpty(p.shoes)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.shoes.type}?quality=${p.shoes.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.shoes.type}?quality=${p.shoes.quality}|"/>
                             <img th:if="${not #strings.isEmpty(p.cape)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.cape.type}?quality=${p.cape.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${p.cape.type}?quality=${p.cape.quality}|"/>
                         </td>
                         <td th:text="${players.kills}"></td>
                         <td th:text="${players.deaths}"></td>
@@ -265,17 +265,17 @@
                         </td>
                         <td th:with="k=${eventList.killer.equipment}">
                             <img th:if="${not #strings.isEmpty(k.mainHand)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${k.mainHand.type}?quality=${k.mainHand.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${k.mainHand.type}?quality=${k.mainHand.quality}|"/>
                             <img th:if="${not #strings.isEmpty(k.offHand)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${k.offHand.type}?quality=${k.offHand.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${k.offHand.type}?quality=${k.offHand.quality}|"/>
                             <img th:if="${not #strings.isEmpty(k.head)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${k.head.type}?quality=${k.head.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${k.head.type}?quality=${k.head.quality}|"/>
                             <img th:if="${not #strings.isEmpty(k.armor)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${k.armor.type}?quality=${k.armor.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${k.armor.type}?quality=${k.armor.quality}|"/>
                             <img th:if="${not #strings.isEmpty(k.shoes)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${k.shoes.type}?quality=${k.shoes.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${k.shoes.type}?quality=${k.shoes.quality}|"/>
                             <img th:if="${not #strings.isEmpty(k.cape)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${k.cape.type}?quality=${k.cape.quality}|" alt="미착용" />
+                                 th:src="|https://render.albiononline.com/v1/item/${k.cape.type}?quality=${k.cape.quality}|"/>
                         </td>
                         <td th:text="${eventList.killer.averageItemPower}"></td>
                         <td>
@@ -285,15 +285,15 @@
                         </td>
                         <td th:with="v=${eventList.victim.equipment}">
                             <img th:if="${not #strings.isEmpty(v.mainHand)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${v.mainHand.type}?quality=${v.mainHand.quality}|" alt="미착용"/>
+                                 th:src="|https://render.albiononline.com/v1/item/${v.mainHand.type}?quality=${v.mainHand.quality}|"/>
                             <img th:if="${not #strings.isEmpty(v.head)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${v.head.type}?quality=${v.head.quality}|" alt="미착용"/>
+                                 th:src="|https://render.albiononline.com/v1/item/${v.head.type}?quality=${v.head.quality}|"/>
                             <img th:if="${not #strings.isEmpty(v.armor)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${v.armor.type}?quality=${v.armor.quality}|" alt="미착용"/>
+                                 th:src="|https://render.albiononline.com/v1/item/${v.armor.type}?quality=${v.armor.quality}|"/>
                             <img th:if="${not #strings.isEmpty(v.shoes)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${v.shoes.type}?quality=${v.shoes.quality}|" alt="미착용"/>
+                                 th:src="|https://render.albiononline.com/v1/item/${v.shoes.type}?quality=${v.shoes.quality}|"/>
                             <img th:if="${not #strings.isEmpty(v.cape)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${v.cape.type}?quality=${v.cape.quality}|" alt="미착용"/>
+                                 th:src="|https://render.albiononline.com/v1/item/${v.cape.type}?quality=${v.cape.quality}|"/>
                         </td>
                         <td th:text="${eventList.victim.averageItemPower}"></td>
                     </tr>

@@ -302,3 +302,15 @@ table .col6 {
     cursor: pointer;
     text-decoration: underline;
 }
+@media screen and (max-width: 1024px) {
+    .input, .flex-row, .btn, .select-button{
+        font-size: 17px;
+    }
+    .info-msg, .table{
+        margin-top: 60px;
+        font-size: 14px;
+    }
+    .moreviewDiv{
+        margin-top: 10px;
+    }
+}

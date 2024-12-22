@@ -91,7 +91,7 @@ div.board-header-left-subDiv>span {
 
 .board-title-div {
     text-align: left;
-    max-width: 50%;
+    max-width: 47%;
     margin: 1% auto;
 }
 
@@ -645,4 +645,39 @@ h4{
 .down:hover{
     opacity: 0.5;
 }
-
+@media screen and (max-width: 1024px) {
+    .board-header-title{
+        font-size: 36px;
+    }
+    .board-header-left-subDiv{
+        font-size:25px;
+    }
+    .board-header-flex-subDiv{
+        margin-bottom: 20px;
+    }
+    .li.category.clicked, th{
+        font-size: 20px;
+    }
+    .select-button, .write-button, .dropdown-content, .board-header-sub, .board-title-div p{
+        font-size: 18px;
+    }
+    .li.category{
+        font-size: 14px;
+    }
+    td{
+        font-size: 14px;
+        padding: 15px 0px;
+    }
+    .dropdown{
+        width: 130px;
+    }
+    .pagination a{
+        font-size: 14px;
+    }
+    .board-title-div{
+        max-width: 60%;
+    }
+    .contents{
+        min-height: 85vw;
+    }
+}

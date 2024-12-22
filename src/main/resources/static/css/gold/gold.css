@@ -1,3 +1,12 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
 .sub-chart-div{
     display: flex;
     flex-wrap: wrap;
@@ -8,4 +17,14 @@
 }
 .chart{
     margin: 1vw;
+}
+.chart-div{
+    width: 500px;
+    max-height: 400px;
+}
+@media screen and (max-width: 1024px) {
+    .chart-div{
+        width: 1000px;
+        max-height: 400px;
+    }
 }

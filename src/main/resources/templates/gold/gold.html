@@ -29,13 +29,7 @@
         </label>
     </div>
 
-    <div style="display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: 0 auto;
-    width: 100%;">
+    <div class="container">
         <div class="container-title">
             <h3>💰골드 시세💰</h3>
         </div>
@@ -47,15 +41,15 @@
 
 
         <div class="sub-chart-div">
-            <div>
+            <div class="chart-div">
                 <canvas class="chart" id="myChart-east" width="500" height="300"></canvas>
             </div>
 
-            <div>
+            <div class="chart-div">
                 <canvas class="chart" id="myChart-west" width="500" height="300"></canvas>
             </div>
 
-            <div>
+            <div class="chart-div">
                 <canvas class="chart" id="myChart-europe" width="500" height="300"></canvas>
             </div>
         </div>
@@ -113,6 +107,7 @@
         ]
       },
       options: {
+        maintainAspectRatio: false,
         responsive: true,
         plugins: {
           title: {
@@ -138,6 +133,7 @@
         ]
       },
       options: {
+        maintainAspectRatio: false,
         responsive: true,
         plugins: {
           title: {
@@ -162,6 +158,7 @@
         ]
       },
       options: {
+        maintainAspectRatio: false,
         responsive: true,
         plugins: {
           title: {
@@ -198,6 +195,7 @@
           }]
         },
         options: {
+        maintainAspectRatio: false,
         responsive: true,
         plugins: {
           title: {

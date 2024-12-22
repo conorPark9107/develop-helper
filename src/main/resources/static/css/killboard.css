@@ -2,7 +2,7 @@ span:hover {
     opacity: 0.7;
 }
 #killTable, #deathTable{
-    width: 1200px;
+    width: 100%;
     white-space: nowrap;
     border-collapse: collapse;
     box-shadow: 0 0 10px 0px var(--shadow);
@@ -10,7 +10,7 @@ span:hover {
 #killTable td, #deathTable td {
     padding: 10px 10px;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 12px;
     font-weight: bold;
     border-bottom : 1px dashed var(--table-hover);
 }
@@ -79,7 +79,7 @@ caption {
 }
 .warningMsg{
     color : red;
-    font-size:8px;
+    font-size:10px;
     font-weight: bold;
 }
 .infoMsg{
@@ -122,4 +122,65 @@ caption {
 .participants-div:hover .participant{
     opacity: 0.9;
     visibility: visible;
+}
+@media screen and (max-width: 1024px) {
+    #contentTitle{
+        font-size: 30px;
+    }
+    .content-body-items{
+        font-size: 26px;
+    }
+    .warningMsg, .infoMsg{
+        font-size: 14px;
+    }
+    .divTables, table{
+        font-size: 13px;
+    }
+/*    #killTable, #deathTable {
+        white-space: normal;
+    }*/
+    .participants .participant{
+        left: -175px;
+        background-color: var(--sub-color);
+        opacity: 1;
+        z-index: 1;
+    }
+    .participants .participant a{
+        color: var(--main-color);
+    }
+    .participants .participant::after{
+        right: -10%;
+        margin-top: -5px;
+        border-width: 7px;
+        border-color: transparent transparent transparent var(--sub-color);
+    }
+    .col1{
+        width:6%;
+    }
+    .col2{
+        width:12%;
+    }
+    .col3{
+        width:15%;
+    }
+    .col4{
+        width:15%;
+    }
+    .col5{
+        width:9%;
+    }
+    .col6{
+        width:15%;
+    }
+    .col7{
+        width:15%;
+    }
+    .col8{
+        width:9%;
+    }
+    .col9{
+        width:4%;
+    }
+
+
 }

@@ -75,15 +75,28 @@
             </div>
 
             <hr/>
+            <div class="content-body-items">
             <p>🔻선택🔻</p>
-            <input type="radio" id="killRadio" name="radio_kill" value="kill" checked>
-            <label for="killRadio">킬</label>
-            <input type="radio" id="deathRadio" name="radio_kill" value="death">
-            <label for="deathRadio">데스</label>
+                <input type="radio" id="killRadio" name="radio_kill" value="kill" checked>
+                <label for="killRadio">킬</label>
+                <input type="radio" id="deathRadio" name="radio_kill" value="death">
+                <label for="deathRadio">데스</label>
+            </div>
             <!-- TODO: 행을 클릭하면 상세 페이지로 이동하는 페이지 개발필요.-->
             <div id="divTables" class="content-body-items">
                 <p class="infoMsg">죽은사람, 죽은사람 정보를 얻고싶다면 클릭, 어시스트한 사람을 보고싶다면 더보기란 마우스 올리기! </p>
-                <table id="killTable" class="">
+                <table id="killTable">
+                    <colgroup>
+                        <col class="col1">
+                        <col class="col2">
+                        <col class="col3">
+                        <col class="col4">
+                        <col class="col5">
+                        <col class="col6">
+                        <col class="col7">
+                        <col class="col8">
+                        <col class="col9">
+                    </colgroup>
                     <thead>
                     <tr>
                         <th>번호</th>
@@ -128,6 +141,17 @@
                     </tbody>
                 </table>
                 <table id="deathTable" class="" style="display: none;">
+                    <colgroup>
+                        <col class="col1">
+                        <col class="col2">
+                        <col class="col3">
+                        <col class="col4">
+                        <col class="col5">
+                        <col class="col6">
+                        <col class="col7">
+                        <col class="col8">
+                        <col class="col9">
+                    </colgroup>
                     <thead>
                     <tr>
                         <th>번호</th>

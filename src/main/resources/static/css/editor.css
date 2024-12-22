@@ -170,3 +170,8 @@ div > input[name=inputPassword]:hover, div > input[name=inputPassword]:focus{
 .jconfirm.jconfirm-supervan .jconfirm-box div.jconfirm-content{
     color: var(--sub-color);
 }
+@media screen and (max-width: 1024px) {
+    .ql-editor{
+        min-height: 85vw;
+    }
+}

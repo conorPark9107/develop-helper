@@ -140,7 +140,9 @@ input[type="text"]:focus{
 }
 @media screen and (max-width: 1024px) {
     .menu-detail {
+        height: 25%;
         width : 100%;
+        font-size: 25px;
     }
     .flex-item {
         text-align : center;
@@ -150,5 +152,13 @@ input[type="text"]:focus{
     }
     #marketTable{
         width:950px;
+        font-size : 20px;
+    }
+    .itemImage{
+        width: 90px;
+        height: 90px;
+    }
+    .menu-ul li{
+        font-size : 25px;
     }
 }

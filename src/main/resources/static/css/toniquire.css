@@ -14,7 +14,7 @@
 }
 .input-text{
     width: 85%;
-    color: var(--textarea-color);
+    color: var(--sub-color);
     background-color: var(--main-color-a);
     border: 1px solid var(--sub-color);
     border-radius: 2px;
@@ -79,4 +79,12 @@
 }
 .full-width{
     width:40%;
+}
+@media screen and (max-width: 1024px) {
+    .full-width{
+        width: 95%;
+    }
+    .inquireList li, .btn{
+        font-size: 20px;
+    }
 }

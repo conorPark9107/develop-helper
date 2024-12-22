@@ -1,14 +1,18 @@
 @import url('https://fastly.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
-html{
-    height: 100%;
-}
 *{
     font-family: 'Galmuri14';
 }
+html{
+    margin: 0px;
+    overflow-x: hidden;
+    height: 100%;
+}
 body {
+    width: 100%;
     height: 100%;
     background-color: var(--main-color);
     color: var(--sub-color);
+    margin: 0px;
     overflow-x: hidden;
     font-weight: 600;
 }
@@ -53,7 +57,7 @@ footer{
 
 .container-title {
     display: flex;
-    font-size: 2em;
+    font-size: 36px;
     padding: 0 12px;
     justify-content: center;
     align-items: center;
