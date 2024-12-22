@@ -29,6 +29,7 @@ fieldset{
     padding: 0px  10px;
     flex-wrap: wrap;
     padding-bottom: 50px;
+    align-items: flex-start;
 }
 .all-menu{
     border-right: 1px dashed var(--sub-color);
@@ -37,7 +38,6 @@ fieldset{
 .menu{
     vertical-align: top;
     position:sticky;
-    top: 15%;
     display:inline-block;
     min-width: 49%;
 }
@@ -312,33 +312,19 @@ table tbody td input{
     font-size: 10px;
     color: RGB(87, 95, 211);
     float: left;
-    margin-top: -40px;
+    margin-top: -44px;
 }
 .timeAgo-cooking{
     font-size: 10px;
     color: RGB(87, 95, 211);
     float: left;
-    margin-top: -40px;
-}
-
-@media screen and (max-width: 1525px){
-    .menu{
-        position: static;
-        display: flex;
-        flex-direction: column;
-        margin: 10% 0;
-    }
-    .menu-message {
-        position: static;
-    }
-    .header{
-        position: static;
-    }
+    margin-top: -44px;
 }
 .qunatityArea{
     float: right;
     text-align:right;
     margin-bottom: 1%;
+    margin-right: 2%;
 }
 .qunatityArea input{
     width: 20%;
@@ -449,16 +435,17 @@ table tbody td input{
     opacity: 0.5;
 }
 .flex-row-div{
-    width: 100%;
+    width: 98%;
 }
 .main-table{
-    width:100%;
+    width: 98%;
 }
 .sub-table caption{
     font-weight: bold;
 }
 .sub-table{
     margin-top : 1%;
+    margin-right: 2%;
     float: right;
     height: 100%;
     width: 40%;
@@ -534,4 +521,89 @@ table tbody td input{
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+}
+@media screen and (max-width: 1024px) {
+    .menu-message{
+        font-size: 16px;
+        border-bottom: 1px dashed var(--sub-color);
+        border-top: 1px dashed var(--sub-color);
+        margin-bottom: 3%;
+    }
+    .main{
+        flex-direction: column;
+        align-items: center;
+    }
+    .all-menu{
+        width:100%;
+        border-right: 0;
+        border-bottom: 1px dashed var(--sub-color);
+    }
+    .menu {
+        padding: 0 0 2% 0;
+    }
+    .menu-item{
+        font-size: 20px;
+        margin-top : 15px;
+        margin-bottom : 0;
+        padding-bottom : 10px;
+    }
+    p{
+        margin-bottom : 0;
+    }
+    .btn{
+        font-size: 25px;
+        display: inline-block;
+        width: 100%;
+    }
+    .table-div{
+        margin-top: 2%;
+        width : 100%;
+    }
+    .input-number{
+        padding: 12px 10px;
+        width: 100%;
+    }
+    td{
+        font-size: 18px;
+        padding: 15px 10px;
+    }
+    select{
+        padding: 10px 10px;
+    }
+    .priceDetail, .material span, .material-cooking span{
+        font-size: 12px;
+    }
+    td img{
+        width: 60px;
+        height: 60px;
+    }
+    .refining-table td:nth-child(5) img{
+        width: 40px;
+        height: 40px;
+    }
+    .timeAgo, .timeAgo-cooking{
+        margin-top: 0;
+    }
+    .image-div img{
+        width: 57px;
+        height: 57px;
+    }
+    .main-table-after img{
+        width: 57px;
+        height: 57px;
+    }
+    .material-cooking img{
+        width: 35px;
+        height: 35px;
+    }
+    .priceArea{
+        width: 100%;
+    }
+    .grid-2fr {
+        gap: 5px;
+        grid-template-columns: repeat(auto-fill, minmax(35%, auto));
+    }
+    .main-table tbody tr td{
+        font-size: 18px;
+    }
 }
