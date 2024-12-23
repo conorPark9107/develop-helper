@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
+    <link rel="stylesheet" href="/static/css/variable.css" />
+    <link rel="stylesheet" href="/static/css/loading.css" />
+    <link rel="stylesheet" href="/static/css/index.css" /> -->
+
+    <script type="text/javascript" src="/js/util.js"></script>
+    <link rel="stylesheet" href="/css/variable.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/detail.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
+    <link rel="stylesheet" href="/css/info/info.css" />
+
+    
+    <meta charset="UTF-8">
+    <title>⚔ 알비온 헬퍼 ⚔</title>
+</head>
+<body class="indexBody" data-theme="light-mode">
+<script type="text/javascript" src="/js/toggle.js"></script>
+    <div class="header">
+        <a class="header-logo hover" href="/">Albion Helper</a>
+        <label class="switch">
+            <input class="switchBtn" role="switch" type="checkbox" />
+            <span>다크 모드</span>
+        </label>
+    </div>
+    <div class="container">
+        <div class="container-title">
+            <img class="container-title-image" src="https://render.albiononline.com/v1/spell/Fear Aura.png?locale=en"  alt="이미지 없음."/>
+            <h6>정확한 시장 가격을 얻는데 기여하는 방법.</h6>
+            <img class="container-title-image" src="https://render.albiononline.com/v1/wardrobe/UNIQUE_HEAD_VANITY_PUMPKIN_02.png"  alt="이미지 없음."/>
+        </div>
+
+        <div class="flex">
+            <div class="flex-item">
+                <p class="sub-title">먼저 기여하는데 관심 가져주셔서 감사합니다.🙏</p>
+                <br>
+
+                <p class="sub-title">먼저 정확한 시장 가격을 위해 AODP(Albion Data Project)프로그램이 필요합니다!</p>
+                <p class="sub-msg">
+                    - 알비온 온라인에서는 유저들에게 API를 제공하지 않지만, 네트워크 패킷을 보고 분석해서 저장하는 프로그램이 존재합니다.
+                    이 프로그램이 <a class="hover link" href="https://www.albion-online-data.com/">AODP(Albion online data project)</a>입니다.
+                </p>
+                <p class="sub-msg">
+                    - 이 홈페이지 개발자도 현재 이 프로그램을 사용하고 있는데 이 프로그램은 큰 리소스를 잡아먹지 않는것 같습니다.
+                    <br> (이 프로그램은 백그라운드에서 실행되고 저는 실행중인 상태로 zvz도 합니다.)
+                </p>
+                <p class="sub-title">이 프로그램 사용하면 정지당하는거 아닌가요?</p>
+                <p class="sub-msg">
+                    - 아니요. Sandbox Interactive 기술 책임자로부터 네트워크 패킷을 서비스를 방해하지 않는 선에서 보고 분석하는 것이라면 허용한다는 답변을 받았습니다.
+                    <a class="hover link" href="https://forum.albiononline.com/index.php/Thread/51604-Is-it-allowed-to-scan-your-internet-trafic-and-pick-up-logs/?postID=512670#post512670">(답변 링크)</a>
+                </p>
+                <p class="sub-msg">
+                    - 또한 제가 개발한 것이 아니며 오픈 소스입니다. 이 프로그램이 안전한지에 대해서 직접 확인 해보고 싶다면
+                    <a class="hover link" href="https://github.com/ao-data/albiondata-client">(링크)</a>
+                    를 클릭하여 소스 코드가 안전한지 직접 확인해보실수 있습니다.
+                </p>
+
+            </div>
+            <div class="flex-item">
+                <p class="sub-title">
+                    다운로드 방법.
+                </p>
+                <p class="sub-msg">
+                    - 정확한 시장 가격을 얻기 위해서는 먼저
+                    <a class="hover link" href="https://github.com/ao-data/albiondata-client/releases">AODP github Releases</a>에서 프로그램을 다운로드 해야합니다.
+                </p>
+                <p class="sub-msg">
+                    - 아래 이미지에서 검정 박스 부분을 보시고 자신의 컴퓨터의 운영체제에 맞게 다운로드 합니다. <br>
+                    (예를들면 윈도우를 사용한다면 albiondata-client-amd64-installer.exe 파일을 다운로드)
+                </p>
+                <img class="flex-item-image" src="/image/info_01.png"/>
+            </div>
+            <div class="flex-item">
+                <p class="sub-msg">
+                    - 다운로드한 파일을 설치하기 위해 실행하는데 다음과 같은 메세지가 발생합니다.
+                </p>
+                <p class="sub-msg">
+                    - 아래 이미지 검정 박스 부분을 클릭하면 실행 버튼이 나오는데 클릭하여 실행합니다.
+                </p>
+                <img class="flex-item-image" src="/image/info_02.png"/>
+                <img class="flex-item-image" src="/image/info_03.png"/>
+                <p class="sub-msg">
+                    - 설치중간에 WinPcap 인스톨러가 등장하는데, 전부 기본값으로 넘기며 설치합니다.
+                </p>
+                <img class="flex-item-image" src="/image/info_04.png"/>
+
+                <br>
+                <p class="sub-msg">
+                    - 더이상 설치 메세지가 나오지 않는다면 설치가 완료된 것입니다. 다음 재부팅을 하시면 백그라운드에서 프로그램이 구동되는것을 확인하실 수 있습니다.<br>
+                    - 종료는 마우스 우클릭하여 종료 시킬 수 있습니다.
+                    <br>
+                    (아래 이미지 참조)<br>
+                    <img class="flex-item-image" src="/image/info_06.png"/>
+                </p>
+            </div>
+
+            <hr/>
+
+            <div class="flex-item">
+                <p class="sub-title">제거하는 방법.</p>
+                <p class="sub-msg">
+                    - 제어판에 들어가서 Albion Data Client를 검색한 후 제거하시면 됩니다.
+                    <img class="flex-item-image" src="/image/info_05.png"/>
+                </p>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div id="blackArea">
+        <div id="loading">
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <h1>정보 요청중..</h1>
+        </div>
+    </div>
+
+</body>
+</html>

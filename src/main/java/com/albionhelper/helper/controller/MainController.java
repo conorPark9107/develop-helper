@@ -68,6 +68,12 @@ public class MainController {
         return boardService.registerInquire(text);
     }
 
+    @GetMapping("/info")
+    public String showInfoPage(){
+        return "info";
+    }
+
+
     @ResponseBody
     @GetMapping("/test")
     public String testHttpApi(){
