@@ -264,6 +264,7 @@ a{
     flex-direction: row;
     padding: 10px;
     align-items: baseline;
+    justify-content: space-between;
 }
 .flex-grow-1{
     flex-grow: 1;
@@ -291,6 +292,12 @@ a{
 .imageArea img{
     width: 2.5vw;
     height: 2.5vw;
+}
+.border{
+    border: 1px solid var(--sub-color);
+}
+.trHover{
+    background-color: var(--table-hover);
 }
 @media screen and (max-width: 1024px) {
     p{

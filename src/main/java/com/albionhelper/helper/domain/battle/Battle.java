@@ -42,6 +42,11 @@ public class Battle{
     @JsonProperty("alliances")
     private List<Alliance> alliances;
 
+    public void setStartTime(String startTime) {
+        LocalDateTime ldt = LocalDateTime.parse(startTime.replaceAll("Z", "").substring(1, 20));
+        this.startTime = ldt.plusHours(9).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+    }
+
     public void setEndTime(String endTime) {
         LocalDateTime ldt = LocalDateTime.parse(endTime.replaceAll("Z", "").substring(1, 20));
         this.endTime = ldt.plusHours(9).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

@@ -212,6 +212,9 @@ legend {
     background-color: var(--main-color);
     border-color: var(--sub-color);
 }
+.blue{
+    color: var(--lightblue);
+}
 .red{
     color: var(--red);
 }

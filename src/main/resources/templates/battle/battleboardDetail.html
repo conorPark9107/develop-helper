@@ -45,12 +45,45 @@
         <a class="btn text-center" href="javascript:history.back();">목록으로</a>
     </div>
     <div class="container-title">
-        <h6>전투 기록</h6>
+        <h5>🏹전투 기록🛡</h5>
     </div>
     <div class="container">
         <div class="flex-row flex-wrap flex-center gap">
+            <div class="flex-column flex-item border shadow">
+                <div class="detailDiv">
+                    <span class="flex-title">🏹전투 id</span>
+                    <span class="flex-title blue" th:text="${battle.id}"></span>
+                </div>
+            </div>
+            <div class="flex-column flex-item border shadow">
+                <div class="detailDiv">
+                    <span class="flex-title">🕐시작시간(한국시간)</span>
+                    <span class="flex-title blue" th:text="${battle.startTime}"></span>
+                </div>
+            </div>
+            <div class="flex-column flex-item border shadow">
+                <div class="detailDiv">
+                    <span class="flex-title">🕑종료시간(한국시간)</span>
+                    <span class="flex-title blue" th:text="${battle.endTime}"></span>
+                </div>
+            </div>
+            <div class="flex-column flex-item border shadow">
+                <div class="detailDiv">
+                    <span class="flex-title">🏴‍☠️‍️총페임</span>
+                    <span class="flex-title blue" th:text="${#numbers.formatInteger(battle.totalFame, 1, 'COMMA')}"></span>
+                </div>
+            </div>
+            <div class="flex-column flex-item border shadow">
+                <div class="detailDiv">
+                    <span class="flex-title">💀발생한 킬수</span>
+                    <span class="flex-title blue" th:text="|${battle.totalKills}킬|"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex-row flex-wrap flex-center gap">
             <div class="flex-column flex-item kill">
-                <span class="flex-title">🤴🏻가장 킬을 많이한 플레이어</span>
+                <span class="flex-title red">🤴🏻가장 킬을 많이한 플레이어</span>
                 <div class="detailDiv">
                     <p class="flex-grow-1 detailFirst">
                         <span class="detailGuildName" th:text="${mostKiller.name}"></span>
@@ -60,7 +93,7 @@
                 </div>
             </div>
             <div class="flex-column flex-item dps">
-                <span class="flex-title">🧛🏻‍♀️가장 딜을 많이한 플레이어</span>
+                <span class="flex-title purple">🧛🏻‍♀️가장 딜을 많이한 플레이어</span>
                 <div class="detailDiv">
                     <p class="flex-grow-1 detailFirst">
                         <span class="detailGuildName" th:text="${mostDps.name}"></span>
@@ -70,7 +103,7 @@
                 </div>
             </div>
             <div class="flex-column flex-item heal">
-                <span class="flex-title">🧚🏻‍♀️가장 힐을 많이한 플레이어</span>
+                <span class="flex-title green">🧚🏻‍♀️가장 힐을 많이한 플레이어</span>
                 <div class="detailDiv">
                     <p class="flex-grow-1 detailFirst">
                         <span class="detailGuildName" th:text="${mostHeal.name}"></span>
@@ -80,7 +113,7 @@
                 </div>
             </div>
             <div class="flex-column flex-item bigdonation">
-                <span class="flex-title">👼🏻빅 도네이션 플레이어</span>
+                <span class="flex-title yellow">👼🏻빅 도네이션 플레이어</span>
                 <div class="detailDiv">
                     <p class="flex-grow-1 detailFirst">
                         <span class="detailGuildName" th:text="${mostDonation.name}"></span>
@@ -113,7 +146,7 @@
         </div>
         <div class="flex-row flex-wrap flex-center gap">
             <div class="top-table-div">
-                <span class="table-title">👨‍👩‍👧‍👦동맹</span>
+                <span class="table-title" th:text="|👨‍👩‍👧‍👦동맹 (${#lists.size(alliances)})|"></span>
                 <table class="table">
                     <colgroup>
                         <col class="col1">
@@ -138,7 +171,7 @@
                         <td style="text-align:center" colspan="6">동맹 정보 없음</td>
                     </tr>
 
-                    <tr th:each="alliance : ${alliances}">
+                    <tr class="trHover" th:each="alliance : ${alliances}">
                         <td th:text="${alliance.name}"></td>
                         <td th:text="${alliance.playerCount}"></td>
                         <td th:text="${alliance.kills}"></td>
@@ -151,7 +184,7 @@
             </div>
 
             <div class="top-table-div">
-                <span class="table-title">👩‍👧‍👧길드</span>
+                <span class="table-title" th:text="|👩‍👧‍👧길드 (${#lists.size(guilds)})|"></span>
                 <table class="table">
                     <colgroup>
                         <col class="col1">
@@ -172,7 +205,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="guild : ${guilds}">
+                    <tr class="trHover" th:each="guild : ${guilds}">
                         <td th:text="${guild.name}"></td>
                         <td th:text="${guild.playerCount}"></td>
                         <td th:text="${guild.kills}"></td>
@@ -187,7 +220,7 @@
 
         <div class="flex-row flex-wrap flex-center gap">
             <div class="middle-table-div">
-                <span class="table-title">🙍‍♂️플레이어</span>
+                <span class="table-title" th:text="|🙍‍♂️플레이어 (${#lists.size(playerList)})|"></span>
                 <table class="table">
                     <colgroup>
                         <col class="col1">
@@ -206,7 +239,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="players : ${playerList}">
+                    <tr class="trHover" th:each="players : ${playerList}">
                         <td>
                             <span class="detailAlly" th:text="|[${players.allianceName}] ${players.guildName}|"></span>
                             <br>
@@ -236,7 +269,7 @@
         </div>
         <div class="flex-row flex-wrap flex-center gap">
             <div class="middle-table-div">
-                <span class="table-title">👼킬로그</span>
+                <span class="table-title" th:text="|👼킬로그 (${#lists.size(eventList)})|"></span>
                 <table class="table kill-table">
                     <colgroup>
                         <col class="kill-col1">
@@ -257,7 +290,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="eventList : ${eventList}">
+                    <tr class="trHover" th:each="eventList : ${eventList}">
                         <td>
                             <span class="detailAlly" th:text="|[${eventList.killer.allianceName}] ${eventList.killer.guildName}|"></span>
                             <br>

@@ -113,7 +113,7 @@ public class BattlesService {
         ObjectMapper objMapper = new ObjectMapper();
 
         b.setId(String.valueOf(node.get("id")));
-        b.setEndTime(String.valueOf(node.get("startTime")));
+        b.setStartTime(String.valueOf(node.get("startTime")));
         b.setEndTime(String.valueOf(node.get("endTime")));
         b.setTotalFame(String.valueOf(node.get("totalFame")));
         b.setTotalKills(String.valueOf(node.get("totalKills")));
