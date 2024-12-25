@@ -74,7 +74,6 @@ img{
 .gap{
     gap:15px;
 }
-
 .shadow{
     box-shadow: 0 0 8px var(--sub-color);
 }
@@ -86,7 +85,6 @@ img{
     color: var(--main-color);
     background-color: var(--sub-color);
     border-radius: 5px;
-    
 }
 .btn:hover{
     opacity: 0.4;
@@ -310,16 +308,17 @@ a{
     .back-div{
         margin: auto;
     }
-    .flex-title{
-        font-size: 22px;
-        padding-top: 10px;
-        padding-left: 10px;
-    }
+
     .detailGuildName, .detailEnd, table-title{
         font-size: 20px;
     }
     .detailAlly, .table{
         font-size: 14px;
+    }
+    .flex-title{
+        font-size: 22px;
+        padding-top: 10px;
+        padding-left: 10px;
     }
     .detailDiv{
         padding-top: 0px;

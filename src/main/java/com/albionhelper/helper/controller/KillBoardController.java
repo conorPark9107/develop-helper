@@ -1,8 +1,10 @@
 package com.albionhelper.helper.controller;
 
 import com.albionhelper.helper.domain.Player;
+import com.albionhelper.helper.domain.battle.Event;
 import com.albionhelper.helper.domain.killboard.DeathBoard;
 import com.albionhelper.helper.domain.killboard.KillBoard;
+import com.albionhelper.helper.service.BattlesService;
 import com.albionhelper.helper.service.KillboardService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
@@ -23,6 +25,9 @@ public class KillBoardController {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
+    @Autowired
+    private KillboardService killboardService;
+
     // 킬보드 관련 정보.
     // https://www.tools4albion.com/api_info.php
     
@@ -34,8 +39,7 @@ public class KillBoardController {
         return "killboard/killboard";
     }
 
-    @Autowired
-    KillboardService killboardService;
+
 
     @GetMapping("getUserInfo")
     @ResponseBody
@@ -47,15 +51,27 @@ public class KillBoardController {
     @GetMapping("getKillBoard")
     public String getKillBoard(Model model,
                                @RequestParam(value="id")String id,
-                               @RequestParam(value="location")String location) throws JsonProcessingException {
+                               @RequestParam(value="location")String server) throws JsonProcessingException {
 
-        log.info("Request detail => id, location : {} {}", id, location);
-        List<KillBoard> killList = killboardService.getKillBoard(id, location);
-        List<DeathBoard> deathList = killboardService.getDeathBoard(id, location);
+        log.info("Request getKillBoard List => id, location : {}, {}", id, server);
+        List<KillBoard> killList = killboardService.getKillBoard(id, server);
+        List<DeathBoard> deathList = killboardService.getDeathBoard(id, server);
         model.addAttribute("kills", killList);
         model.addAttribute("deaths", deathList);
-        model.addAttribute("location", location);
-        log.info("Response list size => killList, deathList : {} {}", killList.size(), deathList.size());
+        model.addAttribute("location", server);
+        log.info("Response list size => killList, deathList : {}, {}", killList.size(), deathList.size());
+        return "killboard/killboardList";
+    }
+
+    @GetMapping("detail")
+    public String getDetail(Model model,
+                               @RequestParam(value="killerId")String killerId,
+                               @RequestParam(value="victimId")String victimId,
+                               @RequestParam(value="location")String server) throws JsonProcessingException {
+        log.info("Request getDetail => killerId, victimId, location : {}, {}, {}", killerId, victimId, server);
+        Event e = killboardService.getDetail(server, killerId, victimId);
+        model.addAttribute("event", e);
+
         return "killboard/killboardDetail";
     }
 

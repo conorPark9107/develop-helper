@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    // TODO : 서버에 정보 요청시 오래 걸리는 작업들이 있음, 그런것들 로딩 처리 해주자.
-
     // 전투 기록 행(table row)를 클릭하였을때
     $(".maintable tbody").on('click', 'tr' ,function(e){
         turnLoading();

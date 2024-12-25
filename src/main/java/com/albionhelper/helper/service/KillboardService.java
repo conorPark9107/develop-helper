@@ -1,5 +1,6 @@
 package com.albionhelper.helper.service;
 
+import com.albionhelper.helper.domain.battle.Event;
 import com.albionhelper.helper.domain.killboard.DeathBoard;
 import com.albionhelper.helper.domain.killboard.KillBoard;
 import com.albionhelper.helper.domain.Player;
@@ -8,9 +9,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -20,6 +23,9 @@ import java.util.List;
 public class KillboardService {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+    @Autowired
+    private WebClient webClient;
 
     private final String EAST = "https://gameinfo-sgp.albiononline.com/api/gameinfo";
     private final String WEST = "https://gameinfo.albiononline.com/api/gameinfo";
@@ -40,14 +46,17 @@ public class KillboardService {
     // 전투 정보를 얻기위한  /evnets/<battleId>
     private final String GET_EVENT = "/events/";
 
+    // getDetail()메서드로부터 호출되며, 1 v 1 이벤트(킬상세)로그를 파싱하여 리턴.
+    private Event[] getResponseEvent(String url) {
+        return webClient.get()
+                .uri(url)
+                .retrieve()
+                .bodyToMono(Event[].class)
+                .block();
+    }
+
 
     private String getResponse(String url) {
-
-        ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder()
-                .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(-1)) // 버퍼사이즈 -1 : unlimited
-                .build();
-
-        WebClient webClient = WebClient.builder().exchangeStrategies(exchangeStrategies).build();
         return  webClient.get()
                 .uri(url)
                 .header("x-test", "header")
@@ -97,7 +106,7 @@ public class KillboardService {
 
 
     // https://gameinfo-sgp.albiononline.com/api/gameinfo/players/PE5yINJmTSKfHUz05tLrbA/kills
-    // https://gameinfo-sgp.albiononline.com/api/gameinfo/players/PE5yINJmTSKfHUz05tLrbA/death
+    // 최근 킬기록 10회 정보를 리턴
     public List<KillBoard> getKillBoard(String id, String location) throws JsonProcessingException {
         location = getLocation(location);
         StringBuilder killBuilder = new StringBuilder(location);
@@ -107,6 +116,8 @@ public class KillboardService {
         return getKillLog(responseKillData);
     }
 
+    // https://gameinfo-sgp.albiononline.com/api/gameinfo/players/PE5yINJmTSKfHUz05tLrbA/death
+    // 최근 데스기록 10회 정보를 리턴
     public List<DeathBoard> getDeathBoard(String id, String location) throws JsonProcessingException {
         location = getLocation(location);
         StringBuilder deathBuilder = new StringBuilder(location);
@@ -115,6 +126,19 @@ public class KillboardService {
         String responseDeathData = getResponse(deathUrl);
         return getDeathLog(responseDeathData);
     }
+
+//    https://gameinfo-sgp.albiononline.com/api/gameinfo/events/Falu3eR4SRyGVZR9g-_XVw/history/_SjHw45FQtGAlbhnjlCjKg
+    // 킬보드 상세 페이지 정보를 리턴하는 메서드.
+    public Event getDetail(String server, String killerId, String victimId) {
+        server = getLocation(server);
+        StringBuilder detailBuilder = new StringBuilder(server);
+        String url = detailBuilder.append("/events/").append(killerId).append("/history/").append(victimId).toString();
+        log.info("request url is {}", url);
+        Event[] e = getResponseEvent(url);
+        return e[0];
+    }
+
+
 
 
     private List<DeathBoard> getDeathLog(String responseDeathData) throws JsonProcessingException{
@@ -143,4 +167,6 @@ public class KillboardService {
 
         return list;
     }
+
+
 }
