@@ -34,6 +34,10 @@ public class Killer {
     @JsonProperty("AllianceName")
     private String allianceName;
 
+    // 킬페임
+    @JsonProperty("KillFame")
+    private String killFame;
+
     @Override
     public String toString() {
         return "Killer{" +

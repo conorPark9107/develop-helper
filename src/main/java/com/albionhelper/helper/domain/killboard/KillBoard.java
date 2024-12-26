@@ -45,6 +45,6 @@ public class KillBoard {
 
     public void setTimeStamp(String timeStamp) {
         LocalDateTime ldt = LocalDateTime.parse(timeStamp.replaceAll("Z", ""));
-        this.timeStamp = ldt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        this.timeStamp = ldt.plusHours(9).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 }

@@ -69,8 +69,8 @@ public class KillBoardController {
                                @RequestParam(value="victimId")String victimId,
                                @RequestParam(value="location")String server) throws JsonProcessingException {
         log.info("Request getDetail => killerId, victimId, location : {}, {}, {}", killerId, victimId, server);
-        Event e = killboardService.getDetail(server, killerId, victimId);
-        model.addAttribute("event", e);
+        Event event = killboardService.getDetail(server, killerId, victimId);
+        model.addAttribute("event", event);
 
         return "killboard/killboardDetail";
     }
