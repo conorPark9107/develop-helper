@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+
+    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
+    <script type="text/javascript" src="/static/js/killboard/killboardDetail.js"></script>
+    <link rel="stylesheet" href="/static/css/variable.css"/>
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/detail.css" />
+    <link rel="stylesheet" href="/static/css/killboard/killboardDetail.css" />
+    <link rel="stylesheet" href="/static/css/loading.css" /> -->
+
+    <script type="text/javascript" src="/js/util.js"></script>
+    <script type="text/javascript" src="/js/killboard/killboardDetail.js"></script>
+    <link rel="stylesheet" href="/css/variable.css"/>
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/detail.css" />
+    <link rel="stylesheet" href="/css/killboard/killboardDetail.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
+    <meta charset="UTF-8">
+    <title>⚔ 알비온 헬퍼 - 킬보드 ⚔</title>
+</head>
+<body data-theme="light-mode">
+<script type="text/javascript" src="/js/toggle.js"></script>
+<div class="header">
+    <a class="header-logo link" href="/">⚔ 알비온 헬퍼</a>
+    <label class="switch">
+        <input class="switchBtn" role="switch" type="checkbox" />
+        <span>다크 모드</span>
+    </label>
+</div>
+
+<div>
+    <div class="back-div">
+        <a class="btn text-center" href="javascript:history.back();">뒤로가기</a>
+    </div>
+
+    <div class="container-title">
+        <h5>🏹 킬보드 - 상세보기 🏹</h5>
+    </div>
+
+    <div class="container">
+        <div class="flex-column">
+            <div class="flex-row">
+                <div class="flex-item shadow">
+                    <div class="detailDiv">
+                        <span class="flex-title">🏹전투 id</span>
+                        <span class="flex-title blue" th:text="${event.eventId}"></span>
+                    </div>
+                </div>
+                <div></div>
+                <div class="flex-item shadow">
+                    <div class="detailDiv">
+                        <span class="flex-title">🕐발생시간(한국시간)</span>
+                        <span class="flex-title blue" th:text="${event.timeStamp}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row">
+
+                <div>
+                    <div class="names">
+                        <p class="userName red" th:text="${event.killer.name}"></p>
+                        <span class="allyName black" th:if="${not #strings.isEmpty(event.killer.allianceName)}" th:text="|[${event.killer.allianceName}]|"></span>
+                        <span class="guildName black" th:if="${not #strings.isEmpty(event.killer.guildName)}" th:text="${event.killer.guildName}"></span>
+                    </div>
+                    <div class="imageDiv border border-green radius relative" th:with="p=${event.killer.equipment}">
+
+                        <img class="gear" src="/image/gear.png">
+                        <!-- 메인핸드 -->
+                        <img th:if="${not #strings.isEmpty(p.mainHand)}" class="wearingItem mainHand"
+                             th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}&size=64|"/>
+                        <!-- 오프핸드 -->
+                        <img th:if="${not #strings.isEmpty(p.offHand)}" class="wearingItem offHand"
+                             th:src="|https://render.albiononline.com/v1/item/${p.offHand.type}?quality=${p.offHand.quality}&size=64|"/>
+                        <!-- 머리 -->
+                        <img th:if="${not #strings.isEmpty(p.head)}" class="wearingItem hat"
+                             th:src="|https://render.albiononline.com/v1/item/${p.head.type}?quality=${p.head.quality}&size=64|"/>
+                        <!-- 몸통 -->
+                        <img th:if="${not #strings.isEmpty(p.armor)}" class="wearingItem clothes"
+                             th:src="|https://render.albiononline.com/v1/item/${p.armor.type}?quality=${p.armor.quality}&size=64|"/>
+                        <!-- 발 -->
+                        <img th:if="${not #strings.isEmpty(p.shoes)}" class="wearingItem shoes"
+                             th:src="|https://render.albiononline.com/v1/item/${p.shoes.type}?quality=${p.shoes.quality}&size=64|"/>
+                        <!-- 망토 -->
+                        <img th:if="${not #strings.isEmpty(p.cape)}" class="wearingItem cape"
+                             th:src="|https://render.albiononline.com/v1/item/${p.cape.type}?quality=${p.cape.quality}&size=64|"/>
+                        <!-- 가방 -->
+                        <img th:if="${not #strings.isEmpty(p.bag)}" class="wearingItem bag"
+                             th:src="|https://render.albiononline.com/v1/item/${p.bag.type}?quality=${p.bag.quality}&size=64|"/>
+                        <!-- 푸드 -->
+                        <img th:if="${not #strings.isEmpty(p.food)}" class="wearingItem food"
+                             th:src="|https://render.albiononline.com/v1/item/${p.food.type}?quality=${p.food.quality}&size=64|"/>
+                        <span th:if="${not #strings.isEmpty(p.food)}"  class="count food-count" th:text="${p.food.count}"></span>
+                        <!-- 포션 -->
+                        <img th:if="${not #strings.isEmpty(p.potion)}" class="wearingItem potion"
+                             th:src="|https://render.albiononline.com/v1/item/${p.potion.type}?quality=${p.potion.quality}&size=64|"/>
+                        <span th:if="${not #strings.isEmpty(p.potion)}" class="count potion-count" th:text="${p.potion.count}"></span>
+                        <!-- 마운트 -->
+                        <img th:if="${not #strings.isEmpty(p.mount)}" class="wearingItem mount"
+                             th:src="|https://render.albiononline.com/v1/item/${p.mount.type}?quality=${p.mount.quality}&size=64|"/>
+                        <div class="fame">
+                            <span>킬페임 : </span><span class="green" th:text="|+${event.killer.killFame}|"></span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="vs">vs</span>
+                </div>
+
+                <div>
+                    <div class="names">
+                        <p class="userName red" th:text="${event.victim.name}"></p>
+                        <span class="allyName black" th:if="${not #strings.isEmpty(event.victim.allianceName)}" th:text="|[${event.victim.allianceName}]|"></span>
+                        <span class="guildName black" th:if="${not #strings.isEmpty(event.victim.guildName)}" th:text="${event.victim.guildName}"></span>
+                    </div>
+                    <div class="imageDiv border border-red radius relative" th:with="p=${event.victim.equipment}">
+                        <img class="gear" src="/image/gear.png">
+                        <!-- 메인핸드 -->
+                        <img th:if="${not #strings.isEmpty(p.mainHand)}" class="wearingItem mainHand"
+                             th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}&size=64|"/>
+                        <!-- 오프핸드 -->
+                        <img th:if="${not #strings.isEmpty(p.offHand)}" class="wearingItem offHand"
+                             th:src="|https://render.albiononline.com/v1/item/${p.offHand.type}?quality=${p.offHand.quality}&size=64|"/>
+                        <!-- 머리 -->
+                        <img th:if="${not #strings.isEmpty(p.head)}" class="wearingItem hat"
+                             th:src="|https://render.albiononline.com/v1/item/${p.head.type}?quality=${p.head.quality}&size=64|"/>
+                        <!-- 몸통 -->
+                        <img th:if="${not #strings.isEmpty(p.armor)}" class="wearingItem clothes"
+                             th:src="|https://render.albiononline.com/v1/item/${p.armor.type}?quality=${p.armor.quality}&size=64|"/>
+                        <!-- 발 -->
+                        <img th:if="${not #strings.isEmpty(p.shoes)}" class="wearingItem shoes"
+                             th:src="|https://render.albiononline.com/v1/item/${p.shoes.type}?quality=${p.shoes.quality}&size=64|"/>
+                        <!-- 망토 -->
+                        <img th:if="${not #strings.isEmpty(p.cape)}" class="wearingItem cape"
+                             th:src="|https://render.albiononline.com/v1/item/${p.cape.type}?quality=${p.cape.quality}&size=64|"/>
+                        <!-- 가방 -->
+                        <img th:if="${not #strings.isEmpty(p.bag)}" class="wearingItem bag"
+                             th:src="|https://render.albiononline.com/v1/item/${p.bag.type}?quality=${p.bag.quality}&size=64|"/>
+                        <!-- 푸드 -->
+                        <img th:if="${not #strings.isEmpty(p.food)}" class="wearingItem food"
+                             th:src="|https://render.albiononline.com/v1/item/${p.food.type}?quality=${p.food.quality}&size=64|"/>
+                        <span th:if="${not #strings.isEmpty(p.food)}" class="count food-count" th:text="${p.food.count}"></span>
+                        <!-- 포션 -->
+                        <img th:if="${not #strings.isEmpty(p.potion)}" class="wearingItem potion"
+                             th:src="|https://render.albiononline.com/v1/item/${p.potion.type}?quality=${p.potion.quality}&size=64|"/>
+                        <span th:if="${not #strings.isEmpty(p.potion)}" class="count potion-count" th:text="${p.potion.count}"></span>
+                        <!-- 마운트 -->
+                        <img th:if="${not #strings.isEmpty(p.mount)}" class="wearingItem mount"
+                             th:src="|https://render.albiononline.com/v1/item/${p.mount.type}?quality=${p.mount.quality}&size=64|"/>
+                        <div class="fame">
+                            <span>데스페임 : </span><span class="red" th:text="|-${event.victim.deathFame}|"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-row">
+                <div class="inventory-div">
+                    <p>사망자 인벤토리</p>
+                    <div class="inventory border border-red">
+                        <th:block th:if="${not #strings.isEmpty(event.victim.inventory)}" th:each="inventory : ${event.victim.inventory}">
+                            <div th:if="${not #strings.isEmpty(inventory)}" class="item">
+                                <img th:src="|https://render.albiononline.com/v1/item/${inventory.type}?quality=${inventory.quality}&size=64|"/>
+                                <span class="item-quantity" th:text="${inventory.count}"></span>
+                            </div>
+                        </th:block>
+                        <th:block th:if="${#strings.isEmpty(event.victim.inventory)}">
+                            아이템을 아무것도 가지고 있지 않았습니다.
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-row">
+                <div class="table-div">
+                    <p>킬 관여</p>
+                    <table class="table">
+                        <colgroup>
+                            <col class="col1">
+                            <col class="col2">
+                            <col class="col3">
+                            <col class="col4">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>닉네임</th>
+                                <th>착용장비</th>
+                                <th>데미지</th>
+                                <th>힐링</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="hover-background" th:each="p : ${event.participants}">
+                                <td th:text="${p.name}"></td>
+                                <td>
+                                    <!-- TODO: 이미지 처리 해주자.-->
+
+                                </td>
+                                <td th:text="${p.damageDone}"></td>
+                                <td th:text="${p.supportHealingDone}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+        </div>
+    </div><!--container -->
+</div>
+
+<div id="blackArea">
+    <div id="loading">
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+
+        <h1>정보 요청중..</h1>
+    </div>
+</div>
+
+</body>
+</html>

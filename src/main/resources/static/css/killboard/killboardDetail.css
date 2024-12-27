@@ -1,0 +1,312 @@
+.container{
+    width: 100%;
+    margin: auto auto 5vh;
+}
+.flex-column{
+    display: flex;
+    width:100%;
+    flex-direction: column;
+    gap: 10px;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 40px;
+    width: 100%;
+    gap: 15px;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 4px 0;
+    align-items: center;
+}
+.radius{
+    border-radius: 8px;
+}
+.border{
+    border: 1px solid var(--sub-color);
+}
+.border-green{
+    border-color: var(--green);
+    box-shadow: 0 0 8px var(--green);
+}
+.border-red{
+    border-color: var(--red);
+    box-shadow: 0 0 8px var(--red);
+}
+.flex-item{
+    margin-top: 10px;
+    min-width: 250px;
+    border: 1px solid var(--sub-color);
+    border-radius: 8px;
+}
+.detailDiv{
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    padding: 7px;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.flex-title{
+    text-align: left;
+    padding: 10px;
+    font-size: 12px;
+}
+.shadow{
+    box-shadow: 0 0 8px var(--sub-color);
+}
+.back-div{
+    display: flex;
+    padding-top: 20px;
+    width: 100%;
+    margin: auto 17vw;
+}
+.btn{
+    cursor: pointer;
+    font-size: 12px;
+    width: 130px;
+    padding: 9px;
+    color: var(--main-color);
+    background-color: var(--sub-color);
+    border-radius: 5px;
+}
+.btn:hover{
+    opacity: 0.4;
+}
+.text-center{
+    text-align: center;
+}
+a{
+    text-decoration: none;
+}
+.gear{
+    width:300px;
+    object-fit:cover;
+}
+.names{
+    line-height: 70%;
+    margin-bottom: 10px;
+}
+.userName{
+    font-size: 12px;
+    margin-bottom: 0;
+}
+.allyName, .guildName{
+    font-size: 10px;
+}
+.vs{
+    font-size: 18px;
+}
+.relative{
+    position: relative;
+}
+.wearingItem{
+    position: absolute;
+    width: 80px;
+    object-fit: cover;
+}
+.mainHand{
+    top: 97px;
+    left: 31px;
+}
+.offHand{
+    top: 97px;
+    left: 193px;
+}
+.hat{
+    top: 27px;
+    left: 111px;
+}
+.clothes{
+    top: 97px;
+    left: 111px;
+}
+.shoes{
+    top: 168px;
+    left: 111px;
+}
+.cape{
+    top: 20px;
+    left: 206px;
+}
+.bag{
+    top: 20px;
+    left: 15px;
+}
+.food{
+    top: 177px;
+    left: 15px;
+}
+.potion{
+    top: 177px;
+    left: 206px;
+}
+.mount{
+    top: 238px;
+    left: 111px;
+}
+.count{
+    position: absolute;
+    z-index: 1;
+    font-weight: 100;
+    font-size: 10px;
+    color: #eee;
+}
+.food-count{
+    top: 228px;
+    left: 73px;
+}
+.potion-count{
+    top: 228px;
+    left: 263px;
+}
+.fame{
+    font-size: 12px;
+    padding-bottom: 5px;
+}
+.table-div{
+    width: 35%;
+}
+.table{
+    text-align: center;
+    font-size: 0.6em;
+    width: 100%;
+    table-layout: auto;
+    box-shadow: 0 0 15px var(--sub-color);
+    border-radius: 8px;
+}
+.table thead tr th:first-child{
+    border-top-left-radius : 8px;
+}
+.table thead tr th:last-child{
+    border-top-right-radius : 8px;
+}
+th {
+    font-weight: bold;
+    padding: 10px 10px;
+    background-color: var(--sub-color);
+    color: var(--main-color);
+}
+table tbody tr:nth-child(odd) {
+    background-color: var(--table-tr-color);
+}
+.hover-background:hover {
+    background-color: var(--table-hover);
+}
+td {
+    padding: 10px 10px;
+}
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+.col1{
+    width: 20%;
+}
+.col2{
+    width: 44%;
+}
+.col3{
+    width: 13%;
+}
+.col4{
+    width: 13%;
+}
+.inventory-div{
+    width: 34%;
+}
+.inventory{
+    display:grid;    
+    grid-template-columns: repeat(auto-fill, minmax(50px, auto));
+    align-items: center;
+    justify-items: center;
+    width:100%;
+    padding: 0px 10px;
+}
+.item{
+    position: relative;
+}
+.item-img{
+    width: 60px;
+    object-fit: cover;
+}
+.item-quantity{
+    position: absolute;
+    z-index: 1;
+    left: 43px;
+    bottom: 12px;
+    font-weight: 100;
+    font-size: 10px;
+    color: #eee;
+}
+@media screen and (max-width: 1024px) {
+    .flex-item{
+        width: 1200px;
+    }
+    .flex-title{
+        font-size: 22px;
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+    .detailDiv{
+        padding-top: 0px;
+    }
+    .gear{
+        width: 430px;
+    }
+    .wearingItem{
+        position: absolute;
+        width: 120px;
+        object-fit: cover;
+    }
+    .mainHand{
+        top: 187px;
+        left: 31px;
+    }
+    .offHand{
+        top: 187px;
+        left: 267px;
+    }
+    .hat{
+        top: 84px;
+        left: 154px;
+    }
+    .clothes{
+        top: 187px;
+        left: 154px;
+    }
+    .shoes{
+        top: 288px;
+        left: 154px;
+    }
+    .cape{
+        top: 74px;
+        left: 290px;
+    }
+    .bag{
+        top: 72px;
+        left: 15px;
+    }
+    .food{
+        top: 300px;
+        left: 15px;
+    }
+    .potion{
+        top: 300px;
+        left: 290px;
+    }
+    .mount{
+        top: 388px;
+        left: 155px;
+    }
+    .inventory{
+        width: 90%;
+    }
+    .table-div{
+        width: 90%;
+    }
+}
