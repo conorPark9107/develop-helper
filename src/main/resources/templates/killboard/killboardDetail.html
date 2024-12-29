@@ -67,7 +67,7 @@
 
                 <div>
                     <div class="names">
-                        <p class="userName red" th:text="${event.killer.name}"></p>
+                        <p class="userName green" th:text="${event.killer.name}"></p>
                         <span class="allyName black" th:if="${not #strings.isEmpty(event.killer.allianceName)}" th:text="|[${event.killer.allianceName}]|"></span>
                         <span class="guildName black" th:if="${not #strings.isEmpty(event.killer.guildName)}" th:text="${event.killer.guildName}"></span>
                     </div>
@@ -164,7 +164,7 @@
 
             <div class="flex-row">
                 <div class="inventory-div">
-                    <p>사망자 인벤토리</p>
+                    <p class="sub-title">사망자 인벤토리</p>
                     <div class="inventory border border-red">
                         <th:block th:if="${not #strings.isEmpty(event.victim.inventory)}" th:each="inventory : ${event.victim.inventory}">
                             <div th:if="${not #strings.isEmpty(inventory)}" class="item">
@@ -181,7 +181,7 @@
 
             <div class="flex-row">
                 <div class="table-div">
-                    <p>킬 관여</p>
+                    <p class="sub-title">킬 관여</p>
                     <table class="table">
                         <colgroup>
                             <col class="col1">
@@ -198,11 +198,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="hover-background" th:each="p : ${event.participants}">
-                                <td th:text="${p.name}"></td>
-                                <td>
-                                    <!-- TODO: 이미지 처리 해주자.-->
+                            <tr class="hover-background" th:if="${#strings.isEmpty(event.participants) or #lists.size(event.participants) == 0}">
+                                <td colspan="4">킬에 관여한 유저가 없습니다.</td>
+                            </tr>
 
+                            <tr class="hover-background" th:if="${not #strings.isEmpty(event.participants) and #lists.size(event.participants) > 0}" th:each="p : ${event.participants}">
+                                <td class="playerinfo">
+                                    <p class="green" th:text="${p.name}"></p>
+                                    <span th:if="${not #strings.isEmpty(p.allianceName)}" th:text="|[${p.allianceName}]|"></span>
+                                    <span th:if="${not #strings.isEmpty(p.guildName)}" th:text="${p.guildName}"></span>
+                                </td>
+                                <td th:with="a = ${p.equipment}">
+                                    <img th:if="${not #strings.isEmpty(a.mainHand)}" th:src="|https://render.albiononline.com/v1/item/${a.mainHand.type}?quality=${a.mainHand.quality}|" />
+                                    <img th:if="${not #strings.isEmpty(a.offHand)}" th:src="|https://render.albiononline.com/v1/item/${a.offHand.type}?quality=${a.offHand.quality}|" />
+                                    <img th:if="${not #strings.isEmpty(a.head)}" th:src="|https://render.albiononline.com/v1/item/${a.head.type}?quality=${a.head.quality}|" />
+                                    <img th:if="${not #strings.isEmpty(a.armor)}" th:src="|https://render.albiononline.com/v1/item/${a.armor.type}?quality=${a.armor.quality}|" />
+                                    <img th:if="${not #strings.isEmpty(a.shoes)}" th:src="|https://render.albiononline.com/v1/item/${a.shoes.type}?quality=${a.shoes.quality}|" />
+                                    <img th:if="${not #strings.isEmpty(a.cape)}" th:src="|https://render.albiononline.com/v1/item/${a.cape.type}?quality=${a.cape.quality}|" />
                                 </td>
                                 <td th:text="${p.damageDone}"></td>
                                 <td th:text="${p.supportHealingDone}"></td>

@@ -164,7 +164,6 @@ public class KillboardService {
             KillBoard board = objectMapper.treeToValue(node, KillBoard.class);
             list.add(board);
         }
-
         return list;
     }
 

@@ -91,14 +91,15 @@ h1 {
     -ms-transform:rotate(30deg); /* IE 9 */
     -webkit-transform:rotate(30deg);
     -moz-transform:rotate(30deg);
+    }
 }
 @keyframes rise {
     50% { transform:rotate(30deg);
     -ms-transform:rotate(30deg); /* IE 9 */
     -webkit-transform:rotate(30deg);
     -moz-transform:rotate(30deg);
+    }
 }
-}}
 
 @-webkit-keyframes fall {
     50% { transform:rotate(-30deg);
@@ -120,21 +121,20 @@ h1 {
     -ms-transform:rotate(-30deg); /* IE 9 */
     -webkit-transform:rotate(-30deg);
     -moz-transform:rotate(30deg);
-
+    }
   }
 @keyframes fall {
     50% { transform:rotate(-30deg);
     -ms-transform:rotate(-30deg); /* IE 9 */
     -webkit-transform:rotate(-30deg);
     -moz-transform:rotate(30deg);
-
   }
-}}
+}
 
 @-webkit-keyframes fade {
     50%{opacity:0.5}
     100%{opacity:1}
-    ;}
+}
 @-moz-keyframes fade {
     50%{opacity:0.5}
     100%{opacity:1}
@@ -142,7 +142,19 @@ h1 {
 @-o-keyframes fade {
     50%{opacity:0.5}
     100%{opacity:1}
+}
 @keyframes fade {
     50%{opacity:0.5}
     100%{opacity:1}
-}}
+}
+@media screen and (max-width: 1024px) {
+    :root {
+        --stick_distance: -16px;
+        --stick_length: 50px;
+    }
+    #loading{
+        top: 38%;
+        left: 38%;
+        font-size: 24px;
+    }
+}

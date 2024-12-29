@@ -167,13 +167,15 @@ legend {
     pointer-events: none;
 }
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
 }
 ::-webkit-scrollbar-thumb {
-    background: #555;
+    background: var(--sub-color-a);
+    height:200px;
+    border-radius: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: #242020;
+    background: var(--table-hover);
 }
 .switch{
     font-size : 15px;
@@ -229,4 +231,13 @@ legend {
 }
 input:focus::placeholder{
     color:transparent;
+}
+@media screen and (max-width: 1024px) {
+    .container-contents-button{
+        font-size: 20px;
+        padding: 25px 25px;
+    }
+    .centered{
+        font-size: 17px;
+    }
 }
