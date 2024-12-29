@@ -1,16 +1,18 @@
 .header {
     padding: 15px 10px;
     font-size: 20px;
-    width: 100%;
+    width: auto;
     display: flex;
     justify-content: space-between;
-    z-index: 9999;
     border-bottom : 2px solid var(--sub-color);
 }
 
 .header-logo {
     color: var(--sub-color);
     font-weight: bold;
+    background-image: url(/image/logo_korean.png);
+    width: 210px;
+    height: 35px;
 }
 
 .footer {
@@ -37,8 +39,7 @@
     justify-content: space-between;
     padding: 0 15px 10px;
     flex-wrap: wrap;
-/*    height: 100%;*/
-    width: 100%;
+    width: auto;
     padding-bottom: 50px;
 }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -17,17 +17,11 @@
 
     
     <meta charset="UTF-8">
-    <title>⚔ 알비온 헬퍼 ⚔</title>
+    <title>알비온 GG ⚔</title>
 </head>
 <body class="indexBody" data-theme="light-mode">
 <script type="text/javascript" src="/js/toggle.js"></script>
-    <div class="header">
-        <a class="header-logo hover" href="/">Albion Helper</a>
-        <label class="switch">
-            <input class="switchBtn" role="switch" type="checkbox" />
-            <span>다크 모드</span>
-        </label>
-    </div>
+<div th:replace="~{header :: header}"></div>
     <div class="container">
         <div class="container-title">
             <img class="container-title-image" src="https://render.albiononline.com/v1/spell/Fear Aura.png?locale=en"  alt="이미지 없음."/>

@@ -60,7 +60,7 @@
 .back-div{
     display: flex;
     padding-top: 20px;
-    width: 100%;
+    width: auto;
     margin: auto 17vw;
 }
 .btn{

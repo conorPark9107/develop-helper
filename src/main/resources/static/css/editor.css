@@ -145,6 +145,7 @@ div.jconfirm.jconfirm-supervan.jconfirm-open>div.jconfirm-bg {
     width: 40%;    
 }
 .jconfirm.jconfirm-supervan .jconfirm-box div.jconfirm-title-c {
+    color: var(--sub-color);
     font-size:1.5em;
 }
 div > input[name=inputPassword]{
@@ -158,14 +159,17 @@ div > input[name=inputPassword]:hover, div > input[name=inputPassword]:focus{
     border: 1px solid var(--sub-color);
 }
 .jconfirm.jconfirm-supervan .jconfirm-box .jconfirm-buttons button{
+    background-color: var(--sub-color);
+    border: 1px solid var(--sub-color);
+    color: var(--main-color);
+}
+.jconfirm.jconfirm-supervan .jconfirm-box .jconfirm-buttons button:hover{
     background-color: var(--main-color);
     border: 1px solid var(--sub-color);
     color: var(--sub-color);
 }
-.jconfirm.jconfirm-supervan .jconfirm-box .jconfirm-buttons button:hover{
-    background-color: var(--sub-color);
-    border: 1px solid var(--main-color);
-    color: var(--white);
+.jconfirm.jconfirm-supervan .jconfirm-box .jconfirm-buttons button:nth:child(1){
+    color: var(--red);
 }
 .jconfirm.jconfirm-supervan .jconfirm-box div.jconfirm-content{
     color: var(--sub-color);

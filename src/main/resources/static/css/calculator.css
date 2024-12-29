@@ -1,18 +1,9 @@
 body{
     height: auto;
 }
-.header {
+.table-header{
     position: sticky;
-    padding: 15px 2%;
-    margin-bottom: 1%;
-    font-size: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    background-color: var(--main-color);
-    z-index: 1;
     top: 0;
-    border-bottom: 2px solid var(--sub-color);
 }
 p{
     margin: 2% 0;
@@ -32,12 +23,13 @@ fieldset{
     align-items: flex-start;
 }
 .all-menu{
+    position: sticky;
+    top: 0;
     border-right: 1px dashed var(--sub-color);
     width: 35%;
 }
 .menu{
     vertical-align: top;
-    position:sticky;
     display:inline-block;
     min-width: 49%;
 }
@@ -57,8 +49,6 @@ fieldset{
     grid-column: 1 / span 2;
 }
 .menu-message{
-    position: sticky;
-    top: 70px;
     color : RGB(87,95,211);
     font-size : 0.8em;
     font-weight: bold;
@@ -211,10 +201,21 @@ table{
     width: 100%;
     table-layout: auto;
     box-shadow: 0 0 10px 0 var(--shadow);
+    border-radius: 8px;
+}
+table thead tr th:first-child{
+    border-top-left-radius: 8px;
+}
+table thead tr th:last-child{
+    border-top-right-radius: 8px;
+}
+table tbody tr:last-child td:first-child{
+    border-bottom-left-radius: 8px;
+}
+table tbody tr:last-child td:last-child{
+    border-bottom-right-radius: 8px;
 }
 th{
-    position: sticky;
-    top: 60px;
     font-weight: bold;
     padding: 10px 0px;
     background-color: var(--sub-color);
@@ -228,7 +229,9 @@ th{
 table tbody tr:nth-child(odd){
     background-color: var(--table-tr-color);
 }
-
+table tbody tr:last-child td{
+    border-bottom: 0;
+}
 td{
     padding: 0 10px;
     border-bottom: 1px dashed var(--main-color);
@@ -435,10 +438,10 @@ table tbody td input{
     opacity: 0.5;
 }
 .flex-row-div{
-    width: 98%;
+    width: 100%;
 }
 .main-table{
-    width: 98%;
+    width: 100%;
 }
 .sub-table caption{
     font-weight: bold;
@@ -534,6 +537,7 @@ table tbody td input{
         align-items: center;
     }
     .all-menu{
+        position: static;
         width:100%;
         border-right: 0;
         border-bottom: 1px dashed var(--sub-color);
@@ -553,7 +557,7 @@ table tbody td input{
     .btn{
         font-size: 25px;
         display: inline-block;
-        width: 100%;
+        width: 85%;
     }
     .table-div{
         margin-top: 2%;

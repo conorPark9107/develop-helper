@@ -18,23 +18,23 @@ img{
     border-radius: 8px;
 }
 .kill{
-    border: 1px solid var(--red);
-    box-shadow: 0 0 8px var(--red);
+    border: 1px solid var(--sub-color);
+    box-shadow: 0 0 8px var(--sub-color);
     max-height: 125px;
 }
 .heal{
-    border: 1px solid var(--green);
-    box-shadow: 0 0 8px var(--green);
+    border: 1px solid var(--sub-color);
+    box-shadow: 0 0 8px var(--sub-color);
     max-height: 125px;
 }
 .dps{
-    border: 1px solid var(--purple);
-    box-shadow: 0 0 8px var(--purple);
+    border: 1px solid var(--sub-color);
+    box-shadow: 0 0 8px var(--sub-color);
     max-height: 125px;
 }
 .bigdonation{
-    border: 1px solid var(--yellow);
-    box-shadow: 0 0 8px var(--yellow);
+    border: 1px solid var(--sub-color);
+    box-shadow: 0 0 8px var(--sub-color);
     min-width: 550px;
     min-height: 120px;
 }
@@ -129,13 +129,17 @@ img{
 th {
     font-weight: bold;
     padding: 10px 10px;
-    background-color: var(--sub-color);
-    color: var(--main-color);
+    background-color: var(--table-th-color);
+    color: var(--table-main-text-color);
 }
 table tbody tr:nth-child(odd) {
     background-color: var(--table-tr-color);
 }
+table tbody tr td:first-child{
+    color: var(--table-main-text-color);
+}
 td {
+    color: var(--table-sub-text-color);
     padding: 10px 10px;
 }
 table tr:last-child td:first-child {
@@ -155,7 +159,7 @@ table tr:last-child td:last-child {
     cursor:pointer;
     background-color: var(--table-hover);
 }
-.table td:nth-child(2){
+.itemList{
     text-align:left;
 }
 .table th:nth-child(2){
@@ -209,6 +213,24 @@ table .kill-col5 {
 table .kill-col6 {
     width: 3%;
 }
+.allycol1 {
+    width:38%;
+}
+.allycol2 {
+    width:12%;
+}
+.allycol3 {
+    width:8%;
+}
+.allycol4 {
+    width:8%;
+}
+.allycol5 {
+    width:20%;
+}
+.allycol6 {
+    width:15%;
+}
 
 .kill-table td:nth-child(3){
     border-right: 1px dashed var(--sub-color);
@@ -231,11 +253,11 @@ table .kill-col6 {
     text-decoration: underline;
 }
 .top-table-div{
-    width: 600px;
+    width: 700px;
     padding: 10px 10px;
 }
 .middle-table-div{
-    width: 1200px;
+    width: 75%;
     padding: 10px 10px;
 }
 .table-title{
@@ -254,7 +276,7 @@ a{
 .back-div{
     display: flex;
     padding-top: 20px;
-    width: 100%;
+    width: auto;
     margin: auto 17vw;
 }
 .detailDiv{
@@ -273,12 +295,12 @@ a{
 .detailEnd{
     text-align: right;
 }
-.detailGuildName{
+.playerName{
     display: block;
     margin-bottom: -5px;
 }
-.detailAlly{
-    opacity: 0.5;
+.playerGuildName{
+    color: var(--table-sub-text-color);
     font-size: 10px;
 }
 .imageArea{
@@ -297,6 +319,9 @@ a{
 .trHover{
     background-color: var(--table-hover);
 }
+.detailAlly{
+    color: var(--table-sub-text-color);
+}
 @media screen and (max-width: 1024px) {
     p{
         margin-top: 0;
@@ -308,11 +333,13 @@ a{
     .back-div{
         margin: auto;
     }
-
-    .detailGuildName, .detailEnd, table-title{
+    .table-title{
+        font-size: 26px;
+    }
+    .playerName, .detailEnd{
         font-size: 20px;
     }
-    .detailAlly, .table{
+    .playerGuildName, .table{
         font-size: 14px;
     }
     .flex-title{
@@ -334,6 +361,9 @@ a{
     img{
         width: 50px;
         height: 50px;
+    }
+    .middle-table-div{
+        width: 100%;
     }
 
 }

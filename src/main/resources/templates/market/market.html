@@ -24,18 +24,11 @@
     <link rel="stylesheet" href="/css/market.css" />
     <link rel="stylesheet" href="/css/loading.css" />
     <meta charset="UTF-8">
-    <title>⚔ 알비온 헬퍼 - 시장 검색 ⚔</title>
+    <title>알비온 GG - 시장 검색 ⚔</title>
 </head>
 <body data-theme="light-mode">
 <script type="text/javascript" src="/js/toggle.js"></script>
-
-            <div class="header">
-                <a class="header-logo link" href="/">⚔ 알비온 헬퍼</a>
-                <label class="switch">
-                    <input class="switchBtn" role="switch" type="checkbox" />
-                    <span>다크 모드</span>
-                </label>
-            </div>
+<div th:replace="~{header :: header}"></div>
 
             <div class="main">
 
@@ -85,7 +78,7 @@
                         </div>
 
                         <div class="flex-item">
-                            <p>🔻 카테고리 🔻</p>
+                            <p>🔻 카테고리(클릭) 🔻</p>
                             <ul class="menu-ul" id="categoryList">
                                 <li value="warrior">워리어 무기 & 보조 무기(방패)</li>
                                 <li value="helmet">헬멧</li>

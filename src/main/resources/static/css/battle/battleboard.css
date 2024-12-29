@@ -50,8 +50,8 @@ a{
     width: 100%;
     padding: 9px 11px;
     font-size: 16px;
-    color: var(--main-color);
-    background-color: var(--sub-color);
+    color: var(--table-th-text-color);
+    background-color: var(--table-th-color);
     border-width: 0;
     outline:none;
 }
@@ -73,8 +73,12 @@ a{
     font-size: 0.6em;
     width: 100%;
     table-layout: auto;
-    box-shadow: 0 0 15px var(--sub-color);
+    box-shadow: 0 0 15px var(--table-th-color);
     border-radius: 8px;
+}
+.table-header{
+    position: sticky;
+    top: 0;
 }
 .table thead tr th:first-child{
     border-top-left-radius : 8px;
@@ -85,13 +89,14 @@ a{
 th {
     font-weight: bold;
     padding: 10px 0px;
-    background-color: var(--sub-color);
-    color: var(--main-color);
+    background-color: var(--table-th-color);
+    color: var(--table-main-text-color);
 }
 table tbody tr:nth-child(odd) {
     background-color: var(--table-tr-color);
 }
 td {
+    color: var(--table-sub-text-color);
     padding: 10px 10px;
 }
 table tr:last-child td:first-child {
@@ -188,7 +193,7 @@ caption{
 }
 .info-msg{
     font-size: 10px;
-    color: var(--lightblue);
+    color: var(--info);
 }
 
 .centered-pagination {
@@ -238,7 +243,7 @@ table .col6 {
     width: 8%;
 }
 .guild-name{
-    color: var(--lightblue);
+    color: var(--info);
 }
 .guild-name:hover{
     cursor: pointer;
@@ -296,7 +301,7 @@ table .col6 {
     background-color: var(--table-hover);
 }
 .searched{
-    color: var(--green);
+    color: var(--info-2);
 }
 .searched:hover{
     cursor: pointer;

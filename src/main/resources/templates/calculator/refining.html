@@ -28,22 +28,17 @@
     <link rel="stylesheet" href="/css/editor.css"/>
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/calculator.css" />
-<!--    <link rel="stylesheet" href="/css/detail.css" />-->
+    <link rel="stylesheet" href="/css/detail.css" />
     <link rel="stylesheet" href="/css/loading.css" />
     
     <meta charset="UTF-8">
-    <title>⚔ 알비온 헬퍼 - 제련 ⚔</title>
+    <title>알비온 GG - 제련 ⚔</title>
 </head>
 
 <body data-theme="light-mode">
 <script type="text/javascript" src="/js/toggle.js"></script>
-    <div class="header">
-        <a class="header-logo link" href="/">⚔ 알비온 헬퍼</a>
-        <label class="switch">
-            <input class="switchBtn" role="switch" type="checkbox" />
-            <span>다크 모드</span>
-        </label>
-    </div>
+<div th:replace="~{header :: header}"></div>
+
     <div class="main">
         <div class="all-menu">
             <div class="menu-message">
@@ -180,7 +175,7 @@
                 <col class="col9">
             </colgroup>
             <thead>
-                <tr>
+                <tr class="table-header">
                     <th id="afterName"></th>
                     <th>판매가격<br/><span class="priceDetail">(최저가)</span></th>
                     <th id="beforeName"></th>

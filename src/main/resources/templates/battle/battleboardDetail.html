@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="/static/css/battle/battleboardDetail.css" /> -->
 
     <script type="text/javascript" src="/js/util.js"></script>
-    <script type="text/javascript" src="js/battle/battleboard.js"></script>
     <link rel="stylesheet" href="/css/variable.css" />
     <link rel="stylesheet" href="/css/editor.css" />
     <link rel="stylesheet" href="/css/loading.css" />
@@ -27,117 +26,114 @@
     <link rel="stylesheet" href="/css/detail.css" />
     <link rel="stylesheet" href="/css/battle/battleboardDetail.css" />
     <meta charset="UTF-8">
-    <title>⚔ 알비온 헬퍼 ⚔</title>
+    <title>알비온 GG - 길드 전투 기록 ⚔</title>
 </head>
 <body data-theme="light-mode">
 <script type="text/javascript" src="/js/toggle.js"></script>
-
-<div class="header">
-    <a class="header-logo link" href="/">⚔ 알비온 헬퍼</a>
-    <label class="switch">
-        <input class="switchBtn" role="switch" type="checkbox" />
-        <span>다크 모드</span>
-    </label>
-</div>
+<div th:replace="~{header :: header}"></div>
 
 <div>
     <div class="back-div">
         <a class="btn text-center" href="javascript:history.back();">목록으로</a>
     </div>
     <div class="container-title">
-        <h5>🏹전투 기록🛡</h5>
+        <h5>🏹전투 기록</h5>
     </div>
     <div class="container">
         <div class="flex-row flex-wrap flex-center gap">
             <div class="flex-column flex-item border shadow">
                 <div class="detailDiv">
                     <span class="flex-title">🏹전투 id</span>
-                    <span class="flex-title blue" th:text="${battle.id}"></span>
+                    <span class="flex-title sub" th:text="${battle.id}"></span>
                 </div>
             </div>
             <div class="flex-column flex-item border shadow">
                 <div class="detailDiv">
                     <span class="flex-title">🕐시작시간(한국시간)</span>
-                    <span class="flex-title blue" th:text="${battle.startTime}"></span>
+                    <span class="flex-title sub" th:text="${battle.startTime}"></span>
                 </div>
             </div>
             <div class="flex-column flex-item border shadow">
                 <div class="detailDiv">
                     <span class="flex-title">🕑종료시간(한국시간)</span>
-                    <span class="flex-title blue" th:text="${battle.endTime}"></span>
+                    <span class="flex-title sub" th:text="${battle.endTime}"></span>
                 </div>
             </div>
             <div class="flex-column flex-item border shadow">
                 <div class="detailDiv">
                     <span class="flex-title">🏴‍☠️‍️총페임</span>
-                    <span class="flex-title blue" th:text="${#numbers.formatInteger(battle.totalFame, 1, 'COMMA')}"></span>
+                    <span class="flex-title sub" th:text="${#numbers.formatInteger(battle.totalFame, 1, 'COMMA')}"></span>
                 </div>
             </div>
             <div class="flex-column flex-item border shadow">
                 <div class="detailDiv">
                     <span class="flex-title">💀발생한 킬수</span>
-                    <span class="flex-title blue" th:text="|${battle.totalKills}킬|"></span>
+                    <span class="flex-title sub" th:text="|${battle.totalKills}킬|"></span>
                 </div>
             </div>
         </div>
 
         <div class="flex-row flex-wrap flex-center gap">
             <div class="flex-column flex-item kill">
-                <span class="flex-title red">🤴🏻가장 킬을 많이한 플레이어</span>
+                <span class="flex-title">🤴🏻가장 킬을 많이한 플레이어</span>
                 <div class="detailDiv">
                     <p class="flex-grow-1 detailFirst">
-                        <span class="detailGuildName" th:text="${mostKiller.name}"></span>
-                        <span class="detailAlly" th:text="|[${mostKiller.allianceName}] ${mostKiller.guildName}|"></span>
+                        <span class="playerName red" th:text="${mostKiller.name}"></span>
+                        <span class="playerGuildName" th:if="${not #strings.isEmpty(mostKiller.allianceName)}" th:text="|[${mostKiller.allianceName}] |"></span>
+                        <span class="playerGuildName" th:if="${not #strings.isEmpty(mostKiller.guildName)}" th:text="${mostKiller.guildName}"></span>
                     </p>
-                    <p class="flex-grow-1 detailEnd red" th:text="|${mostKiller.kills}킬|"></p>
+                    <p class="flex-grow-1 detailEnd" th:text="|${mostKiller.kills}킬|"></p>
                 </div>
             </div>
             <div class="flex-column flex-item dps">
-                <span class="flex-title purple">🧛🏻‍♀️가장 딜을 많이한 플레이어</span>
+                <span class="flex-title">🧛🏻‍♀️가장 딜을 많이한 플레이어</span>
                 <div class="detailDiv">
                     <p class="flex-grow-1 detailFirst">
-                        <span class="detailGuildName" th:text="${mostDps.name}"></span>
-                        <span class="detailAlly" th:text="|[${mostDps.allianceName}] ${mostDps.guildName}|"></span>
+                        <span class="playerName purple" th:text="${mostDps.name}"></span>
+                        <span class="playerGuildName" th:if="${not #strings.isEmpty(mostDps.allianceName)}" th:text="|[${mostDps.allianceName}] |"></span>
+                        <span class="playerGuildName" th:if="${not #strings.isEmpty(mostDps.guildName)}" th:text="${mostDps.guildName}"></span>
                     </p>
-                    <p class="flex-grow-1 detailEnd purple" th:text="|${#numbers.formatInteger(mostDps.damageDone, 1, 'COMMA')}딜|"></p>
+                    <p class="flex-grow-1 detailEnd" th:text="|${#numbers.formatInteger(mostDps.damageDone, 1, 'COMMA')}딜|"></p>
                 </div>
             </div>
             <div class="flex-column flex-item heal">
-                <span class="flex-title green">🧚🏻‍♀️가장 힐을 많이한 플레이어</span>
+                <span class="flex-title">🧚🏻‍♀️가장 힐을 많이한 플레이어</span>
                 <div class="detailDiv">
                     <p class="flex-grow-1 detailFirst">
-                        <span class="detailGuildName" th:text="${mostHeal.name}"></span>
-                        <span class="detailAlly" th:text="|[${mostHeal.allianceName}] ${mostHeal.guildName}|"></span>
+                        <span class="playerName green" th:text="${mostHeal.name}"></span>
+                        <span class="playerGuildName" th:if="${not #strings.isEmpty(mostHeal.allianceName)}" th:text="|[${mostHeal.allianceName}] |"></span>
+                        <span class="playerGuildName" th:if="${not #strings.isEmpty(mostHeal.guildName)}" th:text="${mostHeal.guildName}"></span>
                     </p>
-                    <p class="flex-grow-1 detailEnd green" th:text="|${#numbers.formatInteger(mostHeal.supportHealingDone, 1, 'COMMA')}힐|"></p>
+                    <p class="flex-grow-1 detailEnd" th:text="|${#numbers.formatInteger(mostHeal.supportHealingDone, 1, 'COMMA')}힐|"></p>
                 </div>
             </div>
             <div class="flex-column flex-item bigdonation">
-                <span class="flex-title yellow">👼🏻빅 도네이션 플레이어</span>
+                <span class="flex-title">👼🏻빅 도네이션 플레이어</span>
                 <div class="detailDiv">
                     <p class="flex-grow-1 detailFirst">
-                        <span class="detailGuildName" th:text="${mostDonation.name}"></span>
-                        <span class="detailAlly" th:text="|[${mostDonation.allianceName}] ${mostDonation.guildName}|"></span>
+                        <span class="playerName yellow" th:text="${mostDonation.name}"></span>
+                        <span class="playerGuildName" th:if="${not #strings.isEmpty(mostDonation.allianceName)}" th:text="|[${mostDonation.allianceName}] |"></span>
+                        <span class="playerGuildName" th:if="${not #strings.isEmpty(mostDonation.guildName)}" th:text="${mostDonation.guildName}"></span>
                     </p>
-                    <div class="flex-grow-1 detailEnd yellow">
+                    <div class="flex-grow-1 detailEnd">
                         <span th:text="|${#numbers.formatInteger(mostDonation.deathFame, 1, 'COMMA')}데스페임|"></span>
                         <div class="detailEnd imageArea" th:with="p=${mostDonation.equipment}">
                             <img th:if="${not #strings.isEmpty(p.mainHand)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}&size=64|"/>
+                                 th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}|"/>
                             <img th:if="${not #strings.isEmpty(p.offHand)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.offHand.type}?quality=${p.offHand.quality}&size=64|"/>
+                                 th:src="|https://render.albiononline.com/v1/item/${p.offHand.type}?quality=${p.offHand.quality}|"/>
                             <img th:if="${not #strings.isEmpty(p.head)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.head.type}?quality=${p.head.quality}&size=64|"/>
+                                 th:src="|https://render.albiononline.com/v1/item/${p.head.type}?quality=${p.head.quality}|"/>
                             <img th:if="${not #strings.isEmpty(p.armor)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.armor.type}?quality=${p.armor.quality}&size=64|"/>
+                                 th:src="|https://render.albiononline.com/v1/item/${p.armor.type}?quality=${p.armor.quality}|"/>
                             <img th:if="${not #strings.isEmpty(p.shoes)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.shoes.type}?quality=${p.shoes.quality}&size=64|"/>
+                                 th:src="|https://render.albiononline.com/v1/item/${p.shoes.type}?quality=${p.shoes.quality}|"/>
                             <img th:if="${not #strings.isEmpty(p.cape)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.cape.type}?quality=${p.cape.quality}&size=64|"/>
+                                 th:src="|https://render.albiononline.com/v1/item/${p.cape.type}?quality=${p.cape.quality}|"/>
                             <img th:if="${not #strings.isEmpty(p.mount)}"
-                                 th:src="|https://render.albiononline.com/v1/item/${p.mount.type}?quality=${p.mount.quality}&size=64|"/>
+                                 th:src="|https://render.albiononline.com/v1/item/${p.mount.type}?quality=${p.mount.quality}|"/>
                             <th:block th:if="${not #strings.isEmpty(mostDonation.inventory)}" th:each="inventory : ${mostDonation.inventory}">
-                                <img th:if="${not #strings.isEmpty(inventory)}" th:src="|https://render.albiononline.com/v1/item/${inventory.type}?quality=${inventory.quality}&size=64|"/>
+                                <img th:if="${not #strings.isEmpty(inventory)}" th:src="|https://render.albiononline.com/v1/item/${inventory.type}?quality=${inventory.quality}|"/>
                             </th:block>
                         </div>
                     </div>
@@ -149,12 +145,12 @@
                 <span class="table-title" th:text="|👨‍👩‍👧‍👦동맹 (${#lists.size(alliances)})|"></span>
                 <table class="table">
                     <colgroup>
-                        <col class="col1">
-                        <col class="col2">
-                        <col class="col3">
-                        <col class="col4">
-                        <col class="col5">
-                        <col class="col6">
+                        <col class="allycol1">
+                        <col class="allycol2">
+                        <col class="allycol3">
+                        <col class="allycol4">
+                        <col class="allycol5">
+                        <col class="allycol6">
                     </colgroup>
                     <thead>
                     <tr>
@@ -187,12 +183,12 @@
                 <span class="table-title" th:text="|👩‍👧‍👧길드 (${#lists.size(guilds)})|"></span>
                 <table class="table">
                     <colgroup>
-                        <col class="col1">
-                        <col class="col2">
-                        <col class="col3">
-                        <col class="col4">
-                        <col class="col5">
-                        <col class="col6">
+                        <col class="allycol1">
+                        <col class="allycol2">
+                        <col class="allycol3">
+                        <col class="allycol4">
+                        <col class="allycol5">
+                        <col class="allycol6">
                     </colgroup>
                     <thead>
                     <tr>
@@ -206,7 +202,10 @@
                     </thead>
                     <tbody>
                     <tr class="trHover" th:each="guild : ${guilds}">
-                        <td th:text="${guild.name}"></td>
+                        <td>
+                            <span class="detailAlly" th:if="${not #strings.isEmpty(guild.alliance)}" th:text="|[${guild.alliance}] |"></span>
+                            <b th:text="${guild.name}"></b>
+                        </td>
                         <td th:text="${guild.playerCount}"></td>
                         <td th:text="${guild.kills}"></td>
                         <td th:text="${guild.deaths}"></td>
@@ -241,11 +240,12 @@
                     <tbody>
                     <tr class="trHover" th:each="players : ${playerList}">
                         <td>
-                            <span class="detailAlly" th:text="|[${players.allianceName}] ${players.guildName}|"></span>
+                            <span class="detailAlly" th:if="${not #strings.isEmpty(players.allianceName)}" th:text="|[${players.allianceName}] |"></span>
+                            <span class="detailAlly" th:if="${not #strings.isEmpty(players.guildName)}" th:text="${players.guildName}"></span>
                             <br>
                             <b th:text="${players.name}"></b>
                         </td>
-                        <td th:with="p=${players.equipment}">
+                        <td class="itemList" th:with="p=${players.equipment}">
                             <img th:if="${not #strings.isEmpty(p.mainHand)}"
                                  th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}|"/>
                             <img th:if="${not #strings.isEmpty(p.offHand)}"
@@ -292,11 +292,12 @@
                     <tbody>
                     <tr class="trHover" th:each="eventList : ${eventList}">
                         <td>
-                            <span class="detailAlly" th:text="|[${eventList.killer.allianceName}] ${eventList.killer.guildName}|"></span>
+                            <span class="detailAlly" th:if="${not #strings.isEmpty(eventList.killer.allianceName)}" th:text="|[${eventList.killer.allianceName}] |"></span>
+                            <span class="detailAlly" th:if="${not #strings.isEmpty(eventList.killer.guildName)}" th:text="${eventList.killer.guildName}"></span>
                             <br>
                             <b th:text="${eventList.killer.name}"></b>
                         </td>
-                        <td th:with="k=${eventList.killer.equipment}">
+                        <td class="itemList" th:with="k=${eventList.killer.equipment}">
                             <img th:if="${not #strings.isEmpty(k.mainHand)}"
                                  th:src="|https://render.albiononline.com/v1/item/${k.mainHand.type}?quality=${k.mainHand.quality}|"/>
                             <img th:if="${not #strings.isEmpty(k.offHand)}"
@@ -312,11 +313,12 @@
                         </td>
                         <td th:text="${eventList.killer.averageItemPower}"></td>
                         <td>
-                            <span th:text="|[${eventList.victim.allianceName}] ${eventList.victim.guildName}|"></span>
+                            <span class="detailAlly" th:if="${not #strings.isEmpty(eventList.victim.allianceName)}" th:text="|[${eventList.victim.allianceName}] |"></span>
+                            <span class="detailAlly" th:if="${not #strings.isEmpty(eventList.victim.guildName)}" th:text="${eventList.victim.guildName}"></span>
                             <br>
                             <b th:text="${eventList.victim.name}"></b>
                         </td>
-                        <td th:with="v=${eventList.victim.equipment}">
+                        <td class="itemList" th:with="v=${eventList.victim.equipment}">
                             <img th:if="${not #strings.isEmpty(v.mainHand)}"
                                  th:src="|https://render.albiononline.com/v1/item/${v.mainHand.type}?quality=${v.mainHand.quality}|"/>
                             <img th:if="${not #strings.isEmpty(v.head)}"

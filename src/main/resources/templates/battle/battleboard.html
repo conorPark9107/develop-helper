@@ -27,18 +27,11 @@
     <link rel="stylesheet" href="/css/detail.css" />
     <link rel="stylesheet" href="/css/battle/battleboard.css" />
     <meta charset="UTF-8">
-    <title>⚔ 알비온 헬퍼 ⚔</title>
+    <title>알비온 GG - 길드 전투 기록 ⚔</title>
 </head>
 <body data-theme="light-mode">
 <script type="text/javascript" src="/js/toggle.js"></script>
-
-<div class="header">
-    <a class="header-logo link" href="/">⚔ 알비온 헬퍼</a>
-    <label class="switch">
-        <input class="switchBtn" role="switch" type="checkbox" />
-        <span>다크 모드</span>
-    </label>
-</div>
+<div th:replace="~{header :: header}"></div>
 
 <div>
 
@@ -51,11 +44,11 @@
             <a class="search" id="searchBtn">🔍</a>
         </div>
         <div class="flex-row flex-vertical-center">
-            <div class="flex-item">
-                <a class="btn shadow blur" id="multiBtn"><!--선택한 전투 모아 보기-->준비중</a>
+            <!--<div class="flex-item">
+                <a class="btn shadow blur" id="multiBtn">&lt;!&ndash;선택한 전투 모아 보기&ndash;&gt;준비중</a>
             </div>
             <div class="flex-item">
-                <span class="select-button shadow blur"><!--참여 플레이어 수 🔻-->준비중</span>
+                <span class="select-button shadow blur">&lt;!&ndash;참여 플레이어 수 🔻&ndash;&gt;준비중</span>
                 <ul class="dropdown">
                     <li class="dropdown-content">
                         <a href="">최근 전투</a>
@@ -79,7 +72,7 @@
                         <a href="">100명 이상</a>
                     </li>
                 </ul>
-            </div>
+            </div>-->
             <div class="flex-item">
                 <a class="btn shadow" href="/battle">검색 결과 초기화</a>
             </div>
@@ -105,7 +98,7 @@
                 <col class="col6">
             </colgroup>
             <thead>
-                <tr>
+                <tr class="table-header">
                     <th>선택</th>
                     <th>발생일<br/>(한국시간)</th>
                     <th>발생일<br/>(UTC)</th>

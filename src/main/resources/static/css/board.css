@@ -8,14 +8,6 @@ li.category.clicked{
     color: var(--lightblue);
     font-size: 1em;
 }
-.header {
-    padding: 10px;
-    font-size: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
 .main {
     display: flex;
     position: relative;
@@ -23,31 +15,29 @@ li.category.clicked{
     padding: 0 15px 10px;
     flex-wrap: wrap;
     height: auto;
-    min-height: 100%;
     padding-bottom: 100px;
 }
 
 .centered {
     margin: 0 auto;
-    max-width: 900px;
+    max-width: 1000px;
 }
 
 .board-header {
     font-size: 1em;
     padding: 0px;
     text-align: center;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 .board-header-detail {
-    display:flex;
+    display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: baseline;
     font-size: 1.5em;
     padding: 0px;
     text-align: center;
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 975px;
 }
 .board-header-title {
     margin-bottom: 1.5vw;
@@ -67,6 +57,7 @@ li.category.clicked{
 
 .board-header-flex-subDiv {
     display: flex;
+    justify-content: space-between;
     margin-bottom: 1.2%;
     margin-top: 3.5%;
 }
@@ -74,24 +65,18 @@ li.category.clicked{
 .board-header-left-subDiv {
     list-style: none;
     padding-left: 1%;
-    width: 450px;
-    text-align: left;
     margin-bottom: 0.3%;
 }
 
 div.board-header-left-subDiv>span {
     font-size: 0.9em;
 }
-
 .board-header-right-subDiv {
     padding-right: 1%;
-    width: 450px;
-    text-align: right;
 }
 
 .board-title-div {
     text-align: left;
-    max-width: 47%;
     margin: 1% auto;
 }
 

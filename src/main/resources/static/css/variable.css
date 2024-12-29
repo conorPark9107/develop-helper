@@ -11,6 +11,7 @@
 }
 
 body[data-theme='light-mode'] {
+    --logo: url(/image/pageLogo_light.png);
     --main-color: rgb(255, 255, 255);
     --main-color-a: rgba(255, 255, 255, 0.5);
     --main-hover-color: rgb(175, 175, 175);
@@ -30,6 +31,8 @@ body[data-theme='light-mode'] {
     --table-hover : rgb(217, 217, 217);
 }
 body[data-theme='dark-mode'] {
+    --logo: url(/image/pageLogo_dark.png);
+
     --main-color: rgb(30, 30, 30);
     --main-color-a: rgba(30, 30, 30, 0.5);
     --main-hover-color: rgb(81, 81, 81);
@@ -40,12 +43,15 @@ body[data-theme='dark-mode'] {
     --textarea-color : rgba(51, 51, 51, 0.973);
 
     --table-tr-color: rgba(0, 0, 0, 0.2);
-    --table-th-color: rgba(0, 31, 90, 0.8);
+    --table-th-color: #2d2d2d;
+    --table-main-text-color: #dcdcdc;
+    --table-sub-text-color: #929292;
+    --table-hover : #2d2d2d;
+    --info : #0862C4;
+    --info-2: #0862c456;
 
     --shadow: rgba(0, 0, 0);
     --board-under-color: rgba(51, 51, 51, 0.9);
 
     --input-text-color: rgba(0, 0, 0, 0.2);
-
-    --table-hover : rgb(47, 46, 46);
 }

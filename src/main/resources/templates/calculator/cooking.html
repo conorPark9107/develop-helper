@@ -32,19 +32,12 @@
     <link rel="stylesheet" href="/css/loading.css" />
 
     <meta charset="UTF-8">
-    <title>⚔ 알비온 헬퍼 - 요리 ⚔</title>
+    <title>알비온 GG - 요리 ⚔</title>
 </head>
 
 <body data-theme="light-mode">
 <script type="text/javascript" src="/js/toggle.js"></script>
-    <div class="header">
-        <a class="header-logo link" href="/">⚔ 알비온 헬퍼</a>
-        <label class="switch">
-            <input class="switchBtn" role="switch" type="checkbox" />
-            <span>다크 모드</span>
-        </label>
-    </div>
-
+<div th:replace="~{header :: header}"></div>
     <div class="main">
         <div class="all-menu">
             <div class="menu-message">
@@ -199,7 +192,7 @@
                             <col class="col9">
                         </colgroup>
                         <thead>
-                            <tr>
+                            <tr class="table-header">
                                 <th>아이템</th>
                                 <th>판매가격<br />
                                     <p class="priceDetail">(최저가)</p>

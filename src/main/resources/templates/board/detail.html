@@ -31,41 +31,35 @@
     <link rel="stylesheet" href="/css/board.css"/>
     <link rel="stylesheet" href="/css/editor.css"/>
     <meta charset="UTF-8">
-    <title>⚔ 알비온 헬퍼 - 게시판 상세 ⚔</title>
+    <title>알비온 GG - 게시판 상세 ⚔</title>
 </head>
 
 <body data-theme="light-mode">
 <script type="text/javascript" src="/js/toggle.js"></script>
-<div class="header">
-    <a class="header-logo link" href="/">⚔ 알비온 헬퍼</a>
-    <label class="switch">
-        <input class="switchBtn" role="switch" type="checkbox" />
-        <span>다크 모드</span>
-    </label>
-</div>
-
-
-<div class="board-header-detail">
-    <div class="header-left">
-        <a href="/board" class="btn-header">뒤로</a>
-    </div>
-    <div class="header-center">
-        <h3 class="board-header-title">🌈 게시판</h3>
-    </div>
-    <div class="header_right">
-<!--        <a id="modifyBtn" class="btn-header-right">수정</a>-->
-        <a id="deleteBtn" class="btn-header-right">삭제</a>
-    </div>
-</div>
-
-<div class="board-title-div">
-    <hr/>
-    <p>📢 홍보, 도배, 현거래 금지</p>
-    <p>📢 명예훼손, 혐오, 음란물 금지</p>
-    <hr/>
-</div>
+<div th:replace="~{header :: header}"></div>
 
 <div class="centered">
+
+    <div class="board-header-detail">
+        <div class="header-left">
+            <a href="/board" class="btn-header">뒤로</a>
+        </div>
+        <div class="header-center">
+            <h3 class="board-header-title">🌈 게시판</h3>
+        </div>
+        <div class="header_right">
+            <!--        <a id="modifyBtn" class="btn-header-right">수정</a>-->
+            <a id="deleteBtn" class="btn-header-right">삭제</a>
+        </div>
+    </div>
+
+    <div class="board-title-div">
+        <hr/>
+        <p>📢 홍보, 도배, 현거래 금지</p>
+        <p>📢 명예훼손, 혐오, 음란물 금지</p>
+        <hr/>
+    </div>
+
     <h4 th:text="|[${board.category}] ${board.title}|"></h4>
     <div class="title">
         <div class="title-left">
