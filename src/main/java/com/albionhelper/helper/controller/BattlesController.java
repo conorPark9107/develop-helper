@@ -33,13 +33,23 @@ public class BattlesController {
                             , @RequestParam(name = "inputValue", defaultValue = "") String inputValue
                             ,@RequestParam(name = "server", defaultValue = "east") String url
                             ,@RequestParam(name = "offset", defaultValue = "0") int offset
-                            ,@RequestParam(name = "limit", defaultValue = "10") int limit) throws JsonProcessingException {
+                            ,@RequestParam(name = "limit", defaultValue = "20") int limit) throws JsonProcessingException {
         List<Battle> list = battlesService.getBattleList(url, offset, limit, inputValue);
         model.addAttribute("size", list.size());
         model.addAttribute("list", list);
         model.addAttribute("offset", offset);
         model.addAttribute("limit", limit);
+        model.addAttribute("server", url);
         return "battle/battleboard";
+    }
+
+    @GetMapping("/refresh")
+    @ResponseBody
+    public List<Battle> refreshList(
+            @RequestParam(name = "inputValue", defaultValue = "") String inputValue
+            ,@RequestParam(name = "server", defaultValue = "east") String url
+            ,@RequestParam(name = "recentId", defaultValue = "0") Long recentId) throws JsonProcessingException {
+        return battlesService.getBattleListForRefresh(url, inputValue, recentId);
     }
 
     @GetMapping("/more")

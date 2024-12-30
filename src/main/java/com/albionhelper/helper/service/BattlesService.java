@@ -29,7 +29,7 @@ public class BattlesService {
     private final String GET_ID_URL = "/search?q=";
 
     // 최근 전투 목록을 위한 URI
-    private final String DEFAULT_BATTLES_URL = "/battles?&sort=recent";
+    private final String DEFAULT_BATTLES_URL = "/battles?sort=recent";
 
     // 전투에 참가한 길드, 동맹, 인원을 알기 위한 URI URI /battles/<battleId>
     private final String GET_BATTLE = "/battles/";
@@ -67,6 +67,7 @@ public class BattlesService {
                 .block();
     }
 
+    // 베틀리스트를 테이블에 보여주기위한 메서드.
     public List<Battle> getBattleList(String url, int offset, int limit, String id) throws JsonProcessingException {
 
         String requestUrl = getLocation(url) + DEFAULT_BATTLES_URL + "&offset=" + offset + "&limit=" + limit;
@@ -84,14 +85,39 @@ public class BattlesService {
             list.add(getBattle(node));
         }
 
-        log.info("url is {}", requestUrl);
+        log.info("url was {}", requestUrl);
+        return list;
+    }
+
+    // 새로고침되어 append될 데이터를 뽑음.
+    public List<Battle> getBattleListForRefresh(String url, String id, long recentId) throws JsonProcessingException {
+        String requestUrl = getLocation(url) + DEFAULT_BATTLES_URL + "&range=day";
+        if(!id.equals("")){
+            requestUrl += "&guildId=" + id;
+        }
+
+        String response = getResponse(requestUrl);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode rootNode = objectMapper.readTree(response);
+
+        List<Battle> list = new ArrayList<>();
+        for(int i = 0; i < rootNode.size(); i++){
+            JsonNode node = rootNode.get(i);
+            list.add(getBattle(node));
+        }
+
+        list = list.stream()
+                .filter(battle -> Long.parseLong(battle.getId()) > recentId)
+                .collect(Collectors.toList());
+
+        log.info("refresh url was {}", requestUrl);
         return list;
     }
 
     // Guild ID값(Primary Key)을 API로부터 가져옴.
     public List<GuildDTO> getGuildId(String id, String server) throws JsonProcessingException {
         String requestUrl = getLocation(server) + GET_ID_URL + id;
-        log.info("getGuildId() request url is : {} ", requestUrl);
+        log.info("getGuildId() request url was : {} ", requestUrl);
         String response = getResponse(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode guildsNode = objectMapper.readTree(response).get("guilds");
@@ -308,5 +334,7 @@ public class BattlesService {
 
         return battle;
     }
+
+
 }
 

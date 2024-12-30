@@ -18,8 +18,8 @@ td {
 th{
     width: 5vw;
     padding: 10px 10px;
-    background-color: var(--sub-color);
-    color: var(--main-color);
+    background-color: var(--table-th-color);
+    color: var(--table-th-text-color);
 }
 tr:hover{
     cursor:pointer;

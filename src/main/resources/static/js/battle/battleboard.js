@@ -1,11 +1,54 @@
 $(document).ready(function () {
 
+    function NotReload(){
+        if( (event.ctrlKey == true && (event.keyCode == 78 || event.keyCode == 82)) || (event.keyCode == 116) ) {
+            event.keyCode = 0;
+            event.cancelBubble = true;
+            event.returnValue = false;
+        }
+    }
+    document.onkeydown = NotReload;
+
+    setInterval(timer, 1000);
+
+    function timer(){
+        var text = Number($('#timer').text());
+        text--;
+        if(text < 1){
+            text = 60;
+            refresh();
+        } 
+        $('#timer').text(text);
+    }
+
+    function refresh(){
+        const server = $('input[name="server"]:checked').val();
+        const id = $('#guildId').val();
+        const tr = $('.maintable tbody tr')[0];
+        const recentId = $(tr).data('id');
+        const date = $(tr).children('td').eq(1).text();
+        console.log(recentId + " | " + date);
+        $.ajax({
+            type: "GET",
+            url: "/battle/refresh",
+            data: {
+                inputValue : id,
+                server : server,
+                recentId : recentId
+            },
+            dataType: "json",
+            success: function (response) {
+                prependResponse(response, id);
+            }
+        });
+    }
+
     // 전투 기록 행(table row)를 클릭하였을때
     $(".maintable tbody").on('click', 'tr' ,function(e){
         turnLoading();
         const id = $(this).find('td:eq(0)').find('input').val();
-        const server = $(this).data('server');
         const kill = $(this).find('td:eq(6)').text();
+        const server = $(this).data('server');
         var form = $('<form></form>');
         form.attr("method","get");
         form.attr("action","/battle/detail");
@@ -23,6 +66,19 @@ $(document).ready(function () {
         $('.maintable tbody tr').remove();
         $('.blackArea').hide();
         $('.popup').fadeOut(500);
+    });
+
+
+    // 사용자가 보고자하는 서버(라디오 버튼)가 바꼈을때
+    $('input[name="server"]').on('change', function(){
+        turnLoading();
+        const server = $('input[name="server"]:checked').val();
+        var form = $('<form></form>');
+        form.attr("method","get");
+        form.attr("action","/battle");
+        form.append($('<input/>', {type: 'hidden', name: 'server', value:server }));
+        form.appendTo('body');
+        form.submit();
     });
 
     function submitToServer(id){
@@ -59,6 +115,11 @@ $(document).ready(function () {
     function requestGuildId(){
         const id = $('#inputText').val();
         const server = $('input[name="server"]:checked').val();
+
+        if(id == '' || id == null){
+            showAlert('길드명을 입력해주세요.');
+            return;
+        }
 
         $.ajax({
             type: "GET",
@@ -111,10 +172,10 @@ $(document).ready(function () {
     });
 
     $('#moreviewBtn').on('click', function(){
-        const inputValue = $('#guildId').val();
+        const inputValue =  $('#guildId').val();
         const server = $('input[name="server"]:checked').val();
         const l = $('#limit').val();
-        const offset = Number($('#offset').val()) + Number(l) + 1;
+        const offset = $('.maintable tbody tr').length;
 
         $.ajax({
             type: "GET",
@@ -129,7 +190,7 @@ $(document).ready(function () {
                 turnLoading();
             },
             success: function (response) {
-                appendResponse(response);
+                appendResponse(response, inputValue);
                 $('#offset').val(offset);
                 if(response.length == 0){
                     showAlert('더 이상 보여줄 데이터가 없습니다.');
@@ -141,11 +202,43 @@ $(document).ready(function () {
             complete : function(){
                 turnLoading();
             }
-
         });
     });
 
+    // 테이블 앞에 붙이기
+    function prependResponse(response, id){
+        const tbody = $('.maintable tbody');
+        const server = $('input[name="server"]:checked').val();
 
+        for(var i = response.length-1; i >= 0; i--){
+            const r = response[i];
+            const tr = document.createElement('tr');
+            $(tr).attr('data-server', server);
+            $(tr).attr('data-id', r.id);
+            $(tr).addClass('hover-background tr');
+            $(tr).append(`<td><input type="checkbox" name="multi" value="${r.id}"/></td>`);
+            $(tr).append(`<td>${r.endTime}</td>`);
+            $(tr).append(`<td>${r.utcTime} UTC</td>`);
+            let guilds = r.guilds;
+            let str = ``;
+            for(var j = 0; j < guilds.length; j++){
+                if(id == guilds[j].id){
+                    str += ', ' + `<span class="searched">${guilds[j].name}</span>`;
+                }else{
+                    str += ', ' + `<span class="guild-name">${guilds[j].name}</span>`;
+                }
+            }
+            $(tr).append(`<td>${str.slice(1)}</td>`);
+            $(tr).append(`<td>${Number(r.totalFame).toLocaleString()}</td>`);
+            $(tr).append(`<td>${r.players.length}</td>`);
+            $(tr).append(`<td>${r.totalKills}</td>`);
+
+            $(tbody).prepend(tr);
+        }
+    }
+
+
+    // 테이블 뒤에 붙이기
     function appendResponse(response, id){
         const tbody = $('.maintable tbody');
         const server = $('input[name="server"]:checked').val();
@@ -154,20 +247,21 @@ $(document).ready(function () {
             const r = response[i];
             const tr = document.createElement('tr');
             $(tr).attr('data-server', server);
+            $(tr).attr('data-id', r.id);
             $(tr).addClass('hover-background tr');
             $(tr).append(`<td><input type="checkbox" name="multi" value="${r.id}"/></td>`);
             $(tr).append(`<td>${r.endTime}</td>`);
             $(tr).append(`<td>${r.utcTime} UTC</td>`);
             let guilds = r.guilds;
-            let str = `<span class="guild-name">${guilds[0].name}</span>`;
-            for(var j = 1; j < guilds.length; j++){
+            let str = ``;
+            for(var j = 0; j < guilds.length; j++){
                 if(id == guilds[j].id){
                     str += ', ' + `<span class="searched">${guilds[j].name}</span>`;
                 }else{
                     str += ', ' + `<span class="guild-name">${guilds[j].name}</span>`;
                 }
             }
-            $(tr).append(`<td>${str}</td>`);
+            $(tr).append(`<td>${str.slice(1)}</td>`);
             $(tr).append(`<td>${Number(r.totalFame).toLocaleString()}</td>`);
             $(tr).append(`<td>${r.players.length}</td>`);
             $(tr).append(`<td>${r.totalKills}</td>`);

@@ -130,7 +130,7 @@ th {
     font-weight: bold;
     padding: 10px 10px;
     background-color: var(--table-th-color);
-    color: var(--table-main-text-color);
+    color: var(--table-th-text-color);
 }
 table tbody tr:nth-child(odd) {
     background-color: var(--table-tr-color);

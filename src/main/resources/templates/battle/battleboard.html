@@ -77,12 +77,15 @@
                 <a class="btn shadow" href="/battle">검색 결과 초기화</a>
             </div>
             <div class="flex-item">
-                <input type="radio" id="server01" name="server" value="east" checked />
+                <input type="radio" id="server01" name="server" value="east" th:checked="${server == 'east'}" />
                 <label for="server01">아시아</label>
-                <input type="radio" id="server02" name="server" value="west" />
+                <input type="radio" id="server02" name="server" value="west" th:checked="${server == 'west'}"/>
                 <label for="server02">아메리카</label>
-                <input type="radio" id="server03" name="server" value="europe" />
+                <input type="radio" id="server03" name="server" value="europe" th:checked="${server == 'europe'}"/>
                 <label for="server03">유럽</label>
+            </div>
+            <div class="flex-item">
+                <span id="timer">60</span><span>초 후에 자동 새로고침됩니다.</span>
             </div>
         </div>
 
@@ -100,8 +103,8 @@
             <thead>
                 <tr class="table-header">
                     <th>선택</th>
-                    <th>발생일<br/>(한국시간)</th>
-                    <th>발생일<br/>(UTC)</th>
+                    <th>발생일자<br/>(한국시간)</th>
+                    <th>발생시간<br/>(UTC)</th>
                     <th>전투에 참여한 길드 (guilds)</th>
                     <th>총페임<br/>(Fame)</th>
                     <th>플레이어 수<br/>(Players)</th>
@@ -110,9 +113,9 @@
             </thead>
             <tbody>
 
-                <tr th:each="battle : ${list}" class="hover-background">
+                <tr th:each="battle : ${list}" class="hover-background" th:attr="data-id=${battle.id}">
                     <td><input type="checkbox" name="multi" th:value="${battle.id}" /></td>
-                    <td th:text="${battle.endTime}">
+                    <td th:text="${battle.startTime}">
 
                     </td>
                     <td th:text="|${battle.utcTime} UTC|">

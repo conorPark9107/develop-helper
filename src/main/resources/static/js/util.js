@@ -56,9 +56,10 @@ function showAlert(msg){
         title: '',
         content: msg,
         buttons: {
-            '네': function () {}
+            '네': function (e) {}
         }
     });
+
 }
 
 function turnLoading(){

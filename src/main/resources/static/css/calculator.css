@@ -63,7 +63,7 @@ fieldset{
 
 input {
     font-weight: bold;
-    color: var(--sub-color);
+    color: var(--table-sub-text-color);
     background-color: var(--main-color);
     border: 1px solid var(--sub-color);
     box-sizing: border-box;
@@ -218,8 +218,8 @@ table tbody tr:last-child td:last-child{
 th{
     font-weight: bold;
     padding: 10px 0px;
-    background-color: var(--sub-color);
-    color: var(--main-color);
+    background-color: var(--table-th-color);
+    color: var(--table-th-text-color);
     /*border-left: 1px solid var(--sub-color);
     border-right: 1px solid var(--sub-color);
     border-bottom: 2px solid var(--sub-color);
@@ -233,6 +233,7 @@ table tbody tr:last-child td{
     border-bottom: 0;
 }
 td{
+    color: var(--table-main-text-color);
     padding: 0 10px;
     border-bottom: 1px dashed var(--main-color);
 }
@@ -326,8 +327,7 @@ table tbody td input{
 .qunatityArea{
     float: right;
     text-align:right;
-    margin-bottom: 1%;
-    margin-right: 2%;
+    margin: 1%;
 }
 .qunatityArea input{
     width: 20%;
@@ -345,7 +345,7 @@ table tbody td input{
 .priceDetail{
     font-size: 0.5em;
     margin: 0 auto;
-    color : var(--lightblue);
+    color : var(--table-sub-text-color);
 }
 .red{
     font-size: 0.9em;

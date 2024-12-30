@@ -10,7 +10,7 @@
 .header-logo {
     color: var(--sub-color);
     font-weight: bold;
-    background-image: url(/image/logo_korean.png);
+    background-image: var(--logo);
     width: 210px;
     height: 35px;
 }

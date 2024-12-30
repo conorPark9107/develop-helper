@@ -14,6 +14,13 @@ a{
     border-radius: 6px;
     overflow:hidden;
 }
+.flex-item:last-child{
+    margin-top: -25px;
+    flex-grow: 2;
+    text-align: right;
+    font-size: 10px;
+    color: var(--table-sub-text-color);
+}
 .flex-vertical-center{
     align-items: center;
 }
@@ -23,13 +30,9 @@ a{
 .flex-left{
     justify-content: flex-end;
 }
-.flex-item:nth-child(1) { flex-grow: 0; }
-.flex-item:nth-child(2) { flex-grow: 0; }
-.flex-item:nth-child(3) { 
-    flex-grow: 1;
-    text-align: right;
+.flex-item{
+    padding: 0px 5px;
 }
-
 .shadow{
     box-shadow: 0 0 8px var(--sub-color);
 }
@@ -90,7 +93,7 @@ th {
     font-weight: bold;
     padding: 10px 0px;
     background-color: var(--table-th-color);
-    color: var(--table-main-text-color);
+    color: var(--table-th-text-color);
 }
 table tbody tr:nth-child(odd) {
     background-color: var(--table-tr-color);
@@ -317,5 +320,8 @@ table .col6 {
     }
     .moreviewDiv{
         margin-top: 10px;
+    }
+    .flex-item:last-child{
+        font-size: 15px;
     }
 }

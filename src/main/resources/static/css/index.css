@@ -53,7 +53,7 @@ footer{
     gap: 15px;
 }
 .imageLogo{
-    background-image: var(--logo);
+    background-image: var(--page-logo);
     background-size: cover;
     width: 600px;
     height: 85px;

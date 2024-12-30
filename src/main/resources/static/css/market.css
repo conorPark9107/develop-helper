@@ -110,8 +110,8 @@ input[type="text"]:focus{
     text-align: right;
 }
 #marketTable thead tr{
-    background-color: var(--sub-color);
-    color: var(--main-color);
+    background-color: var(--table-th-color);
+    color: var(--table-th-text-color);
     border-bottom: 2px solid var(--sub-color);
     border-top: 2px solid var(--sub-color);
     border-top-left-radius : 8px;
