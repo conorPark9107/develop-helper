@@ -49,6 +49,17 @@ public class BattlesService {
         }
         return EAST;
     }
+    private String getResponseNoCache(String requestUrl) {
+        return webClient.get()
+                .uri(requestUrl)
+                .header("Cache-Control", "no-cache, no-store, must-revalidate")
+                .header("Pragma", "no-cache")
+                .header("Expires", "0")
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+    }
+
 
     private String getResponse(String requestUrl) {
 
@@ -74,8 +85,8 @@ public class BattlesService {
         if(!id.equals("")){
             requestUrl += "&guildId=" + id;
         }
+        String response = getResponseNoCache(requestUrl);
 
-        String response = getResponse(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(response);
 
@@ -89,14 +100,14 @@ public class BattlesService {
         return list;
     }
 
-    // 새로고침되어 append될 데이터를 뽑음.
+    // 새로고침되어 append될 데이터를 뽑는 메서드
     public List<Battle> getBattleListForRefresh(String url, String id, long recentId) throws JsonProcessingException {
-        String requestUrl = getLocation(url) + DEFAULT_BATTLES_URL + "&range=day";
+        String requestUrl = getLocation(url) + DEFAULT_BATTLES_URL + "&range=day&offset=0";
         if(!id.equals("")){
             requestUrl += "&guildId=" + id;
         }
 
-        String response = getResponse(requestUrl);
+        String response = getResponseNoCache(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(response);
 
@@ -105,6 +116,9 @@ public class BattlesService {
             JsonNode node = rootNode.get(i);
             list.add(getBattle(node));
         }
+
+//        list.forEach(battle -> System.out.println(battle.getStartTime()));
+//        System.out.println("---------------");
 
         list = list.stream()
                 .filter(battle -> Long.parseLong(battle.getId()) > recentId)
