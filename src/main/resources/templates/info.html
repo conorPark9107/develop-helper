@@ -21,6 +21,7 @@
 </head>
 <body class="indexBody" data-theme="light-mode">
 <script type="text/javascript" src="/js/toggle.js"></script>
+<div class="image-maindiv">
 <div th:replace="~{header :: header}"></div>
     <div class="container">
         <div class="container-title">
@@ -32,7 +33,7 @@
         <div class="flex">
             <div class="flex-item">
                 <p class="sub-title">먼저 기여하는데 관심 가져주셔서 감사합니다.🙏</p>
-                <br>
+                <hr>
 
                 <p class="sub-title">먼저 정확한 시장 가격을 위해 AODP(Albion Data Project)프로그램이 필요합니다!</p>
                 <p class="sub-msg">
@@ -43,6 +44,7 @@
                     - 이 홈페이지 개발자도 현재 이 프로그램을 사용하고 있는데 이 프로그램은 큰 리소스를 잡아먹지 않는것 같습니다.
                     <br> (이 프로그램은 백그라운드에서 실행되고 저는 실행중인 상태로 zvz도 합니다.)
                 </p>
+                <hr>
                 <p class="sub-title">이 프로그램 사용하면 정지당하는거 아닌가요?</p>
                 <p class="sub-msg">
                     - 아니요. Sandbox Interactive 기술 책임자로부터 네트워크 패킷을 서비스를 방해하지 않는 선에서 보고 분석하는 것이라면 허용한다는 답변을 받은 기록이 있습니다.
@@ -53,9 +55,9 @@
                     <a class="hover link" href="https://github.com/ao-data/albiondata-client">(링크)</a>
                     를 클릭하여 소스 코드가 안전한지 직접 확인해보실수 있습니다.
                 </p>
-
             </div>
             <div class="flex-item">
+                <hr>
                 <p class="sub-title">
                     다운로드 방법.
                 </p>
@@ -88,7 +90,7 @@
                     - 더이상 설치 메세지가 나오지 않는다면 설치가 완료된 것입니다. 다음 재부팅을 하시면 백그라운드에서 프로그램이 구동되는것을 확인하실 수 있습니다.<br>
                     - 종료는 마우스 우클릭하여 종료 시킬 수 있습니다.
                     <br>
-                    (아래 이미지 참조)<br>
+                    (아래 이미지 참고)<br>
                 </p>
                 <img class="flex-item-image" src="/image/info_06.png"/>
                 <p class="sub-msg">
@@ -100,6 +102,7 @@
             <hr/>
 
             <div class="flex-item">
+                <hr>
                 <p class="sub-title">제거하는 방법.</p>
                 <p class="sub-msg">
                     - 제어판에 들어가서 Albion Data Client를 검색한 후 제거하시면 됩니다.
@@ -113,12 +116,9 @@
 
                 </p>
             </div>-->
-
-
         </div>
-
-    </div>
-
+    </div> <!-- end of container -->
+</div> <!-- end of image div -->
     <div id="blackArea">
         <div id="loading">
             <div class="stick"></div>

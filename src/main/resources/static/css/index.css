@@ -214,7 +214,7 @@ legend {
     appearance: none;
     position: relative;
     background-color: var(--main-color);
-    border: max(1px, 0.2em) solid #eee;
+    border: max(1px, 0.2em) solid var(--bg-text);
     border-radius: 1em;
     width: 4em;
     height: 2em;
@@ -233,7 +233,7 @@ legend {
 }
 .switchBtn:checked{
     background-color: var(--main-color);
-    border-color: var(--sub-color);
+    border-color: var(--bg-text);
 }
 .switchBtn:checked::before {
     background-color: var(--sub-color);
