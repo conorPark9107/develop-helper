@@ -367,57 +367,43 @@ table tbody td input{
     color: var(--white);
     background-color: var(--sub-color);
     border: 1px solid var(--white);
-    
 }
-#tooltipArea_01{
+.tooltipArea{
     display: none;
     position: fixed;
+    opacity: 0.97;
+    background: var(--table-th-color);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 10px 0 var(--border);
+    border-radius: 4px;
+    padding: 20px;
+}
+.tooltipArea_01{
     top: 15%;
     left: 35%;
     width: 40%;
     height: 50%;
-    opacity: 0.97;
-    background: var(--main-color);
-    border: 1px solid var(--sub-color);
-    padding: 1% 1%;
 }
-
-#tooltipArea_02{
-    display: none;
-    position: fixed;
+.tooltipArea_02{
     top: 15%;
     left: 35%;
     width: 15%;
     height: 60%;
     opacity: 0.97;
-    background: var(--main-color);
-    border: 1px solid var(--sub-color);
-    padding: 1% 1%;
 }
-
-#tooltipArea_03{
-    display: none;
-    position: fixed;
+.tooltipArea_03{
     top: 15%;
     left: 35%;
     width: 20%;
     height: 50%;
     opacity: 0.97;
-    background: var(--main-color);
-    border: 1px solid var(--sub-color);
-    padding: 1% 1%;
 }
-#tooltipArea_04{
-    display: none;
-    position: fixed;
+.tooltipArea_04{
     top: 15%;
     left: 35%;
     width: 44%;
     height: 50%;
     opacity: 0.97;
-    background: var(--main-color);
-    border: 1px solid var(--sub-color);
-    padding: 1% 1%;
 }
 .priceArea{
     display:flex;
@@ -518,8 +504,8 @@ table tbody td input{
 .footer{
     font-size: 10px;
     height: 15px;
+    bottom: 0;
     position: absolute;
-    bottom:0;
     transform: translateY(-100%);
     width: 100%;
     display: flex;
@@ -609,5 +595,26 @@ table tbody td input{
     }
     .main-table tbody tr td{
         font-size: 18px;
+    }
+
+    .tooltipArea{
+        top: 45%;
+        left: 3%;
+    }
+    .tooltipArea_01{
+        width: 72%;
+        height: 28%;
+    }
+    .tooltipArea_02{
+        width: 44%;
+        height: 31%;
+    }
+    .tooltipArea_03{
+        width: 42%;
+        height: 27%;
+    }
+    .tooltipArea_04{
+        width: 86%;
+        height: 26%;
     }
 }

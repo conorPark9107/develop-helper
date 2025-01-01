@@ -2,10 +2,10 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    
+
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <!-- jquery alert-->
     <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
@@ -21,16 +21,16 @@
     <link rel="stylesheet" href="/static/css/loading.css" />
     <link rel="stylesheet" href="/static/css/calculator.css" />-->
 
-    
-     <script type="text/javascript" src="/js/variable.js"></script>
+
+    <script type="text/javascript" src="/js/variable.js"></script>
     <script type="text/javascript" src="/js/util.js"></script>
     <script type="text/javascript" src="/js/calculator/mill.js"></script>
-    <link rel="stylesheet" href="/css/variable.css" />
-    <link rel="stylesheet" href="/css/editor.css" />
-    <link rel="stylesheet" href="/css/index.css" />
-    <link rel="stylesheet" href="/css/detail.css" />
-    <link rel="stylesheet" href="/css/loading.css" />
-    <link rel="stylesheet" href="/css/calculator.css" />
+    <link rel="stylesheet" href="/css/variable.css"/>
+    <link rel="stylesheet" href="/css/board/editor.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/detail.css"/>
+    <link rel="stylesheet" href="/css/loading.css"/>
+    <link rel="stylesheet" href="/css/calculator.css"/>
 
     <meta charset="UTF-8">
     <title>알비온 GG - 방앗간 ⚔</title>
@@ -39,7 +39,7 @@
 <body data-theme="light-mode">
 <script type="text/javascript" src="/js/toggle.js"></script>
 <div class="image-maindiv">
-<div th:replace="~{header :: header}"></div>
+    <div th:replace="~{header :: header}"></div>
     <div class="main">
         <div class="all-menu">
             <div class="menu-message">
@@ -51,24 +51,24 @@
             <div class="menu">
                 <div class="menu-item">
                     <p>🔻서버 선택</p>
-                    <input type="radio" id="server01" name="server" value="east" checked />
+                    <input type="radio" id="server01" name="server" value="east" checked/>
                     <label for="server01">아시아</label>
-                    <input type="radio" id="server02" name="server" value="west" />
+                    <input type="radio" id="server02" name="server" value="west"/>
                     <label for="server02">아메리카</label>
-                    <input type="radio" id="server03" name="server" value="europe" />
+                    <input type="radio" id="server03" name="server" value="europe"/>
                     <label for="server03">유럽</label>
                 </div>
 
                 <div class="menu-item menu-item-tier">
                     <p>🔻건물 소비 영양 100당 사용료 <span class="tooltip" data-info="tooltipArea_02">?</span></p>
                     <input class="input-number" type="number" id="usageFee" name="usageFee" placeholder="소비 영양 100당 사용료"
-                        min="0" max="9999" value="0" />
+                           min="0" max="9999" value="0"/>
                 </div>
 
                 <div class="menu-item menu-item-tier">
                     <p>🔻자원 반환 비율 <span class="tooltip" data-info="tooltipArea_03">?</span></p>
                     <input class="input-number" type="number" id="returnRate" name="returnRate"
-                        placeholder=" '%' 제외하고 입력" min="0" max="100" value="0" />
+                           placeholder=" '%' 제외하고 입력" min="0" max="100" value="0"/>
                 </div>
 
                 <div class="menu-item ">
@@ -120,43 +120,43 @@
                     <p>🔻운명보드 레벨 설정 <span class="tooltip" data-info="tooltipArea_01">?</span></p>
                     <div>
                         <label class="taxLabel" for="chef">셰프</label>
-                        <input class="input-number" type="number" id="chef" min="0" max="100" value="0" />
+                        <input class="input-number" type="number" id="chef" min="0" max="100" value="0"/>
                     </div>
                     <div>
                         <label class="taxLabel" for="butcher">도살 업자</label>
-                        <input class="input-number" type="number" id="butcher" min="0" max="100" value="0" />
+                        <input class="input-number" type="number" id="butcher" min="0" max="100" value="0"/>
                     </div>
                     <div>
                         <label class="taxLabel" for="material">재료 셰프</label>
-                        <input class="input-number" type="number" id="material" min="0" max="100" value="0" />
+                        <input class="input-number" type="number" id="material" min="0" max="100" value="0"/>
                     </div>
                     <div>
                         <label class="taxLabel" for="sandwich">샌드위치 셰프</label>
-                        <input class="input-number" type="number" id="sandwich" min="0" max="100" value="0" />
+                        <input class="input-number" type="number" id="sandwich" min="0" max="100" value="0"/>
                     </div>
                     <div>
                         <label class="taxLabel" for="stew">스튜 셰프</label>
-                        <input class="input-number" type="number" id="stew" min="0" max="100" value="0" />
+                        <input class="input-number" type="number" id="stew" min="0" max="100" value="0"/>
                     </div>
                     <div>
                         <label class="taxLabel" for="omelette">오믈렛 셰프</label>
-                        <input class="input-number" type="number" id="omelette" min="0" max="100" value="0" />
+                        <input class="input-number" type="number" id="omelette" min="0" max="100" value="0"/>
                     </div>
                     <div>
                         <label class="taxLabel" for="roast">로스트 셰프</label>
-                        <input class="input-number" type="number" id="roast" min="0" max="100" value="0" />
+                        <input class="input-number" type="number" id="roast" min="0" max="100" value="0"/>
                     </div>
                     <div>
                         <label class="taxLabel" for="pie">파이 셰프</label>
-                        <input class="input-number" type="number" id="pie" min="0" max="100" value="0" />
+                        <input class="input-number" type="number" id="pie" min="0" max="100" value="0"/>
                     </div>
                     <div>
                         <label class="taxLabel" for="salad">샐러드 셰프</label>
-                        <input class="input-number" type="number" id="salad" min="0" max="100" value="0" />
+                        <input class="input-number" type="number" id="salad" min="0" max="100" value="0"/>
                     </div>
                     <div>
                         <label class="taxLabel" for="soup">수프 셰프</label>
-                        <input class="input-number" type="number" id="soup" min="0" max="100" value="0" />
+                        <input class="input-number" type="number" id="soup" min="0" max="100" value="0"/>
                     </div>
                 </div>
 
@@ -168,7 +168,7 @@
 
         <div class="priceArea">
             <div class="image-div">
-                
+
 
             </div>
 
@@ -176,7 +176,7 @@
             <div>
                 <div class="flex-row-div">
                     <span class="qunatityArea">
-                        <input type="number" id="quantity" name="quantity" placeholder="n" min="1" value="1" />
+                        <input type="number" id="quantity" name="quantity" placeholder="n" min="1" value="1"/>
                         개 단위로 보기
                     </span>
                     <table class="main-table" id="mill_table">
@@ -191,25 +191,25 @@
                             <col class="col9">
                         </colgroup>
                         <thead>
-                            <tr class="table-header">
-                                <th>아이템</th>
-                                <th>판매가격<br />
-                                    <p class="priceDetail">(최저가)</p>
-                                </th>
-                                <th>재료<p class="priceDetail">(필요 재료)</p>
-                                </th>
-                                <th>재료 값<br />
-                                    <p class="priceDetail">(1개 가격)</p>
-                                </th>
-                                <th>필요한 집중<br />
-                                    <p class="priceDetail">(제작 버튼 한번 클릭 기준)</p>
-                                </th>
-                                <th>총 재료 비용<p class="priceDetail">(만들기 위한 비용)</p>
-                                </th>
-                                <th>판매가</th>
-                                
-                                <th>이익</th>
-                            </tr>
+                        <tr class="table-header">
+                            <th>아이템</th>
+                            <th>판매가격<br/>
+                                <p class="priceDetail">(최저가)</p>
+                            </th>
+                            <th>재료<p class="priceDetail">(필요 재료)</p>
+                            </th>
+                            <th>재료 값<br/>
+                                <p class="priceDetail">(1개 가격)</p>
+                            </th>
+                            <th>필요한 집중<br/>
+                                <p class="priceDetail">(제작 버튼 한번 클릭 기준)</p>
+                            </th>
+                            <th>총 재료 비용<p class="priceDetail">(만들기 위한 비용)</p>
+                            </th>
+                            <th>판매가</th>
+
+                            <th>이익</th>
+                        </tr>
                         </thead>
                         <tbody>
 
@@ -222,8 +222,8 @@
     </div> <!-- main -->
 
     <!-- 운명 보드 설정 -->
-    <div id="tooltipArea_01">
-        <div id="info01">
+    <div class="tooltipArea tooltipArea_01">
+        <div>
             <h3>운명보드 레벨 설정</h3>
             <div>
                 <p>1. 인게임 내에서 단축키 B를 누른다.</p>
@@ -232,52 +232,52 @@
                 <div style="display: flex; gap: 50px;">
                     <table>
                         <thead>
-                            <tr>
-                                <th>운명보드 이름</th>
-                                <th>레벨</th>
-                            </tr>
+                        <tr>
+                            <th>운명보드 이름</th>
+                            <th>레벨</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>셰프</td>
-                                <td>5</td>
-                            </tr>
-                            <tr>
-                                <td>도살 업자</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td>재료 셰프</td>
-                                <td>15</td>
-                            </tr>
-                            <tr>
-                                <td>샌드위치 셰프</td>
-                                <td>20</td>
-                            </tr>
-                            <tr>
-                                <td>스튜 셰프</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>오믈렛 셰프</td>
-                                <td>30</td>
-                            </tr>
-                            <tr>
-                                <td>로스트 셰프</td>
-                                <td>35</td>
-                            </tr>
-                            <tr>
-                                <td>파이 셰프</td>
-                                <td>40</td>
-                            </tr>
-                            <tr>
-                                <td>샐러드 셰프</td>
-                                <td>45</td>
-                            </tr>
-                            <tr>
-                                <td>수프 셰프</td>
-                                <td>50</td>
-                            </tr>
+                        <tr>
+                            <td>셰프</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>도살 업자</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>재료 셰프</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>샌드위치 셰프</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>스튜 셰프</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>오믈렛 셰프</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>로스트 셰프</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>파이 셰프</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>샐러드 셰프</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>수프 셰프</td>
+                            <td>50</td>
+                        </tr>
                         </tbody>
                     </table>
                     <img src="/image/cooking_destiny_info.PNG" width="200" height="300">
@@ -287,8 +287,8 @@
     </div>
 
     <!-- 영양 100당 사용료 -->
-    <div id="tooltipArea_02">
-        <div id="info02">
+    <div class="tooltipArea tooltipArea_02">
+        <div>
             <img style="text-align: center;" src="/image/refining_usageFee_info.PNG" width="200" height="480">
             <p>1. 방앗간에 갑니다.</p>
             <p>2. 이미지의 빨간 박스 안에 있는 소비영양 100당 사용료를 입력하면 됩니다.</p>
@@ -296,16 +296,16 @@
     </div>
 
     <!-- 자원반환 비율 -->
-    <div id="tooltipArea_03">
-        <img src="/image/refining_returnRate_info.PNG" />
+    <div class="tooltipArea tooltipArea_03">
+        <img src="/image/refining_returnRate_info.PNG"/>
         <p>1. 방앗간에 가서 만들고자하는 품목을 클릭.</p>
         <p>2. 빨간색 박스 부분의 값('%' 제외)을 입력.</p>
     </div>
 
     <!-- 마켓 수수료 -->
-    <div id="tooltipArea_04">
-        <img src="/image/refining_markettaxbuy_info.PNG" />
-        <img src="/image/refining_markettaxsell_info.PNG" />
+    <div class="tooltipArea tooltipArea_04">
+        <img src="/image/refining_markettaxbuy_info.PNG"/>
+        <img src="/image/refining_markettaxsell_info.PNG"/>
         <p>구매: 왼쪽 사진의 수수료</p>
         <p>판매: 오른쪽 사진의 수수료(프리미엄이 없을시에도 이미지와 같은 위치에 있는 수수료를 입력)</p>
     </div>
@@ -327,9 +327,9 @@
     <div class="footer">
         <span>All <a href="https://albiononline.com/news" target="_blank" style="text-decoration: underline;">Albion
                 Online</a> related materials are property of <a href="https://albiononline.com/imprint" target="_blank"
-                style="text-decoration: underline;">Sandbox Interactive GmbH</a></span>
+                                                                style="text-decoration: underline;">Sandbox Interactive GmbH</a></span>
         <span>Prices are provided by the <a href="https://www.albion-online-data.com/" target="_blank"
-                style="text-decoration: underline;">Albion Online Data Project</a></span>
+                                            style="text-decoration: underline;">Albion Online Data Project</a></span>
     </div>
 </div>
 </body>

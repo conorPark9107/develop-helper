@@ -131,10 +131,10 @@ $(document).ready(function () {
     $('.tooltip').hover(
         function (e) {
             // over
-            $(`#${$(this).data('info')}`).fadeIn(300);
+            $(`.${$(this).data('info')}`).fadeIn(200);
         }, function (e) {
             // out
-            $(`#${$(this).data('info')}`).fadeOut(300);
+            $(`.${$(this).data('info')}`).fadeOut(200);
         }
     );
 
