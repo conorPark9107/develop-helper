@@ -1,3 +1,8 @@
+.image-maindiv{
+    background-image: url(/image/background-image-battle.jpeg);
+    height: auto;
+    background-repeat: repeat;
+}
 .container{
     width: 100%;
     margin: auto auto 5vh;
@@ -18,23 +23,23 @@ img{
     border-radius: 8px;
 }
 .kill{
-    border: 1px solid var(--sub-color);
-    box-shadow: 0 0 8px var(--sub-color);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 8px var(--border);
     max-height: 125px;
 }
 .heal{
-    border: 1px solid var(--sub-color);
-    box-shadow: 0 0 8px var(--sub-color);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 8px var(--border);
     max-height: 125px;
 }
 .dps{
-    border: 1px solid var(--sub-color);
-    box-shadow: 0 0 8px var(--sub-color);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 8px var(--border);
     max-height: 125px;
 }
 .bigdonation{
-    border: 1px solid var(--sub-color);
-    box-shadow: 0 0 8px var(--sub-color);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 8px var(--border);
     min-width: 550px;
     min-height: 120px;
 }
@@ -75,7 +80,7 @@ img{
     gap:15px;
 }
 .shadow{
-    box-shadow: 0 0 8px var(--sub-color);
+    box-shadow: 0 0 8px var(--border);
 }
 .btn{
     cursor: pointer;
@@ -117,8 +122,11 @@ img{
     font-size: 0.6em;
     width: 100%;
     table-layout: auto;
-    box-shadow: 0 0 15px var(--sub-color);
+    box-shadow: 0 0 15px var(--border);
     border-radius: 8px;
+}
+.table thead tr th{
+    padding: 15px 10px;
 }
 .table thead tr th:first-child{
     border-top-left-radius : 8px;
@@ -265,7 +273,6 @@ table .kill-col6 {
     float:left;
     font-size: 16px;
     font-weight: bold;
-    color: var(--sub-color);
 }
 a{
     text-decoration: none;
@@ -300,7 +307,7 @@ a{
     margin-bottom: -5px;
 }
 .playerGuildName{
-    color: var(--table-sub-text-color);
+    color: var(--bg-text);
     font-size: 10px;
 }
 .imageArea{
@@ -314,7 +321,7 @@ a{
     height: 2.5vw;
 }
 .border{
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
 }
 .trHover{
     background-color: var(--table-hover);

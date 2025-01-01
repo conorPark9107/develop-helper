@@ -1,3 +1,10 @@
+.image-maindiv{
+    position: relative;
+    background-image: url(/image/background-image-calculator.jpeg);
+    height: auto;
+    min-height: 100%;
+    background-repeat: repeat;
+}
 .container-inquire {
     min-height: 100vh;
     display: flex;

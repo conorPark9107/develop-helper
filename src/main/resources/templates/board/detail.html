@@ -28,14 +28,15 @@
     <link rel="stylesheet" href="/css/loading.css"/>
     <link rel="stylesheet" href="/css/index.css"/>
     <link rel="stylesheet" href="/css/detail.css"/>
-    <link rel="stylesheet" href="/css/board.css"/>
-    <link rel="stylesheet" href="/css/editor.css"/>
+    <link rel="stylesheet" href="/css/board/board.css"/>
+    <link rel="stylesheet" href="/css/board/editor.css"/>
     <meta charset="UTF-8">
     <title>알비온 GG - 게시판 상세 ⚔</title>
 </head>
 
 <body data-theme="light-mode">
 <script type="text/javascript" src="/js/toggle.js"></script>
+<div class="image-maindiv">
 <div th:replace="~{header :: header}"></div>
 
 <div class="centered">
@@ -185,6 +186,7 @@
         <input type="hidden" id="h_comment" name="comment" value=""/>
         <input type="hidden" id="h_comment_group" name="comment_group" value=""/>
     </form>
+</div>
 </div>
 </body>
 </html>

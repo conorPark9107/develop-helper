@@ -1,3 +1,9 @@
+.image-maindiv{
+    background-image: url(/image/background-image-board.jpeg);
+    background-repeat: repeat;
+    height: auto;
+    min-height: 100%;
+}
 a{
     text-decoration: none;
 }
@@ -21,6 +27,7 @@ li.category.clicked{
 .centered {
     margin: 0 auto;
     max-width: 1000px;
+    min-width: 970px;
 }
 
 .board-header {
@@ -28,6 +35,7 @@ li.category.clicked{
     padding: 0px;
     text-align: center;
     max-width: 1000px;
+    width: 970px;
     margin: 0 auto;
 }
 .board-header-detail {
@@ -52,7 +60,6 @@ li.category.clicked{
     display: inline;
     font-size: 0.8em;
     font-weight: bold;
-    color: var(--sub-color);
 }
 
 .board-header-flex-subDiv {
@@ -210,11 +217,11 @@ tr {
 }
 
 tbody tr:hover {
-    background-color: var(--main-hover-color);
+    background-color: var(--hover);
 }
 
 td {
-    color: var(--sub-color);
+    color: var(--bg-text);
     padding: 0.6% 10px;
     text-align: center;
     font-size: 0.7em;
@@ -267,7 +274,7 @@ table .col7 {
     opacity: 0.5;
 }
 .board-title {
-    color: var(--sub-color);
+    color: var(--bg-text);
     cursor: pointer;
 }
 
@@ -276,6 +283,7 @@ table .col7 {
 }
 
 .comments-number {
+    color: red;
     padding-left: 0.2vw;
     opacity: 0.4;
 }
@@ -283,7 +291,6 @@ table .col7 {
 .category {
     display: inline;
     cursor: pointer;
-    color: var(--sub-color);
     font-weight: bold;
     font-size: 0.5em;
 }
@@ -337,7 +344,7 @@ table .col7 {
 
 .pagination a {
     font-size: 0.7em;
-    color: var(--sub-color);
+    color: var(--white);
     float: left;
     padding: 6px 12px;
     text-decoration: none;
@@ -586,7 +593,7 @@ h4{
     align-items: center;
     color: var(--sub-color);
     border-top: 1px solid var(--sub-color);
-    background-color: var(--board-under-color);
+    background-color: var(--main-color-a);
 }
 .comment-comment-write-area{
     display: flex;

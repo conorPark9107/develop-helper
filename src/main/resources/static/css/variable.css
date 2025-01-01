@@ -8,42 +8,52 @@
     --purple: rgb(129, 0, 180);
     --yellow: rgb(180, 168, 0);
     --alert-opacity: rgb(0 0 0);
+    --bg-text: #949494;
+    --hover: #2d2d2d;
 }
 
 body[data-theme='light-mode'] {
-    --page-logo: url(/image/pageLogo_light.png);
-    --logo: url(/image/logo_light.png);
+/*    --page-logo: url(/image/pageLogo_light.png);*/
+    --page-logo: url(/image/pageLogo_dark.png);
+    --logo: url(/image/logo_dark.png);
 
     --main-color: rgb(255, 255, 255);
-    --main-color-a: rgba(255, 255, 255, 0.5);
+    --main-color-a: rgba(255, 255, 255, 0.75);
     --main-hover-color: rgb(175, 175, 175);
     
     --sub-color: rgb(56, 56, 56);
     --sub-color-a: rgba(56, 56, 56, 0.4);
     --textarea-color : rgba(51, 51, 51, 0.973);
 
-    --table-tr-color: rgba(220, 220, 220, 0.5);
+    --table-tr-color: rgb(205 205 205);
+    --table-tr-odd-color: rgb(225 225 225);
     --table-th-color: #2d2d2d;
     --table-th-text-color: #ffffff;
+    --table-th-sub-text-color: #737373;
     --table-main-text-color: #000000;
-    --table-sub-text-color: #5b5b5b;
-    --table-hover : #2d2d2d;
-    --info : #D28A38;
+    --table-sub-text-color: #333333;
+    --table-hover : rgb(159 159 159);
+
+    --info : #004cff;
     --info-2: #35c408;
 
+    --btn-hover: #fd9f2891;
+    --btn-bg : #FD9F28;
+    --border: #ffffff;
+    --border-bottom : rgb(0 0 0 / 25%);
+    --basic-font : #eee;
+
     --shadow: rgba(56, 56, 56);
-    --board-under-color: rgba(238, 238, 238, 0.9);
+    --board-under-color: rgb(37 37 37 / 90%);
 
     --input-text-color: rgba(220, 220, 220, 0.5);
-
-    --table-hover : rgb(217, 217, 217);
 }
 body[data-theme='dark-mode'] {
     --page-logo: url(/image/pageLogo_dark.png);
     --logo: url(/image/logo_dark.png);
 
     --main-color: rgb(30, 30, 30);
-    --main-color-a: rgba(30, 30, 30, 0.5);
+    --main-color-a: rgba(30, 30, 30, 0.75);
     --main-hover-color: rgb(81, 81, 81);
     
 
@@ -51,17 +61,26 @@ body[data-theme='dark-mode'] {
     --sub-color-a: rgba(208, 208, 208, 0.8);
     --textarea-color : rgba(51, 51, 51, 0.973);
 
-    --table-tr-color: rgba(0, 0, 0, 0.2);
+    --table-tr-color: rgb(20 20 20);
+    --table-tr-odd-color: rgb(28 28 28);
     --table-th-color: #2d2d2d;
     --table-th-text-color: #dcdcdc;
+    --table-th-sub-text-color: #737373;
     --table-main-text-color: #dcdcdc;
     --table-sub-text-color: #929292;
     --table-hover : #2d2d2d;
-    --info : #D28A38;
+
+    --info : #FD9F28;
     --info-2: #35c408;
 
+    --btn-hover: #fd9f2891;
+    --btn-bg : rgba(30, 30, 30, 0.75);
+    --border : #612809;
+    --border-bottom : rgba(238, 238, 238, 0.2);
+    --basic-font : #eee;
+
     --shadow: rgba(0, 0, 0);
-    --board-under-color: rgba(51, 51, 51, 0.9);
+    --board-under-color: rgb(37 37 37 / 90%);
 
     --input-text-color: rgba(0, 0, 0, 0.2);
 }

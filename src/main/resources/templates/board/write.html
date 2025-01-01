@@ -32,14 +32,15 @@
     <link rel="stylesheet" href="/css/loading.css"/>
     <link rel="stylesheet" href="/css/index.css"/>
     <link rel="stylesheet" href="/css/detail.css"/>
-    <link rel="stylesheet" href="/css/board.css"/>
-    <link rel="stylesheet" href="/css/editor.css"/>
+    <link rel="stylesheet" href="/css/board/board.css"/>
+    <link rel="stylesheet" href="/css/board/editor.css"/>
     <meta charset="UTF-8">
     <title>알비온 GG - 게시판 작성 ⚔</title>
 </head>
 
 <body data-theme="light-mode">
 <script type="text/javascript" src="/js/toggle.js"></script>
+<div class="image-maindiv">
 <div th:replace="~{header :: header}"></div>
 <div class="centered">
     <div class="board-header-detail">
@@ -87,6 +88,8 @@
     <a href="#" class="btn cancel">취소</a>
     <a href="#" class="btn submit">작성</a>
 </div>
+</div>
+
 
 <div id="blackArea">
     <div id="loading">

@@ -1,5 +1,9 @@
-body{
+.image-maindiv{
+    position: relative;
+    background-image: url(/image/background-image-calculator.jpeg);
     height: auto;
+    min-height: 100%;
+    background-repeat: repeat;
 }
 .table-header{
     position: sticky;
@@ -14,7 +18,6 @@ fieldset{
 .main{
     display: flex;
     height : auto;
-    min-height: 40vw;
     position: relative;
     justify-content: space-between;
     padding: 0px  10px;
@@ -68,15 +71,16 @@ input {
     border: 1px solid var(--sub-color);
     box-sizing: border-box;
     padding: 5px 5px;
+    border-radius: 4px;
 }
 
 .input-number{
     font-size: 0.8em;
     font-weight: bold;
-    color: var(--sub-color);
-    background-color: var(--main-color);
-    border: 1px solid var(--sub-color);
-    border-radius: 3px;
+    color: #eee;
+    background-color: #00000000;
+    border: 1px solid var(--border);
+    border-radius: 4px;
     box-sizing: border-box;
     padding: 8px 10px;
     width: 70%;
@@ -104,9 +108,8 @@ ul {
     cursor: pointer;
     font-size: 0.9em;
     font-weight: bold;
-    color: var(--sub-color);
-    background-color: var(--main-color-a);
-    border: 1px solid var(--sub-color);
+    background-color: #00000000;
+    border: 1px solid var(--border);
     box-sizing: border-box;
     padding: 8px 10px;
 }
@@ -116,7 +119,7 @@ ul {
 }
 
 .li:hover {
-    color: var(--white);
+    color: var(--main-color);
     background: var(--sub-color);
 }
 
@@ -170,29 +173,27 @@ select{
     font-size: 1em;
     font-weight: bold;
     padding: 10px 5px;
-    background-color: var(--main-color);
-    border: 1px solid var(--sub-color);
-    border-radius: 3px;
-    color: var(--sub-color);
+    background-color: #00000000;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: #eee;
     cursor: pointer;
 }
 .btn {
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    border-radius: 3px;
-    background: var(--sub-color);
+    border-radius: 4px;
+    background: var(--btn-bg);
     text-shadow: none;
-    border: 1px solid var(--sub-color-a);
-    color: var(--main-color);
-    padding: 10px 30px;
-    min-width: 10%;
+    border: 2px solid var(--border);
+    color: var(--sub-color);
+    padding: 15px 50px;
     text-align: center;
-    align-content: center;
 }
 .btn:hover {
-    background-color: var(--main-color);
-    color: var(--sub-color);
+    background-color: var(--btn-hover);
+    color: var(--main-color);
 }
 
 table{
@@ -200,7 +201,7 @@ table{
     font-size: 0.8em;
     width: 100%;
     table-layout: auto;
-    box-shadow: 0 0 10px 0 var(--shadow);
+    box-shadow: 0 0 10px 0 var(--border);
     border-radius: 8px;
 }
 table thead tr th:first-child{
@@ -225,17 +226,16 @@ th{
     border-bottom: 2px solid var(--sub-color);
     border-top: 2px solid var(--sub-color);*/
 }
-
-table tbody tr:nth-child(odd){
-    background-color: var(--table-tr-color);
-}
 table tbody tr:last-child td{
     border-bottom: 0;
 }
 td{
     color: var(--table-main-text-color);
     padding: 0 10px;
-    border-bottom: 1px dashed var(--main-color);
+    border-bottom: 1px dashed var(--border-bottom);
+}
+tr{
+    background-color: var(--table-tr-color);
 }
 .refining-table td:nth-child(5){
     text-align: left;
@@ -334,7 +334,6 @@ table tbody td input{
     padding: 5px 10px;
 }
 .taxLabel{
-    color: var(--sub-color);
     font-size : 0.7em;
     margin-bottom: 3px;
     display: block;
@@ -345,7 +344,7 @@ table tbody td input{
 .priceDetail{
     font-size: 0.5em;
     margin: 0 auto;
-    color : var(--table-sub-text-color);
+    color : var(--table-th-sub-text-color);
 }
 .red{
     font-size: 0.9em;
@@ -519,7 +518,8 @@ table tbody td input{
 .footer{
     font-size: 10px;
     height: 15px;
-    position: relative;
+    position: absolute;
+    bottom:0;
     transform: translateY(-100%);
     width: 100%;
     display: flex;
@@ -557,7 +557,7 @@ table tbody td input{
     .btn{
         font-size: 25px;
         display: inline-block;
-        width: 85%;
+        width: 75%;
     }
     .table-div{
         margin-top: 2%;

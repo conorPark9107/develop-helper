@@ -1,3 +1,9 @@
+.image-maindiv{
+    background-image: url(/image/background-image-market.jpeg);
+    background-repeat: repeat;
+    height: auto;
+    min-height: 100%;
+}
 .flex-div{
     display: flex;
     flex-direction: column;
@@ -77,7 +83,7 @@ img{
     color: #085820;
 }
 .bridgewatch{
-    color: #D2C700;
+    color: #77732b;
 }
 .caerleon{
     color: #44000A;
@@ -86,7 +92,7 @@ img{
     color: #7A297B;
 }
 .blackmarket{
-    color: #000000;
+    color: #570000;
 }
 .selctedItem{
     border: 2px solid;
@@ -100,16 +106,15 @@ input[type="text"]:focus{
 .itemArea{
     display: none;
     width: 100%;
-    border: 1px solid rgba(238, 238, 238, 0.1);
 }
-#marketTable{
+table{
     width: 1000px;
-    box-shadow: 0 0 10px 0 var(--shadow);
+    box-shadow: 0 0 10px 0 var(--border);
 }
-#marketTable th:not(:first-child){
+table th:not(:first-child){
     text-align: right;
 }
-#marketTable thead tr{
+table thead tr{
     background-color: var(--table-th-color);
     color: var(--table-th-text-color);
     border-bottom: 2px solid var(--sub-color);
@@ -117,21 +122,25 @@ input[type="text"]:focus{
     border-top-left-radius : 8px;
     border-top-right-radius: 8px;
 }
-#marketTable tbody tr:last-child{
+table tbody tr{
+    background-color: var(--table-tr-color);
+}
+table tbody tr:last-child{
     border-bottom: 0px;
     border-bottom-left-radius : 8px;
     border-bottom-right-radius: 8px;
 }
-#marketTable th{
-    padding: 10px 10px;
+table th{
+    padding: 15px 10px;
 }
-#marketTable td{
+table td{
+    color: var(--table-sub-text-color);
     border-right: 1px solid var(--sub-color-a);
-    border-bottom: 1px dashed var(--sub-color-a);
+    border-bottom: 1px dashed var(--border-bottom);
     padding: 10px 10px;
     text-align: right;
 }
-#marketTable td:nth-child(1){
+table td:nth-child(1){
     text-align: center;
 }
 .flex-item{

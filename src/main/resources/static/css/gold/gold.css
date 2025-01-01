@@ -1,3 +1,9 @@
+.image-maindiv{
+    background-image: url(/image/background-image-battle.jpeg);
+    background-repeat: repeat;
+    height: auto;
+    min-height: 100%;
+}
 .container{
     display: flex;
     flex-direction: column;

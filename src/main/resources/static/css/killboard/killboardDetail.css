@@ -1,3 +1,8 @@
+.image-maindiv{
+    background-image: url(/image/background-image-killboard.jpeg);
+    height: auto;
+    background-repeat: repeat;
+}
 .container{
     width: 100%;
     margin: auto auto 5vh;
@@ -185,17 +190,21 @@ a{
 }
 th {
     font-weight: bold;
-    padding: 10px 10px;
-    background-color: var(--sub-color);
-    color: var(--main-color);
+    padding: 15px 10px;
+    background-color: var(--table-th-color);
+    color: var(--table-th-text-color);
+}
+.table tbody tr{
+    background-color: var(--table-tr-color);
 }
 .table tbody tr:nth-child(odd) {
-    background-color: var(--table-tr-color);
+    background-color: var(--table-tr-odd-color);
 }
 .hover-background:hover {
     background-color: var(--table-hover);
 }
 td {
+    color: var(--table-sub-text-color);
     padding: 10px 10px;
 }
 .table tr:last-child td:first-child {

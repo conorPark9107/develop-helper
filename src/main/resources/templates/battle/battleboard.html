@@ -31,10 +31,10 @@
 </head>
 <body data-theme="light-mode">
 <script type="text/javascript" src="/js/toggle.js"></script>
+<div class="image-maindiv">
 <div th:replace="~{header :: header}"></div>
 
 <div>
-
     <div class="container-title">
         <h6>길드 단위 전투 로그</h6>
     </div>
@@ -90,7 +90,7 @@
         </div>
 
         <table class="table maintable">
-            <caption><span class="info-msg">행을 클릭하면 전투 상세보기로 이동합니다.</span></caption>
+            <caption><span>행을 클릭하면 전투 상세보기로 이동합니다.</span></caption>
             <colgroup>
                 <col class="col1">
                 <col class="col2">
@@ -150,6 +150,7 @@
             </div>
     </div>    
 
+</div>
 </div>
 
 <div id="blackArea">
