@@ -5,7 +5,7 @@
 
 .ql-snow .ql-stroke {
     fill: none;
-    stroke: var(--sub-color);
+    stroke: var(--border);
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 2;
@@ -39,7 +39,7 @@
     stroke-width: 2;
 }
 #editor{
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
 }
 #editor:hover{
 
@@ -71,18 +71,18 @@
 
 .ql-toolbar.ql-snow {
     border: none;
-    border-top: 1px solid var(--sub-color);
-    border-left: 1px solid var(--sub-color);
-    border-right: 1px solid var(--sub-color);
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
 }
 
 .editor-div:hover>#editor {
     border: none;
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
 }
 
 .jconfirm.jconfirm-supervan .jconfirm-box {
-    border: 1px solid 1px solid var(--sub-color);
+    border: 1px solid 1px solid var(--border);
     background-color: var(--main-color);
 }
 
@@ -95,7 +95,7 @@ div.jconfirm.jconfirm-supervan.jconfirm-open>div.jconfirm-bg {
 }
 .ql-snow .ql-tooltip {
     background-color: var(--main-color);
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     box-shadow: 0 0 5px var(--sub-color);
     color: var(--black);
     padding: 0.5vw 2vw;
@@ -104,7 +104,7 @@ div.jconfirm.jconfirm-supervan.jconfirm-open>div.jconfirm-bg {
 .ql-snow .ql-tooltip input[type=text] {
     background-color: var(--main-color);
     display: none;
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     font-size: 13px;
     height: 26px;
     margin: 0;
@@ -124,13 +124,13 @@ div.jconfirm.jconfirm-supervan.jconfirm-open>div.jconfirm-bg {
     content: "비디오 링크를 복붙 해주세요 🎬 ";
 }
 .ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
-    fill: var(--sub-color-a);
+    fill: var(--border);
 }
 #editor > div.ql-tooltip.ql-editing > a.ql-action{
     border-radius: 2px;
     background: var(--sub-color);
     text-shadow: none;
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     color: var(--main-color);
     padding: 5px 15px 6px 0px;
     min-width: 100px;
@@ -151,21 +151,21 @@ div.jconfirm.jconfirm-supervan.jconfirm-open>div.jconfirm-bg {
 div > input[name=inputPassword]{
     padding: 7px 14px;
     background-color: var(--main-color);
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     color: var(--sub-color);
     font-size:1em;
 }
 div > input[name=inputPassword]:hover, div > input[name=inputPassword]:focus{
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
 }
 .jconfirm.jconfirm-supervan .jconfirm-box .jconfirm-buttons button{
     background-color: var(--sub-color);
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     color: var(--main-color);
 }
 .jconfirm.jconfirm-supervan .jconfirm-box .jconfirm-buttons button:hover{
     background-color: var(--main-color);
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     color: var(--sub-color);
 }
 .jconfirm.jconfirm-supervan .jconfirm-box .jconfirm-buttons button:nth:child(1){

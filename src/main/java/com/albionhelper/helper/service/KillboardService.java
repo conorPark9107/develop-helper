@@ -16,6 +16,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,16 +56,22 @@ public class KillboardService {
                 .block();
     }
 
+    private String getResponseForBoard(String requestUrl) {
+        String urlWithTimestamp = requestUrl + "?timestamp=" + Instant.now().getEpochSecond();
+        return  webClient.get()
+                .uri(urlWithTimestamp)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+    }
 
     private String getResponse(String url) {
         return  webClient.get()
                 .uri(url)
-                .header("x-test", "header")
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
 //                .block(Duration.ofMillis(10_000));
-
     }
 
     // 플레이어 ID값을 알아내기위한.
@@ -112,7 +119,7 @@ public class KillboardService {
         StringBuilder killBuilder = new StringBuilder(location);
         String killUrl = killBuilder.append(GET_KILLBOARD).toString().replace("<ID>", id);
         log.info("request url is {}", killUrl);
-        String responseKillData = getResponse(killUrl);
+        String responseKillData = getResponseForBoard(killUrl);
         return getKillLog(responseKillData);
     }
 
@@ -123,11 +130,11 @@ public class KillboardService {
         StringBuilder deathBuilder = new StringBuilder(location);
         String deathUrl = deathBuilder.append(GET_DEATHBOARD).toString().replace("<ID>", id);
         log.info("request url is {}", deathUrl);
-        String responseDeathData = getResponse(deathUrl);
+        String responseDeathData = getResponseForBoard(deathUrl);
         return getDeathLog(responseDeathData);
     }
 
-//    https://gameinfo-sgp.albiononline.com/api/gameinfo/events/Falu3eR4SRyGVZR9g-_XVw/history/_SjHw45FQtGAlbhnjlCjKg
+    //    https://gameinfo-sgp.albiononline.com/api/gameinfo/events/Falu3eR4SRyGVZR9g-_XVw/history/_SjHw45FQtGAlbhnjlCjKg
     // 킬보드 상세 페이지 정보를 리턴하는 메서드.
     public Event getDetail(String server, String killerId, String victimId) {
         server = getLocation(server);

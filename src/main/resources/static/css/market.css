@@ -1,3 +1,6 @@
+a{
+    text-decoration: none;
+}
 .image-maindiv{
     background-image: url(/image/background-image-market.jpeg);
     background-repeat: repeat;
@@ -147,6 +150,28 @@ table td:nth-child(1){
     padding : 10px;
     border-bottom: 1px solid var(--table-hover);
 }
+.back-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 98%;
+    margin: auto;
+    padding-top: 15px;
+}
+.btn-back{
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    width: 130px;
+    padding: 8px;
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+.btn-back:hover{
+    opacity: 0.4;
+}
 @media screen and (max-width: 1024px) {
     .menu-detail {
         height: 25%;
@@ -169,5 +194,13 @@ table td:nth-child(1){
     }
     .menu-ul li{
         font-size : 25px;
+    }
+    .btn-back{
+        font-size: 18px;
+        padding: 15px 35px;
+        margin-left: 10px;
+    }
+    .back-div{
+        margin: 0;
     }
 }

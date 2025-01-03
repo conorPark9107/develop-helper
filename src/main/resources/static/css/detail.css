@@ -83,7 +83,7 @@
     padding: 10px 10px;
     color: var(--table-th-text-color);
     background-color: #00000000;
-    font-size: 1em;
+    font-size: 0.9em;
     --angle: 0deg;
     border: 2px solid var(--border);
     border-radius: 4px;

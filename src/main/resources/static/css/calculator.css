@@ -9,6 +9,9 @@
     position: sticky;
     top: 0;
 }
+a{
+    text-decoration:none;
+}
 p{
     margin: 2% 0;
 }
@@ -511,7 +514,33 @@ table tbody td input{
     display: flex;
     justify-content: space-evenly;
 }
+.back-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 98%;
+    margin-left: 10px;
+    padding-top: 15px;
+}
+.btn-back{
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    width: 130px;
+    padding: 8px;
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+.btn-back:hover{
+    opacity: 0.4;
+}
+
 @media screen and (max-width: 1024px) {
+    .li{
+        padding: 13px 10px;
+    }
     .menu-message{
         font-size: 16px;
         border-bottom: 1px dashed var(--sub-color);
@@ -538,7 +567,7 @@ table tbody td input{
         padding-bottom : 10px;
     }
     p{
-        margin-bottom : 0;
+        margin-bottom: 10px;
     }
     .btn{
         font-size: 25px;
@@ -551,14 +580,21 @@ table tbody td input{
     }
     .input-number{
         padding: 12px 10px;
-        width: 100%;
+        width: 80%;
     }
     td{
         font-size: 18px;
         padding: 15px 10px;
     }
     select{
+        width: 80%;
         padding: 10px 10px;
+    }
+    .taxArea{
+        width: 40%;
+    }
+    .taxArea select{
+        width: 100%;
     }
     .priceDetail, .material span, .material-cooking span{
         font-size: 12px;
@@ -575,8 +611,8 @@ table tbody td input{
         margin-top: 0;
     }
     .image-div img{
-        width: 57px;
-        height: 57px;
+        width: 80px;
+        height: 80px;
     }
     .main-table-after img{
         width: 57px;
@@ -616,5 +652,10 @@ table tbody td input{
     .tooltipArea_04{
         width: 86%;
         height: 26%;
+    }
+    .btn-back{
+        font-size: 18px;
+        padding: 15px 35px;
+        margin-left: 10px;
     }
 }

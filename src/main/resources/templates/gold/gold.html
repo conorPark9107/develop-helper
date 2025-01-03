@@ -22,14 +22,16 @@
 <script type="text/javascript" src="/js/toggle.js"></script>
 <div class="image-maindiv">
 <div th:replace="~{header :: header}"></div>
-
+    <div class="back-div">
+        <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
+    </div>
     <div class="container">
         <div class="container-title">
             <h3>💰골드 시세💰</h3>
         </div>
         <div style="margin-bottom: 1vw;">
             <div>
-                <canvas id="myChart-all" width="1000" height="300"></canvas>
+                <canvas id="myChart-all" width="975" height="300"></canvas>
             </div>
         </div>
 

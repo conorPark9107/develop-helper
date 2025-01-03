@@ -117,7 +117,7 @@ $(document).ready(function () {
         const server = $('input[name="server"]:checked').val();
 
         if(id == '' || id == null){
-            showAlert('길드명을 입력해주세요.');
+            showAlert('길드명을 입력해주세요.');re
             return;
         }
 

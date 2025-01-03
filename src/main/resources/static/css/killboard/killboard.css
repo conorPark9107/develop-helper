@@ -17,7 +17,7 @@ table{
     width: 100%;
     white-space: nowrap;
     border-collapse: collapse;
-    box-shadow: 0 0 10px 0px var(--shadow);
+    box-shadow: 0 0 10px 0px var(--border);
     border-radius: 8px;
 }
 td {
@@ -150,6 +150,28 @@ caption {
     opacity: 0.9;
     visibility: visible;
 }
+.back-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 98%;
+    margin-left: 10px;
+    padding-top: 15px;
+}
+.btn-back{
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    width: 130px;
+    padding: 8px;
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+.btn-back:hover{
+    opacity: 0.4;
+}
 @media screen and (max-width: 1024px) {
     td{
         padding: 20px 10px;
@@ -212,6 +234,10 @@ caption {
     .col9{
         width:4%;
     }
-
+    .btn-back{
+        font-size: 18px;
+        padding: 15px 35px;
+        margin-left: 10px;
+    }
 
 }

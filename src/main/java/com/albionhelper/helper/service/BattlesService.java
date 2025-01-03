@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -29,7 +30,7 @@ public class BattlesService {
     private final String GET_ID_URL = "/search?q=";
 
     // 최근 전투 목록을 위한 URI
-    private final String DEFAULT_BATTLES_URL = "/battles?sort=recent";
+    private final String DEFAULT_BATTLES_URL = "/battles?";
 
     // 전투에 참가한 길드, 동맹, 인원을 알기 위한 URI URI /battles/<battleId>
     private final String GET_BATTLE = "/battles/";
@@ -50,9 +51,11 @@ public class BattlesService {
         return EAST;
     }
     private String getResponseNoCache(String requestUrl) {
+        String urlWithTimestamp = requestUrl + "&timestamp=" + Instant.now().getEpochSecond();
+
         return webClient.get()
-                .uri(requestUrl)
-                .header("Cache-Control", "no-cache, no-store, must-revalidate")
+                .uri(urlWithTimestamp)
+                .header("Cache-Control", "no-cache, no-store, must-revalidate, max-age=0")
                 .header("Pragma", "no-cache")
                 .header("Expires", "0")
                 .retrieve()
@@ -62,31 +65,30 @@ public class BattlesService {
 
 
     private String getResponse(String requestUrl) {
-
+        String urlWithTimestamp = requestUrl + "&timestamp=" + Instant.now().getEpochSecond();
         return webClient.get()
-                .uri(requestUrl)
+                .uri(urlWithTimestamp)
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
     }
 
     private Object[] getResponseForEvent(String requestUrl) {
+        String urlWithTimestamp = requestUrl + "&timestamp=" + Instant.now().getEpochSecond();
         return webClient.get()
-                .uri(requestUrl)
+                .uri(urlWithTimestamp)
                 .retrieve()
                 .bodyToMono(Object[].class)
                 .block();
     }
 
     // 베틀리스트를 테이블에 보여주기위한 메서드.
-    public List<Battle> getBattleList(String url, int offset, int limit, String id) throws JsonProcessingException {
+    public List<Battle> getBattleList(String server, int offset, int limit, String id) throws JsonProcessingException {
 
-        String requestUrl = getLocation(url) + DEFAULT_BATTLES_URL + "&offset=" + offset + "&limit=" + limit;
-        if(!id.equals("")){
-            requestUrl += "&guildId=" + id;
-        }
+        String requestUrl = getLocation(server) + DEFAULT_BATTLES_URL + "sort=recent&offset=" + offset + "&limit=" + limit;
+        requestUrl += getIdURI(id);
+
         String response = getResponseNoCache(requestUrl);
-
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(response);
 
@@ -101,11 +103,9 @@ public class BattlesService {
     }
 
     // 새로고침되어 append될 데이터를 뽑는 메서드
-    public List<Battle> getBattleListForRefresh(String url, String id, long recentId) throws JsonProcessingException {
-        String requestUrl = getLocation(url) + DEFAULT_BATTLES_URL + "&range=day&offset=0";
-        if(!id.equals("")){
-            requestUrl += "&guildId=" + id;
-        }
+    public List<Battle> getBattleListForRefresh(String server, String id, long recentId) throws JsonProcessingException {
+        String requestUrl = getLocation(server) + DEFAULT_BATTLES_URL + "sort=recent&range=day&offset=0";
+        requestUrl += getIdURI(id);
 
         String response = getResponseNoCache(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -310,6 +310,7 @@ public class BattlesService {
         return arr;
     }
 
+    // 평균 IP를 구함.
     public Battle getAverageIp(Battle battle, Map<String, EventPlayer> playerList) {
         Map<String, Integer> guildMap = new HashMap<>();
         Map<String, Integer> allianceMap = new HashMap<>();
@@ -349,6 +350,13 @@ public class BattlesService {
         return battle;
     }
 
+    // id 값이있다면 URI 추가.
+    private String getIdURI(String id) {
+        if(!id.equals("")){
+            return "&guildId=" + id;
+        }
+        return "";
+    }
 
 }
 

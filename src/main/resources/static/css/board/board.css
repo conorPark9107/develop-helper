@@ -26,19 +26,19 @@ li.category.clicked{
 
 .centered {
     margin: 0 auto;
+    width: 1000px;
     max-width: 1000px;
-    min-width: 970px;
 }
 
 .board-header {
     font-size: 1em;
     padding: 0px;
     text-align: center;
-    max-width: 1000px;
+    max-width: 975px;
     width: 970px;
     margin: 0 auto;
 }
-.board-header-detail {
+/*.board-header-detail {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -46,12 +46,11 @@ li.category.clicked{
     padding: 0px;
     text-align: center;
     max-width: 975px;
-}
+}*/
 .board-header-title {
+    text-align: center;
+    font-size: 2rem;
     margin-bottom: 1.5vw;
-}
-.header-center{
-    margin-right : 1%;
 }
 .visibility{
     visibility: hidden;
@@ -93,17 +92,14 @@ div.board-header-left-subDiv>span {
     margin: 0 auto;
 }
 .btn-header-right{
+    text-align: center;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    border-radius: 2px;
-    text-shadow: none;
-    border: 2px solid var(--sub-color);
-    background-color : var(--sub-color);
-    color: var(--main-color);
-    padding: 8px 16px;
-    min-width: 60px;
-    box-shadow: 0 0 10px var(--shadow);
+    font-size: 12px;
+    width: 130px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 2px solid var(--red);
+    color: var(--red);
 }
 .btn-header-right:hover {
     background-color: var(--main-color);
@@ -150,7 +146,7 @@ div.board-header-left-subDiv>span {
     min-width: 10vw;
     color: var(--sub-color);
     background-color: var(--main-color);
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     box-sizing: border-box;
     padding: 8px;
     margin-bottom: 0.5vw;
@@ -160,7 +156,7 @@ div.board-header-left-subDiv>span {
     min-width: 39.25vw;
     color: var(--sub-color);
     background-color: var(--main-color);
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     box-sizing: border-box;
     padding: 8px;
     margin-bottom: 0.5vw;
@@ -169,7 +165,7 @@ div.board-header-left-subDiv>span {
 .board-title-category-input {
     color: var(--sub-color);
     background-color: var(--main-color);
-    border: 1px solid var(--lightblue);
+    border: 1px solid var(--border);
     box-sizing: border-box;
     padding: 8px;
     margin-bottom: 0.5vw;
@@ -178,7 +174,7 @@ div.board-header-left-subDiv>span {
 .board-password {
     color: var(--sub-color);
     background-color: var(--main-color);
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     box-sizing: border-box;
     padding: 8px;
     margin-bottom: 0.5vw;
@@ -208,8 +204,8 @@ table {
 th {
     width: 5vw;
     padding: 1%;
-    border-bottom: 1.5px solid var(--sub-color);
-    border-top: 2.5px double var(--sub-color);
+    border-bottom: 1.5px solid var(--border);
+    border-top: 2.5px double var(--border);
 }
 
 tr {
@@ -265,7 +261,7 @@ table .col7 {
     font-weight: bold;
     color: var(--main-color);
     background-color : var(--sub-color);
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     border-radius: 2px;
     padding: 5px 10px;
     box-shadow: 0 0 10px var(--shadow);
@@ -373,8 +369,8 @@ table .col7 {
     font-weight: bold;
     color: var(--main-color);
     background-color: var(--sub-color);
-    border: 1px solid var(--sub-color);
-    box-shadow: 0 0 10px var(--shadow);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 10px var(--border);
     border-radius: 2px;
     padding: 5px 10px;
 }
@@ -394,7 +390,7 @@ table .col7 {
     transform: translateY(6px);
     z-index: 1;
     box-shadow: 0px 5px 10px var(--shadow);
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     border-radius: 2px;
 }
 .dropdown-content {
@@ -418,7 +414,36 @@ table .col7 {
     display: block;
     padding: 2%;
 }
-
+.back-div-between{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 98%;
+    margin-left: 10px;
+    padding-top: 15px;
+}
+.back-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 98%;
+    margin-left: 10px;
+    padding-top: 15px;
+}
+.btn-back{
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    width: 130px;
+    padding: 8px;
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+.btn-back:hover{
+    opacity: 0.4;
+}
 
 
 
@@ -461,8 +486,8 @@ h4{
     flex-direction: row;
     gap:1%;
     padding: 2% 0;
-    border-top: 2px solid RGB(238, 238, 238);
-    border-bottom: 2px solid RGB(238, 238, 238);
+    border-top: 2px solid var(--border);
+    border-bottom: 2px solid var(--border);
     margin-top: 5%;
 }
 .block{
@@ -482,7 +507,7 @@ h4{
     width:85%;
     color: var(--sub-color);
     background-color: var(--main-color);
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     box-sizing: border-box;
     padding: 8px;
     resize: none;
@@ -495,7 +520,7 @@ h4{
     border-radius: 2px;
     background: var(--sub-color);
     text-shadow: none;
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     color: var(--main-color);
     padding: 10px 30px;
     min-width: 100px;
@@ -514,7 +539,7 @@ h4{
     border-radius: 2px;
     background: var(--sub-color);
     text-shadow: none;
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     color: var(--main-color);
     padding: 10px 30px;
     min-width: 100px;
@@ -527,7 +552,7 @@ h4{
 /* 댓글 보기 css */
 .comment-read-area{
     font-size: 0.7em;
-    border-top: 2px solid var(--sub-color);
+    border-top: 2px solid var(--border);
 }
 .comment-list{
     margin:1% 0;
@@ -578,7 +603,7 @@ h4{
     width: 8%;
 }
 .comment-delete a:hover{
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
 }
 .comment-time > span{
     display: inline-block;
@@ -592,7 +617,7 @@ h4{
     flex-direction: row;
     align-items: center;
     color: var(--sub-color);
-    border-top: 1px solid var(--sub-color);
+    border-top: 1px solid var(--border);
     background-color: var(--main-color-a);
 }
 .comment-comment-write-area{
@@ -618,7 +643,7 @@ h4{
     padding: 10px 15px;
     color: var(--main-color);
     background-color: var(--sub-color);
-    border: 1px solid var(--sub-color);
+    border: 1px solid var(--border);
     box-shadow : 5px;
     border-radius: 50%;
     margin: 0 1%;
@@ -638,6 +663,9 @@ h4{
     opacity: 0.5;
 }
 @media screen and (max-width: 1024px) {
+    .centered{
+        width: 95%;
+    }
     .board-header-title{
         font-size: 36px;
     }
@@ -671,5 +699,14 @@ h4{
     }
     .contents{
         min-height: 85vw;
+    }
+    .btn-back{
+        font-size: 18px;
+        padding: 15px 35px;
+        margin-left: 10px;
+    }
+    .btn-header-right{
+        font-size: 18px;
+        padding: 15px 35px;
     }
 }

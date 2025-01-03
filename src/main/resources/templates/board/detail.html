@@ -40,18 +40,12 @@
 <div th:replace="~{header :: header}"></div>
 
 <div class="centered">
-
-    <div class="board-header-detail">
-        <div class="header-left">
-            <a href="/board" class="btn-header">뒤로</a>
-        </div>
-        <div class="header-center">
-            <h3 class="board-header-title">🌈 게시판</h3>
-        </div>
-        <div class="header_right">
-            <!--        <a id="modifyBtn" class="btn-header-right">수정</a>-->
-            <a id="deleteBtn" class="btn-header-right">삭제</a>
-        </div>
+    <div class="back-div-between">
+        <a class="btn-back text-center" href="/board">목록으로</a>
+        <a class="btn-header-right text-center" id="deleteBtn" >삭제</a>
+    </div>
+    <div class="header-center">
+        <h3 class="board-header-title">🌈 게시판</h3>
     </div>
 
     <div class="board-title-div">

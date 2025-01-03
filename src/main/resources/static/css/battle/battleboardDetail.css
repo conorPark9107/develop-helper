@@ -40,7 +40,7 @@ img{
 .bigdonation{
     border: 1px solid var(--border);
     box-shadow: 0 0 8px var(--border);
-    min-width: 550px;
+    min-width: 640px;
     min-height: 120px;
 }
 .flex-column{
@@ -83,12 +83,14 @@ img{
     box-shadow: 0 0 8px var(--border);
 }
 .btn{
+    text-align: center;
     cursor: pointer;
     font-size: 12px;
     width: 130px;
-    padding: 9px;
-    color: var(--main-color);
-    background-color: var(--sub-color);
+    padding: 8px;
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border);
     border-radius: 5px;
 }
 .btn:hover{
@@ -282,9 +284,12 @@ a{
 }
 .back-div{
     display: flex;
-    padding-top: 20px;
-    width: auto;
-    margin: auto 17vw;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    padding-top: 15px;
 }
 .detailDiv{
     display: flex;
@@ -312,7 +317,7 @@ a{
 }
 .imageArea{
     display:grid;
-    width: 440px;
+    width: 520px;
     grid-template-columns: repeat(auto-fit, 2.1vw);
     justify-content: end;
 }
@@ -332,13 +337,9 @@ a{
 @media screen and (max-width: 1024px) {
     p{
         margin-top: 0;
-
     }
-    .flex-column, .top-table-div{
-        width: 1200px;
-    }
-    .back-div{
-        margin: auto;
+    .flex-column, .top-table-div {
+        width: 98%;
     }
     .table-title{
         font-size: 26px;
@@ -372,5 +373,12 @@ a{
     .middle-table-div{
         width: 100%;
     }
-
+    .btn{
+        font-size: 18px;
+        padding: 15px 35px;
+        margin-left: 10px;
+    }
+    .input{
+        padding: 13px 11px;
+    }
 }

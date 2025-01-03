@@ -33,7 +33,7 @@
 
 <div>
     <div class="back-div">
-        <a class="btn text-center" href="javascript:history.back();">뒤로가기</a>
+        <a class="btn-back text-center" href="javascript:history.back();">목록으로</a>
     </div>
 
     <div class="container-title">
@@ -66,7 +66,6 @@
                         <span class="guildName black" th:if="${not #strings.isEmpty(event.killer.guildName)}" th:text="${event.killer.guildName}"></span>
                     </div>
                     <div class="imageDiv border border-green radius relative" th:with="p=${event.killer.equipment}">
-
                         <img class="gear" src="/image/gear.png">
                         <!-- 메인핸드 -->
                         <img th:if="${not #strings.isEmpty(p.mainHand)}" class="wearingItem mainHand"
@@ -160,15 +159,16 @@
                 <div class="inventory-div">
                     <p class="sub-title">사망자 인벤토리</p>
                     <div class="inventory border border-red">
+                        <th:block th:if="${#strings.isEmpty(event.victim.inventory)}">
+                            아이템을 아무것도 가지고 있지 않았습니다.
+                        </th:block>
                         <th:block th:if="${not #strings.isEmpty(event.victim.inventory)}" th:each="inventory : ${event.victim.inventory}">
                             <div th:if="${not #strings.isEmpty(inventory)}" class="item">
                                 <img class="item-img" th:src="|https://render.albiononline.com/v1/item/${inventory.type}?quality=${inventory.quality}|"/>
                                 <span class="item-quantity" th:text="${inventory.count}"></span>
                             </div>
                         </th:block>
-                        <th:block th:if="${#strings.isEmpty(event.victim.inventory)}">
-                            아이템을 아무것도 가지고 있지 않았습니다.
-                        </th:block>
+
                     </div>
                 </div>
             </div>

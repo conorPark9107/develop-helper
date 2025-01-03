@@ -1,3 +1,6 @@
+a{
+    text-decoration: none;
+}
 .image-maindiv{
     position: relative;
     background-image: url(/image/background-image-info.jpeg);
@@ -32,4 +35,40 @@
 }
 .link{
     color: var(--blue);
+}
+.back-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 98%;
+    max-width: 970px;
+    margin: auto;
+    padding-top: 15px;
+}
+.btn-back{
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    width: 130px;
+    padding: 8px;
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+.btn-back:hover{
+    opacity: 0.4;
+}
+@media screen and (max-width: 1024px){
+    .btn-back{
+        font-size: 18px;
+        padding: 15px 35px;
+        margin-left: 10px;
+    }
+    .container{
+        width: 98%;
+    }
+    .flex{
+        width: 100%;
+    }
 }

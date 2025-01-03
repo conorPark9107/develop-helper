@@ -6,6 +6,18 @@
 a{
     text-decoration: none;
 }
+.text-center{
+    text-align: center;
+}
+.back-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    padding-top: 15px;
+}
 .container{
     width: 100%;
     max-width: 1000px;
@@ -45,13 +57,27 @@ a{
     cursor: pointer;
     font-size: 12px;
     width: 130px;
-    padding: 9px;
+    padding: 8px;
     color: var(--main-color);
     background-color: var(--sub-color);
     border-radius: 5px;
     
 }
 .btn:hover{
+    opacity: 0.4;
+}
+.btn-back{
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    width: 130px;
+    padding: 8px;
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+.btn-back:hover{
     opacity: 0.4;
 }
 .input{
@@ -326,5 +352,27 @@ table .col6 {
     }
     .flex-item:last-child{
         font-size: 15px;
+    }
+    .container{
+        width: 98%;
+    }
+    .btn-back{
+        font-size: 18px;
+        padding: 15px 35px;
+        margin-left: 10px;
+    }
+    .list-item{
+        padding: 20px;
+    }
+    .list {
+        font-size: 20px;
+    }
+    .popup{
+        top: 31%;
+        left: 24%;
+        width: 50%;
+    }
+    .image-maindiv{
+        min-height: 100%;
     }
 }
