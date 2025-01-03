@@ -50,6 +50,7 @@ public class BattlesService {
         }
         return EAST;
     }
+
     private String getResponseNoCache(String requestUrl) {
         String urlWithTimestamp = requestUrl + "&timestamp=" + Instant.now().getEpochSecond();
 
@@ -65,18 +66,16 @@ public class BattlesService {
 
 
     private String getResponse(String requestUrl) {
-        String urlWithTimestamp = requestUrl + "&timestamp=" + Instant.now().getEpochSecond();
         return webClient.get()
-                .uri(urlWithTimestamp)
+                .uri(requestUrl)
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
     }
 
     private Object[] getResponseForEvent(String requestUrl) {
-        String urlWithTimestamp = requestUrl + "&timestamp=" + Instant.now().getEpochSecond();
         return webClient.get()
-                .uri(urlWithTimestamp)
+                .uri(requestUrl)
                 .retrieve()
                 .bodyToMono(Object[].class)
                 .block();

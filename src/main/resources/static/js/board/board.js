@@ -18,7 +18,7 @@ $(document).ready(function () {
         if (img.length > 0) {
             let src = img[img.length - 1].src;
             let file = base64toFile(src, "image");
-            console.log((file.size / 1024 / 2 / 5) +"MB");
+            console.log((file.size / 1024 / 1024).toFixed(2) +"MB");
             checkTheFileSize(file);
         }
     });
@@ -115,7 +115,7 @@ $(document).ready(function () {
             $.confirm({
                 theme: 'supervan',
                 title: '',
-                content: '한 게시글에 5MB까지 이미지등록을 허용합니다.',
+                content: '한 이미지당 5MB까지 이미지등록을 허용합니다.',
                 buttons: {
                     '돌아가기': function () {
                         $("img:last-child").remove();
