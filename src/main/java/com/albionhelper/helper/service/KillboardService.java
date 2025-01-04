@@ -15,6 +15,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -173,8 +174,12 @@ public class KillboardService {
 
     // 가장 큰 데스페임을 기록한 킬 보드(week, month, lastweek, lastMonth)
     public List<Event> getBoardBiggest(String server, String range) {
-        server = getLocation(server);
-
-        return null;
+        StringBuilder url = new StringBuilder(getLocation(server));
+        url.append(GET_BIGGEST)
+                .append("range=")
+                .append(range)
+                .append("&offset=0&limit=5");
+        Event[] event = getResponseEvent(url.toString());
+        return Arrays.stream(event).toList();
     }
 }

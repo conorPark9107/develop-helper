@@ -1,5 +1,5 @@
 .image-maindiv{
-    background-image: url(/image/background-image-killboard.jpeg);
+    background-image: url(/static/image/background-image-killboard.jpeg);
     background-repeat: repeat;
 }
 .image-maindiv-list{
@@ -65,7 +65,16 @@ table tbody tr:last-child td{
     width: 500px;
 }
 .content-body-items{
+    width: 975px;
     margin-bottom : 1vw;
+}
+.flex-row{
+    display:flex;
+    flex-direction: row;
+    column-gap: 15px;
+}
+.biggest-table{
+    width: 100%;
 }
 .content-body-item-userGroup-userId{
     opacity: 0.5;
