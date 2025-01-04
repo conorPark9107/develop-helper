@@ -11,11 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
-import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +41,8 @@ public class KillboardService {
     // 플레이어 정보
     private final String GET_PLAYERINFO = "/players/<ID>";
 
-    // 전투 정보를 얻기위한  /evnets/<battleId>
-    private final String GET_EVENT = "/events/";
+    // 가장 큰 킬을 발생한 정보들.
+    private final String GET_BIGGEST = "/events/killfame?";
 
     // getDetail()메서드로부터 호출되며, 1 v 1 이벤트(킬상세)로그를 파싱하여 리턴.
     private Event[] getResponseEvent(String url) {
@@ -174,5 +171,10 @@ public class KillboardService {
         return list;
     }
 
+    // 가장 큰 데스페임을 기록한 킬 보드(week, month, lastweek, lastMonth)
+    public List<Event> getBoardBiggest(String server, String range) {
+        server = getLocation(server);
 
+        return null;
+    }
 }

@@ -34,8 +34,12 @@ public class KillBoardController {
     // 참고할만한 페이지
     // https://albionboard.com/
     @GetMapping("")
-    public String showPage(){
-
+    public String showPage(Model model,
+                           @RequestParam(value="server", defaultValue = "east") String server){
+        model.addAttribute("week", killboardService.getBoardBiggest(server, "week"));
+        model.addAttribute("month", killboardService.getBoardBiggest(server, "month"));
+        model.addAttribute("lastWeek", killboardService.getBoardBiggest(server, "lastWeek"));
+        model.addAttribute("lastMonth", killboardService.getBoardBiggest(server, "lastMonth"));
         return "killboard/killboard";
     }
 
