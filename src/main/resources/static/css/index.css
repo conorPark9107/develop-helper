@@ -130,15 +130,15 @@ footer{
 }
 
 input[type='radio'] {
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
-width: 18px;
-height: 18px;
-border: 2px solid var(--sub-color);
-border-radius: 50%;
-outline: none;
-cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--sub-color);
+    border-radius: 50%;
+    outline: none;
+    cursor:pointer;
 }
 
 input[type='radio']:checked {
@@ -271,4 +271,11 @@ input:focus::placeholder{
     .centered{
         font-size: 17px;
     }
+}
+
+/* 서부서버 서버측 네트워크 이상해서 잠시 블러 */
+.west{
+    opacity: 0.8;
+    filter: blur(1px);
+    pointer-events: none;
 }

@@ -38,6 +38,7 @@ public class Player {
     @JsonProperty("id")
     private String id;
 
+
     public EventPlayer convert(){
         EventPlayer e = new EventPlayer();
         e.setAverageItemPower(0);

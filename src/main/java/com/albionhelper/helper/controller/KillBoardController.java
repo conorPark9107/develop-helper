@@ -36,6 +36,7 @@ public class KillBoardController {
     @GetMapping("")
     public String showPage(Model model,
                            @RequestParam(value="server", defaultValue = "east") String server){
+        model.addAttribute("server", server);
         model.addAttribute("week", killboardService.getBoardBiggest(server, "week"));
         model.addAttribute("month", killboardService.getBoardBiggest(server, "month"));
         model.addAttribute("lastWeek", killboardService.getBoardBiggest(server, "lastWeek"));

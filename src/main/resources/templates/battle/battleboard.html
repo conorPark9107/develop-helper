@@ -80,12 +80,12 @@
                 <a class="btn shadow" href="/battle">검색 결과 초기화</a>
             </div>
             <div class="flex-item">
-                <input type="radio" id="server01" name="server" value="east" th:checked="${server == 'east'}" />
-                <label for="server01">아시아</label>
-                <input type="radio" id="server02" name="server" value="west" th:checked="${server == 'west'}"/>
-                <label for="server02">아메리카</label>
-                <input type="radio" id="server03" name="server" value="europe" th:checked="${server == 'europe'}"/>
-                <label for="server03">유럽</label>
+                <input class="east" type="radio" id="server01" name="server" value="east" th:checked="${server == 'east'}" />
+                <label class="east" for="server01">아시아</label>
+                <input class="west" type="radio" id="server02" name="server" value="west" th:checked="${server == 'west'}"/>
+                <label class="west" for="server02">아메리카</label>
+                <input class="europe" type="radio" id="server03" name="server" value="europe" th:checked="${server == 'europe'}"/>
+                <label class="europe" for="server03">유럽</label>
             </div>
             <div class="flex-item">
                 <span id="timer">60</span><span>초 후에 자동 새로고침됩니다.</span>
@@ -129,7 +129,7 @@
                             <th:block th:text="${guildStat.last} ? ${guild.name} : ${guild.name} + ','"></th:block>
                         </span>
                     </td>
-                    <td th:text="${#numbers.formatInteger(battle.totalFame, 1, 'COMMA')}"></td>
+                    <td th:text="${battle.totalFameStr}"></td>
                     <td th:text="${#lists.size(battle.players)}"></td>
                     <td th:text="${battle.totalKills}"></td>
                 </tr>

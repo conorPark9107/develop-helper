@@ -100,7 +100,7 @@
                         <img th:if="${not #strings.isEmpty(p.mount)}" class="wearingItem mount"
                              th:src="|https://render.albiononline.com/v1/item/${p.mount.type}?quality=${p.mount.quality}|"/>
                         <div class="fame">
-                            <span>킬페임 : </span><span class="green" th:text="|+${event.killer.killFame}|"></span>
+                            <span>킬페임 : </span><span class="green" th:text="|+${event.killer.killFameStr}|"></span>
                         </div>
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                         <img th:if="${not #strings.isEmpty(p.mount)}" class="wearingItem mount"
                              th:src="|https://render.albiononline.com/v1/item/${p.mount.type}?quality=${p.mount.quality}|"/>
                         <div class="fame">
-                            <span>데스페임 : </span><span class="red" th:text="|-${event.victim.deathFame}|"></span>
+                            <span>데스페임 : </span><span class="red" th:text="|-${event.victim.deathFameStr}|"></span>
                         </div>
                     </div>
                 </div>

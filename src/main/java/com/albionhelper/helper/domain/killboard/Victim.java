@@ -2,6 +2,7 @@ package com.albionhelper.helper.domain.killboard;
 
 
 import com.albionhelper.helper.domain.battle.EventPlayer;
+import com.albionhelper.helper.util.Util;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -42,6 +43,13 @@ public class Victim {
 
     @JsonProperty("DeathFame")
     private int deathFame;
+
+    private String deathFameStr;
+
+    public void setDeathFame(int deathFame) {
+        this.deathFame = deathFame;
+        this.deathFameStr = Util.getUnit(this.deathFame);
+    }
 
     @Override
     public String toString() {

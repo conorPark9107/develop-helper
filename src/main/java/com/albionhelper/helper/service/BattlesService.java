@@ -154,8 +154,8 @@ public class BattlesService {
         b.setId(String.valueOf(node.get("id")));
         b.setStartTime(String.valueOf(node.get("startTime")));
         b.setEndTime(String.valueOf(node.get("endTime")));
-        b.setTotalFame(String.valueOf(node.get("totalFame")));
-        b.setTotalKills(String.valueOf(node.get("totalKills")));
+        b.setTotalFame(node.get("totalFame").intValue());
+        b.setTotalKills(node.get("totalKills").intValue());
 
         List<Player> playerList = new ArrayList<>();
         for(JsonNode player : node.get("players")){

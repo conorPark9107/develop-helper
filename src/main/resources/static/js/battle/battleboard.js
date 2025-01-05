@@ -229,7 +229,7 @@ $(document).ready(function () {
                 }
             }
             $(tr).append(`<td>${str.slice(1)}</td>`);
-            $(tr).append(`<td>${Number(r.totalFame).toLocaleString()}</td>`);
+            $(tr).append(`<td>${r.totalFameStr}</td>`);
             $(tr).append(`<td>${r.players.length}</td>`);
             $(tr).append(`<td>${r.totalKills}</td>`);
 
@@ -262,7 +262,7 @@ $(document).ready(function () {
                 }
             }
             $(tr).append(`<td>${str.slice(1)}</td>`);
-            $(tr).append(`<td>${Number(r.totalFame).toLocaleString()}</td>`);
+            $(tr).append(`<td>${r.totalFameStr}</td>`);
             $(tr).append(`<td>${r.players.length}</td>`);
             $(tr).append(`<td>${r.totalKills}</td>`);
 

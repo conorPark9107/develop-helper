@@ -214,7 +214,7 @@ td {
     border-bottom-right-radius: 10px;
 }
 .playerinfo{
-    line-height:20%;
+    line-height: 1;
 }
 .playerinfo ,td:nth-child(2){
     text-align: left;

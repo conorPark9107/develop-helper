@@ -7,6 +7,32 @@ $(document).ready(function() {
         showAlert('알비온온라인 서버에서 공식적으로 데이터를 오픈한게 아닙니다. <br/> 그렇기 때문에 정보를 요청하면 응답이 매우 느린 경우가 있습니다.');
     }
     */
+    $('input[name="location"]').on('change', function(){
+        turnLoading();
+        const server = $(this).val();
+        var form = $('<form></form>');
+        form.attr("method","get");
+        form.attr("action","/killboard");
+        form.append($('<input/>', {type: 'hidden', name: 'server', value: server}));
+        form.appendTo('body');
+        form.submit();
+    });
+
+    $('.biggest-table tbody tr').on('click', function(){
+        turnLoading();
+        var server = $('input[name="location"]:checked').val();
+        const killerId = $(this).data('killer');
+        const victimId = $(this).data('victim');
+
+        var form = $('<form></form>');
+        form.attr("method","get");
+        form.attr("action","/killboard/detail");
+        form.append($('<input/>', {type: 'hidden', name: 'killerId', value:killerId }));
+        form.append($('<input/>', {type: 'hidden', name: 'victimId', value:victimId }));
+        form.append($('<input/>', {type: 'hidden', name: 'location', value:server }));
+        form.appendTo('body');
+        form.submit();
+    });
 
     $('#userId').on('keyup',function(e){
         var text = $('#userId').val();

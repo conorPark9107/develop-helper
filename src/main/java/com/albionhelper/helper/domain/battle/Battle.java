@@ -1,5 +1,6 @@
 package com.albionhelper.helper.domain.battle;
 
+import com.albionhelper.helper.util.Util;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -28,10 +29,10 @@ public class Battle{
     private String utcTime;
 
     @JsonProperty("totalFame")
-    private String totalFame;
+    private int totalFame;
 
     @JsonProperty("totalKills")
-    private String totalKills;
+    private int totalKills;
 
     @JsonProperty("players")
     private List<Player> players;
@@ -41,6 +42,13 @@ public class Battle{
 
     @JsonProperty("alliances")
     private List<Alliance> alliances;
+
+    private String totalFameStr;
+
+    public void setTotalFame(int totalFame) {
+        this.totalFame = totalFame;
+        totalFameStr = Util.getUnit(this.totalFame);
+    }
 
     public void setStartTime(String startTime) {
         LocalDateTime ldt = LocalDateTime.parse(startTime.replaceAll("Z", "").substring(1, 20));
