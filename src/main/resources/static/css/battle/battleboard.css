@@ -1,6 +1,7 @@
 .image-maindiv{
     background-image: url(/image/background-image-battle.jpeg);
     height: auto;
+    min-height: 100%;
     background-repeat: repeat;
 }
 a{
@@ -18,10 +19,35 @@ a{
     margin: auto;
     padding-top: 15px;
 }
+.link{
+    cursor: pointer;
+}
 .container{
     width: 100%;
     max-width: 1000px;
     margin: auto auto 5vh;
+}
+.info{
+    font-size: 0.6rem;
+    color: var(--table-sub-text-color);
+}
+.guildLink{
+    font-size: 0.7rem;
+    color: #fd9f2891;
+}
+.border-top{
+    border-top: 0.5px dashed var(--border);
+}
+.border-bottom{
+    border-bottom: 0.5px dashed var(--border);
+}
+.gap{
+    gap: 15px;
+}
+.flex-column{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
 }
 .flex-row{
     min-height : 40px;
@@ -374,5 +400,11 @@ table .col6 {
     }
     .image-maindiv{
         min-height: 100%;
+    }
+    .guildLink{
+        font-size: 18px;
+    }
+    .info{
+        font-size: 12px;
     }
 }

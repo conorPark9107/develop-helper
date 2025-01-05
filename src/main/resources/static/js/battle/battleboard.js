@@ -117,7 +117,7 @@ $(document).ready(function () {
         const server = $('input[name="server"]:checked').val();
 
         if(id == '' || id == null){
-            showAlert('길드명을 입력해주세요.');re
+            window.location.href = '/battle';
             return;
         }
 
@@ -171,6 +171,7 @@ $(document).ready(function () {
         
     });
 
+    // 더보기 버튼.
     $('#moreviewBtn').on('click', function(){
         const inputValue =  $('#guildId').val();
         const server = $('input[name="server"]:checked').val();
@@ -270,6 +271,41 @@ $(document).ready(function () {
         }
     }
 
+    $('.guildLink').on('click', function(){
+        const server = $('input[name="server"]:checked').val();
+        const id = $(this).data('id');
+
+        $.ajax({
+            type: "GET",
+            url: "/battle/more",
+            data: {
+                inputValue : id,
+                server : server,
+                limit : 20
+            },
+            dataType: "json",
+            beforeSend: function(){
+                turnLoading();
+            },
+            success: function (response) {
+                $('.maintable tbody').empty();
+                if(response.length == 0){
+                    $('.maintable tbody').append('<tr><td colspan="7">검색 결과가 없습니다.</td></tr>');
+                }else{
+                    appendResponse(response, id);
+                }
+                $('#guildId').val(id);
+            },
+            error : function(request,status,error){
+                console.log(error);
+                showAlert('알수없는 오류가 발생하였습니다. 잠시후에 다시 시도해주세요.');
+            },
+            complete : function(){
+                turnLoading();
+            }
+        });
+
+    });
 
     $(".closeBtn").on('click', function () {
         $('.blackArea').hide();
