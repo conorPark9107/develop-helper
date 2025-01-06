@@ -8,10 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 
 
@@ -78,6 +75,24 @@ public class MainController {
     @GetMapping("/test")
     public String testHttpApi(){
         return "Hi! This page made by conorpark, it's a request from docker. right? ";
+    }
+
+    /* robots.txt 처리 */
+    @RequestMapping(value = "/robots.txt")
+    public String robots() {
+        return "robots.txt";
+    }
+
+    /* sitemap.txt 처리 */
+    @RequestMapping(value = "/sitemap.txt")
+    public String sitemap() {
+        return "sitemap.xml";
+    }
+
+    /* sitemap.txt 처리 */
+    @RequestMapping(value = "/sitemap.xml")
+    public String sitemapXml() {
+        return "sitemap.xml";
     }
 
 }
