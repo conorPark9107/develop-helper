@@ -76,6 +76,7 @@ public class KillBoardController {
         log.info("Request getDetail => killerId, victimId, location : {}, {}, {}", killerId, victimId, server);
         Event event = killboardService.getDetail(server, killerId, victimId);
         model.addAttribute("event", event);
+        model.addAttribute("server", server);
 
         return "killboard/killboardDetail";
     }

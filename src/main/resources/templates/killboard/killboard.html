@@ -19,8 +19,8 @@
     
 
 
-    <script type="text/javascript" src="/js/util.js"></script>
-    <script type="text/javascript" src="/js/killboard/killboard.js"></script>
+    <script type="text/javascript" src="/jsMin/util.js"></script>
+    <script type="text/javascript" src="/jsMin/killboard/killboard.js"></script>
     <link rel="stylesheet" href="/css/variable.css"/>
     <link rel="stylesheet" href="/css/board/editor.css"/>
     <link rel="stylesheet" href="/css/index.css" />
@@ -31,7 +31,7 @@
     <title>알비온 GG - 킬보드 ⚔</title>
 </head>
 <body data-theme="light-mode">
-<script type="text/javascript" src="/js/toggle.js"></script>
+<script type="text/javascript" src="/jsMin/toggle.js"></script>
 <div class="image-maindiv">
 <div th:replace="~{header :: header}"></div>
 <!-- <header class="header" th:fragment="header">
@@ -84,6 +84,8 @@
                     <span class="left">이번주</span>
                     <table class="biggest-table">
                         <colgroup>
+                            <col class="biggest-col00" />
+                            <col class="biggest-col00" />
                             <col class="biggest-col01" />
                             <col class="biggest-col02" />
                             <col class="biggest-col03" />
@@ -91,6 +93,8 @@
                         </colgroup>
                         <thead>
                             <tr>
+                                <th>순위</th>
+                                <th>데스페임</th>
                                 <th>죽인사람</th>
                                 <th>죽인사람 기어</th>
                                 <th>죽은사람</th>
@@ -99,6 +103,8 @@
                         </thead>
                         <tbody>
                         <tr th:each="event : ${week}" th:attr="data-killer=${event.killer.id}, data-victim=${event.victim.id}">
+                            <td th:text="${eventStat.count}"></td>
+                            <td th:text="${event.victim.deathFameStr}"></td>
                             <td>
                                 <div class="names">
                                     <p class="userName green" th:text="${event.killer.name}"></p>
@@ -139,6 +145,8 @@
                     <span class="left">지난주</span>
                     <table class="biggest-table">
                         <colgroup>
+                            <col class="biggest-col00" />
+                            <col class="biggest-col00" />
                             <col class="biggest-col01" />
                             <col class="biggest-col02" />
                             <col class="biggest-col03" />
@@ -146,6 +154,8 @@
                         </colgroup>
                         <thead>
                             <tr>
+                                <th>순위</th>
+                                <th>데스페임</th>
                                 <th>죽인사람</th>
                                 <th>죽인사람 기어</th>
                                 <th>죽은사람</th>
@@ -154,6 +164,8 @@
                         </thead>
                         <tbody>
                             <tr th:each="event : ${lastWeek}" th:attr="data-killer=${event.killer.id}, data-victim=${event.victim.id}">
+                                <td th:text="${eventStat.count}"></td>
+                                <td th:text="${event.victim.deathFameStr}"></td>
                                 <td>
                                     <div class="names">
                                         <p class="userName green" th:text="${event.killer.name}"></p>
@@ -194,6 +206,8 @@
                     <span class="left">이번달</span>
                     <table class="biggest-table">
                         <colgroup>
+                            <col class="biggest-col00" />
+                            <col class="biggest-col00" />
                             <col class="biggest-col01" />
                             <col class="biggest-col02" />
                             <col class="biggest-col03" />
@@ -201,6 +215,8 @@
                         </colgroup>
                         <thead>
                             <tr>
+                                <th>순위</th>
+                                <th>데스페임</th>
                                 <th>죽인사람</th>
                                 <th>죽인사람 기어</th>
                                 <th>죽은사람</th>
@@ -209,6 +225,8 @@
                         </thead>
                         <tbody>
                         <tr th:each="event : ${month}" th:attr="data-killer=${event.killer.id}, data-victim=${event.victim.id}">
+                            <td th:text="${eventStat.count}"></td>
+                            <td th:text="${event.victim.deathFameStr}"></td>
                             <td>
                                 <div class="names">
                                     <p class="userName green" th:text="${event.killer.name}"></p>
@@ -249,6 +267,8 @@
                     <span class="left">지난달</span>
                     <table class="biggest-table">
                         <colgroup>
+                            <col class="biggest-col00" />
+                            <col class="biggest-col00" />
                             <col class="biggest-col01" />
                             <col class="biggest-col02" />
                             <col class="biggest-col03" />
@@ -256,6 +276,8 @@
                         </colgroup>
                         <thead>
                             <tr>
+                                <th>순위</th>
+                                <th>데스페임</th>
                                 <th>죽인사람</th>
                                 <th>죽인사람 기어</th>
                                 <th>죽은사람</th>
@@ -264,6 +286,8 @@
                         </thead>
                         <tbody>
                         <tr th:each="event : ${lastMonth}" th:attr="data-killer=${event.killer.id}, data-victim=${event.victim.id}">
+                            <td th:text="${eventStat.count}"></td>
+                            <td th:text="${event.victim.deathFameStr}"></td>
                             <td>
                                 <div class="names">
                                     <p class="userName green" th:text="${event.killer.name}"></p>

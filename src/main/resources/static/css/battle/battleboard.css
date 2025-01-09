@@ -29,7 +29,7 @@ a{
 }
 .info{
     font-size: 0.6rem;
-    color: var(--table-sub-text-color);
+    color: var(--table-th-sub-text-color);
 }
 .guildLink{
     font-size: 0.7rem;

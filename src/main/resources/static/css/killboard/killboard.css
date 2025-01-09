@@ -16,6 +16,9 @@
 span:hover {
     opacity: 0.7;
 }
+hr{
+    border: 1px dashed var(--border);
+}
 a{
     color: var(--red);
     text-decoration: none;
@@ -72,7 +75,7 @@ table tbody tr:last-child td{
     width: 500px;
 }
 .content-body-items{
-    width: 1040px;
+    width: 100%;
     margin-bottom : 1vw;
 }
 .flex-row{
@@ -210,17 +213,20 @@ caption {
     float:left;
     padding-bottom: 10px;
 }
+.biggest-col00{
+    width: 5%;
+}
 .biggest-col01{
     width: 15%;
 }
 .biggest-col02{
-    width: 35%;
+    width: 30%;
 }
 .biggest-col03{
     width: 15%;
 }
 .biggest-col04{
-    width: 35%;
+    width: 30%;
 }
 .names{
     line-height: 10%;

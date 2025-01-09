@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/static/css/killboard/killboardDetail.css" />
     <link rel="stylesheet" href="/static/css/loading.css" /> -->
 
-    <script type="text/javascript" src="/js/util.js"></script>
+    <script type="text/javascript" src="/jsMin/util.js"></script>
     <link rel="stylesheet" href="/css/variable.css"/>
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
@@ -27,7 +27,7 @@
     <title>알비온 GG - 킬보드 ⚔</title>
 </head>
 <body data-theme="light-mode">
-<script type="text/javascript" src="/js/toggle.js"></script>
+<script type="text/javascript" src="/jsMin/toggle.js"></script>
 <div class="image-maindiv">
 <div th:replace="~{header :: header}"></div>
 
@@ -60,11 +60,11 @@
             <div class="flex-row">
 
                 <div>
-                    <div class="names">
+                    <a class="names hover" th:href="@{/killboard/getKillBoard?(id=${event.killer.id},location=${server})}">
                         <p class="userName green" th:text="${event.killer.name}"></p>
                         <span class="allyName black" th:if="${not #strings.isEmpty(event.killer.allianceName)}" th:text="|[${event.killer.allianceName}]|"></span>
                         <span class="guildName black" th:if="${not #strings.isEmpty(event.killer.guildName)}" th:text="${event.killer.guildName}"></span>
-                    </div>
+                    </a>
                     <div class="imageDiv border border-green radius relative" th:with="p=${event.killer.equipment}">
                         <img class="gear" src="/image/gear.png">
                         <!-- 메인핸드 -->
@@ -109,11 +109,11 @@
                 </div>
 
                 <div>
-                    <div class="names">
+                    <a class="names hover" th:href="@{/killboard/getKillBoard?(id=${event.victim.id},location=${server})}">
                         <p class="userName red" th:text="${event.victim.name}"></p>
                         <span class="allyName black" th:if="${not #strings.isEmpty(event.victim.allianceName)}" th:text="|[${event.victim.allianceName}]|"></span>
                         <span class="guildName black" th:if="${not #strings.isEmpty(event.victim.guildName)}" th:text="${event.victim.guildName}"></span>
-                    </div>
+                    </a>
                     <div class="imageDiv border border-red radius relative" th:with="p=${event.victim.equipment}">
                         <img class="gear" src="/image/gear.png">
                         <!-- 메인핸드 -->
