@@ -40,14 +40,28 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
-
-
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
 }
 
-jar{
-	enabled = false
+// 난독화된 JS 파일만 포함하도록 설정
+tasks.processResources {
+	from('src/main/resouces') {
+		exclude '**/node_modules/**' // node_modules 폴더 제외
+		exclude '**/package.json'
+		exclude '**/package-lock.json'
+	}
+	from('src/main/resources/static') {
+		include '**/*.html'  // HTML 파일 포함
+		include '**/*.css'   // CSS 파일 포함
+		include '**/*.png'   // 이미지 등 기타 정적 리소스 포함
+		exclude '**/js/**'   // 원본 JS 파일 제외
+		exclude '**/images.zip'  // 이미지 압축파일.
+		exclude '**/jsonData/**' // JSON data
+	}
+	from('src/main/resources/static/jsMin') {
+		include '**/*.js'    // 난독화된 JS 파일 포함
+	}
 }
