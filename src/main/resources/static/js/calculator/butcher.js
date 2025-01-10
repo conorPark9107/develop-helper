@@ -419,7 +419,7 @@ function setMainTableDefaultData_fish(itemArr, table){
 
 // 요리 메뉴 선택 클릭시 호출.
 function showImages(){
-    const category = butcherCate;    
+    let category = butcherCate;    
     if(category != undefined){
         const image_div = $('.image-div');
         image_div.append('<h5>🔻이미지를 선택하세요🔻</h5>');

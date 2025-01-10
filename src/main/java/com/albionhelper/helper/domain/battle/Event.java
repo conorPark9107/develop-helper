@@ -34,6 +34,9 @@ public class Event {
     @JsonProperty("GroupMembers")
     private List<EventPlayer> groupMembers;
 
+    @JsonProperty("BattleId")
+    private String battleId;
+
     public void setTimeStamp(String timeStamp) {
         LocalDateTime ldt = LocalDateTime.parse(timeStamp.replaceAll("Z", "").substring(0, 19));
         this.timeStamp = ldt.plusHours(9).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

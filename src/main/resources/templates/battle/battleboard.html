@@ -133,7 +133,7 @@
             </thead>
             <tbody>
 
-                <tr th:each="battle : ${list}" class="hover-background" th:attr="data-id=${battle.id}">
+                <tr th:each="battle : ${list}" class="hover-background" th:attr="data-id=${battle.id},data-server=${server}">
                     <td><input type="checkbox" name="multi" th:value="${battle.id}" /></td>
                     <td th:text="${battle.startTime}">
 
@@ -146,7 +146,7 @@
                             <th:block th:text="${guildStat.last} ? ${guild.name} : ${guild.name} + ','"></th:block>
                         </span>
                     </td>
-                    <td th:text="${battle.totalFameStr}"></td>
+                    <td th:classappend="${battle.totalFame > 10000000 ? 'red' : battle.totalFame > 1000000? 'green' : ''}" th:text="${battle.totalFameStr}"></td>
                     <td th:text="${#lists.size(battle.players)}"></td>
                     <td th:text="${battle.totalKills}"></td>
                 </tr>

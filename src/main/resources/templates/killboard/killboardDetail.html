@@ -42,11 +42,12 @@
 
     <div class="container">
         <div class="flex-column">
+            <span class="info">📌 닉네임을 클릭하면 해당 유저의 킬, 데스로그 페이지로 이동합니다. 📌</span>
             <div class="flex-row">
                 <div class="flex-item shadow">
                     <div class="detailDiv">
                         <span class="flex-title">🏹전투 id</span>
-                        <span class="flex-title blue" th:text="${event.eventId}"></span>
+                        <span class="flex-title blue hover" th:text="${event.eventId}"></span>
                     </div>
                 </div>
                 <div></div>
@@ -58,8 +59,7 @@
                 </div>
             </div>
             <div class="flex-row">
-
-                <div>
+                <div class="flex-column-small">
                     <a class="names hover" th:href="@{/killboard/getKillBoard?(id=${event.killer.id},location=${server})}">
                         <p class="userName green" th:text="${event.killer.name}"></p>
                         <span class="allyName black" th:if="${not #strings.isEmpty(event.killer.allianceName)}" th:text="|[${event.killer.allianceName}]|"></span>
@@ -108,7 +108,7 @@
                     <span class="vs">vs</span>
                 </div>
 
-                <div>
+                <div class="flex-column-small">
                     <a class="names hover" th:href="@{/killboard/getKillBoard?(id=${event.victim.id},location=${server})}">
                         <p class="userName red" th:text="${event.victim.name}"></p>
                         <span class="allyName black" th:if="${not #strings.isEmpty(event.victim.allianceName)}" th:text="|[${event.victim.allianceName}]|"></span>

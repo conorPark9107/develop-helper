@@ -66,8 +66,7 @@ public class BattlesController {
     @GetMapping("/detail")
     public String getBattles(Model model,
                              @RequestParam(name = "id")String id,
-                             @RequestParam(name = "server")String server,
-                             @RequestParam(name = "kill")int kill) throws JsonProcessingException {
+                             @RequestParam(name = "server")String server) throws JsonProcessingException {
 
         // 특정 레코드 식별 가능한 id값을 통해서 특정 전투 정보를 가져옴.
         Battle battle = battlesService.getBattleListById(id, server);
@@ -76,7 +75,7 @@ public class BattlesController {
         battle = battlesService.getPlayers(battle);
 
         // 특정 전투의 이벤트(킬 로그)들을 전부 종합해서 가져오는 메서드.
-        List<Event> eventList = battlesService.getEventList(id, server, kill);
+        List<Event> eventList = battlesService.getEventList(id, server, battle.getTotalKills());
 
         // 모스트 킬
         Player p = battlesService.getMostKillingPlayer(battle);
@@ -101,6 +100,45 @@ public class BattlesController {
         model.addAttribute("alliances", battle.getAlliances());
         return "battle/battleboardDetail";
     }
+
+//    @GetMapping("/detail")
+//    public String getBattles(Model model,
+//                             @RequestParam(name = "id")String id,
+//                             @RequestParam(name = "server")String server) throws JsonProcessingException {
+//
+//        // 특정 레코드 식별 가능한 id값을 통해서 특정 전투 정보를 가져옴.
+//        Battle battle = battlesService.getBattleListById(id, server);
+//
+//        // 플레이어 인원을 길드와 연합에 채워넣는 메서드.
+//        battle = battlesService.getPlayers(battle);
+//
+//        // 특정 전투의 이벤트(킬 로그)들을 전부 종합해서 가져오는 메서드.
+//        List<Event> eventList = battlesService.getEventList(id, server, battle.getTotalKills());
+//
+//        // 모스트 킬
+//        Player p = battlesService.getMostKillingPlayer(battle);
+//
+//        // 플레이어 리스트
+//        Map<String, EventPlayer> playerList = battlesService.getPlayerList(eventList, battle);
+//
+//        // 길드별, 연합별 평균 ip구하기.
+//        battle = battlesService.getAverageIp(battle, playerList);
+//
+//        // [모스트 데미지, 모스트 힐, 빅도네이션]
+//        EventPlayer[] players = battlesService.getMostDpsAndHeal(playerList);
+//
+//        model.addAttribute("playerList", playerList.values());
+//        model.addAttribute("mostKiller", p);
+//        model.addAttribute("mostDps", players[0]);
+//        model.addAttribute("mostHeal", players[1]);
+//        model.addAttribute("mostDonation", players[2]);
+//        model.addAttribute("eventList", eventList);
+//        model.addAttribute("battle", battle);
+//        model.addAttribute("guilds", battle.getGuilds());
+//        model.addAttribute("alliances", battle.getAlliances());
+//        return "battle/battleboardDetail";
+//    }
+
 
     @GetMapping("/getGuildId")
     @ResponseBody

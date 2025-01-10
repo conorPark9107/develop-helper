@@ -13,6 +13,11 @@
     flex-direction: column;
     gap: 10px;
 }
+.flex-column-small{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 .flex-row{
     display: flex;
     flex-direction: row;
@@ -91,9 +96,9 @@ a{
     object-fit:cover;
 }
 .names{
+    flex-basis: 40px;
     cursor:pointer;
     line-height: 70%;
-    margin-bottom: 10px;
 }
 .userName{
     font-size: 12px;
@@ -288,6 +293,10 @@ td {
 .btn-back:hover{
     opacity: 0.4;
 }
+.info{
+    font-size: 0.7rem;
+    color: var(--border);
+}
 @media screen and (max-width: 1024px) {
     .flex-item{
         width: 1200px;
@@ -359,6 +368,7 @@ td {
         width: 90%;
     }
     .names {
+        flex-basis: 60px;
         line-height: 1;
     }
     .userName, th {

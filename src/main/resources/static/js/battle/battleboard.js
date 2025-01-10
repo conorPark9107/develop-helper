@@ -47,14 +47,12 @@ $(document).ready(function () {
     $(".maintable tbody").on('click', 'tr' ,function(e){
         turnLoading();
         const id = $(this).find('td:eq(0)').find('input').val();
-        const kill = $(this).find('td:eq(6)').text();
         const server = $(this).data('server');
         var form = $('<form></form>');
         form.attr("method","get");
         form.attr("action","/battle/detail");
         form.append($('<input/>', {type: 'hidden', name: 'id', value:id }));
         form.append($('<input/>', {type: 'hidden', name: 'server', value:server }));
-        form.append($('<input/>', {type: 'hidden', name: 'kill', value:kill }));
         form.appendTo('body');
         form.submit();
     });
@@ -230,7 +228,14 @@ $(document).ready(function () {
                 }
             }
             $(tr).append(`<td>${str.slice(1)}</td>`);
-            $(tr).append(`<td>${r.totalFameStr}</td>`);
+
+            let color = '';
+            if(r.totalFame > 10000000){
+                color = 'red';
+            }else if(r.totalFame > 1000000){
+                color = 'green';
+            }
+            $(tr).append(`<td class=${color}>${r.totalFameStr}</td>`);
             $(tr).append(`<td>${r.players.length}</td>`);
             $(tr).append(`<td>${r.totalKills}</td>`);
 
@@ -263,7 +268,13 @@ $(document).ready(function () {
                 }
             }
             $(tr).append(`<td>${str.slice(1)}</td>`);
-            $(tr).append(`<td>${r.totalFameStr}</td>`);
+            let color = '';
+            if(r.totalFame > 10000000){
+                color = 'red';
+            }else if(r.totalFame > 1000000){
+                color = 'green';
+            }
+            $(tr).append(`<td class=${color}>${r.totalFameStr}</td>`);
             $(tr).append(`<td>${r.players.length}</td>`);
             $(tr).append(`<td>${r.totalKills}</td>`);
 
