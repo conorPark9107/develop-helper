@@ -298,6 +298,9 @@ td {
     color: var(--border);
 }
 @media screen and (max-width: 1024px) {
+    .image-maindiv{
+        height:100%;
+    }
     .flex-item{
         width: 1200px;
     }
@@ -363,6 +366,14 @@ td {
     }
     .inventory{
         width: 95%;
+    }
+    .food-count{
+        top: 330px;
+        left: 105px;
+    }
+    .potion-count{
+        top: 330px;
+        left: 378px;
     }
     .table-div{
         width: 90%;
