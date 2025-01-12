@@ -7,12 +7,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class EventPlayer {
+public class EventPlayer implements Comparator<EventPlayer> {
 
     @JsonProperty("AverageItemPower")
     private int averageItemPower;
@@ -62,5 +63,10 @@ public class EventPlayer {
                 ", supportHealingDone=" + supportHealingDone +
                 ", inventory=" + inventory +
                 '}';
+    }
+
+    @Override
+    public int compare(EventPlayer o1, EventPlayer o2) {
+        return o2.getAverageItemPower() - o1.getAverageItemPower();
     }
 }

@@ -89,7 +89,7 @@ public class BattlesController {
         // [모스트 데미지, 모스트 힐, 빅도네이션]
         EventPlayer[] players = battlesService.getMostDpsAndHeal(playerList);
 
-        model.addAttribute("playerList", playerList.values());
+        model.addAttribute("playerList", battlesService.sortAndConvertMapToList(playerList));
         model.addAttribute("mostKiller", p);
         model.addAttribute("mostDps", players[0]);
         model.addAttribute("mostHeal", players[1]);

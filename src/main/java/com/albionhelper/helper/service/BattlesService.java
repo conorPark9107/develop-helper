@@ -16,6 +16,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class BattlesService {
@@ -245,23 +246,22 @@ public class BattlesService {
         Map<String, EventPlayer> map = new HashMap<>();
 
         eventList.forEach(e -> {
-            Killer killer = e.getKiller();
-            Victim victim = e.getVictim();
-            List<EventPlayer> groupMembers = e.getGroupMembers();
-            groupMembers.add(killer.convert());
-            groupMembers.add(victim.convert());
             List<EventPlayer> participants = e.getParticipants();
-            participants.addAll(groupMembers);
+            participants.add(e.getKiller().convert());
+            participants.add(e.getVictim().convert());
 
             participants.forEach(p -> {
                 if(map.containsKey(p.getName())){
                     EventPlayer eventPlayer = map.get(p.getName());
                     eventPlayer.setDamageDone(eventPlayer.getDamageDone() + p.getDamageDone());
                     eventPlayer.setSupportHealingDone(eventPlayer.getSupportHealingDone() + p.getSupportHealingDone());
+
+                    // 플레이어의 데스 명성이 더 높다면 교체. (빅 도네이션 유저를 뽑기위한.)
                     if(p.getDeathFame() > eventPlayer.getDeathFame()){
                         eventPlayer.setDeathFame(eventPlayer.getDeathFame() + p.getDeathFame());
                         eventPlayer.setInventory(p.getInventory());
                     }
+
                     map.put(p.getName(), eventPlayer);
                 }else{
                     map.put(p.getName(), p);
@@ -270,6 +270,7 @@ public class BattlesService {
 
         });
 
+        // 플레이어의 킬, 데스가 몇인지 찾아 맵에 put
         battle.getPlayers()
             .forEach(p -> {
                 if(map.containsKey(p.getName())){
@@ -279,7 +280,7 @@ public class BattlesService {
                     map.put(p.getName(), eventPlayer);
                 }
             });
-        
+
         return map;
     }
 
@@ -347,6 +348,14 @@ public class BattlesService {
         battle.setAlliances(a);
 
         return battle;
+    }
+
+    // list로 convert
+    public List<EventPlayer> sortAndConvertMapToList(Map<String, EventPlayer> map){
+        return map.values()
+                .stream()
+                .sorted((o1, o2) -> o2.getAverageItemPower() - o1.getAverageItemPower())
+                .toList();
     }
 
     // id 값이있다면 URI 추가.

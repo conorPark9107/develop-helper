@@ -47,6 +47,7 @@ label {
     font-weight: 900;
 }
 .footer{
+
     color: #eee;
 }
 .a {
@@ -55,8 +56,14 @@ label {
 u {
     text-decoration-color: var(--sub-color);
 }
-footer{
+footer {
+    padding: 10px 25px;
+    display: flex;
     min-height: 5%;
+    flex-direction: row;
+    justify-content: space-between;
+    /* vertical-align: middle; */
+    align-items: center;
 }
 .container {
     height: 100%;
