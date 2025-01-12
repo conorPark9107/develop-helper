@@ -76,8 +76,9 @@ table tbody tr:last-child td{
 }
 .content-body-items{
     width: 100%;
-    margin-bottom : 1vw;
+    margin-bottom: 2vw;
 }
+
 .flex-row{
     display:flex;
     flex-direction: row;
@@ -95,6 +96,12 @@ table tbody tr:last-child td{
 }
 .biggest-table tbody tr td{
     text-align: left;
+}
+.biggest-table thead tr th:nth-child(1){
+    text-align: center;
+}
+.biggest-table tbody tr td:nth-child(1){
+    text-align: center;
 }
 .biggest-table tbody tr img{
     width: 50px;
@@ -237,6 +244,9 @@ caption {
 }
 
 @media screen and (max-width: 1024px) {
+    .sub-title{
+        margin: 0
+    }
     .centered{
         width: 100%;
     }
@@ -249,13 +259,15 @@ caption {
     .allyName, .guildName,{
         font-size: 12px;
     }
-
+    .info{
+        font-size: 1.1rem;
+    }
     td{
         padding: 20px 10px;
         font-size: 14px;
     }
     #contentTitle{
-        font-size: 30px;
+        font-size: 40px;
     }
     .content-body-items{
         font-size: 26px;

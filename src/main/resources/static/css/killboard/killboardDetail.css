@@ -298,6 +298,10 @@ td {
     color: var(--border);
 }
 @media screen and (max-width: 1024px) {
+    .container {
+        height: auto;
+        margin: auto auto;
+    }
     .image-maindiv{
         height:100%;
     }
@@ -380,7 +384,7 @@ td {
     }
     .names {
         flex-basis: 60px;
-        line-height: 1;
+        line-height: 150%;
     }
     .userName, th {
         font-size: 22px;
@@ -389,7 +393,7 @@ td {
         font-size: 18px;
     }
     .fame {
-        font-size: 14px;
+        font-size: 18px;
     }
     .sub-title{
         font-size: 30px;
@@ -409,5 +413,11 @@ td {
         font-size: 18px;
         padding: 15px 35px;
         margin-left: 10px;
+    }
+    .info{
+        font-size: 1.1rem;
+    }
+    .count{
+        font-weight: bold;
     }
 }
