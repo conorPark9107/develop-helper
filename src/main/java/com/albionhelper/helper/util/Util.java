@@ -11,7 +11,7 @@ public class Util {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public static String getUnit(int number){
+    public static String getUnit(long number){
         double num = 0;
         String unit = "";
 

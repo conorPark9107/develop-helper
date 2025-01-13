@@ -4,6 +4,7 @@ import com.albionhelper.helper.domain.battle.Event;
 import com.albionhelper.helper.domain.killboard.DeathBoard;
 import com.albionhelper.helper.domain.killboard.KillBoard;
 import com.albionhelper.helper.domain.Player;
+import com.albionhelper.helper.domain.playerinfo.PlayerInfoDetail;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -40,7 +41,7 @@ public class KillboardService {
     private final String GET_DEATHBOARD = "/players/<ID>/deaths";;
 
     // 플레이어 정보
-    private final String GET_PLAYERINFO = "/players/<ID>";
+    private final String GET_PLAYERINFO = "/players/";
 
     // 가장 큰 킬을 발생한 정보들.
     private final String GET_BIGGEST = "/events/killfame?";
@@ -138,12 +139,25 @@ public class KillboardService {
         server = getLocation(server);
         StringBuilder detailBuilder = new StringBuilder(server);
         String url = detailBuilder.append("/events/").append(killerId).append("/history/").append(victimId).toString();
-        log.info("request url is {}", url);
+        log.info("getDetail() request url is {}", url);
         Event[] e = getResponseEvent(url);
         return e[0];
     }
 
+    // 플레이어 정보를 담아 리턴하는 메서드.
+    public PlayerInfoDetail getPlayerDetailInfo(String id, String server) throws JsonProcessingException {
+        server = getLocation(server);
+        StringBuilder detailBuilder = new StringBuilder(server);
+        String url = detailBuilder.append(GET_PLAYERINFO).append(id).toString();
+        log.info("getPlayerDetailInfo() request url is {}", url);
+        String response = getResponseForBoard(url);
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode rootNode = objectMapper.readTree(response);
 
+        PlayerInfoDetail p = objectMapper.treeToValue(rootNode, PlayerInfoDetail.class);
+        System.out.println("투스트링 : " + p.toString());
+        return p;
+    }
 
 
     private List<DeathBoard> getDeathLog(String responseDeathData) throws JsonProcessingException{
@@ -182,4 +196,6 @@ public class KillboardService {
         Event[] event = getResponseEvent(url.toString());
         return Arrays.stream(event).toList();
     }
+
+
 }

@@ -34,10 +34,10 @@ public class EventPlayer implements Comparator<EventPlayer> {
     private String allianceName;
 
     @JsonProperty("KillFame")
-    private int killFame;
+    private long killFame;
 
     @JsonProperty("DeathFame")
-    private int deathFame;
+    private long deathFame;
 
     @JsonProperty("DamageDone")
     private int damageDone;

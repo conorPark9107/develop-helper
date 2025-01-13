@@ -1,23 +1,23 @@
-package com.albionhelper.helper.domain.killboard;
+package com.albionhelper.helper.domain.playerinfo;
 
-import com.albionhelper.helper.domain.battle.EventPlayer;
+
 import com.albionhelper.helper.util.Util;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Killer {
-
-    @JsonProperty("AverageItemPower")
-    private int averageItemPower;
-
-    @JsonProperty("Equipment")
-    private Equipment equipment;
-
+public class PlayerInfoDetail {
 
     // 인게임 id
     @JsonProperty("Id")
@@ -37,39 +37,40 @@ public class Killer {
 
     // 킬페임
     @JsonProperty("KillFame")
-    private long killFame;
+    private int killFame;
+
+    // 데스 페임
+    @JsonProperty("DeathFame")
+    private int deathFame;
+
+    @JsonProperty("LifetimeStatistics")
+    private LifetimeStatistics lifetimeStatistics;
 
     private String killFameStr;
+    private String deathFameStr;
 
-    public void setKillFame(long killFame) {
+    public void setKillFame(int killFame) {
         this.killFame = killFame;
         this.killFameStr = Util.getUnit(this.killFame);
+    }
+    public void setDeathFame(int deathFame) {
+        this.deathFame = deathFame;
+        this.deathFameStr = Util.getUnit(this.deathFame);
     }
 
     @Override
     public String toString() {
-        return "Killer{" +
-                "averageItemPower=" + averageItemPower +
-                ", equipment=" + equipment +
-                ", id='" + id + '\'' +
+        return "PlayerInfoDetail{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", guildId='" + guildId + '\'' +
                 ", guildName='" + guildName + '\'' +
                 ", allianceName='" + allianceName + '\'' +
+                ", killFame=" + killFame +
+                ", deathFame=" + deathFame +
+                ", lifetimeStatistics=" + lifetimeStatistics +
+                ", killFameStr='" + killFameStr + '\'' +
+                ", deathFameStr='" + deathFameStr + '\'' +
                 '}';
-    }
-
-    public EventPlayer convert(){
-        EventPlayer e = new EventPlayer();
-        e.setAverageItemPower(this.averageItemPower);
-        e.setEquipment(this.equipment);
-        e.setName(this.name);
-        e.setGuildName(this.guildName);
-        e.setAllianceName(this.allianceName);
-        e.setKillFame(0);
-        e.setDeathFame(0);
-        e.setDamageDone(0);
-        e.setSupportHealingDone(0);
-        return e;
     }
 }

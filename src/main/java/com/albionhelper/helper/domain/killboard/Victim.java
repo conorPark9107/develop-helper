@@ -42,11 +42,11 @@ public class Victim {
     private String allianceName;
 
     @JsonProperty("DeathFame")
-    private int deathFame;
+    private long deathFame;
 
     private String deathFameStr;
 
-    public void setDeathFame(int deathFame) {
+    public void setDeathFame(long deathFame) {
         this.deathFame = deathFame;
         this.deathFameStr = Util.getUnit(this.deathFame);
     }

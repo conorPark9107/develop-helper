@@ -4,6 +4,7 @@ import com.albionhelper.helper.domain.Player;
 import com.albionhelper.helper.domain.battle.Event;
 import com.albionhelper.helper.domain.killboard.DeathBoard;
 import com.albionhelper.helper.domain.killboard.KillBoard;
+import com.albionhelper.helper.domain.playerinfo.PlayerInfoDetail;
 import com.albionhelper.helper.service.BattlesService;
 import com.albionhelper.helper.service.KillboardService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -59,8 +60,10 @@ public class KillBoardController {
                                @RequestParam(value="location")String server) throws JsonProcessingException {
 
         log.info("Request getKillBoard List => id, location : {}, {}", id, server);
+        PlayerInfoDetail playerInfoDetail = killboardService.getPlayerDetailInfo(id, server);
         List<KillBoard> killList = killboardService.getKillBoard(id, server);
         List<DeathBoard> deathList = killboardService.getDeathBoard(id, server);
+        model.addAttribute("player", playerInfoDetail);
         model.addAttribute("kills", killList);
         model.addAttribute("deaths", deathList);
         model.addAttribute("location", server);
