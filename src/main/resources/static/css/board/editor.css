@@ -141,7 +141,7 @@ div.jconfirm.jconfirm-supervan.jconfirm-open>div.jconfirm-bg {
     color: var(--sub-color);
 }
 #editor > div.ql-tooltip.ql-editing > input[type=text]{
-    color: var(--black);
+    color: var(--sub-color);
     width: 40%;    
 }
 .jconfirm.jconfirm-supervan .jconfirm-box div.jconfirm-title-c {

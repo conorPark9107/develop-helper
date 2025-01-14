@@ -242,6 +242,37 @@ caption {
 .allyName, .guildName{
     font-size: 10px;
 }
+.box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: left;
+    margin: 15px 0px;
+}
+.box-item{
+    padding: 10px;
+    font-size : 12px;
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 0 10px 0px var(--border);
+}
+.item-title{
+    font-size: 16px;
+}
+.box-item p{
+    margin-top: 0;
+}
+.box-item span{
+    float: left;
+}
+.box-item span span{
+    color: var(--lightblue);
+    float: right;
+}
 
 @media screen and (max-width: 1024px) {
     .sub-title{

@@ -155,7 +155,6 @@ public class KillboardService {
         JsonNode rootNode = objectMapper.readTree(response);
 
         PlayerInfoDetail p = objectMapper.treeToValue(rootNode, PlayerInfoDetail.class);
-        System.out.println("투스트링 : " + p.toString());
         return p;
     }
 

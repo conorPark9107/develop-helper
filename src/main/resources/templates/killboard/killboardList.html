@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/static/css/editor.css"/>
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/detail.css" />
-    <link rel="stylesheet" href="/static/css/killboard.css" />
+    <link rel="stylesheet" href="/static/css/killboard/killboard.css" />
     <link rel="stylesheet" href="/static/css/loading.css" /> -->
 
 
@@ -43,34 +43,98 @@
             <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
         </div>
         <div class="content-header">
-            <h2 id="contentTitle">🏹 킬보드 - 리스트🏹</h2>
+            <h2 id="contentTitle">🏹 플레이어 정보 & Battles 🏹</h2>
         </div>
         <hr/>
 
         <div class="content-body">
             <div class="content-body-items">
-                <div>
-                    <p>🔻서버를 선택해주세용🔻</p>
-                    <input class="east" type="radio" id="location03" name="location" value="east" checked/>
-                    <label class="east" for="location03">아시아</label>
-                    <input class="west" type="radio" id="location02" name="location" value="west" />
-                    <label class="west" for="location02">아메리카</label>
-                    <input class="europe" type="radio" id="lcation01" name="location" value="europe" />
-                    <label class="europe" for="lcation01">유럽</label>
+                
+                <div class="box">
+                    <div class="box-item">
+                        <p class="item-title">플레이어 정보</p>
+                        <span>수정된 날짜<span th:text="${player.lifetimeStatistics.timeStamp}"></span></span>
+                        <span>닉네임<span th:text="${player.name}"></span></span>
+                        <span>길드<span th:text="${player.guildName}"></span></span>
+                        <span>연합<span th:text="${player.allianceName}"></span></span>
+                    </div>
+                    <div class="box-item">
+                        <p class="item-title">PVP 명성</p>
+                        <span>Kill 명성<span th:text="${player.killFameStr}">0</span></span>
+                        <span>DEATH 명성<span th:text="${player.deathFameStr}">0</span></span>
+                        <span>KDA<span th:text="${kda}">0</span></span>
+                    </div>
+                    <div class="box-item">
+                        <p class="item-title">PVE 명성</p>
+                        <span>총페임<span th:text="${pve.totalStr}">0</span></span>
+                        <span>로얄랜드<span th:text="${pve.royalStr}">0</span></span>
+                        <span>아웃랜드<span th:text="${pve.outlandsStr}">0</span></span>
+                        <span>아발로드<span th:text="${pve.avalonStr}">0</span></span>
+                        <span>헬게이트<span th:text="${pve.hellgateStr}">0</span></span>
+                        <span>오염된던전<span th:text="${pve.corruptedDungeonStr}">0</span></span>
+                        <span>미스트<span th:text="${pve.mistsStr}">0</span></span>
+                    </div>
+                    <div class="box-item">
+                        <p class="item-title">제작 명성</p>
+                        <span>총페임<span th:text="${craft.totalStr}">0</span></span>
+                        <span>로얄랜드<span th:text="${craft.royalStr}">0</span></span>
+                        <span>아웃랜드<span th:text="${craft.outlandsStr}">0</span></span>
+                        <span>아발로드<span th:text="${craft.avalonStr}">0</span></span>
+                    </div>
+                    <div class="box-item">
+                        <p class="item-title">채집 명성</p>
+                        <span>총페임<span th:text="${gather.all.totalStr}">0</span></span>
+                        <span>로얄랜드<span th:text="${gather.all.royalStr}">0</span></span>
+                        <span>아웃랜드<span th:text="${gather.all.outlandsStr}">0</span></span>
+                        <span>아발로드<span th:text="${gather.all.avalonStr}">0</span></span>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="box-item">
+                        <p class="item-title">섬유</p>
+                        <span>총페임<span th:text="${gather.fiber.totalStr}">0</span></span>
+                        <span>로얄랜드<span th:text="${gather.fiber.royalStr}">0</span></span>
+                        <span>아웃랜드<span th:text="${gather.fiber.outlandsStr}">0</span></span>
+                        <span>아발로드<span th:text="${gather.fiber.avalonStr}">0</span></span>
+                    </div>
+                    <div class="box-item">
+                        <p class="item-title">가죽</p>
+                        <span>총페임<span th:text="${gather.hide.totalStr}">0</span></span>
+                        <span>로얄랜드<span th:text="${gather.hide.royalStr}">0</span></span>
+                        <span>아웃랜드<span th:text="${gather.hide.outlandsStr}">0</span></span>
+                        <span>아발로드<span th:text="${gather.hide.avalonStr}">0</span></span>
+                    </div>
+                    <div class="box-item">
+                        <p class="item-title">광석</p>
+                        <span>총페임<span th:text="${gather.ore.totalStr}">0</span></span>
+                        <span>로얄랜드<span th:text="${gather.ore.royalStr}">0</span></span>
+                        <span>아웃랜드<span th:text="${gather.ore.outlandsStr}">0</span></span>
+                        <span>아발로드<span th:text="${gather.ore.avalonStr}">0</span></span>
+                    </div>
+                    <div class="box-item">
+                        <p class="item-title">돌</p>
+                        <span>총페임<span th:text="${gather.rock.totalStr}">0</span></span>
+                        <span>로얄랜드<span th:text="${gather.rock.royalStr}">0</span></span>
+                        <span>아웃랜드<span th:text="${gather.rock.outlandsStr}">0</span></span>
+                        <span>아발로드<span th:text="${gather.rock.avalonStr}">0</span></span>
+                    </div>
+                    <div class="box-item">
+                        <p class="item-title">나무</p>
+                        <span>총페임<span th:text="${gather.wood.totalStr}">0</span></span>
+                        <span>로얄랜드<span th:text="${gather.wood.royalStr}">0</span></span>
+                        <span>아웃랜드<span th:text="${gather.wood.outlandsStr}">0</span></span>
+                        <span>아발로드<span th:text="${gather.wood.avalonStr}">0</span></span>
+                    </div>
+                    <div class="box-item">
+                        <p class="item-title">낚시 & 농사</p>
+                        <span>낚시 페임<span th:text="${player.lifetimeStatistics.fishingFameStr}">0</span></span>
+                        <span>농사 페임<span th:text="${player.lifetimeStatistics.farmingFameStr}">0</span></span>
+                    </div>
                 </div>
             </div>
 
             <div class="content-body-items">
-                <p>🔻아래에 인게임 ID를 정확하게 입력하고 Enter키를 눌러주세용...🔻</p>
-                <input class="rainbow" type="text" name="userId" id="userId" placeholder="id를 입력하세요." maxlength="16">
-                <p class="warningMsg" id="invalidId_msg"></p>
-
-                <div id="userList">
-                    <div class="rainbow popUp">
-                        <p>🔻본인의 아이디를 클릭해주세용..🔻</p>
-                        <div id="userNames" class="content-body-item-userGroup"></div>
-                    </div>
-                </div>
+                
             </div>
 
             <hr/>

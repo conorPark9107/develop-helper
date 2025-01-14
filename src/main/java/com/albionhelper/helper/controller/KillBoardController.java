@@ -64,6 +64,12 @@ public class KillBoardController {
         List<KillBoard> killList = killboardService.getKillBoard(id, server);
         List<DeathBoard> deathList = killboardService.getDeathBoard(id, server);
         model.addAttribute("player", playerInfoDetail);
+        model.addAttribute("pve", playerInfoDetail.getLifetimeStatistics().getPve());
+        model.addAttribute("gather", playerInfoDetail.getLifetimeStatistics().getGathering());
+        model.addAttribute("craft", playerInfoDetail.getLifetimeStatistics().getCrafting());
+
+        double result = (double) playerInfoDetail.getKillFame() / playerInfoDetail.getDeathFame();
+        model.addAttribute("kda", Math.round(result * 100) / 100.0);
         model.addAttribute("kills", killList);
         model.addAttribute("deaths", deathList);
         model.addAttribute("location", server);
