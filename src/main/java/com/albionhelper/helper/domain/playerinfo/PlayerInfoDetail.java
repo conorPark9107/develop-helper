@@ -37,11 +37,11 @@ public class PlayerInfoDetail {
 
     // 킬페임
     @JsonProperty("KillFame")
-    private int killFame;
+    private long killFame;
 
     // 데스 페임
     @JsonProperty("DeathFame")
-    private int deathFame;
+    private long deathFame;
 
     @JsonProperty("LifetimeStatistics")
     private LifetimeStatistics lifetimeStatistics;
@@ -49,11 +49,11 @@ public class PlayerInfoDetail {
     private String killFameStr;
     private String deathFameStr;
 
-    public void setKillFame(int killFame) {
+    public void setKillFame(long killFame) {
         this.killFame = killFame;
         this.killFameStr = Util.getUnit(this.killFame);
     }
-    public void setDeathFame(int deathFame) {
+    public void setDeathFame(long deathFame) {
         this.deathFame = deathFame;
         this.deathFameStr = Util.getUnit(this.deathFame);
     }

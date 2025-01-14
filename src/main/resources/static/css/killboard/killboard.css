@@ -267,6 +267,7 @@ caption {
     margin-top: 0;
 }
 .box-item span{
+    color: var(--bg-text);
     float: left;
 }
 .box-item span span{

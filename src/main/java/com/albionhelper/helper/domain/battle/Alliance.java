@@ -19,7 +19,7 @@ public class Alliance implements Comparable<Alliance> {
     @JsonProperty("deaths")
     private int deaths;
     @JsonProperty("killFame")
-    private int killFame;
+    private long killFame;
     @JsonProperty("id")
     private String id;
 

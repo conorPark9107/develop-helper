@@ -26,11 +26,11 @@ public class LifetimeStatistics {
 
     // 낚시 페임
     @JsonProperty("FishingFame")
-    private int fishingFame;
+    private long fishingFame;
 
     // 농사 페임
     @JsonProperty("FarmingFame")
-    private int farmingFame;
+    private long farmingFame;
 
     // 이 정보들이 업데이트된 시간
     @JsonProperty("Timestamp")
@@ -39,11 +39,11 @@ public class LifetimeStatistics {
     private String fishingFameStr;
     private String farmingFameStr;
 
-    public void setFishingFame(int fishingFame) {
+    public void setFishingFame(long fishingFame) {
         this.fishingFame = fishingFame;
         this.fishingFameStr = Util.getUnit(this.fishingFame);
     }
-    public void setFarmingFame(int farmingFame) {
+    public void setFarmingFame(long farmingFame) {
         this.farmingFame = farmingFame;
         this.farmingFameStr = Util.getUnit(this.farmingFame);
     }

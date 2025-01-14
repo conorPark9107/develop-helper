@@ -29,7 +29,7 @@ public class Battle{
     private String utcTime;
 
     @JsonProperty("totalFame")
-    private int totalFame;
+    private long totalFame;
 
     @JsonProperty("totalKills")
     private int totalKills;

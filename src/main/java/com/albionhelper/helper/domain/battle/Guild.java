@@ -19,7 +19,7 @@ public class Guild implements Comparable<Guild> {
     @JsonProperty("deaths")
     private int deaths;
     @JsonProperty("killFame")
-    private int killFame;
+    private long killFame;
     @JsonProperty("alliance")
     private String alliance;
     @JsonProperty("allianceId")
