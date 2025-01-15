@@ -1,0 +1,140 @@
+a{
+    text-decoration: none;
+}
+p{
+    margin-bottom: 3px;
+}
+h6{
+    margin: 20px;
+}
+.image-maindiv{
+    background-image: url(/static/image/background-image-market.jpeg);
+    background-repeat: repeat;
+    height: auto;
+    min-height: 100%;
+}
+.container{
+    width: 100%;
+    max-width: 1000px;
+    margin: auto auto 5vh;
+    gap: 5px;
+    align-items: normal;
+}
+.relative{
+    position: relative;
+}
+.flex-row{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.vertical-center{
+    align-items: center;
+}
+.shadow{
+    box-shadow: 0 0 8px var(--border);
+}
+.input{
+    background: none;
+    width: 90%;
+    padding: 12px 42px 12px 12px;
+    font-size: 16px;
+    color: var(--table-th-text-color);
+    border-width: 0;
+    outline:none;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.input:hover, .input:focus{
+    opacity: 0.8;
+}
+.search{
+    background: none;
+    cursor: pointer;
+    padding: 12px;
+    border-left: 1px solid var(--border-bottom);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.search:hover{
+    opacity: 0.5;
+}
+.back-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 98%;
+    margin: auto;
+    padding-top: 15px;
+}
+.btn-back{
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    width: 130px;
+    padding: 8px;
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+.btn-back:hover{
+    opacity: 0.4;
+}
+.datalist{
+    position: absolute;
+    top: 50px;
+    left: 2px;
+    /* display: none; */
+    width: 94%;
+    background-color: var(--alert-opacity);
+    border-radius: 0 0 5px 5px;
+    padding: 5px;
+    z-index: 1;
+    box-shadow: 0px 2px 12px 0px var(--border);
+}
+.list{
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
+    color: var(--bg-text);
+    padding: 0px 10px;
+}
+.list li{
+    cursor: pointer;
+}
+.list img{
+    width: 50px;
+    height: 50px;
+}
+.list li:hover{
+    opacity: 0.7;
+}
+.radio-div{
+    gap:10px;
+}
+
+@media screen and (max-width: 1024px) {
+    .container{
+        width: 95%;
+    }
+    .search-div{
+        justify-content: center;
+    }
+    .input{
+        width:95%;
+    }
+    .btn-back{
+        font-size: 18px;
+        padding: 15px 35px;
+        margin-left: 10px;
+    }
+    .back-div{
+        margin: 0;
+    }
+}

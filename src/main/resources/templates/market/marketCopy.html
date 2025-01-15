@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript" src="/static/js/util.js"></script>
+    <script type="text/javascript" src="/static/js/variable.js"></script>
+    <script type="text/javascript" src="/static/js/marketcopy.js"></script>
+    <link rel="stylesheet" href="/static/css/variable.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/detail.css" />
+    <link rel="stylesheet" href="/static/css/marketCopy.css" />
+    <link rel="stylesheet" href="/static/css/loading.css" />
+
+
+    <!--<script type="text/javascript" src="/jsMin/util.js"></script>
+    <script type="text/javascript" src="/jsMin/variable.js"></script>
+    <script type="text/javascript" src="/jsMin/market.js"></script>
+    <link rel="stylesheet" href="/css/variable.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/detail.css"/>
+    <link rel="stylesheet" href="/css/market.css"/>
+    <link rel="stylesheet" href="/css/loading.css"/>-->
+    <meta charset="UTF-8">
+    <title>알비온 GG - 시장 검색 ⚔</title>
+</head>
+<body data-theme="light-mode">
+<script type="text/javascript" src="/js/toggle.js"></script>
+<div class="image-maindiv">
+    <div th:replace="~{header :: header}"></div>
+    <header class="header" th:fragment="header">
+        <a class="header-logo link" href="/"></a>
+        <label class="switch">
+            <input class="switchBtn" role="switch" type="checkbox" />
+            <span>다크 모드</span>
+        </label>
+    </header>
+
+    <div >
+        <div class="back-div">
+            <a class="btn-back text-center" href="javascript:history.back();">목록으로</a>
+        </div>
+        <div class="container-title">
+            <h6>시장 가격 조회📈</h6>
+        </div>
+        <div class="container relative">
+            <div class="flex-row search-div">
+                <input class="input shadow" type="text" id="itemName" placeholder="아이템 이름을 입력하세요..">
+                <a class="search shadow" id="searchBtn">🔍</a>
+            </div>
+            <div class="flex-row"><p>🌏 서버 선택</p></div>
+            <div class="flex-row radio-div">
+                <input class="east" type="radio" id="server01" name="server" value="east" checked/>
+                <label class="east" for="server01">아시아</label>
+                <input class="west" type="radio" id="server02" name="server" value="west"/>
+                <label class="west" for="server02">아메리카</label>
+                <input class="europe" type="radio" id="server03" name="server" value="europe"/>
+                <label class="europe" for="server03">유럽</label>
+            </div>
+            <div id="itemList" class="datalist">
+                <ul class="list">
+                    <li>
+                        <div class="flex-row vertical-center">
+                            <img src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                            <div class="flex-column">
+                                <span>렐름 브레이커</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex-row vertical-center">
+                            <img src="/static/image/T8_MAIN_SPEAR_LANCE_AVALON_4.png" />
+                            <div class="flex-column">
+                                <span>데이 브레이커</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex-row vertical-center">
+                            <img src="/static/image/T8_2H_SPEAR_4.png" />
+                            <div class="flex-column">
+                                <span>파이크</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+        
+
+        <div id="blackArea">
+            <div id="loading">
+                <div class="stick"></div>
+                <div class="stick"></div>
+                <div class="stick"></div>
+                <div class="stick"></div>
+                <div class="stick"></div>
+                <div class="stick"></div>
+
+                <h1>정보 요청중..</h1>
+            </div>
+        </div>
+
+    </div> <!-- main -->
+    <div class="footer">
+        <span>All <a href="https://albiononline.com/news" target="_blank" style="text-decoration: underline;">Albion Online</a> related materials are property of <a
+                href="https://albiononline.com/imprint" target="_blank" style="text-decoration: underline;">Sandbox Interactive GmbH</a></span>
+        <span>Prices are provided by the <a href="https://www.albion-online-data.com/" target="_blank"
+                                            style="text-decoration: underline;">Albion Online Data Project</a></span>
+    </div>
+</div>
+</body>
+</html>
