@@ -47,22 +47,44 @@
             <h6>시장 가격 조회📈</h6>
         </div>
         <div class="container relative">
-            <div class="flex-row search-div">
-                <input class="input shadow" type="text" id="itemName" placeholder="아이템 이름을 입력하세요..">
-                <a class="search shadow" id="searchBtn">🔍</a>
+            <div class="flex-row">
+                <div class="flex-row shadow search-div">
+                    <button class="tier-btn relative tierListTrigger">
+                        <span class="tierText">티어 선택 🔻</span>
+                        <ul class="tierList">
+                            <li value="1">1</li>
+                            <li value="2">2</li>
+                            <li value="3">3</li>
+                            <li value="4">4</li>
+                            <li value="5">5</li>
+                            <li value="6">6</li>
+                            <li value="7">7</li>
+                            <li value="8">8</li>
+                        </ul>
+                    </button>
+                    <input class="input" type="text" id="itemName" placeholder="아이템 이름을 입력하세요..">
+                    <a class="search" id="searchBtn">🔍</a>
+                </div>
             </div>
-            <div class="flex-row"><p>🌏 서버 선택</p></div>
-            <div class="flex-row radio-div">
-                <input class="east" type="radio" id="server01" name="server" value="east" checked/>
-                <label class="east" for="server01">아시아</label>
-                <input class="west" type="radio" id="server02" name="server" value="west"/>
-                <label class="west" for="server02">아메리카</label>
-                <input class="europe" type="radio" id="server03" name="server" value="europe"/>
-                <label class="europe" for="server03">유럽</label>
+            <div class="flex-row">
+                <p>🌏 서버 선택</p>
+            </div>
+            <div class="flex-row radio-div space-between vertical-flex-end">
+                <div>
+                    <input class="east" type="radio" id="server01" name="server" value="east" checked/>
+                    <label class="east" for="server01">아시아</label>
+                    <input class="west" type="radio" id="server02" name="server" value="west"/>
+                    <label class="west" for="server02">아메리카</label>
+                    <input class="europe" type="radio" id="server03" name="server" value="europe"/>
+                    <label class="europe" for="server03">유럽</label>
+                </div>
+                <div>
+                    <span class="info-message">행에 마우스를 올리면 해당 행을 더욱 편하게 보실 수 있습니다.</span>
+                </div>
             </div>
             <div id="itemList" class="datalist">
-                <ul class="list">
-                    <li>
+                <ul class="list" data-length="3">
+                    <li value="T8_XXX" data-index="0">
                         <div class="flex-row vertical-center">
                             <img src="/static/image/T8_2H_AXE_AVALON_4.png" />
                             <div class="flex-column">
@@ -70,7 +92,7 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li value="T7_XXX" data-index="1">
                         <div class="flex-row vertical-center">
                             <img src="/static/image/T8_MAIN_SPEAR_LANCE_AVALON_4.png" />
                             <div class="flex-column">
@@ -78,7 +100,7 @@
                             </div>
                         </div>
                     </li>
-                    <li>
+                    <li value="T6_XXX" data-index="2">
                         <div class="flex-row vertical-center">
                             <img src="/static/image/T8_2H_SPEAR_4.png" />
                             <div class="flex-column">
@@ -88,7 +110,479 @@
                     </li>
                 </ul>
             </div>
-        </div>
+
+            
+            <div class="flex-column">
+                <!-- 일반 품질 -->
+                <div class="flex-row space-around border-bottom relative">
+                    <table>
+                        <colgroup>
+                            <col class="c1">
+                            <col class="c2">
+                            <col class="c3">
+                            <col class="c4">
+                            <col class="c5">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span class="quality">일반</span>
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>마트록</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>뎃포드</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>포트스털링</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>림허스트</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>브릿지워치</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>칼레온</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>브리실리안</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <!-- 좋음 품질 -->
+                <div class="flex-row space-around border-bottom relative">
+                    <table>
+                        <colgroup>
+                            <col class="c1">
+                            <col class="c2">
+                            <col class="c3">
+                            <col class="c4">
+                            <col class="c5">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span class="quality">좋음</span>
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>마트록</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>뎃포드</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>포트스털링</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>림허스트</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>브릿지워치</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>칼레온</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>브리실리안</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 뛰어남 품질 -->
+                <div class="flex-row space-around border-bottom relative">
+                    <table>
+                        <colgroup>
+                            <col class="c1">
+                            <col class="c2">
+                            <col class="c3">
+                            <col class="c4">
+                            <col class="c5">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span class="quality">뛰어남</span>
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>마트록</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>뎃포드</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>포트스털링</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>림허스트</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>브릿지워치</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>칼레온</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>브리실리안</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 우수 품질 -->
+                <div class="flex-row space-around border-bottom relative">
+                    <table>
+                        <colgroup>
+                            <col class="c1">
+                            <col class="c2">
+                            <col class="c3">
+                            <col class="c4">
+                            <col class="c5">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span class="quality">우수</span>
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>마트록</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>뎃포드</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>포트스털링</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>림허스트</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>브릿지워치</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>칼레온</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>브리실리안</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 걸작 품질 -->
+                <div class="flex-row space-around border-bottom relative">
+                    <table>
+                        <colgroup>
+                            <col class="c1">
+                            <col class="c2">
+                            <col class="c3">
+                            <col class="c4">
+                            <col class="c5">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span class="quality">걸작</span>
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                                <th>
+                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>마트록</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>뎃포드</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>포트스털링</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>림허스트</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>브릿지워치</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>칼레온</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>브리실리안</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+
+                
+            </div>
+        </div> <!-- container -->
     </div>
 
         

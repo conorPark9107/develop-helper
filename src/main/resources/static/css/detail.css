@@ -22,7 +22,7 @@
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    
+    padding-bottom: 15px;
 }
 
 .footer span {

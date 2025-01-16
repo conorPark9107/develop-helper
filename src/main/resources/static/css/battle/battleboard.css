@@ -118,7 +118,6 @@ a{
 .input:hover, .input:focus{
     border: 2px solid var(--lightblue);
 }
-
 .search{
     cursor: pointer;
     padding: 9px;
