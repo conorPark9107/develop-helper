@@ -1,6 +1,11 @@
 $(document).ready(function() {
 
-    logJsonData();
+    const jsonData = logJsonData();
+    let list;
+    jsonData.then((data) => {
+        list = data;
+    });   
+    
 
     $(document).on('mouseenter', '.list li', function(){
         $(this).addClass('lihover');
@@ -9,16 +14,30 @@ $(document).ready(function() {
         $(this).removeClass('lihover');
     });
 
+    let liIndex = 0;
     $('#itemName').on('keydown', function(event){
         let key = event.keyCode;
+        const lis = $('.list li');
+        $($(lis)[liIndex]).trigger('mouseleave');
         
-        if(key == 38){ // up
-            
-        }else if(key == 40){ // down
-            
-        }else if(key == 13){ // enter
-
+        
+        
+        switch (key) {
+            case 38: // up
+                liIndex = (liIndex - 1 == -1) ? lis.length - 1 : liIndex - 1;
+                break;
+            case 40: // down
+                liIndex = (liIndex + 1 == lis.length) ? 0 : liIndex + 1;
+                break;
+            case 13: // enter
+                
+                break;
+            default:
+                liIndex = 0;
+                break;
         }
+
+        $($(lis)[liIndex]).trigger('mouseenter');
 
     });
 
