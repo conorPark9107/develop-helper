@@ -1,10 +1,11 @@
+let jsonData = null;
 $(document).ready(function() {
 
-    const jsonData = logJsonData();
-    let list;
-    jsonData.then((data) => {
-        list = data;
-    });   
+    if (!jsonData) {
+        $.getJSON("/static/jsonData/items_Original.json", function (data) {
+            jsonData = data;
+        });
+    }
     
 
     $(document).on('mouseenter', '.list li', function(){
