@@ -4,8 +4,8 @@ $(document).ready(function() {
     $('#itemName').focus();
 
     if (!itemList) {
-        $.getJSON("/static/jsonData/items_Original.json", function (data) {
-            itemList = data;               
+        $.getJSON("/jsonData/items.json", function (data) {
+            itemList = data;
             itemList.map((data) => {
                 if(data.LocalizedNames != null){
                     return data.LocalizedNames['KO-KR'] = data.LocalizedNames['KO-KR'];
@@ -23,7 +23,6 @@ $(document).ready(function() {
     
     // input text가 포커스를 잃었을때 이벤트
     $('#itemName').on('blur', function(){
-        $('#itemList').empty();
         $('#itemList').fadeOut(100);
     });
 
@@ -56,7 +55,8 @@ $(document).ready(function() {
                 lis[liIndex].scrollIntoView({ behavior: "smooth", block: "end", inline: "center" });
                 break;
             case 13: // enter
-                $('#itemName').val($('.lihover').attr('value'));
+                $('#itemName').val('');
+                getPriceFromServer();
                 break;
             case 27: // esc
                 $('#itemName').val('');
@@ -81,11 +81,13 @@ $(document).ready(function() {
         let list = inputVal ? itemList.filter((item) => {
                     if(tier != undefined){
                         return item.LocalizedNames != null &&
-                                item.LocalizedNames['KO-KR'].replaceAll(" ", "").toLowerCase().includes(inputVal) &&
-                                item.UniqueName.includes(tier);
+                               item.LocalizedNames['KO-KR'] != undefined &&
+                               item.LocalizedNames['KO-KR'].replaceAll(" ", "").toLowerCase().includes(inputVal) &&
+                               item.UniqueName.includes(tier);
                     }else{
                         return item.LocalizedNames != null &&
-                                item.LocalizedNames['KO-KR'].replaceAll(" ", "").toLowerCase().includes(inputVal);
+                               item.LocalizedNames['KO-KR'] != undefined &&
+                               item.LocalizedNames['KO-KR'].replaceAll(" ", "").toLowerCase().includes(inputVal);
                     }
             })
             : [];
@@ -137,15 +139,90 @@ $(document).ready(function() {
         liIndex = 0;
     }
 
+    // 서버로부터 데이터 받아오는 함수 정의
+    function getPriceFromServer(){
+        $('#itemList').fadeOut(100);
+        const itemName = $('li.lihover div span').text();
+        $('#itemName').val(itemName);
+        const server = $('input[name=server]:checked').val();
+        const item = $('li.lihover').attr('value');
+        if(item == undefined){
+            showAlert('조회하고자 하는 아이템을 검색 후 선택해주세요.');
+            return;
+        }
+        $.ajax({
+            type : 'get',
+            url : '/market/getPrice',
+            async : true,
+            dataType : 'json',
+            data : {
+                server : server,
+                itemName : item
+            },
+            beforeSend : function(){
+                turnLoading();
+                setTableImages(item);
+            },
+            success : function(response) {
+                turnLoading();
+                updateTable(response);
+            },
+            error : function(request, status, error) {
+                turnLoading();
+                showAlert('잠시후에 다시 시도해주세요.');
+            }
+        });
+    }
+
+    function setTableImages(item){
+        const tables = $('table');
+        for(let i = 0; i < tables.length; i++){
+            const th = $(tables[i]).children('thead').children('tr').children('th')[0];
+            $(th).empty();
+            const img = document.createElement('img');
+            img.className = 'tableImage';
+            img.src = `https://render.albiononline.com/v1/item/${item}.png?quality=${i+1}`;
+            $(th).append(img);
+        }
+    }
+
+    // 서버에서 시장 데이터 받아서 뿌려주기.
+    function updateTable(response){
+        console.log(response);
+        for(let i = 0; i < response.length; i++){
+            const obj = response[i];
+            const id = obj.city + obj.quality;
+            const tds = $(`#${id} td`);
+            const buyPriceMin = obj.buy_price_max;
+            const sellPriceMin = obj.sell_price_min;
+            const kst = obj.kst;
+            let updateDate = obj.sell_price_min_date;
+            let dateAgo = getPerTime(updateDate);
+
+            $(tds[1]).text(buyPriceMin);
+            $(tds[2]).text(sellPriceMin);
+            if(updateDate.substr(0, 4) == "0001"){
+                updateDate = "갱신 전";
+            }else{
+                $(tds[3]).text(updateDate.substr(10));
+            }
+            if(kst.substr(0, 4) == "0001"){
+                $(tds[4]).text("갱신 전");
+            }else{
+                $(tds[4]).text(kst.substr(10));
+            }
+
+        }
+    }
+
     // 검색 아이콘을 클릭 했을 때 이벤트
     $('.search').on('click', function(){
-        
-        alert('아이콘 버튼 클릭');
+        getPriceFromServer();
     });
 
     // 검색 자동완성의 li를 클릭했을때.
     $(document).on('click', '.list li', function(){
-        alert($(this).attr('value'));
+        getPriceFromServer();
     });
 
 

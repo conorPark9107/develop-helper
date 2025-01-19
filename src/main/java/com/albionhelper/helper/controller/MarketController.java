@@ -30,17 +30,24 @@ public class MarketController {
 
     @GetMapping("")
     public String market(){
-        return "market/market";
+        return "market/marketCopy";
     }
 
     @GetMapping("/getPrice")
     @ResponseBody
     public List<ItemPrice> showPrice(@RequestParam("server")String server,
+                                     @RequestParam("itemName")String itemName) throws JsonProcessingException {
+        return marketService.getPrice(server, itemName);
+    }
+
+    @GetMapping("/getPriceOld")
+    @ResponseBody
+    public List<ItemPrice> showPriceOld(@RequestParam("server")String server,
                                      @RequestParam("quality")String quality,
                                      @RequestParam("tier")String tier,
                                      @RequestParam("dotTier")String dotTier,
                                      @RequestParam("itemName")String itemName) throws JsonProcessingException {
-        return marketService.getPrice(server, quality, tier, dotTier, itemName);
+        return marketService.getPriceOld(server, quality, tier, dotTier, itemName);
     }
 
 

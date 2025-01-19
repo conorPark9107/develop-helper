@@ -55,9 +55,12 @@ public class ItemPrice {
     @JsonProperty("buy_price_max_date")
     private String buyPriceMaxDate;
 
+    private String kst;
+
     public void setSellPriceMinDate(String sellPriceMinDate) {
         LocalDateTime ldt = LocalDateTime.parse(sellPriceMinDate);
         this.sellPriceMinDate = ldt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        this.kst = ldt.plusHours(9).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     public void setBuyPriceMaxDate(String buyPriceMaxDate) {

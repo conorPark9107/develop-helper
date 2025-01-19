@@ -5,7 +5,13 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" src="/static/js/util.js"></script>
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+
+    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
     <script type="text/javascript" src="/static/js/variable.js"></script>
     <script type="text/javascript" src="/static/js/marketcopy.js"></script>
     <link rel="stylesheet" href="/static/css/variable.css" />
@@ -13,16 +19,18 @@
     <link rel="stylesheet" href="/static/css/detail.css" />
     <link rel="stylesheet" href="/static/css/marketCopy.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
+    <link rel="stylesheet" href="/static/css/board/editor.css" /> -->
 
 
-    <!--<script type="text/javascript" src="/jsMin/util.js"></script>
-    <script type="text/javascript" src="/jsMin/variable.js"></script>
-    <script type="text/javascript" src="/jsMin/market.js"></script>
+    <script type="text/javascript" src="/js/util.js"></script>
+    <script type="text/javascript" src="/js/variable.js"></script>
+    <script type="text/javascript" src="/js/marketcopy.js"></script>
     <link rel="stylesheet" href="/css/variable.css"/>
     <link rel="stylesheet" href="/css/index.css"/>
     <link rel="stylesheet" href="/css/detail.css"/>
-    <link rel="stylesheet" href="/css/market.css"/>
-    <link rel="stylesheet" href="/css/loading.css"/>-->
+    <link rel="stylesheet" href="/css/marketCopy.css"/>
+    <link rel="stylesheet" href="/css/loading.css"/>
+    <link rel="stylesheet" href="/css/board/editor.css" />
     <meta charset="UTF-8">
     <title>알비온 GG - 시장 검색 ⚔</title>
 </head>
@@ -30,14 +38,6 @@
 <script type="text/javascript" src="/js/toggle.js"></script>
 <div class="image-maindiv">
     <div th:replace="~{header :: header}"></div>
-    <header class="header" th:fragment="header">
-        <a class="header-logo link" href="/"></a>
-        <label class="switch">
-            <input class="switchBtn" role="switch" type="checkbox" />
-            <span>다크 모드</span>
-        </label>
-    </header>
-
     <div >
         <div class="back-div">
             <a class="btn-back text-center" href="javascript:history.back();">목록으로</a>
@@ -52,14 +52,14 @@
                         <span class="tierText">티어 선택 🔻</span>
                         <ul class="tierList">
                             <li value="">전체</li>
-                            <li value="T1">1</li>
-                            <li value="T2">2</li>
-                            <li value="T3">3</li>
-                            <li value="T4">4</li>
-                            <li value="T5">5</li>
-                            <li value="T6">6</li>
-                            <li value="T7">7</li>
-                            <li value="T8">8</li>
+                            <li value="T1_">1</li>
+                            <li value="T2_">2</li>
+                            <li value="T3_">3</li>
+                            <li value="T4_">4</li>
+                            <li value="T5_">5</li>
+                            <li value="T6_">6</li>
+                            <li value="T7_">7</li>
+                            <li value="T8_">8</li>
                         </ul>
                     </button>
                     <input class="input" type="text" id="itemName" placeholder="아이템 이름을 입력하세요.." autocomplete="off">
@@ -79,7 +79,8 @@
                     <label class="europe" for="server03">유럽</label>
                 </div>
                 <div>
-                    <span class="info-message">행에 마우스를 올리면 해당 행을 더욱 편하게 보실 수 있습니다.</span>
+                    <span class="info-message">행에 마우스를 올리면 해당 행을 더욱 편하게 보실 수 있습니다</span>
+                    <span class="info-message"> | 가격은 가장 싼 판매 & 구매 요청서로 보시게 됩니다</span>
                 </div>
             </div>
             <div id="itemList" class="datalist">
@@ -96,82 +97,78 @@
                             <col class="c2">
                             <col class="c3">
                             <col class="c4">
-                            <col class="c5">
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>
-                                    <span class="quality">일반</span>
+                                    <img class="tableImage" src="https://render.albiononline.com/v1/wardrobe/UNIQUE_HEAD_VANITY_PUMPKIN_01.png" />
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    구매 요청서 가격
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    판매 요청서 가격
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    데이터 갱신 <br/>(UTC)
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
-                                </th>
-                                <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    데이터 갱신 시간<br/>(한국 시간 기준)
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr id="martlock1">
                                 <td>마트록</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="thetford1">
                                 <td>뎃포드</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="fortsterling1">
                                 <td>포트스털링</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="lymhurst1">
                                 <td>림허스트</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="bridgewatch1">
                                 <td>브릿지워치</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="caerleon1">
                                 <td>칼레온</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="brecilien1">
                                 <td>브리실리안</td>
                                 <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr id="blackmarket1">
+                                <td>암시장</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -190,82 +187,78 @@
                             <col class="c2">
                             <col class="c3">
                             <col class="c4">
-                            <col class="c5">
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>
-                                    <span class="quality">좋음</span>
+                                    <img class="tableImage" src="https://render.albiononline.com/v1/wardrobe/UNIQUE_HEAD_VANITY_PUMPKIN_01.png" />
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    구매 요청서 가격
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    판매 요청서 가격
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    데이터 갱신 <br/>(UTC)
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
-                                </th>
-                                <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    데이터 갱신 시간<br/>(한국 시간 기준)
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr id="martlock2">
                                 <td>마트록</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="thetford2">
                                 <td>뎃포드</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="fortsterling2">
                                 <td>포트스털링</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="lymhurst2">
                                 <td>림허스트</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="bridgewatch2">
                                 <td>브릿지워치</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="caerleon2">
                                 <td>칼레온</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="brecilien2">
                                 <td>브리실리안</td>
                                 <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr id="blackmarket2">
+                                <td>암시장</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -283,82 +276,78 @@
                             <col class="c2">
                             <col class="c3">
                             <col class="c4">
-                            <col class="c5">
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>
-                                    <span class="quality">뛰어남</span>
+                                    <img class="tableImage" src="https://render.albiononline.com/v1/wardrobe/UNIQUE_HEAD_VANITY_PUMPKIN_01.png" />
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    구매 요청서 가격
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    판매 요청서 가격
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    데이터 갱신 <br/>(UTC)
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
-                                </th>
-                                <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    데이터 갱신 시간<br/>(한국 시간 기준)
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr id="martlock3">
                                 <td>마트록</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="thetford3">
                                 <td>뎃포드</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="fortsterling3">
                                 <td>포트스털링</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="lymhurst3">
                                 <td>림허스트</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="bridgewatch3">
                                 <td>브릿지워치</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="caerleon3">
                                 <td>칼레온</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="brecilien3">
                                 <td>브리실리안</td>
                                 <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr id="blackmarket3">
+                                <td>암시장</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -376,82 +365,78 @@
                             <col class="c2">
                             <col class="c3">
                             <col class="c4">
-                            <col class="c5">
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>
-                                    <span class="quality">우수</span>
+                                    <img class="tableImage" src="https://render.albiononline.com/v1/wardrobe/UNIQUE_HEAD_VANITY_PUMPKIN_01.png" />
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    구매 요청서 가격
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    판매 요청서 가격
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    데이터 갱신 <br/>(UTC)
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
-                                </th>
-                                <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    데이터 갱신 시간<br/>(한국 시간 기준)
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr id="martlock4">
                                 <td>마트록</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="thetford4">
                                 <td>뎃포드</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="fortsterling4">
                                 <td>포트스털링</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="lymhurst4">
                                 <td>림허스트</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="bridgewatch4">
                                 <td>브릿지워치</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="caerleon4">
                                 <td>칼레온</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="brecilien4">
                                 <td>브리실리안</td>
                                 <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr id="blackmarket4">
+                                <td>암시장</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -469,82 +454,78 @@
                             <col class="c2">
                             <col class="c3">
                             <col class="c4">
-                            <col class="c5">
                         </colgroup>
                         <thead>
                             <tr>
                                 <th>
-                                    <span class="quality">걸작</span>
+                                    <img class="tableImage" src="https://render.albiononline.com/v1/wardrobe/UNIQUE_HEAD_VANITY_PUMPKIN_01.png" />
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    구매 요청서 가격
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    판매 요청서 가격
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    데이터 갱신 <br/>(UTC)
                                 </th>
                                 <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
-                                </th>
-                                <th>
-                                    <img class="tableImage" src="/static/image/T8_2H_AXE_AVALON_4.png" />
+                                    데이터 갱신 시간<br/>(한국 시간 기준)
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr id="martlock5">
                                 <td>마트록</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="thetford5">
                                 <td>뎃포드</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="fortsterling5">
                                 <td>포트스털링</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="lymhurst5">
                                 <td>림허스트</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="bridgewatch5">
                                 <td>브릿지워치</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="caerleon5">
                                 <td>칼레온</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
-                                <td>0</td>
                             </tr>
-                            <tr>
+                            <tr id="brecilien5">
                                 <td>브리실리안</td>
                                 <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr id="blackmarket5">
+                                <td>암시장</td>
                                 <td>0</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -553,9 +534,6 @@
                         </tbody>
                     </table>
                 </div>
-                
-
-                
             </div>
         </div> <!-- container -->
     </div>

@@ -76,7 +76,7 @@ public class MarketService{
     }
 
     // https://west.albion-online-data.com/api/v2/stats/prices/T4_BAG,T5_BAG?locations=Caerleon,Bridgewatch&qualities=2
-    public List<ItemPrice> getPrice(String server, String quality, String tier, String dotTier, String itemName) throws JsonProcessingException {
+    public List<ItemPrice> getPriceOld(String server, String quality, String tier, String dotTier, String itemName) throws JsonProcessingException {
         String url = getServerUrl(server);
         StringBuilder requestUrl = new StringBuilder(url);
         requestUrl.append(tier).append("_").append(itemName).append(dotTier).append("?");
@@ -140,5 +140,23 @@ public class MarketService{
         builder.append("?locations=").append(city);
         builder.append("&qualities=1");
         return builder;
+    }
+
+    public List<ItemPrice> getPrice(String server, String itemName) throws JsonProcessingException {
+        StringBuilder urlBuilder = new StringBuilder(getServerUrl(server));
+        urlBuilder.append(itemName);
+        List<ItemPrice> list = new ArrayList<>();
+
+        log.info("request String : {}", urlBuilder);
+        String response = getResponse(urlBuilder.toString());
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode rootNode = objectMapper.readTree(response);
+
+        for (JsonNode node : rootNode) {
+            ItemPrice itemPrice = objectMapper.treeToValue(node, ItemPrice.class);
+            list.add(itemPrice);
+        }
+
+        return list;
     }
 }

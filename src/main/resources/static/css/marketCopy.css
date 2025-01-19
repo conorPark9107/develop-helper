@@ -11,7 +11,7 @@ h6{
     margin: 20px;
 }
 .image-maindiv{
-    background-image: url(/static/image/background-image-market.jpeg);
+    background-image: url(/image/background-image-market.jpeg);
     background-repeat: repeat;
     height: auto;
     min-height: 100%;
@@ -86,7 +86,7 @@ h6{
     background: none;
     cursor: pointer;
     padding: 12px;
-    border-left: 1px solid var(--border-bottom);
+    border-left: 1px solid var(--border-a);
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 }
@@ -178,17 +178,21 @@ h6{
     border-bottom: 1px solid var(--border-a);
 }
 .tableImage{
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 }
 table{
     width: 100%;
     border: none;
-}
-th, td{
-    color: var(--bg-text);
     text-align: right;
     font-size: 14px;
+}
+th, td:nth-child(1) {
+    font-weight: 500;
+    color: var(--white);
+}
+td{
+    color: var(--bg-text);
 }
 tbody tr:hover{
     color: var(--sub-color);
@@ -204,12 +208,16 @@ tbody tr:hover{
     color: var(--bg-text);
     font-size: 11px;
 }
+.jconfirm.jconfirm-supervan .jconfirm-box {
+    width: 50%;
+}
 @media screen and (max-width: 1024px) {
     .datalist{
         left: 88px;
     }
     .container{
         width: 95%;
+        gap: 15px;
     }
     .input{
         width:95%;
@@ -222,4 +230,9 @@ tbody tr:hover{
     .back-div{
         margin: 0;
     }
+    .tier-btn{
+        width: 15%;
+    }
 }
+
+
