@@ -5,7 +5,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-
     <script type="text/javascript" src="/static/js/util.js"></script>
     <script type="text/javascript" src="/static/js/variable.js"></script>
     <script type="text/javascript" src="/static/js/marketcopy.js"></script>
@@ -52,17 +51,18 @@
                     <button class="tier-btn relative tierListTrigger">
                         <span class="tierText">티어 선택 🔻</span>
                         <ul class="tierList">
-                            <li value="1">1</li>
-                            <li value="2">2</li>
-                            <li value="3">3</li>
-                            <li value="4">4</li>
-                            <li value="5">5</li>
-                            <li value="6">6</li>
-                            <li value="7">7</li>
-                            <li value="8">8</li>
+                            <li value="">전체</li>
+                            <li value="T1">1</li>
+                            <li value="T2">2</li>
+                            <li value="T3">3</li>
+                            <li value="T4">4</li>
+                            <li value="T5">5</li>
+                            <li value="T6">6</li>
+                            <li value="T7">7</li>
+                            <li value="T8">8</li>
                         </ul>
                     </button>
-                    <input class="input" type="text" id="itemName" placeholder="아이템 이름을 입력하세요..">
+                    <input class="input" type="text" id="itemName" placeholder="아이템 이름을 입력하세요.." autocomplete="off">
                     <a class="search" id="searchBtn">🔍</a>
                 </div>
             </div>
@@ -83,32 +83,7 @@
                 </div>
             </div>
             <div id="itemList" class="datalist">
-                <ul class="list" data-length="3">
-                    <li value="T8_XXX" data-index="0">
-                        <div class="flex-row vertical-center">
-                            <img src="/static/image/T8_2H_AXE_AVALON_4.png" />
-                            <div class="flex-column">
-                                <span>렐름 브레이커</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li value="T7_XXX" data-index="1">
-                        <div class="flex-row vertical-center">
-                            <img src="/static/image/T8_MAIN_SPEAR_LANCE_AVALON_4.png" />
-                            <div class="flex-column">
-                                <span>데이 브레이커</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li value="T6_XXX" data-index="2">
-                        <div class="flex-row vertical-center">
-                            <img src="/static/image/T8_2H_SPEAR_4.png" />
-                            <div class="flex-column">
-                                <span>파이크</span>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                
             </div>
 
             

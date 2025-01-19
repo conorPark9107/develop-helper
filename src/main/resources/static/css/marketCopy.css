@@ -116,16 +116,19 @@ h6{
     opacity: 0.4;
 }
 .datalist{
-    /* display: none; */
+    display: none;
     position: absolute;
     top: 50px;
     left: 121px;
     width: 89%;
+    max-height: 30%;
+    border: 1px solid var(--border);
     background-color: var(--alert-opacity);
     border-radius: 0 0 5px 5px;
     padding: 5px;
     z-index: 1;
-    box-shadow: 0px 2px 12px 0px var(--border);
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .tierList{
     display: none;
@@ -150,9 +153,10 @@ h6{
     list-style: none;
     font-size: 14px;
     text-align: left;
-    width: 98%;
+    width: 99%;
     color: #eee;
-    padding: 0px 10px;
+    padding: 10px 5px;
+    border-radius: 6px;
 }
 .list li{
     cursor: pointer;
@@ -201,6 +205,9 @@ tbody tr:hover{
     font-size: 11px;
 }
 @media screen and (max-width: 1024px) {
+    .datalist{
+        left: 88px;
+    }
     .container{
         width: 95%;
     }
