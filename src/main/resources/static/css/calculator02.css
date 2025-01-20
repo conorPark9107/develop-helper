@@ -20,7 +20,7 @@ p{
 .flex-column{
     display:flex;
     flex-direction: column;
-    gap:15px;
+    gap:10px;
 }
 .flex-row{
     display: flex;
@@ -442,7 +442,7 @@ table tbody td input{
 }
 .priceArea{
     display:flex;
-    width: 60%;
+    width: 100%;
     flex-direction: column;
     text-align: center;
 }

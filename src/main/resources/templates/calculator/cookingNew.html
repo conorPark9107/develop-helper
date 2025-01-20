@@ -13,7 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
     <script type="text/javascript" src="/static/jsMin/variable.js"></script>
-    <script type="text/javascript" src="/static/jsMin/calculator/cooking.js"></script>
+    <script type="text/javascript" src="/static/js/calculator/cooking.js"></script>
     <script type="text/javascript" src="/static/jsMin/util.js"></script>
     <link rel="stylesheet" href="/static/css/variable.css"/>
     <link rel="stylesheet" href="/static/css/board/editor.css"/>
@@ -71,7 +71,7 @@
                             <label class="europe" for="server03">유럽</label>
                         </div>
                     </div>
-                    <div class="flex-row">
+                    <div class="flex-row align-item-center">
                         <div class="title-div align-item-center">
                             <span class="title">구매 & 판매 도시</span>
                         </div>
@@ -92,7 +92,7 @@
                             <label for="city6">브리실리안</label>
                         </div>
                     </div>
-                    <div class="flex-row">
+                    <div class="flex-row align-item-center">
                         <div class="title-div align-item-center">
                             <span class="title">마켓 수수료 (구매) <span class="tooltip" data-info="tooltipArea_04">?</span>
                         </div>
@@ -111,8 +111,8 @@
                             <label for="marketTaxBuy6">10.5%</label>
                         </div>
                     </div>
-                    <div class="flex-row">
-                        <div class="title-div align-item-center">
+                    <div class="flex-row align-item-center">
+                        <div class="title-div">
                             <span class="title">마켓 수수료 (판매) <span class="tooltip" data-info="tooltipArea_04">?</span>
                         </div>
                         <div class="content-div">
@@ -128,7 +128,7 @@
                             <label for="marketTaxSell5">10.5%</label>
                         </div>
                     </div>
-                    <div class="flex-row">
+                    <div class="flex-row align-item-center">
                         <div class="title-div align-item-center">
                             <span class="title">건물 소비 영양 100당 사용료 <span class="tooltip" data-info="tooltipArea_02">?</span></span>
                         </div>
@@ -136,7 +136,7 @@
                             <input class="input-number" type="number" id="usageFee" name="usageFee" placeholder="소비 영양 100당 사용료" min="0" max="9999" value="0"/>
                         </div>
                     </div>
-                    <div class="flex-row">
+                    <div class="flex-row align-item-center">
                         <div class="title-div align-item-center">
                             <span class="title">자원 반환 비율 <span class="tooltip" data-info="tooltipArea_03">?</span></span>
                         </div>
@@ -145,7 +145,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex-row background space-between">
+                <p class="sub-title">운명보드 설정</p>
+                <div class="flex-row background space-between align-item-center">
                     <div class="flex-row">
                         <div class="title-div align-item-center">
                             <span class="title">운명보드 레벨 설정 <span class="tooltip" data-info="tooltipArea_01">?</span></span>
@@ -197,8 +198,83 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
+                <div class="priceArea">
+                    <div class="image-div">
+        
+        
+                    </div>
+        
+                    <!-- 테이블 폼 -->
+        
+                    <div class="table-div-cooking" id="cooking_table">
+                        <span class="qunatityArea">
+                            <input type="number" id="quantity" name="quantity" placeholder="n" min="1" value="1"/>
+                            개 단위로 보기
+                        </span>
+                        <div class="flex-row-div">
+                            <table class="main-table">
+                                <colgroup>
+                                    <col class="col1">
+                                    <col class="col9">
+                                    <col class="col5">
+                                    <col class="col9">
+                                    <col class="col2">
+                                    <col class="col7">
+                                    <col class="col8">
+                                    <col class="col9">
+                                </colgroup>
+                                <thead>
+                                <tr class="table-header">
+                                    <th>아이템</th>
+                                    <th>판매가격<br/>
+                                        <p class="priceDetail">(최저가)</p>
+                                    </th>
+                                    <th>만들기위한재료<p class="priceDetail">(필요 재료)</p>
+                                    </th>
+                                    <th>재료 값<br/>
+                                        <p class="priceDetail">(모두 합한 가격)</p>
+                                    </th>
+                                    <th>필요한 집중<br/>
+                                        <p class="priceDetail">(반환 비율 포함)</p>
+                                    </th>
+                                    <th>총 재료 비용<p class="priceDetail">(구매가)</p>
+                                    </th>
+                                    <th>판매가</th>
+                                    <th>이익</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+        
+                                </tbody>
+                            </table>
+        
+                            <table class="sub-table">
+                                <caption>재료 가격표</caption>
+                                <colgroup>
+                                    <col class="col1">
+                                    <col class="col2">
+                                    <col class="col6">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>아이템</th>
+                                    <th>판매가격<br/>
+                                        <p class="priceDetail">(최저가)</p>
+                                    </th>
+                                    <th>개수<p class="priceDetail">(1회 기준)</p>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+        
+                                </tbody>
+                            </table>
+                        </div>
+        
+                    </div>
+                </div>
+           </div>  <!-- end of flex column -->
+        </div> <!-- end of container -->
     </div>
 
 
