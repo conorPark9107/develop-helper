@@ -59,7 +59,6 @@ function showAlert(msg){
             '네': function (e) {}
         }
     });
-
 }
 
 function turnLoading(){

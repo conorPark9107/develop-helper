@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+    <script type="text/javascript" src="/static/jsMin/variable.js"></script>
+    <script type="text/javascript" src="/static/jsMin/calculator/cooking.js"></script>
+    <script type="text/javascript" src="/static/jsMin/util.js"></script>
+    <link rel="stylesheet" href="/static/css/variable.css"/>
+    <link rel="stylesheet" href="/static/css/board/editor.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <link rel="stylesheet" href="/static/css/detail.css"/>
+    <link rel="stylesheet" href="/static/css/loading.css"/>
+    <link rel="stylesheet" href="/static/css/calculator02.css"/>
+    
+
+    <!--<script type="text/javascript" src="/jsMin/variable.js"></script>
+    <script type="text/javascript" src="/jsMin/calculator/cooking.js"></script>
+    <script type="text/javascript" src="/jsMin/util.js"></script>
+    <link rel="stylesheet" href="/css/variable.css"/>
+    <link rel="stylesheet" href="/css/board/editor.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/detail.css"/>
+    <link rel="stylesheet" href="/css/calculator.css"/>
+    <link rel="stylesheet" href="/css/loading.css"/>-->
+
+    <meta charset="UTF-8">
+    <title>알비온 GG - 요리 ⚔</title>
+</head>
+
+<body data-theme="light-mode">
+<script type="text/javascript" src="/jsMin/toggle.js"></script>
+<div class="image-maindiv">
+    <div th:replace="~{header :: header}"></div>
+    <div>
+        <div class="back-div">
+            <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
+        </div>
+        <div class="container">
+            <div class="flex-column">
+                <div class="flex-column menu-message">
+                    <p>※ 실시간 시장가격, 자원반환(%) 소수점.. 등 여러 변수로 약간의 오차는 발생할 수 있습니다.</p>
+                    <p>※ 계산식에 문제가 있을시 <a class="link" href="/toinquire" target="_blank">피드백(새
+                        창)</a>에 글을 남겨주세요.</p>
+                    <p class="red">
+                        ※ 아발로니안 에너지는 반환되지 않기 때문에 반환율에 포함되어 계산되지 않습니다.
+                    </p>
+                </div>
+
+                <p class="sub-title">기본 설정</p>
+                <div class="flex-column background">
+                    <div class="flex-row align-item-center">
+                        <div class="title-div">
+                            <span class="title">서버 선택</span>
+                        </div>
+                        <div class="content-div">
+                            <input class="east" type="radio" id="server01" name="server" value="east" checked/>
+                            <label class="east" for="server01">아시아</label>
+                            <input class="west" type="radio" id="server02" name="server" value="west"/>
+                            <label class="west" for="server02">아메리카</label>
+                            <input class="europe" type="radio" id="server03" name="server" value="europe"/>
+                            <label class="europe" for="server03">유럽</label>
+                        </div>
+                    </div>
+                    <div class="flex-row">
+                        <div class="title-div align-item-center">
+                            <span class="title">구매 & 판매 도시</span>
+                        </div>
+                        <div class="content-div">
+                            <input type="radio" id="city0" name="city" value="martlock" checked/>
+                            <label for="city0">마트록</label>
+                            <input type="radio" id="city1" name="city" value="thetford"/>
+                            <label for="city1">뎃포드</label>
+                            <input type="radio" id="city2" name="city" value="fortsterling"/>
+                            <label for="city2">포트스털링</label>
+                            <input type="radio" id="city3" name="city" value="lymhurst"/>
+                            <label for="city3">림허스트</label>
+                            <input type="radio" id="city4" name="city" value="bridgewatch"/>
+                            <label for="city4">브릿지워치</label>
+                            <input type="radio" id="city5" name="city" value="caerleon"/>
+                            <label for="city5">칼레온</label>
+                            <input type="radio" id="city6" name="city" value="brecilien"/>
+                            <label for="city6">브리실리안</label>
+                        </div>
+                    </div>
+                    <div class="flex-row">
+                        <div class="title-div align-item-center">
+                            <span class="title">마켓 수수료 (구매) <span class="tooltip" data-info="tooltipArea_04">?</span>
+                        </div>
+                        <div class="content-div">
+                            <input type="radio" id="marketTaxBuy1" name="marketTaxBuy" value="0" checked/>
+                            <label for="marketTaxBuy1">즉시 구매</label>
+                            <input type="radio" id="marketTaxBuy2" name="marketTaxBuy" value="0.025"/>
+                            <label for="marketTaxBuy2">2.5%</label>
+                            <input type="radio" id="marketTaxBuy3" name="marketTaxBuy" value="0.04"/>
+                            <label for="marketTaxBuy3">4%</label>
+                            <input type="radio" id="marketTaxBuy4" name="marketTaxBuy" value="0.065"/>
+                            <label for="marketTaxBuy4">6.5%</label>
+                            <input type="radio" id="marketTaxBuy5" name="marketTaxBuy" value="0.08"/>
+                            <label for="marketTaxBuy5">8%</label>
+                            <input type="radio" id="marketTaxBuy6" name="marketTaxBuy" value="0.105"/>
+                            <label for="marketTaxBuy6">10.5%</label>
+                        </div>
+                    </div>
+                    <div class="flex-row">
+                        <div class="title-div align-item-center">
+                            <span class="title">마켓 수수료 (판매) <span class="tooltip" data-info="tooltipArea_04">?</span>
+                        </div>
+                        <div class="content-div">
+                            <input type="radio" id="marketTaxSell1" name="marketTaxSell" value="0.025" checked/>
+                            <label for="marketTaxSell1">2.5%</label>
+                            <input type="radio" id="marketTaxSell2" name="marketTaxSell" value="0.04"/>
+                            <label for="marketTaxSell2">4%</label>
+                            <input type="radio" id="marketTaxSell3" name="marketTaxSell" value="0.065"/>
+                            <label for="marketTaxSell3">6.5</label>
+                            <input type="radio" id="marketTaxSell4" name="marketTaxSell" value="0.08"/>
+                            <label for="marketTaxSell4">8%</label>
+                            <input type="radio" id="marketTaxSell5" name="marketTaxSell" value="0.105"/>
+                            <label for="marketTaxSell5">10.5%</label>
+                        </div>
+                    </div>
+                    <div class="flex-row">
+                        <div class="title-div align-item-center">
+                            <span class="title">건물 소비 영양 100당 사용료 <span class="tooltip" data-info="tooltipArea_02">?</span></span>
+                        </div>
+                        <div class="content-div">
+                            <input class="input-number" type="number" id="usageFee" name="usageFee" placeholder="소비 영양 100당 사용료" min="0" max="9999" value="0"/>
+                        </div>
+                    </div>
+                    <div class="flex-row">
+                        <div class="title-div align-item-center">
+                            <span class="title">자원 반환 비율 <span class="tooltip" data-info="tooltipArea_03">?</span></span>
+                        </div>
+                        <div class="content-div">
+                            <input class="input-number" type="number" id="returnRate" name="returnRate" placeholder=" '%' 제외하고 입력" min="0" max="100" value="0"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-row background space-between">
+                    <div class="flex-row">
+                        <div class="title-div align-item-center">
+                            <span class="title">운명보드 레벨 설정 <span class="tooltip" data-info="tooltipArea_01">?</span></span>
+                        </div>
+                        <div class="content-div">
+                            <div class="grid">
+                                <div>
+                                    <label class="taxLabel" for="chef">셰프</label>
+                                    <input class="input-number destiny" type="number" id="chef" min="0" max="100" value="0"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="butcher">도살 업자</label>
+                                    <input class="input-number destiny" type="number" id="butcher" min="0" max="100" value="0"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="material">재료 셰프</label>
+                                    <input class="input-number destiny" type="number" id="material" min="0" max="100" value="0"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="sandwich">샌드위치 셰프</label>
+                                    <input class="input-number destiny" type="number" id="sandwich" min="0" max="100" value="0"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="stew">스튜 셰프</label>
+                                    <input class="input-number destiny" type="number" id="stew" min="0" max="100" value="0"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="omelette">오믈렛 셰프</label>
+                                    <input class="input-number destiny" type="number" id="omelette" min="0" max="100" value="0"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="roast">로스트 셰프</label>
+                                    <input class="input-number destiny" type="number" id="roast" min="0" max="100" value="0"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="pie">파이 셰프</label>
+                                    <input class="input-number destiny" type="number" id="pie" min="0" max="100" value="0"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="salad">샐러드 셰프</label>
+                                    <input class="input-number destiny" type="number" id="salad" min="0" max="100" value="0"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="soup">수프 셰프</label>
+                                    <input class="input-number destiny" type="number" id="soup" min="0" max="100" value="0"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 운명 보드 설정 -->
+    <div class="tooltipArea tooltipArea_01">
+        <div>
+            <h3>운명보드 레벨 설정</h3>
+            <div>
+                <p>1. 인게임 내에서 단축키 B를 누른다.</p>
+                <p>2. 운명보드 셰프를 포함한 하위 9개 노드레벨들을 모두 입력한다.</p>
+                <p>ex) 아래와 레벨이 같을 때 입력 방법</p>
+                <div style="display: flex; gap: 50px;">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>운명보드 이름</th>
+                            <th>레벨</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>셰프</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>도살 업자</td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>재료 셰프</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>샌드위치 셰프</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>스튜 셰프</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>오믈렛 셰프</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>로스트 셰프</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>파이 셰프</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>샐러드 셰프</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>수프 셰프</td>
+                            <td>50</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <img src="/image/cooking_destiny_info.PNG" width="200" height="300">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 영양 100당 사용료 -->
+    <div class="tooltipArea tooltipArea_02">
+        <div>
+            <img style="text-align: center;" src="/image/refining_usageFee_info.PNG" width="200" height="480">
+            <p>1. 요리하고자 하는 요리사 건물에 갑니다.</p>
+            <p>2. 이미지와 같이 소비영양 100당 사용료를 입력하면 됩니다.</p>
+        </div>
+    </div>
+
+    <!-- 자원반환 비율 -->
+    <div class="tooltipArea tooltipArea_03">
+        <img src="/image/refining_returnRate_info.PNG"/>
+        <p>1. 요리 건물로 가서 만들고자하는 요리를 클릭.</p>
+        <p>2. 빨간색 박스 부분의 값('%' 제외)을 입력.</p>
+    </div>
+
+    <!-- 마켓 수수료 -->
+    <div class="tooltipArea tooltipArea_04">
+        <img src="/image/refining_markettaxbuy_info.PNG"/>
+        <img src="/image/refining_markettaxsell_info.PNG"/>
+        <p>구매: 왼쪽 사진의 수수료</p>
+        <p>판매: 오른쪽 사진의 수수료(프리미엄이 없을시에도 이미지와 같은 위치에 있는 수수료를 입력)</p>
+    </div>
+
+    <div id="blackArea">
+        <div id="loading">
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+
+            <h1>정보 요청중..</h1>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <span>All <a href="https://albiononline.com/news" target="_blank" style="text-decoration: underline;">Albion
+                Online</a> related materials are property of <a href="https://albiononline.com/imprint" target="_blank"
+                                                                style="text-decoration: underline;">Sandbox Interactive GmbH</a></span>
+        <span>Prices are provided by the <a href="https://www.albion-online-data.com/" target="_blank"
+                                            style="text-decoration: underline;">Albion Online Data Project</a></span>
+    </div>
+</div>
+</body>
+
+</html>

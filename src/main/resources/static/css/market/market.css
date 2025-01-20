@@ -98,6 +98,7 @@ h6{
     flex-direction: row;
     justify-content: flex-start;
     width: 98%;
+    max-width: 1200px;
     margin: auto;
     padding-top: 15px;
 }

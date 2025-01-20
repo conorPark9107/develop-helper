@@ -22,7 +22,7 @@ body[data-theme='light-mode'] {
     --main-hover-color: rgb(175, 175, 175);
     
     --sub-color: rgb(56, 56, 56);
-    --sub-color-a: rgba(56, 56, 56, 0.4);
+    --sub-color-a: rgba(208, 208, 208, 0.2);
     --textarea-color : rgba(51, 51, 51, 0.973);
 
     --table-tr-color: rgb(205 205 205);
@@ -62,7 +62,7 @@ body[data-theme='dark-mode'] {
     
 
     --sub-color: rgb(208, 208, 208);
-    --sub-color-a: rgba(208, 208, 208, 0.8);
+    --sub-color-a: rgba(56, 56, 56, 0.4);
     --textarea-color : rgba(51, 51, 51, 0.973);
 
     --table-tr-color: rgb(20 20 20);

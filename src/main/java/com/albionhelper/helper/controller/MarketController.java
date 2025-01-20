@@ -30,7 +30,7 @@ public class MarketController {
 
     @GetMapping("")
     public String market(){
-        return "market/marketCopy";
+        return "market/market";
     }
 
     @GetMapping("/getPrice")
