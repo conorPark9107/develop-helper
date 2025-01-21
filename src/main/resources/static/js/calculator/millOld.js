@@ -7,7 +7,7 @@ $(document).ready(function () {
         $(`td:nth-child(4) > span`).remove();
 
         let server = $('input[name=server]:checked').val(); // server
-        let city = $('input[name=city]:checked').val();
+        let city = $('#start option:selected').val();
 
         let materialArr = itemTree['_MILK'];
         let afterArr = itemTree['_BUTTER'];         
@@ -38,11 +38,11 @@ $(document).ready(function () {
        });
     });    
 
-    $('input[name=marketTaxBuy]').change(function(){
+    $('#marketTaxBuy').change(function(){
         $('input').trigger('keyup');
     });
 
-    $('input[name=marketTaxSell]').change(function(){
+    $('#marketTaxSell').change(function(){
         $('input').trigger('keyup');
     });
 
@@ -50,8 +50,8 @@ $(document).ready(function () {
         let usageFee = $('#usageFee').val();                            // 소비영양 100당 사용료
         let returnRate = ($('#returnRate').val() / 100).toFixed(3);     // 반환율
         let quantity = $('#quantity').val();                            // 단위 개수
-        let marketTaxBuy = $('input[name=marketTaxBuy]:checked').val();    // 마켓 구매 세금
-        let marketTaxSell = $('input[name=marketTaxSell]:checked').val();  // 마켓 판매 세금
+        let marketTaxBuy = $('#marketTaxBuy option:selected').val();    // 마켓 구매 세금
+        let marketTaxSell = $('#marketTaxSell option:selected').val();  // 마켓 판매 세금
 
         // 자원 반환율 0이 될때까지 총 반환개수 += (만들 개수 * (반환율 * 100)) / 100
         let realQuantity = Number(quantity);

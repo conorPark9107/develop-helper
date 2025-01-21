@@ -2,8 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
-
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -12,14 +10,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
-    <!--<script type="text/javascript" src="/static/js/variable.js"></script>
+    <!-- <script type="text/javascript" src="/static/js/variable.js"></script>
     <script type="text/javascript" src="/static/js/util.js"></script>
     <script type="text/javascript" src="/static/js/calculator/mill.js"></script>
-    <link rel="stylesheet" href="/static/css/editor.css" />
+    <link rel="stylesheet" href="/static/css/variable.css"/>
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/detail.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
-    <link rel="stylesheet" href="/static/css/calculator.css" />-->
+    <link rel="stylesheet" href="/static/css/calculator.css" />
+    <link rel="stylesheet" href="/static/css/board/editor.css" /> -->
 
 
     <script type="text/javascript" src="/jsMin/variable.js"></script>
@@ -40,189 +39,227 @@
 <script type="text/javascript" src="/jsMin/toggle.js"></script>
 <div class="image-maindiv">
     <div th:replace="~{header :: header}"></div>
-    <div class="back-div">
-        <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
+    <div>
+        <div class="back-div">
+            <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
+        </div>
+        <div class="container">
+            <div class="flex-column">
+                <div class="flex-column menu-message">
+                    <p>※ 실시간 시장가격, 자원반환(%) 소수점.. 등 여러 변수로 약간의 오차는 발생할 수 있습니다.</p>
+                    <p>※ 계산식에 문제가 있을시 <a class="link" href="/toinquire" target="_blank">피드백(새
+                        창)</a>에 글을 남겨주세요.</p>
+                    <p class="red">
+                        ※ 아발로니안 에너지는 반환되지 않기 때문에 반환율에 포함되어 계산되지 않습니다.
+                    </p>
+                </div>
+
+                <p class="sub-title">기본 설정 <a class="btn right" href="/calculator/millOld">구 버전으로 보기</a></p>
+                <div class="flex-column background">
+                    <div class="flex-row align-item-center">
+                        <div class="title-div">
+                            <span class="title">서버 선택</span>
+                        </div>
+                        <div class="content-div">
+                            <input class="east" type="radio" id="server01" name="server" value="east" checked/>
+                            <label class="east" for="server01">아시아</label>
+                            <input class="west" type="radio" id="server02" name="server" value="west"/>
+                            <label class="west" for="server02">아메리카</label>
+                            <input class="europe" type="radio" id="server03" name="server" value="europe"/>
+                            <label class="europe" for="server03">유럽</label>
+                        </div>
+                    </div>
+                    <div class="flex-row align-item-center">
+                        <div class="title-div align-item-center">
+                            <span class="title">구매 & 판매 도시</span>
+                        </div>
+                        <div class="content-div">
+                            <input type="radio" id="city0" name="city" value="martlock" checked/>
+                            <label for="city0">마트록</label>
+                            <input type="radio" id="city1" name="city" value="thetford"/>
+                            <label for="city1">뎃포드</label>
+                            <input type="radio" id="city2" name="city" value="fortsterling"/>
+                            <label for="city2">포트스털링</label>
+                            <input type="radio" id="city3" name="city" value="lymhurst"/>
+                            <label for="city3">림허스트</label>
+                            <input type="radio" id="city4" name="city" value="bridgewatch"/>
+                            <label for="city4">브릿지워치</label>
+                            <input type="radio" id="city5" name="city" value="caerleon"/>
+                            <label for="city5">칼레온</label>
+                            <input type="radio" id="city6" name="city" value="brecilien"/>
+                            <label for="city6">브리실리안</label>
+                        </div>
+                    </div>
+                    <div class="flex-row align-item-center">
+                        <div class="title-div align-item-center">
+                            <span class="title">마켓 수수료 (구매) <span class="tooltip" data-info="tooltipArea_04">?</span></span>
+                        </div>
+                        <div class="content-div">
+                            <input type="radio" id="marketTaxBuy1" name="marketTaxBuy" value="0" checked/>
+                            <label for="marketTaxBuy1">즉시 구매</label>
+                            <input type="radio" id="marketTaxBuy2" name="marketTaxBuy" value="0.025"/>
+                            <label for="marketTaxBuy2">2.5%</label>
+                            <input type="radio" id="marketTaxBuy3" name="marketTaxBuy" value="0.04"/>
+                            <label for="marketTaxBuy3">4%</label>
+                            <input type="radio" id="marketTaxBuy4" name="marketTaxBuy" value="0.065"/>
+                            <label for="marketTaxBuy4">6.5%</label>
+                            <input type="radio" id="marketTaxBuy5" name="marketTaxBuy" value="0.08"/>
+                            <label for="marketTaxBuy5">8%</label>
+                            <input type="radio" id="marketTaxBuy6" name="marketTaxBuy" value="0.105"/>
+                            <label for="marketTaxBuy6">10.5%</label>
+                        </div>
+                    </div>
+                    <div class="flex-row align-item-center">
+                        <div class="title-div">
+                            <span class="title">마켓 수수료 (판매) <span class="tooltip" data-info="tooltipArea_04">?</span></span>
+                        </div>
+                        <div class="content-div">
+                            <input type="radio" id="marketTaxSell1" name="marketTaxSell" value="0.025" checked/>
+                            <label for="marketTaxSell1">2.5%</label>
+                            <input type="radio" id="marketTaxSell2" name="marketTaxSell" value="0.04"/>
+                            <label for="marketTaxSell2">4%</label>
+                            <input type="radio" id="marketTaxSell3" name="marketTaxSell" value="0.065"/>
+                            <label for="marketTaxSell3">6.5</label>
+                            <input type="radio" id="marketTaxSell4" name="marketTaxSell" value="0.08"/>
+                            <label for="marketTaxSell4">8%</label>
+                            <input type="radio" id="marketTaxSell5" name="marketTaxSell" value="0.105"/>
+                            <label for="marketTaxSell5">10.5%</label>
+                        </div>
+                    </div>
+                    <div class="flex-row align-item-center">
+                        <div class="title-div align-item-center">
+                            <span class="title">건물 소비 영양 100당 사용료 <span class="tooltip" data-info="tooltipArea_02">?</span></span>
+                        </div>
+                        <div class="content-div">
+                            <input class="input-number" type="number" id="usageFee" name="usageFee" placeholder="소비 영양 100당 사용료" min="0" max="9999" value="0" oninput="checkInputLength(this, 4);" />
+                        </div>
+                    </div>
+                    <div class="flex-row align-item-center">
+                        <div class="title-div align-item-center">
+                            <span class="title">자원 반환 비율 <span class="tooltip" data-info="tooltipArea_03">?</span></span>
+                        </div>
+                        <div class="content-div">
+                            <input class="input-number" type="number" id="returnRate" name="returnRate" placeholder=" '%' 제외하고 입력" min="0" max="100" value="0" oninput="checkRRR(this, 4);" />
+                        </div>
+                    </div>
+                </div>
+                <p class="sub-title">운명보드 설정</p>
+                <div class="flex-column background space-between align-item-center">
+                    <div class="flex-row">
+                        <div class="title-div align-item-center">
+                            <span class="title">운명보드 레벨 설정 <span class="tooltip" data-info="tooltipArea_01">?</span></span>
+                        </div>
+                        <div class="content-div">
+                            <div class="grid">
+                                <div>
+                                    <label class="taxLabel" for="chef">셰프</label>
+                                    <input class="input-number destiny" type="number" id="chef" min="0" max="100" value="0" oninput="checkInputLength(this, 3);"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="butcher">도살 업자</label>
+                                    <input class="input-number destiny" type="number" id="butcher" min="0" max="100" value="0" oninput="checkInputLength(this, 3);"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="material">재료 셰프</label>
+                                    <input class="input-number destiny" type="number" id="material" min="0" max="100" value="0" oninput="checkInputLength(this, 3);"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="sandwich">샌드위치 셰프</label>
+                                    <input class="input-number destiny" type="number" id="sandwich" min="0" max="100" value="0" oninput="checkInputLength(this, 3);"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="stew">스튜 셰프</label>
+                                    <input class="input-number destiny" type="number" id="stew" min="0" max="100" value="0" oninput="checkInputLength(this, 3);"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="omelette">오믈렛 셰프</label>
+                                    <input class="input-number destiny" type="number" id="omelette" min="0" max="100" value="0" oninput="checkInputLength(this, 3);"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="roast">로스트 셰프</label>
+                                    <input class="input-number destiny" type="number" id="roast" min="0" max="100" value="0" oninput="checkInputLength(this, 3);"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="pie">파이 셰프</label>
+                                    <input class="input-number destiny" type="number" id="pie" min="0" max="100" value="0" oninput="checkInputLength(this, 3);"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="salad">샐러드 셰프</label>
+                                    <input class="input-number destiny" type="number" id="salad" min="0" max="100" value="0" oninput="checkInputLength(this, 3);"/>
+                                </div>
+                                <div>
+                                    <label class="taxLabel" for="soup">수프 셰프</label>
+                                    <input class="input-number destiny" type="number" id="soup" min="0" max="100" value="0" oninput="checkInputLength(this, 3);"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-row">
+                        <div class="getPrice-btn">
+                            <a class="btn" id="request-price-btn">가격 받아오기</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="priceArea">
+                    <div class="image-div">
+        
+        
+                    </div>
+        
+                    <!-- 테이블 폼 -->
+                    <div>
+                        <div class="flex-row-div">
+                            <span class="qunatityArea">
+                                <input type="number" id="quantity" name="quantity" placeholder="n" min="1" value="1"/>
+                                개 단위로 보기
+                            </span>
+                            <table class="main-table" id="mill_table">
+                                <colgroup>
+                                    <col class="col1">
+                                    <col class="col9">
+                                    <col class="col1">
+                                    <col class="col9">
+                                    <col class="col2">
+                                    <col class="col7">
+                                    <col class="col8">
+                                    <col class="col9">
+                                </colgroup>
+                                <thead>
+                                <tr class="table-header">
+                                    <th>아이템</th>
+                                    <th>판매가격<br/>
+                                        <p class="priceDetail">(최저가)</p>
+                                    </th>
+                                    <th>재료<p class="priceDetail">(필요 재료)</p>
+                                    </th>
+                                    <th>재료 값<br/>
+                                        <p class="priceDetail">(1개 가격)</p>
+                                    </th>
+                                    <th>필요한 집중<br/>
+                                        <p class="priceDetail">(제작 버튼 한번 클릭 기준)</p>
+                                    </th>
+                                    <th>총 재료 비용<p class="priceDetail">(만들기 위한 비용)</p>
+                                    </th>
+                                    <th>판매가</th>
+        
+                                    <th>이익</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+        
+                                </tbody>
+                            </table>
+                        </div>
+        
+                    </div>
+                </div>
+
+
+             </div> <!--  end of flex-column -->
+         </div> <!-- end of container -->
     </div>
-    <div class="main">
-        <div class="all-menu">
-            <div class="menu-message">
-                <p>※ <u>예상 요리 수수료</u>, <u>필요한 집중</u>은 제작소에서 제작 버튼을 <b class="red">한번 클릭 했을 때</b> 의 기준입니다.</p>
-                <p>※ 실시간 시장 가격, 자원 반환(%) 소수점.. 등 여러 변수로 약간의 오차는 발생 할 수 있습니다.</p>
-                <p>※ 계산식에 문제가 있을시 <a class="link" href="/toinquire" target="_blank">피드백(새창)</a>에 글을 남겨주세요.</p>
-            </div>
-
-            <div class="menu">
-                <div class="menu-item">
-                    <p>🔻서버 선택</p>
-                    <input class="east" type="radio" id="server01" name="server" value="east" checked/>
-                    <label class="east" for="server01">아시아</label>
-                    <input class="west" type="radio" id="server02" name="server" value="west"/>
-                    <label class="west" for="server02">아메리카</label>
-                    <input class="europe" type="radio" id="server03" name="server" value="europe"/>
-                    <label class="europe" for="server03">유럽</label>
-                </div>
-
-                <div class="menu-item menu-item-tier">
-                    <p>🔻건물 소비 영양 100당 사용료 <span class="tooltip" data-info="tooltipArea_02">?</span></p>
-                    <input class="input-number" type="number" id="usageFee" name="usageFee" placeholder="소비 영양 100당 사용료"
-                           min="0" max="9999" value="0"/>
-                </div>
-
-                <div class="menu-item menu-item-tier">
-                    <p>🔻자원 반환 비율 <span class="tooltip" data-info="tooltipArea_03">?</span></p>
-                    <input class="input-number" type="number" id="returnRate" name="returnRate"
-                           placeholder=" '%' 제외하고 입력" min="0" max="100" value="0"/>
-                </div>
-
-                <div class="menu-item ">
-                    <p>🔻요리 재료 구매 & 판매 도시</p>
-                    <select id="start">
-                        <option value="martlock">마트록</option>
-                        <option value="thetford">뎃포드</option>
-                        <option value="fortsterling">포트스털링</option>
-                        <option value="lymhurst">림허스트</option>
-                        <option value="bridgewatch">브릿지워치</option>
-                        <option value="caerleon">칼레온</option>
-                        <option value="brecilien">브리실리안</option>
-                    </select>
-                </div>
-
-                <div class="menu-item">
-                    <div>
-                        <p>🔻마켓 세금(수수료) <span class="tooltip" data-info="tooltipArea_04">?</span></p>
-                        <!-- <input type="checkbox" id="premium" name="premium" />
-                        <label for="premium"></label>
-                        <label for="premium">프리미엄</label> -->
-                        <div class="taxArea">
-                            <label class="taxLabel" for="marketTaxBuy">구매 수수료</label>
-                            <select id="marketTaxBuy">
-                                <option value="0">즉시 구매</option>
-                                <option value="0.025">2.5%</option>
-                                <option value="0.04">4%</option>
-                                <option value="0.065">6.5%</option>
-                                <option value="0.08">8%</option>
-                                <option value="0.105">10.5%</option>
-                            </select>
-                        </div>
-                        <div class="taxArea">
-                            <label class="taxLabel" for="marketTaxSell">판매 수수료</label>
-                            <select id="marketTaxSell">
-                                <option value="0.025">2.5%</option>
-                                <option value="0.04">4%</option>
-                                <option value="0.065">6.5%</option>
-                                <option value="0.08">8%</option>
-                                <option value="0.105">10.5%</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu">
-                <div class="grid-2fr menu-item menu-item-tier">
-                    <p>🔻운명보드 레벨 설정 <span class="tooltip" data-info="tooltipArea_01">?</span></p>
-                    <div>
-                        <label class="taxLabel" for="chef">셰프</label>
-                        <input class="input-number" type="number" id="chef" min="0" max="100" value="0"/>
-                    </div>
-                    <div>
-                        <label class="taxLabel" for="butcher">도살 업자</label>
-                        <input class="input-number" type="number" id="butcher" min="0" max="100" value="0"/>
-                    </div>
-                    <div>
-                        <label class="taxLabel" for="material">재료 셰프</label>
-                        <input class="input-number" type="number" id="material" min="0" max="100" value="0"/>
-                    </div>
-                    <div>
-                        <label class="taxLabel" for="sandwich">샌드위치 셰프</label>
-                        <input class="input-number" type="number" id="sandwich" min="0" max="100" value="0"/>
-                    </div>
-                    <div>
-                        <label class="taxLabel" for="stew">스튜 셰프</label>
-                        <input class="input-number" type="number" id="stew" min="0" max="100" value="0"/>
-                    </div>
-                    <div>
-                        <label class="taxLabel" for="omelette">오믈렛 셰프</label>
-                        <input class="input-number" type="number" id="omelette" min="0" max="100" value="0"/>
-                    </div>
-                    <div>
-                        <label class="taxLabel" for="roast">로스트 셰프</label>
-                        <input class="input-number" type="number" id="roast" min="0" max="100" value="0"/>
-                    </div>
-                    <div>
-                        <label class="taxLabel" for="pie">파이 셰프</label>
-                        <input class="input-number" type="number" id="pie" min="0" max="100" value="0"/>
-                    </div>
-                    <div>
-                        <label class="taxLabel" for="salad">샐러드 셰프</label>
-                        <input class="input-number" type="number" id="salad" min="0" max="100" value="0"/>
-                    </div>
-                    <div>
-                        <label class="taxLabel" for="soup">수프 셰프</label>
-                        <input class="input-number" type="number" id="soup" min="0" max="100" value="0"/>
-                    </div>
-                </div>
-
-                <div class="menu-item">
-                    <a class="btn" id="request-price-btn">가격 받아오기</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="priceArea">
-            <div class="image-div">
-
-
-            </div>
-
-            <!-- 테이블 폼 -->
-            <div>
-                <div class="flex-row-div">
-                    <span class="qunatityArea">
-                        <input type="number" id="quantity" name="quantity" placeholder="n" min="1" value="1"/>
-                        개 단위로 보기
-                    </span>
-                    <table class="main-table" id="mill_table">
-                        <colgroup>
-                            <col class="col1">
-                            <col class="col9">
-                            <col class="col1">
-                            <col class="col9">
-                            <col class="col2">
-                            <col class="col7">
-                            <col class="col8">
-                            <col class="col9">
-                        </colgroup>
-                        <thead>
-                        <tr class="table-header">
-                            <th>아이템</th>
-                            <th>판매가격<br/>
-                                <p class="priceDetail">(최저가)</p>
-                            </th>
-                            <th>재료<p class="priceDetail">(필요 재료)</p>
-                            </th>
-                            <th>재료 값<br/>
-                                <p class="priceDetail">(1개 가격)</p>
-                            </th>
-                            <th>필요한 집중<br/>
-                                <p class="priceDetail">(제작 버튼 한번 클릭 기준)</p>
-                            </th>
-                            <th>총 재료 비용<p class="priceDetail">(만들기 위한 비용)</p>
-                            </th>
-                            <th>판매가</th>
-
-                            <th>이익</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-        </div>
-    </div> <!-- main -->
+    
 
     <!-- 운명 보드 설정 -->
     <div class="tooltipArea tooltipArea_01">

@@ -7,7 +7,7 @@ $(document).ready(function () {
         $(`td:nth-child(4) > span`).remove();
 
         let server = $('input[name=server]:checked').val(); // server
-        let city = $('input[name=city]:checked').val();
+        let city = $('#start option:selected').val();
 
         let itemName = $('.selected-img').attr('value');
         if(itemName == undefined){
@@ -95,20 +95,20 @@ $(document).ready(function () {
 
     
 
-    $('input[name=marketTaxBuy]').change(function(){
+    $('#marketTaxBuy').change(function(){
         $('input').trigger('keyup');
     });
 
-    $('input[name=marketTaxSell]').change(function(){
+    $('#marketTaxSell').change(function(){
         $('input').trigger('keyup');
     });
 
     $('body').on('keyup', 'input', function(){
         let usageFee = $('#usageFee').val();                            // 소비영양 100당 사용료
-        let returnRate = ($('#returnRate').val() / 100).toFixed(3);     // 반환율
+        // let returnRate = ($('#returnRate').val() / 100).toFixed(3);     // 반환율
         let quantity = $('#quantity').val();                            // 단위 개수
-        let marketTaxBuy = $('input[name=marketTaxBuy]:checked').val();    // 마켓 구매 세금
-        let marketTaxSell = $('input[name=marketTaxSell]:checked').val();  // 마켓 판매 세금
+        let marketTaxBuy = $('#marketTaxBuy option:selected').val();    // 마켓 구매 세금
+        let marketTaxSell = $('#marketTaxSell option:selected').val();  // 마켓 판매 세금
 
         let subtable = getSubtable();      
         switch ($(subtable).attr('id')) {
@@ -124,8 +124,6 @@ $(document).ready(function () {
                 setProfit(); // 이익
             break;
         }
-
-        
     });
 
     $('.tooltip').hover(

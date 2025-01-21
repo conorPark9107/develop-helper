@@ -71,3 +71,21 @@ function turnLoading(){
         $('#loading').css('display', 'none');
     }
 }
+
+function checkInputLength(input, length){
+    if(input.value.length > length){
+        input.value = input.value.slice(0, length);
+    }
+
+}
+
+function checkRRR(input, length){
+    if(input.value > 98){
+        input.value = 0;
+    }else{
+        if(input.value.length > length){
+            input.value = input.value.slice(0, length);
+        }
+    }
+
+}

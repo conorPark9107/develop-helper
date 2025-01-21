@@ -12,7 +12,7 @@ $(document).ready(function () {
 
         let server = $('input[name=server]:checked').val(); // server
         let tableClass = $('li.clicked').attr('value'); // tableClass for veriable array
-        let city = $('input[name=city]:checked').val();
+        let city = $('#start option:selected').val();
 
         let beforeRefine;
         let afterRefine;
@@ -88,11 +88,11 @@ $(document).ready(function () {
 
     });
 
-    $('input[name=marketTaxBuy]').change(function(){
+    $('#marketTaxBuy').change(function(){
         $('input').trigger('keyup');
     });
 
-    $('input[name=marketTaxSell').change(function(){
+    $('#marketTaxSell').change(function(){
         $('input').trigger('keyup');
     });
 
@@ -100,8 +100,8 @@ $(document).ready(function () {
         let usageFee = $('#usageFee').val();                            // 소비영양 100당 사용료
         let returnRate = ($('#returnRate').val() / 100).toFixed(3);     // 반환률
         let quantity = $('#quantity').val();                            // 단위 개수
-        let marketTaxBuy = $('input[name=marketTaxBuy]:checked').val();    // 마켓 구매 세금
-        let marketTaxSell = $('input[name=marketTaxSell]:checked').val();  // 마켓 판매 세금
+        let marketTaxBuy = $('#marketTaxBuy option:selected').val();    // 마켓 구매 세금
+        let marketTaxSell = $('#marketTaxSell option:selected').val();  // 마켓 판매 세금
         let t4 = $('#tier04').val();                                    // 티어별 제련 숙련도
         let t5 = $('#tier05').val();
         let t6 = $('#tier06').val();
@@ -213,6 +213,8 @@ $(document).ready(function () {
             $(`.${$(this).data('info')}`).fadeOut(300);
         }
     );
+
+
 });
 
 function getReduxPoint(tier){
@@ -384,8 +386,6 @@ function getMeterialNameAndImageName(x){
     }
     return [beforeName, afterName, beforeArray, afterArray];
 }
-
-
 
 
 // https://gall.dcinside.com/mgallery/board/view/?id=albion&no=84100
