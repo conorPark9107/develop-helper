@@ -19,11 +19,6 @@ public class CalculatorController {
     @Autowired
     MarketService marketService;
 
-    @GetMapping("/refining")
-    public String showRefining(){
-        return "calculator/refining";
-    }
-
     // https://west.albion-online-data.com/api/v2/stats/prices/T2_METALBAR,T2_ORE?locations=Martlock&qualities=1
     @GetMapping("/getResourcePrice")
     @ResponseBody
@@ -33,6 +28,11 @@ public class CalculatorController {
                                            @RequestParam("after")String[] afterArr) throws JsonProcessingException {
 
         return marketService.getResourcePrice(server, city, beforeArr, afterArr);
+    }
+
+    @GetMapping("/refining")
+    public String showRefiningPage(){
+        return "calculator/refining";
     }
 
     @GetMapping("/cooking")
@@ -53,6 +53,31 @@ public class CalculatorController {
     @GetMapping("/potion")
     public String showPotionPage(){
         return "calculator/potion";
+    }
+
+    @GetMapping("/refiningOld")
+    public String showRefiningOldPage(){
+        return "calculator/refiningOld";
+    }
+
+    @GetMapping("/cookingOld")
+    public String showCookingOldPage(){
+        return "calculator/cookingOld";
+    }
+
+    @GetMapping("/butcherOld")
+    public String showButcherOldPage(){
+        return "calculator/butcherOld";
+    }
+
+    @GetMapping("/millOld")
+    public String showMillOldPage(){
+        return "calculator/millOld";
+    }
+
+    @GetMapping("/potionOld")
+    public String showPotionOldPage(){
+        return "calculator/potionOld";
     }
 
 

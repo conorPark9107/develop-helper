@@ -1,74 +1,118 @@
 .image-maindiv{
     position: relative;
     background-image: url(/image/background-image-calculator.jpeg);
+    /* background-image: url(/static/image/background-image-calculator.jpeg); */
     height: auto;
     min-height: 100%;
     background-repeat: repeat;
 }
-.table-header{
-    position: sticky;
-    top: 0;
-}
+
 a{
     text-decoration:none;
 }
 p{
-    margin: 2% 0;
+    margin-bottom: 5px;
 }
-fieldset{
-    text-align: center;
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto auto 5vh;
+    align-items: normal;
 }
-.main{
-    display: flex;
-    height : auto;
-    position: relative;
-    justify-content: space-between;
-    padding: 0px  10px;
-    flex-wrap: wrap;
-    padding-bottom: 50px;
-    align-items: flex-start;
-}
-.all-menu{
-    position: sticky;
-    top: 0;
-    border-right: 1px dashed var(--border);
-    width: 35%;
-}
-.menu{
-    vertical-align: top;
-    display:inline-block;
-    min-width: 49%;
-}
-.menu-item{
-    margin-bottom: 5%;
-    padding: 1% 5%;
-}
-.menu-item-tier{
-    display: flex;
+.flex-column{
+    display:flex;
     flex-direction: column;
+    gap:10px;
 }
-.grid-2fr{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50%, auto));
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    width: 96%;
 }
-.grid-2fr p{
-    grid-column: 1 / span 2;
+.align-item-center{
+    align-items: center;
+}
+.flex-row-item{
+    width: 100%;
+}
+.background{
+    align-items: flex-start;
+    padding: 15px;
+    background-color: var(--sub-color-a);
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px 0px #000000;
 }
 .menu-message{
-    color : RGB(87,95,211);
-    font-size : 0.8em;
-    font-weight: bold;
-    margin: 5% 0%;
+    text-align: left;
+    color: #eee;
+    font-size: 0.8em;
+    font-weight: 500;
+    padding: 15px;
+    margin: 15px;
+    border-bottom: 1px dashed var(--border);
+}
+.title-div{
+    text-align: left;
+    width:20%;
+    display:inline;
+    padding: 5px 5px 5px 5px;
+}
+.title{
+    font-size: 14px;
+}
+.content-div{
+    text-align: left;
+    width:80%;
+}
+label{
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+label:hover{
+    opacity: 0.6;
+}
+input[type='radio'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--sub-color);
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+.content-div{
+    display:inline;
 }
 .menu-message p{
-    margin: 1px auto;
+    margin: 0;
 }
-.menu-message p u{
-    text-decoration-color: RGB(152, 65, 65);
+.link{
+    color: var(--bg-text);
 }
-
+.sub-title{
+    font-size: 1.2rem;
+    text-align: left;
+}
+.space-between{
+    justify-content: space-between;
+}
+.space-center{
+    justify-content: center;
+}
+select{
+    font-size: 1em;
+    font-weight: 500;
+    padding: 5px 10px;
+    background-color: #00000000;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: #eee;
+    cursor: pointer;
+}
 input {
-    font-weight: bold;
     color: var(--table-sub-text-color);
     background-color: var(--main-color);
     border: 1px solid var(--border);
@@ -76,7 +120,6 @@ input {
     padding: 5px 5px;
     border-radius: 4px;
 }
-
 .input-number{
     font-size: 0.8em;
     font-weight: bold;
@@ -86,35 +129,47 @@ input {
     border-radius: 4px;
     box-sizing: border-box;
     padding: 8px 10px;
-    width: 70%;
+    width: 15%;
 }
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
-
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
 }
-
 ul {
     list-style: none;
+    display: inline;
 }
-
+.grid-4{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-items: stretch;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    justify-items: stretch;
+}
+.destiny{
+    width:100%;
+}
 .li {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    max-width: 100%;
+    display: inline;
+    width: 100%;
     cursor: pointer;
-    font-size: 0.9em;
-    font-weight: bold;
-    background-color: #00000000;
+    font-size: 14px;
+    border-radius: 4px;
+    text-shadow: none;
+    background: var(--btn-bg);
     border: 1px solid var(--border);
+    color: var(--sub-color);
+    padding: 7px 25px;
     box-sizing: border-box;
-    padding: 8px 10px;
 }
 .li img{
     width: 2vw;
@@ -122,8 +177,8 @@ ul {
 }
 
 .li:hover {
+    background-color: var(--btn-hover);
     color: var(--main-color);
-    background: var(--sub-color);
 }
 
 .clicked {
@@ -172,26 +227,21 @@ input[id=premium] + label + label {
     user-select: none;
     
 }
-select{
-    font-size: 1em;
-    font-weight: bold;
-    padding: 10px 5px;
-    background-color: #00000000;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    color: #eee;
-    cursor: pointer;
+.getPrice-btn{
+    margin-top: 15px;
+    text-align: right;
+    width: 100%;
 }
 .btn {
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     border-radius: 4px;
     background: var(--btn-bg);
     text-shadow: none;
     border: 2px solid var(--border);
     color: var(--sub-color);
-    padding: 15px 50px;
+    padding: 7px 25px;
     text-align: center;
 }
 .btn:hover {
@@ -257,7 +307,8 @@ td img{
 }
 .table-div{
     display:none;
-    width: 60%;
+    width: 100%;
+    margin-bottom: 50px;
 }
 .table-div-cooking{
     display:none;
@@ -410,9 +461,10 @@ table tbody td input{
 }
 .priceArea{
     display:flex;
-    width: 60%;
+    width: 100%;
     flex-direction: column;
     text-align: center;
+    padding-bottom: 50px;
 }
 .image-div{
     margin-bottom: 1%;
@@ -518,9 +570,10 @@ table tbody td input{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    width: 98%;
-    margin-left: 10px;
+    width: 100%;
+    max-width: 1200px;
     padding-top: 15px;
+    margin: 0 auto;
 }
 .btn-back{
     text-align: center;
@@ -536,126 +589,11 @@ table tbody td input{
 .btn-back:hover{
     opacity: 0.4;
 }
-
+.right{
+    float: right;
+}
 @media screen and (max-width: 1024px) {
-    .li{
-        padding: 13px 10px;
-    }
-    .menu-message{
-        font-size: 16px;
-        border-bottom: 1px dashed var(--sub-color);
-        border-top: 1px dashed var(--sub-color);
-        margin-bottom: 3%;
-    }
-    .main{
-        flex-direction: column;
-        align-items: center;
-    }
-    .all-menu{
-        position: static;
-        width:100%;
-        border-right: 0;
-        border-bottom: 1px dashed var(--sub-color);
-    }
-    .menu {
-        padding: 0 0 2% 0;
-    }
-    .menu-item{
-        font-size: 20px;
-        margin-top : 15px;
-        margin-bottom : 0;
-        padding-bottom : 10px;
-    }
-    p{
-        margin-bottom: 10px;
-    }
-    .btn{
-        font-size: 25px;
-        display: inline-block;
-        width: 75%;
-    }
-    .table-div{
-        margin-top: 2%;
-        width : 100%;
-    }
-    .input-number{
-        padding: 12px 10px;
-        width: 80%;
-    }
-    td{
-        font-size: 18px;
-        padding: 15px 10px;
-    }
-    select{
-        width: 80%;
-        padding: 10px 10px;
-    }
-    .taxArea{
-        width: 40%;
-    }
-    .taxArea select{
-        width: 100%;
-    }
-    .priceDetail, .material span, .material-cooking span{
-        font-size: 12px;
-    }
-    td img{
-        width: 60px;
-        height: 60px;
-    }
-    .refining-table td:nth-child(5) img{
-        width: 40px;
-        height: 40px;
-    }
-    .timeAgo, .timeAgo-cooking{
-        margin-top: 0;
-    }
-    .image-div img{
-        width: 80px;
-        height: 80px;
-    }
-    .main-table-after img{
-        width: 57px;
-        height: 57px;
-    }
-    .material-cooking img{
-        width: 35px;
-        height: 35px;
-    }
-    .priceArea{
-        width: 100%;
-    }
-    .grid-2fr {
-        gap: 5px;
-        grid-template-columns: repeat(auto-fill, minmax(35%, auto));
-    }
-    .main-table tbody tr td{
-        font-size: 18px;
-    }
-
-    .tooltipArea{
-        top: 45%;
-        left: 3%;
-    }
-    .tooltipArea_01{
-        width: 72%;
-        height: 28%;
-    }
-    .tooltipArea_02{
-        width: 44%;
-        height: 31%;
-    }
-    .tooltipArea_03{
-        width: 42%;
-        height: 27%;
-    }
-    .tooltipArea_04{
-        width: 86%;
-        height: 26%;
-    }
-    .btn-back{
-        font-size: 18px;
-        padding: 15px 35px;
-        margin-left: 10px;
+    .flex-column{
+        padding: 10px;
     }
 }
