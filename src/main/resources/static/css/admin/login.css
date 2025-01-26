@@ -1,5 +1,9 @@
+h5{
+    margin:10px;
+}
 .image-maindiv{
-    background-image: url(/static/image/background-image-market.jpeg);
+/*    background-image: url(/static/image/background-image-market.jpeg);*/
+    background-image: url(/image/background-image-market.jpeg);
     background-repeat: repeat;
     height: auto;
     min-height: 100%;
@@ -43,11 +47,12 @@ input{
     border: 1px solid var(--border);
     border-radius: 4px;
     box-sizing: border-box;
-    padding: 8px 10px;
+    padding: 5px 10px;
     width: 100%;
 }
-label{
+.label{
     width: 55%;
+    font-size: 0.9rem;
 }
 .submit{
     width: 30%;

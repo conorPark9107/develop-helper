@@ -72,19 +72,12 @@ public class MainController {
 
     @GetMapping("/login")
     public String login(){
-        return "login";
+        return "admin/login";
     }
 
     @GetMapping("/admin/dashboard")
     public String adminDashboard(){
         return "admin/dashboard";
-    }
-
-
-    @ResponseBody
-    @GetMapping("/test")
-    public String testHttpApi(){
-        return "Hi! This page made by conorpark, it's a request from docker. right? ";
     }
 
     /* robots.txt 처리 */

@@ -11,13 +11,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
-    <script type="text/javascript" src="/static/jsMin/util.js"></script>
+    <!-- <script type="text/javascript" src="/static/jsMin/util.js"></script>
     <script type="text/javascript" src="/static/jsMin/variable.js"></script>
     <link rel="stylesheet" href="/static/css/variable.css"/>
     <link rel="stylesheet" href="/static/css/index.css"/>
+    <link rel="stylesheet" href="/static/css/detail.css"/>
     <link rel="stylesheet" href="/static/css/loading.css"/>
     <link rel="stylesheet" href="/static/css/admin/login.css" />
-    <link rel="stylesheet" href="/static/css/board/editor.css" />
+    <link rel="stylesheet" href="/static/css/board/editor.css" /> -->
+
+    <script type="text/javascript" src="/jsMin/util.js"></script>
+    <script type="text/javascript" src="/jsMin/variable.js"></script>
+    <link rel="stylesheet" href="/css/variable.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/detail.css"/>
+    <link rel="stylesheet" href="/css/loading.css"/>
+    <link rel="stylesheet" href="/css/admin/login.css" />
+    <link rel="stylesheet" href="/css/board/editor.css" />
 
 
 </head>
@@ -33,19 +43,23 @@
                     </div>
                     <div class="flex-column background">
                         
-                        <form action="/admin/dashboard" method="POST">
+                        <form th:action="@{/login}" method="POST">
                             <div class="flex-column gap">
                                 <div class="flex-row vertical-center">
-                                    <label for="id">User ID : </label>
-                                    <input type="text" id="id" name="id" required>
+                                    <label class="label" for="username">User ID : </label>
+                                    <input type="text" id="username" name="username" required>
                                 </div>
                                 <div class="flex-row vertical-center">
-                                    <label for="pw">password : </label>
-                                    <input type="password" id="pw" name="pw" required>
+                                    <label class="label" for="password">password : </label>
+                                    <input type="password" id="password" name="password" required>
                                 </div>
                                 <div class="flex-row vertical-center flex-end">
                                     <input class="submit" type="submit" value="로그인">
                                 </div>
+                            </div>
+                            <!-- 에러 메시지 표시 -->
+                            <div th:if="${param.error}">
+                                <p style="color: red;">로그인 실패: 아이디 또는 비밀번호를 확인하세요.</p>
                             </div>
                         </form>
                     </div>
