@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+    <script type="text/javascript" src="/static/jsMin/util.js"></script>
+    <script type="text/javascript" src="/static/jsMin/variable.js"></script>
+    <link rel="stylesheet" href="/static/css/variable.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <link rel="stylesheet" href="/static/css/loading.css"/>
+    <link rel="stylesheet" href="/static/css/admin/login.css" />
+    <link rel="stylesheet" href="/static/css/board/editor.css" />
+
+
+</head>
+<body class="indexBody" data-theme="light-mode">
+    <script type="text/javascript" src="/jsMin/toggle.js"></script>
+    <div class="image-maindiv">
+        <div th:replace="~{header :: header}"></div>
+
+        <div class="container">
+                <div>
+                    <div class="container-title">
+                        <h5>로그인</h5>                    
+                    </div>
+                    <div class="flex-column background">
+                        
+                        <form action="/admin/dashboard" method="POST">
+                            <div class="flex-column gap">
+                                <div class="flex-row vertical-center">
+                                    <label for="id">User ID : </label>
+                                    <input type="text" id="id" name="id" required>
+                                </div>
+                                <div class="flex-row vertical-center">
+                                    <label for="pw">password : </label>
+                                    <input type="password" id="pw" name="pw" required>
+                                </div>
+                                <div class="flex-row vertical-center flex-end">
+                                    <input class="submit" type="submit" value="로그인">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+<div id="blackArea">
+    <div id="loading">
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <h1>정보 요청중..</h1>
+    </div>
+</div>
+
+</body>
+</html>

@@ -70,6 +70,16 @@ public class MainController {
         return "info";
     }
 
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+    @GetMapping("/admin/dashboard")
+    public String adminDashboard(){
+        return "admin/dashboard";
+    }
+
 
     @ResponseBody
     @GetMapping("/test")

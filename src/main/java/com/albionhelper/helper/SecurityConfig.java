@@ -26,6 +26,7 @@ public class SecurityConfig{
                 .formLogin(form -> form
                         .loginPage("/login")  // 커스텀 로그인 페이지 설정
                         .permitAll()
+                        .defaultSuccessUrl("/admin/dashboard")
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
@@ -37,11 +38,6 @@ public class SecurityConfig{
 
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-        UserDetails user = User.builder()
-                .username("user")
-                .password(passwordEncoder.encode("password"))
-                .roles("USER")
-                .build();
 
         UserDetails admin = User.builder()
                 .username("admin")
@@ -49,7 +45,7 @@ public class SecurityConfig{
                 .roles("ADMIN")
                 .build();
 
-        return new InMemoryUserDetailsManager(user, admin);
+        return new InMemoryUserDetailsManager(admin);
     }
 
     @Bean
