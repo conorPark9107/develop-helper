@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
+    <script type="text/javascript" src="/static/js/inquire.js"></script>
+    <link rel="stylesheet" href="/static/css/variable.css" />
+   <link rel="stylesheet" href="/static/css/index.css" />
+   <link rel="stylesheet" href="/static/css/detail.css" />
+   <link rel="stylesheet" href="/static/css/toniquire.css" />
+   <link rel="stylesheet" href="/static/css/loading.css" />
+   <link rel="stylesheet" href="/static/css/editor.css"/> -->
+    
+    <script type="text/javascript" src="/jsMin/util.js"></script>
+    <script type="text/javascript" src="/jsMin/inquire.js"></script>
+    <link rel="stylesheet" href="/css/variable.css" />
+   <link rel="stylesheet" href="/css/index.css" />
+   <link rel="stylesheet" href="/css/detail.css" />
+   <link rel="stylesheet" href="/css/toniquire.css" />
+   <link rel="stylesheet" href="/css/loading.css" />
+   <link rel="stylesheet" href="/css/board/editor.css"/>
+
+    <meta charset="UTF-8">
+    <title>알비온 GG - 관리자 문의 및 피드백 ⚔</title>
+</head>
+<body data-theme="light-mode">
+<script type="text/javascript" src="/jsMin/toggle.js"></script>
+<div class="image-maindiv">
+<div th:replace="~{header :: header}"></div>
+    <div class="back-div">
+        <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
+    </div>
+    <div class="container-inquire">
+        <div class="container-title">
+            <img class="container-title-image" src="https://render.albiononline.com/v1/spell/Fear Aura.png?locale=en"  alt="이미지 없음."/>
+            <h4>관리자에게 문의 & 죽음의 피드백</h4>
+            <img class="container-title-image" src="https://render.albiononline.com/v1/wardrobe/UNIQUE_HEAD_VANITY_PUMPKIN_02.png"  alt="이미지 없음."/>
+        </div>
+        <div class="full-width">
+            <div class="flex-contatiner">
+                <textarea class="input-text" name="inquire" cols="30" rows="5" placeholder="ex) 게시판에 카테고리 추가좀용!, 뭐가 잘 안돼요"></textarea>
+                <a class="btn">등록</a>
+            </div>
+            
+            <div>
+                <ul class="inquireList">
+                    <li style="border: 1px solid var(--sub-color);">
+                        <span class="text">ex) 게시글에 카테고리좀 추가해주쇼!</span>
+                        <span class="right">답변보기🔻</span>
+                        <div class="admin-answer">
+                        <span class="answer">답변 : 넵!</span>
+                        </div>
+                    </li>
+                    <li th:each="inquire : ${list}" th:id="${inquire.id}">
+                        <span class="text" th:text="${inquire.content}"></span>
+                        <span class="right">답변보기🔻</span>
+                        <div class="admin-answer">
+                            <span class="answer">아직 답변 전입니다.</span>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <li id="exam" style="display:none;">
+            <span class="text"></span>
+            <span class="right">답변🔻</span>
+            <div class="admin-answer">
+                <span class="answer"></span>
+            </div>
+        </li>
+
+
+    </div>
+</div>
+    <div id="blackArea">
+        <div id="loading">
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+
+            <h1>정보 요청중..</h1>
+        </div>
+    </div>
+
+</body>
+</html>

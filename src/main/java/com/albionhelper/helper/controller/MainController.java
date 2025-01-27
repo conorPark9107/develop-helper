@@ -29,16 +29,13 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Controller
 public class MainController {
 
-    private final String TEST_URL = "https://api.openalbion.com/api/v3/weapons?tier=4";
-    private final String TEST_URL_MARKET_PREFIX = "https://east.albion-online-data.com";
+    private final GoldService goldService;
+    private final BoardService boardService;
 
-    private final Logger log = LoggerFactory.getLogger(this.getClass());
-
-    @Autowired
-    GoldService goldService;
-
-    @Autowired
-    BoardService boardService;
+    public MainController(GoldService goldService, BoardService boardService) {
+        this.goldService = goldService;
+        this.boardService = boardService;
+    }
 
     @GetMapping("/")
     public String index(Model model){
@@ -68,16 +65,6 @@ public class MainController {
     @GetMapping("/info")
     public String showInfoPage(){
         return "info";
-    }
-
-    @GetMapping("/login")
-    public String login(){
-        return "admin/login";
-    }
-
-    @GetMapping("/admin/dashboard")
-    public String adminDashboard(){
-        return "admin/dashboard";
     }
 
     /* robots.txt 처리 */
