@@ -166,4 +166,14 @@ public class BoardService {
     public List<Category> findAllCategory() {
         return categoryRepository.findAll();
     }
+
+    public void deleteCategory(long id) {
+        categoryRepository.deleteById(id);
+    }
+
+    public void registerCategory(String category) {
+        Category c = new Category();
+        c.setCategory(category);
+        categoryRepository.save(c);
+    }
 }

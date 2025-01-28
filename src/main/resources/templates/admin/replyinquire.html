@@ -35,13 +35,16 @@
 <script type="text/javascript" src="/jsMin/toggle.js"></script>
 <div class="image-maindiv">
 <div th:replace="~{header :: header}"></div>
+    <div>
     <div class="back-div">
         <a class="btn-back text-center" href="/admin/dashboard">뒤로 가기</a>
     </div>
-    <div class="container-inquire">
-        <div class="full-width">            
-            <div class="container flex-column background">
-                <ul class="inquireList">
+        <div class="container">
+            <div class="flex-column gap">
+                <div class="container-title">
+                    <h5>게시판 카테고리 관리 페이지</h5>
+                </div>
+                <ul class="inquireList background">
                     <li th:each="inquire : ${list}" th:id="${inquire.id}">
                         <span class="text" th:text="${inquire.content}"></span>
                         <span class="right">답변보기🔻</span>
@@ -65,16 +68,6 @@
                 </ul>
             </div>
         </div>
-
-        <li id="exam" style="display:none;">
-            <span class="text"></span>
-            <span class="right">답변🔻</span>
-            <div class="admin-answer">
-                <span class="answer"></span>
-            </div>
-        </li>
-
-
     </div>
 </div>
     <div id="blackArea">

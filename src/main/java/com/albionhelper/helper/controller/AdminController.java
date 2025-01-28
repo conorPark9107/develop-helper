@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AdminController {
@@ -27,8 +28,9 @@ public class AdminController {
         return "admin/dashboard";
     }
 
-    @GetMapping("/admin/addcategory")
-    public String addCategory(){
+    @GetMapping("/admin/updatecategory")
+    public String addCategory(Model model){
+        model.addAttribute("categoryList", boardService.findAllCategory());
         return "admin/addcategory";
     }
 
@@ -50,6 +52,20 @@ public class AdminController {
         boardService.deleteInquire(dto.getId());
         model.addAttribute("list", boardService.findAllInquire());
         return "admin/replyinquire";
+    }
+
+    @PostMapping("/admin/category/delete")
+    public String addCategory(@RequestParam(name = "id")long id, Model model){
+        boardService.deleteCategory(id);
+        model.addAttribute("categoryList", boardService.findAllCategory());
+        return "admin/addcategory";
+    }
+
+    @PostMapping("/admin/category/insert")
+    public String insertCategory(@RequestParam(name = "category")String category, Model model){
+        boardService.registerCategory(category);
+        model.addAttribute("categoryList", boardService.findAllCategory());
+        return "admin/addcategory";
     }
 
 }

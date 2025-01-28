@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="/static/css/board/editor.css" /> -->
 
     <script type="text/javascript" src="/jsMin/util.js"></script>
-    <script type="text/javascript" src="/jsMin/variable.js"></script>
     <link rel="stylesheet" href="/css/variable.css"/>
     <link rel="stylesheet" href="/css/index.css"/>
     <link rel="stylesheet" href="/css/detail.css"/>
@@ -37,23 +36,22 @@
         <div th:replace="~{header :: header}"></div>
 
         <div class="container">
-                <div class="flex-column gap">
-                    <div class="container-title">
-                        <h5>관리자 페이지</h5>                    
-                    </div>
-                    <div class="flex-column background">
-                        <div class="flex-row gap" >
-                            <div class="flex-column">
-                                <a class="btn" href="/admin/addcategory">게시판 카테고리 추가하기</a>
-                            </div>
-                            <div class="flex-column">
-                                <a class="btn" href="/admin/replyinquire">관리자 문의 & 피드백 답변하기</a>
-                            </div>
+            <div class="flex-column gap">
+                <div class="container-title">
+                    <h5>관리자 페이지</h5>
+                </div>
+                <div class="flex-column background">
+                    <div class="flex-row gap" >
+                        <div class="flex-column">
+                            <a class="btn" href="/admin/updatecategory">게시판 카테고리 추가하기</a>
+                        </div>
+                        <div class="flex-column">
+                            <a class="btn" href="/admin/replyinquire">관리자 문의 & 피드백 답변하기</a>
                         </div>
                     </div>
                 </div>
             </div>
-
+        </div>
     </div>
 <div id="blackArea">
     <div id="loading">

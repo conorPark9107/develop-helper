@@ -5,7 +5,7 @@ h5{
     margin:10px;
 }
 .image-maindiv{
-/* background-image: url(/static/image/background-image-market.jpeg); */
+    /* background-image: url(/static/image/background-image-market.jpeg); */
     background-image: url(/image/background-image-market.jpeg);
     background-repeat: repeat;
     height: auto;
@@ -32,7 +32,6 @@ h5{
 .flex-column{
     display: flex;
     flex-direction: column;
-    margin-top: 25px;
 }
 .space-between{
     justify-content: space-between;
@@ -46,22 +45,44 @@ h5{
 form{
     width: 100%;
 }
-textarea{
-    width: 100%;
-    min-height: 60px;
+.insert-text{
+    width: 80%;
+}
+.submit-btn{
+    width: 20%;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    background: var(--btn-bg);
+    text-shadow: none;
+    border: 2px solid var(--border);
+    color: var(--sub-color);
+    padding: 7px 25px;
+    text-align: center;
+}
+.submit-btn:hover {
+    background-color: var(--btn-hover);
+    color: var(--main-color);
+}
+input{
+    margin: 0px 10px;
     font-size: 0.8em;
     font-weight: bold;
-    color: var(--green);
+    color: #eee;
     background-color: #00000000;
-    border: 1px solid var(--green);
+    border: 1px solid var(--border);
     border-radius: 4px;
     box-sizing: border-box;
     padding: 5px 10px;
-    resize: none;
-    margin-bottom: 15px;
+    width: 100%;
+}
+.label{
+    width: 55%;
+    font-size: 0.9rem;
 }
 .btn{
-    width: 30%;
+    width: 80%;
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
@@ -80,72 +101,12 @@ textarea{
 .flex-end{
     justify-content: end;
 }
-.container-inquire {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-    width: 100%;
-    gap: 15px;
-}
-.flex-contatiner{
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-}
-.input-text{
-    width: 85%;
-    color: var(--sub-color);
-    background-color: var(--main-color-a);
+.border{
     border: 1px solid var(--border);
-    border-radius: 2px;
-    box-sizing: border-box;
-    padding: 8px;
-    resize: none;
+    border-radius: 4px;
 }
-.input-text:hover, .input-text:focus {
-    outline: none;
-    border: 2px solid var(--sub-color);
-}
-
-.inquireList{
-    margin-top: 15px;
-    width: 95%;
-    list-style: none;
-    text-align: left;
-    padding: 15px;
-}
-.inquireList li{
+.info{
     font-size: 0.8em;
-    margin: 10.5px 0;
-    padding: 10px 20px;
-    color: var(--sub-color);
-    background: var(--main-color);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    box-shadow: 0 0 5px 0 var(--border);
-}
-.admin-answer{
-    display: none;
-    font-size: 0.8em;
-    margin: 7.5px 0;
-    padding: 10px 20px;
-    color: var(--sub-color);
-    background: var(--main-color);
-    border: 1px solid var(--sub-color);
-    border-radius: 3px;
-    box-shadow: 0 0 10px 0 var(--shadow);
-}
-.right{
-    cursor: pointer;
-    float: right;
-}
-.right:hover{
-    text-decoration: underline;
-}
-.full-width{
-    width:40%;
 }
 .back-div{
     display: flex;
@@ -178,11 +139,5 @@ textarea{
         font-size: 18px;
         padding: 15px 35px;
         margin-left: 10px;
-    }
-    .full-width{
-        width: 95%;
-    }
-    .inquireList li, .btn{
-        font-size: 20px;
     }
 }
