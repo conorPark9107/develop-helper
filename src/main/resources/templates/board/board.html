@@ -36,10 +36,11 @@
     <div class="board-header-flex-subDiv">
         <ul class="board-header-left-subDiv">
             <span>카테고리</span>
-            <li th:classappend="${#strings.equals(category, '전체')}? clicked" class="category" onclick="clickedCategory(this)" value="전체">전체</li>
-            <li th:classappend="${#strings.equals(category, '일반')}? clicked" class="category" onclick="clickedCategory(this)" value="일반">일반</li>
-            <li th:classappend="${#strings.equals(category, '공략')}? clicked" class="category" onclick="clickedCategory(this)" value="공략">공략</li>
-            <li th:classappend="${#strings.equals(category, '친선')}? clicked" class="category" onclick="clickedCategory(this)" value="친선">친선</li>
+            <li th:each="c : ${categoryList}" th:classappend="${#strings.equals(category, c.category)}? clicked" class="category" onclick="clickedCategory(this)" th:value="${c.category}" th:text="${c.category}"></li>
+<!--            <li th:classappend="${#strings.equals(category, '전체')}? clicked" class="category" onclick="clickedCategory(this)" value="전체">전체</li>-->
+<!--            <li th:classappend="${#strings.equals(category, '일반')}? clicked" class="category" onclick="clickedCategory(this)" value="일반">일반</li>-->
+<!--            <li th:classappend="${#strings.equals(category, '공략')}? clicked" class="category" onclick="clickedCategory(this)" value="공략">공략</li>-->
+<!--            <li th:classappend="${#strings.equals(category, '친선')}? clicked" class="category" onclick="clickedCategory(this)" value="친선">친선</li>-->
         </ul>
         <div class="board-header-right-subDiv">
             <div class="select-div">

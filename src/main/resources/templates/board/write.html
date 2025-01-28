@@ -60,9 +60,7 @@
 
     <p style="display:inline-block;">카테고리 선택 👉🏻</p>
     <ul class="board-category-ul">
-        <li class="category clicked" onclick="clicked_Category(this)" value="일반">일반</li>
-        <li class="category" onclick="clicked_Category(this)" value="공략">공략</li>
-        <li class="category" onclick="clicked_Category(this)" value="친선">친선</li>
+        <li th:each="c, stats : ${categoryList}" th:classappend="${stats.index == 0} ? clicked" class="category" onclick="clicked_Category(this)" th:value="${c.category}" th:text="${c.category}"></li>
     </ul>
     <div>
         <input class="board-nickname-input" id="nickName" type="text" name="nickName" placeholder="닉네임 | 생략시 IP" maxlength="16" />

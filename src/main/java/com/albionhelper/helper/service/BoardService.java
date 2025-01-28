@@ -3,6 +3,7 @@ package com.albionhelper.helper.service;
 
 import com.albionhelper.helper.domain.board.*;
 import com.albionhelper.helper.repository.BoardRepository;
+import com.albionhelper.helper.repository.CategoryRepository;
 import com.albionhelper.helper.repository.CommentRepository;
 import com.albionhelper.helper.repository.InquireRepository;
 import org.slf4j.Logger;
@@ -25,16 +26,21 @@ public class BoardService {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    BoardRepository boardRepository;
 
-    @Autowired
-    CommentRepository commentRepository;
+    private final BoardRepository boardRepository;
+    private final CommentRepository commentRepository;
+    private final InquireRepository inquireRepository;
+    private final CategoryRepository categoryRepository;
 
-    @Autowired
-    InquireRepository inquireRepository;
-
-
+    public BoardService(BoardRepository boardRepository,
+                        CommentRepository commentRepository,
+                        InquireRepository inquireRepository,
+                        CategoryRepository categoryRepository) {
+        this.boardRepository = boardRepository;
+        this.commentRepository = commentRepository;
+        this.inquireRepository = inquireRepository;
+        this.categoryRepository = categoryRepository;
+    }
 
     public void registerBoard(BoardRequestDTO dto) throws UnknownHostException {
         log.info("registerBoard : {}", dto);
@@ -142,8 +148,22 @@ public class BoardService {
         inquire.setContent(text);
         return inquireRepository.save(inquire).toString();
     }
+    
+    public void updateInquire(UpdateInquireDTO dto){
+        Inquire inquire = inquireRepository.findById(dto.getId()).get();
+        inquire.setAnswer(dto.getAnswer());
+        inquireRepository.save(inquire);
+    }
 
     public List<Inquire> findAllInquire() {
         return inquireRepository.findAll();
+    }
+
+    public void deleteInquire(long id) {
+        inquireRepository.deleteById(id);
+    }
+
+    public List<Category> findAllCategory() {
+        return categoryRepository.findAll();
     }
 }

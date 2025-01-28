@@ -26,8 +26,11 @@ public class BoardController {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    BoardService boardService;
+    private final BoardService boardService;
+
+    public BoardController(BoardService boardService) {
+        this.boardService = boardService;
+    }
 
     @GetMapping("")
     public String getBoard(@PageableDefault(page = 0, size = 10, sort="id", direction = Sort.Direction.DESC) Pageable pageable,
@@ -57,11 +60,13 @@ public class BoardController {
         System.out.println(startPage + " : " + endPage + " : " + lastPage);
         model.addAttribute("size", pageable.getPageSize());
         model.addAttribute("list", boardList);
+        model.addAttribute("categoryList", boardService.findAllCategory());
         return "board/board";
     }
 
     @GetMapping("/write")
-    public String boardWrite(){
+    public String boardWrite(Model model){
+        model.addAttribute("categoryList", boardService.findAllCategory());
         return "board/write";
     }
 

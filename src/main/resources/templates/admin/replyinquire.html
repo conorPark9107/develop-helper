@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/static/css/variable.css" />
    <link rel="stylesheet" href="/static/css/index.css" />
    <link rel="stylesheet" href="/static/css/detail.css" />
-   <link rel="stylesheet" href="/static/css/toniquire.css" />
+   <link rel="stylesheet" href="/static/css/inquire.css" />
    <link rel="stylesheet" href="/static/css/loading.css" />
    <link rel="stylesheet" href="/static/css/editor.css"/> -->
     
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/css/variable.css" />
    <link rel="stylesheet" href="/css/index.css" />
    <link rel="stylesheet" href="/css/detail.css" />
-   <link rel="stylesheet" href="/css/toniquire.css" />
+   <link rel="stylesheet" href="/css/admin/inquire.css" />
    <link rel="stylesheet" href="/css/loading.css" />
    <link rel="stylesheet" href="/css/board/editor.css"/>
 
@@ -36,37 +36,32 @@
 <div class="image-maindiv">
 <div th:replace="~{header :: header}"></div>
     <div class="back-div">
-        <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
+        <a class="btn-back text-center" href="/admin/dashboard">뒤로 가기</a>
     </div>
     <div class="container-inquire">
-        <div class="container-title">
-            <img class="container-title-image" src="https://render.albiononline.com/v1/spell/Fear Aura.png?locale=en"  alt="이미지 없음."/>
-            <h4>관리자에게 문의 & 죽음의 피드백</h4>
-            <img class="container-title-image" src="https://render.albiononline.com/v1/wardrobe/UNIQUE_HEAD_VANITY_PUMPKIN_02.png"  alt="이미지 없음."/>
-        </div>
-        <div class="full-width">
-            <div class="flex-contatiner">
-                <textarea class="input-text" name="inquire" cols="30" rows="5" placeholder="ex) 게시판에 카테고리 추가좀용!, 뭐가 잘 안돼요"></textarea>
-                <a class="btn">등록</a>
-            </div>
-            
-            <div>
+        <div class="full-width">            
+            <div class="container flex-column background">
                 <ul class="inquireList">
-                    <li style="border: 1px solid var(--sub-color);">
-                        <span class="text">ex) 게시글에 카테고리좀 추가해주쇼!</span>
-                        <span class="right">답변보기🔻</span>
-                        <div class="admin-answer">
-                        <span class="answer">답변 : 넵!</span>
-                        </div>
-                    </li>
                     <li th:each="inquire : ${list}" th:id="${inquire.id}">
                         <span class="text" th:text="${inquire.content}"></span>
                         <span class="right">답변보기🔻</span>
                         <div class="admin-answer">
-                            <span class="answer">아직 답변 전입니다.</span>
+                            <form method="POST">
+                                <div class="flex-row">
+                                    <textarea class="answer" type="text" id="answer" name="answer" th:text="${inquire.answer}" onresize="false">
+                                    </textarea>
+                                </div>
+                                <div class="flex-row flex-end gap">
+                                    <input type="hidden" name="id" th:value="${inquire.id}"/>
+                                    <span class="info">특별한 안내 문구가 더 이상 나오지 않습니다. 신중하게 버튼을 클릭하세요.</span>
+                                    <!-- 수정 버튼 (Update 요청) -->
+                                    <button class="btn" type="submit" formaction="/admin/updateinquire">수정</button>
+                                    <!-- 삭제 버튼 (Delete 요청) -->
+                                    <button class="btn" type="submit" formaction="/admin/deleteinquire">삭제</button>
+                                </div>
+                            </form>
                         </div>
                     </li>
-
                 </ul>
             </div>
         </div>

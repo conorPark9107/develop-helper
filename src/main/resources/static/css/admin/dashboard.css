@@ -5,8 +5,8 @@ h5{
     margin:10px;
 }
 .image-maindiv{
-    background-image: url(/static/image/background-image-market.jpeg);
-    /* background-image: url(/image/background-image-market.jpeg); */
+    /* background-image: url(/static/image/background-image-market.jpeg); */
+    background-image: url(/image/background-image-market.jpeg);
     background-repeat: repeat;
     height: auto;
     min-height: 100%;

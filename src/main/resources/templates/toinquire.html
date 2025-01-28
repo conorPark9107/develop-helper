@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/static/css/variable.css" />
    <link rel="stylesheet" href="/static/css/index.css" />
    <link rel="stylesheet" href="/static/css/detail.css" />
-   <link rel="stylesheet" href="/static/css/toniquire.css" />
+   <link rel="stylesheet" href="/static/css/inquire.css" />
    <link rel="stylesheet" href="/static/css/loading.css" />
    <link rel="stylesheet" href="/static/css/editor.css"/> -->
     
@@ -63,7 +63,7 @@
                         <span class="text" th:text="${inquire.content}"></span>
                         <span class="right">답변보기🔻</span>
                         <div class="admin-answer">
-                            <span class="answer">아직 답변 전입니다.</span>
+                            <span class="answer" th:text="${inquire.answer}">아직 답변 전입니다.</span>
                         </div>
                     </li>
 

@@ -1,9 +1,12 @@
 package com.albionhelper.helper.controller;
 
+import com.albionhelper.helper.domain.board.UpdateInquireDTO;
 import com.albionhelper.helper.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class AdminController {
@@ -25,15 +28,28 @@ public class AdminController {
     }
 
     @GetMapping("/admin/addcategory")
-    public String addcategory(){
+    public String addCategory(){
         return "admin/addcategory";
     }
 
     @GetMapping("/admin/replyinquire")
-    public String replyinquire(Model model){
+    public String replyInquire(Model model){
         model.addAttribute("list", boardService.findAllInquire());
         return "admin/replyinquire";
     }
 
+    @PostMapping("/admin/updateinquire")
+    public String updateInquire(@ModelAttribute UpdateInquireDTO dto, Model model){
+        boardService.updateInquire(dto);
+        model.addAttribute("list", boardService.findAllInquire());
+        return "admin/replyinquire";
+    }
+
+    @PostMapping("/admin/deleteinquire")
+    public String deleteInquire(@ModelAttribute UpdateInquireDTO dto, Model model){
+        boardService.deleteInquire(dto.getId());
+        model.addAttribute("list", boardService.findAllInquire());
+        return "admin/replyinquire";
+    }
 
 }
