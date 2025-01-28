@@ -6,6 +6,8 @@ build/
 !**/src/test/**/build/
 application-db.yml
 .env
+!**/src/main/resources/static/image/
+!**/src/main/java/com/albionhelper/helper/util/DataInitializer.java
 
 ### STS ###
 .apt_generated
