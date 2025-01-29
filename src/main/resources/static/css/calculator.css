@@ -596,4 +596,28 @@ table tbody td input{
     .flex-column{
         padding: 10px;
     }
+    .image-div img{
+        width: 5.5vw;
+        height: 5.5vw;
+    }
+    td:nth-child(1) img, .main-table-after img, .material-cooking-meat img{
+        width: 5.5vw;
+        height: 5.5vw;
+    }
+    .refining-table td:nth-child(5) img{
+        width: 4.5vw;
+        height: 4.5vw;
+    }
+    .material-cooking img{
+        width: 3.5vw;
+        height: 3.5vw;
+    }
+    .li {
+        font-size: 16px;
+        padding: 10px 10px;
+    }
+    .li img {
+        width: 4vw;
+        height: 4vw;
+    }
 }

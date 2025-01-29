@@ -22,11 +22,11 @@ public class Inquire {
     private Long id;
 
     @Lob
-    @Column(name = "content")
+    @Column(name = "content", columnDefinition = "longtext")
     private String content;
 
     @Lob
-    @Column(name = "answer")
+    @Column(name = "answer", columnDefinition = "longtext")
     @ColumnDefault("'아직 답변 전입니다.'")
     private String answer;
 

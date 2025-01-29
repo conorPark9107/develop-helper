@@ -40,8 +40,10 @@ public class BattlesService {
     // offset을 0부터 더이상 정보가 안나올때까지 데이터를 모아서 취합해야한다.
     private final String GET_ALL_INFO = "/events/battle/";
 
-    @Autowired
-    private WebClient webClient;
+    private final WebClient webClient;
+    public BattlesService(WebClient webClient) {
+        this.webClient = webClient;
+    }
 
     private String getLocation(String location) {
         switch (location) {
