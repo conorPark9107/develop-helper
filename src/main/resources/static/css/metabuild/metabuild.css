@@ -1,0 +1,195 @@
+.image-maindiv{
+    position: relative;
+    background-image: url(/image/background-image-calculator.jpeg);
+    /* background-image: url(/static/image/background-image-calculator.jpeg); */
+    height: auto;
+    min-height: 100%;
+    background-repeat: repeat;
+}
+a{
+    text-decoration:none;
+}
+p{
+    margin-bottom: 5px;
+}
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto auto 5vh;
+    align-items: normal;
+}
+.flex-column{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    width: 96%;
+}
+.align-item-center{
+    align-items: center;
+}
+.background{
+    align-items: flex-start;
+    padding: 15px;
+    background-color: var(--sub-color-a);
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px 0px #000000;
+}
+input[type='radio'] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--sub-color);
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+.content-div{
+    display:inline;
+}
+.menu-message p{
+    margin: 0;
+}
+.link{
+    color: var(--bg-text);
+}
+.sub-title{
+    font-size: 1.2rem;
+    text-align: left;
+}
+.space-between{
+    justify-content: space-between;
+}
+.space-center{
+    justify-content: center;
+}
+select{
+    font-size: 1em;
+    font-weight: 500;
+    padding: 5px 10px;
+    background-color: #00000000;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: #eee;
+    cursor: pointer;
+}
+input {
+    color: var(--table-sub-text-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border);
+    box-sizing: border-box;
+    padding: 5px 5px;
+    border-radius: 4px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+ul {
+    list-style: none;
+    display: inline;
+}
+
+.btn {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    background: var(--btn-bg);
+    text-shadow: none;
+    border: 2px solid var(--border);
+    color: var(--sub-color);
+    padding: 7px 25px;
+    text-align: center;
+}
+.btn:hover {
+    background-color: var(--btn-hover);
+    color: var(--main-color);
+}
+
+table{
+    text-align: center;
+    font-size: 0.8em;
+    width: 100%;
+    table-layout: auto;
+    box-shadow: 0 0 10px 0 var(--border);
+    border-radius: 8px;
+}
+table thead tr th:first-child{
+    border-top-left-radius: 8px;
+}
+table thead tr th:last-child{
+    border-top-right-radius: 8px;
+}
+table tbody tr:last-child td:first-child{
+    border-bottom-left-radius: 8px;
+}
+table tbody tr:last-child td:last-child{
+    border-bottom-right-radius: 8px;
+}
+th{
+    font-weight: bold;
+    padding: 10px 0px;
+    background-color: var(--table-th-color);
+    color: var(--table-th-text-color);
+    /*border-left: 1px solid var(--sub-color);
+    border-right: 1px solid var(--sub-color);
+    border-bottom: 2px solid var(--sub-color);
+    border-top: 2px solid var(--sub-color);*/
+}
+table tbody tr:last-child td{
+    border-bottom: 0;
+}
+td{
+    color: var(--table-main-text-color);
+    padding: 0 10px;
+    border-bottom: 1px dashed var(--border-bottom);
+}
+tr{
+    background-color: var(--table-tr-color);
+}
+td:nth-child(5) .material{
+    text-align: center;
+}
+td img{
+    width: 3vw;
+    height: 3vw;
+}
+.back-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    padding-top: 15px;
+    margin: 0 auto;
+}
+.btn-back{
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    width: 130px;
+    padding: 8px;
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+.btn-back:hover{
+    opacity: 0.4;
+}
+
+@media screen and (max-width: 1024px) {
+    .flex-column{
+        padding: 10px;
+    }
+}
