@@ -1,7 +1,7 @@
 .image-maindiv{
     position: relative;
-    background-image: url(/image/background-image-calculator.jpeg);
-    /* background-image: url(/static/image/background-image-calculator.jpeg); */
+    /* background-image: url(/image/background-image-calculator.jpeg); */
+    background-image: url(/static/image/background-image-calculator.jpeg);
     height: auto;
     min-height: 100%;
     background-repeat: repeat;
@@ -14,25 +14,26 @@ p{
 }
 .container{
     width: 100%;
-    max-width: 1200px;
-    margin: auto auto 5vh;
+    max-width: 1300px;
+    margin: 10px auto 5vh;
     align-items: normal;
+}
+.gap{
+    gap: 10px;
 }
 .flex-column{
     display:flex;
     flex-direction: column;
-    gap:10px;
 }
 .flex-row{
     display: flex;
     flex-direction: row;
-    width: 96%;
+    width: 100%;
 }
 .align-item-center{
     align-items: center;
 }
 .background{
-    align-items: flex-start;
     padding: 15px;
     background-color: var(--sub-color-a);
     border-radius: 4px;
@@ -49,6 +50,11 @@ input[type='radio'] {
     outline: none;
     cursor: pointer;
 }
+label{
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
 .content-div{
     display:inline;
 }
@@ -58,25 +64,35 @@ input[type='radio'] {
 .link{
     color: var(--bg-text);
 }
-.sub-title{
-    font-size: 1.2rem;
-    text-align: left;
-}
 .space-between{
     justify-content: space-between;
 }
 .space-center{
     justify-content: center;
 }
-select{
-    font-size: 1em;
-    font-weight: 500;
-    padding: 5px 10px;
-    background-color: #00000000;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    color: #eee;
-    cursor: pointer;
+.margin-b{
+    margin-bottom: 15px;
+}
+.title-div{
+    text-align: center;
+    width: 25%;
+    display: inline;
+    padding: 5px 5px 5px 0px;
+}
+.title{
+    font-size: 14px;
+}
+.content-div{
+    text-align: left;
+    width:100%;
+}
+.left{
+    font-size: 14px;
+    padding-left: 10px;
+    text-align: left;
+}
+.maximum{
+    width: 100%;
 }
 input {
     color: var(--table-sub-text-color);
@@ -101,14 +117,14 @@ ul {
 
 .btn {
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     border-radius: 4px;
     background: var(--btn-bg);
     text-shadow: none;
     border: 2px solid var(--border);
     color: var(--sub-color);
-    padding: 7px 25px;
+    padding: 7px 14px;
     text-align: center;
 }
 .btn:hover {
@@ -122,43 +138,21 @@ table{
     width: 100%;
     table-layout: auto;
     box-shadow: 0 0 10px 0 var(--border);
-    border-radius: 8px;
-}
-table thead tr th:first-child{
-    border-top-left-radius: 8px;
-}
-table thead tr th:last-child{
-    border-top-right-radius: 8px;
-}
-table tbody tr:last-child td:first-child{
-    border-bottom-left-radius: 8px;
-}
-table tbody tr:last-child td:last-child{
-    border-bottom-right-radius: 8px;
+
 }
 th{
     font-weight: bold;
     padding: 10px 0px;
-    background-color: var(--table-th-color);
-    color: var(--table-th-text-color);
-    /*border-left: 1px solid var(--sub-color);
-    border-right: 1px solid var(--sub-color);
-    border-bottom: 2px solid var(--sub-color);
-    border-top: 2px solid var(--sub-color);*/
 }
 table tbody tr:last-child td{
     border-bottom: 0;
 }
 td{
-    color: var(--table-main-text-color);
     padding: 0 10px;
-    border-bottom: 1px dashed var(--border-bottom);
+    
 }
 tr{
-    background-color: var(--table-tr-color);
-}
-td:nth-child(5) .material{
-    text-align: center;
+    border-bottom: 1px dashed var(--border-bottom);
 }
 td img{
     width: 3vw;
@@ -169,7 +163,7 @@ td img{
     flex-direction: row;
     justify-content: flex-start;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1300px;
     padding-top: 15px;
     margin: 0 auto;
 }
