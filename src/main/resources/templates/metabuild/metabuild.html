@@ -10,18 +10,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
+    <script type="text/javascript" src="/static/js/variable.js"></script>
+    <script type="text/javascript" src="/static/js/util.js"></script>
+    <script type="text/javascript" src="/static/js/calculator/metabuild.js"></script>
+    <link rel="stylesheet" href="/static/css/variable.css"/>
+    <link rel="stylesheet" href="/static/css/board/editor.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <link rel="stylesheet" href="/static/css/detail.css"/>
+    <link rel="stylesheet" href="/static/css/loading.css"/>
+    <link rel="stylesheet" href="/static/css/metabuild/metabuild.css"/>
 
-
-
-    <script type="text/javascript" src="/js/variable.js"></script>
-    <script type="text/javascript" src="/js/util.js"></script>
-    <script type="text/javascript" src="/js/calculator/metabuild.js"></script>
-    <link rel="stylesheet" href="/css/variable.css"/>
-    <link rel="stylesheet" href="/css/board/editor.css"/>
-    <link rel="stylesheet" href="/css/index.css"/>
-    <link rel="stylesheet" href="/css/detail.css"/>
-    <link rel="stylesheet" href="/css/loading.css"/>
-    <link rel="stylesheet" href="/css/metabuild/metabuild.css"/>
+<!--    <script type="text/javascript" src="/js/variable.js"></script>-->
+<!--    <script type="text/javascript" src="/js/util.js"></script>-->
+<!--    <script type="text/javascript" src="/js/calculator/metabuild.js"></script>-->
+<!--    <link rel="stylesheet" href="/css/variable.css"/>-->
+<!--    <link rel="stylesheet" href="/css/board/editor.css"/>-->
+<!--    <link rel="stylesheet" href="/css/index.css"/>-->
+<!--    <link rel="stylesheet" href="/css/detail.css"/>-->
+<!--    <link rel="stylesheet" href="/css/loading.css"/>-->
+<!--    <link rel="stylesheet" href="/css/metabuild/metabuild.css"/>-->
 
     <meta charset="UTF-8">
     <title>알비온 GG - 메타 빌드 ⚔</title>
@@ -36,8 +43,101 @@
             <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
         </div>
         <div class="container">
+            <div class="flex-column">
+                <p>아이템 빌드 추천 & 추천하기</p>
+            </div>
+            <div class="flex-column">
+                <div class="flex-row margin-b gap">
+                    <div class="flex-row align-item-center background">
+                        <div class="title-div">
+                            <span class="title">기간</span>
+                        </div>
+                        <div class="content-div">
+                            <input type="radio" id="lastweek" name="range" value="7" checked/>
+                            <label for="lastweek">최근 일주일</label>
+                            <input type="radio" id="lastmonth" name="range" value="1"/>
+                            <label for="lastmonth">최근 한달</label>
+                            <input type="radio" id="lastmonth2" name="range" value="2"/>
+                            <label for="lastmonth2">최근 두달</label>
+                            <input type="radio" id="lastmonth3" name="range" value="3"/>
+                            <label for="lastmonth3">세달전</label>
+                        </div>
+                    </div>
+                    <div class="flex-row align-item-center background">
+                        <div class="title-div">
+                            <span class="title">파이트 규모 선택</span>
+                        </div>
+                        <div class="content-div">
+                            <button class="btn" data-value="1">1 vs 1</button>
+                            <button class="btn" data-value="5">5 vs 5</button>
+                            <button class="btn" data-value="10">10 ~ 20인</button>
+                            <button class="btn" data-value="20">20 ~ 40인</button>
+                            <button class="btn" data-value="40">40인 이상</button>
+                        </div>
+                    </div>                    
+                </div>
+                
+                
+                <div class="flex-column margin-b">
+                    <div class="maximum flex-row space-between gap">
+                        <div class="flex-column maximum">
+                            <p class="left">무기군 선택</p>
+                            <div class="flex-column background">
+                                <div class="content-div">
+                                    <button class="btn" data-value="1">TANK (탱)</button>
+                                    <button class="btn" data-value="5">HEAL (힐)</button>
+                                    <button class="btn" data-value="10">SUP (서포터)</button>
+                                    <button class="btn" data-value="20">MDPS (근접딜)</button>
+                                    <button class="btn" data-value="40">RDPS (원거리딜)</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-column maximum">
+                            <p class="left">정보</p>
+                            <div class="flex-column">
+                                <table class="background">
+                                    <thead>
+                                        <tr>
+                                            <th>순위</th>
+                                            <th>무기</th>
+                                            <th>비율</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><img class="img" src="/static/image/T8_MEAL_STEW.png" /></td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td><img class="img" src="/static/image/T8_MEAL_STEW.png" /></td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td><img class="img" src="/static/image/T8_MEAL_STEW.png" /></td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td><img class="img" src="/static/image/T8_MEAL_STEW.png" /></td>
+                                            <td>1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td><img class="img" src="/static/image/T8_MEAL_STEW.png" /></td>
+                                            <td>1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-         </div> <!-- end of container -->
+                </div>
+            </div>    
+        </div> <!-- end of container -->
     </div>
     
 
