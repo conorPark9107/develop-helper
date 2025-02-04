@@ -1,6 +1,5 @@
 package com.albionhelper.helper.domain.battleapi;
 
-import com.albionhelper.helper.domain.killboard.Equipment;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
