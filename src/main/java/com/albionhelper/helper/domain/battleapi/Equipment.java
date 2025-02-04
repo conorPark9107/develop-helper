@@ -1,6 +1,5 @@
 package com.albionhelper.helper.domain.battleapi;
 
-import com.albionhelper.helper.domain.killboard.Equipment;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,21 +7,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "players")
+@Table(name = "equipment")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Player {
+public class Equipment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private double averageItemPower;
-    private String guildName;
-    private String allianceName;
-    private int fame;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Equipment equipment;
+    private String mainHand;
+    private String offHand;
+    private String head;
+    private String armor;
+    private String shoes;
+    private String mount;
+    private String potion;
+    private String food;
 }
