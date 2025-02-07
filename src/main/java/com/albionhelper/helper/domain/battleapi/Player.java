@@ -1,5 +1,6 @@
 package com.albionhelper.helper.domain.battleapi;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties
 public class Player {
 
     @Id
@@ -40,6 +42,13 @@ public class Player {
 
     @JsonProperty("DeathFame")
     private int deathFame;
+
+    @JsonProperty("DamageDone")
+    private int damageDone;
+
+    @JsonProperty("SupportHealingDone")
+    private int supportHealingDone;
+
 
     @JsonProperty("Equipment")
     @OneToOne(cascade = CascadeType.ALL)

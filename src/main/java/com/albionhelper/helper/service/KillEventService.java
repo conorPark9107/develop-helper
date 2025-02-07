@@ -1,17 +1,16 @@
 package com.albionhelper.helper.service;
 
 import com.albionhelper.helper.domain.battleapi.KillEvent;
-import com.albionhelper.helper.domain.battleapi.Participant;
+
 import com.albionhelper.helper.repository.EquipmentRepository;
 import com.albionhelper.helper.repository.KillEventRepository;
-import com.albionhelper.helper.repository.ParticipantRepository;
+
 import com.albionhelper.helper.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
@@ -20,7 +19,6 @@ public class KillEventService {
     private final KillEventRepository killEventRepository;
     private final PlayerRepository playerRepository;
     private final EquipmentRepository equipmentRepository;
-    private final ParticipantRepository participantRepository;
     private final WebClient webClient;
 
     @Transactional
@@ -41,13 +39,9 @@ public class KillEventService {
             killEventRepository.save(event);
             playerRepository.save(event.getKiller());
             playerRepository.save(event.getVictim());
-
+            playerRepository.saveAll(event.getParticipants());
             equipmentRepository.save(event.getKiller().getEquipment());
             equipmentRepository.save(event.getVictim().getEquipment());
-
-            for (Participant participant : event.getParticipants()) {
-                participantRepository.save(participant);
-            }
         }
 
     }

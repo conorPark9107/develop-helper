@@ -38,5 +38,5 @@ public class KillEvent {
 
     @JsonProperty("Participants")
     @OneToMany(mappedBy = "killEvent", cascade = CascadeType.ALL)
-    private List<Participant> participants;
+    private List<Player> participants;
 }
