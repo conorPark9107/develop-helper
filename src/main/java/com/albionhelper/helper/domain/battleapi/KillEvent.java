@@ -19,6 +19,7 @@ public class KillEvent {
 
     @JsonProperty("EventId")
     private Long eventId;
+
     @JsonProperty("TimeStamp")
     private Instant eventTime;
 

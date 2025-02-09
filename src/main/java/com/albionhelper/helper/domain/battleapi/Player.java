@@ -22,7 +22,6 @@ public class Player {
     private Long id;  // 자동 증가하는 DB ID
 
     @JsonProperty("Id")
-    @Column(unique = true, nullable = false)
     private String playerId;  // API에서 받은 "Id" 값
 
     @JsonProperty("Name")
@@ -50,9 +49,8 @@ public class Player {
     private int supportHealingDone;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "kill_event_id")
     private KillEvent killEvent;
-
 
     @JsonProperty("Equipment")
     @OneToOne(cascade = CascadeType.ALL)
