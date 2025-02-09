@@ -49,6 +49,10 @@ public class Player {
     @JsonProperty("SupportHealingDone")
     private int supportHealingDone;
 
+    @ManyToOne
+    @JoinColumn
+    private KillEvent killEvent;
+
 
     @JsonProperty("Equipment")
     @OneToOne(cascade = CascadeType.ALL)
