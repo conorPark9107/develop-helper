@@ -1,7 +1,9 @@
 package com.albionhelper.helper.service;
 
+import com.albionhelper.helper.domain.battleapi.Equipment;
 import com.albionhelper.helper.domain.battleapi.KillEvent;
 
+import com.albionhelper.helper.domain.battleapi.Player;
 import com.albionhelper.helper.repository.EquipmentRepository;
 import com.albionhelper.helper.repository.KillEventRepository;
 
@@ -11,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -38,11 +42,33 @@ public class KillEventService {
         if (!killEventRepository.existsByEventId(event.getEventId())) {
             KillEvent save = killEventRepository.save(event);
             KillEvent e = killEventRepository.findById(save.getId()).get();
-            event.getKiller().setKillEvent(e);
-            event.getVictim().setKillEvent(e);
+            Player killer = event.getKiller();
+            Player victim = event.getVictim();
+            killer.setKillEvent(e);
+            victim.setKillEvent(e);
+            event.setKiller(killer);
+            event.setVictim(victim);
             playerRepository.save(event.getKiller());
             playerRepository.save(event.getVictim());
+
+            List<Player> list = event.getParticipants()
+                    .stream()
+                    .map(player -> {
+                    player.setKillEvent(e);
+                    player.getEquipment().setPlayer(player);
+                    return player;
+            }).toList();
+            event.setParticipants(list);
+
             playerRepository.saveAll(event.getParticipants());
+            Equipment killerEquip = event.getKiller().getEquipment();
+            killerEquip.setPlayer(event.getKiller());
+            event.getKiller().setEquipment(killerEquip);
+
+            Equipment victimEquip = event.getVictim().getEquipment();
+            victimEquip.setPlayer(event.getVictim());
+            event.getVictim().setEquipment(victimEquip);
+
             equipmentRepository.save(event.getKiller().getEquipment());
             equipmentRepository.save(event.getVictim().getEquipment());
         }
