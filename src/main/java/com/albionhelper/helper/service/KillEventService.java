@@ -40,6 +40,7 @@ public class KillEventService {
     public void saveKillEvent(KillEvent event){
         // API에서 받은 eventId로 기존 데이터 존재 여부 확인
         if (!killEventRepository.existsByEventId(event.getEventId())) {
+
             KillEvent save = killEventRepository.save(event);
             KillEvent e = killEventRepository.findById(save.getId()).get();
             Player killer = event.getKiller();

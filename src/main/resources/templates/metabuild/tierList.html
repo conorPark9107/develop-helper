@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+    <script type="text/javascript" src="/static/js/variable.js"></script>
+    <script type="text/javascript" src="/static/js/util.js"></script>
+    <script type="text/javascript" src="/static/js/metabuild/tierList.js"></script>
+    <link rel="stylesheet" href="/static/css/variable.css"/>
+    <link rel="stylesheet" href="/static/css/board/editor.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <link rel="stylesheet" href="/static/css/detail.css"/>
+    <link rel="stylesheet" href="/static/css/loading.css"/>
+    <link rel="stylesheet" href="/static/css/metabuild/tierList.css"/>
+
+<!--    <script type="text/javascript" src="/js/variable.js"></script>-->
+<!--    <script type="text/javascript" src="/js/util.js"></script>-->
+<!--    <script type="text/javascript" src="/js/calculator/metabuild.js"></script>-->
+<!--    <link rel="stylesheet" href="/css/variable.css"/>-->
+<!--    <link rel="stylesheet" href="/css/board/editor.css"/>-->
+<!--    <link rel="stylesheet" href="/css/index.css"/>-->
+<!--    <link rel="stylesheet" href="/css/detail.css"/>-->
+<!--    <link rel="stylesheet" href="/css/loading.css"/>-->
+<!--    <link rel="stylesheet" href="/css/metabuild/metabuild.css"/>-->
+
+    <meta charset="UTF-8">
+    <title>알비온 GG - 티어 리스트 ⚔</title>
+</head>
+
+<body data-theme="light-mode">
+<script type="text/javascript" src="/jsMin/toggle.js"></script>
+<div class="image-maindiv">
+    <div th:replace="~{header :: header}"></div>
+    <div>
+        <div class="back-div">
+            <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
+        </div>
+        <div class="container">
+            <div class="flex-column">
+                <h2>🥇티어 리스트🥇</h2>
+            </div>
+            <div class="flex-column">
+                <div class="flex-row margin-b gap">
+                    <div class="flex-row align-item-center background">
+                        <div class="title-div">
+                            <span class="title">보기 선택</span>
+                        </div>
+                        <div class="content-div">
+                            <input type="radio" id="weapon" name="range" value="7" checked/>
+                            <label for="weapon">무기</label>
+                            <input type="radio" id="armor" name="range" value="1"/>
+                            <label for="armor">방어구</label>
+                            <input type="radio" id="cape" name="range" value="2"/>
+                            <label for="cape">망토</label>
+                            <input type="radio" id="food" name="range" value="3"/>
+                            <label for="food">푸드</label>
+                            <input type="radio" id="mount" name="range" value="3"/>
+                            <label for="mount">탈것</label>
+                        </div>
+                    </div>
+                    <div class="flex-row align-item-center background">
+                        <div class="title-div">
+                            <span class="title">파이트 규모 선택</span>
+                        </div>
+                        <div class="content-div">
+                            <button class="btn" data-value="1">1 vs 1</button>
+                            <button class="btn" data-value="5">5 vs 5</button>
+                            <button class="btn" data-value="10">10 ~ 20인</button>
+                            <button class="btn" data-value="20">20 ~ 40인</button>
+                            <button class="btn" data-value="40">40인 이상</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="flex-column background">
+                        
+                    </div>
+                </div>
+                
+                
+               
+            </div>    
+        </div> <!-- end of container -->
+    </div>
+    
+
+
+    <div id="blackArea">
+        <div id="loading">
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+
+            <h1>정보 요청중..</h1>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
