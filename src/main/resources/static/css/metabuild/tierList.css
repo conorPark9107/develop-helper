@@ -25,9 +25,14 @@ p{
     flex-direction: column;
 }
 .flex-row{
+    font-size: 13px;
     display: flex;
-    flex-direction: row;
     width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+.flex-start{
+    justify-content: flex-start;
 }
 .align-item-center{
     align-items: center;
@@ -76,7 +81,7 @@ label{
     text-align: center;
     width: 25%;
     display: inline;
-    padding: 5px 5px 5px 0px;
+    padding: 5px 0px 5px 0px;
 }
 .title{
     font-size: 14px;
@@ -180,7 +185,23 @@ td img{
 .btn-back:hover{
     opacity: 0.4;
 }
-
+.text-left{
+    text-align: left;
+}
+.padding{
+    padding: 15px;
+}
+.border{
+    border: 1px solid white;
+    border-radius: 4px;
+}
+.space-between{
+    justify-content: space-between;
+}
+.grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+}
 @media screen and (max-width: 1024px) {
     .flex-column{
         padding: 10px;
