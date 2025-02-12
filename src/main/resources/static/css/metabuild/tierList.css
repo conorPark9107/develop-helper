@@ -103,7 +103,6 @@ input {
     background-color: var(--main-color);
     border: 1px solid var(--border);
     box-sizing: border-box;
-    padding: 5px 5px;
     border-radius: 4px;
 }
 input::-webkit-outer-spin-button,
@@ -118,8 +117,8 @@ ul {
     list-style: none;
     display: inline;
 }
-
 .btn {
+    width: 10%;
     cursor: pointer;
     font-size: 12px;
     font-weight: bold;
@@ -128,7 +127,7 @@ ul {
     text-shadow: none;
     border: 2px solid var(--border);
     color: var(--sub-color);
-    padding: 7px 14px;
+    padding: 7px 20px;
     text-align: center;
 }
 .btn:hover {
@@ -138,18 +137,19 @@ ul {
 
 table{
     text-align: center;
-    font-size: 0.8em;
     width: 100%;
     table-layout: auto;
     border-collapse: separate;
     border-spacing: 0px 10px;
 }
 th{
+    font-size: 0.9rem;
     color: var(--bg-text);
     font-weight: bold;
     padding: 10px;
 }
 td{
+    font-size: 0.8rem;
     font-weight: 500;
     padding: 0 10px;
 }
@@ -218,12 +218,27 @@ td img{
     display:grid;
     grid-template-columns: repeat(4, 1fr);
 }
-.col1{ width: 10%;}
-.col2{ width: 10%;}
-.col3{ width: 25%;}
-.col4{ width: 45%;}
+.col0{ width: 10%;}
+.col0-1{ width: 10%;}
+.col1{ width: 9%;}
+.col2{ width: 7%;}
+.col3{ width: 27%;}
+.col4{ width: 27%;}
 .col5{ width: 5%;}
 .col6{ width: 5%;}
+label{
+    font-size: 0.8rem;
+}
+.chekcbox-div{
+    padding: 0px 5px 0px 5px;
+}
+input[type="checkbox"] {
+    width: 0.9rem;
+    height: 0.9rem;
+    accent-color: var(--btn-bg);
+}
+
+
 @media screen and (max-width: 1024px) {
     .flex-column{
         padding: 10px;
