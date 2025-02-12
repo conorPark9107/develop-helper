@@ -141,22 +141,38 @@ table{
     font-size: 0.8em;
     width: 100%;
     table-layout: auto;
-    box-shadow: 0 0 10px 0 var(--border);
-
+    border-collapse: separate;
+    border-spacing: 0px 10px;
 }
 th{
+    color: var(--bg-text);
     font-weight: bold;
-    padding: 10px 0px;
-}
-table tbody tr:last-child td{
-    border-bottom: 0;
+    padding: 10px;
 }
 td{
+    font-weight: 500;
     padding: 0 10px;
-    
+}
+td:first-child{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+td:last-child{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+tbody tr{
+    padding: 15px;
+    background-color: var(--sub-color-a);
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px 0px #000000;
+}
+tbody tr:hover{
+    cursor: pointer;
+    opacity: 0.6;
 }
 tr{
-    border-bottom: 1px dashed var(--border-bottom);
+    text-align: left;
 }
 td img{
     width: 3vw;
@@ -189,7 +205,7 @@ td img{
     text-align: left;
 }
 .padding{
-    padding: 15px;
+    padding: 20px;
 }
 .border{
     border: 1px solid white;
@@ -202,6 +218,12 @@ td img{
     display:grid;
     grid-template-columns: repeat(4, 1fr);
 }
+.col1{ width: 10%;}
+.col2{ width: 10%;}
+.col3{ width: 25%;}
+.col4{ width: 45%;}
+.col5{ width: 5%;}
+.col6{ width: 5%;}
 @media screen and (max-width: 1024px) {
     .flex-column{
         padding: 10px;

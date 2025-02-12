@@ -50,7 +50,7 @@
                 <div class="flex-row margin-b gap">
                     <div class="flex-row align-item-center background">
                         <div class="title-div">
-                            <span class="title">보기 선택</span>
+                            <span class="title">착용부위 선택</span>
                         </div>
                         <div class="content-div">
                             <input type="radio" id="weapon" name="range" value="7" checked/>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="flex-row align-item-center background">
                         <div class="title-div">
-                            <span class="title">상황 선택</span>
+                            <span class="title">카테고리 선택</span>
                         </div>
                         <div class="content-div">
                             <div class="grid">
@@ -131,25 +131,89 @@
 
             <div class="flex-column">
                 <div class="flex-column">
-                    <p class="text-left">작성된 티어리스트 목록</p>
+                    <table>
+                        <colgroup>
+                            <col class="col1" />
+                            <col class="col2" />
+                            <col class="col3" />
+                            <col class="col4" />
+                            <col class="col5" />
+                            <col class="col6" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>카테고리</th>
+                                <th>착용 부위</th>
+                                <th>제목</th>
+                                <th>1티어</th>
+                                <th>추천</th>
+                                <th>의견</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>미스트</td>
+                                <td>무기</td>
+                                <td>미스트에서 무기티어 알려드립니다.</td>
+                                <td>
+                                    <img class="itemImg" src="/static/image/T3_POTION_ACID_4.png">
+                                    <img class="itemImg" src="/static/image/T3_POTION_ACID_4.png">
+                                    <img class="itemImg" src="/static/image/T3_POTION_ACID_4.png">
+                                </td>
+                                <td>
+                                    5
+                                </td>
+                                <td>
+                                    4개
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>갱킹</td>
+                                <td>탈것</td>
+                                <td>갱킹 회피할때 탈것 리스트</td>
+                                <td>
+                                    <img class="itemImg" src="/static/image/T8_FARM_COW_GROWN.png">
+                                    <img class="itemImg" src="/static/image/T6_FARM_SHEEP_GROWN.png">
+                                </td>
+                                <td>
+                                    5
+                                </td>
+                                <td>
+                                    3개
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="flex-column gap">
-                    <div class="flex-row padding background">
-                        <div>
-                            0-5 규모
+
+                <!-- <div class="flex-column gap">
+                    <div class="flex-row gap padding background tierListItem">
+                        <div class="flex-column tier-title-div"> 
+                            <span>무기 티어 리스트</span>
+                            <div class="description-div">
+                                <span>카테고리 : 미스트</span>
+                                <span>부위 : 무기</span>
+                            </div>
+                        </div>
+                        <div class="flex-column"> 
+                            <div class="image-div">
+                                <img class="itemImg" src="/static/image/T3_POTION_ACID_4.png">
+                                <img class="itemImg" src="/static/image/T3_POTION_ACID_4.png">
+                                <img class="itemImg" src="/static/image/T3_POTION_ACID_4.png">
+                            </div>
                         </div>
                     </div>
-                    <div class="flex-row padding background">
+                    <div class="flex-row padding background tierListItem">
                         <div>
                             2
                         </div>
                     </div>
-                    <div class="flex-row padding background">
+                    <div class="flex-row padding background tierListItem">
                         <div>
                             3
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div> <!-- end of container -->
     </div>
