@@ -11,20 +11,24 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class SecurityConfig {
 
     private final UserService userService;
+    private final AccessLogFilter accessLogFilter;
 
-    public SecurityConfig(UserService userService) {
+    public SecurityConfig(UserService userService, AccessLogFilter accessLogFilter) {
         this.userService = userService;
+        this.accessLogFilter = accessLogFilter;
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
+                .addFilterBefore(accessLogFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/admin/**").hasRole("ADMIN") // 관리자
                         .anyRequest().permitAll()                     // 그 외 모든 요청 허용
