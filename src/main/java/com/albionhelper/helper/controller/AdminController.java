@@ -1,6 +1,7 @@
 package com.albionhelper.helper.controller;
 
 import com.albionhelper.helper.domain.board.UpdateInquireDTO;
+import com.albionhelper.helper.service.AdminService;
 import com.albionhelper.helper.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminController {
 
     private final BoardService boardService;
+    private final AdminService adminService;
 
-    public AdminController(BoardService boardService) {
+    public AdminController(BoardService boardService, AdminService adminService) {
         this.boardService = boardService;
+        this.adminService = adminService;
     }
 
     @GetMapping("/login")
@@ -24,7 +27,9 @@ public class AdminController {
     }
 
     @GetMapping("/admin/dashboard")
-    public String adminDashboard(){
+    public String adminDashboard(Model model){
+        model.addAttribute("total", adminService.getVisitCount());
+        model.addAttribute("today", adminService.getTodayVisitCount());
         return "admin/dashboard";
     }
 

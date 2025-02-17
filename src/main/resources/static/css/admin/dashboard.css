@@ -4,6 +4,9 @@ a{
 h5{
     margin:10px;
 }
+.fill{
+    width:100%;
+}
 .image-maindiv{
     /* background-image: url(/static/image/background-image-market.jpeg); */
     background-image: url(/image/background-image-market.jpeg);

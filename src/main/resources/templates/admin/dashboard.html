@@ -40,6 +40,18 @@
                 <div class="container-title">
                     <h5>관리자 페이지</h5>
                 </div>
+                <div class="flex-column gap">
+                    <div class="flex-row gap">
+                        <div class="flex-column background fill">
+                            <span>총 방문자</span>
+                            <span th:text="${total}"></span>
+                        </div>
+                        <div class="flex-column background fill">
+                            <span>오늘 방문자</span>
+                            <span th:text="${today}"></span>
+                        </div>
+                    </div>
+                </div>
                 <div class="flex-column background">
                     <div class="flex-row gap" >
                         <div class="flex-column">
