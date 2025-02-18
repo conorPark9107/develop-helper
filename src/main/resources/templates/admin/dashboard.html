@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
     <!-- <script type="text/javascript" src="/static/jsMin/util.js"></script>
-    <script type="text/javascript" src="/static/jsMin/variable.js"></script>
+    <script type="text/javascript" src="/static/js/admin/dashboard.js"></script>
     <link rel="stylesheet" href="/static/css/variable.css"/>
     <link rel="stylesheet" href="/static/css/index.css"/>
     <link rel="stylesheet" href="/static/css/detail.css"/>
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/static/css/board/editor.css" /> -->
 
     <script type="text/javascript" src="/jsMin/util.js"></script>
+     <script type="text/javascript" src="/jsMin/admin/dashboard.js"></script>
     <link rel="stylesheet" href="/css/variable.css"/>
     <link rel="stylesheet" href="/css/index.css"/>
     <link rel="stylesheet" href="/css/detail.css"/>
@@ -49,6 +50,10 @@
                         <div class="flex-column background fill">
                             <span>오늘 방문자</span>
                             <span th:text="${today}"></span>
+                        </div>
+                        <div class="flex-column background fill">
+                            <input type="date" id="picker" name="date" data-placeholder="날짜 선택" required aria-required="true" onchange="getVisitCount(this)">
+                            <p id="visitCountByDate"></p>
                         </div>
                     </div>
                 </div>

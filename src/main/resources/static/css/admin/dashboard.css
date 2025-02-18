@@ -48,6 +48,14 @@ h5{
 form{
     width: 100%;
 }
+input[type='date']::before {
+    content: attr(data-placeholder);
+    width: 100%;
+}
+input[type='date']:focus::before,
+input[type='date']:valid::before {
+    display: none;
+}
 input{
     font-size: 0.8em;
     font-weight: bold;

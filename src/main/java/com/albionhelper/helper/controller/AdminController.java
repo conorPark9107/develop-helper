@@ -5,10 +5,9 @@ import com.albionhelper.helper.service.AdminService;
 import com.albionhelper.helper.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 
 @Controller
 public class AdminController {
@@ -32,6 +31,13 @@ public class AdminController {
         model.addAttribute("today", adminService.getTodayVisitCount());
         return "admin/dashboard";
     }
+
+    @GetMapping("/admin/dashboard/pickDate")
+    @ResponseBody
+    public long getPerDate(@RequestParam(name = "date") LocalDate date){
+        return adminService.getVisitCountByDate(date);
+    }
+
 
     @GetMapping("/admin/updatecategory")
     public String addCategory(Model model){
