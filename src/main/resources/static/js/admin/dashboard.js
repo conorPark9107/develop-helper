@@ -39,7 +39,20 @@ function drawChart(response){
             }
             ]
         },
-        options: {},
+        options: {
+            scales: {
+                x: {
+                    grid: {
+                        color: '#949494'  // x축 구분선 색상 변경
+                    }
+                },
+                y: {
+                    grid: {
+                        color: '#949494'  // y축 구분선 색상 변경
+                    }
+                }
+            }
+        }
     });
 }
 
