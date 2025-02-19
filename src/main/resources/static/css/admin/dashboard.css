@@ -91,3 +91,13 @@ input{
 .flex-end{
     justify-content: end;
 }
+.sub-title{
+    text-align: left;
+    margin: 5px 0px 5px 5px;
+}
+#visitChart{
+    display:none;
+}
+#drawChartBtn{
+    width:100px;
+}

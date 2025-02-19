@@ -4,6 +4,11 @@ import com.albionhelper.helper.repository.AccessLogRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class AdminService {
@@ -23,7 +28,17 @@ public class AdminService {
     }
 
     public long getVisitCountByDate(LocalDate date) {
-        System.out.println(date.toString());
         return accessLogRepository.countVisitorsByDate(date);
+    }
+
+    public List<Map<String, Object>> getVisitCountList(LocalDate after) {
+        LocalDate before = after.minusDays(10);
+        List<Object[]> results = accessLogRepository.countAccessByDate(LocalDateTime.of(before, LocalTime.of(0, 0, 0)));
+        return results.stream().map(obj ->
+                Map.of(
+                        "date", obj[0],
+                        "count", obj[1]
+                ))
+                .collect(Collectors.toList());
     }
 }

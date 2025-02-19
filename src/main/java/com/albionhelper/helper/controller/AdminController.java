@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class AdminController {
@@ -30,6 +32,12 @@ public class AdminController {
         model.addAttribute("total", adminService.getVisitCount());
         model.addAttribute("today", adminService.getTodayVisitCount());
         return "admin/dashboard";
+    }
+
+    @GetMapping("/admin/dashboard/getVisitList")
+    @ResponseBody
+    public List<Map<String, Object>> getVisitList(@RequestParam(name = "date") LocalDate date){
+        return adminService.getVisitCountList(date);
     }
 
     @GetMapping("/admin/dashboard/pickDate")
