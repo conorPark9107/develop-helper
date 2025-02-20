@@ -11,4 +11,14 @@ public class MetaBuildController {
         return "metabuild/metabuild";
     }
 
+    @GetMapping("/tierList")
+    public String showTierListPage(){
+        return "metabuild/tierList";
+    }
+
+    @GetMapping("/tierList/write")
+    public String showTierListWritePage(){
+        return "metabuild/tierListWrite";
+    }
+
 }
