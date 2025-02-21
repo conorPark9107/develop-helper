@@ -248,8 +248,31 @@ input[type="checkbox"] {
     height: 0.9rem;
     accent-color: var(--btn-bg);
 }
-
-
+.tier{
+    height: 70px;
+    padding: 15px;
+    margin: 5px 0px 1px 0px;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+}
+.tier:hover{
+    opacity: 0.8;
+}
+.input-div{
+    text-align: left;
+    width:80%;
+}
+#input{
+    width:40%;
+}
+.rank{
+    padding: 20px;
+    border: 1px solid var(--border);
+}
+img{
+    cursor: pointer;
+}
 @media screen and (max-width: 1024px) {
     .flex-column{
         padding: 10px;
