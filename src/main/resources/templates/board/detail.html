@@ -137,7 +137,7 @@
     <!-- 댓글 쓰기 div-->
     <div class="comment-write-area">
         <div class="comment-writer">
-            <input class="board-password block" type="text" name="nickname" placeholder="닉네임 | 생략시 IP"
+            <input class="board-password block" type="text" name="nickname" placeholder="닉네임 | 생략시 익명"
                    maxlength="16"/>
             <input class="board-password block" type="password" name="password" placeholder="비밀번호" maxlength="20"/>
         </div>
@@ -151,7 +151,7 @@
         <div class="comment-comment-write-area" id="write-comment">
             <input type="hidden" name="board_id_c" th:value="${board.id}"/>
             <div class="comment-writer">
-                <input class="board-password block" type="text" name="nickname_c" placeholder="닉네임 | 생략시 IP"
+                <input class="board-password block" type="text" name="nickname_c" placeholder="닉네임 | 생략시 익명"
                        maxlength="16"/>
                 <input class="board-password block" type="password" name="password_c" placeholder="비밀번호"
                        maxlength="20"/>

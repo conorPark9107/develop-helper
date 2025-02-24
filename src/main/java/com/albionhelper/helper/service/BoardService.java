@@ -46,7 +46,7 @@ public class BoardService {
         log.info("registerBoard : {}", dto);
 
         if(dto.getNickname().isEmpty()){
-            dto.setNickname(InetAddress.getLocalHost().getHostAddress());
+            dto.setNickname("익명");
             log.info("nickname was empty so changed : {} ", dto.getNickname());
         }
 
@@ -87,7 +87,7 @@ public class BoardService {
 
     public void registerComment(CommentRequestDTO dto) throws UnknownHostException {
         if(dto.getNickname().isEmpty()){
-            dto.setNickname(InetAddress.getLocalHost().getHostAddress());
+            dto.setNickname("익명");
             log.info("nickname was empty so changed : {} ", dto.getNickname());
         }
 

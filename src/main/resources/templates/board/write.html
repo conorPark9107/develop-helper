@@ -63,7 +63,7 @@
         <li th:each="c, stats : ${categoryList}" th:classappend="${stats.index == 0} ? clicked" class="category" onclick="clicked_Category(this)" th:value="${c.category}" th:text="${c.category}"></li>
     </ul>
     <div>
-        <input class="board-nickname-input" id="nickName" type="text" name="nickName" placeholder="닉네임 | 생략시 IP" maxlength="16" />
+        <input class="board-nickname-input" id="nickName" type="text" name="nickName" placeholder="닉네임 | 생략시 익명처리" maxlength="16" />
         <input class="board-title-input" id="title" type="text" name="title" placeholder="제목" />
     </div>
     <p class="title-warning-message">제목을 입력해주세요.</p>

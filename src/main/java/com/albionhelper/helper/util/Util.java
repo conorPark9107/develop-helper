@@ -3,10 +3,12 @@ package com.albionhelper.helper.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import java.net.Inet4Address;
 import java.net.UnknownHostException;
 
+@Component
 public class Util {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
