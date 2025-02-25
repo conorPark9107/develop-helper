@@ -248,10 +248,12 @@ input[type="checkbox"] {
     height: 0.9rem;
     accent-color: var(--btn-bg);
 }
+.flex-stretch{
+    align-items: stretch;
+}
 .tier{
     height: 70px;
-    padding: 15px;
-    margin: 5px 0px 1px 0px;
+    padding: 0px;
     justify-content: flex-start;
     align-items: center;
     border-bottom: 1px solid var(--border);
@@ -267,8 +269,9 @@ input[type="checkbox"] {
     width:40%;
 }
 .rank{
-    padding: 20px;
-    border: 1px solid var(--border);
+    width: 5%;
+    height: 100%;
+    border-right: 1px solid var(--border);
 }
 img{
     cursor: pointer;
