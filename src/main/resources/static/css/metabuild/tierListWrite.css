@@ -273,6 +273,15 @@ input[type="checkbox"] {
     height: 100%;
     border-right: 1px solid var(--border);
 }
+.flex-end{
+    justify-content: flex-end;
+}
+.red{
+    border : 2px solid var(--red);
+}
+.green{
+    border : 2px solid var(--green);
+}
 img{
     cursor: pointer;
 }

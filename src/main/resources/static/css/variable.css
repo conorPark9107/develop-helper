@@ -1,10 +1,10 @@
 :root {
     --black : rgb(36, 32, 32);
     --white : rgb(255, 255, 255);
-    --red : rgb(189, 0, 0);
+    --red : rgba(203, 0, 0, 0.593);
     --blue: rgb(0, 100, 180);
     --lightblue: rgb(0, 141, 253);
-    --green: rgb(45, 180, 0);
+    --green: rgb(35, 139, 0);
     --purple: rgb(129, 0, 180);
     --yellow: rgb(180, 168, 0);
     --alert-opacity: rgba(0, 0, 0, 0.9);
