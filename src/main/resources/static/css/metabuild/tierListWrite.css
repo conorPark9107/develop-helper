@@ -248,14 +248,13 @@ input[type="checkbox"] {
     height: 0.9rem;
     accent-color: var(--btn-bg);
 }
-.flex-stretch{
-    align-items: stretch;
+.align-center{
+    align-items: center;
 }
 .tier{
     height: 70px;
     padding: 0px;
     justify-content: flex-start;
-    align-items: center;
     border-bottom: 1px solid var(--border);
 }
 .tier:hover{
@@ -269,9 +268,12 @@ input[type="checkbox"] {
     width:40%;
 }
 .rank{
-    width: 5%;
     height: 100%;
+    width: 70px;
     border-right: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .flex-end{
     justify-content: flex-end;
