@@ -252,6 +252,7 @@ input[type="checkbox"] {
     align-items: center;
 }
 .tier{
+    display: none;
     height: 70px;
     padding: 0px;
     justify-content: flex-start;
@@ -286,6 +287,16 @@ input[type="checkbox"] {
 }
 img{
     cursor: pointer;
+}
+.show{
+    display: flex;
+}
+.jconfirm.jconfirm-supervan .jconfirm-box {
+    width: 300px;
+}
+.rankArea{
+    height: 100%;
+    width: 100%;
 }
 @media screen and (max-width: 1024px) {
     .flex-column{
