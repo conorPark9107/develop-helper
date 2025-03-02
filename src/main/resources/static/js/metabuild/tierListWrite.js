@@ -1,13 +1,6 @@
 let itemList = null;
 const tier = [
-    ['S', 0], 
-    ['A', 1], 
-    ['B', 2], 
-    ['C', 3], 
-    ['D', 4], 
-    ['E', 5],  
-    ['F', 6],  
-    ['Z', 7], 
+    
 ];
 const maxTier = tier.length;
 let index = 0;
@@ -19,7 +12,15 @@ fetch('/static/jsonData/items.json')
 
 
 
-function addTier(){    
+function addTier(){
+
+    const inputTierData = document.getElementById('tierStr').value;
+    
+    if(inputTierData === '' || inputTierData === undefined){
+        showAlert('티어명을 입력해주세요.');
+        return;
+    }
+
     if(index >= 0 && index < tier.length){
         const id = tier[index][0];
         const tierElement = document.getElementById(id);
