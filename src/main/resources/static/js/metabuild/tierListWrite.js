@@ -2,8 +2,8 @@ let itemList = null;
 const tier = [
     
 ];
-const maxTier = tier.length;
-let index = 0;
+const maxIndex = 11;
+let index = 1;
 
 fetch('/static/jsonData/items.json')
 .then(response => response.json())
@@ -21,12 +21,17 @@ function addTier(){
         return;
     }
 
-    if(index >= 0 && index < tier.length){
-        const id = tier[index][0];
-        const tierElement = document.getElementById(id);
+    if(index >= 1 && index < maxIndex){
+        tier[index] = inputTierData;
+        let textSpan = document.getElementById(`${index}t`);
+        textSpan.innerText = tier[index];
+
+        const tierElement = document.getElementById(index);
         tierElement.className += ' show';
         index++;
-    }else if(index == tier.length){
+    }else if(index == maxIndex){
         showAlert('더 이상 추가할 수 없습니다.')
     }
+
+    document.getElementById('tierStr').value = '';
 }
