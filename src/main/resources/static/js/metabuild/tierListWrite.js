@@ -1,6 +1,17 @@
 let itemList = null;
+const inputData = [];
 const tier = [
-    
+    '',
+    't1',
+    't2',
+    't3',
+    't4',
+    't5',
+    't6',
+    't7',
+    't8',
+    't9',
+    't10'
 ];
 const maxIndex = 11;
 let index = 1;
@@ -9,8 +20,6 @@ fetch('/static/jsonData/items.json')
 .then(response => response.json())
 .then(data => console.log(data))
 .catch(error => console.log(error));
-
-
 
 function addTier(){
 
@@ -22,16 +31,26 @@ function addTier(){
     }
 
     if(index >= 1 && index < maxIndex){
-        tier[index] = inputTierData;
+        inputData[index] = inputTierData;
         let textSpan = document.getElementById(`${index}t`);
-        textSpan.innerText = tier[index];
+        textSpan.innerText = inputData[index];
 
         const tierElement = document.getElementById(index);
         tierElement.className += ' show';
+
+        const parent = textSpan.parentNode;
+        parent.className += ` ${tier[index]}b`;
+        parent.parentNode.className += ` ${tier[index]}`;
+
         index++;
     }else if(index == maxIndex){
         showAlert('더 이상 추가할 수 없습니다.')
     }
 
     document.getElementById('tierStr').value = '';
+}
+
+function changePart(e){
+    document.querySelectorAll('.content-item').forEach(btn => btn.classList.remove('clicked'));
+    e.classList.add('clicked');
 }

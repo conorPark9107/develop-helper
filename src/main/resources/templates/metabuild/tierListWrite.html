@@ -3,7 +3,7 @@
 
 <head>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <!-- jquery alert-->
     <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
@@ -12,232 +12,228 @@
 
     <script type="text/javascript" src="/static/js/util.js"></script>
     <script type="text/javascript" src="/static/js/metabuild/tierListWrite.js"></script>
-    <link rel="stylesheet" href="/static/css/variable.css"/>
-    <link rel="stylesheet" href="/static/css/board/editor.css"/>
-    <link rel="stylesheet" href="/static/css/index.css"/>
-    <link rel="stylesheet" href="/static/css/detail.css"/>
-    <link rel="stylesheet" href="/static/css/loading.css"/>
-    <link rel="stylesheet" href="/static/css/metabuild/tierListWrite.css"/>
+    <link rel="stylesheet" href="/static/css/variable.css" />
+    <link rel="stylesheet" href="/static/css/board/editor.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/detail.css" />
+    <link rel="stylesheet" href="/static/css/loading.css" />
+    <link rel="stylesheet" href="/static/css/metabuild/tierListWrite.css" />
 
-<!--    <script type="text/javascript" src="/js/variable.js"></script>-->
-<!--    <script type="text/javascript" src="/js/util.js"></script>-->
-<!--    <script type="text/javascript" src="/js/calculator/metabuild.js"></script>-->
-<!--    <link rel="stylesheet" href="/css/variable.css"/>-->
-<!--    <link rel="stylesheet" href="/css/board/editor.css"/>-->
-<!--    <link rel="stylesheet" href="/css/index.css"/>-->
-<!--    <link rel="stylesheet" href="/css/detail.css"/>-->
-<!--    <link rel="stylesheet" href="/css/loading.css"/>-->
-<!--    <link rel="stylesheet" href="/css/metabuild/metabuild.css"/>-->
+    <!--    <script type="text/javascript" src="/js/variable.js"></script>-->
+    <!--    <script type="text/javascript" src="/js/util.js"></script>-->
+    <!--    <script type="text/javascript" src="/js/calculator/metabuild.js"></script>-->
+    <!--    <link rel="stylesheet" href="/css/variable.css"/>-->
+    <!--    <link rel="stylesheet" href="/css/board/editor.css"/>-->
+    <!--    <link rel="stylesheet" href="/css/index.css"/>-->
+    <!--    <link rel="stylesheet" href="/css/detail.css"/>-->
+    <!--    <link rel="stylesheet" href="/css/loading.css"/>-->
+    <!--    <link rel="stylesheet" href="/css/metabuild/metabuild.css"/>-->
 
     <meta charset="UTF-8">
     <title>알비온 GG - 티어 리스트 작성 ⚔</title>
 </head>
 
 <body data-theme="light-mode">
-<script type="text/javascript" src="/jsMin/toggle.js"></script>
-<div class="image-maindiv">
-    <div th:replace="~{header :: header}"></div>
-    <div>
-        <div class="back-div">
-            <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
-        </div>
-        <div class="container">
-            <div class="flex-column">
-                <h2>🥇티어 리스트 작성🥇</h2>
+    <script type="text/javascript" src="/jsMin/toggle.js"></script>
+    <div class="image-maindiv">
+        <div th:replace="~{header :: header}"></div>
+        <div>
+            <div class="back-div">
+                <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
             </div>
-            <div class="flex-column">
-                <div class="flex-row margin-b gap">
-                    <div class="flex-row align-item-center background">
-                        <div class="title-div">
-                            <span class="title">착용부위 선택</span>
-                        </div>
-                        <div class="content-div">
-                            <input type="radio" id="weapon" name="range" value="7" checked/>
-                            <label for="weapon">무기</label>
-                            <input type="radio" id="armor" name="range" value="1"/>
-                            <label for="armor">방어구</label>
-                            <input type="radio" id="cape" name="range" value="2"/>
-                            <label for="cape">망토</label>
-                            <input type="radio" id="food" name="range" value="3"/>
-                            <label for="food">푸드</label>
-                            <input type="radio" id="mount" name="range" value="3"/>
-                            <label for="mount">탈것</label>
-                        </div>
-                    </div>
-                    <div class="flex-row align-item-center background">
-                        <div class="title-div">
-                            <span class="title">카테고리 선택</span>
-                        </div>
-                        <div class="content-div">
-                            <div class="grid">
-                                <div>
-                                    <input type="radio" id="all" name="situation" value="mist" checked/>
-                                    <label for="all">전체</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="mist" name="situation" value="mist"/>
-                                    <label for="mist">미스트</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="corrupted" name="situation" value="mist"/>
-                                    <label for="corrupted">오던</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="small" name="situation" value="small"/>
-                                    <label for="small">스몰</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="middle" name="situation" value="middle"/>
-                                    <label for="middle">미들</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="zvz" name="situation" value="zvz"/>
-                                    <label for="zvz">ZvZ</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="gank" name="situation" value="gank"/>
-                                    <label for="gank">갱킹</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="gathering" name="situation" value="gathering"/>
-                                    <label for="gathering">채집</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="transport" name="situation" value="transport"/>
-                                    <label for="transport">운송</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="soloPVE" name="situation" value="soloPVE"/>
-                                    <label for="soloPVE">솔로 페임</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="greenPVE" name="situation" value="greenPVE"/>
-                                    <label for="greenPVE">PvE(녹던)</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="bluePVE" name="situation" value="bluePVE"/>
-                                    <label for="bluePVE">PvE(파던)</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="staticPVE" name="situation" value="staticPVE"/>
-                                    <label for="staticPVE">PvE(스태틱)</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="worldBossPVE" name="situation" value="worldBossPVE"/>
-                                    <label for="worldBossPVE">PvE(월드보스)</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="container">
+                <div class="flex-column">
+                    <h2>🥇티어 리스트 작성🥇</h2>
                 </div>
-
-                <div class="flex-column gap">
-                    <div class="flex-row background gap space-between margin-b">
-                        <div class="input-div">
-                            <input type="text" id="writer" placeholder="작성자(생략시 IP)">
-                            <input type="text" id="input" placeholder="게시글 제목을 입력하세요.">
-                        </div>
-                        <input type="text" id="tierStr" placeholder="티어명 ex) S티어, A티어 ..등" />
-                        <button class="btn" onclick="addTier()">티어 추가</button>
-                    </div>
-                    <div class="flex-column">
-                        <div class="flex-row tier background align-center space-between" id="1">
-                            <div class="rank">
-                                <span class="rankText" id="1t">S</span>
+                <div class="flex-column">
+                    <div class="flex-row margin-b gap">
+                        <div class="flex-row align-item-center background padding">
+                            <div class="title-div">
+                                <span class="title">카테고리 선택</span>
                             </div>
-                            <div class="rankArea">
-
-                            </div>                            
-                        </div>
-                        <div class="flex-row tier background align-center space-between" id="2">
-                            <div class="rank">
-                                <span class="rankText" id="2t">A</span>
-                            </div>
-                            <div class="rankArea">
-
-                            </div>
-                        </div>
-                        <div class="flex-row tier background align-center space-between" id="3">
-                            <div class="rank">
-                                <span class="rankText" id="3t">B</span>
-                            </div>
-                            <div class="rankArea">
-
-                            </div>
-                        </div>
-                        <div class="flex-row tier background align-center space-between" id="4">
-                            <div class="rank">
-                                <span class="rankText" id="4t">C</span>
-                            </div>
-                            <div class="rankArea">
-
-                            </div>
-                        </div>
-                        <div class="flex-row tier background align-center space-between" id="5">
-                            <div class="rank">
-                                <span class="rankText" id="5t">D</span>
-                            </div>
-                            <div class="rankArea">
-
-                            </div>
-                        </div>
-                        <div class="flex-row tier background align-center space-between" id="6">
-                            <div class="rank">
-                                <span class="rankText" id="6t">E</span>
-                            </div>
-                            <div class="rankArea">
-
-                            </div>
-                        </div>
-                        <div class="flex-row tier background align-center space-between" id="7">
-                            <div class="rank">
-                                <span class="rankText" id="7t">F</span>
-                            </div>
-                            <div class="rankArea">
-
-                            </div>
-                        </div>
-                        <div class="flex-row tier background align-center space-between" id="8">
-                            <div class="rank">
-                                <span class="rankText" id="8t">Z</span>
-                            </div>
-                            <div class="rankArea">
-
-                            </div>
-                        </div>
-                        <div class="flex-row tier background align-center space-between" id="9">
-                            <div class="rank">
-                                <span class="rankText" id="9t">Z</span>
-                            </div>
-                            <div class="rankArea">
-
-                            </div>
-                        </div>
-                        <div class="flex-row tier background align-center space-between" id="10">
-                            <div class="rank">
-                                <span class="rankText" id="10t">Z</span>
-                            </div>
-                            <div class="rankArea">
-
+                            <div class="content-div">
+                                <div class="grid">
+                                    <div>
+                                        <input type="radio" id="all" name="situation" value="mist" checked />
+                                        <label for="all">전체</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="mist" name="situation" value="mist" />
+                                        <label for="mist">미스트</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="corrupted" name="situation" value="mist" />
+                                        <label for="corrupted">오던</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="small" name="situation" value="small" />
+                                        <label for="small">스몰</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="middle" name="situation" value="middle" />
+                                        <label for="middle">미들</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="zvz" name="situation" value="zvz" />
+                                        <label for="zvz">ZvZ</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="gank" name="situation" value="gank" />
+                                        <label for="gank">갱킹</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="gathering" name="situation" value="gathering" />
+                                        <label for="gathering">채집</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="transport" name="situation" value="transport" />
+                                        <label for="transport">운송</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="soloPVE" name="situation" value="soloPVE" />
+                                        <label for="soloPVE">솔로 페임</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="greenPVE" name="situation" value="greenPVE" />
+                                        <label for="greenPVE">PvE(녹던)</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="bluePVE" name="situation" value="bluePVE" />
+                                        <label for="bluePVE">PvE(파던)</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="staticPVE" name="situation" value="staticPVE" />
+                                        <label for="staticPVE">PvE(스태틱)</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="worldBossPVE" name="situation" value="worldBossPVE" />
+                                        <label for="worldBossPVE">PvE(월드보스)</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                    <div class="flex-column background">
-                        
+
+                    <div class="flex-column gap margin-b">
+                        <div class="flex-row background padding gap space-between margin-b">
+                            <div class="input-div">
+                                <input type="text" id="writer" placeholder="작성자(생략시 익명)">
+                                <input type="text" id="input" placeholder="게시글 제목을 입력하세요.">
+                            </div>
+                            <input type="text" id="tierStr" placeholder="티어명 ex) S티어, A티어 ..등" />
+                            <button class="btn" onclick="addTier()">티어 추가</button>
+                            <button class="btn red" onclick="removeTier()">티어 삭제</button>
+                        </div>
+                        <div class="flex-row gap space-between">
+                            <div class="flex-column gap  w-6">
+                                <div class="flex-row tier background align-center space-between padding" id="1">
+                                    <div class="rank">
+                                        <span class="rankText" id="1t">S</span>
+                                    </div>
+                                    <div class="rankArea">
+
+                                    </div>
+                                </div>
+                                <div class="flex-row tier background align-center space-between" id="2">
+                                    <div class="rank">
+                                        <span class="rankText" id="2t">A</span>
+                                    </div>
+                                    <div class="rankArea">
+
+                                    </div>
+                                </div>
+                                <div class="flex-row tier background align-center space-between" id="3">
+                                    <div class="rank">
+                                        <span class="rankText" id="3t">B</span>
+                                    </div>
+                                    <div class="rankArea">
+
+                                    </div>
+                                </div>
+                                <div class="flex-row tier background align-center space-between" id="4">
+                                    <div class="rank">
+                                        <span class="rankText" id="4t">C</span>
+                                    </div>
+                                    <div class="rankArea">
+
+                                    </div>
+                                </div>
+                                <div class="flex-row tier background align-center space-between" id="5">
+                                    <div class="rank">
+                                        <span class="rankText" id="5t">D</span>
+                                    </div>
+                                    <div class="rankArea">
+
+                                    </div>
+                                </div>
+                                <div class="flex-row tier background align-center space-between" id="6">
+                                    <div class="rank">
+                                        <span class="rankText" id="6t">E</span>
+                                    </div>
+                                    <div class="rankArea">
+
+                                    </div>
+                                </div>
+                                <div class="flex-row tier background align-center space-between" id="7">
+                                    <div class="rank">
+                                        <span class="rankText" id="7t">F</span>
+                                    </div>
+                                    <div class="rankArea">
+
+                                    </div>
+                                </div>
+                                <div class="flex-row tier background align-center space-between" id="8">
+                                    <div class="rank">
+                                        <span class="rankText" id="8t">Z</span>
+                                    </div>
+                                    <div class="rankArea">
+
+                                    </div>
+                                </div>
+                                <div class="flex-row tier background align-center space-between" id="9">
+                                    <div class="rank">
+                                        <span class="rankText" id="9t">Z</span>
+                                    </div>
+                                    <div class="rankArea">
+
+                                    </div>
+                                </div>
+                                <div class="flex-row tier background align-center space-between" id="10">
+                                    <div class="rank">
+                                        <span class="rankText" id="10t">Z</span>
+                                    </div>
+                                    <div class="rankArea">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex-column w-4 background padding-sm">
+                                <div class="content-div">
+                                    <button class="content-item hover" onclick="changePart(this)">무기</button>
+                                    <button class="content-item hover" onclick="changePart(this)">투구</button>
+                                    <button class="content-item hover" onclick="changePart(this)">갑옷</button>
+                                    <button class="content-item hover" onclick="changePart(this)">신발</button>
+                                    <button class="content-item hover" onclick="changePart(this)">망토</button>
+                                    <button class="content-item hover" onclick="changePart(this)">음식</button>
+                                    <button class="content-item hover" onclick="changePart(this)">탈것</button>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
                     <div class="flex-row background flex-end gap">
-                        <button class="btn green">작성 완료</button>
-                        <button class="btn red">취소</button>
+                        <button class="btn">작성 완료</button>
+                        <button class="btn">취소</button>
                     </div>
                 </div>
 
-            </div>    
+            </div>
 
         </div> <!-- end of container -->
     </div>
-    
+
 
 
     <div id="blackArea">
@@ -252,7 +248,8 @@
             <h1>정보 요청중..</h1>
         </div>
     </div>
-</div>
+    </div>
 </body>
 
 </html>
+

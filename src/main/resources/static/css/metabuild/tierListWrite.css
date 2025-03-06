@@ -1,6 +1,7 @@
 .image-maindiv{
     position: relative;
-    background-image: url(/static/image/background-image-calculator.jpeg);
+    /* background-image: url(/image/background-image-hideout.jpeg); */
+    background-image: url(/static/image/background-image-hideout.jpeg);
     height: auto;
     min-height: 100%;
     background-repeat: repeat;
@@ -16,6 +17,9 @@ p{
     max-width: 1300px;
     margin: 10px auto 5vh;
     align-items: normal;
+}
+.padding{
+    padding: 15px;
 }
 .gap{
     gap: 10px;
@@ -38,7 +42,6 @@ p{
     align-items: center;
 }
 .background{
-    padding: 15px;
     background-color: var(--sub-color-a);
     border-radius: 4px;
     box-shadow: 0px 0px 10px 0px #000000;
@@ -60,7 +63,26 @@ label{
     font-weight: 500;
 }
 .content-div{
-    display:inline;
+    text-align: left;
+    display:flex;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+}
+.content-item{
+    cursor: pointer;
+    background: var(--btn-bg);
+    font-weight: 600;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--sub-color);
+    width: 15%;
+    padding: 8px 16px;
+
+}
+.clicked{
+    background-color: var(--btn-hover);
+    color: var(--main-color);
 }
 .menu-message p{
     margin: 0;
@@ -85,10 +107,6 @@ label{
 }
 .title{
     font-size: 14px;
-}
-.content-div{
-    text-align: left;
-    width:100%;
 }
 .left{
     font-size: 14px;
@@ -256,7 +274,9 @@ input[type="checkbox"] {
     height: 70px;
     padding: 0px;
     justify-content: flex-start;
-    border-bottom: 1px solid var(--border);
+}
+.padding-sm{
+    padding: 10px 5px;
 }
 .tier:hover{
     opacity: 0.8;
@@ -271,7 +291,6 @@ input[type="checkbox"] {
 .rank{
     height: 100%;
     width: 70px;
-    border-right: 1px solid var(--border);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -279,12 +298,7 @@ input[type="checkbox"] {
 .flex-end{
     justify-content: flex-end;
 }
-.red{
-    border : 2px solid var(--red);
-}
-.green{
-    border : 2px solid var(--green);
-}
+
 img{
     cursor: pointer;
 }
@@ -298,6 +312,84 @@ img{
     height: 100%;
     width: 100%;
 }
+.w-7{
+    width:70%;
+}
+.w-6{
+    width:60%;
+}
+.w-3{
+    width:30%;
+}
+.w-4{
+    width:40%;
+}
+
+.t1b{
+    background-color: var(--white);
+}
+.t2b{
+    background-color: var(--yellow);
+}
+.t3b{
+    background-color: var(--orange);
+}
+.t4b{
+    background-color: var(--red);
+}
+.t5b{
+    background-color: var(--green);
+}
+.t6b{
+    background-color: var(--blue);
+}
+.t7b{
+    background-color: var(--purple);
+}
+.t8b{
+    background-color: var(--lightgray);
+}
+.t9b{
+    background-color: var(--gray);
+}
+.t10b{
+    background-color: var(--black);
+}
+
+.t1{
+    border : 2px solid var(--white);   
+}
+.t2{
+    border : 2px solid var(--yellow);
+}
+.t3{
+    border : 2px solid var(--orange);
+}
+.t4{
+    border : 2px solid var(--red);
+}
+.t5{
+    border : 2px solid var(--green);
+}
+.t6{
+    border : 2px solid var(--blue);
+}
+.t7{
+    border : 2px solid var(--purple);
+}
+.t8{
+    border : 2px solid var(--lightgray);
+}
+.t9{
+    border : 2px solid var(--gray);
+}
+.t10{
+    border : 2px solid var(--black);
+}
+.wearPart{
+    width:20%;
+}
+
 @media screen and (max-width: 1024px) {
     .flex-column{
         padding: 10px;

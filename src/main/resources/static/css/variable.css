@@ -1,15 +1,18 @@
 :root {
     --black : rgb(36, 32, 32);
-    --white : rgb(255, 255, 255);
-    --red : rgba(203, 0, 0, 0.593);
-    --blue: rgb(0, 100, 180);
+    --white : #8D8D8D;
+    --red : #53231F;
+    --blue: #2D4452;
     --lightblue: rgb(0, 141, 253);
-    --green: rgb(35, 139, 0);
-    --purple: rgb(129, 0, 180);
-    --yellow: rgb(180, 168, 0);
+    --green: #334127;
+    --purple: rgb(91, 0, 126);
+    --yellow: #8C7734;
+    --orange: #7D4C28;
     --alert-opacity: rgba(0, 0, 0, 0.9);
     --bg-text: #949494;
     --hover: #2d2d2d;
+    --lightgray: rgb(104, 104, 104);
+    --gray: rgb(32, 32, 32);
 }
 
 body[data-theme='light-mode'] {
