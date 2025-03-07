@@ -1,4 +1,28 @@
-let itemList = null;
+let itemList = {};
+let keys = ["weapon", "helmet", "armor", "shoes", "cape", "potion", "food", "mount"];
+function loadItemList(){
+    fetch("/static/jsonData/category.json")
+    .then(response => response.json())
+    .then(data => {
+        itemList = data;
+        keys.forEach(category => {
+            let items = itemList;
+            const div = document.getElementsByClassName('itemListDiv')[0];
+            
+            items[category].forEach(e => {
+                const img = document.createElement('img');
+                img.src = `https://render.albiononline.com/v1/item/${e}.png`;
+                img.className += category;
+                div.appendChild(img);
+            });
+        });
+    })
+    .catch(error => {
+        console.log(`에러 : ${error}`);
+    });
+}
+window.addEventListener("DOMContentLoaded", loadItemList);
+
 const inputData = [];
 const tier = [
     '',
@@ -15,11 +39,6 @@ const tier = [
 ];
 const maxIndex = 11;
 let index = 1;
-
-fetch('/static/jsonData/items.json')
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.log(error));
 
 function addTier(){
 
@@ -43,7 +62,7 @@ function addTier(){
         parent.parentNode.className += ` ${tier[index]}`;
 
         index++;
-    }else if(index == maxIndex){
+    }else if(index == maxIndex){i
         showAlert('더 이상 추가할 수 없습니다.')
     }
 
@@ -53,4 +72,37 @@ function addTier(){
 function changePart(e){
     document.querySelectorAll('.content-item').forEach(btn => btn.classList.remove('clicked'));
     e.classList.add('clicked');
+}
+
+// 특정 아이템 카테고리를 클릭했을 때
+function changePart(e){
+    const category = e.innerText;
+    let obj;
+    switch (category) {
+        case '무기':
+            
+            break;
+        case '투구':
+        
+        break;
+        case '갑옷':
+            
+            break;
+        case '신발':
+        
+        break;
+        case '망토':
+        
+        break;
+        case '포션':
+            
+            break;
+        case '음식':
+        
+        break;
+        case '탈것':
+            
+        break;
+    }
+
 }

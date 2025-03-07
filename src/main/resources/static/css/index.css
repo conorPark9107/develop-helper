@@ -195,12 +195,12 @@ legend {
     width: 6px;
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--sub-color-a);
-    height:200px;
+    background: var(--border);
+    height: 100px;
     border-radius: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: var(--table-hover);
+    background: var(--black);
 }
 .switch{
     font-size : 15px;

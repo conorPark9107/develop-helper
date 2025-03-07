@@ -62,6 +62,10 @@ label{
     font-size: 14px;
     font-weight: 500;
 }
+.categoryDiv{
+    max-height: 450px;
+    height: 450px;
+}
 .content-div{
     text-align: left;
     display:flex;
@@ -74,15 +78,36 @@ label{
     background: var(--btn-bg);
     font-weight: 600;
     border: 1px solid var(--border);
-    border-radius: 4px;
     color: var(--sub-color);
     width: 15%;
-    padding: 8px 16px;
-
+    padding: 8px 14px;
+}
+.content-item:first-child{
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.content-item:last-child{
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.hide{
+    display:none;
 }
 .clicked{
     background-color: var(--btn-hover);
     color: var(--main-color);
+}
+.itemListDiv{
+    padding: 10px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+.itemListDiv img{
+    width: 60px;
+    height: 60px;
+}
+.itemListDiv img:hover{
+    opacity: 0.7;
 }
 .menu-message p{
     margin: 0;
