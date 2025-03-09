@@ -12,7 +12,7 @@ function loadItemList(){
             items[category].forEach(e => {
                 const img = document.createElement('img');
                 img.src = `https://render.albiononline.com/v1/item/${e}.png`;
-                img.className += category;
+                img.classList.add('img', category);
                 div.appendChild(img);
             });
         });
@@ -55,14 +55,14 @@ function addTier(){
         textSpan.innerText = inputData[index];
 
         const tierElement = document.getElementById(index);
-        tierElement.className += ' show';
+        tierElement.classList.add('show');
 
         const parent = textSpan.parentNode;
-        parent.className += ` ${tier[index]}b`;
-        parent.parentNode.className += ` ${tier[index]}`;
+        parent.classList.add(`${tier[index]}b`);
+        parent.parentNode.classList.add(`${tier[index]}`);
 
         index++;
-    }else if(index == maxIndex){i
+    }else if(index == maxIndex){
         showAlert('더 이상 추가할 수 없습니다.')
     }
 
@@ -76,33 +76,45 @@ function changePart(e){
 
 // 특정 아이템 카테고리를 클릭했을 때
 function changePart(e){
-    const category = e.innerText;
+    let category = e.innerText;
+    const itemImages = document.getElementsByClassName('img');
+    
     let obj;
     switch (category) {
+        case '전체':
+            category = 'img';
+            break;
         case '무기':
-            
+            category = 'weapon';
             break;
         case '투구':
-        
+            category = 'helmet';
         break;
         case '갑옷':
-            
+            category = 'armor';
             break;
         case '신발':
-        
+            category = 'shoes';
         break;
         case '망토':
-        
+            category = 'cape';
         break;
         case '포션':
-            
+            category = 'potion';
             break;
         case '음식':
-        
+            category = 'food';
         break;
         case '탈것':
-            
+            category = 'mount';
         break;
     }
-
+    
+    Array.from(itemImages).forEach(img => {
+        if(img.classList.contains(category)){
+            img.classList.remove('hide');
+        }else{
+            img.classList.add('hide');
+        }
+    });
 }
