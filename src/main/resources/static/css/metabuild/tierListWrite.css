@@ -334,6 +334,7 @@ img{
     width: 300px;
 }
 .rankArea{
+    display: flex;
     height: 100%;
     width: 100%;
 }
@@ -343,13 +344,18 @@ img{
 .w-6{
     width:60%;
 }
+.w-5{
+    width:50%;
+}
 .w-3{
     width:30%;
 }
 .w-4{
     width:40%;
 }
-
+.description{
+    text-align: left;
+}
 .t1b{
     background-color: var(--white);
 }
@@ -414,7 +420,11 @@ img{
 .wearPart{
     width:20%;
 }
-
+.rankArea img{
+    padding: 0px 5px;
+    width: 70px;
+    height: 70px;
+}
 @media screen and (max-width: 1024px) {
     .flex-column{
         padding: 10px;
