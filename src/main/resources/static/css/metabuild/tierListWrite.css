@@ -146,7 +146,7 @@ input[type=text]::placeholder{
     opacity: 0.3;
 }
 input[type=text]{
-    color: var(--border);
+    color: var(--white);
     width: 20%;
     padding: 8px 16px;
     background-color: var(--sub-color-a);
@@ -334,6 +334,7 @@ img{
     width: 300px;
 }
 .rankArea{
+    padding-left: 20px;
     display: flex;
     height: 100%;
     width: 100%;
@@ -421,9 +422,19 @@ img{
     width:20%;
 }
 .rankArea img{
-    padding: 0px 5px;
     width: 70px;
     height: 70px;
+}
+.img-placeholder {
+    width: 50px; 
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.2); /* 반투명 박스로 자리 차지 */
+    border: 1px dashed var(--border); 
+    display: inline-block;
+    margin: 5px;
+}
+.dragging{
+    cursor: url('/static/image/cursor.png'), auto;
 }
 @media screen and (max-width: 1024px) {
     .flex-column{

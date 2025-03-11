@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const tierLists = document.querySelectorAll('.rankArea');
         const itemDiv = document.querySelector('.itemListDiv');
 
+        let placeholder = document.createElement('div');
+        placeholder.classList.add('img-placeholder');
+
+
         draggables.forEach(draggable => {
             draggable.addEventListener("dragstart", e => {
                 e.target.classList.add("dragging");
@@ -34,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             draggable.addEventListener("dragend", e => {
                 e.target.classList.remove("dragging");
                 e.target.classList.remove("hide");
+                placeholder.remove();
             });
         });
 
@@ -53,57 +58,52 @@ document.addEventListener("DOMContentLoaded", () => {
         tierLists.forEach(tier => {
             tier.addEventListener("dragover", e => {
                 e.preventDefault();
-                const afterElement = getDragAfterElement(tier, e.clientY);
+                const afterElement = getDragAfterElement(tier, e.clientX);
                 const draggedItem = document.querySelector(".dragging");
 
                 if (draggedItem) {
                     tier.classList.add("dragover-active");
                     if (afterElement) {
-                        tier.insertBefore(draggedItem, afterElement);
-                    } else {
-                        tier.appendChild(draggedItem);
+                        tier.insertBefore(placeholder, afterElement);
+                    } else if (!afterElement && tier.lastChild !== placeholder) {
+                        tier.appendChild(placeholder);
                     }
                 }
             });
 
             tier.addEventListener("dragleave", () => {
                 tier.classList.remove("dragover-active");
+                placeholder.remove();
             });
 
             tier.addEventListener("drop", e => {
                 e.preventDefault();
                 const draggedItem = document.querySelector(".dragging");
-                const afterElement = getDragAfterElement(tier, e.clientY);
-                
+
                 if (draggedItem) {
-                    tier.classList.remove("dragover-active");
-                    if (afterElement) {
-                        tier.insertBefore(draggedItem, afterElement);
-                    } else {
-                        tier.appendChild(draggedItem);
-                    }
+                    placeholder.replaceWith(draggedItem); // placeholder를 드래그한 이미지로 교체
                 }
             });
         });
     }
 
-    function getDragAfterElement(container, y) {
+    function getDragAfterElement(container, x) {
         const draggableElements = [...container.querySelectorAll(".img:not(.dragging)")];
-
-        let closest = null;
-        let closestOffset = Number.POSITIVE_INFINITY;
-
+    
+        let closest = { offset: Number.POSITIVE_INFINITY, element: null };
+        const threshold = 40; // 작은 움직임이면 변화 없음
+    
         draggableElements.forEach(child => {
             const box = child.getBoundingClientRect();
-            const offset = y - (box.top + box.height / 2);
-
-            if (offset < 0 && offset > closestOffset) {
-                closestOffset = offset;
-                closest = child;
+            const centerX = box.left + (box.width / 2);
+            const offset = centerX - x; // 마우스 위치와 중앙값 비교
+    
+            if (Math.abs(offset) > threshold && offset > 0 && offset < closest.offset) {
+                closest = { offset: offset, element: child };
             }
         });
-
-        return closest;
+    
+        return closest.element;
     }
 
     window.addEventListener("DOMContentLoaded", loadItemList);
@@ -127,6 +127,7 @@ const tier = [
 const maxIndex = 11;
 let index = 1;
 
+// 티어 추가 버튼 클릭시.
 function addTier() {
 
     const inputTierData = document.getElementById('tierStr').value;
@@ -154,11 +155,6 @@ function addTier() {
     }
 
     document.getElementById('tierStr').value = '';
-}
-
-function changePart(e) {
-    document.querySelectorAll('.content-item').forEach(btn => btn.classList.remove('clicked'));
-    e.classList.add('clicked');
 }
 
 // 특정 아이템 카테고리를 클릭했을 때
@@ -206,6 +202,18 @@ function changePart(e) {
     });
 }
 
+// 티어 삭제 버튼 클릭시
+function removeTier(){
+    index = Math.max(1, index - 1);
+    const tier = document.getElementById(index);
+    const imgArea = document.querySelectorAll('.itemListDiv')[0];
+
+    tier.classList.remove('show');
+    const removedImges = tier.children[1].querySelectorAll('img');
+    removedImges.forEach(img => {
+        imgArea.prepend(img);
+    });
+}
 
 
 
