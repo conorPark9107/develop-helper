@@ -1,7 +1,7 @@
 .image-maindiv{
     position: relative;
-    /* background-image: url(/image/background-image-hideout.jpeg); */
-    background-image: url(/static/image/background-image-hideout.jpeg);
+     background-image: url(/image/background-image-hideout.jpeg);
+    /* background-image: url(/static/image/background-image-hideout.jpeg); */
     height: auto;
     min-height: 100%;
     background-repeat: repeat;
@@ -142,7 +142,7 @@ label{
     width: 100%;
 }
 input[type=text]::placeholder{
-    color: var(--border);
+    color: var(--white);
     opacity: 0.3;
 }
 input[type=text]{
@@ -432,9 +432,6 @@ img{
     border: 1px dashed var(--border); 
     display: inline-block;
     margin: 5px;
-}
-.dragging{
-    cursor: url('/static/image/cursor.png'), auto;
 }
 @media screen and (max-width: 1024px) {
     .flex-column{

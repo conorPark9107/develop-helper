@@ -10,24 +10,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
-    <script type="text/javascript" src="/static/js/util.js"></script>
+    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
     <script type="text/javascript" src="/static/js/metabuild/tierListWrite.js"></script>
     <link rel="stylesheet" href="/static/css/variable.css" />
     <link rel="stylesheet" href="/static/css/board/editor.css" />
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/detail.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
-    <link rel="stylesheet" href="/static/css/metabuild/tierListWrite.css" />
+    <link rel="stylesheet" href="/static/css/metabuild/tierListWrite.css" /> -->
 
-    <!--    <script type="text/javascript" src="/js/variable.js"></script>-->
-    <!--    <script type="text/javascript" src="/js/util.js"></script>-->
-    <!--    <script type="text/javascript" src="/js/calculator/metabuild.js"></script>-->
-    <!--    <link rel="stylesheet" href="/css/variable.css"/>-->
-    <!--    <link rel="stylesheet" href="/css/board/editor.css"/>-->
-    <!--    <link rel="stylesheet" href="/css/index.css"/>-->
-    <!--    <link rel="stylesheet" href="/css/detail.css"/>-->
-    <!--    <link rel="stylesheet" href="/css/loading.css"/>-->
-    <!--    <link rel="stylesheet" href="/css/metabuild/metabuild.css"/>-->
+    <script type="text/javascript" src="/js/util.js"></script>
+    <script type="text/javascript" src="/js/metabuild/tierListWrite.js"></script>
+    <link rel="stylesheet" href="/css/variable.css" />
+    <link rel="stylesheet" href="/css/board/editor.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/detail.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
+    <link rel="stylesheet" href="/css/metabuild/tierListWrite.css" />
 
     <meta charset="UTF-8">
     <title>알비온 GG - 티어 리스트 작성 ⚔</title>
@@ -54,63 +53,63 @@
                             <div class="content-div">
                                 <div class="grid">
                                     <div>
-                                        <input type="radio" id="all" name="situation" value="mist" checked />
+                                        <input type="radio" id="all" name="category" value="전체" checked />
                                         <label for="all">전체</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="mist" name="situation" value="mist" />
+                                        <input type="radio" id="mist" name="category" value="미스트" />
                                         <label for="mist">미스트</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="corrupted" name="situation" value="mist" />
+                                        <input type="radio" id="corrupted" name="category" value="오던" />
                                         <label for="corrupted">오던</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="small" name="situation" value="small" />
+                                        <input type="radio" id="small" name="category" value="스몰스케일" />
                                         <label for="small">스몰</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="middle" name="situation" value="middle" />
+                                        <input type="radio" id="middle" name="category" value="미들스케일" />
                                         <label for="middle">미들</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="zvz" name="situation" value="zvz" />
+                                        <input type="radio" id="zvz" name="category" value="ZvZ" />
                                         <label for="zvz">ZvZ</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="gank" name="situation" value="gank" />
+                                        <input type="radio" id="gank" name="category" value="갱킹" />
                                         <label for="gank">갱킹</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="gathering" name="situation" value="gathering" />
+                                        <input type="radio" id="gathering" name="category" value="채집" />
                                         <label for="gathering">채집</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="transport" name="situation" value="transport" />
+                                        <input type="radio" id="transport" name="category" value="운송" />
                                         <label for="transport">운송</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="soloPVE" name="situation" value="soloPVE" />
+                                        <input type="radio" id="soloPVE" name="category" value="솔로 페임" />
                                         <label for="soloPVE">솔로 페임</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="greenPVE" name="situation" value="greenPVE" />
+                                        <input type="radio" id="greenPVE" name="category" value="녹던" />
                                         <label for="greenPVE">PvE(녹던)</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="bluePVE" name="situation" value="bluePVE" />
+                                        <input type="radio" id="bluePVE" name="category" value="파던" />
                                         <label for="bluePVE">PvE(파던)</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="staticPVE" name="situation" value="staticPVE" />
+                                        <input type="radio" id="staticPVE" name="category" value="스태틱던전" />
                                         <label for="staticPVE">PvE(스태틱)</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="worldBossPVE" name="situation" value="worldBossPVE" />
+                                        <input type="radio" id="worldBossPVE" name="category" value="worldBossPVE" />
                                         <label for="worldBossPVE">PvE(월드보스)</label>
                                     </div>
                                     <div>
-                                        <input type="radio" id="battleMount" name="situation" value="battleMount" />
+                                        <input type="radio" id="battleMount" name="category" value="battleMount" />
                                         <label for="battleMount">베틀마운트</label>
                                     </div>
                                 </div>
@@ -237,8 +236,8 @@
                     </div>
 
                     <div class="flex-row background flex-end gap padding">
-                        <button class="btn">작성 완료</button>
-                        <button class="btn">취소</button>
+                        <button class="btn" onclick="submit()">작성 완료</button>
+                        <button class="btn" onclick="javascript:history.back()">취소</button>
                     </div>
                 </div>
 
@@ -265,4 +264,3 @@
 </body>
 
 </html>
-

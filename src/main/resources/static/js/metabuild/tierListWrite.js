@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     function loadItemList() {
-        fetch("/static/jsonData/category.json")
+    //    fetch("/static/jsonData/category.json")
+        fetch("/jsonData/category.json")
             .then(response => response.json())
             .then(data => {
                 const itemListDiv = document.querySelector('.itemListDiv');
@@ -213,6 +214,69 @@ function removeTier(){
     removedImges.forEach(img => {
         imgArea.prepend(img);
     });
+}
+
+function submit(){
+    const tierList = [...document.querySelectorAll('.rankArea')];
+    const writer = document.getElementById('writer');
+    const title = document.getElementById('input');
+    const category = document.querySelector('input[name="category"]:checked').value;
+
+    if(title.value === ''){
+        title.focus();
+        showAlert('게시글 제목을 입력해주세요.');
+        return;
+    }else if (tierList.filter(e => e.parentElement.classList.contains('show')).length <= 0){
+        showAlert('하나 이상의 티어가 존재해야 합니다. 티어를 추가해주세요.');
+        return;
+    }
+
+    const userId = writer.value === ''? '익명' : writer.value;
+
+    let t1 = [...tierList[0].querySelectorAll('.img')].map(img => img.id).join(" ");
+    let t2 = [...tierList[1].querySelectorAll('.img')].map(img => img.id).join(" ");
+    let t3 = [...tierList[2].querySelectorAll('.img')].map(img => img.id).join(" ");
+    let t4 = [...tierList[3].querySelectorAll('.img')].map(img => img.id).join(" ");
+    let t5 = [...tierList[4].querySelectorAll('.img')].map(img => img.id).join(" ");
+    let t6 = [...tierList[5].querySelectorAll('.img')].map(img => img.id).join(" ");
+    let t7 = [...tierList[6].querySelectorAll('.img')].map(img => img.id).join(" ");
+    let t8 = [...tierList[7].querySelectorAll('.img')].map(img => img.id).join(" ");
+    let t9 = [...tierList[8].querySelectorAll('.img')].map(img => img.id).join(" ");
+    let t10 = [...tierList[9].querySelectorAll('.img')].map(img => img.id).join(" ");
+
+    fetch("/tierList/write", {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify({
+            userId : userId,
+            title : title.value,
+            category : category,
+            t1 : t1,
+            t2 : t2,
+            t3 : t3,
+            t4 : t4,
+            t5 : t5,
+            t6 : t6,
+            t7 : t7,
+            t8 : t8,
+            t9 : t9,
+            t10 : t10,
+        })
+    })
+    .then(response => response.text())
+    .then(data => {
+        showAlert('작성 완료하였습니다.');
+        console.log('Success: ', data);
+    })
+    .catch(error => {
+        showAlert('알수없는 에러 발생하였습니다. 관리자 문의에 문의 남겨주세요.');
+        console.log('Error : ', error)
+    });
+    
+
+
 }
 
 
