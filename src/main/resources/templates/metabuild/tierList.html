@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
-<!--    <script type="text/javascript" src="/js/variable.js"></script>-->
-<!--    <script type="text/javascript" src="/js/util.js"></script>-->
-<!--    <script type="text/javascript" src="/js/metabuild/tierList.js"></script>-->
-<!--    <link rel="stylesheet" href="/css/variable.css"/>-->
-<!--    <link rel="stylesheet" href="/css/board/editor.css"/>-->
-<!--    <link rel="stylesheet" href="/css/index.css"/>-->
-<!--    <link rel="stylesheet" href="/css/detail.css"/>-->
-<!--    <link rel="stylesheet" href="/css/loading.css"/>-->
-<!--    <link rel="stylesheet" href="/css/metabuild/tierList.css"/>-->
+   <!-- <script type="text/javascript" src="/static/js/variable.js"></script>
+   <script type="text/javascript" src="/static/js/util.js"></script>
+   <script type="text/javascript" src="/static/js/metabuild/tierList.js"></script>
+   <link rel="stylesheet" href="/static/css/variable.css"/>
+   <link rel="stylesheet" href="/static/css/board/editor.css"/>
+   <link rel="stylesheet" href="/static/css/index.css"/>
+   <link rel="stylesheet" href="/static/css/detail.css"/>
+   <link rel="stylesheet" href="/static/css/loading.css"/>
+   <link rel="stylesheet" href="/static/css/metabuild/tierList.css"/> -->
 
     <script type="text/javascript" src="/js/variable.js"></script>
     <script type="text/javascript" src="/js/util.js"></script>
@@ -50,85 +50,71 @@
                 <div class="flex-row margin-b gap">
                     <div class="flex-row align-item-center background">
                         <div class="title-div">
-                            <span class="title">착용부위 선택</span>
-                        </div>
-                        <div class="content-div">
-                            <input type="radio" id="weapon" name="range" value="7" checked/>
-                            <label for="weapon">무기</label>
-                            <input type="radio" id="armor" name="range" value="1"/>
-                            <label for="armor">방어구</label>
-                            <input type="radio" id="cape" name="range" value="2"/>
-                            <label for="cape">망토</label>
-                            <input type="radio" id="food" name="range" value="3"/>
-                            <label for="food">푸드</label>
-                            <input type="radio" id="mount" name="range" value="3"/>
-                            <label for="mount">탈것</label>
-                        </div>
-                    </div>
-                    <div class="flex-row align-item-center background">
-                        <div class="title-div">
                             <span class="title">카테고리 선택</span>
                         </div>
                         <div class="content-div">
                             <div class="grid">
                                 <div>
-                                    <input class="radio" type="radio" id="all" name="situation" value="mist" checked/>
+                                    <input class="radio" type="radio" id="all" name="category" value="mist" checked/>
                                     <label for="all">전체</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="mist" name="situation" value="mist"/>
+                                    <input class="radio" type="radio" id="mist" name="category" value="mist"/>
                                     <label for="mist">미스트</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="corrupted" name="situation" value="mist"/>
+                                    <input class="radio" type="radio" id="corrupted" name="category" value="mist"/>
                                     <label for="corrupted">오던</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="small" name="situation" value="small"/>
+                                    <input class="radio" type="radio" id="small" name="category" value="small"/>
                                     <label for="small">스몰</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="middle" name="situation" value="middle"/>
+                                    <input class="radio" type="radio" id="middle" name="category" value="middle"/>
                                     <label for="middle">미들</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="zvz" name="situation" value="zvz"/>
+                                    <input class="radio" type="radio" id="zvz" name="category" value="zvz"/>
                                     <label for="zvz">ZvZ</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="gank" name="situation" value="gank"/>
+                                    <input class="radio" type="radio" id="gank" name="category" value="gank"/>
                                     <label for="gank">갱킹</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="gathering" name="situation" value="gathering"/>
+                                    <input class="radio" type="radio" id="gathering" name="category" value="gathering"/>
                                     <label for="gathering">채집</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="transport" name="situation" value="transport"/>
+                                    <input class="radio" type="radio" id="transport" name="category" value="transport"/>
                                     <label for="transport">운송</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="soloPVE" name="situation" value="soloPVE"/>
+                                    <input class="radio" type="radio" id="soloPVE" name="category" value="soloPVE"/>
                                     <label for="soloPVE">솔로 페임</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="greenPVE" name="situation" value="greenPVE"/>
+                                    <input class="radio" type="radio" id="greenPVE" name="category" value="greenPVE"/>
                                     <label for="greenPVE">PvE(녹던)</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="bluePVE" name="situation" value="bluePVE"/>
+                                    <input class="radio" type="radio" id="bluePVE" name="category" value="bluePVE"/>
                                     <label for="bluePVE">PvE(파던)</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="staticPVE" name="situation" value="staticPVE"/>
+                                    <input class="radio" type="radio" id="staticPVE" name="category" value="staticPVE"/>
                                     <label for="staticPVE">PvE(스태틱)</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="worldBossPVE" name="situation" value="worldBossPVE"/>
+                                    <input class="radio" type="radio" id="worldBossPVE" name="category" value="worldBossPVE"/>
                                     <label for="worldBossPVE">PvE(월드보스)</label>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="flex-row align-item-center background">
+                        
                     </div>
                 </div>     
             </div>    
@@ -163,7 +149,6 @@
                             <col class="col0" />
                             <col class="col0-1" />
                             <col class="col1" />
-                            <col class="col2" />
                             <col class="col3" />
                             <col class="col4" />
                             <col class="col5" />
@@ -174,7 +159,6 @@
                                 <th>작성날짜</th>
                                 <th>작성자</th>
                                 <th>카테고리</th>
-                                <th>착용 부위</th>
                                 <th>제목</th>
                                 <th>1티어</th>
                                 <th>추천</th>
@@ -186,7 +170,6 @@
                                 <td>2025-02-12</td>
                                 <td>192.168.121.222</td>
                                 <td>미스트</td>
-                                <td>무기</td>
                                 <td>미스트에서 무기티어 알려드립니다.</td>
                                 <td>
                                     <img class="itemImg" src="/image/T3_POTION_ACID_4.png">
@@ -204,7 +187,6 @@
                                 <td>2025-02-12</td>
                                 <td>192.168.121.2</td>
                                 <td>PvE(월드보스)</td>
-                                <td>탈것</td>
                                 <td>갱킹 회피할때 탈것 리스트</td>
                                 <td>
                                     <img class="itemImg" src="/image/T8_FARM_COW_GROWN.png">
@@ -220,35 +202,6 @@
                         </tbody>
                     </table>
                 </div>
-
-                <!-- <div class="flex-column gap">
-                    <div class="flex-row gap padding background tierListItem">
-                        <div class="flex-column tier-title-div"> 
-                            <span>무기 티어 리스트</span>
-                            <div class="description-div">
-                                <span>카테고리 : 미스트</span>
-                                <span>부위 : 무기</span>
-                            </div>
-                        </div>
-                        <div class="flex-column"> 
-                            <div class="image-div">
-                                <img class="itemImg" src="/image/T3_POTION_ACID_4.png">
-                                <img class="itemImg" src="/image/T3_POTION_ACID_4.png">
-                                <img class="itemImg" src="/image/T3_POTION_ACID_4.png">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex-row padding background tierListItem">
-                        <div>
-                            2
-                        </div>
-                    </div>
-                    <div class="flex-row padding background tierListItem">
-                        <div>
-                            3
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div> <!-- end of container -->
     </div>

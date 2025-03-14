@@ -8,9 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 Object.keys(data).forEach(category => {
                     data[category].forEach(e => {
                         const img = document.createElement('img');
-                        img.src = `https://render.albiononline.com/v1/item/${e}.png`;
+                        img.src = `https://render.albiononline.com/v1/item/${e.id}.png`;
+                        img.alt = e.name;
+                        img.title = e.name;
                         img.classList.add('img', 'draggable', category);
-                        img.id = e;
+                        img.id = e.id;
                         img.draggable = true;
                         itemListDiv.appendChild(img);
                     });
@@ -267,8 +269,16 @@ function submit(){
     })
     .then(response => response.text())
     .then(data => {
-        showAlert('작성 완료하였습니다.');
-        console.log('Success: ', data);
+        $.confirm({
+            theme: 'supervan',
+            title: '',
+            content: '작성 완료하였습니다.',
+            buttons: {
+                '네': function (e) {
+                    window.location.href = '/tierList';
+                }
+            }
+        });
     })
     .catch(error => {
         showAlert('알수없는 에러 발생하였습니다. 관리자 문의에 문의 남겨주세요.');

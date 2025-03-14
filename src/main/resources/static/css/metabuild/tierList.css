@@ -1,6 +1,6 @@
 .image-maindiv{
     position: relative;
-/*    background-image: url(/static/image/background-image-calculator.jpeg);*/
+   /* background-image: url(/static/image/background-image-calculator.jpeg); */
     background-image: url(/image/background-image-calculator.jpeg);
     height: auto;
     min-height: 100%;

@@ -433,6 +433,12 @@ img{
     display: inline-block;
     margin: 5px;
 }
+.rule{
+    font-size: 12px;
+    font-weight: 500;
+    margin: 2px 0px 0px 0px;
+    text-align: left;
+}
 @media screen and (max-width: 1024px) {
     .flex-column{
         padding: 10px;

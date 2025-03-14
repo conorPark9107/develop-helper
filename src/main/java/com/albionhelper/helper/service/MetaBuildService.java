@@ -5,6 +5,8 @@ import com.albionhelper.helper.domain.metaBuild.TierListDTO;
 import com.albionhelper.helper.repository.MetaBuildRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MetaBuildService {
 
@@ -23,5 +25,9 @@ public class MetaBuildService {
         }catch (Exception e){
             return "알수없는 이유로 저장에 실패하였습니다.";
         }
+    }
+
+    public List<TierList> getTierList() {
+        return null;
     }
 }
