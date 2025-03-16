@@ -34,7 +34,7 @@ public class BoardController {
 
     @GetMapping("")
     public String getBoard(@PageableDefault(page = 0, size = 10, sort="id", direction = Sort.Direction.DESC) Pageable pageable,
-                           @RequestParam(value = "category", defaultValue = "전체", required = false) String category,
+                           @RequestParam(name = "category", defaultValue = "전체", required = false) String category,
                            Model model){
 
         Page<BoardResponseDTO> boardList = boardService.findAllById(pageable, category);

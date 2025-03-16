@@ -3,12 +3,13 @@ package com.albionhelper.helper.controller;
 import com.albionhelper.helper.domain.metaBuild.TierList;
 import com.albionhelper.helper.domain.metaBuild.TierListDTO;
 import com.albionhelper.helper.service.MetaBuildService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,21 +28,30 @@ public class MetaBuildController {
     }
 
     @GetMapping("/tierList")
-    public String showTierListPage(){
+    public String showTierListPage(@RequestParam(name = "page", defaultValue = "0", required = false)int page,
+                                   @RequestParam(name = "size", defaultValue = "10", required = false)int size,
+                                   @RequestParam(name = "category", defaultValue = "전체", required = false) String category,
+                                   @RequestParam(name = "options", defaultValue = "writeDate", required = false) String sortBy,
+                                   Model model){
+        Page<TierList> pageObj = metaBuildService.getTierList(category, sortBy, page, size);
+        model.addAttribute("list", pageObj.getContent());
+        model.addAttribute("nowPage", pageObj.getNumber());
+        model.addAttribute("totalPage", pageObj.getTotalPages());
+        model.addAttribute("hasNext", pageObj.hasNext());
+        model.addAttribute("hasPrev", pageObj.hasPrevious());
+
         return "metabuild/tierList";
     }
 
     @GetMapping("/tierList/write")
-    public String showTierListWritePage(Model model){
-        List<TierList> list = metaBuildService.getTierList();
+    public String showTierListWritePage(){
         return "metabuild/tierListWrite";
     }
 
     @PostMapping("/tierList/write")
     @ResponseBody
     public String showTierListWrite(@RequestBody TierListDTO dto){
-        String s = metaBuildService.register(dto);
-        return s;
+        return metaBuildService.register(dto);
     }
 
 }

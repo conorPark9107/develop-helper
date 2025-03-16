@@ -3,6 +3,10 @@ package com.albionhelper.helper.service;
 import com.albionhelper.helper.domain.metaBuild.TierList;
 import com.albionhelper.helper.domain.metaBuild.TierListDTO;
 import com.albionhelper.helper.repository.MetaBuildRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +31,20 @@ public class MetaBuildService {
         }
     }
 
-    public List<TierList> getTierList() {
-        return null;
+    public Page<TierList> getTierList(String category, String sortBy, int page, int size) {
+        List<String> canSort = List.of("writeDate", "up", "tierListComments"); // 컬럼
+
+        if(!canSort.contains(sortBy)){
+            sortBy = "writeDate";
+        }
+
+        if (sortBy.equals("tierListComments")) {
+            Pageable pageable = PageRequest.of(page, size);
+            return metaBuildRepository.findAllByCategoryOrderByCommentCountDesc(category, pageable);
+        }else{
+            Sort sort = Sort.by(sortBy).descending();
+            Pageable pageable = PageRequest.of(page, size, sort);
+            return metaBuildRepository.findAllByCategory(category, pageable);
+        }
     }
 }
