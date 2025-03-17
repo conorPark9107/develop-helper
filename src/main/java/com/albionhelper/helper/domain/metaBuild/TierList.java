@@ -5,6 +5,8 @@ import lombok.*;
 
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -67,40 +69,47 @@ public class TierList {
     // DTO -> Entity
     public TierList toEntity(TierListDTO dto){
         return TierList.builder()
+                .id(dto.getId())
                 .userId(dto.getUserId())
                 .title(dto.getTitle())
                 .category(dto.getCategory())
-                .t1(dto.getT1())
-                .t2(dto.getT2())
-                .t3(dto.getT3())
-                .t4(dto.getT4())
-                .t5(dto.getT5())
-                .t6(dto.getT6())
-                .t7(dto.getT7())
-                .t8(dto.getT8())
-                .t9(dto.getT9())
-                .t10(dto.getT10())
+                .t1(String.join(" ", dto.getT1()))
+                .t2(String.join(" ", dto.getT2()))
+                .t3(String.join(" ", dto.getT3()))
+                .t4(String.join(" ", dto.getT4()))
+                .t5(String.join(" ", dto.getT5()))
+                .t6(String.join(" ", dto.getT6()))
+                .t7(String.join(" ", dto.getT7()))
+                .t8(String.join(" ", dto.getT8()))
+                .t9(String.join(" ", dto.getT9()))
+                .t10(String.join(" ", dto.getT10()))
                 .up(dto.getUp())
+                .tierListComments(dto.getTierListComments())
                 .build();
     }
 
     public TierListDTO toDTO(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDate = this.writeDate.format(formatter);
+        LocalDateTime parse = LocalDateTime.parse(formattedDate, formatter);
         return TierListDTO.builder()
+                .id(id)
                 .userId(this.userId)
                 .title(this.title)
-                .writeDate(this.writeDate)
+                .writeDate(parse)
                 .category(this.category)
-                .t1(this.t1)
-                .t2(this.t2)
-                .t3(this.t3)
-                .t4(this.t4)
-                .t5(this.t5)
-                .t6(this.t6)
-                .t7(this.t7)
-                .t8(this.t8)
-                .t9(this.t9)
-                .t10(this.t10)
+                .t1(this.t1.split(" "))
+                .t2(this.t2.split(" "))
+                .t3(this.t3.split(" "))
+                .t4(this.t4.split(" "))
+                .t5(this.t5.split(" "))
+                .t6(this.t6.split(" "))
+                .t7(this.t7.split(" "))
+                .t8(this.t8.split(" "))
+                .t9(this.t9.split(" "))
+                .t10(this.t10.split(" "))
                 .up(this.up)
+                .tierListComments(this.tierListComments)
                 .build();
     }
 

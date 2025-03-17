@@ -33,7 +33,7 @@ public class MetaBuildController {
                                    @RequestParam(name = "category", defaultValue = "전체", required = false) String category,
                                    @RequestParam(name = "options", defaultValue = "writeDate", required = false) String sortBy,
                                    Model model){
-        Page<TierList> pageObj = metaBuildService.getTierList(category, sortBy, page, size);
+        Page<TierListDTO> pageObj = metaBuildService.getTierList(category, sortBy, page, size);
         model.addAttribute("list", pageObj.getContent());
         model.addAttribute("nowPage", pageObj.getNumber());
         model.addAttribute("totalPage", pageObj.getTotalPages());

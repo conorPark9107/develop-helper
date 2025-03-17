@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 Object.keys(data).forEach(category => {
                     data[category].forEach(e => {
                         const img = document.createElement('img');
-                        img.src = `https://render.albiononline.com/v1/item/${e.id}.png`;
+                        img.src = `https://render.albiononline.com/v1/item/${e.id}.png?quality=4`;
                         img.alt = e.name;
                         img.title = e.name;
                         img.classList.add('img', 'draggable', category);

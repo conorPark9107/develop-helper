@@ -31,20 +31,28 @@ public class MetaBuildService {
         }
     }
 
-    public Page<TierList> getTierList(String category, String sortBy, int page, int size) {
+    public Page<TierListDTO> getTierList(String category, String sortBy, int page, int size) {
         List<String> canSort = List.of("writeDate", "up", "tierListComments"); // 컬럼
 
         if(!canSort.contains(sortBy)){
             sortBy = "writeDate";
         }
+        if(category.equals("전체")){
+            category = null;
+        }
 
         if (sortBy.equals("tierListComments")) {
             Pageable pageable = PageRequest.of(page, size);
-            return metaBuildRepository.findAllByCategoryOrderByCommentCountDesc(category, pageable);
+            Page<TierList> entityList = metaBuildRepository.findAllByCategoryOrderByCommentCountDesc(category, pageable);
+            return entityList.map(TierList::toDTO);
         }else{
             Sort sort = Sort.by(sortBy).descending();
             Pageable pageable = PageRequest.of(page, size, sort);
-            return metaBuildRepository.findAllByCategory(category, pageable);
+            Page<TierList> entityList = metaBuildRepository.findAllByCategory(category, pageable);
+            return entityList.map(TierList::toDTO);
         }
+
+
+
     }
 }

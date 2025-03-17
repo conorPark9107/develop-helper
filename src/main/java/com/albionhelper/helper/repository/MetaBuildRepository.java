@@ -16,17 +16,18 @@ public interface MetaBuildRepository extends PagingAndSortingRepository<TierList
     // 자식 객체인 댓글의 개수에 따른 페이징 처리
     @Query(
             value = "SELECT t FROM TierList t LEFT JOIN t.tierListComments c " +
-                    "WHERE t.category = :category " +
+                    "WHERE (:category IS NULL OR t.category = :category) " +
                     "GROUP BY t.id " +
                     "ORDER BY COUNT(c) DESC",
-            countQuery = "SELECT COUNT(t) FROM TierList t WHERE t.category = :category"
+            countQuery = "SELECT COUNT(t) FROM TierList t WHERE (:category IS NULL OR t.category = :category)"
     )
     Page<TierList> findAllByCategoryOrderByCommentCountDesc(@Param("category") String category, Pageable pageable);
 
 
-
     // 카테고리에 따른 페이징 처리
-    Page<TierList> findAllByCategory(String category, Pageable pageable);
-
+    @Query(
+            value = "SELECT t FROM TierList t WHERE (:category IS NULL OR t.category = :category) "
+    )
+    Page<TierList> findAllByCategory(@Param("category") String category, Pageable pageable);
 
 }
