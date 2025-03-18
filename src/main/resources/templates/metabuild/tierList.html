@@ -183,16 +183,24 @@
                     </table>
                 </div>
                 <div class="flex-column margin-b">
-                    <div class="flex-row">
-                        <ul>
-                            <li>
-                                <a>&lt;&lt;</a>
-                                <a>&lt;</a>
-                                <span th:text="${nowPage}"></span>
-                                <a>&gt;</a>
-                                <a>&gt;&gt;</a>
-                            </li>
-                        </ul>
+                    <div class="flex-row pagination flex-center">
+                        <div>
+                            <a th:classappend="${nowPage > 0} ? 'active' : 'nonActive' "
+                               th:href="@{/tierList(page=0)}"> &lt;&lt; </a>
+
+                            <a th:classappend="${startPage - 1 > 0} ? 'active' : 'nonActive' "
+                               th:href="@{/tierList?(page=${startPage - 1})}"> &lt; </a>
+
+                            <a th:each="i : ${#numbers.sequence(startPage, endPage)}"
+                               th:text="${i + 1}" th:class="${i == nowPage}? 'nowPage' : ''"
+                               th:href="@{/tierList?(page=${i})}"></a>
+
+                            <a th:classappend="${endPage + 1 <=  totalPage}? 'active' : 'nonActive' "
+                               th:href="@{/tierList?(page=${endPage + 1})}"> &gt; </a>
+
+                            <a th:classappend="${nowPage < totalPage} ? 'active' : 'nonActive' "
+                               th:href="@{/tierList?(page=${totalPage})}"> &gt;&gt; </a>
+                        </div>
                     </div>
                 </div>
             </div>

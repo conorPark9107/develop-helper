@@ -1,18 +1,32 @@
 :root {
-    --black : rgb(36, 32, 32);
-    --white : #8D8D8D;
-    --red : #53231F;
-    --blue: #2D4452;
+    --black : rgb(0, 0, 0);
+    --white : #c0c0c0;
+    --red : #8d342e;
+    --blue: #366686;
     --lightblue: rgb(0, 141, 253);
-    --green: #334127;
-    --purple: rgb(91, 0, 126);
-    --yellow: #8C7734;
-    --orange: #7D4C28;
+    --green: #507239;
+    --purple: rgb(97, 11, 131);
+    --yellow: #d5ad20;
+    --orange: #a25b27;
+    --gray: rgb(87, 87, 87);
+
+    --itemblack : rgb(36, 32, 32);
+    --itemwhite : #8D8D8D;
+    --itemred : #53231F;
+    --itemitemblue: #2D4452;
+    --itemlightblue: rgb(0, 141, 253);
+    --itemgreen: #334127;
+    --itempurple: rgb(91, 0, 126);
+    --itemyellow: #8C7734;
+    --itemorange: #7D4C28;
+    --itemgray: rgb(32, 32, 32);
+
+
     --alert-opacity: rgba(0, 0, 0, 0.9);
     --bg-text: #949494;
     --hover: #2d2d2d;
     --lightgray: rgb(104, 104, 104);
-    --gray: rgb(32, 32, 32);
+
 }
 
 body[data-theme='light-mode'] {

@@ -1,17 +1,11 @@
 package com.albionhelper.helper.controller;
 
-import com.albionhelper.helper.domain.metaBuild.TierList;
 import com.albionhelper.helper.domain.metaBuild.TierListDTO;
 import com.albionhelper.helper.service.MetaBuildService;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 public class MetaBuildController {
@@ -34,11 +28,18 @@ public class MetaBuildController {
                                    @RequestParam(name = "options", defaultValue = "writeDate", required = false) String sortBy,
                                    Model model){
         Page<TierListDTO> pageObj = metaBuildService.getTierList(category, sortBy, page, size);
+
+        int totalPage = pageObj.getTotalPages();
+        int nowPage = pageObj.getNumber();
+        int pageLimit = 5; // 페이징 처리시 페이징 개수를 지정.
+        int startPage = (nowPage / pageLimit) * pageLimit;
+        int endPage = Math.min(startPage + pageLimit, totalPage) - 1;
+
         model.addAttribute("list", pageObj.getContent());
-        model.addAttribute("nowPage", pageObj.getNumber());
-        model.addAttribute("totalPage", pageObj.getTotalPages());
-        model.addAttribute("hasNext", pageObj.hasNext());
-        model.addAttribute("hasPrev", pageObj.hasPrevious());
+        model.addAttribute("nowPage", nowPage);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+        model.addAttribute("totalPage", totalPage - 1);
 
         return "metabuild/tierList";
     }
