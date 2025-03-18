@@ -286,11 +286,7 @@ label{
 .chekcbox-div{
     padding: 0px 5px 0px 5px;
 }
-input[type="checkbox"] {
-    width: 0.9rem;
-    height: 0.9rem;
-    accent-color: var(--btn-bg);
-}
+
 .align-center{
     align-items: center;
 }
@@ -358,65 +354,65 @@ img{
     text-align: left;
 }
 .t1b{
-    background-color: var(--white);
+    background-color: var(--itemwhite);
 }
 .t2b{
-    background-color: var(--yellow);
+    background-color: var(--itemyellow);
 }
 .t3b{
-    background-color: var(--orange);
+    background-color: var(--itemorange);
 }
 .t4b{
-    background-color: var(--red);
+    background-color: var(--itemred);
 }
 .t5b{
-    background-color: var(--green);
+    background-color: var(--itemgreen);
 }
 .t6b{
-    background-color: var(--blue);
+    background-color: var(--itemblue);
 }
 .t7b{
-    background-color: var(--purple);
+    background-color: var(--itempurple);
 }
 .t8b{
-    background-color: var(--lightgray);
+    background-color: var(--itemlightgray);
 }
 .t9b{
-    background-color: var(--gray);
+    background-color: var(--itemgray);
 }
 .t10b{
-    background-color: var(--black);
+    background-color: var(--itemblack);
 }
 
 .t1{
-    border : 2px solid var(--white);   
+    border : 2px solid var(--itemwhite);
 }
 .t2{
-    border : 2px solid var(--yellow);
+    border : 2px solid var(--itemyellow);
 }
 .t3{
-    border : 2px solid var(--orange);
+    border : 2px solid var(--itemorange);
 }
 .t4{
-    border : 2px solid var(--red);
+    border : 2px solid var(--itemred);
 }
 .t5{
-    border : 2px solid var(--green);
+    border : 2px solid var(--itemgreen);
 }
 .t6{
-    border : 2px solid var(--blue);
+    border : 2px solid var(--itemblue);
 }
 .t7{
-    border : 2px solid var(--purple);
+    border : 2px solid var(--itempurple);
 }
 .t8{
-    border : 2px solid var(--lightgray);
+    border : 2px solid var(--itemlightgray);
 }
 .t9{
-    border : 2px solid var(--gray);
+    border : 2px solid var(--itemgray);
 }
 .t10{
-    border : 2px solid var(--black);
+    border : 2px solid var(--itemblack);
 }
 .wearPart{
     width:20%;
