@@ -148,7 +148,7 @@ input[type='radio'] {
 }
 input[type='radio']:checked {
     background-color: var(--sub-color);
-    border: 3px solid var(--btn-bg);
+    border: 3px solid var(--border);
 }
 
 fieldset {

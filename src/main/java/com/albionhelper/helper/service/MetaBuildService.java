@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MetaBuildService {
@@ -51,8 +52,10 @@ public class MetaBuildService {
             Page<TierList> entityList = metaBuildRepository.findAllByCategory(category, pageable);
             return entityList.map(TierList::toDTO);
         }
+    }
 
-
-
+    public TierListDTO getTierListById(Long id) {
+        Optional<TierList> optional = metaBuildRepository.findById(id);
+        return optional.get().toDTO();
     }
 }

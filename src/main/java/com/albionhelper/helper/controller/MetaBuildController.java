@@ -40,6 +40,8 @@ public class MetaBuildController {
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("totalPage", totalPage - 1);
+        model.addAttribute("category", category);
+        model.addAttribute("options", sortBy);
 
         return "metabuild/tierList";
     }
@@ -53,6 +55,12 @@ public class MetaBuildController {
     @ResponseBody
     public String showTierListWrite(@RequestBody TierListDTO dto){
         return metaBuildService.register(dto);
+    }
+
+    @GetMapping("/tierList/detail")
+    public String showTierListDetail(@RequestParam(name = "id") Long id, Model model){
+        model.addAttribute("tierList", metaBuildService.getTierListById(id));
+        return "/metabuild/tierListDetail";
     }
 
 }

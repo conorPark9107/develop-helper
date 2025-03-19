@@ -55,60 +55,64 @@
                         <div class="content-div">
                             <div class="grid">
                                 <div>
-                                    <input class="radio" type="radio" id="all" name="category" value="mist" checked/>
+                                    <input class="radio" type="radio" id="all" name="category" value="전체" th:checked="${#strings.equals(category, '전체')}" />
                                     <label for="all">전체</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="mist" name="category" value="mist"/>
+                                    <input class="radio" type="radio" id="mist" name="category" value="미스트" th:checked="${#strings.equals(category, '미스트')}" />
                                     <label for="mist">미스트</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="corrupted" name="category" value="mist"/>
+                                    <input class="radio" type="radio" id="corrupted" name="category" value="오던" th:checked="${#strings.equals(category, '오던')}" />
                                     <label for="corrupted">오던</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="small" name="category" value="small"/>
+                                    <input class="radio" type="radio" id="small" name="category" value="스몰" th:checked="${#strings.equals(category, '스몰')}" />
                                     <label for="small">스몰</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="middle" name="category" value="middle"/>
+                                    <input class="radio" type="radio" id="middle" name="category" value="미들" th:checked="${#strings.equals(category, '미들')}"/>
                                     <label for="middle">미들</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="zvz" name="category" value="zvz"/>
+                                    <input class="radio" type="radio" id="zvz" name="category" value="zvz" th:checked="${#strings.equals(category, 'zvz')}"/>
                                     <label for="zvz">ZvZ</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="gank" name="category" value="gank"/>
+                                    <input class="radio" type="radio" id="gank" name="category" value="갱킹" th:checked="${#strings.equals(category, '갱킹')}"/>
                                     <label for="gank">갱킹</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="gathering" name="category" value="gathering"/>
+                                    <input class="radio" type="radio" id="gathering" name="category" value="채집" th:checked="${#strings.equals(category, '채집')}"/>
                                     <label for="gathering">채집</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="transport" name="category" value="transport"/>
+                                    <input class="radio" type="radio" id="transport" name="category" value="운송" th:checked="${#strings.equals(category, '운송')}"/>
                                     <label for="transport">운송</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="soloPVE" name="category" value="soloPVE"/>
+                                    <input class="radio" type="radio" id="soloPVE" name="category" value="솔로페임" th:checked="${#strings.equals(category, '솔로페임')}"/>
                                     <label for="soloPVE">솔로 페임</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="greenPVE" name="category" value="greenPVE"/>
+                                    <input class="radio" type="radio" id="greenPVE" name="category" value="녹던" th:checked="${#strings.equals(category, '녹던')}"/>
                                     <label for="greenPVE">PvE(녹던)</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="bluePVE" name="category" value="bluePVE"/>
+                                    <input class="radio" type="radio" id="bluePVE" name="category" value="파던" th:checked="${#strings.equals(category, '파던')}"/>
                                     <label for="bluePVE">PvE(파던)</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="staticPVE" name="category" value="staticPVE"/>
+                                    <input class="radio" type="radio" id="staticPVE" name="category" value="스태틱" th:checked="${#strings.equals(category, '스태틱')}"/>
                                     <label for="staticPVE">PvE(스태틱)</label>
                                 </div>
                                 <div>
-                                    <input class="radio" type="radio" id="worldBossPVE" name="category" value="worldBossPVE"/>
+                                    <input class="radio" type="radio" id="worldBossPVE" name="category" value="월보" th:checked="${#strings.equals(category, '월보')}"/>
                                     <label for="worldBossPVE">PvE(월드보스)</label>
+                                </div>
+                                <div>
+                                    <input class="radio" type="radio" id="battleMount" name="category" value="베마" th:checked="${#strings.equals(category, '베마')}"/>
+                                    <label for="battleMount">PvE(월드보스)</label>
                                 </div>
                             </div>
                         </div>
@@ -123,19 +127,19 @@
                 <div class="flex-row align-item-center space-between background margin-b">
                     <div class="flex-row">
                         <div class="chekcbox-div">
-                            <input class="radio" type="radio" id="option2" name="options" value="writeDate" checked />
+                            <input class="radio" type="radio" id="option2" name="options" value="writeDate" th:checked="${#strings.equals(options,'writeDate')}" />
                             <label for="option2">
                                 <span>최신순</span>
                             </label>
                         </div>
                         <div class="chekcbox-div">
-                            <input class="radio" type="radio" id="option1" name="options" value="up" />
+                            <input class="radio" type="radio" id="option1" name="options" value="up" th:checked="${#strings.equals(options,'up')}" />
                             <label for="option1">
                                 <span>추천순</span>
                             </label>
                         </div>
                         <div class="chekcbox-div">
-                            <input class="radio" type="radio" id="option3" name="options" value="tierListComments" />
+                            <input class="radio" type="radio" id="option3" name="options" value="tierListComments" th:checked="${#strings.equals(options,'tierListComments')}" />
                             <label for="option3">
                                 <span>의견 많은순</span>
                             </label>
@@ -167,7 +171,7 @@
                         </thead>
                         <tbody>
                             <tr th:each="t : ${list}" th:id="${t.id}">
-                                <td th:text="${t.writeDate}"></td>
+                                <td th:text="${#temporals.format(t.writeDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                 <td th:text="${t.userId}"></td>
                                 <td th:text="${t.category}"></td>
                                 <td th:text="${t.title}"></td>
