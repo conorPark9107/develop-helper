@@ -21,16 +21,27 @@ public class TierListDTO {
     private String title;
     private LocalDateTime writeDate;
     private String category;
+    private String t1Name;
     private String[] t1;
+    private String t2Name;
     private String[] t2;
+    private String t3Name;
     private String[] t3;
+    private String t4Name;
     private String[] t4;
+    private String t5Name;
     private String[] t5;
+    private String t6Name;
     private String[] t6;
+    private String t7Name;
     private String[] t7;
+    private String t8Name;
     private String[] t8;
+    private String t9Name;
     private String[] t9;
+    private String t10Name;
     private String[] t10;
+
     private Long up;    
     private List<TierListComment> tierListComments;
     

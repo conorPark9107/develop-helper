@@ -10,23 +10,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
-    <script type="text/javascript" src="/static/js/util.js"></script>
+    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
     <script type="text/javascript" src="/static/js/metabuild/tierListDetail.js"></script>
     <link rel="stylesheet" href="/static/css/variable.css" />
     <link rel="stylesheet" href="/static/css/board/editor.css" />
     <link rel="stylesheet" href="/static/css/index.css" />
     <link rel="stylesheet" href="/static/css/detail.css" />
     <link rel="stylesheet" href="/static/css/loading.css" />
-    <link rel="stylesheet" href="/static/css/metabuild/tierListDetail.css" />
+    <link rel="stylesheet" href="/static/css/metabuild/tierListDetail.css" /> -->
 
-    <!-- <script type="text/javascript" src="/js/util.js"></script>
+    <script type="text/javascript" src="/js/util.js"></script>
     <script type="text/javascript" src="/js/metabuild/tierListDetail.js"></script>
     <link rel="stylesheet" href="/css/variable.css" />
     <link rel="stylesheet" href="/css/board/editor.css" />
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
     <link rel="stylesheet" href="/css/loading.css" />
-    <link rel="stylesheet" href="/css/metabuild/tierListDetail.css" /> -->
+    <link rel="stylesheet" href="/css/metabuild/tierListDetail.css" />
 
     <meta charset="UTF-8">
     <title>알비온 GG - 티어 리스트 ⚔</title>
@@ -47,25 +47,108 @@
                 <div class="flex-column">
                     
                     <div class="flex-column background margin-b padding">
-                        <p class="title"><span class="category">[카테고리명]</span> <span class="title">제목입니다</span></p>
+                        <p class="title"><span class="category" th:text="|[${tierList.category}]|"></span> <span class="title" th:text="${tierList.title}"></span></p>
                         <div class="subTitle flex-row space-between w-10">
-                            <span class="writeDate">2025-03-20 15:00:00</span>
+                            <span class="writeDate" th:text="${tierList.writeDate}"></span>
                             <div>
-                                <span class="up right">추천수: 0</span>
-                                <span class="comments right"> | 의견수: 0</span>
+                                <span class="up right" th:text="|추천수:${tierList.up}|"></span>
+                                <span class="comments right" th:text="| 의견수:${#lists.size(tierList.tierListComments)}|">0</span>
                             </div>
                         </div>
-                    </div >
+                    </div>
                     
-                    <div class="flex-column w-10 margin-b">
+                    <div class="flex-column w-7 margin-b">
+
                         <div class="flex-row tier background align-center space-between padding">
                             <div class="rank">
                                 <span class="rankText">티어명</span>
                             </div>
                             <div class="rankArea">
-                                
+                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
                             </div>
                         </div>
+
+                        <div class="flex-row tier background align-center space-between padding">
+                            <div class="rank">
+                                <span class="rankText">티어명</span>
+                            </div>
+                            <div class="rankArea">
+                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                            </div>
+                        </div>
+
+                        <div class="flex-row tier background align-center space-between padding">
+                            <div class="rank">
+                                <span class="rankText">티어명</span>
+                            </div>
+                            <div class="rankArea">
+                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                            </div>
+                        </div>
+
+                        <div class="flex-row tier background align-center space-between padding">
+                            <div class="rank">
+                                <span class="rankText">티어명</span>
+                            </div>
+                            <div class="rankArea">
+                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                            </div>
+                        </div>
+
+                        <div class="flex-row tier background align-center space-between padding">
+                            <div class="rank">
+                                <span class="rankText">티어명</span>
+                            </div>
+                            <div class="rankArea">
+                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                            </div>
+                        </div>
+
+                        <div class="flex-row tier background align-center space-between padding">
+                            <div class="rank">
+                                <span class="rankText">티어명</span>
+                            </div>
+                            <div class="rankArea">
+                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                            </div>
+                        </div>
+
+                        <div class="flex-row tier background align-center space-between padding">
+                            <div class="rank">
+                                <span class="rankText">티어명</span>
+                            </div>
+                            <div class="rankArea">
+                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                            </div>
+                        </div>
+
+                        <div class="flex-row tier background align-center space-between padding">
+                            <div class="rank">
+                                <span class="rankText">티어명</span>
+                            </div>
+                            <div class="rankArea">
+                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                            </div>
+                        </div>
+
+                        <div class="flex-row tier background align-center space-between padding">
+                            <div class="rank">
+                                <span class="rankText">티어명</span>
+                            </div>
+                            <div class="rankArea">
+                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                            </div>
+                        </div>
+
+                        <div class="flex-row tier background align-center space-between padding">
+                            <div class="rank">
+                                <span class="rankText">티어명</span>
+                            </div>
+                            <div class="rankArea">
+                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                            </div>
+                        </div>
+
                     </div>
                     <div class="flex-column align-center">
                         <div class="upBtnDiv">

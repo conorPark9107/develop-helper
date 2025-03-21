@@ -63,8 +63,8 @@ label{
     font-weight: 500;
 }
 .categoryDiv{
-    max-height: 450px;
-    height: 450px;
+    max-height: 768px;
+    min-height: 450px;
 }
 .content-div{
     text-align: left;
@@ -292,7 +292,8 @@ label{
 }
 .tier{
     display: none;
-    height: 70px;
+    min-height: 70px;
+    height: auto;
     padding: 0px;
     justify-content: flex-start;
 }
@@ -308,6 +309,9 @@ label{
 }
 #input{
     width:40%;
+}
+.rankText{
+    word-break: break-all;
 }
 .rank{
     height: 100%;
@@ -332,6 +336,7 @@ img{
 .rankArea{
     padding-left: 20px;
     display: flex;
+    flex-wrap: wrap;
     height: 100%;
     width: 100%;
 }
@@ -418,8 +423,8 @@ img{
     width:20%;
 }
 .rankArea img{
-    width: 70px;
-    height: 70px;
+    width: 10%;
+    height: 100%;
 }
 .img-placeholder {
     width: 50px; 

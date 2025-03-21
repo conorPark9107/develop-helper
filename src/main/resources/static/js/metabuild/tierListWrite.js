@@ -1,25 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
     function loadItemList() {
-    //    fetch("/static/jsonData/category.json")
+        //    fetch("/static/jsonData/category.json")
         fetch("/jsonData/category.json")
             .then(response => response.json())
             .then(data => {
-                const itemListDiv = document.querySelector('.itemListDiv');
-                Object.keys(data).forEach(category => {
-                    data[category].forEach(e => {
-                        const img = document.createElement('img');
-                        img.src = `https://render.albiononline.com/v1/item/${e.id}.png?quality=4`;
-                        img.alt = e.name;
-                        img.title = e.name;
-                        img.classList.add('img', 'draggable', category);
-                        img.id = e.id;
-                        img.draggable = true;
-                        itemListDiv.appendChild(img);
-                    });
+            const itemListDiv = document.querySelector('.itemListDiv');
+            Object.keys(data).forEach(category => {
+                data[category].forEach(e => {
+                    const img = document.createElement('img');
+                    img.src = `https://render.albiononline.com/v1/item/${e.id}.png?quality=4`;
+                    img.alt = e.name;
+                    img.title = e.name;
+                    img.classList.add('img', 'draggable', category);
+                    img.id = e.id;
+                    img.draggable = true;
+                    itemListDiv.appendChild(img);
                 });
+            });
 
-                addDragAndDropEvents();
-            })
+            addDragAndDropEvents();
+        })
             .catch(error => console.log(`에러: ${error}`));
     }
 
@@ -64,6 +64,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 const afterElement = getDragAfterElement(tier, e.clientX);
                 const draggedItem = document.querySelector(".dragging");
 
+                const length = tier.children.length;
+                if(length >= 10){
+                    return;
+                }
+
                 if (draggedItem) {
                     tier.classList.add("dragover-active");
                     if (afterElement) {
@@ -82,7 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
             tier.addEventListener("drop", e => {
                 e.preventDefault();
                 const draggedItem = document.querySelector(".dragging");
-
                 if (draggedItem) {
                     placeholder.replaceWith(draggedItem); // placeholder를 드래그한 이미지로 교체
                 }
@@ -92,25 +96,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function getDragAfterElement(container, x) {
         const draggableElements = [...container.querySelectorAll(".img:not(.dragging)")];
-    
+
         let closest = { offset: Number.POSITIVE_INFINITY, element: null };
         const threshold = 40; // 작은 움직임이면 변화 없음
-    
+
         draggableElements.forEach(child => {
             const box = child.getBoundingClientRect();
             const centerX = box.left + (box.width / 2);
             const offset = centerX - x; // 마우스 위치와 중앙값 비교
-    
+
             if (Math.abs(offset) > threshold && offset > 0 && offset < closest.offset) {
                 closest = { offset: offset, element: child };
             }
         });
-    
+
         return closest.element;
     }
 
     window.addEventListener("DOMContentLoaded", loadItemList);
 });
+
 
 
 const inputData = [];
@@ -137,6 +142,10 @@ function addTier() {
 
     if (inputTierData === '' || inputTierData === undefined) {
         showAlert('티어명을 입력해주세요.');
+        return;
+    }else if(inputTierData.length > 10){
+        console.log(inputTierData.length);
+        showAlert('10글자보다 초과하여 입력할수 없습니다.');
         return;
     }
 
@@ -235,16 +244,53 @@ function submit(){
 
     const userId = writer.value === ''? '익명' : writer.value;
 
-    let t1 = [...tierList[0].querySelectorAll('.img')].map(img => img.id).join(" ");
-    let t2 = [...tierList[1].querySelectorAll('.img')].map(img => img.id).join(" ");
-    let t3 = [...tierList[2].querySelectorAll('.img')].map(img => img.id).join(" ");
-    let t4 = [...tierList[3].querySelectorAll('.img')].map(img => img.id).join(" ");
-    let t5 = [...tierList[4].querySelectorAll('.img')].map(img => img.id).join(" ");
-    let t6 = [...tierList[5].querySelectorAll('.img')].map(img => img.id).join(" ");
-    let t7 = [...tierList[6].querySelectorAll('.img')].map(img => img.id).join(" ");
-    let t8 = [...tierList[7].querySelectorAll('.img')].map(img => img.id).join(" ");
-    let t9 = [...tierList[8].querySelectorAll('.img')].map(img => img.id).join(" ");
-    let t10 = [...tierList[9].querySelectorAll('.img')].map(img => img.id).join(" ");
+    const t1Name = document.getElementById('1t').innerHTML;
+    const t2Name = document.getElementById('2t').innerHTML;
+    const t3Name = document.getElementById('3t').innerHTML;
+    const t4Name = document.getElementById('4t').innerHTML;
+    const t5Name = document.getElementById('5t').innerHTML;
+    const t6Name = document.getElementById('6t').innerHTML;
+    const t7Name = document.getElementById('7t').innerHTML;
+    const t8Name = document.getElementById('8t').innerHTML;
+    const t9Name = document.getElementById('9t').innerHTML;
+    const t10Name = document.getElementById('10t').innerHTML;
+
+    const t1 = [...tierList[0].querySelectorAll('.img')].map(img => img.id).join(" ");
+    const t2 = [...tierList[1].querySelectorAll('.img')].map(img => img.id).join(" ");
+    const t3 = [...tierList[2].querySelectorAll('.img')].map(img => img.id).join(" ");
+    const t4 = [...tierList[3].querySelectorAll('.img')].map(img => img.id).join(" ");
+    const t5 = [...tierList[4].querySelectorAll('.img')].map(img => img.id).join(" ");
+    const t6 = [...tierList[5].querySelectorAll('.img')].map(img => img.id).join(" ");
+    const t7 = [...tierList[6].querySelectorAll('.img')].map(img => img.id).join(" ");
+    const t8 = [...tierList[7].querySelectorAll('.img')].map(img => img.id).join(" ");
+    const t9 = [...tierList[8].querySelectorAll('.img')].map(img => img.id).join(" ");
+    const t10 = [...tierList[9].querySelectorAll('.img')].map(img => img.id).join(" ");
+
+    console.log(JSON.stringify({
+        userId : userId,
+        title : title.value,
+        category : category,
+        t1 : t1,
+        t2 : t2,
+        t3 : t3,
+        t4 : t4,
+        t5 : t5,
+        t6 : t6,
+        t7 : t7,
+        t8 : t8,
+        t9 : t9,
+        t10 : t10,
+        t1Name : t1Name,
+        t2Name : t2Name,
+        t3Name : t3Name,
+        t4Name : t4Name,
+        t5Name : t5Name,
+        t6Name : t6Name,
+        t7Name : t7Name,
+        t8Name : t8Name,
+        t9Name : t9Name,
+        t10Name : t10Name
+    }));
 
     fetch("/tierList/write", {
         method: 'POST',
@@ -265,6 +311,16 @@ function submit(){
             t8 : t8,
             t9 : t9,
             t10 : t10,
+            t1Name : t1Name,
+            t2Name : t2Name,
+            t3Name : t3Name,
+            t4Name : t4Name,
+            t5Name : t5Name,
+            t6Name : t6Name,
+            t7Name : t7Name,
+            t8Name : t8Name,
+            t9Name : t9Name,
+            t10Name : t10Name
         })
     })
     .then(response => response.text())

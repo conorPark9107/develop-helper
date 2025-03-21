@@ -34,6 +34,7 @@ public class MetaBuildController {
         int pageLimit = 5; // 페이징 처리시 페이징 개수를 지정.
         int startPage = (nowPage / pageLimit) * pageLimit;
         int endPage = Math.min(startPage + pageLimit, totalPage) - 1;
+        endPage = endPage == -1? 0 : endPage;
 
         model.addAttribute("list", pageObj.getContent());
         model.addAttribute("nowPage", nowPage);

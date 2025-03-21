@@ -1,7 +1,7 @@
 .image-maindiv{
     position: relative;
-     /* background-image: url(/image/background-image-hideout.jpeg); */
-    background-image: url(/static/image/background-image-hideout.jpeg);
+     background-image: url(/image/background-image-hideout.jpeg);
+    /* background-image: url(/static/image/background-image-hideout.jpeg); */
     height: auto;
     min-height: 100%;
     background-repeat: repeat;
@@ -247,6 +247,10 @@ img{
     height: 70px;
     padding: 0px;
     justify-content: flex-start;
+    margin-bottom: 4px;
+}
+.rankText{
+    word-break: break-all;
 }
 .rank{
     height: 100%;
@@ -268,7 +272,7 @@ img{
 .upBtnDiv{
     cursor: pointer;
     text-align: center;
-    color: var(--red);
+    color: var(--sub-color);
     background-color: var(--border);
     border: 1px solid var(--border);
     border-radius: 9px;

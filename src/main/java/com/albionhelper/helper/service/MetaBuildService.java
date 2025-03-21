@@ -24,6 +24,7 @@ public class MetaBuildService {
     public String register(TierListDTO dto) {
         TierList tierList = new TierList();
         TierList entity = tierList.toEntity(dto);
+        System.out.println(dto.getT1Name());
         try{
             metaBuildRepository.save(entity);
             return "저장이 완료되었습니다.";

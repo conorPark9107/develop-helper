@@ -170,6 +170,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <tr th:if="${#lists.size(list) == 0}">
+                                <td colspan="7" style="text-align: center; padding: 15px; font-size: 12px;">
+                                    현재 데이터가 없습니다.
+                                </td>
+                            </tr>
                             <tr th:each="t : ${list}" th:id="${t.id}">
                                 <td th:text="${#temporals.format(t.writeDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                                 <td th:text="${t.userId}"></td>
