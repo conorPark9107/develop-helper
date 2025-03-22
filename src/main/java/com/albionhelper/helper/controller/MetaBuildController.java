@@ -60,7 +60,8 @@ public class MetaBuildController {
 
     @GetMapping("/tierList/detail")
     public String showTierListDetail(@RequestParam(name = "id") Long id, Model model){
-        model.addAttribute("tierList", metaBuildService.getTierListById(id));
+        TierListDTO tierList = metaBuildService.getTierListById(id);
+        model.addAttribute("tierList", tierList);
         return "/metabuild/tierListDetail";
     }
 

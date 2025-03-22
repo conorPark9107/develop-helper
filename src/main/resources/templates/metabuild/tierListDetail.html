@@ -59,103 +59,103 @@
                     
                     <div class="flex-column w-7 margin-b">
 
-                        <div th:if="${#lists.size(tierList.t1) > 0}"
+                        <div th:if="${#lists.size(tierList.t1) > 1}"
                              class="flex-row tier background align-center space-between padding">
                             <div class="rank">
-                                <span class="rankText">티어명</span>
+                                <span class="rankText" th:text="${tierList.t1Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                                <img th:each="t : ${tierList.t1}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t2) > 0}"
+                        <div th:if="${#lists.size(tierList.t2) > 1}"
                              class="flex-row tier background align-center space-between padding">
                             <div class="rank">
-                                <span class="rankText">티어명</span>
+                                <span class="rankText" th:text="${tierList.t2Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                                <img th:each="t : ${tierList.t2}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t3) > 0}"
+                        <div th:if="${#lists.size(tierList.t3) > 1}"
                              class="flex-row tier background align-center space-between padding">
                             <div class="rank">
-                                <span class="rankText">티어명</span>
+                                <span class="rankText" th:text="${tierList.t3Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                                <img th:each="t : ${tierList.t3}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t4) > 0}"
+                        <div th:if="${#lists.size(tierList.t4) > 1}"
                              class="flex-row tier background align-center space-between padding">
                             <div class="rank">
-                                <span class="rankText">티어명</span>
+                                <span class="rankText" th:text="${tierList.t4Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                                <img th:each="t : ${tierList.t4}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t5) > 0}"
+                        <div th:if="${#lists.size(tierList.t5) > 1}"
                              class="flex-row tier background align-center space-between padding">
                             <div class="rank">
-                                <span class="rankText">티어명</span>
+                                <span class="rankText" th:text="${tierList.t5Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                                <img th:each="t : ${tierList.t5}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t6) > 0}"
+                        <div th:if="${#lists.size(tierList.t6) > 1}"
                              class="flex-row tier background align-center space-between padding">
                             <div class="rank">
-                                <span class="rankText">티어명</span>
+                                <span class="rankText" th:text="${tierList.t6Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                                <img th:each="t : ${tierList.t6}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t7) > 0}"
+                        <div th:if="${#lists.size(tierList.t7) > 1}"
                              class="flex-row tier background align-center space-between padding">
                             <div class="rank">
-                                <span class="rankText">티어명</span>
+                                <span class="rankText" th:text="${tierList.t7Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                                <img th:each="t : ${tierList.t7}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t8) > 0}"
+                        <div th:if="${#lists.size(tierList.t8) > 1}"
                              class="flex-row tier background align-center space-between padding">
                             <div class="rank">
-                                <span class="rankText">티어명</span>
+                                <span class="rankText" th:text="${tierList.t8Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                                <img th:each="t : ${tierList.t8}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t9) > 0}"
+                        <div th:if="${#lists.size(tierList.t9) > 1}"
                              class="flex-row tier background align-center space-between padding">
                             <div class="rank">
-                                <span class="rankText">티어명</span>
+                                <span class="rankText" th:text="${tierList.t9Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                                <img th:each="t : ${tierList.t9}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t10) > 0}"
+                        <div th:if="${#lists.size(tierList.t10) > 1}"
                              class="flex-row tier background align-center space-between padding">
                             <div class="rank">
-                                <span class="rankText">티어명</span>
+                                <span class="rankText" th:text="${tierList.t10Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img src="/image/T1_FISH_SALTWATER_ALL_COMMON.png" />
+                                <img th:each="t : ${tierList.t10}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
                             </div>
                         </div>
 
