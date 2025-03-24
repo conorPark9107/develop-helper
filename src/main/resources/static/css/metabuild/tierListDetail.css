@@ -6,6 +6,10 @@
     min-height: 100%;
     background-repeat: repeat;
 }
+hr{
+    border: 1px double var(--border);
+    width: 100%;
+}
 a{
     text-decoration:none;
 }
@@ -287,6 +291,50 @@ img{
 }
 .upBtnDescription{
     font-size: 10px;
+}
+input, .textArea{
+    margin: 5px 0px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #eee;
+    background-color: #00000000;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+.textArea{
+    resize: none;
+    width: 100%;
+}
+.comments{
+    width: 100%;
+    border-top: 1px solid var(--border-a);
+    border-bottom: 1px solid var(--border-a);
+}
+.commentsArea{
+    text-align: left;
+    width: 80%;
+}
+.commentsInfoArea{
+    width: 20%;
+}
+.commentsNumber{
+    text-align: left;
+    font-size: 12px;
+}
+.titleSubInfo, writeDate{
+    font-size: 12px;
+}
+.submit{
+    width: 10%;
+}
+.submitArea{
+    text-align: right;
+    width: 100%;
+}
+input[name="input"]{
+    width: 100%;
 }
 @media screen and (max-width: 1024px) {
     .flex-column{

@@ -50,9 +50,9 @@
                         <p class="title"><span class="category" th:text="|[${tierList.category}]|"></span> <span class="title" th:text="${tierList.title}"></span></p>
                         <div class="subTitle flex-row space-between w-10">
                             <span class="writeDate" th:text="${tierList.writeDate}"></span>
-                            <div>
+                            <div class="titleSubInfo">
                                 <span class="up right" th:text="|추천수:${tierList.up}|"></span>
-                                <span class="comments right" th:text="| 의견수:${#lists.size(tierList.tierListComments)}|">0</span>
+                                <span class="commentsNum right" th:text="| 의견수:${#lists.size(tierList.tierListComments)}|">0</span>
                             </div>
                         </div>
                     </div>
@@ -160,10 +160,33 @@
                         </div>
 
                     </div>
-                    <div class="flex-column align-center">
+                    <div class="flex-column align-center margin-b">
                         <div class="upBtnDiv">
                             <span class="upBtn">♥</span>
                             <span class="upBtnDescription">추천버튼</span>
+                        </div>
+                    </div>
+                    <div class="flex-column margin-b">
+                        <hr />
+                        <span class="commentsNumber margin-b"
+                              th:text="${tierList.tierListComments.size() == 0 ? '현재 작성된 댓글이 없습니다.' : '댓글 (' + tierList.tierListComments.size() + '개)'}">
+                        </span>
+                        <div class="flex-column tierListCommentsList">
+
+                        </div>
+                        <div class="comments padding">
+                            <div class="flex-row gap">
+                                <div class="commentsInfoArea">
+                                    <input type="text" id="nickName" name="input" placeholder="닉네임 입력.. 생략시 익명" />
+                                    <input type="password" id="password" name="input" placeholder="댓글 비밀번호.." />
+                                </div>
+                                <div class="commentsArea">
+                                    <textarea class="textArea" id="comment" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="submitArea">
+                                <button class="submit btn">댓글 등록</button>
+                            </div>
                         </div>
                     </div>
                 </div>
