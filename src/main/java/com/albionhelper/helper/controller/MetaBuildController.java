@@ -1,5 +1,6 @@
 package com.albionhelper.helper.controller;
 
+import com.albionhelper.helper.domain.metaBuild.TierListCommentDTO;
 import com.albionhelper.helper.domain.metaBuild.TierListDTO;
 import com.albionhelper.helper.service.MetaBuildService;
 import org.springframework.data.domain.Page;
@@ -63,6 +64,11 @@ public class MetaBuildController {
         TierListDTO tierList = metaBuildService.getTierListById(id);
         model.addAttribute("tierList", tierList);
         return "/metabuild/tierListDetail";
+    }
+
+    @PostMapping("/tierList/detail")
+    public String showTierListDetail(@RequestBody TierListCommentDTO dto){
+        return metaBuildService.registerComment(dto);
     }
 
 }
