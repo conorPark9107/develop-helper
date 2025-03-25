@@ -158,6 +158,12 @@ img{
 .w-10{
     width:100%;
 }
+.w-9{
+    width:90%;
+}
+.w-8{
+    width:80%;
+}
 .w-7{
     width:70%;
 }
@@ -169,6 +175,12 @@ img{
 }
 .w-3{
     width:30%;
+}
+.w-2{
+    width:20%;
+}
+.w-1{
+    width:10%;
 }
 .w-4{
     width:40%;
@@ -308,7 +320,6 @@ input, .textArea{
     width: 100%;
 }
 .comments{
-    width: 100%;
     border-top: 1px solid var(--border-a);
     border-bottom: 1px solid var(--border-a);
 }
@@ -335,6 +346,14 @@ input, .textArea{
 }
 input[name="input"]{
     width: 100%;
+}
+.padding-sm{
+    padding:10px
+}
+.comment, .writer{
+    color: var(--itemwhite);
+    text-align: left;
+    font-size: 12px;
 }
 @media screen and (max-width: 1024px) {
     .flex-column{
