@@ -38,6 +38,9 @@ public class TierListComment {
         if (writeDate == null) {
             writeDate = LocalDateTime.now();  // 기본값을 현재 시간으로 설정
         }
+        if(userId == null || userId.trim().isEmpty()){
+           userId = "익명";
+        }
     }
 
     public TierListComment toEntity(TierListCommentDTO dto) {
