@@ -16,7 +16,6 @@ a{
 p{
     margin-top: 0px;
     margin-bottom: 0px;
-    text-align: left;
 }
 .container{
     width: 100%;
@@ -43,9 +42,6 @@ p{
 }
 .flex-start{
     justify-content: flex-start;
-}
-.align-item-center{
-    align-items: center;
 }
 .background{
     background-color: var(--sub-color-a);
@@ -141,7 +137,7 @@ label{
     align-items: center;
 }
 .padding-sm{
-    padding: 10px 5px;
+    padding: 9px 3px 7px;
 }
 .flex-end{
     justify-content: flex-end;
@@ -247,6 +243,7 @@ img{
     border : 2px solid var(--itemblack);
 }
 .title{
+    text-align: left;
     font-weight: bold;
     font-size: 1.1rem;
     padding-bottom: 10px;
@@ -320,8 +317,8 @@ input, .textArea{
     width: 100%;
 }
 .comments{
-    border-top: 1px solid var(--border-a);
-    border-bottom: 1px solid var(--border-a);
+    border-top: 2px solid var(--border);
+    border-bottom: 2px solid var(--border);
 }
 .commentsArea{
     text-align: left;
@@ -350,10 +347,24 @@ input[name="input"]{
 .padding-sm{
     padding:10px
 }
-.comment, .writer{
+.writer{
     color: var(--itemwhite);
     text-align: left;
-    font-size: 12px;
+    font-size: 13px;
+}
+.comment{
+    color: var(--itemwhite);
+    text-align: left;
+    font-size: 13px;
+}
+.date{
+    justify-content: flex-end;
+    color: var(--itemwhite);
+    text-align: right;
+    font-size: 13px;
+}
+.bg-comment{
+    border-top: 1px solid var(--border-a);
 }
 @media screen and (max-width: 1024px) {
     .flex-column{

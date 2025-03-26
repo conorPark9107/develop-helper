@@ -49,10 +49,10 @@
                     <div class="flex-column background margin-b padding">
                         <p class="title"><span class="category" th:text="|[${tierList.category}]|"></span> <span class="title" th:text="${tierList.title}"></span></p>
                         <div class="subTitle flex-row space-between w-10">
-                            <span class="writeDate" th:text="${tierList.writeDate}"></span>
+                            <span class="writeDate" th:text="${#temporals.format(tierList.writeDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
                             <div class="titleSubInfo">
                                 <span class="up right" th:text="|추천수:${tierList.up}|"></span>
-                                <span class="commentsNum right" th:text="| 의견수:${#lists.size(tierList.tierListComments)}|">0</span>
+                                <span class="commentsNum right" th:text="| 댓글수:${#lists.size(tierList.tierListComments)}|">0</span>
                             </div>
                         </div>
                     </div>
@@ -160,9 +160,9 @@
                         </div>
 
                     </div>
-                    <div class="flex-column align-center margin-b">
-                        <div class="upBtnDiv">
-                            <span class="upBtn">♥</span>
+                    <div class="flex-row align-center margin-b space-center">
+                        <div class="upBtnDiv" id="upBtn">
+                            <span class="upBtn" th:text="${tierList.up}"></span>
                             <span class="upBtnDescription">추천버튼</span>
                         </div>
                     </div>
@@ -172,22 +172,24 @@
                               th:text="${tierList.tierListComments.size() == 0 ? '현재 작성된 댓글이 없습니다.' : '댓글 (' + tierList.tierListComments.size() + '개)'}">
                         </span>
                         <div class="flex-column tierListCommentsList">
-                            <div th:if="${tierList.tierListComments.size() > 0}" th:each="c : ${tierListComments}" class="flex-row background padding-sm">
+                            <div th:if="${tierList.tierListComments.size() > 0}" th:each="c : ${tierList.tierListComments}" class="flex-row bg-comment padding-sm align-center">
                                 <div class="flex-column w-1 writer">
-                                    <p th:text="${c.user_id}">작성자명</p>
-                                    <p th:text="${c.write_date}">작성날짜</p>
+                                    <p th:text="${c.userId}">작성자명</p>
                                 </div>
-                                <div class="flex-row w-9 comment">
+                                <div class="flex-row w-7 comment">
                                     <p th:text="${c.comment}">댓글내용</p>
+                                </div>
+                                <div class="flex-row w-2 date">
+                                    <p th:text="${#temporals.format(c.writeDate, 'yyyy-MM-dd HH:mm:ss')}">작성날짜</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="comments padding">
+                        <div class="comments padding background">
                             <div class="flex-row gap">
                                 <div class="commentsInfoArea">
                                     <label for="userId"></label><input type="text" id="userId" name="input" placeholder="닉네임 입력.. 생략시 익명" autocomplete="off" maxlength="15" />
                                     <label for="password"></label><input type="password" id="password" name="input" placeholder="댓글 비밀번호.."  autocomplete="off" maxlength="15" />
-                                    <input type="hidden" id="tierListId" value="${tierList.id}" />
+                                    <input type="hidden" id="tierListId" th:value="${tierList.id}" />
                                 </div>
                                 <div class="commentsArea">
                                     <label for="comment"></label><textarea class="textArea" id="comment" rows="4"></textarea>

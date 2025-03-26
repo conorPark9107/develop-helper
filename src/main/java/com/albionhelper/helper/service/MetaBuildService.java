@@ -5,7 +5,7 @@ import com.albionhelper.helper.domain.metaBuild.TierListComment;
 import com.albionhelper.helper.domain.metaBuild.TierListCommentDTO;
 import com.albionhelper.helper.domain.metaBuild.TierListDTO;
 import com.albionhelper.helper.repository.MetaBuildRepository;
-import lombok.RequiredArgsConstructor;
+import com.albionhelper.helper.repository.TierListCommentRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,9 +19,11 @@ import java.util.Optional;
 public class MetaBuildService {
 
     private final MetaBuildRepository metaBuildRepository;
+    private final TierListCommentRepository tierListCommentRepository;
 
-    public MetaBuildService(MetaBuildRepository metaBuildRepository) {
+    public MetaBuildService(MetaBuildRepository metaBuildRepository, TierListCommentRepository tierListCommentRepository) {
         this.metaBuildRepository = metaBuildRepository;
+        this.tierListCommentRepository = tierListCommentRepository;
     }
 
     public String register(TierListDTO dto) {
@@ -64,8 +66,17 @@ public class MetaBuildService {
     }
 
     public String registerComment(TierListCommentDTO dto) {
+        TierList tierList = metaBuildRepository.findById(dto.getTierListId()).get();
+        dto.setTierList(tierList);
+        TierListComment tlc = new TierListComment();
+        TierListComment entity = tlc.toEntity(dto);
+        try{
+            tierListCommentRepository.save(entity);
+            return "O";
+        }catch (Exception e){
+            return "X";
+        }
 
-        return "";
     }
 
 //    @Service
