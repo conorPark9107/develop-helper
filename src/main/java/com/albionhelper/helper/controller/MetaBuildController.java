@@ -67,6 +67,7 @@ public class MetaBuildController {
     }
 
     @PostMapping("/tierList/detail")
+    @ResponseBody
     public String showTierListDetail(@RequestBody TierListCommentDTO dto){
         return metaBuildService.registerComment(dto);
     }
