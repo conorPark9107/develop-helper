@@ -350,18 +350,18 @@ input[name="input"]{
 .writer{
     color: var(--itemwhite);
     text-align: left;
-    font-size: 13px;
+    font-size: 11px;
 }
 .comment{
     color: var(--itemwhite);
     text-align: left;
-    font-size: 13px;
+    font-size: 11px;
 }
 .date{
     justify-content: flex-end;
     color: var(--itemwhite);
     text-align: right;
-    font-size: 13px;
+    font-size: 11px;
 }
 .bg-comment{
     border-top: 1px solid var(--border-a);

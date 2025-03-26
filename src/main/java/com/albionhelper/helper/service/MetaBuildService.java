@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -77,6 +78,18 @@ public class MetaBuildService {
             return "X";
         }
 
+    }
+
+    @Transactional
+    public String modifyUp(Long id) {
+        Optional<TierList> byId = metaBuildRepository.findById(id);
+        if(byId.isPresent()){
+            TierList tierList = byId.get();
+            tierList.setUp(tierList.getUp() + 1);
+            return "O";
+        }else{
+            return "X";
+        }
     }
 
 //    @Service

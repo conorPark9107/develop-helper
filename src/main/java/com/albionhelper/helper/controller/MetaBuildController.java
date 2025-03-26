@@ -2,6 +2,7 @@ package com.albionhelper.helper.controller;
 
 import com.albionhelper.helper.domain.metaBuild.TierListCommentDTO;
 import com.albionhelper.helper.domain.metaBuild.TierListDTO;
+import com.albionhelper.helper.domain.metaBuild.TierListUpRequestDTO;
 import com.albionhelper.helper.service.MetaBuildService;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -71,5 +72,12 @@ public class MetaBuildController {
     public String showTierListDetail(@RequestBody TierListCommentDTO dto){
         return metaBuildService.registerComment(dto);
     }
+
+    @PostMapping("/tierList/detail/up")
+    @ResponseBody
+    public String showTierListDetail(@RequestBody TierListUpRequestDTO dto){
+        return metaBuildService.modifyUp(dto.getId());
+    }
+
 
 }

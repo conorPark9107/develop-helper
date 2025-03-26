@@ -63,7 +63,60 @@ document.addEventListener("DOMContentLoaded", () => {
     const upBtn = document.getElementById('upBtn');
     upBtn.addEventListener('click', function(){
         const child = upBtn.firstElementChild;
+        const id = document.getElementById('tierListId').value;
 
+        if(getCookie(`${id}-tierList`) === ""){
+            fetch('/tierList/detail/up', {
+                method : 'POST',
+                headers : {
+                    'Content-Type' : 'application/json'
+                },
+                body : JSON.stringify({
+                    id: id
+                })
+            }).then(response => response.text())
+            .then(data => {
+                if(data === 'X'){
+                    showAlert('추천작업 중 에러가 발생하였습니다. 관리자에게 문의해주세요.');
+                    return;
+                }else{
+                    setCookie(`${id}-tierList`, "done" , 1);
+                    child.innerHTML = Number(child.innerHTML) + 1;
+                }
+            });
+        }else{
+            showAlert("추천은 24시간에 한번씩 누를 수 있습니다.");
+            return;
+        }
     });
 
 });
+
+
+/* 쿠키 Set */
+function setCookie( name, value, exDay ) {
+    var today = new Date();
+    today.setDate( today.getDate() + exDay );
+    document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + today.toGMTString() + ";"
+}
+
+/* 쿠키 GET */
+function getCookie(name)
+{
+    var obj = name + "=";
+    var x = 0;
+    while ( x <= document.cookie.length )
+    {
+        var y = (x+obj.length);
+        if ( document.cookie.substring( x, y ) == obj )
+        {
+            if ((endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+            endOfCookie = document.cookie.length;
+            return unescape( document.cookie.substring( y, endOfCookie ) );
+        }
+        x = document.cookie.indexOf( " ", x ) + 1;
+
+        if ( x == 0 ) break;
+    }
+    return "";
+}
