@@ -253,9 +253,6 @@ img{
     font-weight: 600;
     font-size: 0.9rem;
 }
-.subTitle span{
-    margin: 0px 10px 0px 0px;
-}
 .tier{
     height: 70px;
     padding: 0px;
@@ -332,6 +329,7 @@ input, .textArea{
     font-size: 12px;
 }
 .titleSubInfo, writeDate{
+    gap: 10px;
     font-size: 12px;
 }
 .submit{
@@ -365,6 +363,12 @@ input[name="input"]{
 }
 .bg-comment{
     border-top: 1px solid var(--border-a);
+}
+.space-end{
+    justify-content: flex-end;
+}
+.tx-left{
+    text-align:left;
 }
 @media screen and (max-width: 1024px) {
     .flex-column{

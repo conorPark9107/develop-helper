@@ -263,7 +263,7 @@ input[type="checkbox"]:not(.switchBtn) {
     border-radius: 5px;
     background-color: var(--border);
     color: var(--black);
-}
+}`
 .pagination a:hover:not(.nowPage) {
     background-color: var(--border);
     color: var(--black);
@@ -273,6 +273,16 @@ input[type="checkbox"]:not(.switchBtn) {
 }
 .flex-center{
     justify-content: center;
+}
+.rule{
+    text-align: left;
+    margin: 2px;
+}
+.w-6{
+    width: 60%;
+}
+.w-4{
+    width: 40%;
 }
 @media screen and (max-width: 1024px) {
     .flex-column{

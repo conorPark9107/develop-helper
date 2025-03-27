@@ -49,10 +49,20 @@
                     <div class="flex-column background margin-b padding">
                         <p class="title"><span class="category" th:text="|[${tierList.category}]|"></span> <span class="title" th:text="${tierList.title}"></span></p>
                         <div class="subTitle flex-row space-between w-10">
-                            <span class="writeDate" th:text="${#temporals.format(tierList.writeDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
-                            <div class="titleSubInfo">
-                                <span class="up right" th:text="|추천수:${tierList.up}|"></span>
-                                <span class="commentsNum right" th:text="| 댓글수:${#lists.size(tierList.tierListComments)}|">0</span>
+                            <div class="tx-left w-5">
+                                <span class="writeDate" th:text="${#temporals.format(tierList.writeDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                            </div>
+                            <div class="flex-row titleSubInfo space-end w-5">
+                                <div>
+                                    <span>추천수:</span>
+                                    <span class="up right" id="up" th:text="${tierList.up}"></span>
+                                    <span>개</span>
+                                </div>
+                                <div>
+                                    <span>댓글수:</span>
+                                    <span class="commentsNum right" id="commentNum1" th:text="${#lists.size(tierList.tierListComments)}">0</span>
+                                    <span>개</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -168,9 +178,11 @@
                     </div>
                     <div class="flex-column margin-b">
                         <hr />
-                        <span class="commentsNumber margin-b"
-                              th:text="${tierList.tierListComments.size() == 0 ? '현재 작성된 댓글이 없습니다.' : '댓글 (' + tierList.tierListComments.size() + '개)'}">
-                        </span>
+                        <div class="commentsNumber margin-b">
+                            <span>댓글(</span>
+                            <span id="commentNum" th:text="${tierList.tierListComments.size()}"></span>
+                            <span>개)</span>
+                        </div>
                         <div class="flex-column tierListCommentsList">
                             <div th:if="${tierList.tierListComments.size() > 0}" th:each="c : ${tierList.tierListComments}" class="flex-row bg-comment padding-sm align-center">
                                 <div class="flex-column w-1 writer">

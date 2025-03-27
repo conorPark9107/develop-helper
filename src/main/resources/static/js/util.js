@@ -44,7 +44,7 @@ const getPerTime = (date) => {
 	const days = hours / 24;
 	if (days <= 90) return `${Math.floor(days)}일 전`;
 
-	if(days > 90) return '오래 전 데이터.';
+	if(days > 90) return '오래 전.';
 
 	return `${start.toLocaleDateString()}`;
 };
@@ -52,7 +52,7 @@ const getPerTime = (date) => {
 // yyyy-MM-dd HH:mm:ss
 function formatDate(date) {
     const yyyy = date.getFullYear();
-    const MM = String(date.getMonth() + 1).padStart(2, "0"); // 월 (1월 = 0이므로 +1)
+    const MM = String(date.getMonth() + 1).padStart(2, "0"); // 월 (1월 = 0 이므로 +1)
     const dd = String(date.getDate()).padStart(2, "0");
     const HH = String(date.getHours()).padStart(2, "0");
     const mm = String(date.getMinutes()).padStart(2, "0");

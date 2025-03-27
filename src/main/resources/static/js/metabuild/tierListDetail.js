@@ -1,15 +1,26 @@
 function appendComment(userId, comment, writeDate){
 
+    const num = document.getElementById('commentNum');
+    const num2 = document.getElementById('commentNum1');
+    num2.innerText = Number(num2.innerText) + 1;
+    num.innerText = Number(num.innerText) + 1;
+
+    if(userId === ""){
+        userId = '익명';
+    }
+
     // 새로운 댓글 요소 생성.
     const commentDiv = document.createElement("div");
-    commentDiv.className = "flex-row background padding-sm";
+    commentDiv.className = "flex-row bg-comment padding-sm align-center";
     commentDiv.innerHTML = `
         <div class="flex-column w-1 writer">
             <p>${userId}</p>
-            <p>${formatDate(writeDate)}</p>
         </div>
-        <div class="flex-row w-9 comment">
+        <div class="flex-row w-7 comment">
             <p>${comment}</p>
+        </div>
+        <div class="flex-row w-2 date">
+            <p>${formatDate(writeDate)}</p>
         </div>
     `;
 
@@ -46,7 +57,7 @@ const clickedSubmitBtn = () => {
     }).then(response => response.text())
     .then(text => {
         if(text === 'O'){
-            const writeDate = new Date().toLocaleString();
+            const writeDate = new Date();
             appendComment(userId, comment, writeDate);
         }else if(text === 'X'){
             showAlert('알수없는 에러가 발생하였습니다.');
@@ -82,6 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 }else{
                     setCookie(`${id}-tierList`, "done" , 1);
                     child.innerHTML = Number(child.innerHTML) + 1;
+                    const beforeUp = document.getElementById('up').innerText;
+                    document.getElementById('up').innerText = Number(beforeUp) + 1;
                 }
             });
         }else{
