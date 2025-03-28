@@ -69,9 +69,9 @@
                     
                     <div class="flex-column w-7 margin-b">
 
-                        <div th:if="${#lists.size(tierList.t1) > 1}"
-                             class="flex-row tier background align-center space-between padding">
-                            <div class="rank">
+                        <div th:if="${not #strings.isEmpty(tierList.t1)} and ${#lists.size(tierList.t1) > 0}"
+                             class="flex-row tier background align-center space-between padding t1">
+                            <div class="rank t1b">
                                 <span class="rankText" th:text="${tierList.t1Name}"></span>
                             </div>
                             <div class="rankArea">
@@ -79,9 +79,9 @@
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t2) > 1}"
-                             class="flex-row tier background align-center space-between padding">
-                            <div class="rank">
+                        <div th:if="${not #strings.isEmpty(tierList.t2)} and ${#lists.size(tierList.t2) > 0}"
+                             class="flex-row tier background align-center space-between padding t2">
+                            <div class="rank t2b">
                                 <span class="rankText" th:text="${tierList.t2Name}"></span>
                             </div>
                             <div class="rankArea">
@@ -89,9 +89,9 @@
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t3) > 1}"
-                             class="flex-row tier background align-center space-between padding">
-                            <div class="rank">
+                        <div th:if="${not #strings.isEmpty(tierList.t3)} and ${#lists.size(tierList.t3) > 0}"
+                             class="flex-row tier background align-center space-between padding t3">
+                            <div class="rank t3b">
                                 <span class="rankText" th:text="${tierList.t3Name}"></span>
                             </div>
                             <div class="rankArea">
@@ -99,9 +99,9 @@
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t4) > 1}"
-                             class="flex-row tier background align-center space-between padding">
-                            <div class="rank">
+                        <div th:if="${not #strings.isEmpty(tierList.t4)} and ${#lists.size(tierList.t4) > 0}"
+                             class="flex-row tier background align-center space-between padding t4">
+                            <div class="rank t4b">
                                 <span class="rankText" th:text="${tierList.t4Name}"></span>
                             </div>
                             <div class="rankArea">
@@ -109,9 +109,9 @@
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t5) > 1}"
-                             class="flex-row tier background align-center space-between padding">
-                            <div class="rank">
+                        <div th:if="${not #strings.isEmpty(tierList.t5)} and ${#lists.size(tierList.t5) > 0}"
+                             class="flex-row tier background align-center space-between padding t5">
+                            <div class="rank t5b">
                                 <span class="rankText" th:text="${tierList.t5Name}"></span>
                             </div>
                             <div class="rankArea">
@@ -119,9 +119,9 @@
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t6) > 1}"
-                             class="flex-row tier background align-center space-between padding">
-                            <div class="rank">
+                        <div th:if="${not #strings.isEmpty(tierList.t6)} and ${#lists.size(tierList.t6) > 0}"
+                             class="flex-row tier background align-center space-between padding t6">
+                            <div class="rank t6b">
                                 <span class="rankText" th:text="${tierList.t6Name}"></span>
                             </div>
                             <div class="rankArea">
@@ -129,9 +129,9 @@
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t7) > 1}"
-                             class="flex-row tier background align-center space-between padding">
-                            <div class="rank">
+                        <div th:if="${not #strings.isEmpty(tierList.t7)} and ${#lists.size(tierList.t7) > 0}"
+                             class="flex-row tier background align-center space-between padding t7">
+                            <div class="rank t7b">
                                 <span class="rankText" th:text="${tierList.t7Name}"></span>
                             </div>
                             <div class="rankArea">
@@ -139,9 +139,9 @@
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t8) > 1}"
-                             class="flex-row tier background align-center space-between padding">
-                            <div class="rank">
+                        <div th:if="${not #strings.isEmpty(tierList.t8)} and ${#lists.size(tierList.t8) > 0}"
+                             class="flex-row tier background align-center space-between padding t8">
+                            <div class="rank t8b">
                                 <span class="rankText" th:text="${tierList.t8Name}"></span>
                             </div>
                             <div class="rankArea">
@@ -149,9 +149,9 @@
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t9) > 1}"
-                             class="flex-row tier background align-center space-between padding">
-                            <div class="rank">
+                        <div th:if="${not #strings.isEmpty(tierList.t9)} and ${#lists.size(tierList.t9) > 0}"
+                             class="flex-row tier background align-center space-between padding t9">
+                            <div class="rank t9b">
                                 <span class="rankText" th:text="${tierList.t9Name}"></span>
                             </div>
                             <div class="rankArea">
@@ -159,9 +159,9 @@
                             </div>
                         </div>
 
-                        <div th:if="${#lists.size(tierList.t10) > 1}"
-                             class="flex-row tier background align-center space-between padding">
-                            <div class="rank">
+                        <div th:if="${not #strings.isEmpty(tierList.t10)} and ${#lists.size(tierList.t10) > 0}"
+                             class="flex-row tier background align-center space-between padding t10">
+                            <div class="rank t10b">
                                 <span class="rankText" th:text="${tierList.t10Name}"></span>
                             </div>
                             <div class="rankArea">

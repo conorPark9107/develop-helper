@@ -46,42 +46,51 @@ public class TierListDTO {
     private List<TierListComment> tierListComments;
     
     public void setT1(String t1) {
-        this.t1 = t1.split(" ");
+        this.t1 = convertStringToArray(t1);
     }
 
     public void setT2(String t2) {
-        this.t2 = t2.split(" ");
+        this.t2 = convertStringToArray(t2);
     }
 
     public void setT3(String t3) {
-        this.t3 = t3.split(" ");
+        this.t3 = convertStringToArray(t3);
     }
 
     public void setT4(String t4) {
-        this.t4 = t4.split(" ");
+        this.t4 = convertStringToArray(t4);
     }
 
     public void setT5(String t5) {
-        this.t5 = t5.split(" ");
+        this.t5 = convertStringToArray(t5);
     }
 
     public void setT6(String t6) {
-        this.t6 = t6.split(" ");
+        this.t6 = convertStringToArray(t6);
     }
 
     public void setT7(String t7) {
-        this.t7 = t7.split(" ");
+        this.t7 = convertStringToArray(t7);
     }
 
     public void setT8(String t8) {
-        this.t8 = t8.split(" ");
+        this.t8 = convertStringToArray(t8);
     }
 
     public void setT9(String t9) {
-        this.t9 = t9.split(" ");
+        this.t9 = convertStringToArray(t9);
     }
 
     public void setT10(String t10) {
-        this.t10 = t10.split(" ");
+        this.t10 = convertStringToArray(t10);
     }
+
+    public static String[] convertStringToArray(String tn){
+        if(tn.isEmpty()){
+            return null;
+        }else{
+            return tn.split(" ");
+        }
+    }
+
 }

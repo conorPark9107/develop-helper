@@ -103,16 +103,16 @@ public class TierList {
                 .t8Name(dto.getT8Name())
                 .t9Name(dto.getT9Name())
                 .t10Name(dto.getT10Name())
-                .t1(String.join(" ", dto.getT1()))
-                .t2(String.join(" ", dto.getT2()))
-                .t3(String.join(" ", dto.getT3()))
-                .t4(String.join(" ", dto.getT4()))
-                .t5(String.join(" ", dto.getT5()))
-                .t6(String.join(" ", dto.getT6()))
-                .t7(String.join(" ", dto.getT7()))
-                .t8(String.join(" ", dto.getT8()))
-                .t9(String.join(" ", dto.getT9()))
-                .t10(String.join(" ", dto.getT10()))
+                .t1(arrayToString(dto.getT1()))
+                .t2(arrayToString(dto.getT2()))
+                .t3(arrayToString(dto.getT3()))
+                .t4(arrayToString(dto.getT4()))
+                .t5(arrayToString(dto.getT5()))
+                .t6(arrayToString(dto.getT6()))
+                .t7(arrayToString(dto.getT7()))
+                .t8(arrayToString(dto.getT8()))
+                .t9(arrayToString(dto.getT9()))
+                .t10(arrayToString(dto.getT10()))
                 .up(dto.getUp())
                 .tierListComments(dto.getTierListComments())
                 .build();
@@ -138,19 +138,35 @@ public class TierList {
                 .t8Name(this.t8Name)
                 .t9Name(this.t9Name)
                 .t10Name(this.t10Name)
-                .t1(this.t1.split(" "))
-                .t2(this.t2.split(" "))
-                .t3(this.t3.split(" "))
-                .t4(this.t4.split(" "))
-                .t5(this.t5.split(" "))
-                .t6(this.t6.split(" "))
-                .t7(this.t7.split(" "))
-                .t8(this.t8.split(" "))
-                .t9(this.t9.split(" "))
-                .t10(this.t10.split(" "))
+                .t1(stringToArray(this.t1))
+                .t2(stringToArray(this.t2))
+                .t3(stringToArray(this.t3))
+                .t4(stringToArray(this.t4))
+                .t5(stringToArray(this.t5))
+                .t6(stringToArray(this.t6))
+                .t7(stringToArray(this.t7))
+                .t8(stringToArray(this.t8))
+                .t9(stringToArray(this.t9))
+                .t10(stringToArray(this.t10))
                 .up(this.up)
                 .tierListComments(this.tierListComments)
                 .build();
+    }
+
+    public String arrayToString(String[] arr){
+        if(arr.length > 0 && !arr[0].isEmpty()){
+            return String.join(" ", arr);
+        }else{
+            return null;
+        }
+    }
+
+    public String[] stringToArray(String tn){
+        if(tn == null){
+            return null;
+        }else{
+            return tn.split(" ");
+        }
     }
 
 
