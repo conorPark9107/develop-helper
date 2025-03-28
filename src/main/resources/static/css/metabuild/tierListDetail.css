@@ -370,6 +370,12 @@ input[name="input"]{
 .tx-left{
     text-align:left;
 }
+.deleteBtn{
+    cursor:pointer;
+    background-color: #00000000;
+    border: 0;
+    font-size: 10px;
+}
 @media screen and (max-width: 1024px) {
     .flex-column{
         padding: 10px;

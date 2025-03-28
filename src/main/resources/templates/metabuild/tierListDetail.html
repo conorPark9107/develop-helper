@@ -183,7 +183,7 @@
                             <span id="commentNum" th:text="${tierList.tierListComments.size()}"></span>
                             <span>개)</span>
                         </div>
-                        <div class="flex-column tierListCommentsList">
+                        <div class="flex-column tierListCommentsList align-center">
                             <div th:if="${tierList.tierListComments.size() > 0}" th:each="c : ${tierList.tierListComments}" class="flex-row bg-comment padding-sm align-center">
                                 <div class="flex-column w-1 writer">
                                     <p th:text="${c.userId}">작성자명</p>
@@ -191,8 +191,9 @@
                                 <div class="flex-row w-7 comment">
                                     <p th:text="${c.comment}">댓글내용</p>
                                 </div>
-                                <div class="flex-row w-2 date">
+                                <div class="flex-row w-2 date align-center">
                                     <p th:text="${#temporals.format(c.writeDate, 'yyyy-MM-dd HH:mm:ss')}">작성날짜</p>
+                                    <button class="link deleteBtn" th:value="${c.id}" onclick="clickDeleteBtn(this)">❌</button>
                                 </div>
                             </div>
                         </div>

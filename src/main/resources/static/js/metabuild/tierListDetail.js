@@ -1,4 +1,4 @@
-function appendComment(userId, comment, writeDate){
+function appendComment(userId, comment, writeDate, commentId){
 
     const num = document.getElementById('commentNum');
     const num2 = document.getElementById('commentNum1');
@@ -21,6 +21,7 @@ function appendComment(userId, comment, writeDate){
         </div>
         <div class="flex-row w-2 date">
             <p>${formatDate(writeDate)}</p>
+            <button class="link deleteBtn" value="${commentId}" onclick="clickDeleteBtn(this)">❌</button>
         </div>
     `;
 
@@ -55,15 +56,16 @@ const clickedSubmitBtn = () => {
             tierListId : tierListId
         })
     }).then(response => response.text())
-    .then(text => {
-        if(text === 'O'){
+        .then(text => {
+        commentId = text.slice(1);
+        if(text.startsWith("O")){
             const writeDate = new Date();
-            appendComment(userId, comment, writeDate);
-        }else if(text === 'X'){
+            appendComment(userId, comment, writeDate, commentId);
+        }else if(text.startsWith('X')){
             showAlert('알수없는 에러가 발생하였습니다.');
         }
     })
-    .catch(error => console.log('Error : ', error));
+        .catch(error => console.log('Error : ', error));
 }
 document.addEventListener("DOMContentLoaded", () => {
     const tiers = document.querySelectorAll('.tier');
@@ -86,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     id: id
                 })
             }).then(response => response.text())
-            .then(data => {
+                .then(data => {
                 if(data === 'X'){
                     showAlert('추천작업 중 에러가 발생하였습니다. 관리자에게 문의해주세요.');
                     return;
@@ -104,6 +106,50 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+// 댓글 삭제 버튼을 클릭했을 때
+function clickDeleteBtn(e){
+    const commentId = e.value;
+
+    $.confirm({
+        theme: 'supervan',
+        title: '정말로 댓글을 삭제하시겠습니까?',
+        content: '<p>삭제를 원하신다면 <u>비밀번호</u>를 입력하고 확인버튼을 누르세요.</p>' +
+        '<p>버튼 클릭시 곧 바로 <span class="red">삭제</span>처리되니 신중하게 눌러주세요.</p>' +
+        '<input class="inputPw" type="password" name="inputPassword" />',
+        buttons: {
+            '확인': function () {
+                inputPw = this.$content.find('.inputPw').val();
+                alert(JSON.stringify({
+                    id: commentId,
+                    pw: inputPw
+                }));
+
+                fetch('/tierList/detail/delete', {
+                    method : 'POST',
+                    headers : {
+                        'Content-Type' : 'application/json'
+                    },
+                    body : JSON.stringify({
+                        id: commentId,
+                        pw: inputPw
+                    })
+                }).then(response => response.text())
+                    .then(s => {
+                    if(s.startsWith("O")){
+                        location.reload(false);
+                    }else{
+                        showAlert('패스워드가 맞지 않습니다. 다시 시도해주세요.');
+                    }
+                }).catch(error => {
+                    showAlert('알수없는 에러가 발생하였습니다. 잠시후에 다시 시도해주세요.');
+                });
+            },
+            '돌아가기': function () {}
+        }
+    });
+
+}
 
 
 /* 쿠키 Set */

@@ -154,7 +154,7 @@ public class TierList {
     }
 
     public String arrayToString(String[] arr){
-        if(arr.length > 0 && !arr[0].isEmpty()){
+        if(arr != null && !arr[0].isEmpty()){
             return String.join(" ", arr);
         }else{
             return null;

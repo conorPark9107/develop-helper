@@ -1,9 +1,6 @@
 package com.albionhelper.helper.service;
 
-import com.albionhelper.helper.domain.metaBuild.TierList;
-import com.albionhelper.helper.domain.metaBuild.TierListComment;
-import com.albionhelper.helper.domain.metaBuild.TierListCommentDTO;
-import com.albionhelper.helper.domain.metaBuild.TierListDTO;
+import com.albionhelper.helper.domain.metaBuild.*;
 import com.albionhelper.helper.repository.MetaBuildRepository;
 import com.albionhelper.helper.repository.TierListCommentRepository;
 import org.springframework.data.domain.Page;
@@ -72,7 +69,7 @@ public class MetaBuildService {
         TierListComment entity = tlc.toEntity(dto);
         try{
             tierListCommentRepository.save(entity);
-            return "O";
+            return "O" + entity.getId();
         }catch (Exception e){
             return "X";
         }
@@ -89,6 +86,17 @@ public class MetaBuildService {
         }else{
             return "X";
         }
+    }
+
+    @Transactional
+    public String deleteComment(DeleteCommentDTO dto) {
+        Optional<TierListComment> optional = tierListCommentRepository.findByIdAndPassword(dto.getId(), dto.getPw());
+        if(optional.isEmpty()){
+            return "X";
+        }
+        TierListComment tierListComment = optional.get();
+        tierListComment.setComment("삭제된 댓글입니다.");
+        return "O" + tierListComment.getId();
     }
 
 //    @Service

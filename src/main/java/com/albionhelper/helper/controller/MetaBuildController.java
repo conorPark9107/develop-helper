@@ -1,5 +1,6 @@
 package com.albionhelper.helper.controller;
 
+import com.albionhelper.helper.domain.metaBuild.DeleteCommentDTO;
 import com.albionhelper.helper.domain.metaBuild.TierListCommentDTO;
 import com.albionhelper.helper.domain.metaBuild.TierListDTO;
 import com.albionhelper.helper.domain.metaBuild.TierListUpRequestDTO;
@@ -60,11 +61,18 @@ public class MetaBuildController {
         return metaBuildService.register(dto);
     }
 
+
+    @PostMapping("/tierList/detail/delete")
+    @ResponseBody
+    public String deleteComment(@RequestBody DeleteCommentDTO dto){
+        return metaBuildService.deleteComment(dto);
+    }
+
     @GetMapping("/tierList/detail")
     public String showTierListDetail(@RequestParam(name = "id") Long id, Model model){
         TierListDTO tierList = metaBuildService.getTierListById(id);
         model.addAttribute("tierList", tierList);
-        return "/metabuild/tierListDetail";
+        return "metabuild/tierListDetail";
     }
 
     @PostMapping("/tierList/detail")
