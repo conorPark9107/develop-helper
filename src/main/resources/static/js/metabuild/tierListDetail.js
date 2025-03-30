@@ -1,3 +1,14 @@
+fetch("/jsonData/category.json")
+    .then(response => response.json())
+    .then(data => {
+    const itemListDiv = document.querySelector('.itemListDiv');
+    Object.keys(data).forEach(category => {
+
+    });
+})
+    .catch(error => console.log(`에러: ${error}`));
+
+
 function appendComment(userId, comment, writeDate, commentId){
 
     const num = document.getElementById('commentNum');
@@ -120,11 +131,6 @@ function clickDeleteBtn(e){
         buttons: {
             '확인': function () {
                 inputPw = this.$content.find('.inputPw').val();
-                alert(JSON.stringify({
-                    id: commentId,
-                    pw: inputPw
-                }));
-
                 fetch('/tierList/detail/delete', {
                     method : 'POST',
                     headers : {
@@ -142,6 +148,7 @@ function clickDeleteBtn(e){
                         showAlert('패스워드가 맞지 않습니다. 다시 시도해주세요.');
                     }
                 }).catch(error => {
+                    conosole.log(`error : ${error}`);
                     showAlert('알수없는 에러가 발생하였습니다. 잠시후에 다시 시도해주세요.');
                 });
             },

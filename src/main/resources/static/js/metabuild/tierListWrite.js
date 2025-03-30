@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             addDragAndDropEvents();
         })
-            .catch(error => console.log(`에러: ${error}`));
+        .catch(error => console.log(`에러: ${error}`));
     }
 
     function addDragAndDropEvents() {
