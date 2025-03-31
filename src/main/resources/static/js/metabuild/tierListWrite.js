@@ -1,9 +1,11 @@
+let itemList;
 document.addEventListener("DOMContentLoaded", () => {
     function loadItemList() {
         //    fetch("/static/jsonData/category.json")
         fetch("/jsonData/category.json")
             .then(response => response.json())
             .then(data => {
+            itemList = data;
             const itemListDiv = document.querySelector('.itemListDiv');
             Object.keys(data).forEach(category => {
                 data[category].forEach(e => {
@@ -172,6 +174,10 @@ function addTier() {
 // 특정 아이템 카테고리를 클릭했을 때
 function changePart(e) {
     let category = e.innerText;
+
+    // TODO: 여기서 clicked 클래스를 추가해줘야 검색할 때 해당 카테고리의 무기들 중 골라서 보여줄 수 있음.
+
+
     const itemImages = document.querySelectorAll('.itemListDiv > .img');
 
     let obj;
@@ -213,6 +219,18 @@ function changePart(e) {
         }
     });
 }
+
+// input에 사용자가 아이템명을 검색하고자 입력했을때 발생(keyUp)
+function inputKeyUp(e){
+    const value = e.value;
+    Object.keys(data).forEach(category => {
+        data[category].forEach(e => {
+            console.log(e);
+        });
+    });
+}
+
+
 
 // 티어 삭제 버튼 클릭시
 function removeTier(){

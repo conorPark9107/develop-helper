@@ -73,6 +73,18 @@ label{
     flex-direction: row;
     align-items: center;
 }
+.content-div-input{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+    border-bottom: 2px solid var(--border-a);
+}
+#inputTxt{
+    width:50%;
+}
 .content-item{
     cursor: pointer;
     background: var(--btn-bg);
