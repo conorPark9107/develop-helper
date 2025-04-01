@@ -116,7 +116,7 @@
                             </div>
                         </div>
                         <div class="flex-column w-4 background padding">
-                            <p class="rule">🔥 한 티어당 10개의 아이템이 들어갈 수 있습니다.</p>
+                            <p class="rule">🔥 한 티어당 7개의 아이템이 들어갈 수 있습니다.</p>
                             <p class="rule">🔥 배경만 보이는 이미지는 이미지에 마우스를 올려 텍스트를 통해 어떤 아이템인지 확인하실수 있습니다.(알비온에서 이미지를 미제공)</p>
                             <p class="rule">🔥 누락된 아이템은 <a class='link' href='/toinquire' >관리자문의</a>에 글을 남겨주세요. 최대한 빠르게 조치하겠습니다.</p>
                             <p class="rule">🔥 티어 삭제시 아이템이 보이지 않을때는 아이템이미지들이 모여있는 박스의 제일 하단에 아이템이 위치하고 있습니다.</p>
@@ -129,12 +129,12 @@
                                 <input type="text" id="writer" placeholder="작성자(생략시 익명)">
                                 <input type="text" id="input" placeholder="게시글 제목을 입력하세요.">
                             </div>
-                            <input type="text" id="tierStr" placeholder="티어명 ex) S티어, A티어 ..등" />
+                            <input type="text" id="tierStr" placeholder="티어명 (1티어, 2티어 ..)" />
                             <button class="btn" onclick="addTier()">티어 추가</button>
                             <button class="btn red" onclick="removeTier()">티어 삭제</button>
                         </div>
                         <div class="flex-row gap space-between">
-                            <div class="flex-column gap  w-6">
+                            <div class="flex-column gap w-6">
                                 <div class="flex-row tier background align-center space-between padding" id="1">
                                     <div class="rank">
                                         <span class="rankText" id="1t"></span>
@@ -218,8 +218,11 @@
                             </div>
 
                             <div class="flex-column w-4 background padding-sm categoryDiv">
+                                <div class="content-div-input">
+                                    <input type="text" id="inputTxt" placeholder="아이템 검색.. (용병 신발, 베드록...)" onkeyup="inputKeyUp(this)"/>
+                                </div>
                                 <div class="content-div">
-                                    <button class="content-item hover" onclick="changePart(this)">전체</button>
+                                    <button class="content-item hover clicked" onclick="changePart(this)">전체</button>
                                     <button class="content-item hover" onclick="changePart(this)">무기</button>
                                     <button class="content-item hover" onclick="changePart(this)">투구</button>
                                     <button class="content-item hover" onclick="changePart(this)">갑옷</button>
@@ -229,10 +232,7 @@
                                     <button class="content-item hover" onclick="changePart(this)">음식</button>
                                     <button class="content-item hover" onclick="changePart(this)">탈것</button>
                                 </div>
-                                <div class="content-div-input">
-                                    <input type="text" id="inputTxt" placeholder="아이템 검색.." onkeyup="inputKeyUp(this)"/>
-                                </div>
-                                <div class="flex-row itemListDiv">
+                                <div class="flex-row itemListDiv space-between">
                                 </div>
                             </div>
 
