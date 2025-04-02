@@ -263,7 +263,7 @@ input[type="checkbox"]:not(.switchBtn) {
     border-radius: 5px;
     background-color: var(--border);
     color: var(--black);
-}`
+}
 .pagination a:hover:not(.nowPage) {
     background-color: var(--border);
     color: var(--black);
@@ -287,5 +287,19 @@ input[type="checkbox"]:not(.switchBtn) {
 @media screen and (max-width: 1024px) {
     .flex-column{
         padding: 10px;
+    }
+    td{
+        font-size: 15px;
+        padding: 10px 10px;
+    }
+    td img {
+        width: 5vw;
+        height: 5vw;
+    }
+    .col0{
+        width:15%;
+    }
+    .col0-1{
+        width:15%;
     }
 }

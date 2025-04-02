@@ -120,28 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return closest.element;
     }
-//    const observer = new MutationObserver(mutations => {
-//        mutations.forEach(mutation => {
-//            if (mutation.type === "childList") {
-//                mutation.addedNodes.forEach(node => {
-//                    if (node.tagName === "IMG") {
-//                        addAltText(node);
-//                    }
-//                });
-//            }
-//        });
-//    });
-//
-//    observer.observe(document.querySelector(".rankArea"), { childList: true, subtree: true });
-//
-//    function addAltText(img) {
-//        const text = document.createElement("p");
-//        text.textContent = img.alt;
-//        text.classList.add("alt-text");
-//        img.after(text);
-//    }
-
-
     window.addEventListener("DOMContentLoaded", loadItemList);
 });
 

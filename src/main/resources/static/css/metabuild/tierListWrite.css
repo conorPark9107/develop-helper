@@ -305,7 +305,7 @@ label{
 }
 .tier{
     display: none;
-    min-height: 70px;
+    min-height: 90px;
     height: auto;
     padding: 0px;
     justify-content: flex-start;
@@ -462,19 +462,19 @@ img{
 
 .image-container {
     position: relative;
-    display: inline-block;
+/*    display: inline-block;*/
     width: 95px;
     height: 80px;
 }
-
 .image-container::after {
     content: attr(data-title);
     position: absolute;
-    bottom: 3%;
+    bottom: -3%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: white;
-    color: black;
+    background-color: #00000042;
+    border: 2px solid var(--border);
+    color: var(--itemwhite);
     font-size: 8px;
     padding: 4px 2px;
     border-radius: 5px;
@@ -483,5 +483,14 @@ img{
 @media screen and (max-width: 1024px) {
     .flex-column{
         padding: 10px;
+    }
+    .mainDiv{
+        flex-direction: column;
+    }
+    .maindiv1, .maindiv2{
+        width: 99%;
+    }
+    .rank{
+        height: 90px;
     }
 }

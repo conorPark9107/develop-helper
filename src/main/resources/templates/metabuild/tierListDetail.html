@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     
-                    <div class="flex-column w-7 margin-b">
+                    <div class="flex-column margin-b">
 
                         <div th:if="${not #strings.isEmpty(tierList.t1)} and ${#lists.size(tierList.t1) > 0}"
                              class="flex-row tier background align-center space-between padding t1">
@@ -75,7 +75,9 @@
                                 <span class="rankText" th:text="${tierList.t1Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img th:each="t : ${tierList.t1}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
+                                <div class="imgArea" th:each="t : ${tierList.t1}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
                             </div>
                         </div>
 
@@ -85,7 +87,9 @@
                                 <span class="rankText" th:text="${tierList.t2Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img th:each="t : ${tierList.t2}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
+                                <div class="imgArea" th:each="t : ${tierList.t2}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
                             </div>
                         </div>
 
@@ -95,7 +99,9 @@
                                 <span class="rankText" th:text="${tierList.t3Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img th:each="t : ${tierList.t3}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
+                                <div class="imgArea" th:each="t : ${tierList.t3}" >
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
                             </div>
                         </div>
 
@@ -105,7 +111,9 @@
                                 <span class="rankText" th:text="${tierList.t4Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img th:each="t : ${tierList.t4}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
+                                <div class="imgArea" th:each="t : ${tierList.t4}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|"  th:attr="data-value=${t}"/>
+                                </div>
                             </div>
                         </div>
 
@@ -115,7 +123,9 @@
                                 <span class="rankText" th:text="${tierList.t5Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img th:each="t : ${tierList.t5}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
+                                <div class="imgArea" th:each="t : ${tierList.t5}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
                             </div>
                         </div>
 
@@ -125,7 +135,9 @@
                                 <span class="rankText" th:text="${tierList.t6Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img th:each="t : ${tierList.t6}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
+                                <div class="imgArea" th:each="t : ${tierList.t6}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
                             </div>
                         </div>
 
@@ -135,7 +147,9 @@
                                 <span class="rankText" th:text="${tierList.t7Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img th:each="t : ${tierList.t7}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
+                                <div class="imgArea" th:each="t : ${tierList.t7}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
                             </div>
                         </div>
 
@@ -145,7 +159,11 @@
                                 <span class="rankText" th:text="${tierList.t8Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img th:each="t : ${tierList.t8}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
+                                <div class="imgArea">
+                                    <div class="imgArea" th:each="t : ${tierList.t8}">
+                                        <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -155,7 +173,9 @@
                                 <span class="rankText" th:text="${tierList.t9Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img th:each="t : ${tierList.t9}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
+                                <div class="imgArea" th:each="t : ${tierList.t9}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
                             </div>
                         </div>
 
@@ -165,10 +185,11 @@
                                 <span class="rankText" th:text="${tierList.t10Name}"></span>
                             </div>
                             <div class="rankArea">
-                                <img th:each="t : ${tierList.t10}" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" />
+                                <div class="imgArea" th:each="t : ${tierList.t10}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="flex-row align-center margin-b space-center">
                         <div class="upBtnDiv" id="upBtn">

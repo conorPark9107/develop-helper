@@ -1,12 +1,9 @@
+var itemList;
 fetch("/jsonData/category.json")
-    .then(response => response.json())
-    .then(data => {
-    const itemListDiv = document.querySelector('.itemListDiv');
-    Object.keys(data).forEach(category => {
-
-    });
-})
-    .catch(error => console.log(`에러: ${error}`));
+.then(response => response.json())
+.then(data => {
+    itemList = data;
+}).catch(error => console.log(`에러: ${error}`));
 
 
 function appendComment(userId, comment, writeDate, commentId){
@@ -78,6 +75,8 @@ const clickedSubmitBtn = () => {
     })
         .catch(error => console.log('Error : ', error));
 }
+
+
 document.addEventListener("DOMContentLoaded", () => {
     const tiers = document.querySelectorAll('.tier');
 
@@ -116,6 +115,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+
+    const images = document.querySelectorAll('.imgArea > .itemImg');
+    images.forEach(img => {
+        var findedItem;
+        for (const category of Object.keys(itemList)) {
+            findedItem = itemList[category].find(item => item.id === img.dataset.value);
+            if (findedItem !== undefined) {
+                break;
+            }
+        }
+        img.title = findedItem.name;
+        img.alt = findedItem.name;
+        img.parentElement.dataset.title = findedItem.name;
+    });
 });
 
 // 댓글 삭제 버튼을 클릭했을 때
