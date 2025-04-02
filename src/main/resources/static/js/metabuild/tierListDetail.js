@@ -1,11 +1,3 @@
-var itemList;
-fetch("/jsonData/category.json")
-.then(response => response.json())
-.then(data => {
-    itemList = data;
-}).catch(error => console.log(`에러: ${error}`));
-
-
 function appendComment(userId, comment, writeDate, commentId){
 
     const num = document.getElementById('commentNum');
@@ -116,20 +108,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    const images = document.querySelectorAll('.imgArea > .itemImg');
-    images.forEach(img => {
-        var findedItem;
-        for (const category of Object.keys(itemList)) {
-            findedItem = itemList[category].find(item => item.id === img.dataset.value);
-            if (findedItem !== undefined) {
-                break;
-            }
-        }
-        img.title = findedItem.name;
-        img.alt = findedItem.name;
-        img.parentElement.dataset.title = findedItem.name;
-    });
+
 });
+
+window.addEventListener("load", function () {
+    fetch("/jsonData/category.json")
+        .then(response => response.json())
+        .then(data => {
+        const itemList = data;
+        const images = document.querySelectorAll('.imgArea > .itemImg');
+
+        images.forEach(img => {
+            let findedItem;
+            for (const category of Object.keys(itemList)) {
+                findedItem = itemList[category].find(item => item.id === img.dataset.value);
+                if (findedItem !== undefined) {
+                    break;
+                }
+            }
+
+            if (findedItem) {
+                img.title = findedItem.name;
+                img.alt = findedItem.name;
+                img.parentElement.dataset.title = findedItem.name;
+            } else {
+                console.warn(`해당 ID(${img.dataset.value})에 대한 아이템을 찾을 수 없음.`);
+            }
+        });
+    }).catch(error => console.error(`에러: ${error}`));
+});
+
+
 
 // 댓글 삭제 버튼을 클릭했을 때
 function clickDeleteBtn(e){
