@@ -480,6 +480,18 @@ img{
     border-radius: 5px;
     white-space: nowrap;
 }
+.textArea{
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--white);
+    background-color : #00000000;
+    resize: none;
+}
+
+.textArea::placeholder{
+    color: var(--itemWhite);
+}
+
 @media screen and (max-width: 1024px) {
     .flex-column{
         padding: 10px;
