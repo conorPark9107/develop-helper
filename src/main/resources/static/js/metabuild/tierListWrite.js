@@ -220,7 +220,7 @@ function getCategory(category){
 
 // input에 사용자가 아이템명을 검색하고자 입력했을때 발생(keyUp)
 function inputKeyUp(e){
-    const inputFromUser = e.value;
+    const inputFromUser = e.value.replace(/\s+/g, "");
     const categoryNow = document.getElementsByClassName('clicked')[0].innerText;
     const category = getCategory(categoryNow);
     const itemImages = document.querySelectorAll('.itemListDiv > .image-container > .img');
@@ -229,11 +229,11 @@ function inputKeyUp(e){
     if(category === 'img'){ // 카테고리가 현재 전체일 경우.
         Object.keys(itemList).forEach(category => {
             filteredItems = filteredItems.concat(
-                itemList[category].filter(item => item.name.includes(inputFromUser))
+                itemList[category].filter(item => item.name.replace(/\s+/g, "").includes(inputFromUser))
             );
         });
     }else{ // 카테고리가 전체가 아닌 다른것이 선택되어있는 경우.
-        filteredItems = itemList[category].filter(item => item.name.includes(inputFromUser));
+        filteredItems = itemList[category].filter(item => item.name.replace(/\s+/g, "").includes(inputFromUser));
     }
 
     // 검색된 아이템 목록에 해당하는 이미지만 'hide'를 없애줌.

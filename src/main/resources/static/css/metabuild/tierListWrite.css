@@ -484,10 +484,9 @@ img{
     border: 1px solid var(--border);
     border-radius: 4px;
     color: var(--white);
-    background-color : #00000000;
+    background-color : var(--sub-color-a);
     resize: none;
 }
-
 .textArea::placeholder{
     color: var(--itemWhite);
 }
