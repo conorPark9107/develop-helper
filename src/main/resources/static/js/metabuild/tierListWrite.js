@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         draggables.forEach(draggable => {
-            draggable.addEventListener("dragstart", e => {
+            draggable.addEventListener("dragstart", e => {qqqqqqqqqqqqqqqqqqqq
                 e.target.classList.add("dragging");
                 setTimeout(() => e.target.classList.add("hide"), 0);
             });
@@ -298,31 +298,10 @@ function submit(){
     const t9 = [...tierList[8].querySelectorAll('div .img')].map(img => img.id).join(" ");
     const t10 = [...tierList[9].querySelectorAll('div .img')].map(img => img.id).join(" ");
 
-    console.log(JSON.stringify({
-        userId : userId,
-        title : title.value,
-        category : category,
-        t1 : t1,
-        t2 : t2,
-        t3 : t3,
-        t4 : t4,
-        t5 : t5,
-        t6 : t6,
-        t7 : t7,
-        t8 : t8,
-        t9 : t9,
-        t10 : t10,
-        t1Name : t1Name,
-        t2Name : t2Name,
-        t3Name : t3Name,
-        t4Name : t4Name,
-        t5Name : t5Name,
-        t6Name : t6Name,
-        t7Name : t7Name,
-        t8Name : t8Name,
-        t9Name : t9Name,
-        t10Name : t10Name
-    }));
+    if(t1.length == 0){
+        showAlert(`${t1Name}티어에는 적어도 1개 이상 티어가 필요합니다.`);
+    }
+
 
     fetch("/tierList/write", {
         method: 'POST',
