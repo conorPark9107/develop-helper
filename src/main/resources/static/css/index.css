@@ -292,6 +292,10 @@ input:focus::placeholder{
 .footer-right{
     width: 15%;
 }
+.clickIcon{
+    font-size: 14px;
+    color: var(--orange);
+}
 @media screen and (max-width: 1024px) {
     .container-contents-button{
         font-size: 20px;

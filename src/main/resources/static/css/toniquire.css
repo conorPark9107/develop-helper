@@ -23,6 +23,8 @@ a{
     gap: 15px;
 }
 .input-text{
+    font-weight: 600;
+    font-size: 12px;
     width: 85%;
     color: var(--white);
     background-color: rgb(255 255 255 / 0%);
@@ -33,7 +35,7 @@ a{
     resize: none;
 }
 textArea::placeholder{
-    color: var(--white);
+    color: var(--itemwhite);
 }
 
 .input-text:hover, .input-text:focus {
