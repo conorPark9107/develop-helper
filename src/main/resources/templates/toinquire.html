@@ -2,6 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -44,12 +47,19 @@
             <h4>관리자에게 문의 & 죽음의 피드백</h4>
             <img class="container-title-image" src="https://render.albiononline.com/v1/wardrobe/UNIQUE_HEAD_VANITY_PUMPKIN_02.png"  alt="이미지 없음."/>
         </div>
-        <div class="full-width">
+        <div class="full-width background">
+            <p class="description">
+                디스코드 서버에서도 문의 & 답변 받아보실수 있습니다! 아이콘을 클릭하면 초대 링크로 연결됩니다.
+                <a class="hover discord a" href="https://discord.gg/t9FnKBUZZR">
+                    <i class="fa-brands fa-discord"></i>
+                </a>
+            </p>
+
             <div class="flex-contatiner">
-                <textarea class="input-text" name="inquire" cols="30" rows="5" placeholder="ex) 게시판에 카테고리 추가좀용!, 뭐가 잘 안돼요"></textarea>
+                <textarea class="input-text" name="inquire" cols="30" rows="3" placeholder="ex) 게시판에 카테고리 추가좀용!, 뭐가 잘 안돼요"></textarea>
                 <a class="btn">등록</a>
             </div>
-            
+
             <div>
                 <ul class="inquireList">
                     <li style="border: 1px solid var(--sub-color);">
@@ -66,7 +76,6 @@
                             <span class="answer" th:text="${inquire.answer}">아직 답변 전입니다.</span>
                         </div>
                     </li>
-
                 </ul>
             </div>
         </div>

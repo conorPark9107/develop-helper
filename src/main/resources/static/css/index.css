@@ -204,7 +204,6 @@ legend {
     background: var(--black);
 }
 .switch{
-    width: 100%;
     font-size: 14px;
     float : right;
     margin-right: 2%;
@@ -289,6 +288,9 @@ input:focus::placeholder{
     align-items: center;
     border-right: 1px solid var(--bg-text);
     padding: 0px 10px;
+}
+.footer-right{
+    width: 15%;
 }
 @media screen and (max-width: 1024px) {
     .container-contents-button{
