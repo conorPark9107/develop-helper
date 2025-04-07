@@ -24,8 +24,8 @@ a{
 }
 .input-text{
     width: 85%;
-    color: var(--black);
-    background-color: var(--sub-color);
+    color: var(--white);
+    background-color: rgb(255 255 255 / 0%);
     border: 1px solid var(--border);
     border-radius: 2px;
     box-sizing: border-box;
@@ -33,12 +33,12 @@ a{
     resize: none;
 }
 textArea::placeholder{
-    color: var(--black);
+    color: var(--white);
 }
 
 .input-text:hover, .input-text:focus {
     outline: none;
-    border: 2px solid var(--sub-color);
+    border: 2px solid var(--border);
 }
 .btn {
     cursor: pointer;
