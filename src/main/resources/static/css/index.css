@@ -47,11 +47,12 @@ label {
     font-weight: 900;
 }
 .footer{
-
     color: #eee;
 }
 .a {
-    color: #eee;
+    font-size: 12px;
+    color: var(--border);
+    text-decoration:none;
 }
 u {
     text-decoration-color: var(--sub-color);
@@ -203,7 +204,8 @@ legend {
     background: var(--black);
 }
 .switch{
-    font-size : 15px;
+    width: 100%;
+    font-size: 14px;
     float : right;
     margin-right: 2%;
     display: inline-flex;
@@ -266,6 +268,27 @@ legend {
 }
 input:focus::placeholder{
     color:transparent;
+}
+.discord{
+    background-color: #5865F2;
+    color: white;
+    padding: 5px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    margin-right: 10px;
+}
+.footer-left{
+    display: flex;
+    flex-direction: row;
+}
+.footer-left-item{
+    display:flex;
+    align-items: center;
+    border-right: 1px solid var(--bg-text);
+    padding: 0px 10px;
 }
 @media screen and (max-width: 1024px) {
     .container-contents-button{
