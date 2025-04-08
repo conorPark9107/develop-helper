@@ -245,7 +245,7 @@ legend {
     left: 2em;
 }
 .blue{
-    color: var(--lightblue);
+    color: var(--blue);
 }
 .red{
     color: var(--red);
