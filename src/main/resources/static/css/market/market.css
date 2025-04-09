@@ -230,7 +230,6 @@ tbody tr:hover{
     color: var(--sub-color);
     background-color: var(--li-hover);
 }
-
 .c1{width:10%;}
 
 .selected{
@@ -245,6 +244,19 @@ tbody tr:hover{
 }
 .cityTitle{
     font-size: 14px;
+}
+.hide{
+    display: none;
+}
+tbody tr td:nth-child(1), thead tr th:nth-child(1) {
+    padding-right: 20px;
+    border-right: 1px solid var(--border-a);
+}
+.padding-top{
+    padding-top: 10px;
+}
+.padding-bottom{
+    padding-bottom: 10px;
 }
 @media screen and (max-width: 1024px) {
     .datalist{

@@ -243,5 +243,31 @@ $(document).ready(function() {
         $(this).addClass('selected');
         $('.tierText').text(`${value} tier 🔻`);
     });
+
+
+    const radioButtons = document.querySelectorAll('input[name="city"]');
+    const rows = document.querySelectorAll('tbody > tr');
+
+    function showRowsForKey(key) {
+        // 먼저 모든 행을 숨김
+        rows.forEach(row => row.classList.add('hide'));
+
+        if (key === 'all') {
+            rows.forEach(row => row.classList.remove('hide'));
+        } else {
+            for (let i = 1; i <= 5; i++) {
+                const row = document.getElementById(`${key}${i}`);
+                if (row) row.classList.remove('hide');
+            }
+        }
+    }
+
+    radioButtons.forEach(button => {
+        button.addEventListener('change', e => {
+            const selectedKey = e.target.value;
+            showRowsForKey(selectedKey);
+        });
+    });
+
     
 });
