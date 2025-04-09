@@ -68,6 +68,7 @@ body[data-theme='light-mode'] {
     --board-under-color: rgb(37 37 37 / 90%);
 
     --input-text-color: rgba(220, 220, 220, 0.5);
+    --background-2: rgb(79 79 79 / 88%);
 }
 body[data-theme='dark-mode'] {
     --page-logo: url(/image/pageLogo_dark.png);
@@ -108,4 +109,5 @@ body[data-theme='dark-mode'] {
     --board-under-color: rgb(37 37 37 / 90%);
 
     --input-text-color: rgba(0, 0, 0, 0.2);
+    --background-2: rgb(43 43 43 / 88%);
 }
