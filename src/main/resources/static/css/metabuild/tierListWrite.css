@@ -77,8 +77,9 @@ label{
 }
 .content-div-input{
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
     margin-top: 5px;
     width: 100%;
 }
@@ -86,6 +87,7 @@ label{
     width: 100%;
 }
 .content-item{
+    font-size: 13px;
     cursor: pointer;
     background: var(--btn-bg);
     font-weight: 600;
@@ -160,7 +162,6 @@ input[type=text]::placeholder{
 }
 input[type=text]{
     color: var(--white);
-    width: 20%;
     padding: 8px 16px;
     background-color: var(--sub-color-a);
     border : 1px solid var(--border);
@@ -185,7 +186,6 @@ ul {
     display: inline;
 }
 .btn {
-    width: 10%;
     cursor: pointer;
     font-size: 12px;
     font-weight: bold;
@@ -481,6 +481,7 @@ img{
     white-space: nowrap;
 }
 .textArea{
+    width: 100%;
     border: 1px solid var(--border);
     border-radius: 4px;
     color: var(--white);
@@ -490,18 +491,55 @@ img{
 .textArea::placeholder{
     color: var(--itemWhite);
 }
-
+.tier-div{
+    text-align:right;
+}
+.flex-center{
+    align-items: center;
+}
 @media screen and (max-width: 1024px) {
     .flex-column{
-        padding: 10px;
+        padding: 10px 0px;
+        width: 100%;
+    }
+    .flex-row {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    td{
+        font-size: 15px;
+        padding: 10px 10px;
+    }
+    .rule{
+        font-size: 14px;
+    }
+    label{
+        font-size: 1.2rem;
+    }
+    .title{
+        font-size: 1.2rem;
+        text-align: left;
+    }
+    input[type='radio']:not(.switchBtn) {
+        width: 20px;
+        height: 20px;
     }
     .mainDiv{
         flex-direction: column;
     }
     .maindiv1, .maindiv2{
-        width: 99%;
+        width: 100%;
     }
     .rank{
         height: 90px;
+    }
+    .input-div{
+        width: 40%;
+    }
+    .btn, .content-item {
+        font-size: 16px;
+    }
+    .textArea, #inputTxt {
+        width: 95%;
     }
 }

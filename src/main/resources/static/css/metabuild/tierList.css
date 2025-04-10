@@ -284,9 +284,17 @@ input[type="checkbox"]:not(.switchBtn) {
 .w-4{
     width: 40%;
 }
+.inline{
+    display: flex;
+}
 @media screen and (max-width: 1024px) {
     .flex-column{
-        padding: 10px;
+        padding: 10px 0px;
+        width: 100%;
+    }
+    .flex-row {
+        flex-wrap: wrap;
+        width: 100%;
     }
     td{
         font-size: 15px;
@@ -301,5 +309,24 @@ input[type="checkbox"]:not(.switchBtn) {
     }
     .col0-1{
         width:15%;
+    }
+    .col4{ width: 20%;}
+    .rule{
+        font-size: 14px;
+    }
+    label{
+        font-size: 1.2rem;
+    }
+    .title{
+        font-size: 1.2rem;
+        text-align: left;
+    }
+    input[type='radio']:not(.switchBtn) {
+        width: 20px;
+        height: 20px;
+    }
+    .btn {
+        width: 15%;
+        font-size: 16px;
     }
 }

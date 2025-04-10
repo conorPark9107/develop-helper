@@ -264,6 +264,7 @@ function submit(){
     const writer = document.getElementById('writer');
     const title = document.getElementById('input');
     const category = document.querySelector('input[name="category"]:checked').value;
+    const content = document.getElementById('content');
 
     if(title.value === ''){
         title.focus();
@@ -275,7 +276,6 @@ function submit(){
     }
 
     const userId = writer.value === ''? '익명' : writer.value;
-
     const t1Name = document.getElementById('1t').innerHTML;
     const t2Name = document.getElementById('2t').innerHTML;
     const t3Name = document.getElementById('3t').innerHTML;
@@ -331,7 +331,8 @@ function submit(){
             t7Name : t7Name,
             t8Name : t8Name,
             t9Name : t9Name,
-            t10Name : t10Name
+            t10Name : t10Name,
+            content : content
         })
     })
     .then(response => response.text())

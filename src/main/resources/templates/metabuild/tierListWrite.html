@@ -48,7 +48,7 @@
                 <div class="flex-row margin-b gap">
                     <div class="flex-row align-item-center background padding w-6">
                         <div class="title-div">
-                            <span class="title">카테고리 선택</span>
+                            <p class="title">카테고리 선택</p>
                         </div>
                         <div class="content-div">
                             <div class="grid">
@@ -116,11 +116,10 @@
                         </div>
                     </div>
                     <div class="flex-column w-4 background padding">
-                        <p class="rule">🔥 모바일 환경에서는 티어리스트 작성을 할 수 없습니다.</p>
+                        <p class="rule">🔥 <span class="red">모바일</span>환경에서는 티어리스트 작성을 할 수 없습니다.</p>
                         <p class="rule">🔥 한 티어당 7개의 아이템이 들어갈 수 있습니다.</p>
-                        <p class="rule">🔥 배경만 보이는 이미지는 이미지에 마우스를 올려 텍스트를 통해 어떤 아이템인지 확인하실수 있습니다.(알비온에서 이미지를 미제공)</p>
                         <p class="rule">🔥 누락된 아이템은 <a class='link' href='/toinquire'>관리자문의</a>에 글을 남겨주세요.</p>
-                        <p class="rule">🔥 티어 삭제시 아이템이 보이지 않을때는 아이템이미지들이 모여있는 박스의 제일 하단에 아이템이 위치하고 있습니다.</p>
+                        <p class="rule">🔥 티어 삭제시 아이템이 보이지 않을때에는 아이템 이미지들이 모여있는 박스의 제일 하단에 아이템이 위치하고 있습니다.</p>
                     </div>
                 </div>
 
@@ -130,9 +129,11 @@
                             <input type="text" id="writer" placeholder="작성자(생략시 익명)">
                             <input type="text" id="input" placeholder="게시글 제목을 입력하세요.">
                         </div>
-                        <input type="text" id="tierStr" placeholder="티어명 (1티어, 2티어 ..)"/>
-                        <button class="btn" onclick="addTier()">티어 추가</button>
-                        <button class="btn red" onclick="removeTier()">티어 삭제</button>
+                        <div class="w-5 tier-div">
+                            <input type="text" id="tierStr" placeholder="티어명 (1티어, 2티어 ..)"/>
+                            <button class="btn" onclick="addTier()">티어 추가</button>
+                            <button class="btn red" onclick="removeTier()">티어 삭제</button>
+                        </div>
                     </div>
                     <div class="flex-row gap space-between mainDiv">
                         <div class="maindiv1 flex-column gap w-6 ">
@@ -240,8 +241,8 @@
                     </div>
                 </div>
 
-                <div class="flex-column w-10 background margin-b">
-                    <textarea class="textArea" id="content" rows="5" placeholder="내용 입력.."></textarea>
+                <div class="flex-column w-10 background margin-b flex-center">
+                    <textarea class="textArea" id="content" rows="5" placeholder="설명 입력.."></textarea>
                 </div>
 
                 <div class="flex-row background flex-end gap padding">
