@@ -41,8 +41,9 @@ public class TierListDTO {
     private String[] t9;
     private String t10Name;
     private String[] t10;
+    private String content;
 
-    private Long up;    
+    private Long up;
     private List<TierListComment> tierListComments;
     
     public void setT1(String t1) {

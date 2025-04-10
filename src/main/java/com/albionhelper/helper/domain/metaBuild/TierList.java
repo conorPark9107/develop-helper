@@ -70,6 +70,10 @@ public class TierList {
     @Column(name = "t10")
     private String t10;
 
+    @Column(name = "content", columnDefinition = "longtext")
+    private String content;
+
+
     @Column(name = "up")
     private Long up;
 
@@ -113,6 +117,7 @@ public class TierList {
                 .t8(arrayToString(dto.getT8()))
                 .t9(arrayToString(dto.getT9()))
                 .t10(arrayToString(dto.getT10()))
+                .content(dto.getContent())
                 .up(dto.getUp())
                 .tierListComments(dto.getTierListComments())
                 .build();
@@ -149,6 +154,7 @@ public class TierList {
                 .t9(stringToArray(this.t9))
                 .t10(stringToArray(this.t10))
                 .up(this.up)
+                .content(this.content)
                 .tierListComments(this.tierListComments)
                 .build();
     }
