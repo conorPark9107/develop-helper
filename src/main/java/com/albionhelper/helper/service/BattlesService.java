@@ -4,6 +4,7 @@ import com.albionhelper.helper.domain.GuildDTO;
 import com.albionhelper.helper.domain.battle.*;
 import com.albionhelper.helper.domain.killboard.Killer;
 import com.albionhelper.helper.domain.killboard.Victim;
+import com.albionhelper.helper.enums.ServerRegion;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -46,17 +47,11 @@ public class BattlesService {
     }
 
     private String getLocation(String location) {
-        switch (location) {
-            case "east" : return EAST;
-            case "west" : return WEST;
-            case "europe" : return EUROPE;
-        }
-        return EAST;
+        return ServerRegion.from(location).getUrl();
     }
 
     private String getResponseNoCache(String requestUrl) {
         String urlWithTimestamp = requestUrl + "&timestamp=" + Instant.now().getEpochSecond();
-
         return webClient.get()
                 .uri(urlWithTimestamp)
                 .header("Cache-Control", "no-cache, no-store, must-revalidate, max-age=0")
@@ -86,9 +81,7 @@ public class BattlesService {
 
     // 베틀리스트를 테이블에 보여주기위한 메서드.
     public List<Battle> getBattleList(String server, int offset, int limit, String id) throws JsonProcessingException {
-
-        String requestUrl = getLocation(server) + DEFAULT_BATTLES_URL + "sort=recent&offset=" + offset + "&limit=" + limit;
-        requestUrl += getIdURI(id);
+        String requestUrl = getLocation(server) + DEFAULT_BATTLES_URL + "sort=recent&offset=" + offset + "&limit=" + limit + getIdURI(id);
 
         String response = getResponseNoCache(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -106,8 +99,7 @@ public class BattlesService {
 
     // 새로고침되어 append될 데이터를 뽑는 메서드
     public List<Battle> getBattleListForRefresh(String server, String id, long recentId) throws JsonProcessingException {
-        String requestUrl = getLocation(server) + DEFAULT_BATTLES_URL + "sort=recent&range=day&offset=0";
-        requestUrl += getIdURI(id);
+        String requestUrl = getLocation(server) + DEFAULT_BATTLES_URL + "sort=recent&range=day&offset=0" + getIdURI(id);
 
         String response = getResponseNoCache(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -196,10 +188,11 @@ public class BattlesService {
         Map<String, Integer> guildcountMap = new HashMap<>();
         Map<String, Integer> allycountMap = new HashMap<>();
 
+        // 카운팅, merge함수 => merge(키, 값, 함수) => 키에 해당하는 값이 이미 존재하면 함수를 실행하여 대처. 아니라면 그냥 키에 대한 값을 저장.
         players.forEach(p -> {
-                    guildcountMap.put(p.getGuildName(), guildcountMap.getOrDefault(p.getGuildName(), 0) + 1);
-                    allycountMap.put(p.getAllianceName(), allycountMap.getOrDefault(p.getAllianceName(), 0) + 1);
-                });
+            guildcountMap.merge(p.getGuildName(), 1, Integer::sum);
+            allycountMap.merge(p.getAllianceName(), 1, Integer::sum);
+        });
 
         List<Alliance> alliances = battle.getAlliances();
         List<Guild> guilds = battle.getGuilds();
@@ -290,7 +283,8 @@ public class BattlesService {
     public Player getMostKillingPlayer(Battle battle) {
         List<Player> players = battle.getPlayers();
         return players.stream()
-                .max(Comparator.comparing(Player::getKills)).get();
+                .max(Comparator.comparing(Player::getKills))
+                .orElse(null);
     }
 
 
