@@ -1,7 +1,5 @@
 package com.albionhelper.helper.enums;
 
-import java.util.Locale;
-
 public enum ServerRegion {
     EAST("https://gameinfo-sgp.albiononline.com/api/gameinfo"),
     WEST("https://gameinfo.albiononline.com/api/gameinfo"),

@@ -2,6 +2,8 @@ package com.albionhelper.helper.service;
 
 import com.albionhelper.helper.domain.Player;
 import com.albionhelper.helper.domain.market.ItemPrice;
+import com.albionhelper.helper.enums.MarketServerRegion;
+import com.albionhelper.helper.enums.ServerRegion;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -31,31 +33,11 @@ import java.util.List;
 @Service
 public class MarketService{
 
-    // 워리어
-    // 헌터
-    // 용병 후드 : T4_HEAD_LEATHER_SET1.png
-    // 용병 재킷 : T4_ARMOR_LEATHER_SET1.png 1 ~ 3
-    // ROYAL, MORGANA, HELL, UNDEAD, AVALON, FEY
-    // 용병 신발 : T4_SHOES_LEATHER_SET1.png
-    // 메이지
-
     private final Logger log = LoggerFactory.getLogger(this.getClass());
-
-    private final String EAST = "https://east.albion-online-data.com/api/v2/stats/prices/";
-    private final String WEST = "https://west.albion-online-data.com/api/v2/stats/prices/";
-    private final String EUROPE = "https://europe.albion-online-data.com/api/v2/stats/prices/";
-
     private final String[]CITIES = {"martlock", "thetford", "bridgewatch", "fortsterling", "lymhurst", "caerleon", "brecilian"};
 
-
-
     private String getServerUrl(String server) {
-        switch (server) {
-            case "east" : return EAST;
-            case "west" : return WEST;
-            case "europe" : return EUROPE;
-        }
-        return EAST;
+        return MarketServerRegion.from(server).getUrl();
     }
 
     private String getResponse(String url) {
