@@ -245,9 +245,11 @@ $(document).ready(function() {
     });
 
 
-    const radioButtons = document.querySelectorAll('input[name="city"]');
+    // 마을 라디오 버튼을 클릭했을때
+    const cityRadio = document.querySelectorAll('input[name="city"]');
     const rows = document.querySelectorAll('tbody > tr');
 
+    // 키값을 가져와서 테이블 행을 숨김.
     function showRowsForKey(key) {
         // 먼저 모든 행을 숨김
         rows.forEach(row => row.classList.add('hide'));
@@ -262,12 +264,43 @@ $(document).ready(function() {
         }
     }
 
-    radioButtons.forEach(button => {
+    cityRadio.forEach(button => {
         button.addEventListener('change', e => {
             const selectedKey = e.target.value;
             showRowsForKey(selectedKey);
         });
     });
+
+    // 품질 라디오 버튼을 클릭했을때
+    const qualityRadio = document.querySelectorAll('input[name="quality"]');
+    const tables = document.querySelectorAll('.background-2'); // table을 감싸고 있는 div요소
+    qualityRadio.forEach(button => {
+        button.addEventListener('change', e => {
+            const selectedKey = e.target.value;
+            showTableForKey(selectedKey);
+        });
+    });
+
+    // 키값을 가져와서 테이블을 숨김.
+    function showTableForKey(key) {
+        // 먼저 모든 행을 숨김
+        tables.forEach(table => table.classList.add('hide'));
+
+        if (key === 'all') {
+            tables.forEach(table => table.classList.remove('hide'));
+        } else {
+            tables.forEach(table => {
+                if(table.id === key){
+                    table.classList.remove('hide');
+                }else{
+                    table.classList.add('hide');
+                }
+            });
+        }
+    }
+
+
+
 
     
 });

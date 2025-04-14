@@ -47,6 +47,9 @@ h6{
     height: auto;
     min-height: 100%;
 }
+.gap{
+    gap: 10px;
+}
 .container{
     width: 100%;
     max-width: 1200px;

@@ -90,39 +90,62 @@
 
             </div>
 
-            <div class="flex-row background">
-                <span class="cityTitle">한 마을만 선택보기</span>
-                <label>
-                    <input type="radio" name="city" value="all" checked/>전체
-                </label>
-                <label>
-                    <input type="radio" name="city" value="martlock"/>마트록
-                </label>
-                <label>
-                    <input type="radio" name="city" value="thetford"/>뎃포드
-                </label>
-                <label>
-                    <input type="radio" name="city" value="fortsterling"/>포트스털링
-                </label>
-                <label>
-                    <input type="radio" name="city" value="lymhurst"/>림허스트
-                </label>
-                <label>
-                    <input type="radio" name="city" value="bridgewatch"/>브릿지워치
-                </label>
-                <label>
-                    <input type="radio" name="city" value="caerleon"/>칼레온
-                </label>
-                <label>
-                    <input type="radio" name="city" value="brecilien"/>브리실리안
-                </label>
-                <label>
-                    <input type="radio" name="city" value="blackmarket"/>암시장
-                </label>
+            <div class="flex-column background gap">
+                <div class="flex-row">
+                    <span class="cityTitle">마을</span>
+                    <label>
+                        <input type="radio" name="city" value="all" checked/>전체
+                    </label>
+                    <label>
+                        <input type="radio" name="city" value="martlock"/>마트록
+                    </label>
+                    <label>
+                        <input type="radio" name="city" value="thetford"/>뎃포드
+                    </label>
+                    <label>
+                        <input type="radio" name="city" value="fortsterling"/>포트스털링
+                    </label>
+                    <label>
+                        <input type="radio" name="city" value="lymhurst"/>림허스트
+                    </label>
+                    <label>
+                        <input type="radio" name="city" value="bridgewatch"/>브릿지워치
+                    </label>
+                    <label>
+                        <input type="radio" name="city" value="caerleon"/>칼레온
+                    </label>
+                    <label>
+                        <input type="radio" name="city" value="brecilien"/>브리실리안
+                    </label>
+                    <label>
+                        <input type="radio" name="city" value="blackmarket"/>암시장
+                    </label>
+                </div>
+                <div class="flex-row">
+                    <span class="cityTitle">품질</span>
+                    <label>
+                        <input type="radio" name="quality" value="all" checked/>전체
+                    </label>
+                    <label>
+                        <input type="radio" name="quality" value="normal"/>일반
+                    </label>
+                    <label>
+                        <input type="radio" name="quality" value="good"/>좋음
+                    </label>
+                    <label>
+                        <input type="radio" name="quality" value="outstanding"/>뛰어남
+                    </label>
+                    <label>
+                        <input type="radio" name="quality" value="excellent"/>우수함
+                    </label>
+                    <label>
+                        <input type="radio" name="quality" value="masterpiece"/>걸작
+                    </label>
+                </div>
             </div>
             <div class="flex-column background">
                 <!-- 일반 품질 -->
-                <div class="flex-row space-around relative padding background-2 margin-b">
+                <div class="flex-row space-around relative padding background-2 margin-b" id="normal">
                     <table>
                         <colgroup>
                             <col class="c1">
@@ -212,7 +235,7 @@
                 </div>
 
                 <!-- 좋음 품질 -->
-                <div class="flex-row space-around relative padding background-2 margin-b">
+                <div class="flex-row space-around relative padding background-2 margin-b" id="good">
                     <table>
                         <colgroup>
                             <col class="c1">
@@ -302,7 +325,7 @@
                 </div>
 
                 <!-- 뛰어남 품질 -->
-                <div class="flex-row space-around relative padding background-2 margin-b">
+                <div class="flex-row space-around relative padding background-2 margin-b" id="outstanding">
                     <table>
                         <colgroup>
                             <col class="c1">
@@ -392,7 +415,7 @@
                 </div>
 
                 <!-- 우수 품질 -->
-                <div class="flex-row space-around relative padding background-2 margin-b">
+                <div class="flex-row space-around relative padding background-2 margin-b" id="excellent">
                     <table>
                         <colgroup>
                             <col class="c1">
@@ -482,7 +505,7 @@
                 </div>
 
                 <!-- 걸작 품질 -->
-                <div class="flex-row space-around relative padding background-2 margin-b">
+                <div class="flex-row space-around relative padding background-2 margin-b" id="masterpiece">
                     <table>
                         <colgroup>
                             <col class="c1">
