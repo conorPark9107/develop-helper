@@ -5,6 +5,7 @@ import com.albionhelper.helper.domain.killboard.DeathBoard;
 import com.albionhelper.helper.domain.killboard.KillBoard;
 import com.albionhelper.helper.domain.Player;
 import com.albionhelper.helper.domain.playerinfo.PlayerInfoDetail;
+import com.albionhelper.helper.enums.ServerRegion;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,10 +27,6 @@ public class KillboardService {
 
     @Autowired
     private WebClient webClient;
-
-    private final String EAST = "https://gameinfo-sgp.albiononline.com/api/gameinfo";
-    private final String WEST = "https://gameinfo.albiononline.com/api/gameinfo";
-    private final String EUROPE = "https://gameinfo-ams.albiononline.com/api/gameinfo";
 
     // search?q={id}
     private final String GET_ID_URL = "/search?q=";
@@ -102,12 +99,7 @@ public class KillboardService {
     }
 
     private String getLocation(String location) {
-        switch (location) {
-            case "east" : return EAST;
-            case "west" : return WEST;
-            case "europe" : return EUROPE;
-        }
-        return EAST;
+        return ServerRegion.from(location).getUrl();
     }
 
 

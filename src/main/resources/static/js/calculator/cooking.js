@@ -7,7 +7,6 @@ $(document).ready(function () {
 
         let server = $('input[name=server]:checked').val(); // server
         let city = $('input[name=city]:checked').val();
-        alert(city);
 
         let itemName = $('.selected-img').attr('value');
         if(itemName == undefined){

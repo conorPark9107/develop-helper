@@ -24,10 +24,6 @@ public class BattlesService {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    private final String EAST = "https://gameinfo-sgp.albiononline.com/api/gameinfo";
-    private final String WEST = "https://gameinfo.albiononline.com/api/gameinfo";
-    private final String EUROPE = "https://gameinfo-ams.albiononline.com/api/gameinfo";
-
     // 길드의 ID값을 알아내기위한 URI
     private final String GET_ID_URL = "/search?q=";
 
