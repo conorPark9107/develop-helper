@@ -253,7 +253,7 @@ function removeTier(){
     const imgArea = document.querySelectorAll('.itemListDiv')[0];
 
     tier.classList.remove('show');
-    const removedImges = tier.children[1].querySelectorAll('img');
+    const removedImges = tier.children[1].querySelectorAll('div');
     removedImges.forEach(img => {
         imgArea.prepend(img);
     });
@@ -264,7 +264,7 @@ function submit(){
     const writer = document.getElementById('writer');
     const title = document.getElementById('input');
     const category = document.querySelector('input[name="category"]:checked').value;
-    const content = document.getElementById('content');
+    const content = document.getElementById('content').value;
 
     if(title.value === ''){
         title.focus();
@@ -299,7 +299,7 @@ function submit(){
     const t10 = [...tierList[9].querySelectorAll('div .img')].map(img => img.id).join(" ");
 
     if(t1.length == 0){
-        showAlert(`${t1Name}티어에는 적어도 1개 이상 티어가 필요합니다.`);
+        showAlert(`${t1Name}티어에는 적어도 1개 이상 아이템을 넣어주셔야합니다.`);
     }
 
 
