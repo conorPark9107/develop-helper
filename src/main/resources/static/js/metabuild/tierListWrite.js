@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         draggables.forEach(draggable => {
-            draggable.addEventListener("dragstart", e => {qqqqqqqqqqqqqqqqqqqq
+            draggable.addEventListener("dragstart", e => {
                 e.target.classList.add("dragging");
                 setTimeout(() => e.target.classList.add("hide"), 0);
             });
