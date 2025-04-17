@@ -42,7 +42,7 @@ body[data-theme='light-mode'] {
     --sub-color-a: rgba(208, 208, 208, 0.2);
     --textarea-color : rgba(51, 51, 51, 0.973);
 
-    --table-tr-color: rgb(205 205 205);
+    --table-tr-color: #FFF;
     --table-tr-odd-color: rgb(225 225 225);
     --table-th-color: #2d2d2d;
     --table-th-text-color: #ffffff;
@@ -61,7 +61,7 @@ body[data-theme='light-mode'] {
     --border: #ffffff;
     --border-a: rgba(255, 255, 255, 0.3);
 
-    --border-bottom : rgb(0 0 0 / 25%);
+    --border-bottom : #EDEEF1;
     --basic-font : #eee;
 
     --shadow: rgba(56, 56, 56);
