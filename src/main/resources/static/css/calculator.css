@@ -116,7 +116,7 @@ input {
     font-weight:bold;
     color: var(--table-sub-text-color);
     background-color: var(--border-bottom);
-    border: 1px solid var(--border);
+    border: 1px solid var(--itemgray);
     box-sizing: border-box;
     padding: 5px 5px;
     border-radius: 2px;
