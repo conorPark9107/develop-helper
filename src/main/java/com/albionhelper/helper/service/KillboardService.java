@@ -6,6 +6,7 @@ import com.albionhelper.helper.domain.killboard.KillBoard;
 import com.albionhelper.helper.domain.Player;
 import com.albionhelper.helper.domain.playerinfo.PlayerInfoDetail;
 import com.albionhelper.helper.enums.ServerRegion;
+import com.albionhelper.helper.repository.KillboardRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,8 +27,8 @@ public class KillboardService {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private WebClient webClient;
+    private final WebClient webClient;
+    private final KillboardRepository killboardRepository;
 
     // search?q={id}
     private final String GET_ID_URL = "/search?q=";
@@ -43,6 +44,11 @@ public class KillboardService {
 
     // 가장 큰 킬을 발생한 정보들.
     private final String GET_BIGGEST = "/events/killfame?";
+
+    public KillboardService(WebClient webClient, KillboardRepository killboardRepository) {
+        this.webClient = webClient;
+        this.killboardRepository = killboardRepository;
+    }
 
     // getDetail()메서드로부터 호출되며, 1 v 1 이벤트(킬상세)로그를 파싱하여 리턴.
     private Event[] getResponseEvent(String url) {
