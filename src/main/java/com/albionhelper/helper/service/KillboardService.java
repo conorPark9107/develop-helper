@@ -4,6 +4,8 @@ import com.albionhelper.helper.domain.battle.Event;
 import com.albionhelper.helper.domain.killboard.DeathBoard;
 import com.albionhelper.helper.domain.killboard.KillBoard;
 import com.albionhelper.helper.domain.Player;
+import com.albionhelper.helper.domain.killboard.PlayerLog;
+import com.albionhelper.helper.domain.killboard.PlayerLogDTO;
 import com.albionhelper.helper.domain.playerinfo.PlayerInfoDetail;
 import com.albionhelper.helper.enums.ServerRegion;
 import com.albionhelper.helper.repository.KillboardRepository;
@@ -13,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -21,6 +24,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class KillboardService {
@@ -196,10 +200,17 @@ public class KillboardService {
     }
 
     @Transactional
-    public void addCountUser(String userId, String id){
-
-
+    public void addCountUser(PlayerLogDTO pl){
+        Optional<PlayerLog> o = killboardRepository.findByUserId(pl.getUserId());
+        if(o.isPresent()){
+            PlayerLog playerLog = o.get();
+            playerLog.setCount(playerLog.getCount() + 1);
+        }else{
+            killboardRepository.save(pl.toEntity());
+        }
     }
 
-
+    public List<PlayerLog> getCounts() {
+        return killboardRepository.findAllTop10(PageRequest.of(0, 10));
+    }
 }

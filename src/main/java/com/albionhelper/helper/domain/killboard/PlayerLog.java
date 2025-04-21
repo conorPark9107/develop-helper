@@ -18,8 +18,17 @@ public class PlayerLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "userId")
+    private String userId;
+
     @Column(name = "userName")
     private String userName;
+
+    @Column(name = "server")
+    private String server;
+
+    @Column(name = "count")
+    private Long count;
 
     @Column(name = "searchDate")
     private LocalDateTime searchDate;
@@ -28,6 +37,9 @@ public class PlayerLog {
     public void prePersist(){
         if(searchDate == null){
             searchDate = LocalDateTime.now();
+        }
+        if(count == null){
+            count = 0L;
         }
     }
 

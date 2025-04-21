@@ -4,19 +4,15 @@ import com.albionhelper.helper.domain.Player;
 import com.albionhelper.helper.domain.battle.Event;
 import com.albionhelper.helper.domain.killboard.DeathBoard;
 import com.albionhelper.helper.domain.killboard.KillBoard;
+import com.albionhelper.helper.domain.killboard.PlayerLogDTO;
 import com.albionhelper.helper.domain.playerinfo.PlayerInfoDetail;
-import com.albionhelper.helper.service.BattlesService;
 import com.albionhelper.helper.service.KillboardService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,8 +22,12 @@ public class KillBoardController {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private KillboardService killboardService;
+
+    private final KillboardService killboardService;
+
+    public KillBoardController(KillboardService killboardService) {
+        this.killboardService = killboardService;
+    }
 
     // 킬보드 관련 정보.
     // https://www.tools4albion.com/api_info.php
@@ -38,6 +38,7 @@ public class KillBoardController {
     public String showPage(Model model,
                            @RequestParam(value="server", defaultValue = "east") String server){
         model.addAttribute("server", server);
+        model.addAttribute("rank", killboardService.getCounts());
         model.addAttribute("week", killboardService.getBoardBiggest(server, "week"));
         model.addAttribute("month", killboardService.getBoardBiggest(server, "month"));
         model.addAttribute("lastWeek", killboardService.getBoardBiggest(server, "lastWeek"));
@@ -55,11 +56,14 @@ public class KillBoardController {
     }
 
     @GetMapping("getKillBoard")
-    public String getKillBoard(Model model,
-                               @RequestParam(value="id")String id,
-                               @RequestParam(value="location")String server) throws JsonProcessingException {
+    public String getKillBoard(Model model, @ModelAttribute PlayerLogDTO playerLog) throws JsonProcessingException {
 
-        log.info("Request getKillBoard List => id, location : {}, {}", id, server);
+        log.info("Request getKillBoard List => id, location : {}, {}", playerLog.getUserId(), playerLog.getServer());
+        killboardService.addCountUser(playerLog);
+
+        String id = String.valueOf(playerLog.getUserId());
+        String server = playerLog.getServer();
+
         PlayerInfoDetail playerInfoDetail = killboardService.getPlayerDetailInfo(id, server);
         List<KillBoard> killList = killboardService.getKillBoard(id, server);
         List<DeathBoard> deathList = killboardService.getDeathBoard(id, server);
