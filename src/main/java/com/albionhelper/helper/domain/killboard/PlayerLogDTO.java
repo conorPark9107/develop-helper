@@ -22,5 +22,4 @@ public class PlayerLogDTO {
                 .count(count)
                 .build();
     }
-
 }

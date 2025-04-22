@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class KillboardService {
@@ -210,7 +211,11 @@ public class KillboardService {
         }
     }
 
-    public List<PlayerLog> getCounts() {
-        return killboardRepository.findAllTop10(PageRequest.of(0, 10));
+    public List<PlayerLogDTO> getCounts() {
+        List<PlayerLog> entityList = killboardRepository.findAllTop10(PageRequest.of(0, 10));
+        return entityList
+                .stream()
+                .map(PlayerLog::toDto)
+                .collect(Collectors.toList());
     }
 }

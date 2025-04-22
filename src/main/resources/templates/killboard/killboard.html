@@ -20,7 +20,7 @@
 
 
     <script type="text/javascript" src="/jsMin/util.js"></script>
-    <script type="text/javascript" src="/jsMin/killboard/killboard.js"></script>
+    <script type="text/javascript" src="/js/killboard/killboard.js"></script>
     <link rel="stylesheet" href="/css/variable.css"/>
     <link rel="stylesheet" href="/css/board/editor.css"/>
     <link rel="stylesheet" href="/css/index.css" />
@@ -74,6 +74,30 @@
                 </div>
             </div>
             <hr/>
+
+            <div class="content-body-items padding-top">
+                <h3 class="sub-title">가장 검색이 많이된 유저 TOP 10</h3>
+            </div>
+            <div class="content-body-items">
+                <table>
+                    <thead class="biggest-table">
+                        <tr>
+                            <th>순위</th>
+                            <th>서버</th>
+                            <th>아이디</th>
+                            <th>검색횟수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="user, stat : ${rank}">
+                            <td th:text="${stat.count}"></td>
+                            <td th:text="${user.server}"></td>
+                            <td th:text="${user.userName}"></td>
+                            <td th:text="${user.count}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <div class="content-body-items padding-top">
                 <h2 class="sub-title">TOP 킬</h2>

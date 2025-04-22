@@ -43,6 +43,15 @@ public class PlayerLog {
         }
     }
 
+    public PlayerLogDTO toDto(){
+        return PlayerLogDTO.builder()
+                .userId(userId)
+                .userName(userName)
+                .server(server)
+                .count(count)
+                .build();
+    }
+
 }
 
 

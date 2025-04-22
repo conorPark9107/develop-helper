@@ -63,7 +63,7 @@ $(document).ready(function() {
                        turnLoading();
                        if(result != null && result.length > 0){
                            for(var i = 0; i < result.length; i++){
-                                $('#userNames').append('<a href="/killboard/getKillBoard?id='+ result[i].Id +'&location='+ radio + '&userId=' + result[i].Name +'" class="content-body-item-userGroup-userId">'+ result[i].Name +'</a>');
+                                $('#userNames').append('<a href="/killboard/getKillBoard?userId='+ result[i].Id +'&server='+ radio + '&userName=' + result[i].Name +'" class="content-body-item-userGroup-userId">'+ result[i].Name +'</a>');
                            }
                            $('#userList').show();
                        }else{
