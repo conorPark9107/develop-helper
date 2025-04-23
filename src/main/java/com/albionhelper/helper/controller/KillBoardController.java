@@ -38,7 +38,11 @@ public class KillBoardController {
     public String showPage(Model model,
                            @RequestParam(value="server", defaultValue = "east") String server){
         model.addAttribute("server", server);
-        model.addAttribute("rank", killboardService.getCounts());
+        model.addAttribute("rankAll", killboardService.getCounts());
+        model.addAttribute("eastRank", killboardService.getEastCounts("east"));
+        model.addAttribute("westRank", killboardService.getWestCounts("west"));
+        model.addAttribute("europeRank", killboardService.getEuropeCounts("europe"));
+
         model.addAttribute("week", killboardService.getBoardBiggest(server, "week"));
         model.addAttribute("month", killboardService.getBoardBiggest(server, "month"));
         model.addAttribute("lastWeek", killboardService.getBoardBiggest(server, "lastWeek"));

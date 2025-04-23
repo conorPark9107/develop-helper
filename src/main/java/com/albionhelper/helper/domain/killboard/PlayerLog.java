@@ -39,7 +39,7 @@ public class PlayerLog {
             searchDate = LocalDateTime.now();
         }
         if(count == null){
-            count = 0L;
+            count = 1L;
         }
     }
 

@@ -218,4 +218,28 @@ public class KillboardService {
                 .map(PlayerLog::toDto)
                 .collect(Collectors.toList());
     }
+
+    public List<PlayerLogDTO> getEastCounts(String server) {
+        List<PlayerLog> entityList = killboardRepository.findAllTop10ByServer(PageRequest.of(0, 10), server);
+        return entityList
+                .stream()
+                .map(PlayerLog::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<PlayerLogDTO> getWestCounts(String server) {
+        List<PlayerLog> entityList = killboardRepository.findAllTop10ByServer(PageRequest.of(0, 10), server);
+        return entityList
+                .stream()
+                .map(PlayerLog::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<PlayerLogDTO> getEuropeCounts(String server) {
+        List<PlayerLog> entityList = killboardRepository.findAllTop10ByServer(PageRequest.of(0, 10), server);
+        return entityList
+                .stream()
+                .map(PlayerLog::toDto)
+                .collect(Collectors.toList());
+    }
 }

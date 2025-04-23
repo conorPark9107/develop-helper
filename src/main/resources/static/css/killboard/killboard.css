@@ -3,6 +3,18 @@
     background-repeat: repeat;
     height: auto;
 }
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.flex-vertical-center{
+    align-items: center;
+}
 .info{
     color: var(--green);
     font-size: 0.7rem;
@@ -28,15 +40,15 @@ table{
     white-space: nowrap;
     border-collapse: collapse;
     box-shadow: 0 0 10px 0px var(--border);
-    border-radius: 8px;
+    border-radius: 4px;
 }
 td {
     color: var(--table-sub-text-color);
-    padding: 10px 10px;
     text-align: center;
     font-size: 12px;
     font-weight: bold;
     border-bottom : 1px dashed var(--border-bottom);
+    padding: 2px 5px 2px 5px;
 }
 th{
     width: 5vw;
@@ -52,16 +64,16 @@ tr:hover{
     background-color: var(--table-hover);
 }
 table thead tr th:first-child{
-    border-top-left-radius: 8px;
+    border-top-left-radius: 4px;
 }
 table thead tr th:last-child{
-    border-top-right-radius: 8px;
+    border-top-right-radius: 4px;
 }
 table tbody tr:last-child td:first-child{
-    border-bottom-left-radius: 8px;
+    border-bottom-left-radius: 4px;
 }
 table tbody tr:last-child td:last-child{
-    border-bottom-right-radius: 8px;
+    border-bottom-right-radius: 4px;
 }
 table tbody tr:last-child td{
     border-bottom: 0;
@@ -75,10 +87,8 @@ table tbody tr:last-child td{
     width: 500px;
 }
 .content-body-items{
-    width: 100%;
-    margin-bottom: 2vw;
+    width: 1500px;
 }
-
 .flex-row{
     display:flex;
     flex-direction: row;
@@ -87,26 +97,61 @@ table tbody tr:last-child td{
 }
 .biggest-table{
     text-align: left;
-    font-size: 12px;
+    font-size: 10px;
     opacity: 0.85;
     width: 100%;
+    white-space: normal;
 }
 .biggest-table thead tr th{
     padding: 10px;
 }
 .biggest-table tbody tr td{
-    text-align: left;
+    border-left: 1px solid var(--border-bottom);
+    border-right: 1px solid var(--border-bottom);
 }
-.biggest-table thead tr th:nth-child(1){
+.biggest-table thead tr th{
     text-align: center;
 }
 .biggest-table tbody tr td:nth-child(1){
     text-align: center;
 }
-.biggest-table tbody tr img{
-    width: 50px;
-    height: 50px;
+.biggest-table tbody tr td:nth-child(2){
+    text-align: center;
 }
+.biggest-table tbody tr td:nth-child(3){
+    text-align: right;
+}
+.biggest-table tbody tr td:nth-child(4){
+    text-align: right;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.biggest-table tbody tr img{
+    width: 35px;
+    height: 35px;
+}
+.countTable thead tr th, .countTable tbody tr td{
+    font-size: 10px;
+}
+.countTable tbody tr td{
+    padding: 2px 5px 2px 5px;
+}
+.countTable tbody tr td:nth-child(1){
+    width:5%;
+}
+.countTable tbody tr td:nth-child(2){
+    width:10%;
+}
+.countTable tbody tr td:nth-child(3){
+    width:70%;
+}
+.countTable tbody tr td:nth-child(4){
+    width:10%;
+}
+
+
 .padding-top{
     padding-top: 15px;
 }
@@ -221,26 +266,25 @@ caption {
     padding-bottom: 10px;
 }
 .biggest-col00{
-    width: 5%;
+    width: 6%;
 }
 .biggest-col01{
-    width: 15%;
+    width: 5%;
 }
 .biggest-col02{
-    width: 30%;
+    width: 10%;
 }
 .biggest-col03{
-    width: 15%;
+    width: 25%;
 }
 .biggest-col04{
-    width: 30%;
+    width: 25%;
 }
-.names{
-    line-height: 10%;
-    margin-bottom: 10px;
+.biggest-col05{
+    width: 20%;
 }
 .allyName, .guildName{
-    font-size: 10px;
+    font-size: 9px;
 }
 .box{
     display: flex;
@@ -274,8 +318,28 @@ caption {
     color: var(--lightblue);
     float: right;
 }
-
+.col01{
+    width: 10%;
+}
+.col02{
+    width: 10%
+}
+.col03{
+    width: 40%;
+}
+.col04{
+    width: 40%;
+}
+.name{
+    width: 50%;
+}
+.items{
+    width: 50%;
+}
 @media screen and (max-width: 1024px) {
+    .flex-row{
+        flex-wrap: wrap;
+    }
     .sub-title{
         margin: 0
     }
@@ -284,9 +348,6 @@ caption {
     }
     .content-body-items{
         width: 100%;
-    }
-    .names {
-        line-height: 1;
     }
     .allyName, .guildName,{
         font-size: 12px;
@@ -327,33 +388,6 @@ caption {
         margin-top: -5px;
         border-width: 7px;
         border-color: transparent transparent transparent var(--sub-color);
-    }
-    .col1{
-        width:6%;
-    }
-    .col2{
-        width:12%;
-    }
-    .col3{
-        width:15%;
-    }
-    .col4{
-        width:15%;
-    }
-    .col5{
-        width:9%;
-    }
-    .col6{
-        width:15%;
-    }
-    .col7{
-        width:15%;
-    }
-    .col8{
-        width:9%;
-    }
-    .col9{
-        width:4%;
     }
     .btn-back{
         font-size: 18px;
