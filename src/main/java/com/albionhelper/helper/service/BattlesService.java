@@ -2,22 +2,20 @@ package com.albionhelper.helper.service;
 
 import com.albionhelper.helper.domain.GuildDTO;
 import com.albionhelper.helper.domain.battle.*;
-import com.albionhelper.helper.domain.killboard.Killer;
-import com.albionhelper.helper.domain.killboard.Victim;
 import com.albionhelper.helper.enums.ServerRegion;
+import com.albionhelper.helper.repository.BattlesRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class BattlesService {
@@ -38,8 +36,10 @@ public class BattlesService {
     private final String GET_ALL_INFO = "/events/battle/";
 
     private final WebClient webClient;
-    public BattlesService(WebClient webClient) {
+    private final BattlesRepository battlesRepository;
+    public BattlesService(WebClient webClient, BattlesRepository battlesRepository) {
         this.webClient = webClient;
+        this.battlesRepository = battlesRepository;
     }
 
     private String getLocation(String location) {
@@ -352,11 +352,33 @@ public class BattlesService {
 
     // id 값이있다면 URI 추가.
     private String getIdURI(String id) {
-        if(!id.equals("")){
+        if(!id.isEmpty()){
             return "&guildId=" + id;
         }
         return "";
     }
 
+    @Transactional
+    public void addGuildCount(String guildId, String server, String guildName) {
+        BattleCountLog battleLog = BattleCountLog.builder()
+                .guildId(guildId)
+                .server(server)
+                .guildName(guildName)
+                .build();
+        Optional<BattleCountLog> op = battlesRepository.findByServerAndGuildId(server, guildId);
+        if(op.isPresent()){
+            BattleCountLog b = op.get();
+            b.setCount(b.getCount() + 1);
+        }else{
+            battlesRepository.save(battleLog);
+        }
+    }
+
+    public List<BattleCountLogDTO> getCount(String server) {
+        return battlesRepository.findAllByTop10AndServer(server)
+                .stream()
+                .map(BattleCountLog::toDto)
+                .collect(Collectors.toList());
+    }
 }
 

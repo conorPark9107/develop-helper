@@ -60,7 +60,8 @@ $(document).ready(function () {
     // 길드리스트의 길드를 클릭했을때
     $('#guildList').on('click', "li" ,function () {
         const id = $(this).attr('value');
-        submitToServer(id);
+        const guildName = $(this).text();
+        submitToServer(id, guildName);
         $('.maintable tbody tr').remove();
         $('.blackArea').hide();
         $('.popup').fadeOut(500);
@@ -79,7 +80,7 @@ $(document).ready(function () {
         form.submit();
     });
 
-    function submitToServer(id){
+    function submitToServer(id, guildName){
         const server = $('input[name="server"]:checked').val();
 
         $.ajax({
@@ -87,6 +88,7 @@ $(document).ready(function () {
             url: "/battle/more",
             data: {
                 inputValue : id,
+                guildName : guildName,
                 server : server
             },
             dataType: "json",

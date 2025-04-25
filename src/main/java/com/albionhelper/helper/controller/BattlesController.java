@@ -34,6 +34,8 @@ public class BattlesController {
                             ,@RequestParam(name = "server", defaultValue = "east") String url
                             ,@RequestParam(name = "offset", defaultValue = "0") int offset
                             ,@RequestParam(name = "limit", defaultValue = "20") int limit) throws JsonProcessingException {
+
+        model.addAttribute("count", battlesService.getCount(url));
         List<Battle> list = battlesService.getBattleList(url, offset, limit, inputValue);
         model.addAttribute("size", list.size());
         model.addAttribute("list", list);
@@ -57,9 +59,13 @@ public class BattlesController {
     public List<Battle> showPageForAjax(
             @RequestParam(name = "inputValue", defaultValue = "") String inputValue
             ,@RequestParam(name = "server", defaultValue = "east") String url
+            ,@RequestParam(name = "guildName", defaultValue = "") String guildName
             ,@RequestParam(name = "offset", defaultValue = "0") int offset
             ,@RequestParam(name = "limit", defaultValue = "10") int limit) throws JsonProcessingException {
 
+        if(!guildName.isEmpty()){
+            battlesService.addGuildCount(inputValue, url, guildName);
+        }
         return battlesService.getBattleList(url, offset, limit, inputValue);
     }
 
