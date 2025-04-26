@@ -92,15 +92,39 @@
             </div>
         </div>
 
-        <div class="flex-column flex-vertical-center border-top border-bottom">
-            <div class="flex-row">
-                <p>검색 없이 빠르게 보기<span class="info">(해당 길드 클릭 하면 바로 조회 가능, 추가 하고 싶으신 길드는 관리자 문의, 현재는 EAST 서버만 지원.)</span></p>
+        <div class="flex-row flex-vertical-center  border-top border-bottom">
+            <div class="flex-column">
+                <div class="flex-row">
+                    <p>검색 없이 빠르게 보기<span class="info">(해당 길드 클릭 하면 바로 조회 가능, 추가 하고 싶으신 길드는 관리자 문의, 현재는 EAST 서버만 지원.)</span></p>
+                </div>
+                <div class="flex-row gap">
+                    <span class="link guildLink" data-id="oeaLBdQtSuub47CBi7uCGw">I The Flying Dutchman I </span>
+                    <span class="link guildLink" data-id="9jIbd4XxQgOVt5jyvwaPQg">Mirstin</span>
+                </div>
             </div>
-             <div class="flex-row gap">
-                 <span class="link guildLink" data-id="oeaLBdQtSuub47CBi7uCGw">I The Flying Dutchman I </span>
-                 <span class="link guildLink" data-id="9jIbd4XxQgOVt5jyvwaPQg">Mirstin</span>
+            <div class="flex-column">
+                <p>길드 검색 순위</p>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>길드명</th>
+                                <th>검색횟수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="rank, stat : ${count}">
+                                <td th:text="${stat.count}"></td>
+                                <td th:text="${rank.guildName}"></td>
+                                <td th:text="${rank.count}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+
 
 
         <table class="table maintable">

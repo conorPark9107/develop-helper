@@ -1,0 +1,1742 @@
+{
+    "weapon": [
+        {
+            "id": "T8_MAIN_SWORD",
+            "name": "브로드소드"
+        },
+        {
+            "id": "T8_2H_CLAYMORE",
+            "name": "클레이모어"
+        },
+        {
+            "id": "T8_2H_DUALSWORD",
+            "name": "듀얼 소드"
+        },
+        {
+            "id": "T8_MAIN_SCIMITAR_MORGANA",
+            "name": "클라렌트 블레이드"
+        },
+        {
+            "id": "T8_2H_CLEAVER_HELL",
+            "name": "조각용 소드"
+        },
+        {
+            "id": "T8_2H_DUALSCIMITAR_UNDEAD",
+            "name": "갤러틴 페어"
+        },
+        {
+            "id": "T8_2H_CLAYMORE_AVALON",
+            "name": "킹메이커"
+        },
+        {
+            "id": "T8_MAIN_SWORD_CRYSTAL",
+            "name": "인피니티 블레이드"
+        },
+        {
+            "id": "T8_MAIN_AXE",
+            "name": "배틀액스"
+        },
+        {
+            "id": "T8_2H_AXE",
+            "name": "코르의 손"
+        },
+        {
+            "id": "T8_2H_HALBERD",
+            "name": "할버드"
+        },
+        {
+            "id": "T8_2H_HALBERD_MORGANA",
+            "name": "캐리온콜러"
+        },
+        {
+            "id": "T8_2H_SCYTHE_HELL",
+            "name": "인페르날 사이드"
+        },
+        {
+            "id": "T8_2H_DUALAXE_KEEPER",
+            "name": "베어 포"
+        },
+        {
+            "id": "T8_2H_AXE_AVALON",
+            "name": "렐름브레이커"
+        },
+        {
+            "id": "T8_2H_SCYTHE_CRYSTAL",
+            "name": "크리스탈 리퍼"
+        },
+        {
+            "id": "T8_MAIN_MACE",
+            "name": "메이스"
+        },
+        {
+            "id": "T8_2H_MACE",
+            "name": "헤비 메이스"
+        },
+        {
+            "id": "T8_2H_FLAIL",
+            "name": "모닝 스타"
+        },
+        {
+            "id": "T8_MAIN_ROCKMACE_KEEPER",
+            "name": "베드록 메이스"
+        },
+        {
+            "id": "T8_MAIN_MACE_HELL",
+            "name": "인큐버스 메이스"
+        },
+        {
+            "id": "T8_2H_MACE_MORGANA",
+            "name": "캄란 메이스"
+        },
+        {
+            "id": "T8_2H_DUALMACE_AVALON",
+            "name": "오스키퍼"
+        },
+        {
+            "id": "T8_MAIN_MACE_CRYSTAL",
+            "name": "드레드스톰 모나크"
+        },
+        {
+            "id": "T8_MAIN_HAMMER",
+            "name": "해머"
+        },
+        {
+            "id": "T8_2H_POLEHAMMER",
+            "name": "폴해머"
+        },
+        {
+            "id": "T8_2H_HAMMER",
+            "name": "그레이트 해머"
+        },
+        {
+            "id": "T8_2H_HAMMER_UNDEAD",
+            "name": "툼해머"
+        },
+        {
+            "id": "T8_2H_DUALHAMMER_HELL",
+            "name": "대장간 망치"
+        },
+        {
+            "id": "T8_2H_RAM_KEEPER",
+            "name": "그로브키퍼"
+        },
+        {
+            "id": "T8_2H_HAMMER_AVALON",
+            "name": "핸드 오브 저스티스"
+        },
+        {
+            "id": "T8_2H_KNUCKLES_SET1",
+            "name": "난투 장갑"
+        },
+        {
+            "id": "T8_2H_KNUCKLES_SET2",
+            "name": "전투 브레이서"
+        },
+        {
+            "id": "T8_2H_KNUCKLES_SET3",
+            "name": "가시 건틀렛"
+        },
+        {
+            "id": "T8_2H_KNUCKLES_KEEPER",
+            "name": "곰 주먹"
+        },
+        {
+            "id": "T8_2H_KNUCKLES_HELL",
+            "name": "지옥불 장갑"
+        },
+        {
+            "id": "T8_2H_KNUCKLES_MORGANA",
+            "name": "까마귀 장갑"
+        },
+        {
+            "id": "T8_2H_KNUCKLES_AVALON",
+            "name": "아발론의 철권"
+        },
+        {
+            "id": "T8_2H_KNUCKLES_CRYSTAL",
+            "name": "포스펄스 브레이서"
+        },
+        {
+            "id": "T8_2H_CROSSBOW",
+            "name": "크로스보우"
+        },
+        {
+            "id": "T8_2H_CROSSBOWLARGE",
+            "name": "헤비 크로스보우"
+        },
+        {
+            "id": "T8_MAIN_1HCROSSBOW",
+            "name": "경량 크로스보우"
+        },
+        {
+            "id": "T8_2H_REPEATINGCROSSBOW_UNDEAD",
+            "name": "위핑 리피터"
+        },
+        {
+            "id": "T8_2H_DUALCROSSBOW_HELL",
+            "name": "볼트캐스터"
+        },
+        {
+            "id": "T8_2H_CROSSBOWLARGE_MORGANA",
+            "name": "시지보우"
+        },
+        {
+            "id": "T8_2H_CROSSBOW_CANNON_AVALON",
+            "name": "에너지 셰이퍼"
+        },
+        {
+            "id": "T8_2H_DUALCROSSBOW_CRYSTAL",
+            "name": "아크라이트 블래스터"
+        },
+        {
+            "id": "T8_OFF_SHIELD",
+            "name": "방패"
+        },
+        {
+            "id": "T8_OFF_TOWERSHIELD_UNDEAD",
+            "name": "석관"
+        },
+        {
+            "id": "T8_OFF_SHIELD_HELL",
+            "name": "케이티프 방패"
+        },
+        {
+            "id": "T8_OFF_SPIKEDSHIELD_MORGANA",
+            "name": "페이스브레이커"
+        },
+        {
+            "id": "T8_OFF_SHIELD_AVALON",
+            "name": "아스트랄 아이기스"
+        },
+        {
+            "id": "T8_2H_BOW",
+            "name": "활"
+        },
+        {
+            "id": "T8_2H_WARBOW",
+            "name": "워보우"
+        },
+        {
+            "id": "T8_2H_LONGBOW",
+            "name": "롱보우"
+        },
+        {
+            "id": "T8_2H_LONGBOW_UNDEAD",
+            "name": "위스퍼링 보우"
+        },
+        {
+            "id": "T8_2H_BOW_HELL",
+            "name": "웨일링 보우"
+        },
+        {
+            "id": "T8_2H_BOW_KEEPER",
+            "name": "바돈의 활"
+        },
+        {
+            "id": "T8_2H_BOW_AVALON",
+            "name": "미스트피어서"
+        },
+        {
+            "id": "T8_2H_BOW_CRYSTAL",
+            "name": "스카이스트라이더 보우"
+        },
+        {
+            "id": "T8_MAIN_SPEAR",
+            "name": "창"
+        },
+        {
+            "id": "T8_2H_SPEAR",
+            "name": "파이크"
+        },
+        {
+            "id": "T8_2H_GLAIVE",
+            "name": "글레이브"
+        },
+        {
+            "id": "T8_MAIN_SPEAR_KEEPER",
+            "name": "헤론 스피어"
+        },
+        {
+            "id": "T8_2H_HARPOON_HELL",
+            "name": "스피릿헌터"
+        },
+        {
+            "id": "T8_2H_TRIDENT_UNDEAD",
+            "name": "트리니티 스피어"
+        },
+        {
+            "id": "T8_MAIN_SPEAR_LANCE_AVALON",
+            "name": "데이브레이커"
+        },
+        {
+            "id": "T8_2H_GLAIVE_CRYSTAL",
+            "name": "리프트 글레이브"
+        },
+        {
+            "id": "T8_MAIN_NATURESTAFF",
+            "name": "네이쳐 스태프"
+        },
+        {
+            "id": "T8_2H_NATURESTAFF",
+            "name": "그레이트 네이쳐 스태프"
+        },
+        {
+            "id": "T8_2H_WILDSTAFF",
+            "name": "와일드 스태프"
+        },
+        {
+            "id": "T8_MAIN_NATURESTAFF_KEEPER",
+            "name": "드루이드 스태프"
+        },
+        {
+            "id": "T8_2H_NATURESTAFF_HELL",
+            "name": "블라이트 스태프"
+        },
+        {
+            "id": "T8_2H_NATURESTAFF_KEEPER",
+            "name": "램펀트 스태프"
+        },
+        {
+            "id": "T8_MAIN_NATURESTAFF_AVALON",
+            "name": "아이언루트 스태프"
+        },
+        {
+            "id": "T8_MAIN_NATURESTAFF_CRYSTAL",
+            "name": "포지바크 스태프"
+        },
+        {
+            "id": "T8_MAIN_DAGGER",
+            "name": "대거"
+        },
+        {
+            "id": "T8_2H_DAGGERPAIR",
+            "name": "대거 페어"
+        },
+        {
+            "id": "T8_2H_CLAWPAIR",
+            "name": "클로"
+        },
+        {
+            "id": "T8_MAIN_RAPIER_MORGANA",
+            "name": "블러드레터"
+        },
+        {
+            "id": "T8_MAIN_DAGGER_HELL",
+            "name": "데몬팽"
+        },
+        {
+            "id": "T8_2H_DUALSICKLE_UNDEAD",
+            "name": "데스기버"
+        },
+        {
+            "id": "T8_2H_DAGGER_KATAR_AVALON",
+            "name": "브라이들드 퓨리"
+        },
+        {
+            "id": "T8_2H_DAGGERPAIR_CRYSTAL",
+            "name": "트윈 슬레이어즈"
+        },
+        {
+            "id": "T8_2H_QUARTERSTAFF",
+            "name": "쿼터스태프"
+        },
+        {
+            "id": "T8_2H_IRONCLADEDSTAFF",
+            "name": "아이언 클래드 스태프"
+        },
+        {
+            "id": "T8_2H_DOUBLEBLADEDSTAFF",
+            "name": "더블 블레이디드 스태프"
+        },
+        {
+            "id": "T8_2H_COMBATSTAFF_MORGANA",
+            "name": "블랙 몽크 스태프"
+        },
+        {
+            "id": "T8_2H_TWINSCYTHE_HELL",
+            "name": "소울사이드"
+        },
+        {
+            "id": "T8_2H_ROCKSTAFF_KEEPER",
+            "name": "균형의 스태프"
+        },
+        {
+            "id": "T8_2H_QUARTERSTAFF_AVALON",
+            "name": "그레일시커"
+        },
+        {
+            "id": "T8_2H_DOUBLEBLADEDSTAFF_CRYSTAL",
+            "name": "팬텀 트윈블레이드"
+        },
+        {
+            "id": "T8_2H_SHAPESHIFTER_SET1",
+            "name": "프라울링 스태프"
+        },
+        {
+            "id": "T8_2H_SHAPESHIFTER_SET2",
+            "name": "루트바운드 스태프"
+        },
+        {
+            "id": "T8_2H_SHAPESHIFTER_SET3",
+            "name": "프라이멀 스태프"
+        },
+        {
+            "id": "T8_2H_SHAPESHIFTER_MORGANA",
+            "name": "블러드문 스태프"
+        },
+        {
+            "id": "T8_2H_SHAPESHIFTER_HELL",
+            "name": "헬스폰 스태프"
+        },
+        {
+            "id": "T8_2H_SHAPESHIFTER_KEEPER",
+            "name": "어스룬 스태프"
+        },
+        {
+            "id": "T8_2H_SHAPESHIFTER_AVALON",
+            "name": "라이트콜러"
+        },
+        {
+            "id": "T8_OFF_TORCH",
+            "name": "횃불"
+        },
+        {
+            "id": "T8_OFF_HORN_KEEPER",
+            "name": "미스트콜러"
+        },
+        {
+            "id": "T8_OFF_JESTERCANE_HELL",
+            "name": "음흉한 지팡이"
+        },
+        {
+            "id": "T8_OFF_LAMP_UNDEAD",
+            "name": "크립트캔들"
+        },
+        {
+            "id": "T8_OFF_TALISMAN_AVALON",
+            "name": "성스러운 셉터"
+        },
+        {
+            "id": "T8_MAIN_FIRESTAFF",
+            "name": "파이어 스태프"
+        },
+        {
+            "id": "T8_2H_FIRESTAFF",
+            "name": "벤데타의 격노"
+        },
+        {
+            "id": "T8_2H_INFERNOSTAFF",
+            "name": "인페르날 스태프"
+        },
+        {
+            "id": "T8_MAIN_FIRESTAFF_KEEPER",
+            "name": "와일드파이어 스태프"
+        },
+        {
+            "id": "T8_2H_FIRESTAFF_HELL",
+            "name": "브림스톤 스태프"
+        },
+        {
+            "id": "T8_2H_INFERNOSTAFF_MORGANA",
+            "name": "블레이징 스태프"
+        },
+        {
+            "id": "T8_2H_FIRE_RINGPAIR_AVALON",
+            "name": "던송"
+        },
+        {
+            "id": "T8_MAIN_FIRESTAFF_CRYSTAL",
+            "name": "플레임워커 스태프"
+        },
+        {
+            "id": "T8_MAIN_HOLYSTAFF",
+            "name": "홀리 스태프"
+        },
+        {
+            "id": "T8_2H_HOLYSTAFF",
+            "name": "그레이트 홀리 스태프"
+        },
+        {
+            "id": "T8_2H_DIVINESTAFF",
+            "name": "디바인 스태프"
+        },
+        {
+            "id": "T8_MAIN_HOLYSTAFF_MORGANA",
+            "name": "라이프터치 스태프"
+        },
+        {
+            "id": "T8_2H_HOLYSTAFF_HELL",
+            "name": "폴른 스태프"
+        },
+        {
+            "id": "T8_2H_HOLYSTAFF_UNDEAD",
+            "name": "리뎀션 스태프"
+        },
+        {
+            "id": "T8_MAIN_HOLYSTAFF_AVALON",
+            "name": "할로우폴"
+        },
+        {
+            "id": "T8_2H_HOLYSTAFF_CRYSTAL",
+            "name": "이그졸티드 스태프"
+        },
+        {
+            "id": "T8_MAIN_ARCANESTAFF",
+            "name": "아케인 스태프"
+        },
+        {
+            "id": "T8_2H_ARCANESTAFF",
+            "name": "그레이트 아케인 스태프"
+        },
+        {
+            "id": "T8_2H_ENIGMATICSTAFF",
+            "name": "에니그마틱 스태프"
+        },
+        {
+            "id": "T8_MAIN_ARCANESTAFF_UNDEAD",
+            "name": "위치워크 스태프"
+        },
+        {
+            "id": "T8_2H_ARCANESTAFF_HELL",
+            "name": "오컬트 스태프"
+        },
+        {
+            "id": "T8_2H_ENIGMATICORB_MORGANA",
+            "name": "말레볼렌트 로커스"
+        },
+        {
+            "id": "T8_2H_ARCANE_RINGPAIR_AVALON",
+            "name": "이븐송"
+        },
+        {
+            "id": "T8_2H_ARCANESTAFF_CRYSTAL",
+            "name": "아스트랄 스태프"
+        },
+        {
+            "id": "T8_MAIN_FROSTSTAFF",
+            "name": "프로스트 스태프"
+        },
+        {
+            "id": "T8_2H_FROSTSTAFF",
+            "name": "그레이트 프로스트 스태프"
+        },
+        {
+            "id": "T8_2H_GLACIALSTAFF",
+            "name": "글래셜 스태프"
+        },
+        {
+            "id": "T8_MAIN_FROSTSTAFF_KEEPER",
+            "name": "호어프로스트 스태프"
+        },
+        {
+            "id": "T8_2H_ICEGAUNTLETS_HELL",
+            "name": "아이시클 스태프"
+        },
+        {
+            "id": "T8_2H_ICECRYSTAL_UNDEAD",
+            "name": "퍼마프로스트 프리즘"
+        },
+        {
+            "id": "T8_MAIN_FROSTSTAFF_AVALON",
+            "name": "칠하울"
+        },
+        {
+            "id": "T8_2H_FROSTSTAFF_CRYSTAL",
+            "name": "아크틱 스태프"
+        },
+        {
+            "id": "T8_MAIN_CURSEDSTAFF",
+            "name": "커스드 스태프"
+        },
+        {
+            "id": "T8_2H_CURSEDSTAFF",
+            "name": "그레이트 커스드 스태프"
+        },
+        {
+            "id": "T8_2H_DEMONICSTAFF",
+            "name": "데모닉 스태프"
+        },
+        {
+            "id": "T8_MAIN_CURSEDSTAFF_UNDEAD",
+            "name": "라이프커스 스태프"
+        },
+        {
+            "id": "T8_2H_SKULLORB_HELL",
+            "name": "커스드 스컬"
+        },
+        {
+            "id": "T8_2H_CURSEDSTAFF_MORGANA",
+            "name": "댐네이션 스태프"
+        },
+        {
+            "id": "T8_MAIN_CURSEDSTAFF_AVALON",
+            "name": "섀도우콜러"
+        },
+        {
+            "id": "T8_MAIN_CURSEDSTAFF_CRYSTAL",
+            "name": "로트콜러 스태프"
+        },
+        {
+            "id": "T8_OFF_BOOK",
+            "name": "로살리아의 일기"
+        },
+        {
+            "id": "T8_OFF_ORB_MORGANA",
+            "name": "비밀의 눈"
+        },
+        {
+            "id": "T8_OFF_DEMONSKULL_HELL",
+            "name": "뮤삭"
+        },
+        {
+            "id": "T8_OFF_TOTEM_KEEPER",
+            "name": "탭루트"
+        },
+        {
+            "id": "T8_OFF_CENSER_AVALON",
+            "name": "천상의 향로"
+        }
+    ],
+    "helmet": [
+        {
+            "id": "T8_HEAD_PLATE_SET1",
+            "name": "병사 헬멧"
+        },
+        {
+            "id": "T8_HEAD_PLATE_SET2",
+            "name": "기사 헬멧"
+        },
+        {
+            "id": "T8_HEAD_PLATE_SET3",
+            "name": "가디언 헬멧"
+        },
+        {
+            "id": "T8_HEAD_PLATE_ROYAL",
+            "name": "왕실 헬멧"
+        },
+        {
+            "id": "T8_HEAD_PLATE_UNDEAD",
+            "name": "그레이브가드 헬멧"
+        },
+        {
+            "id": "T8_HEAD_PLATE_HELL",
+            "name": "데몬 헬멧"
+        },
+        {
+            "id": "T8_HEAD_PLATE_KEEPER",
+            "name": "심판관 헬멧"
+        },
+        {
+            "id": "T8_HEAD_PLATE_AVALON",
+            "name": "용기의 헬멧"
+        },
+        {
+            "id": "T8_HEAD_PLATE_FEY",
+            "name": "더스크위버 헬멧"
+        },
+        {
+            "id": "T8_HEAD_LEATHER_SET1",
+            "name": "용병 후드"
+        },
+        {
+            "id": "T8_HEAD_LEATHER_SET2",
+            "name": "헌터 후드"
+        },
+        {
+            "id": "T8_HEAD_LEATHER_SET3",
+            "name": "암살자 후드"
+        },
+        {
+            "id": "T8_HEAD_LEATHER_ROYAL",
+            "name": "왕실 후드"
+        },
+        {
+            "id": "T8_HEAD_LEATHER_MORGANA",
+            "name": "추적자 후드"
+        },
+        {
+            "id": "T8_HEAD_LEATHER_HELL",
+            "name": "무법자 후드"
+        },
+        {
+            "id": "T8_HEAD_LEATHER_UNDEAD",
+            "name": "망령 후드"
+        },
+        {
+            "id": "T8_HEAD_LEATHER_AVALON",
+            "name": "끈기의 후드"
+        },
+        {
+            "id": "T8_HEAD_LEATHER_FEY",
+            "name": "미스트워커 후드"
+        },
+        {
+            "id": "T8_HEAD_CLOTH_SET1",
+            "name": "학자 두건"
+        },
+        {
+            "id": "T8_HEAD_CLOTH_SET2",
+            "name": "성직자 두건"
+        },
+        {
+            "id": "T8_HEAD_CLOTH_SET3",
+            "name": "메이지 두건"
+        },
+        {
+            "id": "T8_HEAD_CLOTH_ROYAL",
+            "name": "왕실 두건"
+        },
+        {
+            "id": "T8_HEAD_CLOTH_KEEPER",
+            "name": "드루이드 두건"
+        },
+        {
+            "id": "T8_HEAD_CLOTH_HELL",
+            "name": "악령 두건"
+        },
+        {
+            "id": "T8_HEAD_CLOTH_MORGANA",
+            "name": "광신도 두건"
+        },
+        {
+            "id": "T8_HEAD_CLOTH_AVALON",
+            "name": "순수의 두건"
+        },
+        {
+            "id": "T8_HEAD_CLOTH_FEY",
+            "name": "요정비늘 모자"
+        }
+    ],
+    "armor": [
+        {
+            "id": "T8_ARMOR_PLATE_SET1",
+            "name": "병사 아머"
+        },
+        {
+            "id": "T8_ARMOR_PLATE_SET2",
+            "name": "기사 아머"
+        },
+        {
+            "id": "T8_ARMOR_PLATE_SET3",
+            "name": "가디언 아머"
+        },
+        {
+            "id": "T8_ARMOR_PLATE_ROYAL",
+            "name": "왕실 아머"
+        },
+        {
+            "id": "T8_ARMOR_PLATE_UNDEAD",
+            "name": "그레이브가드 아머"
+        },
+        {
+            "id": "T8_ARMOR_PLATE_HELL",
+            "name": "데몬 아머"
+        },
+        {
+            "id": "T8_ARMOR_PLATE_KEEPER",
+            "name": "심판관 아머"
+        },
+        {
+            "id": "T8_ARMOR_PLATE_AVALON",
+            "name": "용기의 아머"
+        },
+        {
+            "id": "T8_ARMOR_PLATE_FEY",
+            "name": "더스크위버 아머"
+        },
+        {
+            "id": "T8_ARMOR_LEATHER_SET1",
+            "name": "용병 재킷"
+        },
+        {
+            "id": "T8_ARMOR_LEATHER_SET2",
+            "name": "헌터 재킷"
+        },
+        {
+            "id": "T8_ARMOR_LEATHER_SET3",
+            "name": "암살자 재킷"
+        },
+        {
+            "id": "T8_ARMOR_LEATHER_ROYAL",
+            "name": "왕실 재킷"
+        },
+        {
+            "id": "T8_ARMOR_LEATHER_MORGANA",
+            "name": "추적자 재킷"
+        },
+        {
+            "id": "T8_ARMOR_LEATHER_HELL",
+            "name": "무법자 재킷"
+        },
+        {
+            "id": "T8_ARMOR_LEATHER_UNDEAD",
+            "name": "망령 재킷"
+        },
+        {
+            "id": "T8_ARMOR_LEATHER_AVALON",
+            "name": "끈기의 재킷"
+        },
+        {
+            "id": "T8_ARMOR_LEATHER_FEY",
+            "name": "미스트워커 재킷"
+        },
+        {
+            "id": "T8_ARMOR_CLOTH_SET1",
+            "name": "학자 로브"
+        },
+        {
+            "id": "T8_ARMOR_CLOTH_SET2",
+            "name": "성직자 로브"
+        },
+        {
+            "id": "T8_ARMOR_CLOTH_SET3",
+            "name": "메이지 로브"
+        },
+        {
+            "id": "T8_ARMOR_CLOTH_ROYAL",
+            "name": "왕실 로브"
+        },
+        {
+            "id": "T8_ARMOR_CLOTH_KEEPER",
+            "name": "드루이드 로브"
+        },
+        {
+            "id": "T8_ARMOR_CLOTH_HELL",
+            "name": "악령 로브"
+        },
+        {
+            "id": "T8_ARMOR_CLOTH_MORGANA",
+            "name": "광신도 로브"
+        },
+        {
+            "id": "T8_ARMOR_CLOTH_AVALON",
+            "name": "순수의 로브"
+        },
+        {
+            "id": "T8_ARMOR_CLOTH_FEY",
+            "name": "요정비늘 로브"
+        }
+    ],
+    "shoes": [
+        {
+            "id": "T8_SHOES_PLATE_SET1",
+            "name": "병사 부츠"
+        },
+        {
+            "id": "T8_SHOES_PLATE_SET2",
+            "name": "기사 부츠"
+        },
+        {
+            "id": "T8_SHOES_PLATE_SET3",
+            "name": "가디언 부츠"
+        },
+        {
+            "id": "T8_SHOES_PLATE_ROYAL",
+            "name": "왕실 부츠"
+        },
+        {
+            "id": "T8_SHOES_PLATE_UNDEAD",
+            "name": "그레이브가드 부츠"
+        },
+        {
+            "id": "T8_SHOES_PLATE_HELL",
+            "name": "데몬 부츠"
+        },
+        {
+            "id": "T8_SHOES_PLATE_KEEPER",
+            "name": "심판관 부츠"
+        },
+        {
+            "id": "T8_SHOES_PLATE_AVALON",
+            "name": "용기의 부츠"
+        },
+        {
+            "id": "T8_SHOES_PLATE_FEY",
+            "name": "더스크위버 부츠"
+        },
+        {
+            "id": "T8_SHOES_LEATHER_SET1",
+            "name": "용병 신발"
+        },
+        {
+            "id": "T8_SHOES_LEATHER_SET2",
+            "name": "헌터 신발"
+        },
+        {
+            "id": "T8_SHOES_LEATHER_SET3",
+            "name": "암살자 신발"
+        },
+        {
+            "id": "T8_SHOES_LEATHER_ROYAL",
+            "name": "왕실 신발"
+        },
+        {
+            "id": "T8_SHOES_LEATHER_MORGANA",
+            "name": "추적자 신발"
+        },
+        {
+            "id": "T8_SHOES_LEATHER_HELL",
+            "name": "무법자 신발"
+        },
+        {
+            "id": "T8_SHOES_LEATHER_UNDEAD",
+            "name": "망령 신발"
+        },
+        {
+            "id": "T8_SHOES_LEATHER_AVALON",
+            "name": "끈기의 신발"
+        },
+        {
+            "id": "T8_SHOES_LEATHER_FEY",
+            "name": "미스트워커 신발"
+        },
+        {
+            "id": "T8_SHOES_CLOTH_SET1",
+            "name": "학자 샌들"
+        },
+        {
+            "id": "T8_SHOES_CLOTH_SET2",
+            "name": "성직자 샌들"
+        },
+        {
+            "id": "T8_SHOES_CLOTH_SET3",
+            "name": "메이지 샌들"
+        },
+        {
+            "id": "T8_SHOES_CLOTH_ROYAL",
+            "name": "왕실 샌들"
+        },
+        {
+            "id": "T8_SHOES_CLOTH_KEEPER",
+            "name": "드루이드 샌들"
+        },
+        {
+            "id": "T8_SHOES_CLOTH_HELL",
+            "name": "악령 샌들"
+        },
+        {
+            "id": "T8_SHOES_CLOTH_MORGANA",
+            "name": "광신도 샌들"
+        },
+        {
+            "id": "T8_SHOES_CLOTH_AVALON",
+            "name": "순수의 샌들"
+        },
+        {
+            "id": "T8_SHOES_CLOTH_FEY",
+            "name": "요정비늘 샌들"
+        }
+    ],
+    "cape": [
+        {
+            "id": "T8_CAPE",
+            "name": "장로의 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_FW_CAERLEON",
+            "name": "Caerleon 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_FW_MARTLOCK",
+            "name": "Martlock 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_FW_FORTSTERLING",
+            "name": "Fort Sterling 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_FW_BRIDGEWATCH",
+            "name": "Bridgewatch 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_FW_LYMHURST",
+            "name": "Lymhurst 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_FW_THETFORD",
+            "name": "Thetford 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_HERETIC",
+            "name": "이단자 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_UNDEAD",
+            "name": "언데드 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_KEEPER",
+            "name": "수호자 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_MORGANA",
+            "name": "모르가나 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_DEMON",
+            "name": "악마 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_FW_BRECILIEN",
+            "name": "Brecilien 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_AVALON",
+            "name": "아발로니안 망토"
+        },
+        {
+            "id": "T8_CAPEITEM_SMUGGLER",
+            "name": "밀수꾼 망토"
+        }
+    ],
+    "potion": [
+        {
+            "id": "T2_POTION_HEAL",
+            "name": "소형 치유 포션"
+        },
+        {
+            "id": "T4_POTION_HEAL",
+            "name": "치유 포션"
+        },
+        {
+            "id": "T6_POTION_HEAL",
+            "name": "대형 치유 포션"
+        },
+        {
+            "id": "T2_POTION_ENERGY",
+            "name": "소형 에너지 포션"
+        },
+        {
+            "id": "T4_POTION_ENERGY",
+            "name": "에너지 포션"
+        },
+        {
+            "id": "T6_POTION_ENERGY",
+            "name": "대형 에너지 포션"
+        },
+        {
+            "id": "T3_POTION_REVIVE",
+            "name": "소형 거대화 포션"
+        },
+        {
+            "id": "T5_POTION_REVIVE",
+            "name": "거대화 포션"
+        },
+        {
+            "id": "T7_POTION_REVIVE",
+            "name": "대형 거대화 포션"
+        },
+        {
+            "id": "T3_POTION_SLOWFIELD",
+            "name": "소형 끈끈이 포션"
+        },
+        {
+            "id": "T5_POTION_SLOWFIELD",
+            "name": "끈끈이 포션"
+        },
+        {
+            "id": "T7_POTION_SLOWFIELD",
+            "name": "대형 끈끈이 포션"
+        },
+        {
+            "id": "T3_POTION_STONESKIN",
+            "name": "소형 저항 포션"
+        },
+        {
+            "id": "T5_POTION_STONESKIN",
+            "name": "저항 포션"
+        },
+        {
+            "id": "T7_POTION_STONESKIN",
+            "name": "대형 저항 포션"
+        },
+        {
+            "id": "T4_POTION_COOLDOWN",
+            "name": "소형 독 포션"
+        },
+        {
+            "id": "T6_POTION_COOLDOWN",
+            "name": "독 포션"
+        },
+        {
+            "id": "T8_POTION_COOLDOWN",
+            "name": "대형 독 포션"
+        },
+        {
+            "id": "T3_POTION_MOB_RESET",
+            "name": "소형 진정 포션"
+        },
+        {
+            "id": "T5_POTION_MOB_RESET",
+            "name": "진정 포션"
+        },
+        {
+            "id": "T7_POTION_MOB_RESET",
+            "name": "대형 진정 포션"
+        },
+        {
+            "id": "T3_POTION_CLEANSE2",
+            "name": "소형 정화 포션"
+        },
+        {
+            "id": "T5_POTION_CLEANSE2",
+            "name": "정화 포션"
+        },
+        {
+            "id": "T7_POTION_CLEANSE2",
+            "name": "대형 정화 포션"
+        },
+        {
+            "id": "T3_POTION_ACID",
+            "name": "소형 산성 포션"
+        },
+        {
+            "id": "T5_POTION_ACID",
+            "name": "산성 포션"
+        },
+        {
+            "id": "T7_POTION_ACID",
+            "name": "대형 산성 포션"
+        },
+        {
+            "id": "T4_POTION_BERSERK",
+            "name": "소형 광폭화 포션"
+        },
+        {
+            "id": "T6_POTION_BERSERK",
+            "name": "광폭화 포션"
+        },
+        {
+            "id": "T8_POTION_BERSERK",
+            "name": "대형 광폭화 포션"
+        },
+        {
+            "id": "T4_POTION_LAVA",
+            "name": "소형 지옥불 포션"
+        },
+        {
+            "id": "T6_POTION_LAVA",
+            "name": "지옥불 포션"
+        },
+        {
+            "id": "T8_POTION_LAVA",
+            "name": "대형 지옥불 포션"
+        },
+        {
+            "id": "T4_POTION_GATHER",
+            "name": "소형 채집 포션"
+        },
+        {
+            "id": "T6_POTION_GATHER",
+            "name": "채집 포션"
+        },
+        {
+            "id": "T8_POTION_GATHER",
+            "name": "대형 채집 포션"
+        },
+        {
+            "id": "T4_POTION_TORNADO",
+            "name": "소형 병 속의 폭풍"
+        },
+        {
+            "id": "T6_POTION_TORNADO",
+            "name": "병 속의 폭풍"
+        },
+        {
+            "id": "T8_POTION_TORNADO",
+            "name": "대형 병 속의 폭풍"
+        }
+    ],
+    "food": [
+        {
+            "id": "T1_MEAL_SOUP",
+            "name": "당근 수프"
+        },
+        {
+            "id": "T3_MEAL_SOUP",
+            "name": "밀 수프"
+        },
+        {
+            "id": "T5_MEAL_SOUP",
+            "name": "당근 수프"
+        },
+        {
+            "id": "T1_MEAL_SOUP_FISH",
+            "name": "그린무어 조개 수프"
+        },
+        {
+            "id": "T3_MEAL_SOUP_FISH",
+            "name": "머크워터 조개 수프"
+        },
+        {
+            "id": "T5_MEAL_SOUP_FISH",
+            "name": "블랙보그 조개 수프"
+        },
+        {
+            "id": "T2_MEAL_SALAD",
+            "name": "콩 샐러드"
+        },
+        {
+            "id": "T4_MEAL_SALAD",
+            "name": "순무 샐러드"
+        },
+        {
+            "id": "T6_MEAL_SALAD",
+            "name": "감자 샐러드"
+        },
+        {
+            "id": "T2_MEAL_SALAD_FISH",
+            "name": "섈로쇼어 오징어 샐러드"
+        },
+        {
+            "id": "T4_MEAL_SALAD_FISH",
+            "name": "미드워터 문어 샐러드"
+        },
+        {
+            "id": "T6_MEAL_SALAD_FISH",
+            "name": "딥워터 크라켄 샐러드"
+        },
+        {
+            "id": "T3_MEAL_PIE",
+            "name": "치킨 파이"
+        },
+        {
+            "id": "T5_MEAL_PIE",
+            "name": "거위 파이"
+        },
+        {
+            "id": "T7_MEAL_PIE",
+            "name": "돼지고기 파이"
+        },
+        {
+            "id": "T3_MEAL_PIE_FISH",
+            "name": "업랜드 콜드아이 파이"
+        },
+        {
+            "id": "T5_MEAL_PIE_FISH",
+            "name": "마운틴 블라인드아이 파이"
+        },
+        {
+            "id": "T7_MEAL_PIE_FISH",
+            "name": "프로스트픽 명사수 파이"
+        },
+        {
+            "id": "T3_MEAL_OMELETTE",
+            "name": "치킨 오믈렛"
+        },
+        {
+            "id": "T5_MEAL_OMELETTE",
+            "name": "거위 오믈렛"
+        },
+        {
+            "id": "T7_MEAL_OMELETTE",
+            "name": "돼지고기 오믈렛"
+        },
+        {
+            "id": "T3_MEAL_OMELETTE_FISH",
+            "name": "로우리버 게 오믈렛"
+        },
+        {
+            "id": "T5_MEAL_OMELETTE_FISH",
+            "name": "드라이브룩 게 오믈렛"
+        },
+        {
+            "id": "T7_MEAL_OMELETTE_FISH",
+            "name": "더스트홀 게 오믈렛"
+        },
+        {
+            "id": "T3_MEAL_OMELETTE_AVALON",
+            "name": "아발로니안 치킨 오믈렛"
+        },
+        {
+            "id": "T5_MEAL_OMELETTE_AVALON",
+            "name": "아발로니안 거위 오믈렛"
+        },
+        {
+            "id": "T7_MEAL_OMELETTE_AVALON",
+            "name": "아발로니안 돼지고기 오믈렛"
+        },
+        {
+            "id": "T3_MEAL_ROAST",
+            "name": "구운 치킨"
+        },
+        {
+            "id": "T5_MEAL_ROAST",
+            "name": "구운 거위"
+        },
+        {
+            "id": "T7_MEAL_ROAST",
+            "name": "구운 돼지고기"
+        },
+        {
+            "id": "T3_MEAL_ROAST_FISH",
+            "name": "로스트 화이트포그 스내퍼"
+        },
+        {
+            "id": "T5_MEAL_ROAST_FISH",
+            "name": "로스트 클리어해이즈 스내퍼"
+        },
+        {
+            "id": "T7_MEAL_ROAST_FISH",
+            "name": "로스트 퓨어미스트 스내퍼"
+        },
+        {
+            "id": "T4_MEAL_STEW",
+            "name": "염소 스튜"
+        },
+        {
+            "id": "T6_MEAL_STEW",
+            "name": "양고기 스튜"
+        },
+        {
+            "id": "T8_MEAL_STEW",
+            "name": "소고기 스튜"
+        },
+        {
+            "id": "T4_MEAL_STEW_FISH",
+            "name": "그린리버 장어 스튜"
+        },
+        {
+            "id": "T6_MEAL_STEW_FISH",
+            "name": "레드스프링 장어 스튜"
+        },
+        {
+            "id": "T8_MEAL_STEW_FISH",
+            "name": "데드워터 장어 스튜"
+        },
+        {
+            "id": "T4_MEAL_STEW_AVALON",
+            "name": "아발로니안 염소 스튜"
+        },
+        {
+            "id": "T6_MEAL_STEW_AVALON",
+            "name": "아발로니안 양고기 스튜"
+        },
+        {
+            "id": "T8_MEAL_STEW_AVALON",
+            "name": "아발로니안 소고기 스튜"
+        },
+        {
+            "id": "T4_MEAL_SANDWICH",
+            "name": "염소 샌드위치"
+        },
+        {
+            "id": "T6_MEAL_SANDWICH",
+            "name": "양고기 샌드위치"
+        },
+        {
+            "id": "T8_MEAL_SANDWICH",
+            "name": "소고기 샌드위치"
+        },
+        {
+            "id": "T4_MEAL_SANDWICH_FISH",
+            "name": "스톤스트림 떠돌이 샌드위치"
+        },
+        {
+            "id": "T6_MEAL_SANDWICH_FISH",
+            "name": "러시워터 떠돌이 샌드위치"
+        },
+        {
+            "id": "T8_MEAL_SANDWICH_FISH",
+            "name": "선더폴 떠돌이 샌드위치"
+        },
+        {
+            "id": "T4_MEAL_SANDWICH_AVALON",
+            "name": "아발로니안 염소 샌드위치"
+        },
+        {
+            "id": "T6_MEAL_SANDWICH_AVALON",
+            "name": "아발로니안 양고기 샌드위치"
+        },
+        {
+            "id": "T8_MEAL_SANDWICH_AVALON",
+            "name": "아발로니안 소고기 샌드위치"
+        }
+    ],
+    "mount": [
+        {
+            "id": "T3_MOUNT_HORSE",
+            "name": "장인의 승용마"
+        },
+        {
+            "id": "T4_MOUNT_HORSE",
+            "name": "숙련자의 승용마"
+        },
+        {
+            "id": "T5_MOUNT_HORSE",
+            "name": "전문가의 승용마"
+        },
+        {
+            "id": "T6_MOUNT_HORSE",
+            "name": "마스터의 승용마"
+        },
+        {
+            "id": "T7_MOUNT_HORSE",
+            "name": "그랜드 마스터의 승용마"
+        },
+        {
+            "id": "T8_MOUNT_HORSE",
+            "name": "장로의 승용마"
+        },
+        {
+            "id": "T3_MOUNT_OX",
+            "name": "장인의 수송용 황소"
+        },
+        {
+            "id": "T4_MOUNT_OX",
+            "name": "장인의 수송용 황소"
+        },
+        {
+            "id": "T5_MOUNT_OX",
+            "name": "숙련자의 수송용 황소"
+        },
+        {
+            "id": "T6_MOUNT_OX",
+            "name": "마스터의 수송용 황소"
+        },
+        {
+            "id": "T7_MOUNT_OX",
+            "name": "그랜드 마스터의 수송용 황소"
+        },
+        {
+            "id": "T8_MOUNT_OX",
+            "name": "장로의 수송용 황소"
+        },
+        {
+            "id": "T4_MOUNT_GIANTSTAG",
+            "name": "숙련자의 거대 숫사슴"
+        },
+        {
+            "id": "T5_MOUNT_ARMORED_HORSE",
+            "name": "전문가의 갑주마"
+        },
+        {
+            "id": "T6_MOUNT_ARMORED_HORSE",
+            "name": "마스터의 갑주마"
+        },
+        {
+            "id": "T7_MOUNT_ARMORED_HORSE",
+            "name": "그랜드 마스터의 갑주마"
+        },
+        {
+            "id": "T8_MOUNT_ARMORED_HORSE",
+            "name": "장로의 갑주마"
+        },
+        {
+            "id": "T5_MOUNT_COUGAR_KEEPER@1",
+            "name": "스위프트클로"
+        },
+        {
+            "id": "T5_MOUNT_MOABIRD_FW_BRIDGEWATCH",
+            "name": "안장 달린 모아새"
+        },
+        {
+            "id": "T5_MOUNT_DIREBEAR_FW_FORTSTERLING",
+            "name": "안장 달린 겨울 곰"
+        },
+        {
+            "id": "T5_MOUNT_DIREBOAR_FW_LYMHURST",
+            "name": "안장 달린 야생 멧돼지"
+        },
+        {
+            "id": "T5_MOUNT_RAM_FW_MARTLOCK",
+            "name": "안장 달린 큰뿔양"
+        },
+        {
+            "id": "T5_MOUNT_SWAMPDRAGON_FW_THETFORD",
+            "name": "안장 달린 늪 도롱뇽"
+        },
+        {
+            "id": "T5_MOUNT_GREYWOLF_FW_CAERLEON",
+            "name": "안장달린 회색늑대"
+        },
+        {
+            "id": "T5_MOUNT_OWL_FW_BRECILIEN",
+            "name": "안장 달린 신비로운 올빼미"
+        },
+        {
+            "id": "T6_MOUNT_DIREWOLF",
+            "name": "다이어울프"
+        },
+        {
+            "id": "T6_MOUNT_GIANTSTAG_MOOSE",
+            "name": "무스"
+        },
+        {
+            "id": "T7_MOUNT_DIREBOAR",
+            "name": "안장을 얹은 다이어보어"
+        },
+        {
+            "id": "T7_MOUNT_SWAMPDRAGON",
+            "name": "안장 달린 늪의 용"
+        },
+        {
+            "id": "T8_MOUNT_DIREBEAR",
+            "name": "안장을 얹은 다이어베어"
+        },
+        {
+            "id": "T8_MOUNT_MOABIRD_FW_BRIDGEWATCH_ELITE",
+            "name": "엘리트 테러버드"
+        },
+        {
+            "id": "T8_MOUNT_DIREBEAR_FW_FORTSTERLING_ELITE",
+            "name": "엘리트 겨울 곰"
+        },
+        {
+            "id": "T8_MOUNT_DIREBOAR_FW_LYMHURST_ELITE",
+            "name": "엘리트 야생 멧돼지"
+        },
+        {
+            "id": "T8_MOUNT_RAM_FW_MARTLOCK_ELITE",
+            "name": "엘리트 큰뿔양"
+        },
+        {
+            "id": "T8_MOUNT_SWAMPDRAGON_FW_THETFORD_ELITE",
+            "name": "엘리트 늪 도롱뇽"
+        },
+        {
+            "id": "T8_MOUNT_GREYWOLF_FW_CAERLEON_ELITE",
+            "name": "엘리트 회색늑대"
+        },
+        {
+            "id": "T8_MOUNT_OWL_FW_BRECILIEN_ELITE",
+            "name": "엘리트 신비로운 올빼미"
+        },
+        {
+            "id": "T8_MOUNT_ARMORED_HORSE_MORGANA@1",
+            "name": "모르가나 나이트메어"
+        },
+        {
+            "id": "T8_MOUNT_COUGAR_KEEPER@1",
+            "name": "레이지클로"
+        },
+        {
+            "id": "T8_MOUNT_HORSE_UNDEAD@1",
+            "name": "유령 본호스"
+        },
+        {
+            "id": "T8_MOUNT_MAMMOTH_TRANSPORT",
+            "name": "장로의 수송용 맘모스"
+        },
+        {
+            "id": "T8_MOUNT_RABBIT_EASTER",
+            "name": "봄 솜꼬리토끼"
+        },
+        {
+            "id": "T8_MOUNT_RABBIT_EASTER_DARK@1",
+            "name": "칼레온 솜꼬리토끼"
+        },
+        {
+            "id": "UNIQUE_MOUNT_RAM_XMAS",
+            "name": "크리스마스 양"
+        },
+        {
+            "id": "UNIQUE_MOUNT_RAM_TELLAFRIEND",
+            "name": "신병 모집자의 양"
+        },
+        {
+            "id": "UNIQUE_MOUNT_MOABIRD_TELLAFRIEND",
+            "name": "신병 모집자의 모아새"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BAT_TELLAFRIEND",
+            "name": "신병 모집자의 안장 달린 박쥐"
+        },
+        {
+            "id": "UNIQUE_MOUNT_GIANTTOAD_TELLAFRIEND",
+            "name": "신병 모집자의 두꺼비"
+        },
+        {
+            "id": "UNIQUE_MOUNT_GIANTTOAD_02_TELLAFRIEND",
+            "name": "신병 모집자의 거대한 개구리"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BAT_PERSONAL",
+            "name": "유령의 박쥐"
+        },
+        {
+            "id": "T7_MOUNT_MONITORLIZARD_ADC",
+            "name": "독 도마뱀"
+        },
+        {
+            "id": "T7_MOUNT_HUSKY_ADC",
+            "name": "눈 허스키"
+        },
+        {
+            "id": "T6_MOUNT_FROSTRAM_ADC",
+            "name": "프로스트 양"
+        },
+        {
+            "id": "T7_MOUNT_TERRORBIRD_ADC",
+            "name": "안장 달린 테러 버드"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BEAR_KEEPER_ADC",
+            "name": "그리즐리 베어"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BLACK_PANTHER_ADC",
+            "name": "블랙 팬서"
+        },
+        {
+            "id": "UNIQUE_MOUNT_MORGANA_RAVEN_ADC",
+            "name": "모르가나의 까마귀"
+        },
+        {
+            "id": "UNIQUE_MOUNT_GIANT_HORSE_ADC",
+            "name": "용맹한 말"
+        },
+        {
+            "id": "UNIQUE_MOUNT_UNDEAD_DIREBOAR_ADC",
+            "name": "공허한 멧돼지"
+        },
+        {
+            "id": "UNIQUE_MOUNT_DIVINE_OWL_ADC",
+            "name": "신성한 올빼미"
+        },
+        {
+            "id": "UNIQUE_MOUNT_HERETIC_MULE_ADC",
+            "name": "이단자의 전투 노새"
+        },
+        {
+            "id": "T8_MOUNT_MAMMOTH_BATTLE@1",
+            "name": "장로의 지휘 맘모스"
+        },
+        {
+            "id": "T7_MOUNT_SWAMPDRAGON_BATTLE",
+            "name": "화염의 바실리스크"
+        },
+        {
+            "id": "T7_MOUNT_ARMORED_SWAMPDRAGON_BATTLE",
+            "name": "독 바실리스크"
+        },
+        {
+            "id": "T7_MOUNT_SWAMPDRAGON_AVALON_BASILISK",
+            "name": "아발로니안 바실리스크"
+        },
+        {
+            "id": "T6_MOUNT_SIEGE_BALLISTA",
+            "name": "공성포"
+        },
+        {
+            "id": "UNIQUE_MOUNT_RHINO_SEASON_CRYSTAL",
+            "name": "크리스탈 배틀 라이노"
+        },
+        {
+            "id": "UNIQUE_MOUNT_RHINO_SEASON_GOLD",
+            "name": "골드 배틀 라이노"
+        },
+        {
+            "id": "UNIQUE_MOUNT_RHINO_SEASON_SILVER",
+            "name": "실버 배틀 라이노"
+        },
+        {
+            "id": "UNIQUE_MOUNT_TOWER_CHARIOT_CRYSTAL",
+            "name": "크리스탈 타워 전차"
+        },
+        {
+            "id": "UNIQUE_MOUNT_TOWER_CHARIOT_GOLD",
+            "name": "골드 타워 전차"
+        },
+        {
+            "id": "UNIQUE_MOUNT_TOWER_CHARIOT_SILVER",
+            "name": "실버 타워 전차"
+        },
+        {
+            "id": "UNIQUE_MOUNT_ARMORED_EAGLE_CRYSTAL",
+            "name": "크리스탈 배틀 이글"
+        },
+        {
+            "id": "UNIQUE_MOUNT_ARMORED_EAGLE_GOLD",
+            "name": "골드 배틀 이글"
+        },
+        {
+            "id": "UNIQUE_MOUNT_ARMORED_EAGLE_SILVER",
+            "name": "실버 배틀 이글"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BEETLE_CRYSTAL",
+            "name": "크리스탈 거대 딱정벌레"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BEETLE_GOLD",
+            "name": "골드 거대 딱정벌레"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BEETLE_SILVER",
+            "name": "실버 거대 딱정벌레"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BEHEMOTH_CRYSTAL",
+            "name": "크리스탈 베헤모스"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BEHEMOTH_GOLD",
+            "name": "골드 베헤모스"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BEHEMOTH_SILVER",
+            "name": "실버 베헤모스"
+        },
+        {
+            "id": "UNIQUE_MOUNT_ENT_CRYSTAL",
+            "name": "크리스탈 고대 엔트"
+        },
+        {
+            "id": "UNIQUE_MOUNT_ENT_GOLD",
+            "name": "골드 고대 엔트"
+        },
+        {
+            "id": "UNIQUE_MOUNT_ENT_SILVER",
+            "name": "실버 고대 엔트"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BATTLESPIDER_CRYSTAL",
+            "name": "크리스탈 골리앗 호스이터"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BATTLESPIDER_GOLD",
+            "name": "골드 골리앗 호스이터"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BATTLESPIDER_SILVER",
+            "name": "실버 골리앗 호스이터"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BASTION_CRYSTAL",
+            "name": "크리스탈 방랑하는 요새"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BASTION_GOLD",
+            "name": "골드 방랑하는 요새"
+        },
+        {
+            "id": "UNIQUE_MOUNT_BASTION_SILVER",
+            "name": "실버 방랑하는 요새"
+        },
+        {
+            "id": "UNIQUE_MOUNT_JUGGERNAUT_CRYSTAL",
+            "name": "크리스탈 저거너트"
+        },
+        {
+            "id": "UNIQUE_MOUNT_JUGGERNAUT_GOLD",
+            "name": "골드 저거너트"
+        },
+        {
+            "id": "UNIQUE_MOUNT_JUGGERNAUT_SILVER",
+            "name": "실버 저거너트"
+        },
+        {
+            "id": "UNIQUE_MOUNT_TANKBEETLE_CRYSTAL",
+            "name": "크리스탈 팔랑크스 딱정벌레"
+        },
+        {
+            "id": "UNIQUE_MOUNT_TANKBEETLE_GOLD",
+            "name": "골드 팔랑크스 딱정벌레"
+        },
+        {
+            "id": "UNIQUE_MOUNT_TANKBEETLE_SILVER",
+            "name": "실버 팔랑크스 딱정벌레"
+        }
+    ]
+}
