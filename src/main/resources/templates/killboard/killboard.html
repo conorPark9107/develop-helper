@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
+    <!--  ICON  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <!-- <script type="text/javascript" src="/static/js/util.js"></script>
     <script type="text/javascript" src="/static/js/killboard/killboard.js"></script>
     <link rel="stylesheet" href="/static/css/variable.css"/>
@@ -80,7 +83,7 @@
                 <hr/>
 
                 <div class="content-body-items padding-top">
-                    <h3 class="sub-title">가장 검색이 많이된 유저 TOP 10</h3>
+                    <h3 class="sub-title"><i class="fa-solid fa-ranking-star"></i>가장 검색이 많이된 유저 TOP 10</h3>
                 </div>
                 <div class="content-body-items flex-row">
                     <div class="flex-column">
@@ -97,7 +100,10 @@
                             <tbody>
                             <th:block th:if="${not #lists.isEmpty(rankAll)}">
                                 <tr th:each="user, stat : ${rankAll}">
-                                    <td th:text="${stat.count}"></td>
+                                    <td th:if="${stat.count == 1}" th:text="'🥇'"></td>
+                                    <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
+                                    <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
+                                    <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                     <td th:text="${user.server}"></td>
                                     <td th:text="${user.userName}"></td>
                                     <td th:text="${user.count}"></td>
@@ -125,7 +131,10 @@
                             <tbody>
                             <th:block th:if="${not #lists.isEmpty(eastRank)}">
                                 <tr th:each="user, stat : ${eastRank}">
-                                    <td th:text="${stat.count}"></td>
+                                    <td th:if="${stat.count == 1}" th:text="'🥇'"></td>
+                                    <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
+                                    <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
+                                    <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                     <td th:text="${user.server}"></td>
                                     <td th:text="${user.userName}"></td>
                                     <td th:text="${user.count}"></td>
@@ -153,7 +162,10 @@
                             <tbody>
                             <th:block th:if="${not #lists.isEmpty(westRank)}">
                                 <tr th:each="user, stat : ${westRank}">
-                                    <td th:text="${stat.count}"></td>
+                                    <td th:if="${stat.count == 1}" th:text="'🥇'"></td>
+                                    <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
+                                    <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
+                                    <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                     <td th:text="${user.server}"></td>
                                     <td th:text="${user.userName}"></td>
                                     <td th:text="${user.count}"></td>
@@ -181,7 +193,10 @@
                             <tbody>
                             <th:block th:if="${not #lists.isEmpty(europeRank)}">
                                 <tr th:each="user, stat : ${europeRank}">
-                                    <td th:text="${stat.count}"></td>
+                                    <td th:if="${stat.count == 1}" th:text="'🥇'"></td>
+                                    <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
+                                    <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
+                                    <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                     <td th:text="${user.server}"></td>
                                     <td th:text="${user.userName}"></td>
                                     <td th:text="${user.count}"></td>
@@ -210,12 +225,14 @@
                                 <col class="col02"/>
                                 <col class="col03"/>
                                 <col class="col04"/>
+                                <col class="col05"/>
                             </colgroup>
                             <thead>
                             <tr>
                                 <th>순위</th>
                                 <th>데스페임</th>
                                 <th>죽인사람 / 기어</th>
+                                <th></th>
                                 <th>죽은사람 / 기어</th>
                             </tr>
                             </thead>
@@ -253,6 +270,7 @@
                                         </div>
                                     </div>
                                 </td>
+                                <td></td>
                                 <td th:with="a = ${event.victim.equipment}">
                                     <div class="flex-row flex-vertical-center">
                                         <div class="flex-column name">
@@ -294,12 +312,14 @@
                                 <col class="col02"/>
                                 <col class="col03"/>
                                 <col class="col04"/>
+                                <col class="col05"/>
                             </colgroup>
                             <thead>
                             <tr>
                                 <th>순위</th>
                                 <th>데스페임</th>
                                 <th>죽인사람 / 기어</th>
+                                <th></th>
                                 <th>죽은사람 / 기어</th>
                             </tr>
                             </thead>
@@ -337,6 +357,7 @@
                                         </div>
                                     </div>
                                 </td>
+                                <td></td>
                                 <td th:with="a = ${event.victim.equipment}">
                                     <div class="flex-row flex-vertical-center">
                                         <div class="flex-column name">
@@ -380,12 +401,14 @@
                                 <col class="col02"/>
                                 <col class="col03"/>
                                 <col class="col04"/>
+                                <col class="col05"/>
                             </colgroup>
                             <thead>
                             <tr>
                                 <th>순위</th>
                                 <th>데스페임</th>
                                 <th>죽인사람 / 기어</th>
+                                <th></th>
                                 <th>죽은사람 / 기어</th>
                             </tr>
                             </thead>
@@ -423,6 +446,7 @@
                                         </div>
                                     </div>
                                 </td>
+                                <td></td>
                                 <td th:with="a = ${event.victim.equipment}">
                                     <div class="flex-row flex-vertical-center">
                                         <div class="flex-column name">
@@ -464,12 +488,14 @@
                                 <col class="col02"/>
                                 <col class="col03"/>
                                 <col class="col04"/>
+                                <col class="col05"/>
                             </colgroup>
                             <thead>
                             <tr>
                                 <th>순위</th>
                                 <th>데스페임</th>
                                 <th>죽인사람 / 기어</th>
+                                <th></th>
                                 <th>죽은사람 / 기어</th>
                             </tr>
                             </thead>
@@ -507,6 +533,7 @@
                                         </div>
                                     </div>
                                 </td>
+                                <td></td>
                                 <td th:with="a = ${event.victim.equipment}">
                                     <div class="flex-row flex-vertical-center">
                                         <div class="flex-column name">

@@ -13,6 +13,14 @@ a{
 .rankDiv{
     align-items: end;
 }
+.rankTableDiv{
+    width:100%;
+}
+.rankTable{
+    border: 1px solid var(--border);
+    font-size: 10px;
+    width:100%;
+}
 .w8{
     width :80%;
 }
@@ -56,7 +64,6 @@ a{
 .flex-column{
     display:flex;
     flex-direction: column;
-    width: 100%;
 }
 .flex-row{
     min-height : 40px;
@@ -154,26 +161,26 @@ a{
 .table thead tr th:last-child{
     border-top-right-radius : 8px;
 }
-th {
+.table th {
     font-weight: bold;
     padding: 10px 0px;
     background-color: var(--table-th-color);
     color: var(--table-th-text-color);
 }
-table tbody tr{
+.table tbody tr{
     background-color: var(--table-tr-color);
 }
-table tbody tr:nth-child(odd) {
+.table tbody tr:nth-child(odd) {
     background-color: var(--table-tr-odd-color);
 }
-td {
+.table td {
     color: var(--table-sub-text-color);
     padding: 10px 10px;
 }
-table tr:last-child td:first-child {
+.table tr:last-child td:first-child {
     border-bottom-left-radius: 10px;
 }
-table tr:last-child td:last-child {
+.table tr:last-child td:last-child {
     border-bottom-right-radius: 10px;
 }
 .maintable thead tr th:nth-child(4){

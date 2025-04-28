@@ -105,10 +105,8 @@ table tbody tr:last-child td{
 .biggest-table thead tr th{
     padding: 10px;
 }
-.biggest-table tbody tr td{
-    border-left: 1px solid var(--border-bottom);
-    border-right: 1px solid var(--border-bottom);
-}
+/*.biggest-table tbody tr td{*/
+/*}*/
 .biggest-table thead tr th{
     text-align: center;
 }
@@ -275,10 +273,10 @@ caption {
     width: 10%;
 }
 .biggest-col03{
-    width: 25%;
+    width: 20%;
 }
 .biggest-col04{
-    width: 25%;
+    width: 10%;
 }
 .biggest-col05{
     width: 20%;
@@ -319,16 +317,19 @@ caption {
     float: right;
 }
 .col01{
-    width: 10%;
+    width: 6%;
 }
 .col02{
     width: 10%
 }
 .col03{
-    width: 40%;
+    width: 37%;
 }
 .col04{
-    width: 40%;
+    width: 6%;
+}
+.col05{
+    width: 37%;
 }
 .name{
     width: 50%;
