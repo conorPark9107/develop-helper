@@ -10,6 +10,15 @@ a{
 .text-center{
     text-align: center;
 }
+.rankDiv{
+    align-items: end;
+}
+.w8{
+    width :80%;
+}
+.w2{
+    width: 20%;
+}
 .back-div{
     display: flex;
     flex-direction: row;
