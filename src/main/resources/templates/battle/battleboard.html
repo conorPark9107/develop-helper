@@ -117,7 +117,10 @@
                         </thead>
                         <tbody>
                             <tr th:each="rank, stat : ${count}">
-                                <td th:text="${stat.count}"></td>
+                                <td th:if="${stat.count == 1}" th:text="'🥇'"></td>
+                                <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
+                                <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
+                                <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                 <td th:text="${rank.guildName}"></td>
                                 <td th:text="${rank.count}"></td>
                             </tr>
