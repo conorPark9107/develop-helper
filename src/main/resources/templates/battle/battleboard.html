@@ -116,13 +116,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="rank, stat : ${count}">
+                            <tr th:if="${not #lists.isEmpty(count)}" th:each="rank, stat : ${count}">
                                 <td th:if="${stat.count == 1}" th:text="'🥇'"></td>
                                 <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
                                 <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
                                 <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                 <td th:text="${rank.guildName}"></td>
                                 <td th:text="${rank.count}"></td>
+                            </tr>
+                            <tr th:if="${#lists.isEmpty(count)}">
+                                <td colspan="6">데이터가 없습니다.</td>
                             </tr>
                         </tbody>
                     </table>
