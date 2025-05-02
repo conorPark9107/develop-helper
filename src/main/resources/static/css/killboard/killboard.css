@@ -122,6 +122,11 @@ table tbody tr:last-child td{
 .biggest-table tbody tr td:nth-child(4){
     text-align: right;
 }
+.killIcon{
+    display: inline-block;
+    font-size: 16px;
+    transform: rotate(44deg);
+}
 .grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);

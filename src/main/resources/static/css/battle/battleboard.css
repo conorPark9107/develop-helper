@@ -15,12 +15,12 @@ a{
 }
 .rankTableDiv{
     width:100%;
+    padding-bottom: 5px;
 }
 .rankTable{
     font-size: 10px;
     width:100%;
     box-shadow: 0 0 8px var(--black);
-    padding-bottom: 5px;
 }
 .rankTable thead tr th{
     background-color: var(--table-th-color);
@@ -198,7 +198,7 @@ a{
 
 .hover-background:hover{
     cursor:pointer;
-    background-color: var(--table-hover);
+    opacity: 0.5;
 }
 
 /* select */
