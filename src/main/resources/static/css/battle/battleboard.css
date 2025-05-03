@@ -10,9 +10,9 @@ a{
 .text-center{
     text-align: center;
 }
-.rankDiv{
-    align-items: end;
-}
+/*.rankDiv{*/
+/*    align-items: end;*/
+/*}*/
 .rankTableDiv{
     width:100%;
     padding-bottom: 5px;
@@ -137,6 +137,9 @@ a{
     background-color: var(--table-th-color);
     border-width: 0;
     outline:none;
+}
+.inputDiv{
+    border: 2px solid var(--border-a);
 }
 .inputDiv:hover{
     border: 2px solid var(--border);
