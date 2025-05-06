@@ -36,7 +36,7 @@ h6{
     margin: 20px;
 }
 .background {
-    padding: 15px;
+    padding: 7px;
     background-color: var(--sub-color-a);
     border-radius: 4px;
     box-shadow: 0px 0px 10px 0px #000000;
@@ -213,24 +213,57 @@ h6{
     width: 50px;
     height: 50px;
 }
-table{
+.table{
     width: 100%;
     border: none;
     text-align: right;
-    font-size: 14px;
+    font-size: 12px;
 }
-th, td:nth-child(1) {
+.table thead th, .table tbody td:nth-child(1) {
     font-weight: 500;
     color: var(--white);
 }
-td{
+.table tbody td{
     color: var(--bg-text);
 }
-tbody tr:hover{
-    color: var(--sub-color);
-    background-color: var(--li-hover);
+.table tbody tr:hover{
+    color: var(--black);
+    background-color: var(--itemblack);
 }
-.c1{width:10%;}
+.table tbody tr td:nth-child(1), .table thead tr th:nth-child(1) {
+    padding-right: 20px;
+    border-right: 2px solid var(--gray);
+}
+.table thead tr th{
+    border-bottom: 1px solid var(--gray);
+}
+.table thead tr th:last-child{
+    padding-right: 10px;
+}
+.table tbody td:last-child{
+    padding-right: 10px;
+}
+.rankTable{
+    width: 100%;
+    font-size: 10px;
+}
+.rankTable thead tr th{
+    padding: 10px 5px 10px 5px;
+    border: 1px solid var(--gray);
+}
+.rankTable tbody tr{
+    border-bottom: 1px solid var(--gray);
+}
+.img{
+    width : 40px;
+    height : 40px;
+}
+
+.c1{width:12%;}
+.c2{width:22%;}
+.c3{width:22%;}
+.c4{width:22%;}
+.c5{width:22%;}
 
 .selected{
     background-color: var(--li-hover);
@@ -248,13 +281,6 @@ tbody tr:hover{
 .hide{
     display: none;
 }
-tbody tr td:nth-child(1), thead tr th:nth-child(1) {
-    padding-right: 20px;
-    border-right: 2px solid var(--border-a);
-}
-thead tr th{
-    border-bottom: 2px solid var(--border-a);
-}
 .padding{
     padding: 20px;
 }
@@ -264,6 +290,21 @@ thead tr th{
 }
 .margin-b{
     margin-bottom: 10px;
+}
+.w-8{
+    width:80%;
+}
+.w-2{
+    width:20%;
+}
+.w-7{
+    width:70%;
+}
+.w-3{
+    width:30%;
+}
+.subTitle{
+    font-size: 14px;
 }
 @media screen and (max-width: 1024px) {
     .datalist{
