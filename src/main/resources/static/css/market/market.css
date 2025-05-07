@@ -87,7 +87,7 @@ h6{
     background: none;
     width: 90%;
     padding: 12px 42px 12px 12px;
-    font-size: 16px;
+    font-size: 13px;
     color: var(--table-th-text-color);
     font-weight: 200;
     border-width: 0;
@@ -249,7 +249,8 @@ h6{
 }
 .rankTable thead tr th{
     padding: 10px 5px 10px 5px;
-    border: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+    border-top: 1px solid var(--gray);
 }
 .rankTable tbody tr{
     border-bottom: 1px solid var(--gray);
@@ -305,6 +306,9 @@ h6{
 }
 .subTitle{
     font-size: 14px;
+}
+.medal{
+    font-size: 15px;
 }
 @media screen and (max-width: 1024px) {
     .datalist{

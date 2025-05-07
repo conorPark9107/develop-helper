@@ -138,6 +138,9 @@ table tbody tr:last-child td{
 .countTable thead tr th, .countTable tbody tr td{
     font-size: 10px;
 }
+.countTable tbody tr td:first-child{
+    font-size: 12px;
+}
 .countTable tbody tr td{
     padding: 2px 5px 2px 5px;
 }

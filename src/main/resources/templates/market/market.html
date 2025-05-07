@@ -146,7 +146,7 @@
             <div class="flex-row gap">
                 <div class="flex-column background w-7">
                     <!-- 일반 품질 -->
-                    <div class="flex-row space-around relative padding background-2 margin-b" id="normal">
+                    <div class="flex-row space-around relative padding background-2 margin-b tableDiv" id="normal">
                         <table class="table">
                             <colgroup>
                                 <col class="c1">
@@ -237,7 +237,7 @@
                     </div>
 
                     <!-- 좋음 품질 -->
-                    <div class="flex-row space-around relative padding background-2 margin-b" id="good">
+                    <div class="flex-row space-around relative padding background-2 margin-b tableDiv" id="good">
                         <table class="table">
                             <colgroup>
                                 <col class="c1">
@@ -328,7 +328,7 @@
                     </div>
 
                     <!-- 뛰어남 품질 -->
-                    <div class="flex-row space-around relative padding background-2 margin-b" id="outstanding">
+                    <div class="flex-row space-around relative padding background-2 margin-b tableDiv" id="outstanding">
                         <table class="table">
                             <colgroup>
                                 <col class="c1">
@@ -419,7 +419,7 @@
                     </div>
 
                     <!-- 우수 품질 -->
-                    <div class="flex-row space-around relative padding background-2 margin-b" id="excellent">
+                    <div class="flex-row space-around relative padding background-2 margin-b tableDiv" id="excellent">
                         <table class="table">
                             <colgroup>
                                 <col class="c1">
@@ -510,7 +510,7 @@
                     </div>
 
                     <!-- 걸작 품질 -->
-                    <div class="flex-row space-around relative padding background-2 margin-b" id="masterpiece">
+                    <div class="flex-row space-around relative padding background-2 margin-b tableDiv" id="masterpiece">
                         <table class="table">
                             <colgroup>
                                 <col class="c1">
@@ -600,8 +600,8 @@
                         </table>
                     </div>
                 </div>
-                <div class="flex-column background w-3">
-                    <span class="subTitle">검색 순위</span>
+                <div class="flex-column background w-3 gap">
+                    <span class="subTitle">검색 순위 TOP 20</span>
                     <div class="flex-column background-2">
                         <table class="rankTable">
                             <thead>
@@ -612,26 +612,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>
-                                        <div class="flex-row vertical-center">
-                                            <img class="img" src="/image/QUESTITEM_TOKEN_AVALON.png" />
-                                            <span>아발로니안 에너지</span>
-                                        </div>
-                                    </td>
-                                    <td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>
-                                        <div class="flex-row vertical-center">
-                                            <img class="img" src="/image/T1_CARROT.png" />
-                                            <span>당근</span>
-                                        </div>
-                                    </td>
-                                    <td>4</td>
-                                </tr>
+                                <th:block th:if="${not #lists.isEmpty(rank)}">
+                                    <tr th:each="r, stat : ${rank}">
+                                        <td class="medal" th:if="${stat.count == 1}" th:text="'🥇'" ></td>
+                                        <td class="medal" th:if="${stat.count == 2}" th:text="'🥈'" ></td>
+                                        <td class="medal" th:if="${stat.count == 3}" th:text="'🥉'" ></td>
+                                        <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
+                                        <td>
+                                            <div class="flex-row vertical-center">
+                                                <img class="img" th:src="|https://render.albiononline.com/v1/item/${r.itemId}|" />
+                                                <span th:text="${r.itemName}"></span>
+                                            </div>
+                                        </td>
+                                        <td th:text="${r.count}"></td>
+                                    </tr>
+                                </th:block>
+                                <th:block th:if="${#lists.isEmpty(rank)}">
+                                    <tr>
+                                        <td colspan="3">데이터 없음.</td>
+                                    </tr>
+                                </th:block>
                             </tbody>
                         </table>
                     </div>

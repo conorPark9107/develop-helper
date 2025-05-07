@@ -60,7 +60,7 @@
             </div>
             <div class="flex-row">
                 <div class="flex-column-small">
-                    <a class="names hover" th:href="@{/killboard/getKillBoard?(id=${event.killer.id},location=${server})}">
+                    <a class="names hover" th:href="@{/killboard/getKillBoard?(userId=${event.killer.id},userName=${event.killer.name},server=${server})}">
                         <p class="userName green" th:text="${event.killer.name}"></p>
                         <span class="allyName black" th:if="${not #strings.isEmpty(event.killer.allianceName)}" th:text="|[${event.killer.allianceName}]|"></span>
                         <span class="guildName black" th:if="${not #strings.isEmpty(event.killer.guildName)}" th:text="${event.killer.guildName}"></span>
@@ -109,7 +109,7 @@
                 </div>
 
                 <div class="flex-column-small">
-                    <a class="names hover" th:href="@{/killboard/getKillBoard?(id=${event.victim.id},location=${server})}">
+                    <a class="names hover" th:href="@{/killboard/getKillBoard?(userId=${event.victim.id},userName=${event.victim.name},server=${server})}">
                         <p class="userName red" th:text="${event.victim.name}"></p>
                         <span class="allyName black" th:if="${not #strings.isEmpty(event.victim.allianceName)}" th:text="|[${event.victim.allianceName}]|"></span>
                         <span class="guildName black" th:if="${not #strings.isEmpty(event.victim.guildName)}" th:text="${event.victim.guildName}"></span>

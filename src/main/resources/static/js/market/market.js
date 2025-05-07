@@ -127,7 +127,8 @@ $(document).ready(function() {
             img.src = `https://render.albiononline.com/v1/item/${itemVal}`;
             div.className = 'flex-row vertical-center';
             $(li).attr('value', itemVal);
-            $(li).data('index', index);
+            $(li).attr('data-name', itemName);
+            $(li).attr('data-index', index);
             div.appendChild(img);
             div.appendChild(span);
             li.appendChild(div);
@@ -145,8 +146,9 @@ $(document).ready(function() {
         const itemName = $('li.lihover div span').text();
         $('#itemName').val(itemName);
         const server = $('input[name=server]:checked').val();
-        const item = $('li.lihover').attr('value');
-        if(item == undefined){
+        const itemId = $('li.lihover').attr('value');
+
+        if(itemId == undefined){
             showAlert('조회하고자 하는 아이템을 검색 후 선택해주세요.');
             return;
         }
@@ -157,11 +159,12 @@ $(document).ready(function() {
             dataType : 'json',
             data : {
                 server : server,
-                itemName : item
+                itemId : itemId,
+                itemName : itemName
             },
             beforeSend : function(){
                 turnLoading();
-                setTableImages(item);
+                setTableImages(itemId);
             },
             success : function(response) {
                 turnLoading();
@@ -175,7 +178,7 @@ $(document).ready(function() {
     }
 
     function setTableImages(item){
-        const tables = $('table');
+        const tables = $('.table');
         for(let i = 0; i < tables.length; i++){
             const th = $(tables[i]).children('thead').children('tr').children('th')[0];
             $(th).empty();
@@ -247,7 +250,7 @@ $(document).ready(function() {
 
     // 마을 라디오 버튼을 클릭했을때
     const cityRadio = document.querySelectorAll('input[name="city"]');
-    const rows = document.querySelectorAll('tbody > tr');
+    const rows = document.querySelectorAll('.table > tbody > tr');
 
     // 키값을 가져와서 테이블 행을 숨김.
     function showRowsForKey(key) {
@@ -273,7 +276,7 @@ $(document).ready(function() {
 
     // 품질 라디오 버튼을 클릭했을때
     const qualityRadio = document.querySelectorAll('input[name="quality"]');
-    const tables = document.querySelectorAll('.background-2'); // table을 감싸고 있는 div요소
+    const tables = document.querySelectorAll('.tableDiv'); // table을 감싸고 있는 div요소
     qualityRadio.forEach(button => {
         button.addEventListener('change', e => {
             const selectedKey = e.target.value;

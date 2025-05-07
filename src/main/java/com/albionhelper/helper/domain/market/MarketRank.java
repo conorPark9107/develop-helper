@@ -40,11 +40,11 @@ public class MarketRank {
         }
     }
 
-    public MarketRank toEntity(MarketRankDTO dto){
-        return MarketRank.builder()
-                .itemId(dto.getItemId())
-                .itemName(dto.getItemName())
-                .count(dto.getCount())
+    public MarketRankDTO toDto(){
+        return MarketRankDTO.builder()
+                .itemId(this.itemId)
+                .itemName(this.itemName)
+                .count(this.count)
                 .build();
     }
 

@@ -1,21 +1,28 @@
 package com.albionhelper.helper.service;
 
-import com.albionhelper.helper.domain.Player;
+import com.albionhelper.helper.domain.killboard.PlayerLog;
 import com.albionhelper.helper.domain.market.ItemPrice;
+import com.albionhelper.helper.domain.market.MarketRank;
+import com.albionhelper.helper.domain.market.MarketRankDTO;
 import com.albionhelper.helper.enums.MarketServerRegion;
-import com.albionhelper.helper.enums.ServerRegion;
+import com.albionhelper.helper.repository.MarketRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 // 이미지 관련
@@ -35,6 +42,13 @@ public class MarketService{
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
     private final String[]CITIES = {"martlock", "thetford", "bridgewatch", "fortsterling", "lymhurst", "caerleon", "brecilian"};
+
+    private final MarketRepository repository;
+
+    public MarketService(MarketRepository repository) {
+        this.repository = repository;
+    }
+
 
     private String getServerUrl(String server) {
         return MarketServerRegion.from(server).getUrl();
@@ -140,5 +154,23 @@ public class MarketService{
         }
 
         return list;
+    }
+
+    @Transactional
+    public void addCount(MarketRankDTO dto) {
+        Optional<MarketRank> op = repository.findByItemId(dto.getItemId());
+        if(op.isPresent()){
+            MarketRank marketRank = op.get();
+            marketRank.setCount(marketRank.getCount() + 1);
+        }else{
+            repository.save(dto.toEntity());
+        }
+    }
+
+    public List<MarketRankDTO> getCounts() {
+        return repository.findAllTop20(PageRequest.of(0, 20))
+                .stream()
+                .map(MarketRank::toDto)
+                .collect(Collectors.toList());
     }
 }

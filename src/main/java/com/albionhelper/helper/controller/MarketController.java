@@ -1,6 +1,8 @@
 package com.albionhelper.helper.controller;
 
 import com.albionhelper.helper.domain.market.ItemPrice;
+import com.albionhelper.helper.domain.market.MarketRank;
+import com.albionhelper.helper.domain.market.MarketRankDTO;
 import com.albionhelper.helper.service.MarketService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
@@ -8,10 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,19 +24,24 @@ public class MarketController {
     // api 정보.
     // https://www.albion-online-data.com/
 
-    @Autowired
-    MarketService marketService;
+    private final MarketService marketService;
+
+    public MarketController(MarketService marketService) {
+        this.marketService = marketService;
+    }
 
     @GetMapping("")
-    public String market(){
+    public String market(Model model){
+        model.addAttribute("rank", marketService.getCounts());
         return "market/market";
     }
 
     @GetMapping("/getPrice")
     @ResponseBody
     public List<ItemPrice> showPrice(@RequestParam("server")String server,
-                                     @RequestParam("itemName")String itemName) throws JsonProcessingException {
-        return marketService.getPrice(server, itemName);
+                                     @ModelAttribute MarketRankDTO dto) throws JsonProcessingException {
+        marketService.addCount(dto);
+        return marketService.getPrice(server, dto.getItemId());
     }
 
     @GetMapping("/getPriceOld")

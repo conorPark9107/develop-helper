@@ -53,7 +53,7 @@
                 <div class="box">
                     <div class="box-item">
                         <p class="item-title">플레이어 정보</p>
-                        <span>수정된 날짜<span th:text="${player.lifetimeStatistics.timeStamp}"></span></span>
+                        <span>수정된 날짜<span th:if="${! #strings.isEmpty(player.lifetimeStatistics.timeStamp)}" th:text="${player.lifetimeStatistics.timeStamp}"></span></span>
                         <span>닉네임<span th:text="${player.name}"></span></span>
                         <span>길드<span th:text="${player.guildName}"></span></span>
                         <span>연합<span th:text="${player.allianceName}"></span></span>
@@ -182,7 +182,7 @@
                     <th:block th:if="${#lists.size(kills) != 0}">
                         <tr th:each="killLog, i : ${kills}" th:value="${killLog.eventId}">
                             <td th:text="${i.count}"></td>
-                            <td th:text="${killLog.timeStamp}"></td>
+                            <td th:if="${! #strings.isEmpty(killLog.timeStamp)}" th:text="${killLog.timeStamp}"></td>
                             <td th:text="${killLog.killer.name}" th:value="${killLog.killer.id}"></td>
                             <td th:text="${killLog.killer.guildName}"></td>
                             <td th:text="${killLog.killer.averageItemPower}"></td>
@@ -240,7 +240,7 @@
                     <th:block th:if="${#lists.size(deaths) != 0}">
                         <tr th:each="deathLog, i : ${deaths}" th:value="${deathLog.eventId}">
                             <td th:text="${i.count}"></td>
-                            <td th:text="${deathLog.timeStamp}"></td>
+                            <td th:if="${! #strings.isEmpty(deathLog.timeStamp)}" th:text="${deathLog.timeStamp}"></td>
                             <td class="not" th:value="${deathLog.killer.id}">
                                 <a  class="link not" th:href="@{/killboard/getKillBoard(id=${deathLog.killer.id}, location=${location})}" th:text="${deathLog.killer.name}"></a>
                             </td>
