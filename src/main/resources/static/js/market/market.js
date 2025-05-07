@@ -152,6 +152,12 @@ $(document).ready(function() {
             showAlert('조회하고자 하는 아이템을 검색 후 선택해주세요.');
             return;
         }
+        requestGetPrice(itemId, itemName, server);
+
+    }
+
+    // 가격 조회를 위해 서버에게 요청하는 메서드.
+    function requestGetPrice(itemId, itemName, server){
         $.ajax({
             type : 'get',
             url : '/market/getPrice',
@@ -169,13 +175,39 @@ $(document).ready(function() {
             success : function(response) {
                 turnLoading();
                 updateTable(response);
+                requestGetRank();
             },
             error : function(request, status, error) {
                 turnLoading();
+                console.log(`error : ${error}`);
                 showAlert('잠시후에 다시 시도해주세요.');
             }
         });
     }
+
+    // 검색 순위를 보여주기위해 서버로 요청하는 메서드.
+    function requestGetRank(){
+        $.ajax({
+            type : 'get',
+            url : '/market/getRank',
+            async : true,
+            dataType : 'json',
+            data : {},
+            beforeSend : function(){
+                turnLoading();
+            },
+            success : function(response) {
+                turnLoading();
+                updateRankTable(response);
+            },
+            error : function(request, status, error) {
+                turnLoading();
+                console.log(`error : ${error}`);
+                showAlert('잠시후에 다시 시도해주세요.');
+            }
+        });
+    }
+
 
     function setTableImages(item){
         const tables = $('.table');
@@ -188,6 +220,50 @@ $(document).ready(function() {
             $(th).append(img);
         }
     }
+
+    // 서버에서 검색 순위 데이터를 받아온 후 보여주기.
+    function updateRankTable(response) {
+        const table = document.getElementsByClassName('rankTable')[0];
+        const tbody = table.querySelector('tbody');
+        tbody.innerHTML = '';
+
+        for (let i = 0; i < response.length; i++) {
+            const tr = document.createElement('tr');
+            const td1 = document.createElement('td');
+            const td2 = document.createElement('td');
+            const td3 = document.createElement('td');
+
+            let rank;
+            switch (i) {
+                case 0: rank = '🥇'; break;
+                case 1: rank = '🥈'; break;
+                case 2: rank = '🥉'; break;
+                default: rank = i + 1; break;
+            }
+            td1.textContent = rank;
+
+            const img = document.createElement('img');
+            img.className = 'img';
+            img.src = `https://render.albiononline.com/v1/item/${response[i].itemId}`;
+
+            const nameSpan = document.createElement('span');
+            nameSpan.textContent = response[i].itemName;
+
+            const div = document.createElement('div');
+            div.className = 'flex-row vertical-center';
+            div.append(img, nameSpan);
+
+            td2.append(div);
+            td3.textContent = response[i].count;
+
+            tr.dataset.id = response[i].itemId;
+            tr.dataset.name = response[i].itemName;
+            tr.append(td1, td2, td3);
+            tr.classList.add('hover');
+            tbody.append(tr);
+        }
+    }
+
 
     // 서버에서 시장 데이터 받아서 뿌려주기.
     function updateTable(response){
@@ -246,6 +322,16 @@ $(document).ready(function() {
         $(this).addClass('selected');
         $('.tierText').text(`${value} tier 🔻`);
     });
+
+    // 검색 순위의 아이템을 클릭했을때
+    $('.rankBody').on('click', '.hover', function(){
+        const server = $('input[name=server]:checked').val();
+        const itemId = $(this).attr('data-id');
+        const itemName = $(this).attr('data-name');
+
+        requestGetPrice(itemId, itemName, server);
+    });
+
 
 
     // 마을 라디오 버튼을 클릭했을때

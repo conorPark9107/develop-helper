@@ -1,5 +1,6 @@
 package com.albionhelper.helper.controller;
 
+import com.albionhelper.helper.domain.killboard.PlayerLogDTO;
 import com.albionhelper.helper.domain.market.ItemPrice;
 import com.albionhelper.helper.domain.market.MarketRank;
 import com.albionhelper.helper.domain.market.MarketRankDTO;
@@ -52,6 +53,12 @@ public class MarketController {
                                      @RequestParam("dotTier")String dotTier,
                                      @RequestParam("itemName")String itemName) throws JsonProcessingException {
         return marketService.getPriceOld(server, quality, tier, dotTier, itemName);
+    }
+
+    @GetMapping("getRank")
+    @ResponseBody
+    public List<MarketRankDTO> getRank(){
+        return marketService.getCounts();
     }
 
 

@@ -24,7 +24,7 @@
 
     <script type="text/javascript" src="/jsMin/util.js"></script>
     <script type="text/javascript" src="/jsMin/variable.js"></script>
-    <script type="text/javascript" src="/jsMin/market/market.js"></script>
+    <script type="text/javascript" src="/js/market/market.js"></script>
 <!--    <script type="text/javascript" src="/js/util.js"></script>-->
 <!--    <script type="text/javascript" src="/js/variable.js"></script>-->
 <!--    <script type="text/javascript" src="/js/market/market.js"></script>-->
@@ -611,9 +611,9 @@
                                     <th>검색횟수</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="rankBody">
                                 <th:block th:if="${not #lists.isEmpty(rank)}">
-                                    <tr th:each="r, stat : ${rank}">
+                                    <tr class="hover" th:each="r, stat : ${rank}" th:attr="data-id=${r.itemId},data-name=${r.itemName}">
                                         <td class="medal" th:if="${stat.count == 1}" th:text="'🥇'" ></td>
                                         <td class="medal" th:if="${stat.count == 2}" th:text="'🥈'" ></td>
                                         <td class="medal" th:if="${stat.count == 3}" th:text="'🥉'" ></td>

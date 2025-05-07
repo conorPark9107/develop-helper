@@ -310,6 +310,10 @@ h6{
 .medal{
     font-size: 15px;
 }
+.hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
 @media screen and (max-width: 1024px) {
     .datalist{
         left: 88px;

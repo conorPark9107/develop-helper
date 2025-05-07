@@ -90,12 +90,12 @@
                         <span class="left">모든서버</span>
                         <table class="countTable">
                             <thead>
-                            <tr>
-                                <th>순위</th>
-                                <th>서버</th>
-                                <th>아이디</th>
-                                <th>검색횟수</th>
-                            </tr>
+                                <tr>
+                                    <th>순위</th>
+                                    <th>서버</th>
+                                    <th>아이디</th>
+                                    <th>검색횟수</th>
+                                </tr>
                             </thead>
                             <tbody>
                             <th:block th:if="${not #lists.isEmpty(rankAll)}">
@@ -105,7 +105,9 @@
                                     <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
                                     <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                     <td th:text="${user.server}"></td>
-                                    <td th:text="${user.userName}"></td>
+                                    <td>
+                                        <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
+                                    </td>
                                     <td th:text="${user.count}"></td>
                                 </tr>
                             </th:block>
@@ -136,7 +138,9 @@
                                     <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
                                     <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                     <td th:text="${user.server}"></td>
-                                    <td th:text="${user.userName}"></td>
+                                    <td>
+                                        <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
+                                    </td>
                                     <td th:text="${user.count}"></td>
                                 </tr>
                             </th:block>
@@ -167,7 +171,9 @@
                                     <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
                                     <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                     <td th:text="${user.server}"></td>
-                                    <td th:text="${user.userName}"></td>
+                                    <td>
+                                        <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
+                                    </td>
                                     <td th:text="${user.count}"></td>
                                 </tr>
                             </th:block>
@@ -198,7 +204,9 @@
                                     <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
                                     <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                     <td th:text="${user.server}"></td>
-                                    <td th:text="${user.userName}"></td>
+                                    <td>
+                                        <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
+                                    </td>
                                     <td th:text="${user.count}"></td>
                                 </tr>
                             </th:block>

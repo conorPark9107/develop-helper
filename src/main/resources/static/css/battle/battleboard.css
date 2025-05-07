@@ -159,6 +159,7 @@ a{
     table-layout: auto;
     box-shadow: 0 0 15px var(--black);
     border-radius: 8px;
+    color: var(--table-sub-text-color);
 }
 .table-header{
     position: sticky;
@@ -183,7 +184,6 @@ a{
     background-color: var(--table-tr-odd-color);
 }
 .table td {
-    color: var(--table-sub-text-color);
     padding: 10px 10px;
 }
 .table tr:last-child td:first-child {
