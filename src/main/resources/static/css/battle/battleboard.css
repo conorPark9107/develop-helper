@@ -21,13 +21,15 @@ a{
     font-size: 10px;
     width:100%;
     box-shadow: 0 0 8px var(--black);
+    background-color: var(--background-2);
 }
 .rankTable thead tr th{
-    background-color: var(--table-th-color);
-    color: var(--table-th-text-color);
+    padding: 5px 0px 5px 0px;
+    border-bottom: 1px solid var(--gray);
+    border-top: 1px solid var(--gray);
 }
 .rankTable tbody tr td{
-    background-color: var(--table-sub-text-color)
+    border-bottom: 1px solid var(--gray);
 }
 .w8{
     width :80%;
