@@ -196,7 +196,7 @@
                                     <div class="participant not">
                                         <a class="link not" th:if="${not #strings.isEmpty(killLog.participants)}"
                                                             th:each="participant : ${killLog.participants}"
-                                                            th:href="@{/killboard/getKillBoard(id=${participant.id}, location=${location})}" th:text="${participant.name}"></a>
+                                                            th:href="@{/killboard/getKillBoard(userId=${participant.id}, server=${location}, userName=${participant.name})}" th:text="${participant.name}"></a>
                                         <span class="not" th:if="${#strings.isEmpty(killLog.participants) or #lists.size(killLog.participants) == 0}">어시스트 없음</span>
                                     </div>
                                 </div>

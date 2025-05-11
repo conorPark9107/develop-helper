@@ -125,7 +125,6 @@
                             <thead>
                             <tr>
                                 <th>순위</th>
-                                <th>서버</th>
                                 <th>아이디</th>
                                 <th>검색횟수</th>
                             </tr>
@@ -137,7 +136,6 @@
                                     <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
                                     <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
                                     <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
-                                    <td th:text="${user.server}"></td>
                                     <td>
                                         <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
                                     </td>
@@ -158,7 +156,6 @@
                             <thead>
                             <tr>
                                 <th>순위</th>
-                                <th>서버</th>
                                 <th>아이디</th>
                                 <th>검색횟수</th>
                             </tr>
@@ -170,7 +167,6 @@
                                     <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
                                     <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
                                     <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
-                                    <td th:text="${user.server}"></td>
                                     <td>
                                         <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
                                     </td>
@@ -191,7 +187,6 @@
                             <thead>
                             <tr>
                                 <th>순위</th>
-                                <th>서버</th>
                                 <th>아이디</th>
                                 <th>검색횟수</th>
                             </tr>
@@ -203,7 +198,6 @@
                                     <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
                                     <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
                                     <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
-                                    <td th:text="${user.server}"></td>
                                     <td>
                                         <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
                                     </td>
