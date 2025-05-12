@@ -287,12 +287,13 @@ $(document).ready(function () {
     $('.guildLink').on('click', function(){
         const server = $('input[name="server"]:checked').val();
         const id = $(this).data('id');
-
+        const guildName = $(this).text();
         $.ajax({
             type: "GET",
             url: "/battle/more",
             data: {
                 inputValue : id,
+                guildName, guildName,
                 server : server,
                 limit : 20
             },
@@ -308,6 +309,7 @@ $(document).ready(function () {
                     appendResponse(response, id);
                 }
                 $('#guildId').val(id);
+                updateCount(server);
             },
             error : function(request,status,error){
                 console.log(error);
@@ -324,5 +326,37 @@ $(document).ready(function () {
         $('.blackArea').hide();
         $('.popup').fadeOut(500);
     });
+
+    function updateCount(server){
+        fetch(`/battle/count?server=${server}`)
+            .then(response => response.json())
+            .then(json => {
+                updateCountTable(json);
+            });
+    }
+
+    function updateCountTable(list){
+        const table = document.getElementsByClassName('rankTable')[0];
+        const tbody = table.querySelector('tbody');
+        tbody.innerHTML = '';
+
+        list.map((data,index) => {
+            let rank = index;
+            switch(index){
+                case 0 : rank = '🥇'; break;
+                case 1 : rank = '🥈'; break;
+                case 2 : rank = '🥉'; break;
+                default : rank = index + 1; break;
+            }
+            const html = `
+                <tr>
+                    <td>${rank}</td>
+                    <td>${data.guildName}</td>
+                    <td>${data.count}</td>
+                </tr>
+            `;
+            tbody.insertAdjacentHTML('beforeend', html);
+        });
+    }
 
 });

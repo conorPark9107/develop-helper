@@ -45,6 +45,12 @@ public class BattlesController {
         return "battle/battleboard";
     }
 
+    @GetMapping("/count")
+    @ResponseBody
+    public List<BattleCountLogDTO> getCount(@RequestParam(name = "server", defaultValue = "") String server){
+        return battlesService.getCount(server);
+    }
+
     @GetMapping("/refresh")
     @ResponseBody
     public List<Battle> refreshList(
