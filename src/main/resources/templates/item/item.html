@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+    <!--  ICON  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script type="text/javascript" src="/jsMin/util.js"></script>
+    <script type="text/javascript" src="/jsMin/item/item.js"></script>
+    <link rel="stylesheet" href="/css/variable.css"/>
+    <link rel="stylesheet" href="/css/board/editor.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/detail.css"/>
+    <link rel="stylesheet" href="/css/item/item.css"/>
+    <link rel="stylesheet" href="/css/loading.css"/>
+    <meta charset="UTF-8">
+    <title>알비온 GG - 킬보드 ⚔</title>
+</head>
+<body data-theme="light-mode">
+<script type="text/javascript" src="/jsMin/toggle.js"></script>
+<div class="image-maindiv">
+    <div th:replace="~{header :: header}"></div>
+    <!-- <header class="header" th:fragment="header">
+        <a class="header-logo link" href="/"></a>
+        <label class="switch">
+            <input class="switchBtn" role="switch" type="checkbox" />
+            <span>다크 모드</span>
+        </label>
+    </header> -->
+    <div class="main">
+        <div class="centered">
+            <div class="back-div">
+                <a class="btn-back text-center" href="/">메인 으로</a>
+            </div>
+            <div class="content-header">
+                <h2 id="contentTitle">🏹 플레이어 정보 & Battles 🏹</h2>
+            </div>
+            <hr/>
+
+            <div class="content-body">
+                <div class="content-body-items">
+                    <p>🔻서버를 선택해주세용🔻</p>
+                    <input class="east" type="radio" id="server01" name="location" value="east"
+                           th:checked="${server == 'east'}"/>
+                    <label class="east" for="server01">아시아</label>
+                    <input class="west" type="radio" id="server02" name="location" value="west"
+                           th:checked="${server == 'west'}"/>
+                    <label class="west" for="server02">아메리카</label>
+                    <input class="europe" type="radio" id="server03" name="location" value="europe"
+                           th:checked="${server == 'europe'}"/>
+                    <label class="europe" for="server03">유럽</label>
+                </div>
+
+                <div class="content-body-items">
+                    <p>🔻아래에 인게임 ID를 정확하게 입력하고 Enter키를 눌러주세용...🔻</p>
+                    <input class="rainbow" type="text" name="userId" id="userId" placeholder="id를 입력하세요." maxlength="16"
+                           aria-haspopup="true" aria-expanded="false">
+                    <p class="warningMsg" id="invalidId_msg"></p>
+                    <div id="userList">
+                        <div class="rainbow popUp">
+                            <p>🔻본인의 아이디를 클릭해주세용..🔻</p>
+                            <div id="userNames" class="content-body-item-userGroup"></div>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+
+                <div class="content-body-items padding-top">
+                    <h3 class="sub-title"><i class="fa-solid fa-ranking-star"></i>가장 검색이 많이된 유저 TOP 10</h3>
+                </div>
+                <div class="content-body-items flex-row">
+                    <div class="flex-column">
+                        <span class="left">모든서버</span>
+                        <table class="countTable">
+                            <thead>
+                                <tr>
+                                    <th>순위</th>
+                                    <th>서버</th>
+                                    <th>아이디</th>
+                                    <th>검색횟수</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <th:block th:if="${not #lists.isEmpty(rankAll)}">
+                                <tr th:each="user, stat : ${rankAll}">
+                                    <td th:if="${stat.count == 1}" th:text="'🥇'"></td>
+                                    <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
+                                    <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
+                                    <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
+                                    <td th:text="${user.server}"></td>
+                                    <td>
+                                        <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
+                                    </td>
+                                    <td th:text="${user.count}"></td>
+                                </tr>
+                            </th:block>
+                            <th:block th:if="${#lists.isEmpty(rankAll)}">
+                                <tr>
+                                    <td colspan="4">데이터 없음.</td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex-column">
+                        <span class="left">동부</span>
+                        <table class="countTable">
+                            <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>아이디</th>
+                                <th>검색횟수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <th:block th:if="${not #lists.isEmpty(eastRank)}">
+                                <tr th:each="user, stat : ${eastRank}">
+                                    <td th:if="${stat.count == 1}" th:text="'🥇'"></td>
+                                    <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
+                                    <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
+                                    <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
+                                    <td>
+                                        <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
+                                    </td>
+                                    <td th:text="${user.count}"></td>
+                                </tr>
+                            </th:block>
+                            <th:block th:if="${#lists.isEmpty(eastRank)}">
+                                <tr>
+                                    <td colspan="4">데이터 없음.</td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex-column">
+                        <span class="left">서부</span>
+                        <table class="countTable">
+                            <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>아이디</th>
+                                <th>검색횟수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <th:block th:if="${not #lists.isEmpty(westRank)}">
+                                <tr th:each="user, stat : ${westRank}">
+                                    <td th:if="${stat.count == 1}" th:text="'🥇'"></td>
+                                    <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
+                                    <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
+                                    <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
+                                    <td>
+                                        <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
+                                    </td>
+                                    <td th:text="${user.count}"></td>
+                                </tr>
+                            </th:block>
+                            <th:block th:if="${#lists.isEmpty(westRank)}">
+                                <tr>
+                                    <td colspan="4">데이터 없음.</td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex-column">
+                        <span class="left">유럽</span>
+                        <table class="countTable">
+                            <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>아이디</th>
+                                <th>검색횟수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <th:block th:if="${not #lists.isEmpty(europeRank)}">
+                                <tr th:each="user, stat : ${europeRank}">
+                                    <td th:if="${stat.count == 1}" th:text="'🥇'"></td>
+                                    <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
+                                    <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
+                                    <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
+                                    <td>
+                                        <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
+                                    </td>
+                                    <td th:text="${user.count}"></td>
+                                </tr>
+                            </th:block>
+                            <th:block th:if="${#lists.isEmpty(europeRank)}">
+                                <tr>
+                                    <td colspan="4">데이터 없음.</td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <hr/>
+                <div class="content-body-items">
+                    <h2 class="sub-title">TOP 킬</h2>
+                    <p class="info">행을 클릭하면 상세보기 페이지로 넘어갑니다.</p>
+                </div>
+                <div class="content-body-items flex-row padding-top">
+                    <div class="flex-column">
+                        <span class="left">이번주</span>
+                        <table class="biggest-table">
+                            <colgroup>
+                                <col class="col01"/>
+                                <col class="col02"/>
+                                <col class="col03"/>
+                                <col class="col04"/>
+                                <col class="col05"/>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>데스페임</th>
+                                <th>죽인사람 / 기어</th>
+                                <th></th>
+                                <th>죽은사람 / 기어</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="event : ${week}"
+                                th:attr="data-killer=${event.killer.id}, data-victim=${event.victim.id}">
+                                <td th:text="${eventStat.count}"></td>
+                                <td th:text="${event.victim.deathFameStr}"></td>
+                                <td th:with="a = ${event.killer.equipment}">
+                                    <div class="flex-row flex-vertical-center">
+                                        <div class="flex-column name">
+                                            <span class="userName green" th:text="${event.killer.name}"></span>
+                                            <div>
+                                                <span class="allyName black"
+                                                      th:if="${not #strings.isEmpty(event.killer.allianceName)}"
+                                                      th:text="|[${event.killer.allianceName}]|"></span>
+                                                <span class="guildName black"
+                                                      th:if="${not #strings.isEmpty(event.killer.guildName)}"
+                                                      th:text="${event.killer.guildName}"></span>
+                                            </div>
+                                        </div>
+                                        <div class="grid items">
+                                            <img th:if="${not #strings.isEmpty(a.mainHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.mainHand.type}?quality=${a.mainHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.offHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.offHand.type}?quality=${a.offHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.head)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.head.type}?quality=${a.head.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.armor)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.armor.type}?quality=${a.armor.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.shoes)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.shoes.type}?quality=${a.shoes.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.cape)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.cape.type}?quality=${a.cape.quality}|"/>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="killIcon">🏹</span></td>
+                                <td th:with="a = ${event.victim.equipment}">
+                                    <div class="flex-row flex-vertical-center">
+                                        <div class="flex-column name">
+                                            <span class="userName red" th:text="${event.victim.name}"></span>
+                                            <div>
+                                                <span class="allyName black"
+                                                      th:if="${not #strings.isEmpty(event.victim.allianceName)}"
+                                                      th:text="|[${event.victim.allianceName}]|"></span>
+                                                <span class="guildName black"
+                                                      th:if="${not #strings.isEmpty(event.victim.guildName)}"
+                                                      th:text="${event.victim.guildName}"></span>
+                                            </div>
+                                        </div>
+                                        <div class="grid items">
+                                            <img th:if="${not #strings.isEmpty(a.mainHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.mainHand.type}?quality=${a.mainHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.offHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.offHand.type}?quality=${a.offHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.head)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.head.type}?quality=${a.head.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.armor)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.armor.type}?quality=${a.armor.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.shoes)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.shoes.type}?quality=${a.shoes.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.cape)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.cape.type}?quality=${a.cape.quality}|"/>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex-column">
+                        <span class="left">지난주</span>
+                        <table class="biggest-table">
+                            <colgroup>
+                                <col class="col01"/>
+                                <col class="col02"/>
+                                <col class="col03"/>
+                                <col class="col04"/>
+                                <col class="col05"/>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>데스페임</th>
+                                <th>죽인사람 / 기어</th>
+                                <th></th>
+                                <th>죽은사람 / 기어</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="event : ${lastWeek}"
+                                th:attr="data-killer=${event.killer.id}, data-victim=${event.victim.id}">
+                                <td th:text="${eventStat.count}"></td>
+                                <td th:text="${event.victim.deathFameStr}"></td>
+                                <td th:with="a = ${event.killer.equipment}">
+                                    <div class="flex-row flex-vertical-center">
+                                        <div class="flex-column name">
+                                            <span class="userName green" th:text="${event.killer.name}"></span>
+                                            <div>
+                                                <span class="allyName black"
+                                                      th:if="${not #strings.isEmpty(event.killer.allianceName)}"
+                                                      th:text="|[${event.killer.allianceName}]|"></span>
+                                                <span class="guildName black"
+                                                      th:if="${not #strings.isEmpty(event.killer.guildName)}"
+                                                      th:text="${event.killer.guildName}"></span>
+                                            </div>
+                                        </div>
+                                        <div class="grid items">
+                                            <img th:if="${not #strings.isEmpty(a.mainHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.mainHand.type}?quality=${a.mainHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.offHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.offHand.type}?quality=${a.offHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.head)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.head.type}?quality=${a.head.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.armor)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.armor.type}?quality=${a.armor.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.shoes)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.shoes.type}?quality=${a.shoes.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.cape)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.cape.type}?quality=${a.cape.quality}|"/>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="killIcon">🏹</span></td>
+                                <td th:with="a = ${event.victim.equipment}">
+                                    <div class="flex-row flex-vertical-center">
+                                        <div class="flex-column name">
+                                            <span class="userName red" th:text="${event.victim.name}"></span>
+                                            <div>
+                                                <span class="allyName black"
+                                                      th:if="${not #strings.isEmpty(event.victim.allianceName)}"
+                                                      th:text="|[${event.victim.allianceName}]|"></span>
+                                                <span class="guildName black"
+                                                      th:if="${not #strings.isEmpty(event.victim.guildName)}"
+                                                      th:text="${event.victim.guildName}"></span>
+                                            </div>
+                                        </div>
+                                        <div class="grid items">
+                                            <img th:if="${not #strings.isEmpty(a.mainHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.mainHand.type}?quality=${a.mainHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.offHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.offHand.type}?quality=${a.offHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.head)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.head.type}?quality=${a.head.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.armor)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.armor.type}?quality=${a.armor.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.shoes)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.shoes.type}?quality=${a.shoes.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.cape)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.cape.type}?quality=${a.cape.quality}|"/>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="content-body-items flex-row padding-top">
+                    <div class="flex-column">
+                        <span class="left">이번달</span>
+                        <table class="biggest-table">
+                            <colgroup>
+                                <col class="col01"/>
+                                <col class="col02"/>
+                                <col class="col03"/>
+                                <col class="col04"/>
+                                <col class="col05"/>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>데스페임</th>
+                                <th>죽인사람 / 기어</th>
+                                <th></th>
+                                <th>죽은사람 / 기어</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="event : ${month}"
+                                th:attr="data-killer=${event.killer.id}, data-victim=${event.victim.id}">
+                                <td th:text="${eventStat.count}"></td>
+                                <td th:text="${event.victim.deathFameStr}"></td>
+                                <td th:with="a = ${event.killer.equipment}">
+                                    <div class="flex-row flex-vertical-center">
+                                        <div class="flex-column name">
+                                            <span class="userName green" th:text="${event.killer.name}"></span>
+                                            <div>
+                                                <span class="allyName black"
+                                                      th:if="${not #strings.isEmpty(event.killer.allianceName)}"
+                                                      th:text="|[${event.killer.allianceName}]|"></span>
+                                                <span class="guildName black"
+                                                      th:if="${not #strings.isEmpty(event.killer.guildName)}"
+                                                      th:text="${event.killer.guildName}"></span>
+                                            </div>
+                                        </div>
+                                        <div class="grid items">
+                                            <img th:if="${not #strings.isEmpty(a.mainHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.mainHand.type}?quality=${a.mainHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.offHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.offHand.type}?quality=${a.offHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.head)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.head.type}?quality=${a.head.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.armor)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.armor.type}?quality=${a.armor.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.shoes)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.shoes.type}?quality=${a.shoes.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.cape)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.cape.type}?quality=${a.cape.quality}|"/>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="killIcon">🏹</span></td>
+                                <td th:with="a = ${event.victim.equipment}">
+                                    <div class="flex-row flex-vertical-center">
+                                        <div class="flex-column name">
+                                            <span class="userName red" th:text="${event.victim.name}"></span>
+                                            <div>
+                                                <span class="allyName black"
+                                                      th:if="${not #strings.isEmpty(event.victim.allianceName)}"
+                                                      th:text="|[${event.victim.allianceName}]|"></span>
+                                                <span class="guildName black"
+                                                      th:if="${not #strings.isEmpty(event.victim.guildName)}"
+                                                      th:text="${event.victim.guildName}"></span>
+                                            </div>
+                                        </div>
+                                        <div class="grid items">
+                                            <img th:if="${not #strings.isEmpty(a.mainHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.mainHand.type}?quality=${a.mainHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.offHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.offHand.type}?quality=${a.offHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.head)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.head.type}?quality=${a.head.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.armor)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.armor.type}?quality=${a.armor.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.shoes)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.shoes.type}?quality=${a.shoes.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.cape)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.cape.type}?quality=${a.cape.quality}|"/>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex-column">
+                        <span class="left">지난달</span>
+                        <table class="biggest-table">
+                            <colgroup>
+                                <col class="col01"/>
+                                <col class="col02"/>
+                                <col class="col03"/>
+                                <col class="col04"/>
+                                <col class="col05"/>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>데스페임</th>
+                                <th>죽인사람 / 기어</th>
+                                <th></th>
+                                <th>죽은사람 / 기어</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="event : ${lastMonth}"
+                                th:attr="data-killer=${event.killer.id}, data-victim=${event.victim.id}">
+                                <td th:text="${eventStat.count}"></td>
+                                <td th:text="${event.victim.deathFameStr}"></td>
+                                <td th:with="a = ${event.killer.equipment}">
+                                    <div class="flex-row flex-vertical-center">
+                                        <div class="flex-column name">
+                                            <span class="userName green" th:text="${event.killer.name}"></span>
+                                            <div>
+                                                <span class="allyName black"
+                                                      th:if="${not #strings.isEmpty(event.killer.allianceName)}"
+                                                      th:text="|[${event.killer.allianceName}]|"></span>
+                                                <span class="guildName black"
+                                                      th:if="${not #strings.isEmpty(event.killer.guildName)}"
+                                                      th:text="${event.killer.guildName}"></span>
+                                            </div>
+                                        </div>
+                                        <div class="grid items">
+                                            <img th:if="${not #strings.isEmpty(a.mainHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.mainHand.type}?quality=${a.mainHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.offHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.offHand.type}?quality=${a.offHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.head)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.head.type}?quality=${a.head.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.armor)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.armor.type}?quality=${a.armor.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.shoes)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.shoes.type}?quality=${a.shoes.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.cape)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.cape.type}?quality=${a.cape.quality}|"/>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="killIcon">🏹</span></td>
+                                <td th:with="a = ${event.victim.equipment}">
+                                    <div class="flex-row flex-vertical-center">
+                                        <div class="flex-column name">
+                                            <span class="userName red" th:text="${event.victim.name}"></span>
+                                            <div>
+                                                <span class="allyName black"
+                                                      th:if="${not #strings.isEmpty(event.victim.allianceName)}"
+                                                      th:text="|[${event.victim.allianceName}]|"></span>
+                                                <span class="guildName black"
+                                                      th:if="${not #strings.isEmpty(event.victim.guildName)}"
+                                                      th:text="${event.victim.guildName}"></span>
+                                            </div>
+                                        </div>
+                                        <div class="grid items">
+                                            <img th:if="${not #strings.isEmpty(a.mainHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.mainHand.type}?quality=${a.mainHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.offHand)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.offHand.type}?quality=${a.offHand.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.head)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.head.type}?quality=${a.head.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.armor)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.armor.type}?quality=${a.armor.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.shoes)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.shoes.type}?quality=${a.shoes.quality}|"/>
+                                            <img th:if="${not #strings.isEmpty(a.cape)}"
+                                                 th:src="|https://render.albiononline.com/v1/item/${a.cape.type}?quality=${a.cape.quality}|"/>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- main -->
+</div>
+
+<div id="blackArea">
+    <div id="loading">
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+
+        <h1>정보 요청중..</h1>
+    </div>
+</div>
+</body>
+</html>
