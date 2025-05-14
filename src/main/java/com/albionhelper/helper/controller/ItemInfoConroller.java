@@ -1,8 +1,9 @@
 package com.albionhelper.helper.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequestMapping("/item")
 public class ItemInfoConroller {
 
@@ -14,9 +15,5 @@ public class ItemInfoConroller {
         return "item/item";
     }
 
-    @GetMapping("${itemName}")
-    @ResponseBody
-    public String getItemInfo(@PathVariable String itemName){
-        return "";
-    }
+
 }
