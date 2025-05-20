@@ -84,7 +84,7 @@ $(document).ready(function () {
         const server = $('input[name="server"]:checked').val();
 
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "/battle/more",
             data: {
                 inputValue : id,
@@ -179,7 +179,7 @@ $(document).ready(function () {
         const offset = $('.maintable tbody tr').length;
 
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "/battle/more",
             data: {
                 inputValue : inputValue,
@@ -289,7 +289,7 @@ $(document).ready(function () {
         const id = $(this).data('id');
         const guildName = $(this).text();
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "/battle/more",
             data: {
                 inputValue : id,
