@@ -59,7 +59,7 @@ public class KillBoardController {
         return killboardService.getPlayersInfo(id, location);
     }
 
-    @GetMapping("getKillBoard")
+    @PostMapping("getKillBoard")
     public String getKillBoard(Model model, @ModelAttribute PlayerLogDTO playerLog) throws JsonProcessingException {
 
         log.info("Request getKillBoard List => id, location : {}, {}", playerLog.getUserId(), playerLog.getServer());

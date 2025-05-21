@@ -63,7 +63,7 @@ $(document).ready(function() {
                        turnLoading();
                        if(result != null && result.length > 0){
                            for(var i = 0; i < result.length; i++){
-                                $('#userNames').append('<a href="/killboard/getKillBoard?userId='+ result[i].Id +'&server='+ radio + '&userName=' + result[i].Name +'" class="content-body-item-userGroup-userId">'+ result[i].Name +'</a>');
+                                $('#userNames').append('<span data-userid='+ result[i].Id +' data-server='+ radio + ' data-username=' + result[i].Name +'" class="content-body-item-userGroup-userId userLink">'+ result[i].Name +'</span>');
                            }
                            $('#userList').show();
                        }else{
@@ -105,6 +105,34 @@ $(document).ready(function() {
             $("#killTable").hide();
             $("#deathTable").fadeIn(500);
     	}
+    });
+
+    $('.userLink').on('click', function(e){
+        const element = e.target;
+        const userId = element.dataset.userid;
+        const server = element.dataset.server;
+        const userName = element.dataset.username;
+
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/killboard/getKillBoard';
+
+        const inputs = {
+            userId: userId,
+            server: server,
+            userName: userName
+        };
+
+        for(const key in inputs){
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = inputs[key];
+            form.appendChild(input)
+        }
+
+        document.body.appendChild(form);
+        form.submit();
     });
 
 

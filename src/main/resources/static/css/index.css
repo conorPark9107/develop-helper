@@ -120,13 +120,14 @@ footer {
 }
 
 .container-contents-button {
+    font-size: 14px;
     display: inline-block;
     border-radius: 4px;
     border: 2px solid var(--border);
     color: var(--sub-color);
     background-color: var(--btn-bg);
     text-decoration: none;
-    padding: 15px 50px;
+    padding: 10px 40px;
     align-content: center;
 }
 .container-contents-button:hover {

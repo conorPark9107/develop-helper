@@ -8,16 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
-
-    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
-    <script type="text/javascript" src="/static/js/killboard/killboardDetail.js"></script>
-    <link rel="stylesheet" href="/static/css/variable.css"/>
-    <link rel="stylesheet" href="/static/css/index.css" />
-    <link rel="stylesheet" href="/static/css/detail.css" />
-    <link rel="stylesheet" href="/static/css/killboard/killboardDetail.css" />
-    <link rel="stylesheet" href="/static/css/loading.css" /> -->
-
     <script type="text/javascript" src="/jsMin/util.js"></script>
+    <script type="text/javascript" src="/js/killboard/killboardDetail.js"></script>
     <link rel="stylesheet" href="/css/variable.css"/>
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
@@ -60,11 +52,11 @@
             </div>
             <div class="flex-row">
                 <div class="flex-column-small">
-                    <a class="names hover" th:href="@{/killboard/getKillBoard?(userId=${event.killer.id},userName=${event.killer.name},server=${server})}">
+                    <span class="names hover userLink" th:attr="data-userid=${event.killer.id}, data-username=${event.killer.name}, data-server=${server}">
                         <p class="userName green" th:text="${event.killer.name}"></p>
                         <span class="allyName black" th:if="${not #strings.isEmpty(event.killer.allianceName)}" th:text="|[${event.killer.allianceName}]|"></span>
                         <span class="guildName black" th:if="${not #strings.isEmpty(event.killer.guildName)}" th:text="${event.killer.guildName}"></span>
-                    </a>
+                    </span>
                     <div class="imageDiv border border-green radius relative" th:with="p=${event.killer.equipment}">
                         <img class="gear" src="/image/gear.png">
                         <!-- 메인핸드 -->
@@ -109,11 +101,11 @@
                 </div>
 
                 <div class="flex-column-small">
-                    <a class="names hover" th:href="@{/killboard/getKillBoard?(userId=${event.victim.id},userName=${event.victim.name},server=${server})}">
+                    <span class="names hover userLink" th:attr="data-userId=${event.victim.id}, data-username=${event.victim.name}, data-server=${server}">
                         <p class="userName red" th:text="${event.victim.name}"></p>
                         <span class="allyName black" th:if="${not #strings.isEmpty(event.victim.allianceName)}" th:text="|[${event.victim.allianceName}]|"></span>
                         <span class="guildName black" th:if="${not #strings.isEmpty(event.victim.guildName)}" th:text="${event.victim.guildName}"></span>
-                    </a>
+                    </span>
                     <div class="imageDiv border border-red radius relative" th:with="p=${event.victim.equipment}">
                         <img class="gear" src="/image/gear.png">
                         <!-- 메인핸드 -->

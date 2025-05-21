@@ -89,6 +89,12 @@
                     <div class="flex-column">
                         <span class="left">모든서버</span>
                         <table class="countTable">
+                            <colgroup>
+                                <col class="c-col01">
+                                <col class="c-col04">
+                                <col class="c-col02">
+                                <col class="c-col03">
+                            </colgroup>
                             <thead>
                                 <tr>
                                     <th>순위</th>
@@ -106,7 +112,7 @@
                                     <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                     <td th:text="${user.server}"></td>
                                     <td>
-                                        <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
+                                        <span class="userLink" th:attr="data-userid=${user.userId}, data-username=${user.userName}, data-server=${user.server}" th:text="${user.userName}"></span>
                                     </td>
                                     <td th:text="${user.count}"></td>
                                 </tr>
@@ -122,6 +128,11 @@
                     <div class="flex-column">
                         <span class="left">동부</span>
                         <table class="countTable">
+                            <colgroup>
+                                <col class="c-col01">
+                                <col class="c-col02">
+                                <col class="c-col03">
+                            </colgroup>
                             <thead>
                             <tr>
                                 <th>순위</th>
@@ -137,7 +148,7 @@
                                     <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
                                     <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                     <td>
-                                        <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
+                                        <span class="userLink" th:attr="data-userid=${user.userId}, data-username=${user.userName}, data-server=${user.server}" th:text="${user.userName}"></span>
                                     </td>
                                     <td th:text="${user.count}"></td>
                                 </tr>
@@ -153,6 +164,11 @@
                     <div class="flex-column">
                         <span class="left">서부</span>
                         <table class="countTable">
+                            <colgroup>
+                                <col class="c-col01">
+                                <col class="c-col02">
+                                <col class="c-col03">
+                            </colgroup>
                             <thead>
                             <tr>
                                 <th>순위</th>
@@ -168,7 +184,7 @@
                                     <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
                                     <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                     <td>
-                                        <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
+                                        <span class="userLink" th:attr="data-userid=${user.userId}, data-username=${user.userName}, data-server=${user.server}" th:text="${user.userName}"></span>
                                     </td>
                                     <td th:text="${user.count}"></td>
                                 </tr>
@@ -184,6 +200,11 @@
                     <div class="flex-column">
                         <span class="left">유럽</span>
                         <table class="countTable">
+                            <colgroup>
+                                <col class="c-col01">
+                                <col class="c-col02">
+                                <col class="c-col03">
+                            </colgroup>
                             <thead>
                             <tr>
                                 <th>순위</th>
@@ -199,7 +220,7 @@
                                     <td th:if="${stat.count == 3}" th:text="'🥉'"></td>
                                     <td th:if="${stat.count > 3}" th:text="${stat.count}"></td>
                                     <td>
-                                        <a th:href="@{/killboard/getKillBoard(userId=${user.userId},userName=${user.userName},server=${user.server})}" th:text="${user.userName}"></a>
+                                        <span class="userLink" th:attr="data-userid=${user.userId}, data-username=${user.userName}, data-server=${user.server}" th:text="${user.userName}"></span>
                                     </td>
                                     <td th:text="${user.count}"></td>
                                 </tr>

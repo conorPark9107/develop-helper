@@ -162,20 +162,18 @@ table tbody tr:last-child td{
     padding: 2px 5px 2px 5px;
     border-bottom: 1px solid var(--gray);
 }
-.countTable tbody tr td:nth-child(1){
-    width:5%;
-}
-.countTable tbody tr td:nth-child(2){
+.c-col01{
     width:10%;
 }
-.countTable tbody tr td:nth-child(3){
+.c-col02{
     width:70%;
 }
-.countTable tbody tr td:nth-child(4){
+.c-col03{
     width:10%;
 }
-
-
+.c-col04{
+    width:10%;
+}
 .padding-top{
     padding-top: 15px;
 }
@@ -362,6 +360,12 @@ caption {
 }
 .items{
     width: 50%;
+}
+.userLink{
+    cursor: pointer;
+}
+.userLink:hover{
+    opacity: 0.7;
 }
 @media screen and (max-width: 1024px) {
     .flex-row{
