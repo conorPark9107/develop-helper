@@ -45,7 +45,7 @@ $(document).ready(function() {
             if(text.length >= 3){
 
                 $('#invalidId_msg').empty();
-                $('#userNames a').remove();
+                $('#userNames').empty();
 
                 $.ajax({
                     type : 'get',
@@ -63,7 +63,7 @@ $(document).ready(function() {
                        turnLoading();
                        if(result != null && result.length > 0){
                            for(var i = 0; i < result.length; i++){
-                                $('#userNames').append('<span data-userid='+ result[i].Id +' data-server='+ radio + ' data-username=' + result[i].Name +'" class="content-body-item-userGroup-userId userLink">'+ result[i].Name +'</span>');
+                                $('#userNames').append('<span data-userid="'+ result[i].Id +'" data-server="'+ radio + '" data-username="' + result[i].Name +'" class="content-body-item-userGroup-userId userLink">'+ result[i].Name +'</span>');
                            }
                            $('#userList').show();
                        }else{
@@ -108,6 +108,14 @@ $(document).ready(function() {
     });
 
     $('.userLink').on('click', function(e){
+        submitForCount(e);
+    });
+
+    $('#userNames').on('click', '.userLink', function(e) {
+        submitForCount(e);
+    });
+
+    function submitForCount(e){
         const element = e.target;
         const userId = element.dataset.userid;
         const server = element.dataset.server;
@@ -133,7 +141,7 @@ $(document).ready(function() {
 
         document.body.appendChild(form);
         form.submit();
-    });
+    }
 
 
     function showWarningMsg(msg, time){

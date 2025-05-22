@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -60,13 +61,22 @@ public class KillBoardController {
     }
 
     @PostMapping("getKillBoard")
-    public String getKillBoard(Model model, @ModelAttribute PlayerLogDTO playerLog) throws JsonProcessingException {
-
-        log.info("Request getKillBoard List => id, location : {}, {}", playerLog.getUserId(), playerLog.getServer());
+    public String getKillBoardRedirect(@ModelAttribute PlayerLogDTO playerLog, RedirectAttributes redirectAttributes) {
         killboardService.addCountUser(playerLog);
+        redirectAttributes.addAttribute("userId", playerLog.getUserId());
+        redirectAttributes.addAttribute("userName", playerLog.getUserName());
+        redirectAttributes.addAttribute("server", playerLog.getServer());
+        return "redirect:/killboard/getKillBoard";
+    }
 
-        String id = String.valueOf(playerLog.getUserId());
-        String server = playerLog.getServer();
+
+    @GetMapping("getKillBoard")
+    public String getKillBoard(Model model,
+                               @RequestParam("userId") String id,
+                               @RequestParam("userName") String userName,
+                               @RequestParam("server") String server) throws JsonProcessingException {
+
+        log.info("Request getKillBoard List => id, userName, location : {}, {}, {}", id, userName, server);
 
         PlayerInfoDetail playerInfoDetail = killboardService.getPlayerDetailInfo(id, server);
         List<KillBoard> killList = killboardService.getKillBoard(id, server);

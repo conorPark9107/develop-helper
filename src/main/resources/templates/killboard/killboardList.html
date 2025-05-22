@@ -40,7 +40,7 @@
 <div class="main">
     <div class="centered">
         <div class="back-div">
-            <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
+            <a class="btn-back text-center" href="/killboard">돌아 가기</a>
         </div>
         <div class="content-header">
             <h2 id="contentTitle">🏹 플레이어 정보 & Battles 🏹</h2>
@@ -187,16 +187,16 @@
                             <td th:text="${killLog.killer.guildName}"></td>
                             <td th:text="${killLog.killer.averageItemPower}"></td>
                             <td class="not" th:value="${killLog.victim.id}">
-                                <a class="link not" th:href="@{/killboard/getKillBoard(id=${killLog.victim.id}, location=${location})}" th:text="${killLog.victim.name}"></a>
+                                <span class="link not userLink red" th:attr="data-userid=${killLog.victim.id}, data-server=${location}, data-username=${killLog.victim.name}" th:text="${killLog.victim.name}"></span>
                             </td>
                             <td th:text="${killLog.victim.guildName}"></td>
                             <td th:text="${killLog.victim.averageItemPower}"></td>
                             <td class="participants-div not">
                                 <div class="participants not"><span class="not">더보기</span>
-                                    <div class="participant not">
-                                        <a class="link not" th:if="${not #strings.isEmpty(killLog.participants)}"
+                                    <div class="participant not flex-column">
+                                        <span class="link not userLink red" th:if="${not #strings.isEmpty(killLog.participants)}"
                                                             th:each="participant : ${killLog.participants}"
-                                                            th:href="@{/killboard/getKillBoard(userId=${participant.id}, server=${location}, userName=${participant.name})}" th:text="${participant.name}"></a>
+                                                            th:attr="data-userid=${participant.id}, data-server=${location}, data-username=${participant.name}" th:text="${participant.name}"></span>
                                         <span class="not" th:if="${#strings.isEmpty(killLog.participants) or #lists.size(killLog.participants) == 0}">어시스트 없음</span>
                                     </div>
                                 </div>
@@ -242,7 +242,7 @@
                             <td th:text="${i.count}"></td>
                             <td th:if="${! #strings.isEmpty(deathLog.timeStamp)}" th:text="${deathLog.timeStamp}"></td>
                             <td class="not" th:value="${deathLog.killer.id}">
-                                <a  class="link not" th:href="@{/killboard/getKillBoard(id=${deathLog.killer.id}, location=${location})}" th:text="${deathLog.killer.name}"></a>
+                                <span class="link not userLink red" th:attr="data-userid=${deathLog.killer.id}, data-server=${location}, data-username=${deathLog.killer.name}" th:text="${deathLog.victim.name}"></span>
                             </td>
                             <td th:text="${deathLog.killer.guildName}"></td>
                             <td th:text="${deathLog.killer.averageItemPower}"></td>
@@ -251,10 +251,10 @@
                             <td th:text="${deathLog.victim.averageItemPower}"></td>
                             <td class="participants-div not">
                                 <div class="participants not"><span class="not">더보기</span>
-                                    <div  class="participant not">
-                                        <a class="link not" th:if="${not #strings.isEmpty(deathLog.participants)}"
+                                    <div  class="participant not flex-column">
+                                        <span class="link not userLink red" th:if="${not #strings.isEmpty(deathLog.participants)}"
                                                                th:each="participant : ${deathLog.participants}"
-                                                               th:href="@{/killboard/getKillBoard(id=${participant.id}, location=${location})}" th:text="${participant.name}"></a>
+                                                               th:attr="data-userid=${participant.id}, data-server=${location}, data-username=${participant.name}" th:text="${participant.name}"></span>
                                         <span class="not" th:if="${#strings.isEmpty(deathLog.participants) or #lists.size(deathLog.participants) == 0}">어시스트 없음</span>
                                     </div>
                                 </div>
