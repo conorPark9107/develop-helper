@@ -37,13 +37,21 @@ public class MarketController {
         return "market/market";
     }
 
-    @GetMapping("/getPrice")
+    @PostMapping("/getPrice")
     @ResponseBody
-    public List<ItemPrice> showPrice(@RequestParam("server")String server,
+    public List<ItemPrice> showPricePost(@RequestParam("server")String server,
                                      @ModelAttribute MarketRankDTO dto) throws JsonProcessingException {
         marketService.addCount(dto);
         return marketService.getPrice(server, dto.getItemId());
     }
+
+//    @GetMapping("/getPrice")
+//    @ResponseBody
+//    public List<ItemPrice> showPriceGet(@RequestParam("server")String server,
+//                                     @ModelAttribute MarketRankDTO dto) throws JsonProcessingException {
+//        marketService.addCount(dto);
+//        return marketService.getPrice(server, dto.getItemId());
+//    }
 
     @GetMapping("/getPriceOld")
     @ResponseBody

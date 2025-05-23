@@ -159,7 +159,7 @@ $(document).ready(function() {
     // 가격 조회를 위해 서버에게 요청하는 메서드.
     function requestGetPrice(itemId, itemName, server){
         $.ajax({
-            type : 'get',
+            type : 'post',
             url : '/market/getPrice',
             async : true,
             dataType : 'json',
