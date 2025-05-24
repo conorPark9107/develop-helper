@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
 
     <script type="text/javascript" src="/jsMin/util.js"></script>
-    <script type="text/javascript" src="/js/killboard/killboardDetail.js"></script>
+    <script type="text/javascript" src="/jsMin/killboard/killboardDetail.js"></script>
     <link rel="stylesheet" href="/css/variable.css"/>
     <link rel="stylesheet" href="/css/index.css" />
     <link rel="stylesheet" href="/css/detail.css" />
@@ -58,7 +58,7 @@
                         <span class="guildName black" th:if="${not #strings.isEmpty(event.killer.guildName)}" th:text="${event.killer.guildName}"></span>
                     </span>
                     <div class="imageDiv border border-green radius relative" th:with="p=${event.killer.equipment}">
-                        <img class="gear" src="/image/gear.png">
+                        <img class="gear" src="/image/gear.png" />
                         <!-- 메인핸드 -->
                         <img th:if="${not #strings.isEmpty(p.mainHand)}" class="wearingItem mainHand"
                              th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}|"/>
@@ -107,7 +107,7 @@
                         <span class="guildName black" th:if="${not #strings.isEmpty(event.victim.guildName)}" th:text="${event.victim.guildName}"></span>
                     </span>
                     <div class="imageDiv border border-red radius relative" th:with="p=${event.victim.equipment}">
-                        <img class="gear" src="/image/gear.png">
+                        <img class="gear" src="/image/gear.png" />
                         <!-- 메인핸드 -->
                         <img th:if="${not #strings.isEmpty(p.mainHand)}" class="wearingItem mainHand"
                              th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}|"/>
