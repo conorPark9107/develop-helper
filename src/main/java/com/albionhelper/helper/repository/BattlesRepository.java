@@ -1,7 +1,6 @@
 package com.albionhelper.helper.repository;
 
 import com.albionhelper.helper.domain.battle.BattleCountLog;
-import com.albionhelper.helper.domain.battle.BattleCountLogDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,4 +16,15 @@ public interface BattlesRepository extends JpaRepository<BattleCountLog, Long> {
         "SELECT b FROM BattleCountLog b WHERE b.server = :server ORDER BY b.count DESC LIMIT 10"
     )
     List<BattleCountLog> findAllByTop10AndServer(@Param("server") String server);
+
+    @Query(
+            value = " SELECT * FROM " +
+                    " (SELECT *, " +
+                    " ROW_NUMBER() OVER (PARTITION BY server ORDER BY count desc) AS rownumber " +
+                    " FROM battle_count_log ) tbl " +
+                    " WHERE tbl.rownumber = 1 ",
+            nativeQuery = true
+    )
+    BattleCountLog findTop1ByServer();
+
 }

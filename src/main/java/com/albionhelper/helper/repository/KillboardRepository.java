@@ -24,4 +24,16 @@ public interface KillboardRepository extends JpaRepository<PlayerLog, Long> {
     )
     List<PlayerLog> findAllTop10ByServer(Pageable pageable, @Param("server") String server);
 
+    @Query(
+            value = " SELECT * FROM " +
+                    " (SELECT *, " +
+                    " ROW_NUMBER() OVER (PARTITION BY server ORDER BY count desc) AS rownumber " +
+                    " FROM player_log pl ) tbl " +
+                    " WHERE tbl.rownumber = 1 ",
+            nativeQuery = true
+    )
+    PlayerLog findTop1ByServer();
+
+
+
 }
