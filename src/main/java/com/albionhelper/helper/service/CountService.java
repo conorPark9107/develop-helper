@@ -8,7 +8,7 @@ import com.albionhelper.helper.repository.BattlesRepository;
 import com.albionhelper.helper.repository.KillboardRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class CountService {
@@ -21,14 +21,14 @@ public class CountService {
         this.battlesRepository = battlesRepository;
     }
 
-    public BattleCountLogDTO getBattleCount(){
-
-        return null;
+    public List<BattleCountLogDTO> getBattleCount(){
+        List<BattleCountLog> op = battlesRepository.findTop1ByServer();
+        return op.stream().map(BattleCountLog::toDto).toList();
     }
 
-    public PlayerLogDTO getPlayerCount(){
-
-        return null;
+    public List<PlayerLogDTO> getPlayerCount(){
+        List<PlayerLog> op = killboardRepository.findTop1ByServer();
+        return op.stream().map(PlayerLog::toDto).toList();
     }
 
 

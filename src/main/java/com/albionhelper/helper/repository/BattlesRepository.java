@@ -25,6 +25,6 @@ public interface BattlesRepository extends JpaRepository<BattleCountLog, Long> {
                     " WHERE tbl.rownumber = 1 ",
             nativeQuery = true
     )
-    BattleCountLog findTop1ByServer();
+    List<BattleCountLog> findTop1ByServer();
 
 }

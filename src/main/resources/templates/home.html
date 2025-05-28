@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -68,6 +68,46 @@
                     <div class="centered description">
                         <p>알비온 온라인을 플레이하는 유저들을 위한 페이지.</p>
                         <p>Chrome 브라우저에서 이용하기를 권장합니다.</p>
+                    </div>
+                </div>
+                <div class="flex-row gap-15">
+                    <div class="flex-column">
+                        <span class="caption">서버별 검색에 많이 노출된 길드</span>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>서버</th>
+                                    <th>길드</th>
+                                    <th>조회수</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="battle : ${battle}">
+                                    <td th:text="${battle.server}"></td>
+                                    <td th:text="${battle.guildName}"></td>
+                                    <td th:text="${battle.count}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex-column">
+                        <span class="caption">서버별 검색에 많이 노출된 유저</span>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>서버</th>
+                                <th>플레이어</th>
+                                <th>조회수</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="player : ${player}">
+                                <td th:text="${player.server}"></td>
+                                <td th:text="${player.userName}"></td>
+                                <td th:text="${player.count}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

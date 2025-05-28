@@ -1,19 +1,16 @@
 package com.albionhelper.helper.controller;
 
 import com.albionhelper.helper.service.BoardService;
+import com.albionhelper.helper.service.CountService;
 import com.albionhelper.helper.service.GoldService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.reactive.function.client.WebClient;
 
 
 // 이미지 관련
-// https://wiki.albiononline.com/wiki/API:Render_service
+// https://wiki.albiononline.com/wiki/API:_service
 // https://render.albiononline.com/v1/item/T4_HEAD_LEATHER_FEY@1.png?quality=4
 
 
@@ -31,14 +28,18 @@ public class MainController {
 
     private final GoldService goldService;
     private final BoardService boardService;
+    private final CountService countService;
 
-    public MainController(GoldService goldService, BoardService boardService) {
+    public MainController(GoldService goldService, BoardService boardService, CountService countService) {
         this.goldService = goldService;
         this.boardService = boardService;
+        this.countService = countService;
     }
 
     @GetMapping("/")
     public String index(Model model){
+        model.addAttribute("battle", countService.getBattleCount());
+        model.addAttribute("player", countService.getPlayerCount());
         return "home";
     }
 

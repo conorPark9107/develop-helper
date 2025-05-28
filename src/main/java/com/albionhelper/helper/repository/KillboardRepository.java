@@ -32,7 +32,7 @@ public interface KillboardRepository extends JpaRepository<PlayerLog, Long> {
                     " WHERE tbl.rownumber = 1 ",
             nativeQuery = true
     )
-    PlayerLog findTop1ByServer();
+    List<PlayerLog> findTop1ByServer();
 
 
 

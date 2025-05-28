@@ -66,6 +66,32 @@ footer {
     /* vertical-align: middle; */
     align-items: center;
 }
+.gap-15{
+    gap: 15px;
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.table{
+    color: var(--sub-color);
+    font-size: 10px;
+    width:100%;
+    box-shadow: 0 0 8px var(--black);
+    background-color: var(--btn-bg);
+}
+.table thead tr th{
+    padding: 5px 0px 5px 0px;
+    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+}
+.table tbody tr td{
+    border-bottom: 1px solid var(--border);
+}
 .container {
     height: 100%;
     display: flex;
