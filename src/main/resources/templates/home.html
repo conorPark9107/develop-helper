@@ -40,74 +40,76 @@
                     <div class="imageLogo"></div>
                     <img class="container-title-image" src="https://render.albiononline.com/v1/wardrobe/UNIQUE_HEAD_VANITY_PUMPKIN_02.png"  alt="이미지 없음."/>
                 </div>
-                <div class="container-contents">
-                    <a class="container-contents-button" href="/battle">🏹 그룹단위 Battles</a>
-                    <a class="container-contents-button" href="/killboard">💀 플레이어 정보 & Battles</a>
-                    <a class="container-contents-button" href="/market">🔍 시장가격 조회</a>
-                    <a class="container-contents-button" href="/calculator/refining">🔨 제련 계산기</a>
-                    <a class="container-contents-button" href="/calculator/cooking">🍖 요리 계산기</a>
-                    <a class="container-contents-button" href="/calculator/butcher">🐖 도살장 계산기</a>
-                    <a class="container-contents-button" href="/calculator/mill">🥛 방앗간 계산기</a>
-                    <a class="container-contents-button" href="/gold">💰 서버별 골드 시세</a>
-<!--                    <a class="container-contents-button blur" href="/">준비중</a>-->
-                    <a class="container-contents-button " href="/tierList">🥇티어 리스트</a>
-                    <a class="container-contents-button blur" href="/item">🥇아이템 정보(준비중)</a>
-                    <a class="container-contents-button blur" href="/">준비중</a>
-                    <a class="container-contents-button blur" href="/">준비중</a>
-        <!--            <a class="container-contents-button" href="/">💉 포션 이익 계산기</a>-->
-        <!--            <a class="container-contents-button" href="/">🏹 무기 정보</a>-->
-        <!--            <a class="container-contents-button" href="/">🥋 방어구 정보</a>-->
-        <!--            <a class="container-contents-button" href="/">🛠 도구 정보</a>-->
-        <!--            <a class="container-contents-button" href="/">🔍 친선 검색</a>-->
+                <div class="flex-column gap-15">
+                    <div class="container-contents">
+                        <a class="container-contents-button" href="/battle">🏹 그룹단위 Battles</a>
+                        <a class="container-contents-button" href="/killboard">💀 플레이어 정보 & Battles</a>
+                        <a class="container-contents-button" href="/market">🔍 시장가격 조회</a>
+                        <a class="container-contents-button" href="/calculator/refining">🔨 제련 계산기</a>
+                        <a class="container-contents-button" href="/calculator/cooking">🍖 요리 계산기</a>
+                        <a class="container-contents-button" href="/calculator/butcher">🐖 도살장 계산기</a>
+                        <a class="container-contents-button" href="/calculator/mill">🥛 방앗간 계산기</a>
+                        <a class="container-contents-button" href="/gold">💰 서버별 골드 시세</a>
+    <!--                    <a class="container-contents-button blur" href="/">준비중</a>-->
+                        <a class="container-contents-button " href="/tierList">🥇티어 리스트</a>
+<!--                        <a class="container-contents-button blur" href="/"></a>-->
+<!--                        <a class="container-contents-button blur" href="/">준비중</a>-->
+<!--                        <a class="container-contents-button blur" href="/">준비중</a>-->
+            <!--            <a class="container-contents-button" href="/">💉 포션 이익 계산기</a>-->
+            <!--            <a class="container-contents-button" href="/">🏹 무기 정보</a>-->
+            <!--            <a class="container-contents-button" href="/">🥋 방어구 정보</a>-->
+            <!--            <a class="container-contents-button" href="/">🛠 도구 정보</a>-->
+            <!--            <a class="container-contents-button" href="/">🔍 친선 검색</a>-->
+                    </div>
+                    <div class="container-contents-last">
+                        <a class="container-contents-button" href="/board">🌈 유저 게시판</a>
+                        <a class="container-contents-button" href="/toinquire">💀 관리자 문의 & 죽음의 피드백</a>
+                    </div>
                 </div>
-                <div class="container-contents-last">
-                    <a class="container-contents-button" href="/board">🌈 유저 게시판</a>
-                    <a class="container-contents-button" href="/toinquire">💀 관리자 문의 & 죽음의 피드백</a>
-                </div>
+<!--                <div class="flex-row gap-15">-->
+<!--                    <div class="flex-column">-->
+<!--                        <span class="caption">서버별 검색에 많이 노출된 길드</span>-->
+<!--                        <table class="table">-->
+<!--                            <thead>-->
+<!--                                <tr>-->
+<!--                                    <th>서버</th>-->
+<!--                                    <th>길드</th>-->
+<!--                                    <th>조회수</th>-->
+<!--                                </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody>-->
+<!--                                <tr th:each="battle : ${battle}">-->
+<!--                                    <td th:text="${battle.server}"></td>-->
+<!--                                    <td th:text="${battle.guildName}"></td>-->
+<!--                                    <td th:text="${battle.count}"></td>-->
+<!--                                </tr>-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                    <div class="flex-column">-->
+<!--                        <span class="caption">서버별 검색에 많이 노출된 유저</span>-->
+<!--                        <table class="table">-->
+<!--                            <thead>-->
+<!--                            <tr>-->
+<!--                                <th>서버</th>-->
+<!--                                <th>플레이어</th>-->
+<!--                                <th>조회수</th>-->
+<!--                            </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody>-->
+<!--                            <tr th:each="player : ${player}">-->
+<!--                                <td th:text="${player.server}"></td>-->
+<!--                                <td th:text="${player.userName}"></td>-->
+<!--                                <td th:text="${player.count}"></td>-->
+<!--                            </tr>-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                </div> &lt;!&ndash; rank &ndash;&gt;-->
                 <div class="main">
                     <div class="centered description">
                         <p>알비온 온라인을 플레이하는 유저들을 위한 페이지.</p>
                         <p>Chrome 브라우저에서 이용하기를 권장합니다.</p>
-                    </div>
-                </div>
-                <div class="flex-row gap-15">
-                    <div class="flex-column">
-                        <span class="caption">서버별 검색에 많이 노출된 길드</span>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>서버</th>
-                                    <th>길드</th>
-                                    <th>조회수</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr th:each="battle : ${battle}">
-                                    <td th:text="${battle.server}"></td>
-                                    <td th:text="${battle.guildName}"></td>
-                                    <td th:text="${battle.count}"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="flex-column">
-                        <span class="caption">서버별 검색에 많이 노출된 유저</span>
-                        <table class="table">
-                            <thead>
-                            <tr>
-                                <th>서버</th>
-                                <th>플레이어</th>
-                                <th>조회수</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="player : ${player}">
-                                <td th:text="${player.server}"></td>
-                                <td th:text="${player.userName}"></td>
-                                <td th:text="${player.count}"></td>
-                            </tr>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>

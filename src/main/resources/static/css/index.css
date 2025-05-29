@@ -78,6 +78,7 @@ footer {
     flex-direction: column;
 }
 .table{
+    border-radius: 4px;
     color: var(--sub-color);
     font-size: 10px;
     width:100%;
@@ -85,12 +86,25 @@ footer {
     background-color: var(--btn-bg);
 }
 .table thead tr th{
-    padding: 5px 0px 5px 0px;
+    padding: 5px 5px;
     border-bottom: 1px solid var(--border);
     border-top: 1px solid var(--border);
 }
+.table thead tr th:first-child{
+    border-top-left-radius: 4px;
+}
+.table thead tr th:last-child{
+    border-top-right-radius: 4px;
+}
 .table tbody tr td{
+    padding: 5px 5px;
     border-bottom: 1px solid var(--border);
+}
+.table tbody tr:last-child td:first-child{
+    border-bottom-left-radius: 4px;
+}
+.table tbody tr:last-child td:first-child{
+    border-bottom-right-radius: 4px;
 }
 .container {
     height: 100%;
@@ -143,8 +157,8 @@ footer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 15px;
+    padding-bottom: 15px;
 }
-
 .container-contents-button {
     font-size: 14px;
     display: inline-block;
@@ -178,7 +192,10 @@ input[type='radio']:checked {
     background-color: var(--sub-color);
     border: 3px solid var(--border);
 }
-
+.caption{
+    font-size: 10px;
+    padding-bottom: 5px;
+}
 fieldset {
     margin: 5% auto;
     border: 1px solid;
@@ -212,6 +229,12 @@ legend {
 }
 :hover{
     transition: all 0.3s;
+}
+.border-top{
+    border-top: 1px solid var(--border);
+}
+.border-bottom{
+    border-bottom: 1px solid var(--border);
 }
 .blur{
     opacity: 0.8;
