@@ -21,15 +21,6 @@ h5{
     border-radius: 4px;
     box-shadow: 0px 0px 10px 0px #000000;
 }
-.flex-row{
-    display:flex;
-    flex-direction: row;
-    width: 100%;
-}
-.flex-column{
-    display: flex;
-    flex-direction: column;
-}
 .vertical-center{
     align-items: center;
 }
