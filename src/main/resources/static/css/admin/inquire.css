@@ -29,19 +29,11 @@ h5{
     flex-direction: row;
     width: 100%;
 }
-.flex-column{
-    display: flex;
-    flex-direction: column;
-    margin-top: 25px;
-}
 .space-between{
     justify-content: space-between;
 }
 .vertical-center{
     align-items: center;
-}
-.gap{
-    gap: 20px;
 }
 form{
     width: 100%;

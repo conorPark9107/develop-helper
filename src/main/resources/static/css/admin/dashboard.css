@@ -32,10 +32,6 @@ h5{
     flex-direction: row;
     width: 100%;
 }
-.flex-column{
-    display: flex;
-    flex-direction: column;
-}
 .space-between{
     justify-content: space-between;
 }

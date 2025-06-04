@@ -47,8 +47,8 @@
                 <h2>🥇티어 리스트🥇</h2>
             </div>
             <div class="flex-column">
-                <div class="flex-row margin-b gap">
-                    <div class="flex-row align-item-center background w-6">
+                <div class="flex-row box-sizing fs-13 m-b-15 gap-10">
+                    <div class="flex-row box-sizing fs-13 align-item-center background w-6">
                         <div class="title-div">
                             <p class="title">카테고리 선택</p>
                         </div>
@@ -126,7 +126,7 @@
             </div>    
 
             <div class="flex-column">
-                <div class="flex-row align-item-center space-between background margin-b">
+                <div class="flex-row box-sizing fs-13 align-item-center space-between background m-b-15">
                     <div class="inline">
                         <div class="chekcbox-div">
                             <input class="radio" type="radio" id="option2" name="options" value="writeDate" th:checked="${#strings.equals(options,'writeDate')}" />
@@ -149,7 +149,7 @@
                     </div>
                     <a class="btn" href="/tierList/write">새로 작성</a>
                 </div>
-                <div class="flex-column margin-b">
+                <div class="flex-column m-b-15">
                     <table>
                         <colgroup>
                             <col class="col0" />
@@ -193,8 +193,8 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="flex-column margin-b">
-                    <div class="flex-row pagination flex-center">
+                <div class="flex-column m-b-15">
+                    <div class="flex-row box-sizing fs-13 pagination flex-center">
                         <div>
                             <a th:classappend="${nowPage > 0} ? 'active' : 'nonActive' "
                                th:href="@{/tierList(page=0)}"> &lt;&lt; </a>
