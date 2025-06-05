@@ -213,34 +213,34 @@ h6{
     width: 50px;
     height: 50px;
 }
-.table{
+.table-market{
     width: 100%;
     border: none;
     text-align: right;
     font-size: 12px;
 }
-.table thead th, .table tbody td:nth-child(1) {
+.table-market thead th, .table tbody td:nth-child(1) {
     font-weight: 500;
     color: var(--white);
 }
-.table tbody td{
+.table-market tbody td{
     color: var(--bg-text);
 }
-.table tbody tr:hover{
+.table-market tbody tr:hover{
     color: var(--black);
     background-color: var(--itemblack);
 }
-.table tbody tr td:nth-child(1), .table thead tr th:nth-child(1) {
+.table-market tbody tr td:nth-child(1), .table thead tr th:nth-child(1) {
     padding-right: 20px;
     border-right: 2px solid var(--gray);
 }
-.table thead tr th{
+.table-market thead tr th{
     border-bottom: 1px solid var(--gray);
 }
-.table thead tr th:last-child{
+.table-market thead tr th:last-child{
     padding-right: 10px;
 }
-.table tbody td:last-child{
+.table-market tbody td:last-child{
     padding-right: 10px;
 }
 .rankTable{

@@ -13,6 +13,11 @@ body {
     margin: 0px;
     font-weight: 600;
 }
+.background{
+    background-color: var(--sub-color-a);
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px 0px #000000;
+}
 .description{
     color: var(--bg-text);
 }
@@ -65,6 +70,15 @@ footer {
     justify-content: space-between;
     /* vertical-align: middle; */
     align-items: center;
+}
+.pd-10{
+    padding:10px;
+}
+.pd-15{
+    padding:15px;
+}
+.pd-20{
+    padding:20px;
 }
 .w-10{
     width: 100%;

@@ -21,30 +21,11 @@ p{
 .padding{
     padding: 15px;
 }
-.gap{
-    gap: 10px;
-}
-.flex-column{
-    display:flex;
-    flex-direction: column;
-}
-.flex-row{
-    font-size: 13px;
-    display: flex;
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-}
 .flex-start{
     justify-content: flex-start;
 }
 .align-item-center{
     align-items: center;
-}
-.background{
-    background-color: var(--sub-color-a);
-    border-radius: 4px;
-    box-shadow: 0px 0px 10px 0px #000000;
 }
 input[type='radio'] {
     -webkit-appearance: none;
