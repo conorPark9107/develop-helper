@@ -152,6 +152,9 @@ footer {
 .m-b-15{
     margin-bottom: 15px;
 }
+.space-end{
+    justify-content: flex-end;
+}
 .box-sizing{
     box-sizing: border-box;
 }
@@ -288,9 +291,14 @@ fieldset {
     animation: 3s rotate linear infinite;
     outline: none;
 }
-
 legend {
     text-align: center;
+}
+.flex-start{
+    justify-content: flex-start;
+}
+.align-item-center{
+    align-items: center;
 }
 @keyframes rotate {
     to {
