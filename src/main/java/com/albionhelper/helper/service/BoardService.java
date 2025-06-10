@@ -18,6 +18,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 
@@ -42,6 +43,7 @@ public class BoardService {
         this.categoryRepository = categoryRepository;
     }
 
+    // 게시글 등록 메서드.
     public void registerBoard(BoardRequestDTO dto) throws UnknownHostException {
         log.info("registerBoard : {}", dto);
 
@@ -54,45 +56,31 @@ public class BoardService {
         boardRepository.save(board);
     }
 
+    // 게시글 카테고리별 조회 메서드.
     public Page<BoardResponseDTO> findAllById(Pageable pageable, String category) {
         pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), pageable.getSort());
+        Page<Board> boardPage = category.equals("전체")
+                ? boardRepository.findAll(pageable)
+                : boardRepository.findAllByCategory(pageable, category);
 
-        Page<Board> list;
-        if(category.equals("전체")){
-            list = boardRepository.findAll(pageable);
-        }else{
-            list = boardRepository.findAllByCategory(pageable, category);
-        }
-
-        Page<BoardResponseDTO> dtoList = list.map(
-          board -> BoardResponseDTO.builder()
-                  .id(board.getId())
-                  .nickname(board.getNickname())
-                  .title(board.getTitle())
-                  .category(board.getCategory())
-                  .contents(board.getContents())
-                  .write_date(board.getWrite_date())
-                  .view_count(board.getView_count())
-                  .updown(board.getUpdown())
-                  .commentCount(board.getCommentCount())
-                  .build()
-        );
-        return dtoList;
+        return boardPage.map(Board::toResponseDTO);
     }
 
+    // 특정 한 게시글 조회.
     public BoardResponseDTO findBoardById(Long id) {
-        Optional<Board> board = boardRepository.findById(id);
-        return board.get().toResponseDTO();
+        Optional<Board> optional = boardRepository.findById(id);
+        return optional.map(Board::toResponseDTO)
+                .orElseThrow(() -> new NoSuchElementException("게시글을 찾을 수 없습니다. id=" + id));
     }
 
+    // 댓글 등록.
     public void registerComment(CommentRequestDTO dto) throws UnknownHostException {
-        if(dto.getNickname().isEmpty()){
-            dto.setNickname("익명");
-            log.info("nickname was empty so changed : {} ", dto.getNickname());
-        }
+        String nickname = Optional.ofNullable(dto.getNickname())
+                        .filter(n -> !n.isEmpty())
+                        .orElse("익명");
 
+        dto.setNickname(nickname);
         commentRepository.save(dto.toEntity());
-
     }
 
     public List<CommentResponseDTO> findAllById(Long board_id) {

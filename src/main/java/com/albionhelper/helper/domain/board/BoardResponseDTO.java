@@ -22,7 +22,4 @@ public class BoardResponseDTO {
     private int updown;
     private int commentCount;
 
-
-
-
 }

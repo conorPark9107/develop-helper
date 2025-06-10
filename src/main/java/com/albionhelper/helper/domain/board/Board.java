@@ -52,7 +52,6 @@ public class Board {
     @Formula("(select count(1) from comment c where c.board_id = id)")
     private int commentCount;
 
-
     public BoardResponseDTO toResponseDTO(){
         return new BoardResponseDTO().builder()
                 .id(id)
