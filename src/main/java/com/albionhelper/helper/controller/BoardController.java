@@ -100,9 +100,9 @@ public class BoardController {
     public String boardDetail(@RequestParam("id")Long id,
                              Model model){
         log.info("detailPage id : {}", id);
-        boardService.modifyViewCount(id);
+        boardService.incrementViewCount(id);
         BoardResponseDTO board = boardService.findBoardById(id);
-        List<CommentResponseDTO> comments = boardService.findAllById(id);
+        List<CommentResponseDTO> comments = boardService.findAllCommentsByBoardId(id);
 
 
         log.info("detailPage comments.size : {}", comments.size());
@@ -130,7 +130,7 @@ public class BoardController {
     @GetMapping(value="/updown")
     @ResponseBody
     public int getupdown(@RequestParam("id")Long id, @RequestParam("status")String status){
-        return boardService.modifyUpdownCount(id, status);
+        return boardService.updateUpdownCount(id, status);
     }
 
     @PostMapping(value="/deleteComment")

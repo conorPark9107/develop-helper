@@ -61,7 +61,7 @@ public class AdminController {
 
     @PostMapping("/admin/updateinquire")
     public String updateInquire(@ModelAttribute UpdateInquireDTO dto, Model model){
-        boardService.updateInquire(dto);
+        boardService.updateInquireAnswer(dto);
         model.addAttribute("list", boardService.findAllInquire());
         return "admin/replyinquire";
     }

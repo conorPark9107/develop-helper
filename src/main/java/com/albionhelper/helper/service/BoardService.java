@@ -83,7 +83,8 @@ public class BoardService {
         commentRepository.save(dto.toEntity());
     }
 
-    public List<CommentResponseDTO> findAllById(Long board_id) {
+    // 댓글 조회.
+    public List<CommentResponseDTO> findAllCommentsByBoardId(Long board_id) {
         List<Comment> list = commentRepository.findAllByBoardId(board_id);
         List<CommentResponseDTO> dtoList = new ArrayList<>();
         for(Comment c : list){
@@ -92,37 +93,43 @@ public class BoardService {
         return dtoList;
     }
 
-    public long showCount(Long id) {
+    // 댓글 수 조회.
+    public long countCommentsByBoardId(Long id) {
         return commentRepository.countById(id);
     }
 
-    public void modifyViewCount(Long id) {
-        Board b = boardRepository.findById(id).get();
+    // 조회수 증가.
+    public void incrementViewCount(Long id) {
+        Board b = boardRepository.findById(id)
+                        .orElseThrow(() -> new NoSuchElementException("게시글이 존재하지 않습니다. id : " + id));
         b.setView_count(b.getView_count() + 1);
         boardRepository.save(b);
     }
 
-    public int modifyUpdownCount(Long id, String status){
-        Board b = boardRepository.findById(id).get();
-        if(status.equals("p")){
-            b.setUpdown(b.getUpdown() + 1);
-        }else {
-            b.setUpdown(b.getUpdown() - 1);
-        }
+    // 추천 / 비추천 처리.
+    public int updateUpdownCount(Long boardId, String status){
+        Board b = boardRepository.findById(boardId)
+                .orElseThrow(() -> new NoSuchElementException("게시글이 존재하지 않습니다: id=" + boardId));
+        int upOrDown = status.equals("p") ? 1 : -1;
+        b.setUpdown(b.getUpdown() + upOrDown);
         boardRepository.save(b);
         return b.getUpdown();
     }
 
-    public String deleteComment(Long id) {
-        Comment c = commentRepository.findById(id).get();
-        c.setComment("삭제된 댓글입니다.");
-        return commentRepository.save(c).getComment();
+    // 댓글 삭제 (내용만 변경)
+    public String deleteComment(Long commentId) {
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new NoSuchElementException("댓글이 존재하지 않습니다: id=" + commentId));
+        comment.setComment("삭제된 댓글입니다.");
+        return commentRepository.save(comment).getComment();
     }
 
+    // 게시글 삭제
     public void deleteBoard(Long id) {
         boardRepository.deleteById(id);
     }
 
+    // 게시글 비밀번호 확인
     public String checkPassword(Long id, String password) {
         Optional<Board> b = boardRepository.findByIdAndPassword(id, password);
         if(b.isEmpty()){
@@ -130,35 +137,42 @@ public class BoardService {
         }
         return "T";
     }
-
+    
+    // 문의 등록
     public String registerInquire(String text) {
         Inquire inquire = new Inquire();
         inquire.setContent(text);
         return inquireRepository.save(inquire).toString();
     }
-    
-    public void updateInquire(UpdateInquireDTO dto){
+
+    // 문의 답변 등록
+    public void updateInquireAnswer(UpdateInquireDTO dto){
         Inquire inquire = inquireRepository.findById(dto.getId()).get();
         inquire.setAnswer(dto.getAnswer());
         inquireRepository.save(inquire);
     }
-
+    
+    // 문의 전체 조회
     public List<Inquire> findAllInquire() {
         return inquireRepository.findAll();
     }
 
+    // 문의 삭제
     public void deleteInquire(long id) {
         inquireRepository.deleteById(id);
     }
 
+    // 카테고리 전체 조회
     public List<Category> findAllCategory() {
         return categoryRepository.findAll();
     }
 
+    // 카테고리 삭제.
     public void deleteCategory(long id) {
         categoryRepository.deleteById(id);
     }
 
+    // 카테고리 등록
     public void registerCategory(String category) {
         Category c = new Category();
         c.setCategory(category);
