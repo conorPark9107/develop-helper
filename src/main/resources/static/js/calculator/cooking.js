@@ -68,7 +68,8 @@ $(document).ready(function () {
             image_div.append('<br/>');
             for(let i = 0; i < foodArray.length; i++){
                 // image_div.append(`<img class='cooking-img sub' src='/image/${foodArray[i]}.png' value="${foodArray[i]}" />`);
-                image_div.append(`<img class='cooking-img sub' src='/image/${foodArray[i]}.png' value="${foodArray[i]}" />`);
+                image_div.append(`<img class='cooking-img sub' src='https://render.albiononline.com/v1/item/${foodArray[i]}' value="${foodArray[i]}" />`);
+
             }
             return;
         }
@@ -368,16 +369,16 @@ function setMainTableDefaultData(foods, cateDetail){
             fileName = `${cateDetail}@${i}`;
         }
         $(tr).attr('data-value', foods.itemValue);
-        $(tr).append(`<td><div class="main-table-after"><img src="/image/${fileName}.png" value="${fileName}" /><span>${foods.returnNum}</span></div></td>`);
+        $(tr).append(`<td><div class="main-table-after"><img src='https://render.albiononline.com/v1/item/${fileName}' value="${fileName}" /><span>${foods.returnNum}</span></div></td>`);
         $(tr).append('<td><input type="number"></td>');
         
         let appendData = '';
         for(let j = 0; j < foods.names.length; j++){
-            appendData += `<div class="material-cooking"><img src="/image/${foods.names[j]}.png" value="${foods.names[j]}"/>`
+            appendData += `<div class="material-cooking"><img src='https://render.albiononline.com/v1/item/${foods.names[j]}' value="${foods.names[j]}"/>`
             appendData += `<span>${foods.nums[j]}</span></div>`;
         }
         if(i > 0){
-            appendData += `<div class="material-cooking"><img src="/image/${cookTree.FISHSAUCE[i-1]}.png" value="${cookTree.FISHSAUCE[i-1]}"/>`
+            appendData += `<div class="material-cooking"><img src='https://render.albiononline.com/v1/item/${cookTree.FISHSAUCE[i-1]}' value="${cookTree.FISHSAUCE[i-1]}"/>`
             appendData += `<span>${foods.fishNum}</span></div>`;
         }
         
@@ -398,7 +399,7 @@ function setSubTableDefaultData(foods, fishArray){
     let tbody = $('.sub-table tbody');
     for(let i = 0; i < fishArray.length; i++){
         const tr = document.createElement('tr');
-        $(tr).append(`<td><img src="/image/${fishArray[i]}.png" /></td>`);
+        $(tr).append(`<td><img src='https://render.albiononline.com/v1/item/${fishArray[i]}' /></td>`);
         $(tr).append(`<td><input id="${fishArray[i]}" type="number"></td>`);
         $(tr).append(`<td>${foods.fishNum}</td>`);
         tbody.append(tr);
@@ -406,7 +407,7 @@ function setSubTableDefaultData(foods, fishArray){
 
     for(let i = 0; i < foods.names.length; i++){
         const tr = document.createElement('tr');
-        $(tr).append(`<td><img src="/image/${foods.names[i]}.png" /></td>`);
+        $(tr).append(`<td><img src='https://render.albiononline.com/v1/item/${foods.names[i]}' /></td>`);
         $(tr).append(`<td ><input id="${foods.names[i]}" type="number"></td>`);
         $(tr).append(`<td>${foods.nums[i]}</td>`);
         tbody.append(tr);
@@ -421,7 +422,7 @@ function showImages(){
         const image_div = $('.image-div');
         image_div.append('<h5>🔻이미지를 선택하세요🔻</h5>');
         for(let i = 0; i < category.length; i++){
-            image_div.append(`<img class='cooking-img' src='/image/${category[i]}.png' value="_${category[i]}" />`);
+            image_div.append(`<img class='cooking-img' src='https://render.albiononline.com/v1/item/${category[i]}' value="_${category[i]}" />`);
         }
     }    
 }

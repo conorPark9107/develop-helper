@@ -13,7 +13,6 @@ const potionCate = ["T6_POTION_HEAL", "T6_POTION_ENERGY", "T7_POTION_REVIVE", "T
 "T7_POTION_MOB_RESET", "T7_POTION_CLEANSE2", "T7_POTION_ACID", "T8_POTION_BERSERK", "T8_POTION_LAVA", "T8_POTION_GATHER", "T8_POTION_TORNADO"];
 const butcherCate = ["T8_MEAT", "T1_FISHCHOPS"];
 
-
 const cities = {
     blackmarket : "암시장",
     brecilien : "브리실리안",

@@ -269,7 +269,7 @@ table tbody tr:last-child td{
     border-bottom: 0;
 }
 td{
-    color: var(--table-main-tnext-color);
+    color: var(--sub-color);
     padding: 0 10px;
     border-bottom: 1px solid var(--border-bottom);
 }
