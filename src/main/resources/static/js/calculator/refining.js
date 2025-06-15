@@ -298,13 +298,13 @@ function setContetns(beforeArr, afterArr){
     let trs = $('table tbody').find('tr');
     for(let i = 0; i < trs.length; i++){
         let tds = $(trs[i]).find('td');
-        $(tds[0]).find('img').attr('src', `/image/${afterArr[i]}.png`);
-        $(tds[2]).find('img').attr('src', `/image/${beforeArr[i]}.png`);
+        $(tds[0]).find('img').attr('src', `https://render.albiononline.com/v1/item/${afterArr[i]}`);
+        $(tds[2]).find('img').attr('src', `https://render.albiononline.com/v1/item/${beforeArr[i]}`);
         if(i > 6){
             let imges = $(tds[4]).find('img');
             let span = $(tds[4]).find('span');
-            $(imges[0]).attr('src', `/image/${afterArr[i-5]}.png`);
-            $(imges[1]).attr('src', `/image/${beforeArr[i]}.png`);
+            $(imges[0]).attr('src', `https://render.albiononline.com/v1/item/${afterArr[i-5]}`);
+            $(imges[1]).attr('src', `https://render.albiononline.com/v1/item/${beforeArr[i]}`);
 
             let afterAvg = $(span[0]).text();
             let beforeAvg = $(span[1]).text();
@@ -319,23 +319,23 @@ function setContetnsFirst(beforeArr, afterArr){
     let td2_img = $('#t2').find('td:eq(4)').find('div').find('img');
     let td2_span = $('#t2').find('td:eq(4)').find('div').find('span');
     td2_span.attr('value', td2_span.text() * beforeRefiningValue[0]);
-    td2_img.attr('src', `/image/${beforeArr[0]}.png`)
+    td2_img.attr('src', `https://render.albiononline.com/v1/item/${beforeArr[0]}`);
 
     let td3 = $('#t3').find('td:eq(4)')
     let td3_img = td3.find('div').find('img');
     let td3_avg = td3.find('div').find('span');
 
     td3.attr('value', ($(td3_avg[0]).text() * afterRefiningValue[0]) * ($(td3_avg[1]).text() * beforeRefiningValue[1]));
-    $(td3_img[0]).attr('src', `/image/${afterArr[0]}.png`)
-    $(td3_img[1]).attr('src', `/image/${beforeArr[1]}.png`)
+    $(td3_img[0]).attr('src', `https://render.albiononline.com/v1/item/${afterArr[0]}`);
+    $(td3_img[1]).attr('src', `https://render.albiononline.com/v1/item/${beforeArr[1]}`);
 
     let trs = $('table tbody').find('tr');
     for(let i = 2; i < 7; i++){
         let td = $(trs[i]).find('td:eq(4)');
         let imgs = td.find('img');
         let span = td.find('span');
-        $(imgs[0]).attr('src', `/image/${afterArr[1]}.png`)
-        $(imgs[1]).attr('src', `/image/${beforeArr[i]}.png`)
+        $(imgs[0]).attr('src', `https://render.albiononline.com/v1/item/${afterArr[1]}`);
+        $(imgs[1]).attr('src', `https://render.albiononline.com/v1/item/${beforeArr[i]}`);
         let afterAvg = $(span[0]).text();
         let beforeAvg = $(span[1]).text();
         $(td).attr('value', (afterRefiningValue[1] * afterAvg) + (beforeRefiningValue[i] * beforeAvg));
