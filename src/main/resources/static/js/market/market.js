@@ -100,7 +100,7 @@ $(document).ready(function() {
         }else{
             $('#itemList').fadeOut(100);
         }
-    }, 300); // 300ms 딜레이
+    }, 0); // 딜레이(ms)
 
 
     $('#itemName').on('keyup', function (event) {
