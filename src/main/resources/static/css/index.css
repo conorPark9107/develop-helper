@@ -101,7 +101,7 @@ footer {
 .w-4{
     width: 40%;
 }
-.w-30{
+.w-3{
     width: 30%;
 }
 .w-2{
@@ -155,6 +155,9 @@ footer {
 .space-end{
     justify-content: flex-end;
 }
+.space-center{
+    justify-content: center;
+}
 .box-sizing{
     box-sizing: border-box;
 }
@@ -165,6 +168,12 @@ footer {
 .flex-column{
     display: flex;
     flex-direction: column;
+}
+.border{
+    border: 1px solid var(--border);
+}
+.shadow{
+    box-shadow: 0 0 8px var(--border);
 }
 .table{
     border-radius: 4px;
@@ -299,6 +308,9 @@ legend {
 }
 .align-item-center{
     align-items: center;
+}
+.flex-wrap{
+    flex-wrap: wrap;
 }
 @keyframes rotate {
     to {

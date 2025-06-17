@@ -33,9 +33,9 @@
     </div>
 
     <div class="container">
-        <div class="flex-column">
+        <div class="flex-column gap-10 flex-wrap">
             <span class="info">📌 닉네임을 클릭하면 해당 유저의 킬, 데스로그 페이지로 이동합니다. 📌</span>
-            <div class="flex-row">
+            <div class="flex-row w-10 gap-10 space-center align-item-center flex-wrap">
                 <div class="flex-item shadow">
                     <div class="detailDiv">
                         <span class="flex-title">🏹전투 id</span>
@@ -50,8 +50,8 @@
                     </div>
                 </div>
             </div>
-            <div class="flex-row">
-                <div class="flex-column-small">
+            <div class="flex-row w-10 gap-10 space-center align-item-center">
+                <div class="flex-column gap-10 space-center align-item-center">
                     <span class="names hover userLink" th:attr="data-userid=${event.killer.id}, data-username=${event.killer.name}, data-server=${server}">
                         <p class="userName green" th:text="${event.killer.name}"></p>
                         <span class="allyName black" th:if="${not #strings.isEmpty(event.killer.allianceName)}" th:text="|[${event.killer.allianceName}]|"></span>
@@ -99,8 +99,7 @@
                 <div>
                     <span class="vs">vs</span>
                 </div>
-
-                <div class="flex-column-small">
+                <div class="flex-column gap-10 space-center align-item-center">
                     <span class="names hover userLink" th:attr="data-userId=${event.victim.id}, data-username=${event.victim.name}, data-server=${server}">
                         <p class="userName red" th:text="${event.victim.name}"></p>
                         <span class="allyName black" th:if="${not #strings.isEmpty(event.victim.allianceName)}" th:text="|[${event.victim.allianceName}]|"></span>
@@ -147,8 +146,8 @@
                 </div>
             </div>
 
-            <div class="flex-row">
-                <div class="inventory-div">
+            <div class="flex-row w-10 gap-10 space-center align-item-center">
+                <div class="inventory-div w-10">
                     <p class="sub-title">사망자 인벤토리</p>
                     <div class="inventory border border-red">
                         <th:block th:if="${#strings.isEmpty(event.victim.inventory)}">
@@ -165,7 +164,7 @@
                 </div>
             </div>
 
-            <div class="flex-row">
+            <div class="flex-row w-10 gap-10 space-center align-item-center">
                 <div class="table-div">
                     <p class="sub-title">킬 관여</p>
                     <table class="table">
