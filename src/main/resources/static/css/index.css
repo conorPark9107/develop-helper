@@ -52,6 +52,13 @@ label {
     font-weight: 900;
 }
 .footer{
+    height: 15px;
+    position : relative;
+    transform : translateY(-100%);
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-bottom: 15px;
     color: #eee;
 }
 .a {
