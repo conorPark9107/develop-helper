@@ -50,6 +50,7 @@ body[data-theme='light-mode'] {
     --table-main-text-color: #000000;
     --table-sub-text-color: #333333;
     --table-hover : rgb(159 159 159);
+    --table-border : #EDEEF1;
 
     --li-hover: rgb(255 255 255);
 
@@ -91,7 +92,7 @@ body[data-theme='dark-mode'] {
     --table-main-text-color: #dcdcdc;
     --table-sub-text-color: #929292;
     --table-hover : #2d2d2d;
-
+    --table-border : #353736;
     --li-hover: #2d2d2d;
 
     --info : #FD9F28;
