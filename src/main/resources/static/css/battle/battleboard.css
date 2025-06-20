@@ -19,17 +19,10 @@ a{
 }
 .rankTable{
     font-size: 10px;
-    width:100%;
     box-shadow: 0 0 8px var(--black);
-    background-color: var(--background-2);
 }
 .rankTable thead tr th{
     padding: 5px 0px 5px 0px;
-    border-bottom: 1px solid var(--gray);
-    border-top: 1px solid var(--gray);
-}
-.rankTable tbody tr td{
-    border-bottom: 1px solid var(--gray);
 }
 .w8{
     width :80%;
