@@ -370,7 +370,7 @@ function setMainTableDefaultData(foods, cateDetail){
         }
         $(tr).attr('data-value', foods.itemValue);
         $(tr).append(`<td><div class="main-table-after"><img src='https://render.albiononline.com/v1/item/${fileName}' value="${fileName}" /><span>${foods.returnNum}</span></div></td>`);
-        $(tr).append('<td><input type="number"></td>');
+        $(tr).append('<td><input type="number" placeholder="가격 입력"></td>');
         
         let appendData = '';
         for(let j = 0; j < foods.names.length; j++){
@@ -384,7 +384,7 @@ function setMainTableDefaultData(foods, cateDetail){
         
 
         $(tr).append(`<td>${appendData}</td>`);
-        $(tr).append('<td><input type="number"></td>');
+        $(tr).append('<td><input type="number" placeholder="가격 입력"></td>');
         $(tr).append(`<td>${foods.baseFocus[i]}</td>`);
         $(tr).append(`<td>0</td>`);
         $(tr).append(`<td>0</td>`);        

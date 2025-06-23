@@ -391,9 +391,9 @@ function setMainTableDefaultData(itemArr, table){
         const tr = document.createElement('tr');
         $(tr).attr('data-value', butcherArr.itemValue);
         $(tr).append(`<td><div class="main-table-after"><img src='https://render.albiononline.com/v1/item/${itemArr[i]}' value="${itemArr[i]}" /><span>${butcherArr.returnNum}</span></div></td>`);
-        $(tr).append(`<td><input type="number" value="0" id="${itemArr[i]}" ></td>`);
+        $(tr).append(`<td><input type="number" value="0" id="${itemArr[i]}" placeholder="가격 입력"></td>`);
         $(tr).append(`<td><div class="material-cooking-meat"><img src='https://render.albiononline.com/v1/item/${butcherArr.name}' value="${butcherArr.name}" /><span>1</span></div></td>`);
-        $(tr).append(`<td><input type="number" value="0" id="${butcherArr.name}"></td>`);
+        $(tr).append(`<td><input type="number" value="0" id="${butcherArr.name}" placeholder="가격 입력"></td>`);
         $(tr).append(`<td>${butcherArr.baseFocus}</td>`);
         $(tr).append(`<td>0</td>`);
         $(tr).append(`<td>0</td>`);        
@@ -408,9 +408,9 @@ function setMainTableDefaultData_fish(itemArr, table){
         const fishArr = fishTree[itemArr[i]];
         const tr = document.createElement('tr');
         $(tr).append(`<td><div class="main-table-after"><img src='https://render.albiononline.com/v1/item/${itemArr[i]}' value="${itemArr[i]}" /><span>1</span></div></td>`);
-        $(tr).append(`<td><input type="number" value="0" id="${itemArr[i]}" ></td>`);
+        $(tr).append(`<td><input type="number" value="0" id="${itemArr[i]}" placeholder="가격 입력" ></td>`);
         $(tr).append(`<td><div class="main-table-after"><img src='https://render.albiononline.com/v1/item/T1_FISHCHOPS'/><span>${fishArr.choppedFish}</span></div></td>`);
-        $(tr).append(`<td><input type="number" value="0" class="T1_FISHCHOPS" ></td>`);
+        $(tr).append(`<td><input type="number" value="0" class="T1_FISHCHOPS" placeholder="가격 입력" ></td>`);
         $(tr).append('<td>0</td>');
         $(table).append(tr);
     }

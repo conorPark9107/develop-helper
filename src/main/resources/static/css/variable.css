@@ -51,6 +51,9 @@ body[data-theme='light-mode'] {
     --table-sub-text-color: #333333;
     --table-hover : rgb(159 159 159);
     --table-border : #EDEEF1;
+    --input-color: #141414;
+    --input-placeholder: #a5a5a5;
+    --input-background: #e7e7e7;
 
     --li-hover: rgb(255 255 255);
 
@@ -94,6 +97,9 @@ body[data-theme='dark-mode'] {
     --table-hover : #2d2d2d;
     --table-border : #353736;
     --li-hover: #2d2d2d;
+    --input-color: #e3e3e3;
+    --input-placeholder: #7f7f7f;
+    --input-background: #292929;
 
     --info : #FD9F28;
     --info-2: #35c408;

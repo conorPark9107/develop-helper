@@ -421,6 +421,9 @@ legend {
 input:focus::placeholder{
     color:transparent;
 }
+.white{
+    color: var(--white);
+}
 .discord{
     background-color: #5865F2;
     color: white;

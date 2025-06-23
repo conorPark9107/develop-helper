@@ -72,6 +72,10 @@ label{
 label:hover{
     opacity: 0.6;
 }
+input[type=number]::placeholder{
+    color: var(--input-placeholder);
+    font-size: 10px;
+}
 input[type='radio'] {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -136,9 +140,15 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
-/* Firefox */
-input[type=number] {
-    -moz-appearance: textfield;
+td input[type=number] {
+    font-weight: 600;
+    font-size: 10px;
+    color: var(--input-color);
+    background-color: var(--input-background);
+    box-sizing: border-box;
+    padding: 5px 5px;
+    border-radius: 2px;
+    border: 0;
 }
 ul {
     list-style: none;
@@ -258,8 +268,8 @@ table{
 th{
     font-weight: bold;
     padding: 10px 0px;
-    background-color: var(--table-th-color);
-    color: var(--table-th-text-color);
+    /*background-color: var(--table-th-color);
+    color: var(--table-th-text-color);*/
     /*border-left: 1px solid var(--sub-color);
     border-right: 1px solid var(--sub-color);
     border-bottom: 2px solid var(--sub-color);
@@ -269,12 +279,12 @@ table tbody tr:last-child td{
     border-bottom: 0;
 }
 td{
-    color: var(--sub-color);
+    /*color: var(--sub-color);*/
     padding: 0 10px;
     border-bottom: 1px solid var(--border-bottom);
 }
 tr{
-    background-color: var(--table-tr-color);
+    /*background-color: var(--table-tr-color);*/
 }
 .refining-table td:nth-child(5){
     text-align: left;
@@ -309,7 +319,7 @@ td img{
     margin-bottom: -5px;
 }
 .material span{
-    font-size: 0.6em;
+    font-size: 1em;
     font-weight: bold;
 }
 
@@ -382,7 +392,7 @@ table tbody td input{
     display:inline-block;
 }
 .priceDetail{
-    font-size: 0.5em;
+    font-size: 1em;
     margin: 0 auto;
     color : var(--table-th-sub-text-color);
 }
@@ -396,7 +406,7 @@ table tbody td input{
     color: var(--green);
 }
 .tooltip{
-    font-size: 0.5em;
+    font-size: 0.8em;
     font-weight: bold;
     padding: 1px 5px;    
     margin-left: 3px;
@@ -490,7 +500,7 @@ table tbody td input{
     margin-bottom: -8px;
 }
 .main-table-after span{
-    font-size: 0.6em;
+    font-size: 1em;
     font-weight: bold;
 }
 .material-cooking-meat{
@@ -504,7 +514,7 @@ table tbody td input{
     margin-bottom: -5px;
 }
 .material-cooking-meat span{
-    font-size: 0.6em;
+    font-size: 1em;
     font-weight: bold;
 }
 
@@ -519,11 +529,11 @@ table tbody td input{
     margin-bottom: -5px;
 }
 .material-cooking span{
-    font-size: 0.6em;
+    font-size: 1em;
     font-weight: bold;
 }
 .main-table tbody tr td{
-    font-size: 0.8em;
+    font-size: 1em;
 }
 .main-table tbody td:nth-child(3){
     text-align: left;

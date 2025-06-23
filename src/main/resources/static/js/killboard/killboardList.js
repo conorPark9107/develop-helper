@@ -1,4 +1,16 @@
 $(document).ready(function(){
+
+    $("input[name='radio_kill']").change(function(){
+    	var value = $("input[name='radio_kill']:checked").val();
+    	if(value == 'kill'){
+            $("#deathTable").hide();
+            $("#killTable").fadeIn(500);
+    	}else{
+            $("#killTable").hide();
+            $("#deathTable").fadeIn(500);
+    	}
+    });
+
     $('tbody tr td').on('click', function(e){
         if($(e.target).hasClass("not")){
             return;

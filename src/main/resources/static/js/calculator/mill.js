@@ -102,9 +102,9 @@ function showImages(){
         const mill = millTree[after[i]];
         $(tr).attr('data-value', mill.itemValue);
         $(tr).append(`<td><div class="main-table-after"><img src='https://render.albiononline.com/v1/item/${after[i]}' value="${after[i]}" /><span>1</span></div></td>`);
-        $(tr).append(`<td><input type="number" value="0" id="${after[i]}" ></td>`);
+        $(tr).append(`<td><input type="number" value="0" id="${after[i]}" placeholder="가격 입력"></td>`);
         $(tr).append(`<td><div class="material-cooking-meat"><img src='https://render.albiononline.com/v1/item/${mill.name}' value="${mill.name}" /><span>1</span></div></td>`);
-        $(tr).append(`<td><input type="number" value="0" id="${mill.name}"></td>`);
+        $(tr).append(`<td><input type="number" value="0" id="${mill.name}" placeholder="가격 입력"></td>`);
         $(tr).append(`<td>${mill.baseFocus}</td>`);
         $(tr).append(`<td>0</td>`);
         $(tr).append(`<td>0</td>`);        

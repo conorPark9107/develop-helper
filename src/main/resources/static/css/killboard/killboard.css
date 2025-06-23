@@ -40,7 +40,6 @@ table{
     white-space: nowrap;
     border-collapse: collapse;
     font-size: 10px;
-    color: var(--sub-color);
     box-shadow: 0 0 8px var(--black);
 }
 td {
@@ -52,12 +51,10 @@ td {
 th{
     width: 5vw;
     padding: 5px 0px 5px 0px;
-    border-bottom: 1px solid var(--gray);
-    border-top: 1px solid var(--gray);
 }
 tr:hover{
     cursor:pointer;
-    background-color: var(--table-hover);
+    opacity:0.8;
 }
 table tbody tr:last-child td{
     border-bottom: 0;

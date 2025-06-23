@@ -26,6 +26,12 @@ spring:
     encoding: UTF-8
     prefix: classpath:templates/
     suffix: .html
+  web:
+    resources:
+      cache:
+        period: 0
+      chain:
+        cache: 'false'
   jpa:
     hibernate:
       ddl-auto: update

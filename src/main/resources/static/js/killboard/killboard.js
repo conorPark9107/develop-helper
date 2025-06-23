@@ -96,17 +96,6 @@ $(document).ready(function() {
         turnLoading();
     });
 
-    $("input[name='radio_kill']").change(function(){
-    	var value = $("input[name='radio_kill']:checked").val();
-    	if(value == 'kill'){
-            $("#deathTable").hide();
-            $("#killTable").fadeIn(500);
-    	}else{
-            $("#killTable").hide();
-            $("#deathTable").fadeIn(500);
-    	}
-    });
-
     $('.userLink').on('click', function(e){
         submitForCount(e);
     });
