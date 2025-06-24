@@ -375,7 +375,7 @@ public class BattlesService {
     }
 
     public List<BattleCountLogDTO> getCount(String server) {
-        return battlesRepository.findAllByTop10AndServer(server)
+        return battlesRepository.findAllByTop5AndServer(server)
                 .stream()
                 .map(BattleCountLog::toDto)
                 .collect(Collectors.toList());
