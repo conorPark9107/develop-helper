@@ -82,12 +82,7 @@ a{
     font-size: 10px;
     color: var(--bg-text);
 }
-.flex-vertical-center{
-    align-items: center;
-}
-.flex-vertical-bottom{
-    align-items: end;
-}
+
 .flex-left{
     justify-content: flex-end;
 }

@@ -309,6 +309,16 @@ legend {
 .flex-wrap{
     flex-wrap: wrap;
 }
+.flex-vertical-center{
+    align-items: center;
+}
+.flex-vertical-bottom{
+    align-items: end;
+}
+.flex-vertical-start{
+    align-items: start;
+}
+
 @keyframes rotate {
     to {
         --angle: 360deg;

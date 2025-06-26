@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+
+    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
+   <script type="text/javascript" src="/static/js/battle/battleboard.js"></script>
+   <link rel="stylesheet" href="/static/css/variable.css" />
+   <link rel="stylesheet" href="/static/css/editor.css" />
+   <link rel="stylesheet" href="/static/css/loading.css" />
+   <link rel="stylesheet" href="/static/css/index.css" />
+   <link rel="stylesheet" href="/static/css/detail.css" />
+   <link rel="stylesheet" href="/static/css/battle/battleboardDetail.css" /> -->
+
+    <script type="text/javascript" src="/jsMin/util.js"></script>
+    <link rel="stylesheet" href="/css/variable.css"/>
+    <link rel="stylesheet" href="/css/board/editor.css"/>
+    <link rel="stylesheet" href="/css/loading.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/detail.css"/>
+    <link rel="stylesheet" href="/css/battle/battleboardDetail.css"/>
+    <meta charset="UTF-8">
+    <title>알비온 GG - 길드 전투 기록 ⚔</title>
+</head>
+<body data-theme="light-mode">
+<script type="text/javascript" src="/jsMin/toggle.js"></script>
+<div class="image-maindiv">
+    <div th:replace="~{header :: header}"></div>
+
+    <div>
+        <div class="back-div">
+            <a class="btn text-center" href="javascript:history.back();">목록으로</a>
+        </div>
+        <div class="container-title">
+            <h5>🏹전투 기록</h5>
+        </div>
+        <div class="container">
+            <div class="flex-row w-10 gap-10 flex-wrap flex-center gap">
+                <div class="flex-column flex-item border shadow">
+                    <div class="detailDiv">
+                        <span class="flex-title">🏹전투 id</span>
+                        <span class="flex-title sub" th:text="${battle.id}"></span>
+                    </div>
+                </div>
+                <div class="flex-column flex-item border shadow">
+                    <div class="detailDiv">
+                        <span class="flex-title">🕐시작시간(한국시간)</span>
+                        <span class="flex-title sub" th:text="${battle.startTime}"></span>
+                    </div>
+                </div>
+                <div class="flex-column flex-item border shadow">
+                    <div class="detailDiv">
+                        <span class="flex-title">🕑종료시간(한국시간)</span>
+                        <span class="flex-title sub" th:text="${battle.endTime}"></span>
+                    </div>
+                </div>
+                <div class="flex-column flex-item border shadow">
+                    <div class="detailDiv">
+                        <span class="flex-title">🏴‍☠️‍️총페임</span>
+                        <span class="flex-title sub"
+                              th:text="${#numbers.formatInteger(battle.totalFame, 1, 'COMMA')}"></span>
+                    </div>
+                </div>
+                <div class="flex-column flex-item border shadow">
+                    <div class="detailDiv">
+                        <span class="flex-title">💀발생한 킬수</span>
+                        <span class="flex-title sub" th:text="|${battle.totalKills}킬|"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-row w-10 flex-wrap flex-center gap-15">
+                <div class="flex-column flex-item kill">
+                    <span class="flex-title">🤴🏻가장 킬을 많이한 플레이어</span>
+                    <div class="detailDiv">
+                        <p class="flex-grow-1 detailFirst">
+                            <span class="playerName red" th:text="${mostKiller.name}"></span>
+                            <span class="playerGuildName" th:if="${not #strings.isEmpty(mostKiller.allianceName)}"
+                                  th:text="|[${mostKiller.allianceName}] |"></span>
+                            <span class="playerGuildName" th:if="${not #strings.isEmpty(mostKiller.guildName)}"
+                                  th:text="${mostKiller.guildName}"></span>
+                        </p>
+                        <p class="flex-grow-1 detailEnd" th:text="|${mostKiller.kills}킬|"></p>
+                    </div>
+                </div>
+                <div class="flex-column flex-item dps">
+                    <span class="flex-title">🧛🏻‍♀️가장 딜을 많이한 플레이어</span>
+                    <div class="detailDiv">
+                        <p class="flex-grow-1 detailFirst">
+                            <span class="playerName purple" th:text="${mostDps.name}"></span>
+                            <span class="playerGuildName" th:if="${not #strings.isEmpty(mostDps.allianceName)}"
+                                  th:text="|[${mostDps.allianceName}] |"></span>
+                            <span class="playerGuildName" th:if="${not #strings.isEmpty(mostDps.guildName)}"
+                                  th:text="${mostDps.guildName}"></span>
+                        </p>
+                        <p class="flex-grow-1 detailEnd"
+                           th:text="|${#numbers.formatInteger(mostDps.damageDone, 1, 'COMMA')}딜|"></p>
+                    </div>
+                </div>
+                <div class="flex-column flex-item heal">
+                    <span class="flex-title">🧚🏻‍♀️가장 힐을 많이한 플레이어</span>
+                    <div class="detailDiv">
+                        <p class="flex-grow-1 detailFirst">
+                            <span class="playerName green" th:text="${mostHeal.name}"></span>
+                            <span class="playerGuildName" th:if="${not #strings.isEmpty(mostHeal.allianceName)}"
+                                  th:text="|[${mostHeal.allianceName}] |"></span>
+                            <span class="playerGuildName" th:if="${not #strings.isEmpty(mostHeal.guildName)}"
+                                  th:text="${mostHeal.guildName}"></span>
+                        </p>
+                        <p class="flex-grow-1 detailEnd"
+                           th:text="|${#numbers.formatInteger(mostHeal.supportHealingDone, 1, 'COMMA')}힐|"></p>
+                    </div>
+                </div>
+                <div class="flex-column flex-item bigdonation">
+                    <span class="flex-title">👼🏻빅 도네이션 플레이어</span>
+                    <div class="detailDiv">
+                        <p class="flex-grow-1 detailFirst">
+                            <span class="playerName yellow" th:text="${mostDonation.name}"></span>
+                            <span class="playerGuildName" th:if="${not #strings.isEmpty(mostDonation.allianceName)}"
+                                  th:text="|[${mostDonation.allianceName}] |"></span>
+                            <span class="playerGuildName" th:if="${not #strings.isEmpty(mostDonation.guildName)}"
+                                  th:text="${mostDonation.guildName}"></span>
+                        </p>
+                        <div class="flex-grow-1 detailEnd">
+                            <span th:text="|${#numbers.formatInteger(mostDonation.deathFame, 1, 'COMMA')}데스페임|"></span>
+                            <div class="detailEnd imageArea" th:with="p=${mostDonation.equipment}">
+                                <img th:if="${not #strings.isEmpty(p.mainHand)}"
+                                     th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}|"/>
+                                <img th:if="${not #strings.isEmpty(p.offHand)}"
+                                     th:src="|https://render.albiononline.com/v1/item/${p.offHand.type}?quality=${p.offHand.quality}|"/>
+                                <img th:if="${not #strings.isEmpty(p.head)}"
+                                     th:src="|https://render.albiononline.com/v1/item/${p.head.type}?quality=${p.head.quality}|"/>
+                                <img th:if="${not #strings.isEmpty(p.armor)}"
+                                     th:src="|https://render.albiononline.com/v1/item/${p.armor.type}?quality=${p.armor.quality}|"/>
+                                <img th:if="${not #strings.isEmpty(p.shoes)}"
+                                     th:src="|https://render.albiononline.com/v1/item/${p.shoes.type}?quality=${p.shoes.quality}|"/>
+                                <img th:if="${not #strings.isEmpty(p.cape)}"
+                                     th:src="|https://render.albiononline.com/v1/item/${p.cape.type}?quality=${p.cape.quality}|"/>
+                                <img th:if="${not #strings.isEmpty(p.mount)}"
+                                     th:src="|https://render.albiononline.com/v1/item/${p.mount.type}?quality=${p.mount.quality}|"/>
+                                <th:block th:if="${not #strings.isEmpty(mostDonation.inventory)}"
+                                          th:each="inventory : ${mostDonation.inventory}">
+                                    <img th:if="${not #strings.isEmpty(inventory)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${inventory.type}?quality=${inventory.quality}|"/>
+                                </th:block>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-row w-10 flex-wrap flex-center gap-15">
+                <div class="top-table-div">
+                    <span class="table-title" th:text="|👨‍👩‍👧‍👦동맹 (${#lists.size(alliances)})|"></span>
+                    <table class="table">
+                        <colgroup>
+                            <col class="allycol1">
+                            <col class="allycol2">
+                            <col class="allycol3">
+                            <col class="allycol4">
+                            <col class="allycol5">
+                            <col class="allycol6">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>동맹 태그명</th>
+                            <th>참여 인원</th>
+                            <th>킬</th>
+                            <th>데스</th>
+                            <th>전투 킬페임</th>
+                            <th>아이템 파워(IP)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:if="${#strings.isEmpty(alliances) or #lists.size(alliances) == 0}">
+                            <td style="text-align:center" colspan="6">동맹 정보 없음</td>
+                        </tr>
+
+                        <tr class="trHover" th:each="alliance : ${alliances}">
+                            <td th:text="${alliance.name}"></td>
+                            <td th:text="${alliance.playerCount}"></td>
+                            <td th:text="${alliance.kills}"></td>
+                            <td th:text="${alliance.deaths}"></td>
+                            <td th:text="${#numbers.formatInteger(alliance.killFame, 1, 'COMMA')}"></td>
+                            <td th:text="${alliance.averageIp}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="top-table-div">
+                    <span class="table-title" th:text="|👩‍👧‍👧길드 (${#lists.size(guilds)})|"></span>
+                    <table class="table">
+                        <colgroup>
+                            <col class="allycol1">
+                            <col class="allycol2">
+                            <col class="allycol3">
+                            <col class="allycol4">
+                            <col class="allycol5">
+                            <col class="allycol6">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>길드명</th>
+                            <th>참여 인원</th>
+                            <th>킬</th>
+                            <th>데스</th>
+                            <th>전투 킬페임</th>
+                            <th>아이템 파워(IP)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="trHover" th:each="guild : ${guilds}">
+                            <td>
+                                <span class="detailAlly" th:if="${not #strings.isEmpty(guild.alliance)}"
+                                      th:text="|[${guild.alliance}] |"></span>
+                                <b th:text="${guild.name}"></b>
+                            </td>
+                            <td th:text="${guild.playerCount}"></td>
+                            <td th:text="${guild.kills}"></td>
+                            <td th:text="${guild.deaths}"></td>
+                            <td th:text="${#numbers.formatInteger(guild.killFame, 1, 'COMMA')}"></td>
+                            <td th:text="${guild.averageIp}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>   <!-- flex-row -->
+
+            <div class="flex-row w-10 flex-center gap">
+                <div class="top-table-div">
+                    <div class="flex-column w-10 flex-center">
+                        <span class="table-title" th:text="|🙍‍♂️플레이어 (${#lists.size(playerList)})|"></span>
+                        <table class="table">
+                            <colgroup>
+                                <col class="col1">
+                                <col class="col2">
+                                <col class="col3">
+                                <col class="col4">
+                                <col class="col5">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>닉네임</th>
+                                <th>아이템</th>
+                                <th>킬</th>
+                                <th>데스</th>
+                                <th>아이템 파워(IP)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="trHover" th:each="players : ${playerList}">
+                                <td>
+                                    <span class="detailAlly" th:if="${not #strings.isEmpty(players.allianceName)}"
+                                          th:text="|[${players.allianceName}] |"></span>
+                                    <span class="detailAlly" th:if="${not #strings.isEmpty(players.guildName)}"
+                                          th:text="${players.guildName}"></span>
+                                    <br>
+                                    <b th:text="${players.name}"></b>
+                                </td>
+                                <td class="itemList" th:with="p=${players.equipment}">
+                                    <img th:if="${not #strings.isEmpty(p.mainHand)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${p.mainHand.type}?quality=${p.mainHand.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(p.offHand)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${p.offHand.type}?quality=${p.offHand.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(p.head)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${p.head.type}?quality=${p.head.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(p.armor)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${p.armor.type}?quality=${p.armor.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(p.shoes)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${p.shoes.type}?quality=${p.shoes.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(p.cape)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${p.cape.type}?quality=${p.cape.quality}|"/>
+                                </td>
+                                <td th:text="${players.kills}"></td>
+                                <td th:text="${players.deaths}"></td>
+                                <td th:text="${players.averageItemPower}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="top-table-div">
+                    <div class="flex-column w-10 flex-wrap flex-center gap">
+                        <span class="table-title" th:text="|👼킬로그 (${#lists.size(eventList)})|"></span>
+                        <table class="table kill-table">
+                            <colgroup>
+                                <col class="kill-col1">
+                                <col class="kill-col2">
+                                <col class="kill-col3">
+                                <col class="kill-col4">
+                                <col class="kill-col5">
+                                <col class="kill-col6">
+                                <col class="kill-col7">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>죽인 사람</th>
+                                <th>죽인 사람 아이템</th>
+                                <th>ip</th>
+                                <th></th>
+                                <th>죽은 사람</th>
+                                <th>죽은 사람 아이템</th>
+                                <th>ip</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="trHover" th:each="eventList : ${eventList}">
+                                <td>
+                                        <span class="detailAlly"
+                                              th:if="${not #strings.isEmpty(eventList.killer.allianceName)}"
+                                              th:text="|[${eventList.killer.allianceName}] |"></span>
+                                    <span class="detailAlly" th:if="${not #strings.isEmpty(eventList.killer.guildName)}"
+                                          th:text="${eventList.killer.guildName}"></span>
+                                    <br>
+                                    <b th:text="${eventList.killer.name}"></b>
+                                </td>
+                                <td class="itemList" th:with="k=${eventList.killer.equipment}">
+                                    <img th:if="${not #strings.isEmpty(k.mainHand)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${k.mainHand.type}?quality=${k.mainHand.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(k.offHand)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${k.offHand.type}?quality=${k.offHand.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(k.head)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${k.head.type}?quality=${k.head.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(k.armor)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${k.armor.type}?quality=${k.armor.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(k.shoes)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${k.shoes.type}?quality=${k.shoes.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(k.cape)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${k.cape.type}?quality=${k.cape.quality}|"/>
+                                </td>
+                                <td th:text="${eventList.killer.averageItemPower}"></td>
+                                <td><span class="killIcon">🏹</span></td>
+                                <td>
+                                        <span class="detailAlly"
+                                              th:if="${not #strings.isEmpty(eventList.victim.allianceName)}"
+                                              th:text="|[${eventList.victim.allianceName}] |"></span>
+                                    <span class="detailAlly" th:if="${not #strings.isEmpty(eventList.victim.guildName)}"
+                                          th:text="${eventList.victim.guildName}"></span>
+                                    <br>
+                                    <b th:text="${eventList.victim.name}"></b>
+                                </td>
+                                <td class="itemList" th:with="v=${eventList.victim.equipment}">
+                                    <img th:if="${not #strings.isEmpty(v.mainHand)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${v.mainHand.type}?quality=${v.mainHand.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(v.head)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${v.head.type}?quality=${v.head.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(v.armor)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${v.armor.type}?quality=${v.armor.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(v.shoes)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${v.shoes.type}?quality=${v.shoes.quality}|"/>
+                                    <img th:if="${not #strings.isEmpty(v.cape)}"
+                                         th:src="|https://render.albiononline.com/v1/item/${v.cape.type}?quality=${v.cape.quality}|"/>
+                                </td>
+                                <td th:text="${eventList.victim.averageItemPower}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+<div id="blackArea">
+    <div id="loading">
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <h1>정보 요청중..</h1>
+    </div>
+</div>
+
+
+</body>
+</html>
