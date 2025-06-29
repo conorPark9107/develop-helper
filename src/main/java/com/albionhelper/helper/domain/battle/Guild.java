@@ -5,8 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Comparator;
-
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -45,9 +43,9 @@ public class Guild implements Comparable<Guild> {
 
     @Override
     public int compareTo(Guild o) {
-        if(o.getPlayerCount() - this.playerCount == 0){
-            return o.getKills() - this.kills;
+        if(o.getKills() - this.kills == 0){
+            return o.getPlayerCount() - this.playerCount;
         }
-        return  o.getPlayerCount() - this.playerCount;
+        return o.getKills() - this.kills;
     }
 }
