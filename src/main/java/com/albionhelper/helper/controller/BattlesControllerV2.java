@@ -33,7 +33,6 @@ public class BattlesControllerV2 {
                             ,@RequestParam(name = "server", defaultValue = "east") String url
                             ,@RequestParam(name = "offset", defaultValue = "0") int offset
                             ,@RequestParam(name = "limit", defaultValue = "20") int limit) throws JsonProcessingException {
-
         model.addAttribute("count", battlesServiceV2.getCount(url));
         List<Battle> list = battlesServiceV2.getBattleList(url, offset, limit, inputValue);
         model.addAttribute("size", list.size());
@@ -67,7 +66,6 @@ public class BattlesControllerV2 {
             ,@RequestParam(name = "guildName", defaultValue = "") String guildName
             ,@RequestParam(name = "offset", defaultValue = "0") int offset
             ,@RequestParam(name = "limit", defaultValue = "10") int limit) throws JsonProcessingException {
-
         if(!guildName.isEmpty()){
             battlesServiceV2.addGuildCount(inputValue, url, guildName);
         }
@@ -88,10 +86,10 @@ public class BattlesControllerV2 {
         // 특정 전투의 이벤트(킬 로그)들을 전부 종합해서 가져오는 메서드.
         List<Event> eventList = battlesServiceV2.getEventList(id, server, battle.getTotalKills());
 
-        // 모스트 킬
+        // 모스트 킬.
         Player p = battlesServiceV2.getMostKillingPlayer(battle);
 
-        // 플레이어 리스트
+        // 플레이어 리스트.
         Map<String, EventPlayer> playerList = battlesServiceV2.getPlayerList(eventList, battle);
 
         // 길드별, 연합별 평균 ip구하기.

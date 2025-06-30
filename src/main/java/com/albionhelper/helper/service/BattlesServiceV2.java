@@ -196,10 +196,10 @@ public class BattlesServiceV2 {
         for (Alliance ally : alliances) {
             ally.setPlayerCount(allycountMap.get(ally.getName()));
         }
-
-        for (Guild guild : guilds) {
-            guild.setPlayerCount(guildcountMap.get(guild.getName()));
-        }
+        alliances.forEach(alliance ->
+                alliance.setPlayerCount(allycountMap.get(alliance.getName())));
+        guilds.forEach(guild ->
+                guild.setPlayerCount(guildcountMap.get(guild.getName())));
 
         Collections.sort(alliances);
         Collections.sort(guilds);

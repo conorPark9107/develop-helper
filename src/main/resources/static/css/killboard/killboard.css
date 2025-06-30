@@ -52,7 +52,7 @@ th{
     width: 5vw;
     padding: 5px 0px 5px 0px;
 }
-tr:hover{
+tbody tr:hover{
     cursor:pointer;
     opacity:0.8;
 }
