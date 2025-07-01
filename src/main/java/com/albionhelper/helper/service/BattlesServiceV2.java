@@ -142,6 +142,7 @@ public class BattlesServiceV2 {
         Battle b = new Battle();
         ObjectMapper objMapper = new ObjectMapper();
 
+
         b.setId(String.valueOf(node.get("id")));
         b.setStartTime(String.valueOf(node.get("startTime")));
         b.setEndTime(String.valueOf(node.get("endTime")));
