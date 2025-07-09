@@ -1,10 +1,12 @@
 package com.albionhelper.helper.controller;
 
-import com.albionhelper.helper.domain.board.*;
+import com.albionhelper.helper.domain.board.BoardRequestDTO;
+import com.albionhelper.helper.domain.board.BoardResponseDTO;
+import com.albionhelper.helper.domain.board.CommentRequestDTO;
+import com.albionhelper.helper.domain.board.CommentResponseDTO;
 import com.albionhelper.helper.service.BoardService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -14,10 +16,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import java.net.UnknownHostException;
 import java.util.List;
-import java.util.Optional;
 
 
 @Controller
@@ -38,10 +38,6 @@ public class BoardController {
                            Model model){
 
         Page<BoardResponseDTO> boardList = boardService.findAllById(pageable, category);
-
-        log.info("요청한 페이지 번호 pageNumber() : {}", pageable.getPageNumber() + 1);
-        log.info("총 페이지 getTotalPages() : {}", boardList.getTotalPages());
-
         int range = 5; // 기본적으로 보여줄 페이지 index 개수.
         int firstPage = 0; // 첫 페이지.
 
@@ -57,7 +53,6 @@ public class BoardController {
         model.addAttribute("pickPage", pickPage);
         model.addAttribute("startPageNum", startPage);
         model.addAttribute("endPageNum", endPage);
-        System.out.println(startPage + " : " + endPage + " : " + lastPage);
         model.addAttribute("size", pageable.getPageSize());
         model.addAttribute("list", boardList);
         model.addAttribute("categoryList", boardService.findAllCategory());

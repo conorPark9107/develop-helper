@@ -1,11 +1,9 @@
 package com.albionhelper.helper.domain.board;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Formula;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -62,6 +60,7 @@ public class Board {
                 .write_date(write_date)
                 .view_count(view_count)
                 .updown(updown)
+                .commentCount(commentCount)
                 .build();
     }
 

@@ -210,13 +210,13 @@ $(document).ready(function() {
 
 
     function setTableImages(item){
-        const tables = $('.table');
+        const tables = $('.table-market');
         for(let i = 0; i < tables.length; i++){
             const th = $(tables[i]).children('thead').children('tr').children('th')[0];
             $(th).empty();
             const img = document.createElement('img');
             img.className = 'tableImage';
-            img.src = `https://render.albiononline.com/v1/item/${item}.png?quality=${i+1}`;
+            img.src = `https://render.albiononline.com/v1/item/${item}?quality=${i+1}`;
             $(th).append(img);
         }
     }
@@ -267,7 +267,6 @@ $(document).ready(function() {
 
     // 서버에서 시장 데이터 받아서 뿌려주기.
     function updateTable(response){
-        console.log(response);
         for(let i = 0; i < response.length; i++){
             const obj = response[i];
             const id = obj.city + obj.quality;
@@ -336,7 +335,7 @@ $(document).ready(function() {
 
     // 마을 라디오 버튼을 클릭했을때
     const cityRadio = document.querySelectorAll('input[name="city"]');
-    const rows = document.querySelectorAll('.table > tbody > tr');
+    const rows = document.querySelectorAll('.table-market > tbody > tr');
 
     // 키값을 가져와서 테이블 행을 숨김.
     function showRowsForKey(key) {
