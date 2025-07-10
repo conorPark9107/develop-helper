@@ -169,12 +169,12 @@
                         </colgroup>
                         <thead>
                         <tr>
-                            <th>동맹 태그명</th>
+                            <th>동맹 - 길드</th>
                             <th>참여 인원</th>
                             <th>킬</th>
                             <th>데스</th>
-                            <th>전투 킬페임</th>
-                            <th>아이템 파워(IP)</th>
+                            <th>킬페임</th>
+                            <th>평균 IP</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -183,7 +183,10 @@
                         </tr>
 
                         <tr class="trHover" th:each="alliance : ${alliances}">
-                            <td th:text="${alliance.name}"></td>
+                            <td>
+                                <span th:text="|[${alliance.name}] |"></span>
+                                <span class="detailAlly fs-9" th:each="guild : ${guilds}" th:if="${guild.alliance == alliance.name}" th:text="| ${guild.name} |"></span>
+                            </td>
                             <td th:text="${alliance.playerCount}"></td>
                             <td th:text="${alliance.kills}"></td>
                             <td th:text="${alliance.deaths}"></td>
@@ -211,8 +214,8 @@
                             <th>참여 인원</th>
                             <th>킬</th>
                             <th>데스</th>
-                            <th>전투 킬페임</th>
-                            <th>아이템 파워(IP)</th>
+                            <th>킬페임</th>
+                            <th>평균 IP</th>
                         </tr>
                         </thead>
                         <tbody>
