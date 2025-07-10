@@ -125,6 +125,10 @@
             "name": "핸드 오브 저스티스"
         },
         {
+            "id": "T8_2H_HAMMER_CRYSTAL",
+            "name": "트루볼트 해머"
+        },
+        {
             "id": "T8_2H_KNUCKLES_SET1",
             "name": "난투 장갑"
         },
@@ -395,6 +399,10 @@
         {
             "id": "T8_2H_SHAPESHIFTER_AVALON",
             "name": "라이트콜러"
+        },
+        {
+            "id": "T8_2H_SHAPESHIFTER_CRYSTAL",
+            "name": "스틸게이즈 스태프"
         },
         {
             "id": "T8_OFF_TORCH",
@@ -1455,6 +1463,10 @@
             "name": "안장 달린 신비로운 올빼미"
         },
         {
+            "id": "T5_MOUNT_SPIDER_HELL",
+            "name": "헬스피너"
+        },
+        {
             "id": "T6_MOUNT_DIREWOLF",
             "name": "다이어울프"
         },
@@ -1501,6 +1513,10 @@
         {
             "id": "T8_MOUNT_OWL_FW_BRECILIEN_ELITE",
             "name": "엘리트 신비로운 올빼미"
+        },
+        {
+            "id": "T8_MOUNT_SPIDER_HELL",
+            "name": "소울스피너"
         },
         {
             "id": "T8_MOUNT_ARMORED_HORSE_MORGANA@1",
