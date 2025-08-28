@@ -213,6 +213,10 @@
             "name": "아스트랄 아이기스"
         },
         {
+            "id": "T8_OFF_SHIELD_CRYSTAL",
+            "name": "언브레이커블 와드"
+        },
+        {
             "id": "T8_2H_BOW",
             "name": "활"
         },
@@ -425,6 +429,10 @@
             "name": "성스러운 셉터"
         },
         {
+            "id": "T8_OFF_TORCH_CRYSTAL",
+            "name": "블루플레임 토치"
+        },
+        {
             "id": "T8_MAIN_FIRESTAFF",
             "name": "파이어 스태프"
         },
@@ -603,6 +611,10 @@
         {
             "id": "T8_OFF_CENSER_AVALON",
             "name": "천상의 향로"
+        },
+        {
+            "id": "T9_OFF_TOME_CRYSTAL",
+            "name": "타임록드 그리모어"
         }
     ],
     "helmet": [
