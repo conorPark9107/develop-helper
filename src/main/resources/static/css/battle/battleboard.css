@@ -18,6 +18,7 @@ a{
     padding-bottom: 5px;
 }
 .rankTable{
+    width: 100%;
     font-size: 10px;
     box-shadow: 0 0 8px var(--black);
 }
