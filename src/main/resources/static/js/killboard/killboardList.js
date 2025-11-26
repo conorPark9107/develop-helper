@@ -19,7 +19,6 @@ $(document).ready(function(){
         const killerId = $(tds[2]).attr('value');
         const victimId = $(tds[5]).attr('value');
         const location = $(tds[2]).data('server');
-        alert(location);
         var form = $('<form></form>');
         form.attr("method","get");
         form.attr("action","/killboard/detail");
