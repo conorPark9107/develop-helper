@@ -1,9 +1,9 @@
 package com.albionhelper.helper.service;
 
+import com.albionhelper.helper.domain.Player;
 import com.albionhelper.helper.domain.battle.Event;
 import com.albionhelper.helper.domain.killboard.DeathBoard;
 import com.albionhelper.helper.domain.killboard.KillBoard;
-import com.albionhelper.helper.domain.Player;
 import com.albionhelper.helper.domain.killboard.PlayerLog;
 import com.albionhelper.helper.domain.killboard.PlayerLogDTO;
 import com.albionhelper.helper.domain.playerinfo.PlayerInfoDetail;
@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -140,7 +139,9 @@ public class KillboardService {
     //    https://gameinfo-sgp.albiononline.com/api/gameinfo/events/Falu3eR4SRyGVZR9g-_XVw/history/_SjHw45FQtGAlbhnjlCjKg
     // 킬보드 상세 페이지 정보를 리턴하는 메서드.
     public Event getDetail(String server, String killerId, String victimId) {
+        System.out.println("과연 : " + server);
         server = getLocation(server);
+        System.out.println("과연 : " + server);
         StringBuilder detailBuilder = new StringBuilder(server);
         String url = detailBuilder.append("/events/").append(killerId).append("/history/").append(victimId).toString();
         log.info("getDetail() request url is {}", url);

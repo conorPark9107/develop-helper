@@ -18,9 +18,8 @@ $(document).ready(function(){
         const tds = $(this).parent().find('td');
         const killerId = $(tds[2]).attr('value');
         const victimId = $(tds[5]).attr('value');
-
-        const location = $('input[name=location]:checked').val();
-
+        const location = $(tds[2]).data('server');
+        alert(location);
         var form = $('<form></form>');
         form.attr("method","get");
         form.attr("action","/killboard/detail");

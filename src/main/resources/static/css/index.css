@@ -473,8 +473,9 @@ input:focus::placeholder{
 }
 
 /* 서부서버 서버측 네트워크 이상해서 잠시 블러 */
+/*
 .west{
     opacity: 0.8;
     filter: blur(1px);
     pointer-events: none;
-}
+}*/
