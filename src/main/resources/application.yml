@@ -5,7 +5,7 @@ server:
     excluded-user-agents: MSIE 6.0,UCBrowser
     min-response-size: 1024
   address: 0.0.0.0
-  port: 80
+  port: 8080
   tomcat:
     connection-timeout: 1200s
 

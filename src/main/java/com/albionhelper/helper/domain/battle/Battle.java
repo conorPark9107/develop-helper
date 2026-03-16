@@ -1,6 +1,6 @@
 package com.albionhelper.helper.domain.battle;
 
-import com.albionhelper.helper.util.Util;
+import com.albionhelper.helper.killApiScheduler.Util;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
