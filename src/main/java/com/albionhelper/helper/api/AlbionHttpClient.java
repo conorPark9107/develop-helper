@@ -1,5 +1,6 @@
 package com.albionhelper.helper.api;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -14,6 +15,7 @@ public class AlbionHttpClient {
     }
 
 
+    @Cacheable(value = "api", key = "#requestUrl")
     public String getResponse(String requestUrl) {
         return webClient.get()
                 .uri(requestUrl)

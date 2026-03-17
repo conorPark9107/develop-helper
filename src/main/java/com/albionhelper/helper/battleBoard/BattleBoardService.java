@@ -50,8 +50,8 @@ public class BattleBoardService {
         this.battleBoardHttpClient = battleBoardHttpClient;
     }
 
-    private String getResponseNoCache(String requestUrl) {
-        return battleBoardHttpClient.getNoCache(requestUrl);
+    private String getBattleBoardResponse(String requestUrl) {
+        return battleBoardHttpClient.getBattleBoardResponse(requestUrl);
     }
 
     private String getResponse(String requestUrl) {
@@ -66,7 +66,7 @@ public class BattleBoardService {
     public List<Battle> getBattleList(String server, int offset, int limit, String id) throws JsonProcessingException {
         String requestUrl = locationSelector.getLocation(server) + DEFAULT_BATTLES_URL + "sort=recent&offset=" + offset + "&limit=" + limit + getIdURI(id);
 
-        String response = getResponseNoCache(requestUrl);
+        String response = getBattleBoardResponse(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(response);
 
@@ -84,7 +84,7 @@ public class BattleBoardService {
     public List<Battle> getBattleListForRefresh(String server, String id, long recentId) throws JsonProcessingException {
         String requestUrl = locationSelector.getLocation(server) + DEFAULT_BATTLES_URL + "sort=recent&range=day&offset=0" + getIdURI(id);
 
-        String response = getResponseNoCache(requestUrl);
+        String response = getBattleBoardResponse(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(response);
 
@@ -344,16 +344,16 @@ public class BattleBoardService {
 
     @Transactional
     public void addGuildCount(String guildId, String server, String guildName) {
-        BattleCountLog battleLog = BattleCountLog.builder()
-                .guildId(guildId)
-                .server(server)
-                .guildName(guildName)
-                .build();
         Optional<BattleCountLog> op = battleBoardRepository.findByServerAndGuildId(server, guildId);
         if (op.isPresent()) {
             BattleCountLog b = op.get();
             b.setCount(b.getCount() + 1);
         } else {
+            BattleCountLog battleLog = BattleCountLog.builder()
+                    .guildId(guildId)
+                    .server(server)
+                    .guildName(guildName)
+                    .build();
             battleBoardRepository.save(battleLog);
         }
     }
