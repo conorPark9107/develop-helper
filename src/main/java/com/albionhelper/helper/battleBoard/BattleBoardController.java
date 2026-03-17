@@ -24,12 +24,12 @@ public class BattleBoardController {
 
     @GetMapping("")
     public String showPage(Model model
-                            , @RequestParam(name = "inputValue", defaultValue = "") String inputValue
-                            ,@RequestParam(name = "server", defaultValue = "east") String url
-                            ,@RequestParam(name = "offset", defaultValue = "0") int offset
-                            ,@RequestParam(name = "limit", defaultValue = "20") int limit) throws JsonProcessingException {
+            , @RequestParam(name = "inputValue", defaultValue = "") String inputValue
+            , @RequestParam(name = "server", defaultValue = "east") String url
+            , @RequestParam(name = "offset", defaultValue = "0") int offset
+            , @RequestParam(name = "limit", defaultValue = "20") int limit) throws JsonProcessingException {
 
-        model.addAttribute("count", battleBoardService.getCount(url));
+        model.addAttribute("count", battleBoardService.getTop5Guild(url));
         List<Battle> list = battleBoardService.getBattleList(url, offset, limit, inputValue);
         model.addAttribute("size", list.size());
         model.addAttribute("list", list);
@@ -41,16 +41,16 @@ public class BattleBoardController {
 
     @GetMapping("/count")
     @ResponseBody
-    public List<BattleCountLogDTO> getCount(@RequestParam(name = "server", defaultValue = "") String server){
-        return battleBoardService.getCount(server);
+    public List<BattleCountLogDTO> getCount(@RequestParam(name = "server", defaultValue = "") String server) {
+        return battleBoardService.getTop5Guild(server);
     }
 
     @GetMapping("/refresh")
     @ResponseBody
     public List<Battle> refreshList(
             @RequestParam(name = "inputValue", defaultValue = "") String inputValue
-            ,@RequestParam(name = "server", defaultValue = "east") String url
-            ,@RequestParam(name = "recentId", defaultValue = "0") Long recentId) throws JsonProcessingException {
+            , @RequestParam(name = "server", defaultValue = "east") String url
+            , @RequestParam(name = "recentId", defaultValue = "0") Long recentId) throws JsonProcessingException {
         return battleBoardService.getBattleListForRefresh(url, inputValue, recentId);
     }
 
@@ -58,12 +58,12 @@ public class BattleBoardController {
     @ResponseBody
     public List<Battle> showPageForAjax(
             @RequestParam(name = "inputValue", defaultValue = "") String inputValue
-            ,@RequestParam(name = "server", defaultValue = "east") String url
-            ,@RequestParam(name = "guildName", defaultValue = "") String guildName
-            ,@RequestParam(name = "offset", defaultValue = "0") int offset
-            ,@RequestParam(name = "limit", defaultValue = "10") int limit) throws JsonProcessingException {
+            , @RequestParam(name = "server", defaultValue = "east") String url
+            , @RequestParam(name = "guildName", defaultValue = "") String guildName
+            , @RequestParam(name = "offset", defaultValue = "0") int offset
+            , @RequestParam(name = "limit", defaultValue = "10") int limit) throws JsonProcessingException {
 
-        if(!guildName.isEmpty()){
+        if (!guildName.isEmpty()) {
             battleBoardService.addGuildCount(inputValue, url, guildName);
         }
         return battleBoardService.getBattleList(url, offset, limit, inputValue);
@@ -71,8 +71,8 @@ public class BattleBoardController {
 
     @GetMapping("/detail")
     public String getBattles(Model model,
-                             @RequestParam(name = "id")String id,
-                             @RequestParam(name = "server")String server) throws JsonProcessingException {
+                             @RequestParam(name = "id") String id,
+                             @RequestParam(name = "server") String server) throws JsonProcessingException {
 
         // 특정 레코드 식별 가능한 id값을 통해서 특정 전투 정보를 가져옴.
         Battle battle = battleBoardService.getBattleListById(id, server);
@@ -150,7 +150,7 @@ public class BattleBoardController {
     @GetMapping("/getGuildId")
     @ResponseBody
     public List<GuildDTO> getGuildId(@RequestParam(name = "id", defaultValue = "") String id
-                            , @RequestParam(name = "server", defaultValue = "east") String server) throws JsonProcessingException {
+            , @RequestParam(name = "server", defaultValue = "east") String server) throws JsonProcessingException {
         return battleBoardService.getGuildId(id, server);
     }
 

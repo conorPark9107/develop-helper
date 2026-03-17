@@ -1,5 +1,7 @@
 package com.albionhelper.helper.battleBoard;
 
+import com.albionhelper.helper.api.AlbionHttpClient;
+import com.albionhelper.helper.api.BattleBoardHttpClient;
 import com.albionhelper.helper.domain.GuildDTO;
 import com.albionhelper.helper.domain.battle.*;
 import com.albionhelper.helper.util.LocationSelector;
@@ -10,9 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.reactive.function.client.WebClient;
 
-import java.time.Instant;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -34,43 +34,32 @@ public class BattleBoardService {
     // offset을 0부터 더이상 정보가 안나올때까지 데이터를 모아서 취합해야한다.
     private final String GET_ALL_INFO = "/events/battle/";
 
-    private final WebClient webClient;
     private final BattleBoardRepository battleBoardRepository;
     private final LocationSelector locationSelector;
+    private final AlbionHttpClient albionHttpClient;
+    private final BattleBoardHttpClient battleBoardHttpClient;
 
-    public BattleBoardService(WebClient webClient, BattleBoardRepository battleBoardRepository, LocationSelector locationSelector) {
-        this.webClient = webClient;
+    public BattleBoardService(
+            BattleBoardRepository battleBoardRepository,
+            LocationSelector locationSelector,
+            AlbionHttpClient albionHttpClient,
+            BattleBoardHttpClient battleBoardHttpClient) {
         this.battleBoardRepository = battleBoardRepository;
         this.locationSelector = locationSelector;
+        this.albionHttpClient = albionHttpClient;
+        this.battleBoardHttpClient = battleBoardHttpClient;
     }
 
     private String getResponseNoCache(String requestUrl) {
-        String urlWithTimestamp = requestUrl + "&timestamp=" + Instant.now().getEpochSecond();
-        return webClient.get()
-                .uri(urlWithTimestamp)
-                .header("Cache-Control", "no-cache, no-store, must-revalidate, max-age=0")
-                .header("Pragma", "no-cache")
-                .header("Expires", "0")
-                .retrieve()
-                .bodyToMono(String.class)
-                .block();
+        return battleBoardHttpClient.getNoCache(requestUrl);
     }
 
-
     private String getResponse(String requestUrl) {
-        return webClient.get()
-                .uri(requestUrl)
-                .retrieve()
-                .bodyToMono(String.class)
-                .block();
+        return albionHttpClient.getResponse(requestUrl);
     }
 
     private Object[] getResponseForEvent(String requestUrl) {
-        return webClient.get()
-                .uri(requestUrl)
-                .retrieve()
-                .bodyToMono(Object[].class)
-                .block();
+        return battleBoardHttpClient.getResponseForEvent(requestUrl);
     }
 
     // 베틀리스트를 테이블에 보여주기위한 메서드.
@@ -82,7 +71,7 @@ public class BattleBoardService {
         JsonNode rootNode = objectMapper.readTree(response);
 
         List<Battle> list = new ArrayList<>();
-        for(int i = 0; i < rootNode.size(); i++){
+        for (int i = 0; i < rootNode.size(); i++) {
             JsonNode node = rootNode.get(i);
             list.add(getBattle(node));
         }
@@ -100,13 +89,10 @@ public class BattleBoardService {
         JsonNode rootNode = objectMapper.readTree(response);
 
         List<Battle> list = new ArrayList<>();
-        for(int i = 0; i < rootNode.size(); i++){
+        for (int i = 0; i < rootNode.size(); i++) {
             JsonNode node = rootNode.get(i);
             list.add(getBattle(node));
         }
-
-//        list.forEach(battle -> System.out.println(battle.getStartTime()));
-//        System.out.println("---------------");
 
         list = list.stream()
                 .filter(battle -> Long.parseLong(battle.getId()) > recentId)
@@ -127,7 +113,7 @@ public class BattleBoardService {
         // 완전히 같은 이름의 길드가 존재한다면 그 길드의 ID값을 리턴
         List<GuildDTO> list = new ArrayList<>();
         for (JsonNode node : guildsNode) {
-            if(!node.isEmpty()){
+            if (!node.isEmpty()) {
                 GuildDTO dto = objectMapper.treeToValue(node, GuildDTO.class);
                 list.add(dto);
             }
@@ -147,17 +133,17 @@ public class BattleBoardService {
         b.setTotalKills(node.get("totalKills").intValue());
 
         List<Player> playerList = new ArrayList<>();
-        for(JsonNode player : node.get("players")){
+        for (JsonNode player : node.get("players")) {
             playerList.add(objMapper.treeToValue(player, Player.class));
         }
 
         List<Guild> guildList = new ArrayList<>();
-        for(JsonNode guild : node.get("guilds")){
+        for (JsonNode guild : node.get("guilds")) {
             guildList.add(objMapper.treeToValue(guild, Guild.class));
         }
 
         List<Alliance> allianceList = new ArrayList<>();
-        for(JsonNode alliance : node.get("alliances")){
+        for (JsonNode alliance : node.get("alliances")) {
             allianceList.add(objMapper.treeToValue(alliance, Alliance.class));
         }
 
@@ -215,17 +201,17 @@ public class BattleBoardService {
 
         List<Event> list = new ArrayList<>();
         List<Event> responseList;
-        do{
+        do {
             String requestUrl = locationSelector.getLocation(server) + GET_ALL_INFO + id + "/?offset=" + offset + "&limit=" + limit;
             offset += limit;
-            Object[] response  = getResponseForEvent(requestUrl);
+            Object[] response = getResponseForEvent(requestUrl);
             log.info("event request url : {}", requestUrl);
             ObjectMapper mapper = new ObjectMapper();
             responseList = Arrays.stream(response)
-                                 .map(o -> mapper.convertValue(o, Event.class))
-                                 .toList();
+                    .map(o -> mapper.convertValue(o, Event.class))
+                    .toList();
             list.addAll(responseList);
-        }while(!responseList.isEmpty() && limit == 51);
+        } while (!responseList.isEmpty() && limit == 51);
 
         return list;
     }
@@ -240,19 +226,19 @@ public class BattleBoardService {
             participants.add(e.getVictim().convert());
 
             participants.forEach(p -> {
-                if(map.containsKey(p.getName())){
+                if (map.containsKey(p.getName())) {
                     EventPlayer eventPlayer = map.get(p.getName());
                     eventPlayer.setDamageDone(eventPlayer.getDamageDone() + p.getDamageDone());
                     eventPlayer.setSupportHealingDone(eventPlayer.getSupportHealingDone() + p.getSupportHealingDone());
 
                     // 플레이어의 데스 명성이 더 높다면 교체. (빅 도네이션 유저를 뽑기위한.)
-                    if(p.getDeathFame() > eventPlayer.getDeathFame()){
+                    if (p.getDeathFame() > eventPlayer.getDeathFame()) {
                         eventPlayer.setDeathFame(eventPlayer.getDeathFame() + p.getDeathFame());
                         eventPlayer.setInventory(p.getInventory());
                     }
 
                     map.put(p.getName(), eventPlayer);
-                }else{
+                } else {
                     map.put(p.getName(), p);
                 }
             });
@@ -261,14 +247,14 @@ public class BattleBoardService {
 
         // 플레이어의 킬, 데스가 몇인지 찾아 맵에 put
         battle.getPlayers()
-            .forEach(p -> {
-                if(map.containsKey(p.getName())){
-                    EventPlayer eventPlayer = map.get(p.getName());
-                    eventPlayer.setKills(p.getKills());
-                    eventPlayer.setDeaths(p.getDeaths());
-                    map.put(p.getName(), eventPlayer);
-                }
-            });
+                .forEach(p -> {
+                    if (map.containsKey(p.getName())) {
+                        EventPlayer eventPlayer = map.get(p.getName());
+                        eventPlayer.setKills(p.getKills());
+                        eventPlayer.setDeaths(p.getDeaths());
+                        map.put(p.getName(), eventPlayer);
+                    }
+                });
 
         return map;
     }
@@ -312,7 +298,7 @@ public class BattleBoardService {
             String allianceName = v.getAllianceName();
 
             int ip = v.getAverageItemPower();
-            if(ip > 0){
+            if (ip > 0) {
                 guildMap.put(guildName, guildMap.getOrDefault(guildName, 0) + ip);
                 allianceMap.put(allianceName, allianceMap.getOrDefault(allianceName, 0) + ip);
                 guildCount.put(guildName, guildCount.getOrDefault(guildName, 0) + 1);
@@ -321,14 +307,14 @@ public class BattleBoardService {
         });
 
         List<Guild> g = battle.getGuilds().stream().map(guild -> {
-            if(guildMap.containsKey(guild.getName())){
+            if (guildMap.containsKey(guild.getName())) {
                 guild.setAverageIp(guildMap.get(guild.getName()) / guildCount.get(guild.getName()));
             }
             return guild;
         }).toList();
 
         List<Alliance> a = battle.getAlliances().stream().map(alliance -> {
-            if(allianceMap.containsKey(alliance.getName())){
+            if (allianceMap.containsKey(alliance.getName())) {
                 alliance.setAverageIp(allianceMap.get(alliance.getName()) / allianceCount.get(alliance.getName()));
             }
             return alliance;
@@ -341,7 +327,7 @@ public class BattleBoardService {
     }
 
     // list로 convert
-    public List<EventPlayer> sortAndConvertMapToList(Map<String, EventPlayer> map){
+    public List<EventPlayer> sortAndConvertMapToList(Map<String, EventPlayer> map) {
         return map.values()
                 .stream()
                 .sorted((o1, o2) -> o2.getAverageItemPower() - o1.getAverageItemPower())
@@ -350,7 +336,7 @@ public class BattleBoardService {
 
     // id 값이있다면 URI 추가.
     private String getIdURI(String id) {
-        if(!id.isEmpty()){
+        if (!id.isEmpty()) {
             return "&guildId=" + id;
         }
         return "";
@@ -364,15 +350,21 @@ public class BattleBoardService {
                 .guildName(guildName)
                 .build();
         Optional<BattleCountLog> op = battleBoardRepository.findByServerAndGuildId(server, guildId);
-        if(op.isPresent()){
+        if (op.isPresent()) {
             BattleCountLog b = op.get();
             b.setCount(b.getCount() + 1);
-        }else{
+        } else {
             battleBoardRepository.save(battleLog);
         }
     }
 
-    public List<BattleCountLogDTO> getCount(String server) {
+    /**
+     * 가장 많이 조회된 길드 TOP5에 대해 몇번 조회 되었는지 조회.
+     *
+     * @param server (서버 : east, west, europe)
+     * @return List<BattleCountLogDTO>
+     */
+    public List<BattleCountLogDTO> getTop5Guild(String server) {
         return battleBoardRepository.findAllByTop5AndServer(server)
                 .stream()
                 .map(BattleCountLog::toDto)
