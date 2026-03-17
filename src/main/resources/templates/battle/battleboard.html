@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <!-- jquery alert-->
     <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
@@ -13,12 +14,12 @@
 
     <script type="text/javascript" src="/jsMin/util.js"></script>
     <script type="text/javascript" src="/jsMin/battle/battleboard.js"></script>
-    <link rel="stylesheet" href="/css/variable.css" />
-    <link rel="stylesheet" href="/css/board/editor.css" />
-    <link rel="stylesheet" href="/css/loading.css" />
-    <link rel="stylesheet" href="/css/index.css" />
-    <link rel="stylesheet" href="/css/detail.css" />
-    <link rel="stylesheet" href="/css/battle/battleboard.css" />
+    <link rel="stylesheet" href="/css/variable.css"/>
+    <link rel="stylesheet" href="/css/board/editor.css"/>
+    <link rel="stylesheet" href="/css/loading.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/detail.css"/>
+    <link rel="stylesheet" href="/css/battle/battleboard.css"/>
 
     <th:block th:replace="~{header :: analytics}"></th:block>
 
@@ -28,89 +29,93 @@
 <body data-theme="light-mode">
 <script type="text/javascript" src="/jsMin/toggle.js"></script>
 <div class="image-maindiv">
-<div th:replace="~{header :: header}"></div>
+    <div th:replace="~{header :: header}"></div>
 
-<div>
-    <div class="back-div">
-        <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
-    </div>
-    <div class="container-title">
-        <h6>길드 단위 전투 로그</h6>
-    </div>
-    <div class="container">
-        <div class="flex-row shadow inputDiv">
-            <input class="input" type="text" id="inputText" placeholder="길드명을 정확히 입력해주세요. (공백 포함)">
-            <a class="search" id="searchBtn">🔍</a>
+    <div>
+        <div class="back-div">
+            <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
         </div>
-        <div class="flex-row flex-vertical-center">
-            <!--<div class="flex-item">
-                <a class="btn shadow blur" id="multiBtn">&lt;!&ndash;선택한 전투 모아 보기&ndash;&gt;준비중</a>
-            </div>
-            <div class="flex-item">
-                <span class="select-button shadow blur">&lt;!&ndash;참여 플레이어 수 🔻&ndash;&gt;준비중</span>
-                <ul class="dropdown">
-                    <li class="dropdown-content">
-                        <a href="">최근 전투</a>
-                    </li>
-                    <li class="dropdown-content">
-                        <a href="">5명 이상</a>
-                    </li>
-                    <li class="dropdown-content">
-                        <a href="">10명 이상</a>
-                    </li>
-                    <li class="dropdown-content">
-                        <a href="">20명 이상</a>
-                    </li>
-                    <li class="dropdown-content">
-                        <a href="">30명 이상</a>
-                    </li>
-                    <li class="dropdown-content">
-                        <a href="">40명 이상</a>
-                    </li>
-                    <li class="dropdown-content">
-                        <a href="">100명 이상</a>
-                    </li>
-                </ul>
-            </div>-->
-            <div class="flex-item">
-                <a class="btn shadow" href="/battle">검색 결과 초기화</a>
-            </div>
-            <div class="flex-item">
-                <input class="east" type="radio" id="server01" name="server" value="east" th:checked="${server == 'east'}" />
-                <label class="east" for="server01">아시아</label>
-                <input class="west" type="radio" id="server02" name="server" value="west" th:checked="${server == 'west'}"/>
-                <label class="west" for="server02">아메리카</label>
-                <input class="europe" type="radio" id="server03" name="server" value="europe" th:checked="${server == 'europe'}"/>
-                <label class="europe" for="server03">유럽</label>
-            </div>
-            <div class="flex-item">
-                <span id="timer">60</span><span>초 후에 자동 새로고침됩니다.</span>
-            </div>
+        <div class="container-title">
+            <h6>길드 단위 전투 로그</h6>
         </div>
-
-        <div class="flex-row flex-vertical-start  border-top border-bottom">
-            <div class="w8 flex-column">
-                <div class="flex-row">
-                    <p>검색 없이 빠르게 보기<span class="info">(해당 길드 클릭 하면 바로 조회 가능, 추가 하고 싶으신 길드는 관리자 문의, 현재는 EAST 서버만 지원.)</span></p>
+        <div class="container">
+            <div class="flex-row shadow inputDiv">
+                <input class="input" type="text" id="inputText" placeholder="길드명을 정확히 입력해주세요. (공백 포함)">
+                <a class="search" id="searchBtn">🔍</a>
+            </div>
+            <div class="flex-row flex-vertical-center">
+                <!--<div class="flex-item">
+                    <a class="btn shadow blur" id="multiBtn">&lt;!&ndash;선택한 전투 모아 보기&ndash;&gt;준비중</a>
                 </div>
-                <div class="flex-row gap">
-                    <span class="link guildLink" data-id="oeaLBdQtSuub47CBi7uCGw">I The Flying Dutchman I </span>
-                    <span class="link guildLink" data-id="9jIbd4XxQgOVt5jyvwaPQg">Mirstin</span>
-                    <span class="link guildLink" data-id="6-bRYxXSRiKjFR-X45K0jw">Another</span>
+                <div class="flex-item">
+                    <span class="select-button shadow blur">&lt;!&ndash;참여 플레이어 수 🔻&ndash;&gt;준비중</span>
+                    <ul class="dropdown">
+                        <li class="dropdown-content">
+                            <a href="">최근 전투</a>
+                        </li>
+                        <li class="dropdown-content">
+                            <a href="">5명 이상</a>
+                        </li>
+                        <li class="dropdown-content">
+                            <a href="">10명 이상</a>
+                        </li>
+                        <li class="dropdown-content">
+                            <a href="">20명 이상</a>
+                        </li>
+                        <li class="dropdown-content">
+                            <a href="">30명 이상</a>
+                        </li>
+                        <li class="dropdown-content">
+                            <a href="">40명 이상</a>
+                        </li>
+                        <li class="dropdown-content">
+                            <a href="">100명 이상</a>
+                        </li>
+                    </ul>
+                </div>-->
+                <div class="flex-item">
+                    <!--                <a class="btn shadow" href="/battle">검색 결과 초기화</a>-->
+                </div>
+                <div class="flex-item">
+                    <input class="east" type="radio" id="server01" name="server" value="east"
+                           th:checked="${server == 'east'}"/>
+                    <label class="east" for="server01">아시아</label>
+                    <input class="west" type="radio" id="server02" name="server" value="west"
+                           th:checked="${server == 'west'}"/>
+                    <label class="west" for="server02">아메리카</label>
+                    <input class="europe" type="radio" id="server03" name="server" value="europe"
+                           th:checked="${server == 'europe'}"/>
+                    <label class="europe" for="server03">유럽</label>
+                </div>
+                <div class="flex-item">
+                    <span id="timer">60</span><span>초 후에 자동 새로고침됩니다.</span>
                 </div>
             </div>
-            <div class="w2 flex-column rankDiv">
-                <span class="subtitle">길드 검색 순위</span>
-                <div class="table rankTableDiv w-10">
-                    <table class="rankTable">
-                        <thead>
+
+            <div class="flex-row flex-vertical-start  border-top border-bottom">
+                <div class="w8 flex-column">
+                    <div class="flex-row">
+                        <p>검색 없이 빠르게 보기<span
+                                class="info">(해당 길드 클릭 하면 바로 조회 가능, 추가 하고 싶으신 길드는 관리자 문의, 현재는 EAST 서버만 지원.)</span></p>
+                    </div>
+                    <div class="flex-row gap">
+                        <span class="link guildLink" data-id="oeaLBdQtSuub47CBi7uCGw">I The Flying Dutchman I </span>
+                        <span class="link guildLink" data-id="9jIbd4XxQgOVt5jyvwaPQg">Mirstin</span>
+                        <span class="link guildLink" data-id="6-bRYxXSRiKjFR-X45K0jw">Another</span>
+                    </div>
+                </div>
+                <div class="w2 flex-column rankDiv">
+                    <span class="subtitle">길드 검색 순위</span>
+                    <div class="table rankTableDiv w-10">
+                        <table class="rankTable">
+                            <thead>
                             <tr>
                                 <th>순위</th>
                                 <th>길드명</th>
                                 <th>검색횟수</th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             <tr th:if="${not #lists.isEmpty(count)}" th:each="rank, stat : ${count}">
                                 <td th:if="${stat.count == 1}" th:text="'🥇'"></td>
                                 <td th:if="${stat.count == 2}" th:text="'🥈'"></td>
@@ -122,26 +127,25 @@
                             <tr th:if="${#lists.isEmpty(count)}">
                                 <td colspan="6">데이터가 없습니다.</td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
 
 
-
-        <table class="table maintable">
-            <caption><span>행을 클릭하면 전투 상세보기로 이동합니다.</span></caption>
-            <colgroup>
-                <col class="col1">
-                <col class="col2">
-                <col class="col5">
-                <col class="col3">
-                <col class="col4">
-                <col class="col2">
-                <col class="col6">
-            </colgroup>
-            <thead>
+            <table class="table maintable">
+                <caption><span>행을 클릭하면 전투 상세보기로 이동합니다.</span></caption>
+                <colgroup>
+                    <col class="col1">
+                    <col class="col2">
+                    <col class="col5">
+                    <col class="col3">
+                    <col class="col4">
+                    <col class="col2">
+                    <col class="col6">
+                </colgroup>
+                <thead>
                 <tr class="table-header">
                     <th>선택</th>
                     <th>발생일자<br/>(한국시간)</th>
@@ -151,11 +155,12 @@
                     <th>플레이어 수<br/>(Players)</th>
                     <th>킬 수<br/>(Kills)</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
 
-                <tr th:each="battle : ${list}" class="hover-background" th:attr="data-id=${battle.id},data-server=${server}">
-                    <td><input type="checkbox" name="multi" th:value="${battle.id}" /></td>
+                <tr th:each="battle : ${list}" class="hover-background"
+                    th:attr="data-id=${battle.id},data-server=${server}">
+                    <td><input type="checkbox" name="multi" th:value="${battle.id}"/></td>
                     <td th:text="${battle.startTime}">
 
                     </td>
@@ -167,20 +172,21 @@
                             <th:block th:text="${guildStat.last} ? ${guild.name} : ${guild.name} + ','"></th:block>
                         </span>
                     </td>
-                    <td th:classappend="${battle.totalFame > 10000000 ? 'red' : battle.totalFame > 1000000? 'green' : ''}" th:text="${battle.totalFameStr}"></td>
+                    <td th:classappend="${battle.totalFame > 10000000 ? 'red' : battle.totalFame > 1000000? 'green' : ''}"
+                        th:text="${battle.totalFameStr}"></td>
                     <td th:text="${#lists.size(battle.players)}"></td>
                     <td th:text="${battle.totalKills}"></td>
                 </tr>
-            </tbody>
-        </table>
-        <div class="moreviewDiv">
-            <input type="hidden" id="offset" th:value="${offset}" />
-            <input type="hidden" id="limit" th:value="${limit}" />
-            <input type="hidden" id="guildId" value="" />
-            <a class="shadow btn" id="moreviewBtn">더 보기 👆🏻</a>
-        </div>
-        
-        <div class="blackArea"></div>
+                </tbody>
+            </table>
+            <div class="moreviewDiv">
+                <input type="hidden" id="offset" th:value="${offset}"/>
+                <input type="hidden" id="limit" th:value="${limit}"/>
+                <input type="hidden" id="guildId" value=""/>
+                <a class="shadow btn" id="moreviewBtn">더 보기 👆🏻</a>
+            </div>
+
+            <div class="blackArea"></div>
             <div class="popup">
                 <div class="popup-head">
                     <span class="closeBtn">×</span>
@@ -189,9 +195,9 @@
                 <ul id="guildList" class="list">
                 </ul>
             </div>
-    </div>    
+        </div>
 
-</div>
+    </div>
 </div>
 
 <div id="blackArea">
