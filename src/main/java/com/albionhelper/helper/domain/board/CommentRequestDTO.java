@@ -1,15 +1,13 @@
 package com.albionhelper.helper.domain.board;
 
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class CommentRequestDTO {
 
     @NotNull
@@ -21,7 +19,7 @@ public class CommentRequestDTO {
     private String comment;
     private Long comment_group;
 
-    public Comment toEntity(){
+    public Comment toEntity() {
         return new Comment().builder()
                 .boardId(board_id)
                 .nickname(nickname)

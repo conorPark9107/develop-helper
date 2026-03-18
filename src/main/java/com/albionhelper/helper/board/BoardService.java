@@ -41,7 +41,7 @@ public class BoardService {
     public void registerBoard(BoardRequestDTO dto) throws UnknownHostException {
         log.info("registerBoard : {}", dto);
 
-        if(dto.getNickname().isEmpty()){
+        if (dto.getNickname() == null || dto.getNickname().isEmpty()) {
             dto.setNickname("익명");
             log.info("nickname was empty so changed : {} ", dto.getNickname());
         }
@@ -70,8 +70,8 @@ public class BoardService {
     // 댓글 등록.
     public void registerComment(CommentRequestDTO dto) throws UnknownHostException {
         String nickname = Optional.ofNullable(dto.getNickname())
-                        .filter(n -> !n.isEmpty())
-                        .orElse("익명");
+                .filter(n -> !n.isEmpty())
+                .orElse("익명");
 
         dto.setNickname(nickname);
         commentRepository.save(dto.toEntity());
@@ -81,7 +81,7 @@ public class BoardService {
     public List<CommentResponseDTO> findAllCommentsByBoardId(Long board_id) {
         List<Comment> list = commentRepository.findAllByBoardId(board_id);
         List<CommentResponseDTO> dtoList = new ArrayList<>();
-        for(Comment c : list){
+        for (Comment c : list) {
             dtoList.add(c.toResponseDTO());
         }
         return dtoList;
@@ -95,13 +95,13 @@ public class BoardService {
     // 조회수 증가.
     public void incrementViewCount(Long id) {
         Board b = boardRepository.findById(id)
-                        .orElseThrow(() -> new NoSuchElementException("게시글이 존재하지 않습니다. id : " + id));
+                .orElseThrow(() -> new NoSuchElementException("게시글이 존재하지 않습니다. id : " + id));
         b.setView_count(b.getView_count() + 1);
         boardRepository.save(b);
     }
 
     // 추천 / 비추천 처리.
-    public int updateUpdownCount(Long boardId, String status){
+    public int updateUpdownCount(Long boardId, String status) {
         Board b = boardRepository.findById(boardId)
                 .orElseThrow(() -> new NoSuchElementException("게시글이 존재하지 않습니다: id=" + boardId));
         int upOrDown = status.equals("p") ? 1 : -1;
@@ -126,12 +126,12 @@ public class BoardService {
     // 게시글 비밀번호 확인
     public String checkPassword(Long id, String password) {
         Optional<Board> b = boardRepository.findByIdAndPassword(id, password);
-        if(b.isEmpty()){
+        if (b.isEmpty()) {
             return "F";
         }
         return "T";
     }
-    
+
     // 문의 등록
     public String registerInquire(String text) {
         Inquire inquire = new Inquire();
@@ -140,12 +140,12 @@ public class BoardService {
     }
 
     // 문의 답변 등록
-    public void updateInquireAnswer(UpdateInquireDTO dto){
+    public void updateInquireAnswer(UpdateInquireDTO dto) {
         Inquire inquire = inquireRepository.findById(dto.getId()).get();
         inquire.setAnswer(dto.getAnswer());
         inquireRepository.save(inquire);
     }
-    
+
     // 문의 전체 조회
     public List<Inquire> findAllInquire() {
         return inquireRepository.findAll();
