@@ -26,58 +26,120 @@ $(document).ready(function () {
 
     $('.submit').on('click', function () {
         turnLoading();
-        let images = $('img'); // 이미지들.
+        $('.submit').prop('disabled', true); // 중복 클릭 방지
+
+        let images = $('img');
         let title = $('#title').val();
         let password = $('#password').val();
 
-        if (title.trim() == '') {
+        // validation
+        if (title.trim() === '') {
             $("#title").val('');
             showMsgForTitle();
-            turnLoading();
+            finish();
             return;
         }
-        if (password.trim() == '') {
+
+        if (password.trim() === '') {
             $("#password").val('');
             showMsgForPw();
-            turnLoading();
+            finish();
             return;
         }
 
         let promiseList = [];
+
+        // 이미지 업로드
         for (let i = 0; i < images.length; i++) {
             let fileName = uuidv4() + ".png";
             let src = images[i].src;
             let file = base64toFile(src, fileName);
-            const uploadPromise = uploadFile(file, fileName);
-            promiseList[i] = uploadPromise.then(uploadData => {
-                return downloadFile(uploadData.data.path);
-            }).then(downloadData => {
-                return downloadData;
-            }).catch(error => {
-                console.log(error);
+
+            const uploadPromise = uploadFile(file, fileName)
+                .then(uploadData => {
+                    return downloadFile(uploadData.data.path);
+                })
+                .then(downloadData => {
+                    return downloadData.data.publicUrl;
+                })
+                .catch(error => {
+                    console.error("이미지 업로드 실패:", error);
+                    throw error; // 전체 실패 처리
+                });
+
+            promiseList.push(uploadPromise);
+        }
+
+        // 이미지 없는 경우
+        if (promiseList.length === 0) {
+            submitPost();
+            return;
+        }
+
+        // 이미지 처리 후
+        Promise.all(promiseList)
+            .then(urlList => {
+                let imgs = document.getElementsByTagName('img');
+
+                for (let i = 0; i < urlList.length; i++) {
+                    imgs[i].src = urlList[i];
+                }
+
+                submitPost();
+            })
+            .catch(err => {
+                alert("이미지 업로드 중 오류가 발생했습니다.");
+                console.error(err);
+                finish();
+            });
+
+        // POST 요청.
+        function submitPost() {
+            const data = {
+                category: $('.clicked').attr('value'),
+                nickName: $('#nickName').val(),
+                title: $('#title').val(),
+                contents: quill.root.innerHTML,
+                password: $('#password').val()
+            };
+
+            fetch('/board/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(res => {
+                if (!res.ok) {
+                    if (res.status === 429) {
+                        alert("1분 후 다시 시도해주세요.");
+                    } else if (res.status === 400) {
+                        alert("입력값을 확인해주세요.");
+                    } else {
+                        alert("서버 오류가 발생했습니다.");
+                    }
+                    throw new Error("POST 실패");
+                }
+                return res;
+            })
+            .then(() => {
+                alert("작성 완료!");
+                window.location.href = "/board";
+            })
+            .catch(err => {
+                console.error(err);
+            })
+            .finally(() => {
+                finish();
             });
         }
 
-        Promise.all(promiseList).then(dataArr => {
-            let images = document.getElementsByTagName('img');
-            for (let i = 0; i < dataArr.length; i++) {
-                images[i].src = dataArr[i].data.publicUrl;
-            }
-            const category = $('.clicked').attr('value');
-            const nickName = $('#nickName').val();
-            const title = $('#title').val();
-            const password = $('#password').val();
-            const requestHTML = quill.root.innerHTML;
-            
-            $('#h_category').val(category);
-            $('#h_nickName').val(nickName);
-            $('#h_title').val(title);
-            $('#h_contents').val(requestHTML);
-            $('#h_password').val(password);
-            $('#submitForm').submit();
-        });
-
-
+        // 종료 처리
+        function finish() {
+            turnLoading();
+            $('.submit').prop('disabled', false);
+        }
     });
 
     function showMsgForTitle() {

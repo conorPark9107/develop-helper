@@ -57,46 +57,115 @@ $(document).ready(function() {
     });
 
     /* 대댓글 등록 버튼 이벤트. */
-    $('li').on('click', '.comment-submit_c', function(){
-        let comment_group = $(this).closest('li').attr('id');
-        let nickname = $('input[name=nickname_c]').val();
-        let password = $('input[name=password_c]').val();
-        if(password.trim() == ''){
+    $('.comment-list').on('click', '.comment-submit_c', function(){
+
+        const $commentArea = $(this).closest('.comment-writer.comment-area');
+        const comment_group = $commentArea.closest('li').attr('id');
+        const nickname = $('input[name=nickname_c]').val();
+        const password = $('input[name=password_c]').val();
+        const comment = $('textarea[name=comment_c]').val();
+        const board_id = $('#board_id').val();
+
+        if (!password || password.trim() === '') {
             showAlert('댓글 비밀번호를 설정해주세요.');
-            password.val('');
-        }
-        let comment = $('textarea[name=comment_c]').val();
-        if(comment.trim() == ''){
-            showAlert('댓글을 작성해주세요.');
-            comment.val('');
+            $('input[name=password_c]').val('');
+            return;
         }
 
-        $('#h_nickname').val(nickname);
-        $('#h_password').val(password);
-        $('#h_comment').val(comment);
-        $('#h_comment_group').val(comment_group);
-        $('.form').submit();
+        if (!comment || comment.trim() === '') {
+            showAlert('댓글을 작성해주세요.');
+            $('textarea[name=comment_c]').val('');
+            return;
+        }
+
+        const data = {
+            board_id: board_id,
+            comment_group: comment_group,
+            nickname: nickname,
+            password: password,
+            comment: comment
+        };
+
+        fetch('/board/registerComment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(res => {
+             if (!res.ok) {
+                 if (res.status === 429) {
+                     alert("1분 후 다시 시도해주세요.");
+                 } else if (res.status === 400) {
+                     alert("입력값을 확인해주세요.");
+                 } else {
+                     alert("서버 오류가 발생했습니다.");
+                 }
+                 throw new Error("POST 실패");
+             }
+             return res;
+         })
+        .then(resData => {
+            showAlert('댓글이 등록되었습니다.');
+            window.location.href =`/board/detail?id=${board_id}`;
+        })
+        .catch(err => {
+            console.error(err);
+        });
     });
 
     /* 댓글 등록 버튼 이벤트. */
     $('.comment-submit').on('click', function(){
-        let nickname = $('input[name=nickname]').val();
-        let password = $('input[name=password]').val();
-        let comment = $('textarea[name=comment]').val();
-        if(password.trim() == ''){
+
+        const nickname = $('input[name=nickname]').val();
+        const password = $('input[name=password]').val();
+        const comment = $('textarea[name=comment]').val();
+        const board_id = $('#board_id').val();
+
+        // validation
+        if (!password || password.trim() === '') {
             showAlert('댓글 비밀번호를 설정해주세요.');
-            password.val('');
+            $('input[name=password]').val('');
+            return;
         }
-        if(comment.trim() == ''){
+
+        if (!comment || comment.trim() === '') {
             showAlert('댓글을 작성해주세요.');
-            comment.val('');
+            $('textarea[name=comment]').val('');
+            return;
         }
 
+        const data = {
+            board_id: board_id,
+            nickname: nickname,
+            password: password,
+            comment: comment
+        };
 
-        $('#h_nickname').val(nickname);
-        $('#h_password').val(password);
-        $('#h_comment').val(comment);
-        $('.form').submit();
+        fetch('/board/registerComment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(res => {
+             if (!res.ok) {
+                 if (res.status === 429) {
+                     alert("1분 후 다시 시도해주세요.");
+                 } else if (res.status === 400) {
+                     alert("입력값을 확인해주세요.");
+                 } else {
+                     alert("서버 오류가 발생했습니다.");
+                 }
+                 throw new Error("POST 실패");
+             }
+             return res;
+         })
+        .then(resData => {
+            showAlert('댓글이 등록되었습니다.');
+            window.location.href =`/board/detail?id=${board_id}`;
+        })
+        .catch(err => {
+            console.error(err);
+        });
     });
 
     /* 추천 버튼 클릭 이벤트 */
