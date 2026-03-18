@@ -18,7 +18,6 @@ public class BattleBoardHttpClient {
     // 베틀 보드 가져올때 사용됨.
     @Cacheable(value = "battleBoard", key = "#requestUrl")
     public String getBattleBoardResponse(String requestUrl) {
-        System.out.println("🔥 실제 API 호출됨!");
         String urlWithTimestamp = requestUrl + "&timestamp=" + Instant.now().getEpochSecond();
         return webClient.get()
                 .uri(urlWithTimestamp)
@@ -32,7 +31,6 @@ public class BattleBoardHttpClient {
 
     @Cacheable(value = "battleBoard", key = "#requestUrl")
     public Object[] getResponseForEvent(String requestUrl) {
-        System.out.println("🔥 실제 API 호출됨!");
         return webClient.get()
                 .uri(requestUrl)
                 .retrieve()

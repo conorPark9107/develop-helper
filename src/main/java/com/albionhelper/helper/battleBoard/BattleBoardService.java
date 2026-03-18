@@ -4,7 +4,7 @@ import com.albionhelper.helper.api.AlbionHttpClient;
 import com.albionhelper.helper.api.BattleBoardHttpClient;
 import com.albionhelper.helper.domain.GuildDTO;
 import com.albionhelper.helper.domain.battle.*;
-import com.albionhelper.helper.util.LocationSelector;
+import com.albionhelper.helper.enums.ServerRegion;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,17 +35,16 @@ public class BattleBoardService {
     private final String GET_ALL_INFO = "/events/battle/";
 
     private final BattleBoardRepository battleBoardRepository;
-    private final LocationSelector locationSelector;
+
     private final AlbionHttpClient albionHttpClient;
     private final BattleBoardHttpClient battleBoardHttpClient;
 
     public BattleBoardService(
             BattleBoardRepository battleBoardRepository,
-            LocationSelector locationSelector,
             AlbionHttpClient albionHttpClient,
             BattleBoardHttpClient battleBoardHttpClient) {
         this.battleBoardRepository = battleBoardRepository;
-        this.locationSelector = locationSelector;
+
         this.albionHttpClient = albionHttpClient;
         this.battleBoardHttpClient = battleBoardHttpClient;
     }
@@ -62,9 +61,13 @@ public class BattleBoardService {
         return battleBoardHttpClient.getResponseForEvent(requestUrl);
     }
 
+    public String getLocation(String location) {
+        return ServerRegion.from(location).getUrl();
+    }
+
     // 베틀리스트를 테이블에 보여주기위한 메서드.
     public List<Battle> getBattleList(String server, int offset, int limit, String id) throws JsonProcessingException {
-        String requestUrl = locationSelector.getLocation(server) + DEFAULT_BATTLES_URL + "sort=recent&offset=" + offset + "&limit=" + limit + getIdURI(id);
+        String requestUrl = getLocation(server) + DEFAULT_BATTLES_URL + "sort=recent&offset=" + offset + "&limit=" + limit + getIdURI(id);
 
         String response = getBattleBoardResponse(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -82,7 +85,7 @@ public class BattleBoardService {
 
     // 새로고침되어 append될 데이터를 뽑는 메서드
     public List<Battle> getBattleListForRefresh(String server, String id, long recentId) throws JsonProcessingException {
-        String requestUrl = locationSelector.getLocation(server) + DEFAULT_BATTLES_URL + "sort=recent&range=day&offset=0" + getIdURI(id);
+        String requestUrl = getLocation(server) + DEFAULT_BATTLES_URL + "sort=recent&range=day&offset=0" + getIdURI(id);
 
         String response = getBattleBoardResponse(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -104,7 +107,7 @@ public class BattleBoardService {
 
     // Guild ID값(Primary Key)을 API로부터 가져옴.
     public List<GuildDTO> getGuildId(String id, String server) throws JsonProcessingException {
-        String requestUrl = locationSelector.getLocation(server) + GET_ID_URL + id;
+        String requestUrl = getLocation(server) + GET_ID_URL + id;
         log.info("getGuildId() request url was : {} ", requestUrl);
         String response = getResponse(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -154,7 +157,7 @@ public class BattleBoardService {
     }
 
     public Battle getBattleListById(String id, String server) throws JsonProcessingException {
-        String requestUrl = locationSelector.getLocation(server) + GET_BATTLE + id;
+        String requestUrl = getLocation(server) + GET_BATTLE + id;
         log.info("getBattleListById() url is {}", requestUrl);
         String response = getResponse(requestUrl);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -202,7 +205,7 @@ public class BattleBoardService {
         List<Event> list = new ArrayList<>();
         List<Event> responseList;
         do {
-            String requestUrl = locationSelector.getLocation(server) + GET_ALL_INFO + id + "/?offset=" + offset + "&limit=" + limit;
+            String requestUrl = getLocation(server) + GET_ALL_INFO + id + "/?offset=" + offset + "&limit=" + limit;
             offset += limit;
             Object[] response = getResponseForEvent(requestUrl);
             log.info("event request url : {}", requestUrl);

@@ -9,11 +9,9 @@ public class AlbionHttpClient {
 
     private final WebClient webClient;
 
-
     public AlbionHttpClient(WebClient webClient) {
         this.webClient = webClient;
     }
-
 
     @Cacheable(value = "api", key = "#requestUrl")
     public String getResponse(String requestUrl) {
@@ -23,6 +21,4 @@ public class AlbionHttpClient {
                 .bodyToMono(String.class)
                 .block();
     }
-
-
 }

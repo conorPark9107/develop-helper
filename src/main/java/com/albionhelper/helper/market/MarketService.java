@@ -1,5 +1,6 @@
 package com.albionhelper.helper.market;
 
+import com.albionhelper.helper.api.MarketHttpClient;
 import com.albionhelper.helper.domain.market.ItemPrice;
 import com.albionhelper.helper.domain.market.MarketRank;
 import com.albionhelper.helper.domain.market.MarketRankDTO;
@@ -12,10 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.reactive.function.client.ExchangeStrategies;
-import org.springframework.web.reactive.function.client.WebClient;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -35,37 +33,21 @@ import java.util.stream.Collectors;
 // https://albion-profit-calculator.com/
 
 @Service
-public class MarketService{
+public class MarketService {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
-    private final String[]CITIES = {"martlock", "thetford", "bridgewatch", "fortsterling", "lymhurst", "caerleon", "brecilian"};
+    private final String[] CITIES = {"martlock", "thetford", "bridgewatch", "fortsterling", "lymhurst", "caerleon", "brecilian"};
 
     private final MarketRepository repository;
+    private final MarketHttpClient marketHttpClient;
 
-    public MarketService(MarketRepository repository) {
+    public MarketService(MarketRepository repository, MarketHttpClient marketHttpClient) {
         this.repository = repository;
+        this.marketHttpClient = marketHttpClient;
     }
-
 
     private String getServerUrl(String server) {
         return MarketServerRegion.from(server).getUrl();
-    }
-
-    private String getResponse(String url) {
-
-        ExchangeStrategies exchangeStrategies = ExchangeStrategies.builder()
-                .codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(-1)) // 버퍼사이즈 -1 : unlimited
-                .build();
-
-        WebClient webClient = WebClient.builder().exchangeStrategies(exchangeStrategies).build();
-        return  webClient.get()
-                .uri(url)
-                .header("x-test", "header")
-                .retrieve()
-                .bodyToMono(String.class)
-                .delaySubscription(Duration.ofMillis(300))
-                .block();
-
     }
 
     // https://west.albion-online-data.com/api/v2/stats/prices/T4_BAG,T5_BAG?locations=Caerleon,Bridgewatch&qualities=2
@@ -82,18 +64,19 @@ public class MarketService{
         log.info("request String : {}", requestUrl);
 
 
-        String response = getResponse(requestUrl.toString());
+        String response = marketHttpClient.getResponse(requestUrl.toString());
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(response);
 
         List<ItemPrice> list = new ArrayList<>();
         for (JsonNode node : rootNode) {
-             ItemPrice itemPrice = objectMapper.treeToValue(node, ItemPrice.class);
-             list.add(itemPrice);
+            ItemPrice itemPrice = objectMapper.treeToValue(node, ItemPrice.class);
+            list.add(itemPrice);
         }
         return list;
     }
 
+    // 하위 자원
     public List<List<ItemPrice>> getResourcePrice(String server, String city, String[] beforeArr, String[] afterArr) throws JsonProcessingException {
         StringBuilder requestUrl = new StringBuilder(getServerUrl(server));
 
@@ -103,8 +86,8 @@ public class MarketService{
         log.info("request Resource Price URL(before) : {}", beforeURL);
         log.info("request Resource Price URL(afterfore) : {}", afterURL);
 
-        String beforeResponse = getResponse(beforeURL.toString());
-        String afterResponse = getResponse(afterURL.toString());
+        String beforeResponse = marketHttpClient.getResponse(beforeURL.toString());
+        String afterResponse = marketHttpClient.getResponse(afterURL.toString());
 
         List<List<ItemPrice>> list = new ArrayList<>();
         list.add(getResourceList(beforeResponse));
@@ -127,7 +110,7 @@ public class MarketService{
     private StringBuilder getResourceURL(StringBuilder requestUrl, String[] array, String city) {
         StringBuilder builder = new StringBuilder(requestUrl);
         builder.append(array[0]);
-        for(int i = 1; i < array.length; i++){
+        for (int i = 1; i < array.length; i++) {
             builder.append(",").append(array[i]);
         }
         builder.append("?locations=").append(city);
@@ -141,7 +124,7 @@ public class MarketService{
         List<ItemPrice> list = new ArrayList<>();
 
         log.info("request String : {}", urlBuilder);
-        String response = getResponse(urlBuilder.toString());
+        String response = marketHttpClient.getResponse(urlBuilder.toString());
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(response);
 
@@ -156,10 +139,10 @@ public class MarketService{
     @Transactional
     public void addCount(MarketRankDTO dto) {
         Optional<MarketRank> op = repository.findByItemId(dto.getItemId());
-        if(op.isPresent()){
+        if (op.isPresent()) {
             MarketRank marketRank = op.get();
             marketRank.setCount(marketRank.getCount() + 1);
-        }else{
+        } else {
             repository.save(dto.toEntity());
         }
     }

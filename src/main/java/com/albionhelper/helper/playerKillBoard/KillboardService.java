@@ -1,5 +1,6 @@
 package com.albionhelper.helper.playerKillBoard;
 
+import com.albionhelper.helper.api.PlayerKillBoardHttpClient;
 import com.albionhelper.helper.domain.Player;
 import com.albionhelper.helper.domain.battle.Event;
 import com.albionhelper.helper.domain.killboard.DeathBoard;
@@ -18,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +30,7 @@ public class KillboardService {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    private final WebClient webClient;
+    private final PlayerKillBoardHttpClient playerKillBoardHttpClient;
     private final KillboardRepository killboardRepository;
 
     // search?q={id}
@@ -40,7 +40,8 @@ public class KillboardService {
     private final String GET_KILLBOARD = "/players/<ID>/kills";
 
     // 데스
-    private final String GET_DEATHBOARD = "/players/<ID>/deaths";;
+    private final String GET_DEATHBOARD = "/players/<ID>/deaths";
+
 
     // 플레이어 정보
     private final String GET_PLAYERINFO = "/players/";
@@ -48,37 +49,11 @@ public class KillboardService {
     // 가장 큰 킬을 발생한 정보들.
     private final String GET_BIGGEST = "/events/killfame?";
 
-    public KillboardService(WebClient webClient, KillboardRepository killboardRepository) {
-        this.webClient = webClient;
+    public KillboardService(WebClient webClient, PlayerKillBoardHttpClient playerKillBoardHttpClient, KillboardRepository killboardRepository) {
+        this.playerKillBoardHttpClient = playerKillBoardHttpClient;
         this.killboardRepository = killboardRepository;
     }
 
-    // getDetail()메서드로부터 호출되며, 1 v 1 이벤트(킬상세)로그를 파싱하여 리턴.
-    private Event[] getResponseEvent(String url) {
-        return webClient.get()
-                .uri(url)
-                .retrieve()
-                .bodyToMono(Event[].class)
-                .block();
-    }
-
-    private String getResponseForBoard(String requestUrl) {
-        String urlWithTimestamp = requestUrl + "?timestamp=" + Instant.now().getEpochSecond();
-        return  webClient.get()
-                .uri(urlWithTimestamp)
-                .retrieve()
-                .bodyToMono(String.class)
-                .block();
-    }
-
-    private String getResponse(String url) {
-        return  webClient.get()
-                .uri(url)
-                .retrieve()
-                .bodyToMono(String.class)
-                .block();
-//                .block(Duration.ofMillis(10_000));
-    }
 
     // 플레이어 ID값을 알아내기위한.
     // https://gameinfo-sgp.albiononline.com/api/gameinfo/search?q=Metzzi
@@ -93,7 +68,7 @@ public class KillboardService {
 
         log.info("request url is {}", stringBuilder.toString());
 
-        String response = getResponse(stringBuilder.toString());
+        String response = playerKillBoardHttpClient.getResponse(stringBuilder.toString());
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(response);
@@ -120,7 +95,7 @@ public class KillboardService {
         StringBuilder killBuilder = new StringBuilder(location);
         String killUrl = killBuilder.append(GET_KILLBOARD).toString().replace("<ID>", id);
         log.info("request url is {}", killUrl);
-        String responseKillData = getResponseForBoard(killUrl);
+        String responseKillData = playerKillBoardHttpClient.getResponseForBoard(killUrl);
         return getKillLog(responseKillData);
     }
 
@@ -131,20 +106,18 @@ public class KillboardService {
         StringBuilder deathBuilder = new StringBuilder(location);
         String deathUrl = deathBuilder.append(GET_DEATHBOARD).toString().replace("<ID>", id);
         log.info("request url is {}", deathUrl);
-        String responseDeathData = getResponseForBoard(deathUrl);
+        String responseDeathData = playerKillBoardHttpClient.getResponseForBoard(deathUrl);
         return getDeathLog(responseDeathData);
     }
 
     //    https://gameinfo-sgp.albiononline.com/api/gameinfo/events/Falu3eR4SRyGVZR9g-_XVw/history/_SjHw45FQtGAlbhnjlCjKg
     // 킬보드 상세 페이지 정보를 리턴하는 메서드.
     public Event getDetail(String server, String killerId, String victimId) {
-        System.out.println("과연 : " + server);
         server = getLocation(server);
-        System.out.println("과연 : " + server);
         StringBuilder detailBuilder = new StringBuilder(server);
         String url = detailBuilder.append("/events/").append(killerId).append("/history/").append(victimId).toString();
         log.info("getDetail() request url is {}", url);
-        Event[] e = getResponseEvent(url);
+        Event[] e = playerKillBoardHttpClient.getResponseEvent(url);
         return e[0];
     }
 
@@ -154,7 +127,7 @@ public class KillboardService {
         StringBuilder detailBuilder = new StringBuilder(server);
         String url = detailBuilder.append(GET_PLAYERINFO).append(id).toString();
         log.info("getPlayerDetailInfo() request url is {}", url);
-        String response = getResponseForBoard(url);
+        String response = playerKillBoardHttpClient.getResponseForBoard(url);
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(response);
 
@@ -163,7 +136,7 @@ public class KillboardService {
     }
 
 
-    private List<DeathBoard> getDeathLog(String responseDeathData) throws JsonProcessingException{
+    private List<DeathBoard> getDeathLog(String responseDeathData) throws JsonProcessingException {
         List<DeathBoard> list = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(responseDeathData);
@@ -196,17 +169,17 @@ public class KillboardService {
                 .append("range=")
                 .append(range)
                 .append("&offset=0&limit=5");
-        Event[] event = getResponseEvent(url.toString());
+        Event[] event = playerKillBoardHttpClient.getResponseEvent(url.toString());
         return Arrays.stream(event).toList();
     }
 
     @Transactional
-    public void addCountUser(PlayerLogDTO pl){
+    public void addCountUser(PlayerLogDTO pl) {
         Optional<PlayerLog> o = killboardRepository.findByUserId(pl.getUserId());
-        if(o.isPresent()){
+        if (o.isPresent()) {
             PlayerLog playerLog = o.get();
             playerLog.setCount(playerLog.getCount() + 1);
-        }else{
+        } else {
             killboardRepository.save(pl.toEntity());
         }
     }

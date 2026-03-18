@@ -26,10 +26,10 @@ public class CacheConfig {
                 .build());
 
         manager.registerCustomCache("market", Caffeine.newBuilder()
-                .expireAfterWrite(20, TimeUnit.SECONDS)
+                .expireAfterWrite(30, TimeUnit.SECONDS)
                 .maximumSize(1000)
                 .build());
-
+        
         manager.registerCustomCache("api", Caffeine.newBuilder()
                 .expireAfterWrite(60, TimeUnit.MINUTES)
                 .maximumSize(1000)
