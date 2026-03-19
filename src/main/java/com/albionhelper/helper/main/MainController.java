@@ -1,7 +1,9 @@
 package com.albionhelper.helper.main;
 
 import com.albionhelper.helper.board.BoardService;
+import com.albionhelper.helper.domain.inquire.InquireRequestDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,7 +37,7 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model) {
         model.addAttribute("battle", countService.getBattleCount());
         model.addAttribute("player", countService.getPlayerCount());
         return "home";
@@ -50,19 +52,27 @@ public class MainController {
     }
 
     @GetMapping("/toinquire")
-    public String showToInquirePage(Model model){
+    public String showToInquirePage(Model model) {
         model.addAttribute("list", boardService.findAllInquire());
         return "toinquire";
     }
 
+
     @PostMapping("/inquire/register")
     @ResponseBody
-    public String registerInquire(@RequestParam("text")String text){
-        return boardService.registerInquire(text);
+    public ResponseEntity<String> registerInquire(@RequestBody InquireRequestDTO dto) {
+        String s = boardService.registerInquire(dto);
+        return ResponseEntity.ok().body(s);
     }
 
+//    @PostMapping("/inquire/register")
+//    @ResponseBody
+//    public String registerInquire(@RequestParam("text")String text){
+//        return boardService.registerInquire(text);
+//    }
+
     @GetMapping("/info")
-    public String showInfoPage(){
+    public String showInfoPage() {
         return "info";
     }
 

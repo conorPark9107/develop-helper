@@ -2,6 +2,7 @@ package com.albionhelper.helper.board;
 
 
 import com.albionhelper.helper.domain.board.*;
+import com.albionhelper.helper.domain.inquire.InquireRequestDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -133,9 +134,9 @@ public class BoardService {
     }
 
     // 문의 등록
-    public String registerInquire(String text) {
+    public String registerInquire(InquireRequestDTO dto) {
         Inquire inquire = new Inquire();
-        inquire.setContent(text);
+        inquire.setContent(dto.getInquiries());
         return inquireRepository.save(inquire).toString();
     }
 

@@ -110,6 +110,7 @@ $(document).ready(function() {
         })
         .catch(err => {
             console.error(err);
+            window.location.href =`/board/detail?id=${board_id}`;
         });
     });
 
