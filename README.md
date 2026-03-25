@@ -79,8 +79,9 @@ Client
     → Service 
       → WebClient → Albion Online API
       → Repository → MariaDB
-    → Controller 
-  → Client
+    → Service 
+  → Controller 
+→ Client
 ```
 
 - WebClient를 활용한 외부 API 통신
