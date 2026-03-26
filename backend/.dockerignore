@@ -1,0 +1,22 @@
+# 빌드 결과물 제외
+build/
+
+# Gradle 캐시 및 설정 제외
+.gradle/
+
+# IDE 관련 파일 제외
+.idea/
+.vscode/
+*.iml
+
+# Git 관련
+.git/
+.gitignore
+
+# Docker 관련
+.dockerignore
+Dockerfile
+
+# OS 불필요 파일
+*.log
+*.DS_Store

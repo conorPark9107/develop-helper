@@ -1,0 +1,66 @@
+a{
+    text-decoration: none;
+}
+.image-maindiv{
+    background-image: url(/image/background-image-battle.jpeg);
+    background-repeat: repeat;
+    height: auto;
+    min-height: 100%;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+.sub-chart-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 15px;
+    margin: 1vw;
+}
+.chart{
+    margin: 1vw;
+}
+.chart-div{
+    width: 500px;
+    max-height: 400px;
+}
+.back-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    margin: auto;
+    max-width: 975px;
+    padding-top: 15px;
+}
+.btn-back{
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    width: 130px;
+    padding: 8px;
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+.btn-back:hover{
+    opacity: 0.4;
+}
+@media screen and (max-width: 1024px) {
+    .chart-div{
+        width: 975px;
+        max-height: 400px;
+    }
+    .btn-back{
+        font-size: 18px;
+        padding: 15px 35px;
+        margin-left: 10px;
+    }
+}

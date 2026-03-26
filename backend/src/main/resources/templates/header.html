@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+
+    <th:block th:fragment="analytics">
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0XX7WY05NK"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0XX7WY05NK');
+        </script>
+
+
+        <!-- Google AdSense -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1983738555197467"
+                crossorigin="anonymous"></script>
+
+    </th:block>
+
+</head>
+
+<body>
+<header class="header" th:fragment="header">
+    <a class="header-logo link" href="/"></a>
+    <label class="switch">
+        <input class="switchBtn" role="switch" type="checkbox" />
+        <span>다크 모드</span>
+    </label>
+</header>
+</body>
+</html>

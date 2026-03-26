@@ -1,0 +1,99 @@
+# =========================
+# 🔥 공통
+# =========================
+.env
+.env.*
+*.log
+*.tmp
+*.swp
+
+# =========================
+# 🟢 Backend (Spring Boot)
+# =========================
+backend/.gradle/
+backend/build/
+backend/out/
+backend/master_db/*
+backend/src/test/
+
+# gradle wrapper는 포함
+!backend/gradle/wrapper/gradle-wrapper.jar
+!backend/gradlew
+!backend/gradlew.bat
+!backend/gradle/wrapper/gradle-wrapper.properties
+
+# 민감 정보
+backend/src/main/resources/application-db.yml
+
+# 로그 / DB / 업로드 파일
+backend/*.log
+backend/*.db
+backend/uploads/
+
+# (선택) 정적 리소스는 유지
+!backend/**/src/main/resources/static/
+!backend/**/src/main/resources/static/**
+
+# =========================
+# 🔵 Frontend (React / Vite)
+# =========================
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.vite/
+frontend/.cache/
+
+# 환경 변수
+frontend/.env
+frontend/.env.*
+
+# 테스트 / 커버리지
+frontend/coverage/
+
+# =========================
+# 🧠 IDE (IntelliJ / VSCode 등)
+# =========================
+.idea/
+*.iws
+*.iml
+*.ipr
+
+.vscode/
+
+# =========================
+# 🧱 OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# 🧪 기타 IDE (레거시)
+# =========================
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/. nb-gradle/
+
+# =========================
+# 📦 기타
+# =========================
+*.jar
+*.war
+*.zip
+*.tar
+*.gz
+
+# 테스트 결과
+*.out
+*.class

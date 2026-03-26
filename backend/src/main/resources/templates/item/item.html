@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+    <!--  ICON  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <script type="text/javascript" src="/jsMin/util.js"></script>
+    <script type="text/javascript" src="/jsMin/item/item.js"></script>
+    <link rel="stylesheet" href="/css/variable.css"/>
+    <link rel="stylesheet" href="/css/board/editor.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/detail.css"/>
+    <link rel="stylesheet" href="/css/item/item.css"/>
+    <link rel="stylesheet" href="/css/loading.css"/>
+    <meta charset="UTF-8">
+    <title>알비온 GG - 아이템 정보 ⚔</title>
+    <th:block th:replace="~{header :: analytics}"></th:block>
+</head>
+<body data-theme="light-mode">
+<script type="text/javascript" src="/jsMin/toggle.js"></script>
+<div class="image-maindiv">
+    <div th:replace="~{header :: header}"></div>
+    <div>
+        <div class="back-div">
+            <a class="btn-back text-center" href="/">메인 으로</a>
+        </div>
+        <div class="content-header">
+            <h3 id="contentTitle">🏹 아이템 정보 🏹</h3>
+        </div>
+        <div class="container">
+            <div class="flex-column">
+                <div class="flex-row background">
+                    <span>test입니다.</span>
+                </div>
+            </div>
+        </div>
+    </div> <!-- root div -->
+</div>
+
+<div id="blackArea">
+    <div id="loading">
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+        <div class="stick"></div>
+
+        <h1>정보 요청중..</h1>
+    </div>
+</div>
+</body>
+</html>

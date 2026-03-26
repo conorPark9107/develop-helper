@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
+    <script type="text/javascript" src="/static/js/inquire.js"></script>
+    <link rel="stylesheet" href="/static/css/variable.css" />
+   <link rel="stylesheet" href="/static/css/index.css" />
+   <link rel="stylesheet" href="/static/css/detail.css" />
+   <link rel="stylesheet" href="/static/css/inquire.css" />
+   <link rel="stylesheet" href="/static/css/loading.css" />
+   <link rel="stylesheet" href="/static/css/editor.css"/> -->
+    
+    <script type="text/javascript" src="/jsMin/util.js"></script>
+    <script type="text/javascript" src="/jsMin/inquire.js"></script>
+    <link rel="stylesheet" href="/css/variable.css" />
+   <link rel="stylesheet" href="/css/index.css" />
+   <link rel="stylesheet" href="/css/detail.css" />
+   <link rel="stylesheet" href="/css/admin/inquire.css" />
+   <link rel="stylesheet" href="/css/loading.css" />
+   <link rel="stylesheet" href="/css/board/editor.css"/>
+
+    <th:block th:replace="~{header :: analytics}"></th:block>
+
+    <meta charset="UTF-8">
+    <title>알비온 GG - 관리자 문의 및 피드백 ⚔</title>
+</head>
+<body data-theme="light-mode">
+<script type="text/javascript" src="/jsMin/toggle.js"></script>
+<div class="image-maindiv">
+<div th:replace="~{header :: header}"></div>
+    <div>
+    <div class="back-div">
+        <a class="btn-back text-center" href="/admin/dashboard">뒤로 가기</a>
+    </div>
+        <div class="container">
+            <div class="flex-column gap">
+                <div class="container-title">
+                    <h5>게시판 카테고리 관리 페이지</h5>
+                </div>
+                <ul class="inquireList background">
+                    <li th:each="inquire : ${list}" th:id="${inquire.id}">
+                        <span class="text" th:text="${inquire.content}"></span>
+                        <span class="right">답변보기🔻</span>
+                        <div class="admin-answer">
+                            <form method="POST">
+                                <div class="flex-row">
+                                    <textarea class="answer" type="text" id="answer" name="answer" th:text="${inquire.answer}" onresize="false">
+                                    </textarea>
+                                </div>
+                                <div class="flex-row flex-end gap">
+                                    <input type="hidden" name="id" th:value="${inquire.id}"/>
+                                    <span class="info">특별한 안내 문구가 더 이상 나오지 않습니다. 신중하게 버튼을 클릭하세요.</span>
+                                    <!-- 수정 버튼 (Update 요청) -->
+                                    <button class="btn" type="submit" formaction="/admin/updateinquire">수정</button>
+                                    <!-- 삭제 버튼 (Delete 요청) -->
+                                    <button class="btn" type="submit" formaction="/admin/deleteinquire">삭제</button>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="blackArea">
+        <div id="loading">
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+
+            <h1>정보 요청중..</h1>
+        </div>
+    </div>
+
+</body>
+</html>

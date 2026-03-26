@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <!-- jquery alert-->
+    <!--https://craftpip.github.io/jquery-confirm/themes.html#custom-themes-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
+
+    <!-- <script type="text/javascript" src="/static/js/util.js"></script>
+    <script type="text/javascript" src="/static/js/metabuild/tierListDetail.js"></script>
+    <link rel="stylesheet" href="/static/css/variable.css" />
+    <link rel="stylesheet" href="/static/css/board/editor.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/detail.css" />
+    <link rel="stylesheet" href="/static/css/loading.css" />
+    <link rel="stylesheet" href="/static/css/metabuild/tierListDetail.css" /> -->
+
+    <script type="text/javascript" src="/jsMin/util.js"></script>
+    <script type="text/javascript" src="/jsMin/metabuild/tierListDetail.js"></script>
+    <link rel="stylesheet" href="/css/variable.css" />
+    <link rel="stylesheet" href="/css/board/editor.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/detail.css" />
+    <link rel="stylesheet" href="/css/loading.css" />
+    <link rel="stylesheet" href="/css/metabuild/tierListDetail.css" />
+
+    <meta charset="UTF-8">
+    <title>알비온 GG - 티어 리스트 ⚔</title>
+    <th:block th:replace="~{header :: analytics}"></th:block>
+</head>
+
+<body data-theme="light-mode">
+    <script type="text/javascript" src="/jsMin/toggle.js"></script>
+    <div class="image-maindiv">
+        <div th:replace="~{header :: header}"></div>
+        <div>
+            <div class="back-div">
+                <a class="btn-back text-center" href="javascript:history.back();">뒤로 가기</a>
+            </div>
+            <div class="container">
+                <div class="flex-column">
+                    <h2>🥇티어 리스트 상세 페이지🥇</h2>
+                </div>
+                <div class="flex-column">
+                    
+                    <div class="flex-column background margin-b pd-10">
+                        <p class="title"><span class="category" th:text="|[${tierList.category}]|"></span> <span class="title" th:text="${tierList.title}"></span></p>
+                        <div class="subTitle flex-row box-sizing space-between w-10">
+                            <div class="tx-left w-5">
+                                <span class="writeDate" th:text="${#temporals.format(tierList.writeDate, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                            </div>
+                            <div class="flex-row box-sizing titleSubInfo space-end w-5">
+                                <div>
+                                    <span>추천수:</span>
+                                    <span class="up right" id="up" th:text="${tierList.up}"></span>
+                                    <span>개</span>
+                                </div>
+                                <div>
+                                    <span>댓글수:</span>
+                                    <span class="commentsNum right" id="commentNum1" th:text="${#lists.size(tierList.tierListComments)}">0</span>
+                                    <span>개</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-column margin-b">
+
+                        <div th:if="${not #strings.isEmpty(tierList.t1)} and ${#lists.size(tierList.t1) > 0}"
+                             class="flex-row box-sizing tier background align-center space-between padding-10 t1">
+                            <div class="rank t1b">
+                                <span class="rankText" th:text="${tierList.t1Name}"></span>
+                            </div>
+                            <div class="rankArea">
+                                <div class="imgArea" th:each="t : ${tierList.t1}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:if="${not #strings.isEmpty(tierList.t2)} and ${#lists.size(tierList.t2) > 0}"
+                             class="flex-row box-sizing tier background align-center space-between padding-10 t2">
+                            <div class="rank t2b">
+                                <span class="rankText" th:text="${tierList.t2Name}"></span>
+                            </div>
+                            <div class="rankArea">
+                                <div class="imgArea" th:each="t : ${tierList.t2}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:if="${not #strings.isEmpty(tierList.t3)} and ${#lists.size(tierList.t3) > 0}"
+                             class="flex-row box-sizing tier background align-center space-between padding-10 t3">
+                            <div class="rank t3b">
+                                <span class="rankText" th:text="${tierList.t3Name}"></span>
+                            </div>
+                            <div class="rankArea">
+                                <div class="imgArea" th:each="t : ${tierList.t3}" >
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:if="${not #strings.isEmpty(tierList.t4)} and ${#lists.size(tierList.t4) > 0}"
+                             class="flex-row box-sizing tier background align-center space-between padding-10 t4">
+                            <div class="rank t4b">
+                                <span class="rankText" th:text="${tierList.t4Name}"></span>
+                            </div>
+                            <div class="rankArea">
+                                <div class="imgArea" th:each="t : ${tierList.t4}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|"  th:attr="data-value=${t}"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:if="${not #strings.isEmpty(tierList.t5)} and ${#lists.size(tierList.t5) > 0}"
+                             class="flex-row box-sizing tier background align-center space-between padding-10 t5">
+                            <div class="rank t5b">
+                                <span class="rankText" th:text="${tierList.t5Name}"></span>
+                            </div>
+                            <div class="rankArea">
+                                <div class="imgArea" th:each="t : ${tierList.t5}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:if="${not #strings.isEmpty(tierList.t6)} and ${#lists.size(tierList.t6) > 0}"
+                             class="flex-row box-sizing tier background align-center space-between padding-10 t6">
+                            <div class="rank t6b">
+                                <span class="rankText" th:text="${tierList.t6Name}"></span>
+                            </div>
+                            <div class="rankArea">
+                                <div class="imgArea" th:each="t : ${tierList.t6}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:if="${not #strings.isEmpty(tierList.t7)} and ${#lists.size(tierList.t7) > 0}"
+                             class="flex-row box-sizing tier background align-center space-between padding-10 t7">
+                            <div class="rank t7b">
+                                <span class="rankText" th:text="${tierList.t7Name}"></span>
+                            </div>
+                            <div class="rankArea">
+                                <div class="imgArea" th:each="t : ${tierList.t7}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:if="${not #strings.isEmpty(tierList.t8)} and ${#lists.size(tierList.t8) > 0}"
+                             class="flex-row box-sizing tier background align-center space-between padding-10 t8">
+                            <div class="rank t8b">
+                                <span class="rankText" th:text="${tierList.t8Name}"></span>
+                            </div>
+                            <div class="rankArea">
+                                <div class="imgArea">
+                                    <div class="imgArea" th:each="t : ${tierList.t8}">
+                                        <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:if="${not #strings.isEmpty(tierList.t9)} and ${#lists.size(tierList.t9) > 0}"
+                             class="flex-row box-sizing tier background align-center space-between padding-10 t9">
+                            <div class="rank t9b">
+                                <span class="rankText" th:text="${tierList.t9Name}"></span>
+                            </div>
+                            <div class="rankArea">
+                                <div class="imgArea" th:each="t : ${tierList.t9}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div th:if="${not #strings.isEmpty(tierList.t10)} and ${#lists.size(tierList.t10) > 0}"
+                             class="flex-row box-sizing tier background align-center space-between padding-10 t10">
+                            <div class="rank t10b">
+                                <span class="rankText" th:text="${tierList.t10Name}"></span>
+                            </div>
+                            <div class="rankArea">
+                                <div class="imgArea" th:each="t : ${tierList.t10}">
+                                    <img class="itemImg" th:src="|https://render.albiononline.com/v1/item/${t}.png?quality=4|" th:attr="data-value=${t}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-column content-div">
+                        <p th:text="${tierList.content}">
+
+                        </p>
+                    </div>
+                    <div class="flex-row align-center margin-b space-center">
+                        <div class="upBtnDiv" id="upBtn">
+                            <span class="upBtn" th:text="${tierList.up}"></span>
+                            <span class="upBtnDescription">추천버튼</span>
+                        </div>
+                    </div>
+                    <div class="flex-column margin-b">
+                        <hr />
+                        <div class="commentsNumber margin-b">
+                            <span>댓글(</span>
+                            <span id="commentNum" th:text="${tierList.tierListComments.size()}"></span>
+                            <span>개)</span>
+                        </div>
+                        <div class="flex-column tierListCommentsList align-center">
+                            <div th:if="${tierList.tierListComments.size() > 0}" th:each="c : ${tierList.tierListComments}" class="flex-row w-10 bg-comment padding-sm align-center">
+                                <div class="flex-column w-1 writer">
+                                    <p th:text="${c.userId}">작성자명</p>
+                                </div>
+                                <div class="flex-row w-7 comment">
+                                    <p th:text="${c.comment}">댓글내용</p>
+                                </div>
+                                <div class="flex-row w-2 date align-center">
+                                    <p th:text="${#temporals.format(c.writeDate, 'yyyy-MM-dd HH:mm:ss')}">작성날짜</p>
+                                    <button class="link deleteBtn" th:value="${c.id}" onclick="clickDeleteBtn(this)">❌</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comments pd-10 background">
+                            <div class="flex-row gap-10">
+                                <div class="commentsInfoArea">
+                                    <label for="userId"></label><input type="text" id="userId" name="input" placeholder="닉네임 입력.. 생략시 익명" autocomplete="off" maxlength="15" />
+                                    <label for="password"></label><input type="password" id="password" name="input" placeholder="댓글 비밀번호.."  autocomplete="off" maxlength="15" />
+                                    <input type="hidden" id="tierListId" th:value="${tierList.id}" />
+                                </div>
+                                <div class="commentsArea">
+                                    <label for="comment"></label><textarea class="textArea" id="comment" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="submitArea">
+                                <button class="submit btn" id="submitBtn">댓글 등록</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- end of container -->
+    </div>
+
+
+
+    <div id="blackArea">
+        <div id="loading">
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+            <div class="stick"></div>
+
+            <h1>정보 요청중..</h1>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

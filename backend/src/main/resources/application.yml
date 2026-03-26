@@ -1,0 +1,44 @@
+server:
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+    excluded-user-agents: MSIE 6.0,UCBrowser
+    min-response-size: 1024
+  address: 0.0.0.0
+  port: 8080
+  tomcat:
+    connection-timeout: 1200s
+
+spring:
+  profiles:
+    include: 'db'
+  application:
+    name: helper
+  devtools:
+    restart:
+      addtional-exlclude: main/**
+      enabled: 'true'
+    livereload:
+      enabled: 'true'
+  thymeleaf:
+    cache: 'false'
+    mode: HTML
+    encoding: UTF-8
+    prefix: classpath:templates/
+    suffix: .html
+  web:
+    resources:
+      cache:
+        period: 0
+      chain:
+        cache: 'false'
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'false'
+    properties:
+      hibernate:
+        format_sql: 'true'
+  output:
+    ansi:
+      enabled: always

@@ -1,0 +1,209 @@
+a{
+    text-decoration: none;
+}
+hr{
+    border: 1px solid var(--border);
+}
+.image-maindiv{
+    background-image: url(/image/background-image-market.jpeg);
+    background-repeat: repeat;
+    height: auto;
+    min-height: 100%;
+}
+.flex-div{
+    display: flex;
+    flex-direction: column;
+}
+.menu-ul{
+    padding-inline-start: 0;
+}
+.priceArea{
+    display: flex;
+    flex-wrap: wrap;
+}
+img{
+    width: 4em;
+    height: 4em;
+}
+.search-detail{
+    text-align: center;
+}
+.tierFieldset{
+    text-align : center;
+}
+.itemImage{
+    cursor : pointer;
+    width: 4em;
+    height: 4em;
+}
+.itemImage:hover{
+    opacity: 0.7;
+}
+.content-searchDetail{
+    display: none;
+    flex-wrap: wrap;
+}
+.content-header-cities > span{
+    display: flex;
+    padding: 0 10px;
+    margin: 0 10px;
+    border: 1px solid #eee;
+    border-radius: 10%;
+}
+.btnDiv{
+    align-content: space-around;
+}
+.btnSearch{
+    font-size: 1em;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 0.5vw 1.5vw;
+    background-color: #242020;
+    color: #eee;
+}
+.btnSearch:hover{
+    color: #242020;
+    background: #eee;
+}
+.tier{
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0% 3%;
+    padding: 0.675em 6em 0.675em 1em;
+    background-color: var(--main-color-a);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--sub-color);
+    cursor: pointer;
+}
+.martlock{
+    color: #26414C;
+}
+.thetford{
+    color: #A15AAA;
+}
+.fortsterling{
+    color: #939393;
+}
+.lymhurst{
+    color: #085820;
+}
+.bridgewatch{
+    color: #77732b;
+}
+.caerleon{
+    color: #44000A;
+}
+.brecilien{
+    color: #7A297B;
+}
+.blackmarket{
+    color: #570000;
+}
+.selctedItem{
+    border: 2px solid;
+    border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua) 2;
+    animation: 5s rotate linear infinite;
+    outline: none;
+}
+input[type="text"]:focus{
+    opacity : 1;
+}
+.itemArea{
+    display: none;
+    width: 100%;
+}
+table{
+    width: 1000px;
+    box-shadow: 0 0 10px 0 var(--border);
+}
+table th:not(:first-child){
+    text-align: right;
+}
+table thead tr{
+    background-color: var(--table-th-color);
+    color: var(--table-th-text-color);
+    border-bottom: 2px solid var(--sub-color);
+    border-top: 2px solid var(--sub-color);
+    border-top-left-radius : 8px;
+    border-top-right-radius: 8px;
+}
+table tbody tr{
+    background-color: var(--table-tr-color);
+}
+table tbody tr:last-child{
+    border-bottom: 0px;
+    border-bottom-left-radius : 8px;
+    border-bottom-right-radius: 8px;
+}
+table th{
+    padding: 15px 10px;
+}
+table td{
+    color: var(--table-sub-text-color);
+    border-right: 1px solid var(--sub-color-a);
+    border-bottom: 1px dashed var(--border-bottom);
+    padding: 10px 10px;
+    text-align: right;
+}
+table td:nth-child(1){
+    text-align: center;
+}
+.flex-item{
+    padding : 10px;
+    border-bottom: 1px solid var(--border);
+}
+.back-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 98%;
+    margin: auto;
+    padding-top: 15px;
+}
+.btn-back{
+    text-align: center;
+    cursor: pointer;
+    font-size: 12px;
+    width: 130px;
+    padding: 8px;
+    color: var(--sub-color);
+    background-color: var(--main-color);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+}
+.btn-back:hover{
+    opacity: 0.4;
+}
+@media screen and (max-width: 1024px) {
+    .menu-detail {
+        height: 25%;
+        width : 100%;
+        font-size: 25px;
+    }
+    .flex-item {
+        text-align : center;
+    }
+    .flex-item:last-child {
+        text-align : left;
+    }
+    #marketTable{
+        width:950px;
+        font-size : 20px;
+    }
+    .itemImage{
+        width: 90px;
+        height: 90px;
+    }
+    .menu-ul li{
+        font-size : 25px;
+    }
+    .btn-back{
+        font-size: 18px;
+        padding: 15px 35px;
+        margin-left: 10px;
+    }
+    .back-div{
+        margin: 0;
+    }
+}

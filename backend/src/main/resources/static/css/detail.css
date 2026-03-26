@@ -1,0 +1,94 @@
+.header {
+    padding: 15px 10px;
+    font-size: 20px;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    border-bottom : 2px solid var(--border);
+}
+
+.header-logo {
+    color: var(--sub-color);
+    font-weight: bold;
+    background-image: var(--logo);
+    width: 210px;
+    height: 35px;
+}
+.footer span {
+    font-size: 12px;
+}
+
+.footer span a {
+    color: #A771BF;
+}
+
+.main {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    padding: 0 15px 10px;
+    flex-wrap: wrap;
+    width: auto;
+    padding-bottom: 50px;
+}
+
+.menu-detail {
+    display: flex;
+    flex-direction: column;
+    min-width: 230px;
+    padding: 0 10px 10px;
+    font-size: 15px;
+}
+
+.menu-ul {
+    list-style: none;
+}
+
+.menu-ul li {
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.menu-ul li:hover {
+    opacity: 0.5;
+}
+
+.centered {
+    margin: 0 auto;
+}
+
+.content-header {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+
+.content-body {
+    text-align: center;
+}
+.rainbow {
+    padding: 10px 10px;
+    color: var(--table-th-text-color);
+    background-color: #00000000;
+    font-size: 0.9em;
+    --angle: 0deg;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    animation: 3s rotate linear infinite;
+    outline: none;
+}
+
+.rainbow thead tr{
+    border-bottom: 1px dashed rgba(238, 238, 238, 0.2);
+}
+
+.rainbow tr{
+    border-bottom: 1px dashed rgba(238, 238, 238, 0.2);
+}
+
+
+input[type="text"]:focus {
+    opacity: 1;
+}
